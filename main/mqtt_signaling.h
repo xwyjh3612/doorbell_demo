@@ -7,9 +7,21 @@
 extern "C" {
 #endif
 
+typedef enum {
+    MQTT_SIG_EVENT_REMOTE_RING = 0,
+    MQTT_SIG_EVENT_REMOTE_OFFER,
+    MQTT_SIG_EVENT_REMOTE_ANSWER,
+    MQTT_SIG_EVENT_REMOTE_REJECT,
+    MQTT_SIG_EVENT_REMOTE_CLOSE,
+    MQTT_SIG_EVENT_REMOTE_TIMEOUT,
+} mqtt_sig_event_t;
+
+typedef void (*mqtt_sig_event_cb_t)(mqtt_sig_event_t event, const char *peer_id, void *ctx);
+
 const esp_peer_signaling_impl_t *esp_signaling_get_mqtt_impl(void);
 void mqtt_sig_set_device_id(const char *device_id);
 void mqtt_sig_set_webrtc_handle(void *handle);
+void mqtt_sig_set_event_handler(mqtt_sig_event_cb_t cb, void *ctx);
 void mqtt_sig_send_ring(const char *target); //呼出
 void mqtt_sig_send_timeout(const char *target); //超时
 void mqtt_sig_trigger_offer(void); //触发Offer

@@ -34,6 +34,7 @@ GPATH
 *.gcno
 coverage.info
 coverage_report/
+.idea
 
 .vscode
-/audio_server/target/
+**/target

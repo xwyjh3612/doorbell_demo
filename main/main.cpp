@@ -106,10 +106,7 @@ static int leave_room(int argc, char **argv) {
 }
 
 static int cmd_cli(int argc, char **argv) {
-    // NOTE: "ring" is a string literal (const), but send_cmd expects char*.
-    // If send_cmd does NOT modify the string, this is safe.
-    // Better: change common.h to `void send_cmd(const char *cmd);`
-    send_cmd(const_cast<char*>((argc > 1) ? argv[1] : "ring"));
+    send_cmd((argc > 1) ? argv[1] : "ring");
     return 0;
 }
 

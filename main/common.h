@@ -24,7 +24,7 @@ int start_webrtc(char *url);
 int start_webrtc_mqtt(void);
 void query_webrtc(void);
 int stop_webrtc(void);
-void send_cmd(char *cmd);
+void send_cmd(const char *cmd);
 
 int voice_call_offer(const char* target_id);
 int voice_call_answer(void);

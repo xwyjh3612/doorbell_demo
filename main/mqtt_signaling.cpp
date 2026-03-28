@@ -30,8 +30,17 @@ extern "C" {
 }
 
 static void *g_webrtc_handle = NULL;
+static mqtt_sig_event_cb_t g_sig_event_cb = NULL;
+static void *g_sig_event_ctx = NULL;
 
 #define TAG "MQTT_SIG"
+
+static void mqtt_sig_emit_event(mqtt_sig_event_t event, const char *peer_id)
+{
+    if (g_sig_event_cb) {
+        g_sig_event_cb(event, peer_id, g_sig_event_ctx);
+    }
+}
 
 // 动态获取主题
 static inline void get_up_topic(char* buf, size_t len) {
@@ -71,6 +80,12 @@ void mqtt_sig_set_device_id(const char *device_id)
     if (device_id) {
         app_config_set_device_id(device_id);
     }
+}
+
+void mqtt_sig_set_event_handler(mqtt_sig_event_cb_t cb, void *ctx)
+{
+    g_sig_event_cb = cb;
+    g_sig_event_ctx = ctx;
 }
 
 void mqtt_sig_answer_call(void)
@@ -499,9 +514,9 @@ static void mqtt_message_handler(const std::string& topic, const std::string& pa
                 sg->pending_sdp = strdup(sdp->valuestring);
                 sg->pending_offer_waiting = true;
                 sg->pending_candidate_count = 0;
-                
-                play_tone(DOOR_BELL_TONE_RING);
-                ESP_LOGI(TAG, "Ringing, waiting for user to answer/reject");
+
+                mqtt_sig_emit_event(MQTT_SIG_EVENT_REMOTE_OFFER, sg->incoming_offer_from);
+                ESP_LOGI(TAG, "Offer cached, waiting for user to answer/reject");
             }
         }
     } else if (strcmp(msg_type, "answer") == 0) {
@@ -514,6 +529,7 @@ static void mqtt_message_handler(const std::string& topic, const std::string& pa
                 mqtt_sig_t *sg = (mqtt_sig_t *)g_mqtt_sig_handle;
                 sg->is_initiator = false;
                 
+                mqtt_sig_emit_event(MQTT_SIG_EVENT_REMOTE_ANSWER, sg->incoming_offer_from);
                 if (sg->cfg.on_msg) {
                     esp_peer_signaling_msg_t msg = {
                         .type = ESP_PEER_SIGNALING_MSG_SDP,
@@ -576,6 +592,7 @@ static void mqtt_message_handler(const std::string& topic, const std::string& pa
         extern esp_peer_signaling_handle_t g_mqtt_sig_handle;
         if (g_mqtt_sig_handle) {
             mqtt_sig_t *sg = (mqtt_sig_t *)g_mqtt_sig_handle;
+            mqtt_sig_emit_event(MQTT_SIG_EVENT_REMOTE_CLOSE, sg->incoming_offer_from);
             if (sg->cfg.on_msg) {
                 esp_peer_signaling_msg_t msg = {
                     .type = ESP_PEER_SIGNALING_MSG_BYE,
@@ -591,6 +608,7 @@ static void mqtt_message_handler(const std::string& topic, const std::string& pa
         extern esp_peer_signaling_handle_t g_mqtt_sig_handle;
         if (g_mqtt_sig_handle) {
             mqtt_sig_t *sg = (mqtt_sig_t *)g_mqtt_sig_handle;
+            mqtt_sig_emit_event(MQTT_SIG_EVENT_REMOTE_REJECT, sg->incoming_offer_from);
             if (sg->cfg.on_msg) {
                 esp_peer_signaling_msg_t msg = {
                     .type = ESP_PEER_SIGNALING_MSG_BYE,

@@ -10948,3 +10948,111 @@ Payload: {"type":"answer","data":"v=0\r\no=- 7801614086411001801 2 IN IP4 0.0.0.
 [2026-03-13 17:10:10] [DOWN] Topic: /voice/project/189833342344184/down
 Payload: {"from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1773393010,"type":"bye","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":700}
 ---
+[2026-03-27 17:00:08] [UP] Topic: /voice/project/189833342344184/up
+Payload: {"type":"ice_request","timestamp":1}
+---
+[2026-03-27 17:00:08] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"iceServers":[{"credential":"HJbnf23oNF23BgdlNM","urls":["stun:turn.vcall.75prc.cn:3478","turn:turn.vcall.75prc.cn:3478"],"username":"youkongcall"}],"target":"web_client_001","timestamp":1774602008,"type":"ice_response","valid":true}
+---
+[2026-03-27 17:00:26] [UP] Topic: /voice/project/189833342344184/up
+Payload: {"type":"offer","data":"v=0\r\no=- 7801614086411001801 2 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=msid-semantic: esp-webrtc\r\na=group:BUNDLE 0\r\nm=audio 9 UDP/TLS/RTP/SAVP 111\r\na=rtpmap:111 opus/48000/2\r\na=ssrc:6 cname:webrtc-opus\r\na=ssrc:6 msid:esp_stream a0\r\na=sendrecv\r\na=mid:0\r\na=msid:esp_stream a0\r\nc=IN IP4 0.0.0.0\r\na=rtcp-mux\r\na=sendrecv\r\na=fingerprint:sha-256 1A:86:7E:CA:35:EC:8B:F6:F2:B4:21:F3:EC:64:15:7D:98:88:A9:EE:0B:1C:BE:7E:6E:0C:7F:F4:82:24:A9:5F\r\na=setup:passive\r\na=ice-ufrag:WwUl\r\na=ice-pwd:Pd9ZwfQgpeN3WiStdYMx5Ru0\r\na=candidate:0 1 UDP 1692541439 39.144.0.120 57889 typ srflx raddr 0.0.0.0 rport 0\r\na=candidate:1 1 UDP 15816191 139.129.34.198 61781 typ relay raddr 0.0.0.0 rport 0\r\n","from":"189833342344184","timestamp":20}
+---
+[2026-03-27 17:00:35] [UP] Topic: /voice/project/189833342344184/up
+Payload: {"type":"timeout","from":"189833342344184","timestamp":29}
+---
+[2026-03-27 17:51:53] [UP] Topic: /voice/project/189833342344184/up
+Payload: {"type":"ice_request","timestamp":1}
+---
+[2026-03-27 17:51:53] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"iceServers":[{"credential":"HJbnf23oNF23BgdlNM","urls":["stun:turn.vcall.75prc.cn:3478","turn:turn.vcall.75prc.cn:3478"],"username":"youkongcall"}],"target":"web_client_001","timestamp":1774605113,"type":"ice_response","valid":true}
+---
+[2026-03-27 17:51:59] [UP] Topic: /voice/project/189833342344184/up
+Payload: {"type":"offer","data":"v=0\r\no=- 7801614086411001801 2 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=msid-semantic: esp-webrtc\r\na=group:BUNDLE 0\r\nm=audio 9 UDP/TLS/RTP/SAVP 111\r\na=rtpmap:111 opus/48000/2\r\na=ssrc:6 cname:webrtc-opus\r\na=ssrc:6 msid:esp_stream a0\r\na=sendrecv\r\na=mid:0\r\na=msid:esp_stream a0\r\nc=IN IP4 0.0.0.0\r\na=rtcp-mux\r\na=sendrecv\r\na=fingerprint:sha-256 C4:4E:21:4D:65:57:D0:62:58:EB:6C:41:7B:93:D0:46:C2:39:91:DB:C4:E3:D3:9C:3F:D9:40:6B:79:26:D9:89\r\na=setup:passive\r\na=ice-ufrag:WwUl\r\na=ice-pwd:Pd9ZwfQgpeN3WiStdYMx5Ru0\r\na=candidate:0 1 UDP 1680862207 39.144.0.120 12267 typ srflx raddr 0.0.0.0 rport 0\r\na=candidate:1 1 UDP 16349951 139.129.34.198 63866 typ relay raddr 0.0.0.0 rport 0\r\n","from":"189833342344184","timestamp":7}
+---
+[2026-03-27 17:52:01] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"data":"v=0\r\no=- 5564730238201326076 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE 0\r\na=msid-semantic: WMS c654d65f-e54b-4e16-8db5-14d1c343ac88\r\nm=audio 9 UDP/TLS/RTP/SAVP 111\r\nc=IN IP4 0.0.0.0\r\na=rtcp:9 IN IP4 0.0.0.0\r\na=ice-ufrag:GdI/\r\na=ice-pwd:Z5vUcoEjIuu7zzA7lpD6zbKY\r\na=ice-options:trickle\r\na=fingerprint:sha-256 71:03:0F:A4:A3:02:3A:4C:16:37:BE:F9:57:56:73:F8:4F:A4:CD:D5:52:C9:07:2D:88:B3:C4:7B:BB:66:7B:90\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=msid:c654d65f-e54b-4e16-8db5-14d1c343ac88 5cd3f45b-29cd-485a-9349-4d93dafe37e6\r\na=rtcp-mux\r\na=rtpmap:111 opus/48000/2\r\na=fmtp:111 minptime=10;useinbandfec=1\r\na=ssrc:2019475867 cname:VpceTgr1MQGA1U6w\r\n","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605121,"type":"answer","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:01] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:1943293268 1 udp 2122260223 172.19.0.1 55895 typ host generation 0 ufrag GdI/ network-id 1","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605121,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:01] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:3949033261 1 udp 2122194687 172.21.48.1 55896 typ host generation 0 ufrag GdI/ network-id 2","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605121,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:01] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:172617730 1 udp 2122129151 192.168.31.121 55897 typ host generation 0 ufrag GdI/ network-id 3","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605121,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:01] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:2746817143 1 udp 2122063615 172.19.64.1 55898 typ host generation 0 ufrag GdI/ network-id 4","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605121,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:01] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:1441960984 1 udp 2121998079 172.28.128.1 55899 typ host generation 0 ufrag GdI/ network-id 5","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605121,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:01] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:2625738459 1 udp 1685921535 27.220.71.243 55897 typ srflx raddr 192.168.31.121 rport 55897 generation 0 ufrag GdI/ network-id 3","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605121,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:01] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:3830084885 1 udp 41754623 139.129.34.198 57790 typ relay raddr 27.220.71.243 rport 55897 generation 0 ufrag GdI/ network-id 3","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605121,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:01] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:2373884352 1 tcp 1518280447 172.19.0.1 9 typ host tcptype active generation 0 ufrag GdI/ network-id 1","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605121,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:02] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:365667257 1 tcp 1518214911 172.21.48.1 9 typ host tcptype active generation 0 ufrag GdI/ network-id 2","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605121,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:02] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:4108526742 1 tcp 1518149375 192.168.31.121 9 typ host tcptype active generation 0 ufrag GdI/ network-id 3","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605121,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:02] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:1561579235 1 tcp 1518083839 172.19.64.1 9 typ host tcptype active generation 0 ufrag GdI/ network-id 4","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605121,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:02] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:2874687628 1 tcp 1518018303 172.28.128.1 9 typ host tcptype active generation 0 ufrag GdI/ network-id 5","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605121,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:09] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605129,"type":"bye","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:10] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"data":"v=0\r\no=- 4258789687361104884 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE 0\r\na=extmap-allow-mixed\r\na=msid-semantic: WMS e0853624-6698-4bd9-9045-9ae7b6038ed6\r\nm=audio 9 UDP/TLS/RTP/SAVPF 111 63 9 0 8 13 110 126\r\nc=IN IP4 0.0.0.0\r\na=rtcp:9 IN IP4 0.0.0.0\r\na=ice-ufrag:qpfG\r\na=ice-pwd:1H1wkm/Gv3Y/CY/0bb+zHPsM\r\na=ice-options:trickle\r\na=fingerprint:sha-256 69:33:07:08:30:85:D8:CE:DD:E3:89:DC:C7:2D:72:9F:45:6E:9C:E1:AE:83:2C:8C:41:15:49:C8:69:57:AD:2B\r\na=setup:actpass\r\na=mid:0\r\na=extmap:1 urn:ietf:params:rtp-hdrext:ssrc-audio-level\r\na=extmap:2 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time\r\na=extmap:3 http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01\r\na=extmap:4 urn:ietf:params:rtp-hdrext:sdes:mid\r\na=sendrecv\r\na=msid:e0853624-6698-4bd9-9045-9ae7b6038ed6 3e8a2459-b8ba-4fe7-97ec-30f6ce269d31\r\na=rtcp-mux\r\na=rtcp-rsize\r\na=rtpmap:111 opus/48000/2\r\na=rtcp-fb:111 transport-cc\r\na=fmtp:111 minptime=10;useinbandfec=1\r\na=rtpmap:63 red/48000/2\r\na=fmtp:63 111/111\r\na=rtpmap:9 G722/8000\r\na=rtpmap:0 PCMU/8000\r\na=rtpmap:8 PCMA/8000\r\na=rtpmap:13 CN/8000\r\na=rtpmap:110 telephone-event/48000\r\na=rtpmap:126 telephone-event/8000\r\na=ssrc:1433945670 cname:OD/0g/Z/XHF69f6f\r\na=ssrc:1433945670 msid:e0853624-6698-4bd9-9045-9ae7b6038ed6 3e8a2459-b8ba-4fe7-97ec-30f6ce269d31\r\n","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605130,"type":"offer","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:10] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:1944660349 1 udp 2122260223 172.19.0.1 54696 typ host generation 0 ufrag qpfG network-id 1","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605130,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:10] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:3948679940 1 udp 2122194687 172.21.48.1 54697 typ host generation 0 ufrag qpfG network-id 2","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605130,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:10] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:175412267 1 udp 2122129151 192.168.31.121 54698 typ host generation 0 ufrag qpfG network-id 3","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605130,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:10] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:2743369310 1 udp 2122063615 172.19.64.1 54699 typ host generation 0 ufrag qpfG network-id 4","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605130,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:10] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:1439690801 1 udp 2121998079 172.28.128.1 54700 typ host generation 0 ufrag qpfG network-id 5","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605130,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:10] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:2629628658 1 udp 1685921535 27.220.71.243 54698 typ srflx raddr 192.168.31.121 rport 54698 generation 0 ufrag qpfG network-id 3","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605130,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:10] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:3833008444 1 udp 41754623 139.129.34.198 65353 typ relay raddr 27.220.71.243 rport 54698 generation 0 ufrag qpfG network-id 3","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605130,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:11] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:2370043369 1 tcp 1518280447 172.19.0.1 9 typ host tcptype active generation 0 ufrag qpfG network-id 1","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605130,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:11] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:368494480 1 tcp 1518214911 172.21.48.1 9 typ host tcptype active generation 0 ufrag qpfG network-id 2","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605130,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:11] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:4108206271 1 tcp 1518149375 192.168.31.121 9 typ host tcptype active generation 0 ufrag qpfG network-id 3","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605130,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:11] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:1563339466 1 tcp 1518083839 172.19.64.1 9 typ host tcptype active generation 0 ufrag qpfG network-id 4","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605130,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:11] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"candidate":"candidate:2875532453 1 tcp 1518018303 172.28.128.1 9 typ host tcptype active generation 0 ufrag qpfG network-id 5","from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605130,"type":"candidate","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---
+[2026-03-27 17:52:17] [UP] Topic: /voice/project/189833342344184/up
+Payload: {"type":"answer","data":"v=0\r\no=- 7801614086411001801 2 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=msid-semantic: esp-webrtc\r\na=group:BUNDLE 0\r\nm=audio 9 UDP/TLS/RTP/SAVP 111\r\na=rtpmap:111 opus/48000/2\r\na=ssrc:6 cname:webrtc-opus\r\na=ssrc:6 msid:esp_stream a0\r\na=sendrecv\r\na=mid:0\r\na=msid:esp_stream a0\r\nc=IN IP4 0.0.0.0\r\na=rtcp-mux\r\na=sendrecv\r\na=fingerprint:sha-256 C4:4E:21:4D:65:57:D0:62:58:EB:6C:41:7B:93:D0:46:C2:39:91:DB:C4:E3:D3:9C:3F:D9:40:6B:79:26:D9:89\r\na=setup:passive\r\na=ice-ufrag:WwUl\r\na=ice-pwd:Pd9ZwfQgpeN3WiStdYMx5Ru0\r\na=candidate:0 1 UDP 1680862975 39.144.0.120 12270 typ srflx raddr 0.0.0.0 rport 0\r\na=candidate:1 1 UDP 16621823 139.129.34.198 64928 typ relay raddr 0.0.0.0 rport 0\r\n","from":"189833342344184","timestamp":25}
+---
+[2026-03-27 17:53:42] [DOWN] Topic: /voice/project/189833342344184/down
+Payload: {"from":"web_client_001","md5":"8757d08104c30af47ac4c34ffaefe14a","target":"189833342344184","timestamp":1774605222,"type":"bye","url":"http://bus.2811.top/doorbell_102.bin","valid":true,"version":165}
+---

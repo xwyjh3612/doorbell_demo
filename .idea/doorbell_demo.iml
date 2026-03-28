@@ -2,7 +2,16 @@
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/.vscode" />
+      <excludeFolder url="file://$MODULE_DIR$/audio_server/target/classes/com/youkong/audio_server/controller" />
+      <excludeFolder url="file://$MODULE_DIR$/audio_server/target/generated-sources" />
+      <excludeFolder url="file://$MODULE_DIR$/audio_server/target/generated-test-sources" />
+      <excludeFolder url="file://$MODULE_DIR$/audio_server/target/test-classes" />
+      <excludeFolder url="file://$MODULE_DIR$/build" />
+      <excludeFolder url="file://$MODULE_DIR$/components/esp-ml307/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/managed_components" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
