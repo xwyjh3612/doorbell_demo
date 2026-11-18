@@ -25,6 +25,8 @@ static void start_call_timeout(void);
 static void stop_call_timeout(void);
 
 #define TAG "DOOR_BELL"
+#define AUTO_RECONNECT_MAX_ATTEMPTS 3
+#define AUTO_RECONNECT_DELAY_MS 1500
 
 // Customized commands
 #define DOOR_BELL_OPEN_DOOR_CMD     "OPEN_DOOR"
@@ -44,7 +46,11 @@ typedef struct {
     bool hangup_by_self;
     bool reconnect_eligible;
     bool has_pending_offer;
+    bool was_connected_once;
+    bool reconnect_task_running;
+    uint8_t reconnect_attempts;
     char peer_id[32];
+    char last_remote_id[32];
 } call_ctx_t;
 
 static esp_webrtc_handle_t webrtc;
@@ -57,7 +63,11 @@ static call_ctx_t          g_call_ctx = {
     .hangup_by_self = false,
     .reconnect_eligible = false,
     .has_pending_offer = false,
+    .was_connected_once = false,
+    .reconnect_task_running = false,
+    .reconnect_attempts = 0,
     .peer_id = {0},
+    .last_remote_id = {0},
 };
 
 extern const uint8_t ring_music_start[] asm("_binary_ring_aac_start");
@@ -97,11 +107,25 @@ static void call_ctx_set_peer_id(const char *peer_id)
     }
 }
 
+static void call_ctx_set_last_remote_id(const char *peer_id)
+{
+    if (peer_id && peer_id[0]) {
+        strncpy(g_call_ctx.last_remote_id, peer_id, sizeof(g_call_ctx.last_remote_id) - 1);
+        g_call_ctx.last_remote_id[sizeof(g_call_ctx.last_remote_id) - 1] = '\0';
+    }
+}
+
+static void call_ctx_clear_last_remote_id(void)
+{
+    g_call_ctx.last_remote_id[0] = '\0';
+}
+
 static void call_ctx_reset_idle(bool clear_peer)
 {
     g_call_ctx.state = CALL_STATE_IDLE;
     g_call_ctx.has_pending_offer = false;
     g_call_ctx.reconnect_eligible = false;
+    g_call_ctx.reconnect_task_running = false;
     if (clear_peer) {
         g_call_ctx.peer_id[0] = '\0';
     }
@@ -110,8 +134,12 @@ static void call_ctx_reset_idle(bool clear_peer)
 
 static void call_ctx_update_reconnect_flag(void)
 {
-    /* 中文注释：本次仅维护“未来可重连”的条件，不真正发起重连。 */
-    g_call_ctx.reconnect_eligible = (g_call_ctx.is_initiator && !g_call_ctx.hangup_by_self);
+    /* 中文注释：仅在已经接通过一次、当前是主叫且不是主动挂断时，才允许自动重拨。 */
+    g_call_ctx.reconnect_eligible = (g_call_ctx.is_initiator &&
+                                     !g_call_ctx.hangup_by_self &&
+                                     g_call_ctx.was_connected_once &&
+                                     g_call_ctx.last_remote_id[0] != '\0' &&
+                                     g_call_ctx.reconnect_attempts < AUTO_RECONNECT_MAX_ATTEMPTS);
 }
 
 static void call_ctx_change_state(call_state_t new_state, const char *reason)
@@ -133,11 +161,61 @@ static void call_ctx_change_state(call_state_t new_state, const char *reason)
     }
 }
 
+static void auto_reconnect_task(void *param)
+{
+    (void)param;
+    ESP_LOGI(TAG, "自动重拨任务启动，等待 %d ms", AUTO_RECONNECT_DELAY_MS);
+    vTaskDelay(pdMS_TO_TICKS(AUTO_RECONNECT_DELAY_MS));
+
+    g_call_ctx.reconnect_task_running = false;
+    call_ctx_update_reconnect_flag();
+    if (!g_call_ctx.reconnect_eligible) {
+        ESP_LOGI(TAG, "自动重拨条件不满足，取消执行");
+        vTaskDelete(NULL);
+        return;
+    }
+    if (g_call_ctx.state != CALL_STATE_IDLE) {
+        ESP_LOGI(TAG, "当前状态 %s 非空闲，放弃自动重拨", webrtc_get_call_state_string());
+        vTaskDelete(NULL);
+        return;
+    }
+
+    g_call_ctx.reconnect_attempts++;
+    ESP_LOGI(TAG, "开始第 %u/%u 次自动重拨，对端=%s",
+             g_call_ctx.reconnect_attempts,
+             (unsigned)AUTO_RECONNECT_MAX_ATTEMPTS,
+             g_call_ctx.last_remote_id);
+    voice_call_offer(g_call_ctx.last_remote_id);
+    vTaskDelete(NULL);
+}
+
+static void schedule_auto_reconnect(const char *reason)
+{
+    call_ctx_update_reconnect_flag();
+    if (!g_call_ctx.reconnect_eligible) {
+        ESP_LOGI(TAG, "当前不满足自动重拨条件, reason=%s", reason ? reason : "none");
+        return;
+    }
+    if (g_call_ctx.reconnect_task_running) {
+        ESP_LOGI(TAG, "自动重拨任务已在运行，忽略重复调度, reason=%s", reason ? reason : "none");
+        return;
+    }
+
+    g_call_ctx.reconnect_task_running = true;
+    ESP_LOGI(TAG, "调度自动重拨, reason=%s, next_attempt=%u/%u",
+             reason ? reason : "none",
+             (unsigned)(g_call_ctx.reconnect_attempts + 1),
+             (unsigned)AUTO_RECONNECT_MAX_ATTEMPTS);
+    xTaskCreate(auto_reconnect_task, "auto_reconnect", 4096, NULL, 5, NULL);
+}
+
+
 static void on_mqtt_signaling_event(mqtt_sig_event_t event, const char *peer_id, void *ctx)
 {
     (void)ctx;
     if (peer_id && peer_id[0]) {
         call_ctx_set_peer_id(peer_id);
+        call_ctx_set_last_remote_id(peer_id);
     }
     switch (event) {
         case MQTT_SIG_EVENT_REMOTE_RING:
@@ -160,6 +238,11 @@ static void on_mqtt_signaling_event(mqtt_sig_event_t event, const char *peer_id,
         case MQTT_SIG_EVENT_REMOTE_REJECT:
             stop_call_timeout();
             g_call_ctx.hangup_by_self = false;
+            g_call_ctx.reconnect_eligible = false;
+            g_call_ctx.reconnect_attempts = 0;
+            g_call_ctx.was_connected_once = false;
+            g_call_ctx.reconnect_task_running = false;
+            call_ctx_clear_last_remote_id();
             if (webrtc) {
                 esp_webrtc_enable_peer_connection(webrtc, false);
             }
@@ -169,11 +252,9 @@ static void on_mqtt_signaling_event(mqtt_sig_event_t event, const char *peer_id,
         case MQTT_SIG_EVENT_REMOTE_TIMEOUT:
             stop_call_timeout();
             g_call_ctx.hangup_by_self = false;
-            call_ctx_update_reconnect_flag();
             if (webrtc) {
                 esp_webrtc_enable_peer_connection(webrtc, false);
             }
-            call_ctx_reset_idle(true);
             break;
         default:
             break;
@@ -217,6 +298,10 @@ static int door_bell_on_cmd(esp_webrtc_custom_data_via_t via, uint8_t *data, int
         stop_call_timeout();
         g_call_ctx.hangup_by_self = false;
         g_call_ctx.reconnect_eligible = false;
+        g_call_ctx.reconnect_attempts = 0;
+        g_call_ctx.was_connected_once = false;
+        g_call_ctx.reconnect_task_running = false;
+        call_ctx_clear_last_remote_id();
         esp_webrtc_enable_peer_connection(webrtc, false);
         call_ctx_reset_idle(true);
     }
@@ -234,11 +319,25 @@ static int webrtc_event_handler(esp_webrtc_event_t *event, void *ctx)
         }
     } else if (event->type == ESP_WEBRTC_EVENT_CONNECTED) {
         stop_call_timeout();
+        g_call_ctx.was_connected_once = true;
+        g_call_ctx.reconnect_attempts = 0;
+        g_call_ctx.reconnect_task_running = false;
         call_ctx_change_state(CALL_STATE_CONNECTED, "webrtc_connected");
     } else if (event->type == ESP_WEBRTC_EVENT_DISCONNECTED || event->type == ESP_WEBRTC_EVENT_CONNECT_FAILED) {
         stop_call_timeout();
-        call_ctx_update_reconnect_flag();
-        call_ctx_reset_idle(true);
+        if (g_call_ctx.state == CALL_STATE_CONNECTED) {
+            call_ctx_update_reconnect_flag();
+            if (webrtc) {
+                esp_webrtc_enable_peer_connection(webrtc, false);
+            }
+            call_ctx_reset_idle(false);
+            schedule_auto_reconnect(event->type == ESP_WEBRTC_EVENT_DISCONNECTED ? "webrtc_disconnected" : "webrtc_connect_failed");
+        } else {
+            g_call_ctx.reconnect_eligible = false;
+            g_call_ctx.reconnect_attempts = 0;
+            g_call_ctx.was_connected_once = false;
+            call_ctx_reset_idle(true);
+        }
     }
     return 0;
 }
@@ -272,6 +371,7 @@ int voice_call_offer(const char* target_id)
 {
     if (target_id && target_id[0]) {
         call_ctx_set_peer_id(target_id);
+        call_ctx_set_last_remote_id(target_id);
     }
     send_cmd("ring");
     return 0;
@@ -312,6 +412,7 @@ void send_cmd(const char *cmd)
             ESP_LOGW(TAG, "当前状态 %s 不允许再次呼出", webrtc_get_call_state_string());
             return;
         }
+        g_call_ctx.reconnect_task_running = false;
         if (webrtc) {
             SEND_CMD(webrtc, DOOR_BELL_RING_CMD);
         }
@@ -343,6 +444,10 @@ void send_cmd(const char *cmd)
         ESP_LOGI(TAG, "User rejecting call");
         g_call_ctx.hangup_by_self = true;
         g_call_ctx.reconnect_eligible = false;
+        g_call_ctx.reconnect_attempts = 0;
+        g_call_ctx.was_connected_once = false;
+        g_call_ctx.reconnect_task_running = false;
+        call_ctx_clear_last_remote_id();
         mqtt_sig_reject_call();
         stop_call_timeout();
         call_ctx_reset_idle(true);
@@ -354,6 +459,10 @@ void send_cmd(const char *cmd)
         ESP_LOGI(TAG, "User closing call");
         g_call_ctx.hangup_by_self = true;
         g_call_ctx.reconnect_eligible = false;
+        g_call_ctx.reconnect_attempts = 0;
+        g_call_ctx.was_connected_once = false;
+        g_call_ctx.reconnect_task_running = false;
+        call_ctx_clear_last_remote_id();
         mqtt_sig_close_call();
         stop_call_timeout();
         if (webrtc) {
@@ -379,6 +488,10 @@ static void call_timeout_task(void *param)
         mqtt_sig_send_timeout(g_call_ctx.peer_id[0] ? g_call_ctx.peer_id : NULL);
         g_call_ctx.hangup_by_self = false;
         g_call_ctx.reconnect_eligible = false;
+        g_call_ctx.reconnect_attempts = 0;
+        g_call_ctx.was_connected_once = false;
+        g_call_ctx.reconnect_task_running = false;
+        call_ctx_clear_last_remote_id();
         call_ctx_reset_idle(true);
     }
     call_timeout_handle = NULL;
@@ -449,6 +562,10 @@ int start_webrtc(char *url)
     g_call_ctx.is_initiator = false;
     g_call_ctx.hangup_by_self = false;
     g_call_ctx.reconnect_eligible = false;
+    g_call_ctx.was_connected_once = false;
+    g_call_ctx.reconnect_attempts = 0;
+    g_call_ctx.reconnect_task_running = false;
+    call_ctx_clear_last_remote_id();
     mqtt_sig_set_event_handler(on_mqtt_signaling_event, NULL);
 
     media_lib_thread_handle_t key_thread;
@@ -514,6 +631,12 @@ int stop_webrtc(void)
 {
     monitor_key = false;
     stop_call_timeout();
+    g_call_ctx.hangup_by_self = true;
+    g_call_ctx.reconnect_eligible = false;
+    g_call_ctx.reconnect_attempts = 0;
+    g_call_ctx.was_connected_once = false;
+    g_call_ctx.reconnect_task_running = false;
+    call_ctx_clear_last_remote_id();
     if (webrtc) {
         esp_webrtc_handle_t handle = webrtc;
         webrtc = NULL;
