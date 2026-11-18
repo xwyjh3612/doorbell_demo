@@ -3,7 +3,6 @@ package com.youkong.audio_server.dto;
 import lombok.Data;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * WebRTC 信令消息 DTO
@@ -68,6 +67,28 @@ public class SignalingMessage {
     }
 
     /**
+     * Adapt browser fields to the ESP32 protocol without changing its wire format.
+     * Keep both representations so the original and updated test pages work.
+     */
+    public void normalizeMediaFields() {
+        if ("offer".equals(type) || "answer".equals(type)) {
+            String value = sdp != null && !sdp.isEmpty() ? sdp
+                    : data instanceof String ? (String) data : null;
+            if (value != null) {
+                sdp = value;
+                data = value;
+            }
+        } else if ("candidate".equals(type)) {
+            String value = candidate != null && !candidate.isEmpty() ? candidate
+                    : data instanceof String ? (String) data : null;
+            if (value != null) {
+                candidate = value;
+                data = value;
+            }
+        }
+    }
+
+    /**
      * 验证消息是否合法
      */
     public boolean isValid() {
@@ -97,6 +118,13 @@ public class SignalingMessage {
         // version_query 需要 target 和 timestamp
         if ("version_query".equals(type)) {
             return target != null && !target.isEmpty() && timestamp != null;
+        }
+        if (("offer".equals(type) || "answer".equals(type)) &&
+                (sdp == null || sdp.isEmpty())) {
+            return false;
+        }
+        if ("candidate".equals(type) && (candidate == null || candidate.isEmpty())) {
+            return false;
         }
         // 其他消息需要 target 和 timestamp
         return target != null && !target.isEmpty() && timestamp != null;

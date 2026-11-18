@@ -14,7 +14,7 @@ typedef enum {
     CALL_STATE_INCOMING = 3,       // 呼入中，等待接听/拒绝
     CALL_STATE_INCOMING_CONNECTING = 4, // 呼入连接中，已接听
     CALL_STATE_CONNECTED = 5,      // 正在通话
-    CALL_STATE_RECONNECTING = 6,   // 重连中（未来实现重连策略）
+    CALL_STATE_RECONNECTING = 6,   // 等待下一次自动重拨，可主动挂断取消
 } call_state_t;
 
 call_state_t webrtc_get_call_state(void);

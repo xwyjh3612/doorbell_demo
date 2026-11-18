@@ -61,6 +61,11 @@ public class SignalingWebSocketHandler extends TextWebSocketHandler {
 
         try {
             SignalingMessage signalingMessage = JSON.parseObject(payload, SignalingMessage.class);
+            if (signalingMessage == null) {
+                sendErrorMessage(session, "信令内容为空");
+                return;
+            }
+            signalingMessage.normalizeMediaFields();
 
             // 验证消息格式
             if (!signalingMessage.isValid()) {
@@ -72,9 +77,11 @@ public class SignalingWebSocketHandler extends TextWebSocketHandler {
             if (signalingMessage.getFrom() == null) {
                 signalingMessage.setFrom(sessionId);
             }
-            signalingMessage.setUrl(otaServerUrl);
-            signalingMessage.setVersion(otaTargetVersion);
-            signalingMessage.setMd5(md5);
+            if ("ota".equals(signalingMessage.getType())) {
+                signalingMessage.setUrl(otaServerUrl);
+                signalingMessage.setVersion(otaTargetVersion);
+                signalingMessage.setMd5(md5);
+            }
 
             // 处理不同类型的信令
             handleSignalingMessage(session, signalingMessage);

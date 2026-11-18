@@ -28,28 +28,38 @@
 #include <string>
 #include <list>
 #include <vector>
+#include <atomic>
+#include <ctype.h>
+#include <new>
+#include "mbedtls/md5.h"
+#include "common.h"
+#include "webrtc_mqtt.h"
 
 static const char* TAG = "OTA";
 
 // OTA 升级状态标志
-static bool s_ota_in_progress = false;
+static std::atomic_bool s_ota_in_progress{false};
 static char s_ota_url[256];
+static char s_ota_md5[33];
 
 // OTA 上下文结构
 struct OtaContext {
     esp_ota_handle_t ota_handle;
     const esp_partition_t* update_partition;
-    int http_id;
+    int http_id = -1;
     int total_received;
     int content_length;
     bool header_received;
     bool download_complete;
     bool download_error;
     bool http_created;  // HTTP 实例是否创建成功
+    bool ota_open;
+    mbedtls_md5_context md5_context;
     SemaphoreHandle_t data_semaphore;
     EventGroupHandle_t event_group;  // 用于等待 HTTP 创建完成
     std::list<UrcCallback>::iterator urc_iterator;
     std::shared_ptr<AtUart> at_uart;  // AtUart 实例指针，用于 HEX 解码
+    ~OtaContext() { mbedtls_md5_free(&md5_context); }
 };
 
 #define OTA_EVENT_HTTP_CREATED  BIT0
@@ -155,8 +165,11 @@ static void http_urc_callback(const std::string& command, const std::vector<AtAr
 
                             // 验证解码后的数据长度
                             if (binary_data.length() != (size_t)cur_len) {
-                                ESP_LOGW(TAG, "数据包 #%d: 解码后长度不匹配！期望 %d，实际 %d",
+                                ESP_LOGE(TAG, "数据包 #%d: 解码后长度不匹配！期望 %d，实际 %d",
                                         packet_count, cur_len, binary_data.length());
+                                s_ota_context->download_error = true;
+                                xEventGroupSetBits(s_ota_context->event_group, OTA_EVENT_ERROR);
+                                return;
                             }
 
                             // 调试：打印前几个包的数据
@@ -178,6 +191,13 @@ static void http_urc_callback(const std::string& command, const std::vector<AtAr
                                 s_ota_context->download_error = true;
                                 xEventGroupSetBits(s_ota_context->event_group, OTA_EVENT_ERROR);
                             } else {
+                                if (s_ota_md5[0] && mbedtls_md5_update(&s_ota_context->md5_context,
+                                        (const unsigned char *)binary_data.data(), binary_data.length()) != 0) {
+                                    ESP_LOGE(TAG, "MD5 计算失败");
+                                    s_ota_context->download_error = true;
+                                    xEventGroupSetBits(s_ota_context->event_group, OTA_EVENT_ERROR);
+                                    return;
+                                }
                                 s_ota_context->total_received += binary_data.length();
 
                                 // 每接收 100KB 打印一次进度
@@ -289,7 +309,7 @@ static void ota_task(void *param)
     bool success = false;
 
     // 创建 OTA 上下文
-    s_ota_context = new OtaContext();
+    s_ota_context = new (std::nothrow) OtaContext{};
     if (!s_ota_context) {
         ESP_LOGE(TAG, "内存分配失败");
         s_ota_in_progress = false;
@@ -297,7 +317,7 @@ static void ota_task(void *param)
         return;
     }
 
-    memset(s_ota_context, 0, sizeof(OtaContext));
+    mbedtls_md5_init(&s_ota_context->md5_context);
     s_ota_context->at_uart = at_uart;  // 保存 AtUart 指针用于 HEX 解码
     s_ota_context->data_semaphore = xSemaphoreCreateBinary();
     s_ota_context->event_group = xEventGroupCreate();
@@ -435,6 +455,11 @@ static void ota_task(void *param)
             ESP_LOGE(TAG, "esp_ota_begin 失败: %s", esp_err_to_name(err));
             goto cleanup;
         }
+        s_ota_context->ota_open = true;
+        if (s_ota_md5[0] && mbedtls_md5_starts(&s_ota_context->md5_context) != 0) {
+            ESP_LOGE(TAG, "无法初始化 MD5 校验");
+            goto cleanup;
+        }
     }
 
     // 步骤 4: 发送 GET 请求开始下载
@@ -537,6 +562,23 @@ static void ota_task(void *param)
     // 步骤 6: 验证固件
     ESP_LOGI(TAG, "步骤 6: 验证固件");
 
+    if (s_ota_md5[0]) {
+        unsigned char digest[16];
+        char actual_md5[33];
+        if (mbedtls_md5_finish(&s_ota_context->md5_context, digest) != 0) {
+            ESP_LOGE(TAG, "MD5 计算失败，终止升级");
+            goto cleanup;
+        }
+        for (size_t i = 0; i < sizeof(digest); i++) {
+            snprintf(actual_md5 + i * 2, 3, "%02x", digest[i]);
+        }
+        if (strcmp(actual_md5, s_ota_md5) != 0) {
+            ESP_LOGE(TAG, "固件 MD5 不匹配，终止升级");
+            goto cleanup;
+        }
+        ESP_LOGI(TAG, "固件 MD5 校验通过");
+    }
+
     // 获取当前运行分区信息
     {
         const esp_partition_t* running = esp_ota_get_running_partition();
@@ -564,6 +606,8 @@ static void ota_task(void *param)
         }
 
         esp_err_t err = esp_ota_end(s_ota_context->ota_handle);
+        // esp_ota_end releases the OTA handle even when validation fails.
+        s_ota_context->ota_open = false;
 
         // 验证完成后，重新添加到看门狗（如果之前成功删除）
         if (wdt_err == ESP_OK) {
@@ -621,6 +665,10 @@ cleanup:
         // 注销 URC 回调
         at_uart->UnregisterUrcCallback(s_ota_context->urc_iterator);
 
+        if (s_ota_context->ota_open) {
+            esp_ota_abort(s_ota_context->ota_handle);
+        }
+
         // 删除同步对象
         if (s_ota_context->data_semaphore) {
             vSemaphoreDelete(s_ota_context->data_semaphore);
@@ -633,13 +681,12 @@ cleanup:
         s_ota_context = nullptr;
     }
 
-    s_ota_in_progress = false;
-
     if (success) {
         ESP_LOGI(TAG, "准备重启系统...");
         vTaskDelay(pdMS_TO_TICKS(2000));
         esp_restart();
     } else {
+        s_ota_in_progress = false;
         ESP_LOGE(TAG, "OTA 升级失败");
     }
 
@@ -648,17 +695,56 @@ cleanup:
 
 void ota_start_upgrade(const char* url, const char* md5)
 {
-    if (s_ota_in_progress) {
+    if (!url || strlen(url) >= sizeof(s_ota_url) ||
+        (strncmp(url, "http://", 7) != 0 && strncmp(url, "https://", 8) != 0) ||
+        strpbrk(url, "\"\r\n")) {
+        ESP_LOGW(TAG, "OTA URL 无效");
+        return;
+    }
+    if (md5 && md5[0]) {
+        if (strlen(md5) != 32) {
+            ESP_LOGW(TAG, "MD5 应为 32 位十六进制字符串");
+            return;
+        }
+        for (size_t i = 0; i < 32; i++) {
+            if (!isxdigit((unsigned char)md5[i])) {
+                ESP_LOGW(TAG, "MD5 包含无效字符");
+                return;
+            }
+        }
+    }
+    voice_call_lock();
+    if (webrtc_get_call_state() != CALL_STATE_IDLE) {
+        ESP_LOGW(TAG, "通话尚未结束，忽略 OTA 升级");
+        voice_call_unlock();
+        return;
+    }
+    bool expected = false;
+    if (!s_ota_in_progress.compare_exchange_strong(expected, true)) {
         ESP_LOGW(TAG, "OTA already in progress");
+        voice_call_unlock();
         return;
     }
 
     strncpy(s_ota_url, url, sizeof(s_ota_url) - 1);
     s_ota_url[sizeof(s_ota_url) - 1] = '\0';
 
-    // md5 参数暂未使用，保留用于未来扩展
-    (void)md5;
+    s_ota_md5[0] = '\0';
+    if (md5 && md5[0]) {
+        for (size_t i = 0; i < 32; i++) {
+            s_ota_md5[i] = (char)tolower((unsigned char)md5[i]);
+        }
+        s_ota_md5[32] = '\0';
+    }
 
-    s_ota_in_progress = true;
-    xTaskCreate(ota_task, "ota_task", 8192, NULL, 5, NULL);
+    if (xTaskCreate(ota_task, "ota_task", 8192, NULL, 5, NULL) != pdPASS) {
+        s_ota_in_progress = false;
+        ESP_LOGE(TAG, "无法创建 OTA 任务");
+    }
+    voice_call_unlock();
+}
+
+bool ota_is_in_progress(void)
+{
+    return s_ota_in_progress.load();
 }

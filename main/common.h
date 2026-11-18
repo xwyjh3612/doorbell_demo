@@ -33,6 +33,10 @@ int voice_call_close(void);
 const char* voice_call_get_state_name(void);
 const char* voice_call_get_peer_id(void);
 
+// Serialize incoming signaling with call lifecycle changes; callbacks only enqueue events.
+void voice_call_lock(void);
+void voice_call_unlock(void);
+
 #ifdef __cplusplus
 }
 #endif

@@ -3,6 +3,8 @@
 > 说明：本文档聚焦 `main/mqtt_signaling.cpp` 当前实现的 MQTT 信令协议，方便联调、查阅和后续修改。
 >
 > 注意：以下内容以当前源码实现为准，若后续协议变更，请同步更新本文档。
+>
+> 维护约束：ESP32 现有协议不能改动。网页字段转换由 Java 服务端处理，详情见 [README.md](README.md)。
 
 ---
 
@@ -242,7 +244,7 @@ Topic 由 `app_config` 中的配置动态生成。
 ## 方向
 双向
 
-## JSON 示例
+## 下行 JSON 示例
 ```json
 {
   "type": "candidate",
@@ -254,7 +256,7 @@ Topic 由 `app_config` 中的配置动态生成。
 ## 关键字段
 - `type`
 - `from`
-- `candidate`
+- 下行 `candidate`；设备上行使用 `data`，由服务端补齐浏览器使用的 `candidate`
 
 ## 源码行为
 ### 普通情况下
@@ -375,7 +377,7 @@ Topic 由 `app_config` 中的配置动态生成。
 ```
 
 ## 触发条件
-当前 `webrtc_mqtt.c` 中主叫超时任务固定等待 10 秒：
+当前连接超时使用 NVS `call_timeout`，默认 120 秒，覆盖呼出与接听后的连接阶段：
 
 - 若仍未接通
 - 发送 `timeout`
@@ -462,7 +464,7 @@ FIRMWARE_VERSION
 3. 然后走 4G HTTP 下载流程
 
 ## 当前实现注意点
-虽然协议里传了 `md5`，但当前 OTA 实现里 **md5 尚未真正做校验**。
+`md5` 缺失或为空时保持原有升级行为；提供非空值时要求 32 位十六进制，并在下载完成后比对。MD5 不匹配时不切换启动分区。OTA 只在设备空闲时启动。
 
 ---
 
@@ -607,14 +609,14 @@ FIRMWARE_VERSION
 ## 2）`version_report.version` 当前是字符串
 联调时不要按纯 number 强校验。
 
-## 3）`candidate` 当前字段名就是 `candidate`
-不是 `data`。
+## 3）`candidate` 字段依消息方向不同
+设备上行使用 `data`；设备下行读取 `candidate`。服务端负责补齐浏览器与设备各自需要的字段。
 
 ## 4）`offer/answer` 的 SDP 当前走 `data`
-这一点要和 candidate 区分开。
+上下行均使用 `data`；浏览器的 `sdp` 字段由 Java 服务端适配。
 
-## 5）`ota.md5` 当前协议里有，但设备端未真正校验
-服务端设计时要知道这一点。
+## 5）`ota.md5` 为可选校验字段
+非空 MD5 会进行流式计算并比对；缺失或为空不会导致空指针访问。
 
 ## 6）被叫在未接听前会缓存 `offer/candidate`
 所以服务端看到消息到了，不等于设备已经立刻进入 WebRTC connected。

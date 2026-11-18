@@ -4,6 +4,9 @@
 #include <stdint.h>
 #include <time.h>
 #include <string>
+#include <new>
+#include "freertos/FreeRTOS.h"
+#include "freertos/queue.h"
 #include "cJSON.h"
 #include "esp_log.h"
 #include "media_lib_os.h"
@@ -21,6 +24,13 @@
 #include "network_4g.h"
 #include "door_bell_audio.h"
 #include "otaupgrade.h"
+#include "common.h"
+
+class CallControlGuard {
+public:
+    CallControlGuard() { voice_call_lock(); }
+    ~CallControlGuard() { voice_call_unlock(); }
+};
 
 extern "C" {
     const esp_peer_signaling_impl_t *esp_signaling_get_mqtt_impl(void);
@@ -55,6 +65,52 @@ static inline void get_down_topic(char* buf, size_t len) {
 
 static bool g_mqtt_initialized = false;
 static bool g_mqtt_connected = false;
+static QueueHandle_t mqtt_messages;
+
+struct MqttMessage {
+    std::string topic;
+    std::string payload;
+};
+
+static void mqtt_message_handler(const std::string& topic, const std::string& payload);
+
+static void mqtt_message_task(void *param)
+{
+    (void)param;
+    for (;;) {
+        MqttMessage *message = NULL;
+        if (xQueueReceive(mqtt_messages, &message, portMAX_DELAY) == pdPASS) {
+            mqtt_message_handler(message->topic, message->payload);
+            delete message;
+        }
+    }
+}
+
+static bool init_mqtt_message_queue(void)
+{
+    if (mqtt_messages) {
+        return true;
+    }
+    mqtt_messages = xQueueCreate(16, sizeof(MqttMessage *));
+    if (!mqtt_messages) {
+        return false;
+    }
+    if (xTaskCreate(mqtt_message_task, "mqtt_messages", 8192, NULL, 5, NULL) != pdPASS) {
+        vQueueDelete(mqtt_messages);
+        mqtt_messages = NULL;
+        return false;
+    }
+    return true;
+}
+
+static void dispatch_mqtt_message(const std::string& topic, const std::string& payload)
+{
+    MqttMessage *message = new (std::nothrow) MqttMessage{topic, payload};
+    if (!message || !mqtt_messages || xQueueSend(mqtt_messages, &message, 0) != pdPASS) {
+        delete message;
+        ESP_LOGE(TAG, "MQTT 消息队列不可用或已满");
+    }
+}
 
 typedef struct {
     char *device_id;
@@ -421,13 +477,14 @@ static void __attribute__((unused)) ice_refresh_task(void *param)
 
 static void mqtt_message_handler(const std::string& topic, const std::string& payload)
 {
+    CallControlGuard guard;
     ESP_LOGI(TAG, "MQTT SUB [%s]: %s", topic.c_str(), payload.c_str());
     
     // Only handle messages from device topic
     char expected_topic[128];
     get_down_topic(expected_topic, sizeof(expected_topic));
     
-    if (topic.find(expected_topic) == std::string::npos) {
+    if (topic != expected_topic) {
         return;
     }
 
@@ -438,7 +495,7 @@ static void mqtt_message_handler(const std::string& topic, const std::string& pa
     }
 
     cJSON *type = cJSON_GetObjectItem(json, "type");
-    if (!type) {
+    if (!cJSON_IsString(type) || !type->valuestring[0]) {
         cJSON_Delete(json);
         return;
     }
@@ -625,7 +682,9 @@ static void mqtt_message_handler(const std::string& topic, const std::string& pa
         cJSON *ota_version = cJSON_GetObjectItem(json, "version");
         cJSON *md5 = cJSON_GetObjectItem(json, "md5");
         
-        if (ota_url && ota_url->valuestring && ota_version && ota_version->type == cJSON_Number) {
+        if (cJSON_IsString(ota_url) && ota_url->valuestring[0] &&
+            cJSON_IsNumber(ota_version) && ota_version->valuedouble == ota_version->valueint &&
+            (!md5 || cJSON_IsString(md5))) {
             const char *url = ota_url->valuestring;
             int target_version = ota_version->valueint;
             int current_version = FIRMWARE_VERSION;
@@ -636,8 +695,10 @@ static void mqtt_message_handler(const std::string& topic, const std::string& pa
                 ESP_LOGW(TAG, "Target version %d <= current version %d, skip upgrade", target_version, current_version);
             } else {
                 // 触发 OTA 升级
-                ota_start_upgrade(url, md5->valuestring);
+                ota_start_upgrade(url, md5 ? md5->valuestring : NULL);
             }
+        } else {
+            ESP_LOGW(TAG, "OTA 参数无效，忽略升级指令");
         }
     } else if (strcmp(msg_type, "version_query") == 0) {
         // 版本查询请求，回复当前版本
@@ -669,6 +730,7 @@ static void mqtt_message_handler(const std::string& topic, const std::string& pa
 
 void mqtt_sig_restart(void)
 {
+    CallControlGuard guard;
     extern esp_peer_signaling_handle_t g_mqtt_sig_handle;
     
     ESP_LOGI(TAG, "Restarting MQTT signaling...");
@@ -690,22 +752,7 @@ void mqtt_sig_restart(void)
     send_ice_request();
     
     // 重新设置 MQTT 回调（因为 MQTT 重连后回调可能丢失）
-    mqtt->OnMessage([](const std::string& topic, const std::string& payload) {
-        ESP_LOGI(TAG, "MQTT SUB [%s]: %s", topic.c_str(), payload.c_str());
-        char *topic_copy = strdup(topic.c_str());
-        char *payload_copy = strdup(payload.c_str());
-        
-        auto *ctx = new std::pair<char*, char*>(topic_copy, payload_copy);
-        
-        xTaskCreate([](void *param) {
-            auto *ctx = (std::pair<char*, char*>*)param;
-            mqtt_message_handler(std::string(ctx->first), std::string(ctx->second));
-            free(ctx->first);
-            free(ctx->second);
-            delete ctx;
-            vTaskDelete(NULL);
-        }, "mqtt_msg_async", 8192, ctx, 5, NULL);
-    });
+    mqtt->OnMessage(dispatch_mqtt_message);
     
     if (g_mqtt_sig_handle != NULL) {
         mqtt_sig_t *sg = (mqtt_sig_t *)g_mqtt_sig_handle;
@@ -766,21 +813,7 @@ static void setup_mqtt_callbacks(void)
 
     //mqtt->OnMessage(mqtt_message_handler);
     
-    mqtt->OnMessage([](const std::string& topic, const std::string& payload) {
-        char *topic_copy = strdup(topic.c_str());
-        char *payload_copy = strdup(payload.c_str());
-        
-        auto *ctx = new std::pair<char*, char*>(topic_copy, payload_copy);
-        
-        xTaskCreate([](void *param) {
-            auto *ctx = (std::pair<char*, char*>*)param;
-            mqtt_message_handler(std::string(ctx->first), std::string(ctx->second));
-            free(ctx->first);
-            free(ctx->second);
-            delete ctx;
-            vTaskDelete(NULL);
-        }, "mqtt_msg_async", 8192, ctx, 5, NULL);
-    });
+    mqtt->OnMessage(dispatch_mqtt_message);
 
     
     g_mqtt_initialized = true;
@@ -798,6 +831,10 @@ void mqtt_sig_set_webrtc_handle(void *handle)
 static int mqtt_signal_start(esp_peer_signaling_cfg_t *cfg, esp_peer_signaling_handle_t *h)
 {
     if (cfg == NULL || h == NULL) {
+        return -1;
+    }
+    if (!init_mqtt_message_queue()) {
+        ESP_LOGE(TAG, "无法创建 MQTT 消息处理任务");
         return -1;
     }
 

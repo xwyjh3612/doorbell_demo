@@ -3,6 +3,8 @@
 > 文档位置：项目根目录  
 > 适用对象：后续接手该项目的 AI / 开发者  
 > 项目目录：`audio_server`
+>
+> 维护约束：ESP32 现有协议及官方 WebRTC/peer 组件不能改动。`SignalingMessage.normalizeMediaFields()` 在 Java 侧适配 `data` / `sdp` / `candidate`。当前测试和运行行为见 [../README.md](../README.md)。
 
 ---
 

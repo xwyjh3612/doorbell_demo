@@ -130,6 +130,11 @@ public class MqttSignalingService {
 
         try {
             SignalingMessage message = JSON.parseObject(payload, SignalingMessage.class);
+            if (message == null) {
+                log.warn("信令内容为空");
+                return;
+            }
+            message.normalizeMediaFields();
 
             // 验证消息格式
             if (!message.isValid()) {

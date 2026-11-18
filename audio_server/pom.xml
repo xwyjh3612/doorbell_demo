@@ -22,6 +22,13 @@
 
 	<dependencies>
 
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+			<scope>test</scope>
+		</dependency>
+
 		<!-- SQLite JDBC 驱动 -->
 <!--		<dependency>
 			<groupId>com.alibaba</groupId>

@@ -3,6 +3,8 @@
 > 文档目的：帮助后续维护人员快速理解 `main` 目录当前实际生效的系统架构、模块职责、通信逻辑、升级逻辑、状态流转、关键风险点与推荐修改入口。
 >
 > 说明：本文档基于当前 `main` 目录及其实际编译入口梳理，重点面向**当前在跑的主线路径**，不是历史遗留/备用代码路径。
+>
+> 维护约束：ESP32 现有协议及官方 WebRTC/peer 组件不能改动。网页字段适配在 Java 服务端完成；当前构建、测试与行为摘要见 [README.md](README.md)。
 
 ---
 
@@ -173,7 +175,7 @@
 - `CALL_STATE_INCOMING`：来电等待接听
 - `CALL_STATE_INCOMING_CONNECTING`：被叫已接听，连接中
 - `CALL_STATE_CONNECTED`：通话中
-- `CALL_STATE_RECONNECTING`：预留的重连状态
+- `CALL_STATE_RECONNECTING`：等待下一次自动重拨，可主动挂断取消
 
 这个状态定义是后续所有业务判断的基础。
 
@@ -224,8 +226,8 @@
 - `on_mqtt_signaling_event()`：接收 MQTT signaling 层事件
 - `door_bell_on_cmd()`：接收 WebRTC 自定义命令
 - `webrtc_event_handler()`：接收 WebRTC 连接事件
-- `call_timeout_task()`：呼叫超时任务
-- `auto_reconnect_task()`：自动重拨任务
+- `call_control_task()`：串行处理通话命令与事件
+- `process_call_deadlines()`：连接超时与重拨截止时间
 - `call_ctx_change_state()`：状态切换
 - `call_ctx_reset_idle()`：重置为空闲状态
 
@@ -243,9 +245,9 @@
 - WebRTC connected 后进入 `CONNECTED`
 
 ### 超时
-- 主叫阶段有固定 10 秒超时任务
+- 呼出与接听后的连接超时使用 `call_timeout` 配置，默认 120 秒
 - 超时后向对端发 `timeout`
-- 然后回到 `IDLE`
+- 初次连接超时回到 `IDLE`；自动重拨超时则继续剩余尝试
 
 ### 自动重拨
 当前已经按保守方案加入：
@@ -592,9 +594,8 @@
 
 ### 定义了但未完全打通的配置
 - `ice_refresh_interval`
-- `call_timeout`
 
-例如当前呼叫超时在 `webrtc_mqtt.c` 里仍然固定写死为 10 秒，没有完全走配置项。
+`call_timeout` 已接入连接超时。0 或超过 3600 秒的旧配置回退为默认 120 秒。
 
 ---
 
@@ -628,15 +629,16 @@
 11. `esp_restart()`
 
 ## 重要事实
-虽然 OTA 命令会�� `md5`，但当前实现中 **`md5` 参数没有真正使用**。
+OTA 命令提供非空 `md5` 时，设备边下载边计算并在下载完成后比对；缺失或为空时保持原有升级行为。
 
-这意味着目前 OTA 完整性主要依赖：
+当前 OTA 完整性检查包括：
 
 - HTTP 下载成功
 - Content-Length 匹配
 - `esp_ota_end()` 的镜像校验
+- 提供 `md5` 时的业务层摘要比对
 
-而不是业务层的 MD5 比对。
+任何校验失败均不切换启动分区。
 
 ---
 
@@ -946,7 +948,7 @@ WebRTC 实例创建后，初始是：
   - 清理状态
 
 ### 超时
-- 当前主叫超时固定 10 秒
+- 呼出与接听后的连接超时使用 `call_timeout` 配置，默认 120 秒
 - 超时后发送 `timeout`
 - 回到 `IDLE`
 
@@ -967,12 +969,14 @@ WebRTC 实例创建后，初始是：
 - 当前没有已有重拨任务在跑
 
 ### 触发时机
-- 仅在 `CONNECTED` 之后异常断开时触发
+- 初次重拨在 `CONNECTED` 之后异常断开时触发
+- 重拨过程中连接失败或超时，继续剩余尝试，最多三次
 
 ### 不触发场景
-- 呼出超时
-- 未接通前 `CONNECT_FAILED`
+- 初次呼出超时
+- 初次未接通前 `CONNECT_FAILED`
 - 对端明确拒绝
+- 对端明确挂断或发送 `timeout`
 - 本地主动 `close`
 - 本地 `reject`
 - `stop_webrtc()`
@@ -981,6 +985,7 @@ WebRTC 实例创建后，初始是：
 - 延迟 1500 ms
 - 重新发起一轮新呼叫
 - 最多 3 次
+- 由固定通话控制任务检查截止时间，不创建临时重拨任务
 
 这个设计的核心思想是：
 
@@ -1074,11 +1079,11 @@ OTA 真正下载不走 MQTT，而是：
 - 要求 OTA 分区写入成功
 
 ### 当前缺失
-#### 1）没有真正使用 md5
-虽然协议里传了 `md5`，但当前实现没有校验。
+#### 1）MD5 为可选字段
+提供有效 MD5 时进行流式校验；未提供时依赖长度检查与 ESP-IDF 镜像校验。
 
-#### 2）没有严格限制“通话中禁止升级”
-代码注释有“空闲状态才允许升级”的语义，但**当前 OTA 入口并没有真正判断当前是否在通话中**。
+#### 2）升级与通话互斥
+OTA 只允许空闲时启动，重拨等待期间同样拒绝升级；升级中禁止新呼叫。
 
 #### 3）没有升级进度上报
 当前主要是本地日志，没有标准的 OTA 进度回传机制。
@@ -1154,10 +1159,9 @@ OTA 真正下载不走 MQTT，而是：
 ## 9.3 FreeRTOS 显式任务
 当前比较重要的任务包括：
 
-- `auto_reconnect`：自动重拨
-- `call_timeout`：呼叫超时
+- `call_control`：通话事件、连接超时和自动重拨
 - `mqtt_restart`：网络恢复后重建 MQTT/signaling
-- `mqtt_msg_async`：异步处理 MQTT 消息
+- `mqtt_messages`：按接收顺序处理 MQTT 消息
 - `ota_task`：OTA 下载任务
 - `music_player`：提示音播放
 - `key_monitor_thread`：按键监控
@@ -1310,27 +1314,25 @@ OTA 真正下载不走 MQTT，而是：
 
 ## 风险点 3：自动重拨 / 超时 / close / remote_close 之间有竞态
 
-当前有多个并发来源同时改通话状态：
+通话事件可能来自多个任务：
 
 - 用户主动 close
-- 超时任务
+- 超时截止时间
 - WebRTC disconnected
 - MQTT remote close
-- 自动重拨任务
+- 自动重拨截止时间
 
-这些字段很多都没有锁保护，维护时必须尽量采用“最小侵入、尽量保守”的修改方式。
+这些事件现已由固定 `call_control` 任务串行处理，并通过代次编号忽略旧实例和旧通话的 peer 事件。MQTT 下行处理与实例生命周期共用互斥锁。
 
 ---
 
 ## 风险点 4：OTA 约束不完整
 
-虽然语义上希望“空闲时才允许升级”，但目前并未严格执行。
+当前已检查空闲状态，并在提供 MD5 时校验固件；仍需硬件验证网络异常和重启过程。
 
 如果后续要增强 OTA 稳定性，建议优先补：
 
-- 通话状态检查
 - 4G 信号强度检查
-- md5/hash 校验
 - 升级进度上报
 
 ---
@@ -1355,7 +1357,7 @@ OTA 真正下载不走 MQTT，而是：
 例如：
 
 - `call_timeout` 配置已定义
-- 但当前呼叫超时仍固定写死 10 秒
+- 已用于连接超时，默认 120 秒，旧配置异常值会回退为默认值
 
 维护时不要只改 `app_config`，还要检查调用链是否真的用了该配置。
 
@@ -1395,8 +1397,8 @@ OTA 真正下载不走 MQTT，而是：
 - `send_cmd()`
 - `on_mqtt_signaling_event()`
 - `webrtc_event_handler()`
-- `call_timeout_task()`
-- `auto_reconnect_task()`
+- `call_control_task()`
+- `process_call_deadlines()`
 
 ---
 
