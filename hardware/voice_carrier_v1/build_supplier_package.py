@@ -273,7 +273,9 @@ pdf.save()
 assert drawn=={r:p['pins'] for r,p in parts.items()}, {'missing':set(parts)-set(drawn),'extra':set(drawn)-set(parts)}
 (OUT/'电路图核对.json').write_text(json.dumps({'diagram_components':len(drawn),'named_pins':sum(bool(n) for p in drawn.values() for n in p.values()),'matches_design_json':True,'SMT_per_board':42,'THT_per_board':13,'production_ready':False,'reason':'PCB未布线/设计与实物验证未完成'},ensure_ascii=False,indent=2),encoding='utf-8')
 
-request='''您好，我需要做5台ESP32-S3＋自研ML307 4G语音对讲工程样机。现有通话已跑通，首版保留开发板、4G板、INMP441麦克风板、MAX98357功放板和喇叭，新增一块连接/充电备用电源底板。
+request='''阶段更新：下方保留此前“定制底板＋备用电源”的工程询价模板，暂不作为当前订单。当前先做5台完整模块直供电装盒演示机，并行验证1套成品UPS，不先采购本模板的PCB贴片器件。具体见项目根目录“首批5台分阶段实施方案.md”和“手工接线备用电源验证方案.md”。
+
+您好，我需要评估后续5台ESP32-S3＋自研ML307 4G语音对讲PCB工程样机。现有通话已跑通，候选方案保留开发板、4G板、INMP441麦克风板、MAX98357功放板和喇叭，新增一块连接/充电备用电源底板，最终范围在模块装盒和备用电源试验后确认。
 
 底板每块：42个SMT元件＋13个插件。5块净需求：210个SMT元件＋65个插件。Excel的额外备料单列，请分别报材料、损耗和加工，不把备料当成每板安装量。
 
@@ -296,6 +298,7 @@ SMT主要型号：TPOWER TP4056、TI TPS61230ARNSR、TPS2117DRLR、TLV803EA30DBZ
 '''
 (OUT/'发淘宝商家的询价说明.txt').write_text(request,encoding='utf-8')
 md=['# 语音对讲首批5台采购与贴片询价','',
+ '**阶段更新：本文件和同目录Excel/PDF/ZIP保留此前带定制备用电源底板的询价配置。最新第一阶段是完整模块直供电5台，并行验证1套成品UPS；不按本底板BOM采购贴片。** 当前清单/预算见[首批5台分阶段实施方案](../../首批5台分阶段实施方案.md)。','',
  '日期：2026-11-19。当前是工程询价资料；PCB尚未布线，未发布可下单Gerber、钢网和坐标文件。请先取得设计复核与加工分项报价。','',
  '## 商家要贴什么','',
  '| 内容 | 每块底板 | 5块净用量 |','| --- | ---: | ---: |',
