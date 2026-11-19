@@ -53,6 +53,8 @@ R24D 人体感应雷达的独立读取 demo 见 [examples/radar_uart_demo/README
 
 GPIO6持续采集与实时监测页面见 [examples/radar_monitor/README.md](examples/radar_monitor/README.md)，本机地址为 [http://127.0.0.1:18888](http://127.0.0.1:18888)。已验证GPIO6/115200的有效初始化及多次有人/无人上报，页面区分历史数据、新报文及设备串口连接状态。
 
+新接入的 R60ABD1 60GHz 呼吸睡眠雷达演示见 [examples/radar_r60abd1_demo/README.md](examples/radar_r60abd1_demo/README.md)，本机页面为 [http://127.0.0.1:18890](http://127.0.0.1:18890)。沿用 GPIO6 接收，电脑端解析呼吸、心率、体动和距离，无需替换语音固件。
+
 固件使用 ESP-IDF 5.4.3，当前目标为 ESP32-S3、8MB Flash、PSRAM。进入已激活的 ESP-IDF 环境后运行：
 
 ```sh

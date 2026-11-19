@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>60GHz 雷达 · 实时演示</title>
+<style>
+:root{color-scheme:light;--ink:#16302b;--muted:#667b75;--line:#dce6e0;--green:#187c60;--amber:#9d6423}
+*{box-sizing:border-box}body{margin:0;background:#f3f6f2;color:var(--ink);font:15px/1.6 "Segoe UI","Microsoft YaHei",sans-serif}
+main{max-width:1180px;margin:auto;padding:32px 28px 50px}header{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-bottom:25px}
+h1{font-size:30px;font-weight:650;letter-spacing:-1px;line-height:1.3;margin:6px 0}h2{font-size:17px;margin:0 0 16px}.eyebrow{font-size:12px;font-weight:700;letter-spacing:2px;color:var(--green)}
+p{margin:7px 0}.muted,.stamp{color:var(--muted)}.actions{display:flex;gap:8px;flex-wrap:wrap}button,.button{cursor:pointer;border:1px solid var(--line);background:white;padding:9px 15px;color:var(--ink);border-radius:8px;font:inherit;text-decoration:none}button:hover,.button:hover{border-color:var(--green)}
+.strip{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:13px 17px;border:1px solid var(--line);border-radius:10px;background:#e9f1eb;margin-bottom:18px}.dot{width:9px;height:9px;border-radius:50%;background:var(--amber);display:inline-block;margin-right:7px}.dot.live{background:var(--green)}.divider{margin-left:auto;color:var(--muted);font-size:13px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card,.panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:21px}.card{min-height:173px}.label{font-size:13px;color:var(--muted)}.value{font-size:35px;font-weight:600;line-height:1.2;margin:17px 0 11px;letter-spacing:-1px}.value.text{font-size:26px}.value small{font-size:13px;font-weight:400;letter-spacing:0;margin-left:5px}.stamp{font-size:12px;line-height:1.5}.invalid .value{color:#87958c}.invalid .stamp{color:var(--amber)}
+.columns{display:grid;grid-template-columns:1.45fr 1fr;gap:14px;margin-top:14px}canvas{width:100%;height:205px;display:block}.legend{display:flex;gap:18px;font-size:12px;color:var(--muted);margin:0 0 5px}.swatch{display:inline-block;width:16px;height:3px;vertical-align:middle;margin-right:6px;background:var(--green)}.swatch.heart{background:#c26948}
+dl{margin:0}dl>div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:8px 0;border-bottom:1px solid #eef2ec}dl>div:last-child{border:0}dt{color:var(--muted)}dd{margin:0;text-align:right;font-size:14px}dd small{display:block;color:var(--muted);font-size:11px}.hint{font-size:13px;color:var(--muted);margin-top:12px}.stats{display:flex;flex-wrap:wrap;gap:16px;margin:19px 1px;font-size:13px;color:var(--muted)}.stats b{color:var(--ink);font-variant-numeric:tabular-nums}
+details.panel{padding:17px 21px}summary{cursor:pointer;font-weight:600}summary span{color:var(--muted);font-weight:400;font-size:12px;margin-left:8px}.table-wrap{overflow:auto;max-height:330px;margin-top:16px}table{width:100%;border-collapse:collapse;font-size:12px;text-align:left;white-space:nowrap}th{color:var(--muted);font-weight:500;background:#f4f7f2;position:sticky;top:0}td,th{padding:9px 10px;border-bottom:1px solid #edf1e9}td.code{font-family:Consolas,monospace;color:#4b645d}.footer{font-size:12px;color:var(--muted);margin-top:20px}.badge{font-size:12px;border-radius:5px;background:#edf3ec;padding:3px 7px;color:var(--green)}
+@media(max-width:800px){.cards{grid-template-columns:repeat(2,1fr)}.columns{grid-template-columns:1fr}main{padding:22px 18px}header{align-items:flex-start;flex-direction:column;gap:14px}h1{font-size:27px}.divider{margin-left:0;width:100%}}
+@media(max-width:420px){.card{padding:16px;min-height:165px}.value{font-size:31px}.value.text{font-size:23px}.panel{padding:17px}.strip{font-size:13px}}
+</style>
+<main>
+<header><div><div class="eyebrow">MICRADAR / R60ABD1</div><h1>60GHz 雷达实时演示</h1><p class="muted">有人感应 · 呼吸 · 心率 <span class="badge">本机采集</span></p></div><div class="actions"><button id="pause">暂停刷新</button><a class="button" href="/api/export" download>导出记录</a></div></header>
+<div class="strip" role="status"><strong><i class="dot" id="dot"></i><span id="connection">正在连接</span></strong><span id="wiring">RX GPIO6 · 115200 baud</span><span class="divider" id="updated">等待新报文</span></div>
+<section class="cards" aria-label="实时读数">
+<article class="card" id="card-activity"><div class="label">目标活动</div><div class="value text" id="value-activity">等待上报</div><div class="stamp" id="stamp-activity">仅显示本次启动后的数据</div></article>
+<article class="card" id="card-breath"><div class="label">呼吸频率</div><div class="value" id="value-breath">—<small>次/分</small></div><div class="stamp" id="stamp-breath">等待上报</div></article>
+<article class="card" id="card-heart"><div class="label">心率</div><div class="value" id="value-heart">—<small>次/分</small></div><div class="stamp" id="stamp-heart">等待上报</div></article>
+<article class="card" id="card-distance"><div class="label">目标距离</div><div class="value" id="value-distance">—<small>cm</small></div><div class="stamp" id="stamp-distance">等待上报</div></article>
+</section>
+<div class="columns"><section class="panel"><h2>最近 2 分钟的数值变化</h2><div class="legend"><span><i class="swatch"></i>呼吸 · 次/分</span><span><i class="swatch heart"></i>心率 · 次/分</span></div><canvas id="chart" aria-label="呼吸与心率数值趋势"></canvas><p class="hint">这里绘制的是上报数值；原始呼吸、心跳波形收到后会在状态区注明。</p></section>
+<section class="panel"><h2>更多状态</h2><dl id="states"></dl><p class="hint">有人、活动、入床等状态通常在变化时上报。当前板子的睡眠编码版本待确认，先显示原始状态。</p></section></div>
+<div class="stats" id="stats">正在建立本次采集基线…</div>
+<details class="panel"><summary>查看雷达报文 <span>校验通过 · 按字节偏移去重</span></summary><div class="table-wrap"><table><thead><tr><th>采集时间</th><th>内容</th><th>原始帧</th></tr></thead><tbody id="frames"></tbody></table></div></details>
+<p class="footer">接线：雷达 TX → ESP32 GPIO6，雷达 RX → GPIO8，5V 供电并共地。当前为被动接收。页面约每秒刷新，ESP32 历史快照约每 5 秒读取一次；时间为电脑发现报文的时间。呼吸、心率原始值为 0 时显示“尚无有效测量”。</p>
+<p class="footer">摆放建议：天线面朝向胸口，先在约 0.4–1.5 米距离静坐观察，避开金属遮挡。以上读数用于功能演示，准确性还需对照测试。</p>
+</main>
+<script>
+let paused=false,last=null,inflight=false;
+const $=id=>document.getElementById(id),timeText=at=>at?new Date(at).toLocaleTimeString('zh-CN',{hour12:false}):'—';
+function card(name,unit=''){
+ const f=last.fields[name],bad=!f||f.stale||f.quality!=='valid';$('card-'+name).classList.toggle('invalid',bad);
+ const node=$('value-'+name);node.textContent=name==='activity'?(f?(f.stale?'状态过期':f.label):'等待上报'):(!bad?String(f.value):'—');
+ if(unit){const small=document.createElement('small');small.textContent=unit;node.append(small)}
+ $('stamp-'+name).textContent=!f?'等待本次新报文':(f.stale?'数据已过期':f.quality==='valid'?'采集于 '+timeText(f.at):f.label+' · 原始值 '+f.value);
+}
+function stateRow(label,name){
+ const f=last.fields[name],row=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;
+ dd.textContent=f?(f.stale?'数据已过期':f.label):'等待上报';if(f){const small=document.createElement('small');small.textContent='最近上报 '+timeText(f.at);dd.append(small)}row.append(dt,dd);return row;
+}
+function draw(){
+ const canvas=$('chart'),r=canvas.getBoundingClientRect(),dpr=window.devicePixelRatio||1;
+ canvas.width=Math.round(r.width*dpr);canvas.height=Math.round(r.height*dpr);const c=canvas.getContext('2d');c.scale(dpr,dpr);
+ const w=r.width,h=r.height,l=31,t=15,b=27,rpad=12,plotw=w-l-rpad,ploth=h-t-b;
+ c.font='11px Segoe UI';c.fillStyle='#80928a';c.strokeStyle='#e6ece5';c.lineWidth=1;
+ for(const y of [0,30,60,90,120]){const yy=t+ploth*(1-y/120);c.beginPath();c.moveTo(l,yy);c.lineTo(w-rpad,yy);c.stroke();c.fillText(String(y),3,yy+4)}
+ c.fillText('−2 分钟',l,h-6);c.fillText('现在',w-36,h-6);const now=Date.now(),start=now-120000;
+ for(const [name,color] of [['breath','#187c60'],['heart','#c26948']]){
+  const points=last?last.samples.filter(s=>s.name===name&&new Date(s.at).getTime()>=start):[];
+  c.strokeStyle=color;c.lineWidth=2;let prev=null;
+  for(const point of points){const ms=new Date(point.at).getTime();if(point.quality!=='valid'){prev=null;continue}
+   const x=l+plotw*(ms-start)/120000,y=t+ploth*(1-point.value/120);
+   if(prev&&ms-prev.ms<12000){c.beginPath();c.moveTo(prev.x,prev.y);c.lineTo(x,y);c.stroke()}
+   c.fillStyle=color;c.beginPath();c.arc(x,y,2,0,Math.PI*2);c.fill();prev={x,y,ms};
+  }
+ }
+ if(!last||!last.samples.some(s=>['breath','heart'].includes(s.name)&&s.quality==='valid'&&new Date(s.at).getTime()>=start)){c.fillStyle='#80928a';c.fillText('等待有效呼吸 / 心率数值',l+20,t+ploth/2)}
+}
+function render(){
+ const s=last;$('connection').textContent=paused?'刷新已暂停':s.note;$('dot').classList.toggle('live',!paused&&s.connected&&s.rx_age_s!==null&&s.rx_age_s<12);
+ $('wiring').textContent='RX GPIO'+(s.uart.rx??'—')+' · '+(s.uart.baud??'—')+' baud';$('updated').textContent='本次 '+s.elapsed_s+' 秒 · 距接收 '+(s.rx_age_s??'—')+' 秒';
+ card('activity');card('breath','次/分');card('heart','次/分');card('distance','cm');
+ $('states').replaceChildren(...[['存在状态','presence'],['探测范围','range'],['体动 / 100','motion'],['呼吸状态','breath_status'],['床位状态','bed'],['睡眠状态','sleep'],['坐标原始值','coordinates'],['呼吸波形','breath_wave'],['心跳波形','heart_wave']].map(([label,name])=>stateRow(label,name)));
+ const stats=[['本次有效帧',s.packets],['已解析',s.decoded],['未解析',s.unknown],['拒绝解析',s.rejected],['新增字节',s.new_bytes],['新增 UART 错误',s.new_uart_errors]];
+ $('stats').replaceChildren(...stats.map(([label,value])=>{const span=document.createElement('span');span.textContent=label+' ';const b=document.createElement('b');b.textContent=value;span.append(b);return span}));
+ $('frames').replaceChildren(...s.frames.slice(0,50).map(f=>{const tr=document.createElement('tr');for(const [index,text] of [timeText(f.at),f.label,f.hex].entries()){const td=document.createElement('td');td.textContent=text;if(index===2)td.className='code';tr.append(td)}return tr}));draw();
+}
+async function refresh(){
+ if(paused||inflight)return;inflight=true;
+ try{const response=await fetch('/api/state',{cache:'no-store',signal:AbortSignal.timeout(3000)});if(!response.ok)throw Error('HTTP '+response.status);last=await response.json();render()}
+ catch{if(last){last.connected=false;last.note='演示服务未连接';for(const f of Object.values(last.fields))f.stale=true;render()}else{$('connection').textContent='演示服务未连接';$('dot').classList.remove('live')}}finally{inflight=false}
+}
+$('pause').onclick=()=>{paused=!paused;$('pause').textContent=paused?'恢复刷新':'暂停刷新';if(last)render();if(!paused)refresh()};
+window.addEventListener('resize',draw);refresh();setInterval(refresh,1000);
+</script>
+</html>
