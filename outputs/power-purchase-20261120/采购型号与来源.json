@@ -78,5 +78,37 @@
       "pack_assembly": "Official customization page lists MOQ >=5000 packs; 3 samples need a battery pack assembler"
     }
   ],
-  "board_status": "Power PCB not routed/released; remaining peripheral purchase needs reviewed final BOM"
+  "board_status": "Power PCB not routed/released; remaining peripheral purchase needs reviewed final BOM",
+  "current_scope": "User asks for long-term plugged operation and a charger IC with purchasable test board. ESP32 ADC for coarse battery voltage. Prior three-IC raw purchases paused; first evaluate ETA6953 power path on UPS Module Mini bare board with same planned production battery, then build integration PCB.",
+  "core_purchases_status": "PAUSED; historical candidate list only",
+  "charger_evaluation": {
+    "IC": "ETA6953",
+    "power_path": "NVDC SYS/BAT, charge management and battery supplement",
+    "test_board": "Waveshare UPS Module Mini, no battery",
+    "sku": "24760",
+    "quantity": 1,
+    "shop_url": "https://www.waveshare.net/shop/UPS-Module-Mini.htm",
+    "price_api": "https://api.waveshare.net/api/v1/goods/2027",
+    "public_price_CNY": 96.0,
+    "checked_date": "2026-11-20",
+    "schematic": "https://www.waveshare.net/w/upload/e/ee/UPS_Module_Mini_Schematic.pdf",
+    "datasheet": "https://www.waveshare.net/w/upload/e/e5/ETA-ETA6953.pdf",
+    "board_boost": "ETA1188FC; matched 24-pin datasheet still required before manufacture",
+    "IC_OTG_limit_A": 1.2,
+    "manufacturer_board_output_grade_A": 2.5,
+    "target_validation_A": 2,
+    "charge_default_mA": 2040,
+    "initial_charge_target_mA": 420,
+    "watchdog_default_s": 40,
+    "issues_to_resolve": [
+      "complete pack charge rating including cold-start default",
+      "configure charge/input current and watchdog/reset behavior",
+      "interface voltage compatibility",
+      "actual battery NTC sensing",
+      "pack-to-board battery node and automatic protection recovery",
+      "real system low-battery2A and long-time external behavior"
+    ],
+    "physical_test": "not performed",
+    "production_chip_BOM_quote": "not acquired; retail board price excluded from target production electronic BOM"
+  }
 }
