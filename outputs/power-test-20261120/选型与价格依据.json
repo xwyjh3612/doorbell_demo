@@ -3,7 +3,9 @@
   "currency": "CNY",
   "price_scope": "Public goods API base price; tax, shipping and checkout price to be confirmed",
   "electrical_tests": "not performed",
+  "current_scope": "User requires integration-oriented battery validation. Commercial large-battery UPS is no longer a recommended purchase. Build 2-3 dedicated power PCBs with the same candidate cell/protection/NTC/harness as planned production; exact battery model and board release not yet fixed.",
   "selected_sample": {
+    "status": "superseded; retained comparison only, do not purchase as the current integration validation sample",
     "model": "Waveshare UPS HAT (D), current shop version",
     "sku": "25507",
     "shop_url": "https://www.waveshare.net/shop/UPS-HAT-D.htm",
