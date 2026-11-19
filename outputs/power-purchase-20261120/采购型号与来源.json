@@ -1,0 +1,82 @@
+{
+  "date": "2026-11-20",
+  "purpose": "Low-cost integration-oriented power sample procurement",
+  "battery_sample": {
+    "cell_model": "EVE 18650/20P",
+    "quantity": 3,
+    "nominal_voltage_V": 3.6,
+    "full_charge_V": 4.2,
+    "capacity_mAh": 2000,
+    "cell_max_continuous_discharge_A": 30,
+    "cell_diameter_mm": "18.35 +/- 0.10",
+    "cell_length_mm": "65.00 +/- 0.15",
+    "pack_min_continuous_discharge_A": 5,
+    "pack_protection": "Assembler must specify IC/MOSFET/BOM, thresholds and continuous current; 10A grade requested, not yet verified",
+    "NTC_request": "10kohm, B3950, actual MPN/tolerance required; recompute charger TEMP network",
+    "power_leads_request": "20AWG about10cm, red/black tinned ends; protected output only; NTC leads separate",
+    "pack_model": "not yet supplied",
+    "supplier_quote": "not yet supplied",
+    "physical_test": "not performed"
+  },
+  "core_purchases": [
+    {
+      "model": "TPOWER TP4056 ESOP8",
+      "quantity": 5,
+      "catalog_id": "C382139",
+      "historical_reference_CNY": 0.4012,
+      "historical_price_date": "2026-11-19"
+    },
+    {
+      "model": "TI TPS61230ARNSR",
+      "quantity": 5,
+      "catalog_id": "C376005",
+      "historical_reference_CNY": 3.14,
+      "historical_price_date": "2026-11-19"
+    },
+    {
+      "model": "TI TPS2117DRLR",
+      "quantity": 5,
+      "catalog_id": "C22399676",
+      "historical_reference_CNY": 1.82,
+      "historical_price_date": "2026-11-19"
+    },
+    {
+      "model": "Sunlord SWPA6045S1R0NT",
+      "quantity": 5,
+      "catalog_id": "C96955",
+      "historical_reference_CNY": 0.335,
+      "historical_price_date": "2026-11-19"
+    }
+  ],
+  "price_verification_20261120": "LCSC item requests blocked by site; no refreshed price or Taobao merchant stock/price verified",
+  "cost_targets_not_quotes": {
+    "100_pack_battery_unit_CNY_max": 10,
+    "power_electronic_BOM_unit_CNY_max": 10,
+    "exclusions": [
+      "PCB",
+      "SMT",
+      "connectors/fixing",
+      "shipping",
+      "design/debug"
+    ]
+  },
+  "sources": [
+    {
+      "model": "EVE 18650/20P",
+      "url": "https://www.evemall.com/consumer-battery/cylindrical-cell/18650-20p",
+      "checked_date": "2026-11-20",
+      "sha256": "b89afa1283c3fec79e5ae3d5672727a5a4aeaba824ccdaf4f7aa7099c75b5cf5",
+      "price": "not published/verified as CNY purchase quote",
+      "pack_assembly": "Official customization page lists MOQ >=5000 packs; 3 samples need a battery pack assembler"
+    },
+    {
+      "model": "EVE 18650/26V",
+      "url": "https://www.evemall.com/consumer-battery/cylindrical-cell/18650-26v",
+      "checked_date": "2026-11-20",
+      "sha256": "fca9fa96594e786153a6c7254fe4027260341087e3d48dfbb9ad1d580562abdc",
+      "price": "not published/verified as CNY purchase quote",
+      "pack_assembly": "Official customization page lists MOQ >=5000 packs; 3 samples need a battery pack assembler"
+    }
+  ],
+  "board_status": "Power PCB not routed/released; remaining peripheral purchase needs reviewed final BOM"
+}
