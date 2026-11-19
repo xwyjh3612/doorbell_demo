@@ -1,0 +1,64 @@
+{
+  "checked_date": "2026-11-20",
+  "currency": "CNY",
+  "price_scope": "Public goods API base price; tax, shipping and checkout price to be confirmed",
+  "electrical_tests": "not performed",
+  "selected_sample": {
+    "model": "Waveshare UPS HAT (D), current shop version",
+    "sku": "25507",
+    "shop_url": "https://www.waveshare.net/shop/UPS-HAT-D.htm",
+    "public_goods_api": "https://api.waveshare.net/api/v1/goods/2136",
+    "input_spec": "Fixed 5V input; compatible supply/cable with actual 3A capacity for testing",
+    "output_spec": "Shop selection table 5V/2.5A grade; verify actual 2A load at low battery. Do not use wiki conditional 4A as continuous battery guarantee.",
+    "board_size_mm": [56, 85],
+    "batteries": "2 x manufacturer matched 5000mAh 21700 cells, parallel 1S system, nominal total 10000mAh",
+    "unit_base_price": 138.0,
+    "schematic": "https://www.waveshare.net/w/upload/4/48/UPS_HAT_%28D%29_Schematic.pdf",
+    "test_status": "not performed",
+    "final_small_battery_and_custom_pcb_require_separate_validation": true
+  },
+  "evaluated_mini": {
+    "model": "Waveshare UPS Module Mini Acce A",
+    "sku": "24785",
+    "shop_url": "https://www.waveshare.net/shop/UPS-Module-Mini-Acce-A.htm",
+    "public_goods_api": "https://api.waveshare.net/api/v1/goods/2036",
+    "input_spec": "5V / 3A module input",
+    "output_spec": "Manufacturer-stated 5V / 2.5A continuous; validate actual system at 2A, including low battery",
+    "board_size_mm": [61, 38],
+    "batteries": "3 matched 10440 cells supplied by manufacturer, 350mAh each, parallel 1S system, nominal total 1050mAh",
+    "unit_base_price": 108.0,
+    "verification_scope": "Product, public price, schematic and linked datasheets reviewed; no hardware test",
+    "pin_limitations": "Signal high voltages and actual fitted pullups must be checked; do not connect signals directly to ESP32 before interface verification",
+    "charge_limitations": "Linked ETA6953 default charge current is 2040mA. Supplied 1050mAh group charge rating and reset-safe current control are unconfirmed. Linked examples searched without finding clear ETA6953 current setup; do not treat absence as proof of hardware default on actual board."
+  },
+  "module_without_battery": {
+    "model": "Waveshare UPS Module Mini",
+    "sku": "24760",
+    "shop_url": "https://www.waveshare.net/shop/UPS-Module-Mini.htm",
+    "public_goods_api": "https://api.waveshare.net/api/v1/goods/2027",
+    "unit_base_price": 96.0
+  },
+  "sources": {
+    "wiki": "https://www.waveshare.net/wiki/UPS_Module_Mini",
+    "schematic": "https://www.waveshare.net/w/upload/e/ee/UPS_Module_Mini_Schematic.pdf",
+    "eta6953_datasheet": "https://www.waveshare.net/w/upload/e/e5/ETA-ETA6953.pdf",
+    "eta1188_datasheet": "https://www.waveshare.net/w/upload/c/c2/ETA-ETA1188.pdf",
+    "eta1188_package_note": "Linked ETA1188F3W document shows 20 pins; schematic ETA1188FC shows 24 pins. Do not use linked pinout for manufacturing."
+  },
+  "budget": {
+    "module_with_batteries": 138.0,
+    "adapter_and_cable_estimate": 25.0,
+    "wire_and_connectors_estimate": 5.0,
+    "two_load_resistors_estimate": 4.0,
+    "subtotal_before_tax_shipping": 172.0,
+    "non_module_estimates_are_not_supplier_quotes": true,
+    "reuse_existing_parts_deduct_actual_stock": true
+  },
+  "prior_hat_d_correction": {
+    "shop_url": "https://www.waveshare.net/shop/UPS-HAT-D.htm",
+    "current_shop_size_mm": [56, 85],
+    "current_shop_batteries": "2 x 5000mAh 21700 cells in parallel",
+    "old_wiki_size_mm": [30, 65],
+    "do_not_mix_versions": true
+  }
+}
