@@ -26,6 +26,7 @@ h1 {
 }
 
 .card {
+    min-width: 0;
     background: white;
     border-radius: 16px;
     padding: 24px;
@@ -152,6 +153,7 @@ select:focus {
 }
 
 .log-entry {
+    overflow-wrap: anywhere;
     margin-bottom: 8px;
     padding: 4px 0;
     border-bottom: 1px solid #333;

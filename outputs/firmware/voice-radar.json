@@ -1,0 +1,9 @@
+{
+  "note": "App image only. Verify device partitions and preserve NVS/OTA selection before flashing.",
+  "variant": "voice-radar",
+  "app_offset": "0x10000",
+  "radar": true,
+  "sha256": "ddd373f9b10bb75f9ad32356fd0344e26ff94e77bbe2a39f8129cc9425250167",
+  "size": 2783584,
+  "built_at": "2026-11-19T14:00:01.7611121+08:00"
+}

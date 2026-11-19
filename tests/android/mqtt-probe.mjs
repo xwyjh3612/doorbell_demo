@@ -1,0 +1,9 @@
+import net from 'node:net';
+export class MqttProbe {
+ constructor(host,device,onMessage){this.device=device;this.onMessage=onMessage;this.buffer=Buffer.alloc(0);this.socket=net.createConnection({host,port:1883});this.ready=new Promise((resolve,reject)=>{this.resolve=resolve;this.socket.on('error',reject)});this.socket.on('connect',()=>this.write(0x10,Buffer.concat([this.field('MQTT'),Buffer.from([4,2,0,60]),this.field('voice-native-demo-probe')])));this.socket.on('data',b=>this.read(b));this.ping=setInterval(()=>this.write(0xc0,Buffer.alloc(0)),20000)}
+ field(s){let b=Buffer.from(s),h=Buffer.alloc(2);h.writeUInt16BE(b.length);return Buffer.concat([h,b])}
+ write(kind,b){let n=b.length,h=[kind];do{let x=n%128;n=Math.floor(n/128);h.push(x|(n?128:0))}while(n);this.socket.write(Buffer.concat([Buffer.from(h),b]))}
+ read(b){this.buffer=Buffer.concat([this.buffer,b]);while(this.buffer.length>=2){let n=0,m=1,i=1,x;do{if(i>=this.buffer.length)return;x=this.buffer[i++];n+=(x&127)*m;m*=128}while(x&128);if(this.buffer.length<i+n)return;let kind=this.buffer[0],body=this.buffer.subarray(i,i+n);this.buffer=this.buffer.subarray(i+n);if(kind===0x20){if(body[1])throw Error('MQTT rejected');this.write(0x82,Buffer.concat([Buffer.from([0,1]),this.field('/voice/project/'+this.device+'/down'),Buffer.from([0])]))}else if(kind===0x90)this.resolve();else if(kind>>4===3){let offset=2+body.readUInt16BE(0);if((kind>>1)&3){let id=body.subarray(offset,offset+2);offset+=2;this.write(0x40,id)}this.onMessage(JSON.parse(body.subarray(offset).toString()))}}}
+ publish(message){this.write(0x30,Buffer.concat([this.field('/voice/project/'+this.device+'/up'),Buffer.from(JSON.stringify({...message,from:this.device,timestamp:Math.floor(Date.now()/1000),valid:true}))]))}
+ close(){clearInterval(this.ping);this.write(0xe0,Buffer.alloc(0));this.socket.end()}
+}

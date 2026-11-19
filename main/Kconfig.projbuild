@@ -1,0 +1,13 @@
+menu "Voice intercom options"
+
+config VOICE_RADAR_ENABLE
+    bool "Include R24D presence radar"
+    depends on IDF_TARGET_ESP32S3
+    default n
+    help
+        Compile the optional receive-only 24 GHz presence radar into the
+        voice firmware. Uses UART2 RX on GPIO6 at 115200 baud. GPIO8 stays
+        an undriven input. No call actions or network protocol changes.
+        When disabled, radar sources and entry points are omitted entirely.
+
+endmenu

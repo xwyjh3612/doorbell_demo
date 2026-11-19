@@ -69,3 +69,20 @@ ota_command += ["-std=c++17", "-DMBEDTLS_CONFIG_FILE=\"host_mbedtls_config.h\"",
                 str(root / "tests/host/test_ota.cpp"), str(md5_object), "-o", str(ota_binary)]
 subprocess.run(ota_command, check=True, cwd=root)
 subprocess.run([str(ota_binary)], check=True, cwd=root)
+
+# Run the same mailbox implementation used by ML307 against real host threads.
+udp_binary = output / ("test_latest_udp_packet.exe" if sys.platform == "win32" else "test_latest_udp_packet")
+udp_command = ota_command[:2] if Path(compiler).stem == "zig" else ota_command[:1]
+udp_command += ["-std=c++17", "-g", "-I", str(root / "main"),
+                str(root / "tests/host/test_latest_udp_packet.cpp"), "-o", str(udp_binary)]
+if sys.platform != "win32":
+    udp_command.append("-pthread")
+subprocess.run(udp_command, check=True, cwd=root)
+subprocess.run([str(udp_binary)], check=True, cwd=root, timeout=60)
+
+radar_binary = output / ("test_radar_frame_parser.exe" if sys.platform == "win32" else "test_radar_frame_parser")
+radar_command = [compiler] + (["cc"] if Path(compiler).stem == "zig" else [])
+radar_command += ["-std=c11", "-Wall", "-Wextra", "-Werror", "-I", str(root / "main"),
+                  str(root / "tests/host/test_radar_frame_parser.c"), "-o", str(radar_binary)]
+subprocess.run(radar_command, check=True, cwd=root)
+subprocess.run([str(radar_binary)], check=True, cwd=root, timeout=30)

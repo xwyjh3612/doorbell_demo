@@ -127,7 +127,11 @@
   function connectWebSocket() {
     const host = document.getElementById('wsHost').value;
     const port = document.getElementById('wsPort').value;
-    const wsUrl = `ws://${host}:${port}/signaling`;
+    const endpoint = new URL('signaling', window.location.href);
+    endpoint.protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    endpoint.hostname = host;
+    endpoint.port = port;
+    const wsUrl = endpoint.href;
 
     updateConnectionStatus('connecting');
     log('info', `正在连接 WebSocket: ${wsUrl}`);
@@ -951,14 +955,12 @@
 
   function enableCallControls(enabled) {
     document.getElementById('btnCall').disabled = !enabled;
-    document.getElementById('btnRing').disabled = !enabled;
     document.getElementById('btnRequestIce').disabled = !enabled;
   }
 
   function resetCallState() {
     updateCallStatus('idle', '空闲');
-    document.getElementById('btnCall').disabled = false;
-    document.getElementById('btnRing').disabled = false;
+    document.getElementById('btnCall').disabled = !(ws && ws.readyState === WebSocket.OPEN);
     document.getElementById('btnAnswer').disabled = true;
     document.getElementById('btnReject').disabled = true;
     document.getElementById('btnHangup').disabled = true;
@@ -1034,7 +1036,11 @@
 
   // ==================== 初始化 ====================
   window.onload = () => {
+    document.getElementById('wsHost').value = window.location.hostname;
+    document.getElementById('wsPort').value = window.location.port;
     loadFromLocalStorage();
+    const target = new URLSearchParams(window.location.search).get('device');
+    if (target) document.getElementById('targetDeviceId').value = target;
     setupAutoSave();
     refreshDevices();
     log('info', '页面加载完成，等待连接...');

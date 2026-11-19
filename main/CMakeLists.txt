@@ -1,4 +1,8 @@
-idf_component_register(SRCS "main.cpp" "board.c" "media_sys.c" "webrtc_mqtt.c" "mqtt_signaling.cpp" "app_config.c"
- "network_4g.cpp" "ml307_udp_socket.cc" "door_bell_audio.c" "otaupgrade.cpp"
+set(voice_sources "main.cpp" "board.c" "media_sys.c" "webrtc_mqtt.c" "mqtt_signaling.cpp" "app_config.c"
+ "network_4g.cpp" "ml307_udp_socket.cc" "door_bell_audio.c" "otaupgrade.cpp")
+if(CONFIG_VOICE_RADAR_ENABLE)
+    list(APPEND voice_sources "radar_presence.c")
+endif()
+idf_component_register(SRCS ${voice_sources}
                        EMBED_TXTFILES "ring.aac" "open.aac" "join.aac"
                        INCLUDE_DIRS ".")

@@ -2,7 +2,9 @@
 #include "esp_log.h"
 #include "network_4g.h"
 #include "at_modem.h"
+#include "latest_udp_packet.h"
 
+#include <atomic>
 #include <string>
 #include <map>
 #include <memory>
@@ -28,15 +30,17 @@ EventGroupHandle_t udp_event = NULL;
 /* ======================= 核心结构 ======================= */
 
 struct UdpConnection {
-    std::unique_ptr<Udp> udp;
-
-    std::string last_packet;
-    volatile bool has_packet = false;
+    LatestUdpPacket latest_packet;
 
     std::string remote_ip;
     uint16_t remote_port = 0;
 
-    uint32_t last_used = 0;
+    std::atomic<uint32_t> last_used{0};
+
+    // Members are destroyed in reverse order. Destroy the modem UDP first:
+    // its destructor unregisters/waits for URC callbacks before latest_packet
+    // and the other callback-accessed fields are destroyed.
+    std::unique_ptr<Udp> udp;
 };
 
 /* ======================= UDP Manager ======================= */
@@ -101,8 +105,7 @@ public:
         /* 接收回调：设置事件标志 */
         conn->udp->OnMessage([c = conn.get()](const std::string& data) {
             if (data.empty()) return;
-            c->last_packet = data;   // 覆盖
-            c->has_packet = true;
+            c->latest_packet.publish(data); // 仍然只留最新包，覆盖未读的旧包
             c->last_used = xTaskGetTickCount();
 
             // 设置接收事件
@@ -137,12 +140,14 @@ public:
     }
 
     int recv_any(esp_peer_addr_t *addr, uint8_t *buf, int len) {
+        if (!buf || len <= 0) return -1;
         for (auto &kv : conns) {
             auto *c = kv.second.get();
-            if (c->has_packet) {
-                int n = std::min(len, (int)c->last_packet.size());
-                memcpy(buf, c->last_packet.data(), n);
-                c->has_packet = false;
+            std::string packet;
+            if (c->latest_packet.take(packet)) {
+                int n = std::min(len, (int)packet.size());
+                // packet is now owned by this reader, outside the mailbox lock.
+                memcpy(buf, packet.data(), n);
 
                 if (addr) {
                     addr->family = AF_INET;
@@ -176,8 +181,9 @@ private:
         std::string key;
 
         for (auto &kv : conns) {
-            if (kv.second->last_used < oldest) {
-                oldest = kv.second->last_used;
+            uint32_t last_used = kv.second->last_used.load(std::memory_order_relaxed);
+            if (last_used < oldest) {
+                oldest = last_used;
                 key = kv.first;
             }
         }

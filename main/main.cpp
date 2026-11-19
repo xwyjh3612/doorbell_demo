@@ -38,6 +38,9 @@ extern "C" {
 #include "app_config.h"
 #include "common.h"
 #include "esp_capture.h"
+#if CONFIG_VOICE_RADAR_ENABLE
+#include "radar_presence.h"
+#endif
 }
 
 static const char *TAG = "Webrtc_Test";
@@ -226,6 +229,12 @@ static int capture_to_player_cli(int argc, char **argv) {
     for (int i = 0; i < sizeof(cmds) / sizeof(cmds[0]); i++) {
         ESP_ERROR_CHECK(esp_console_cmd_register(&cmds[i]));
     }
+#if CONFIG_VOICE_RADAR_ENABLE
+    esp_err_t radar_console_ret = radar_presence_register_console();
+    if (radar_console_ret != ESP_OK) {
+        ESP_LOGW(TAG, "Radar console unavailable: %s", esp_err_to_name(radar_console_ret));
+    }
+#endif
     ESP_ERROR_CHECK(esp_console_start_repl(repl));
     return 0;
 }
@@ -353,6 +362,15 @@ void app_main() {
     
     // 初始化配置（从 NVS 加载）
     app_config_init();
+
+#if CONFIG_VOICE_RADAR_ENABLE
+    // Independent, receive-only radar observation. Failure must not stop voice.
+    esp_err_t radar_ret = radar_presence_start();
+    if (radar_ret != ESP_OK) {
+        ESP_LOGW(TAG, "Radar receiver unavailable: %s; continuing voice startup",
+                 esp_err_to_name(radar_ret));
+    }
+#endif
     
     new_4g();
 

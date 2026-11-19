@@ -1,0 +1,4 @@
+# Keep generated binaries locally; track their manifests and build instructions.
+*.bin
+*.apk
+*.inspect.ndjson

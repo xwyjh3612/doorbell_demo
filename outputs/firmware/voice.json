@@ -1,0 +1,9 @@
+{
+  "app_offset": "0x10000",
+  "size": 2779664,
+  "note": "App image only. Verify device partitions and preserve NVS/OTA selection before flashing.",
+  "variant": "voice",
+  "built_at": "2026-11-19T13:55:57.5480591+08:00",
+  "sha256": "94aa0758b65b91cc2ac66e66e3d3401af4773e16830c08c9d96cbf837a1c8d0b",
+  "radar": false
+}
