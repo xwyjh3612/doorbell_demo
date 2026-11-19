@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100">
+<rect width="1600" height="1100" fill="white"/>
+<text x="45" y="52" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="31" fill="#213547" text-anchor="start">语音对讲首批5台 - 外电、充电与电池温度</text>
+<text x="45" y="87" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="start">V1工程电路图；同名绿色网络标签电气相连；按引脚编号接线。</text>
+<text x="45" y="1034" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#9b4b16" text-anchor="start">询价/复核版本：PCB未布线，电源与机械未验证，暂不下单生产。</text>
+<text x="1545" y="1070" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#213547" text-anchor="end">2026-11-19  /  1 of 5</text>
+<polyline points="45,107 1555,107" fill="none" stroke="#aebdca" stroke-width="1"/>
+<rect x="45" y="130" width="415" height="730" fill="#ffffff" stroke="#bcc9d4" stroke-width="1"/>
+<text x="65" y="160" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="23" fill="#213547" text-anchor="start">输入/受保护电池/NTC</text>
+<rect x="65" y="182" width="370" height="123" fill="#f5f8fa" stroke="#bcc9d4" stroke-width="1"/>
+<text x="82" y="209" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="19" fill="#213547" text-anchor="start">J1  5.2V INPUT</text>
+<polyline points="85,235 120,235" fill="none" stroke="#246a57" stroke-width="2"/>
+<circle cx="85" cy="235" r="3" fill="#246a57"/>
+<text x="133" y="240" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="start">1</text>
+<text x="166" y="240" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">VIN_EXT</text>
+<polyline points="85,264 120,264" fill="none" stroke="#246a57" stroke-width="2"/>
+<circle cx="85" cy="264" r="3" fill="#246a57"/>
+<text x="133" y="269" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="start">2</text>
+<text x="166" y="269" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">GND</text>
+<rect x="65" y="330" width="370" height="123" fill="#f5f8fa" stroke="#bcc9d4" stroke-width="1"/>
+<text x="82" y="357" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="19" fill="#213547" text-anchor="start">J2  1S BATTERY</text>
+<polyline points="85,383 120,383" fill="none" stroke="#246a57" stroke-width="2"/>
+<circle cx="85" cy="383" r="3" fill="#246a57"/>
+<text x="133" y="388" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="start">1</text>
+<text x="166" y="388" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">VBAT</text>
+<polyline points="85,412 120,412" fill="none" stroke="#246a57" stroke-width="2"/>
+<circle cx="85" cy="412" r="3" fill="#246a57"/>
+<text x="133" y="417" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="start">2</text>
+<text x="166" y="417" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">GND</text>
+<rect x="65" y="478" width="370" height="123" fill="#f5f8fa" stroke="#bcc9d4" stroke-width="1"/>
+<text x="82" y="505" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="19" fill="#213547" text-anchor="start">J4  BAT NTC</text>
+<polyline points="85,531 120,531" fill="none" stroke="#246a57" stroke-width="2"/>
+<circle cx="85" cy="531" r="3" fill="#246a57"/>
+<text x="133" y="536" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="start">1</text>
+<text x="166" y="536" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">NTC</text>
+<polyline points="85,560 120,560" fill="none" stroke="#246a57" stroke-width="2"/>
+<circle cx="85" cy="560" r="3" fill="#246a57"/>
+<text x="133" y="565" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="start">2</text>
+<text x="166" y="565" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">GND</text>
+<text x="65" y="660" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#735223" text-anchor="start">J2接电池包保护输出，非裸电芯。</text>
+<text x="65" y="687" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#735223" text-anchor="start">J4接电池上的10k NTC。</text>
+<text x="65" y="714" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#735223" text-anchor="start">B值和电芯规格未冻结。</text>
+<text x="65" y="741" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#735223" text-anchor="start">J1候选约5.2V；最终适配器待定。</text>
+<text x="65" y="768" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#735223" text-anchor="start">暂用有限流台式电源验证。</text>
+<rect x="485" y="130" width="1070" height="730" fill="#ffffff" stroke="#bcc9d4" stroke-width="1"/>
+<text x="505" y="160" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="23" fill="#213547" text-anchor="start">充电IC与温度/充电电流设置</text>
+<rect x="720" y="180" width="360" height="275" fill="#f3f6f9" stroke="#526d85" stroke-width="2"/>
+<text x="900.0" y="209" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">U1  TP4056 TPOWER</text>
+<polyline points="655,245 720,245" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="730" y="239" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="start">1 TEMP</text>
+<text x="648" y="239" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">TEMP</text>
+<polyline points="655,288 720,288" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="730" y="282" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="start">2 PROG</text>
+<text x="648" y="282" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">CHG_PROG</text>
+<polyline points="655,331 720,331" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="730" y="325" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="start">3 GND</text>
+<text x="648" y="325" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">GND</text>
+<polyline points="655,374 720,374" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="730" y="368" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="start">4 VCC</text>
+<text x="648" y="368" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">VIN_EXT</text>
+<polyline points="655,417 720,417" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="730" y="411" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="start">5 BAT</text>
+<text x="648" y="411" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">VBAT</text>
+<polyline points="1080,245 1145,245" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="1070" y="239" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="end">6 STDBY</text>
+<text x="1152" y="239" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">DONE</text>
+<polyline points="1080,288 1145,288" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="1070" y="282" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="end">7 CHRG</text>
+<text x="1152" y="282" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">CHRG</text>
+<polyline points="1080,331 1145,331" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="1070" y="325" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="end">8 CE</text>
+<text x="1152" y="325" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">VIN_EXT</text>
+<polyline points="1080,374 1145,374" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="1070" y="368" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="end">9 EP</text>
+<text x="1152" y="368" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">GND</text>
+<text x="680.0" y="518" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">R1  2.7k</text>
+<polyline points="550,560 650.0,560" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="710.0,560 810,560" fill="none" stroke="#246a57" stroke-width="2"/>
+<rect x="650.0" y="550" width="60.0" height="20" fill="#ffffff" stroke="#246a57" stroke-width="2"/>
+<text x="550" y="590" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">CHG_PROG</text>
+<text x="810" y="590" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">GND</text>
+<text x="1180.0" y="518" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">R2  9.1k</text>
+<polyline points="1050,560 1150.0,560" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1210.0,560 1310,560" fill="none" stroke="#246a57" stroke-width="2"/>
+<rect x="1150.0" y="550" width="60.0" height="20" fill="#ffffff" stroke="#246a57" stroke-width="2"/>
+<text x="1050" y="590" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">VIN_EXT</text>
+<text x="1310" y="590" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">TEMP</text>
+<text x="680.0" y="628" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">R3  3.3k</text>
+<polyline points="550,670 650.0,670" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="710.0,670 810,670" fill="none" stroke="#246a57" stroke-width="2"/>
+<rect x="650.0" y="660" width="60.0" height="20" fill="#ffffff" stroke="#246a57" stroke-width="2"/>
+<text x="550" y="700" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">TEMP</text>
+<text x="810" y="700" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">NTC</text>
+<text x="1180.0" y="628" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">C1  10u 10V</text>
+<polyline points="1050,670 1150.0,670" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1210.0,670 1310,670" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1170.0,651 1170.0,689" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1190.0,651 1190.0,689" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1150.0,670 1170.0,670" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1190.0,670 1210.0,670" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="1050" y="700" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">VIN_EXT</text>
+<text x="1310" y="700" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">GND</text>
+<text x="680.0" y="738" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">C2  10u 10V</text>
+<polyline points="550,780 650.0,780" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="710.0,780 810,780" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="670.0,761 670.0,799" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="690.0,761 690.0,799" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="650.0,780 670.0,780" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="690.0,780 710.0,780" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="550" y="810" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">VBAT</text>
+<text x="810" y="810" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">GND</text>
+<text x="1180.0" y="738" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">C12  100n</text>
+<polyline points="1050,780 1150.0,780" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1210.0,780 1310,780" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1170.0,761 1170.0,799" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1190.0,761 1190.0,799" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1150.0,780 1170.0,780" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1190.0,780 1210.0,780" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="1050" y="810" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">VIN_EXT</text>
+<text x="1310" y="810" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">GND</text>
+<text x="505" y="900" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#735223" text-anchor="start">R1=2.7k：按TPOWER手册约0.407A充电；更换品牌须重算。</text>
+<text x="505" y="927" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#735223" text-anchor="start">温度网络：VIN_EXT - R2 - TEMP - R3 - NTC - 电池10k NTC - GND。</text>
+<text x="505" y="954" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#735223" text-anchor="start">U1散热焊盘与钢网、电池充电条件须工程复核。</text>
+</svg>

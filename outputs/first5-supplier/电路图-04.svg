@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100">
+<rect width="1600" height="1100" fill="white"/>
+<text x="45" y="52" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="31" fill="#213547" text-anchor="start">语音对讲首批5台 - 电量/外电检测、状态与按钮</text>
+<text x="45" y="87" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="start">V1工程电路图；同名绿色网络标签电气相连；按引脚编号接线。</text>
+<text x="45" y="1034" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#9b4b16" text-anchor="start">询价/复核版本：PCB未布线，电源与机械未验证，暂不下单生产。</text>
+<text x="1545" y="1070" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#213547" text-anchor="end">2026-11-19  /  4 of 5</text>
+<polyline points="45,107 1555,107" fill="none" stroke="#aebdca" stroke-width="1"/>
+<rect x="45" y="130" width="1510" height="330" fill="#ffffff" stroke="#bcc9d4" stroke-width="1"/>
+<text x="65" y="160" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="23" fill="#213547" text-anchor="start">ADC分压与滤波</text>
+<text x="210.0" y="203" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">R12  100k 1%</text>
+<polyline points="80,245 180.0,245" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="240.0,245 340,245" fill="none" stroke="#246a57" stroke-width="2"/>
+<rect x="180.0" y="235" width="60.0" height="20" fill="#ffffff" stroke="#246a57" stroke-width="2"/>
+<text x="80" y="275" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">VBAT</text>
+<text x="340" y="275" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">ADC_BAT</text>
+<text x="680.0" y="203" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">R13  100k 1%</text>
+<polyline points="550,245 650.0,245" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="710.0,245 810,245" fill="none" stroke="#246a57" stroke-width="2"/>
+<rect x="650.0" y="235" width="60.0" height="20" fill="#ffffff" stroke="#246a57" stroke-width="2"/>
+<text x="550" y="275" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">ADC_BAT</text>
+<text x="810" y="275" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">GND</text>
+<text x="1150.0" y="203" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">C13  100n</text>
+<polyline points="1020,245 1120.0,245" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1180.0,245 1280,245" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1140.0,226 1140.0,264" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1160.0,226 1160.0,264" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1120.0,245 1140.0,245" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1160.0,245 1180.0,245" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="1020" y="275" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">ADC_BAT</text>
+<text x="1280" y="275" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">GND</text>
+<text x="210.0" y="328" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">R14  150k 1%</text>
+<polyline points="80,370 180.0,370" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="240.0,370 340,370" fill="none" stroke="#246a57" stroke-width="2"/>
+<rect x="180.0" y="360" width="60.0" height="20" fill="#ffffff" stroke="#246a57" stroke-width="2"/>
+<text x="80" y="400" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">VIN_EXT</text>
+<text x="340" y="400" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">ADC_EXT</text>
+<text x="680.0" y="328" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">R15  100k 1%</text>
+<polyline points="550,370 650.0,370" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="710.0,370 810,370" fill="none" stroke="#246a57" stroke-width="2"/>
+<rect x="650.0" y="360" width="60.0" height="20" fill="#ffffff" stroke="#246a57" stroke-width="2"/>
+<text x="550" y="400" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">ADC_EXT</text>
+<text x="810" y="400" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">GND</text>
+<text x="1150.0" y="328" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">C14  100n</text>
+<polyline points="1020,370 1120.0,370" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1180.0,370 1280,370" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1140.0,351 1140.0,389" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1160.0,351 1160.0,389" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1120.0,370 1140.0,370" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1160.0,370 1180.0,370" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="1020" y="400" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">ADC_EXT</text>
+<text x="1280" y="400" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">GND</text>
+<text x="80" y="433" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#735223" text-anchor="start">ADC_BAT = VBAT / 2；ADC_EXT = VIN_EXT x 0.4。ADC GPIO未分配，固件待适配。</text>
+<rect x="45" y="480" width="695" height="390" fill="#ffffff" stroke="#bcc9d4" stroke-width="1"/>
+<text x="65" y="510" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="23" fill="#213547" text-anchor="start">3.3V上拉状态输出</text>
+<text x="215.0" y="543" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">R16  10k</text>
+<polyline points="85,585 185.0,585" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="245.0,585 345,585" fill="none" stroke="#246a57" stroke-width="2"/>
+<rect x="185.0" y="575" width="60.0" height="20" fill="#ffffff" stroke="#246a57" stroke-width="2"/>
+<text x="85" y="615" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">V3V3</text>
+<text x="345" y="615" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">MUX_ST</text>
+<text x="215.0" y="653" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">R17  10k</text>
+<polyline points="85,695 185.0,695" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="245.0,695 345,695" fill="none" stroke="#246a57" stroke-width="2"/>
+<rect x="185.0" y="685" width="60.0" height="20" fill="#ffffff" stroke="#246a57" stroke-width="2"/>
+<text x="85" y="725" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">V3V3</text>
+<text x="345" y="725" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">CHRG</text>
+<text x="215.0" y="763" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">R18  10k</text>
+<polyline points="85,805 185.0,805" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="245.0,805 345,805" fill="none" stroke="#246a57" stroke-width="2"/>
+<rect x="185.0" y="795" width="60.0" height="20" fill="#ffffff" stroke="#246a57" stroke-width="2"/>
+<text x="85" y="835" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">V3V3</text>
+<text x="345" y="835" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">DONE</text>
+<text x="80" y="900" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#735223" text-anchor="start">MUX_ST、CHRG、DONE仅用3.3V上拉。</text>
+<rect x="760" y="480" width="795" height="455" fill="#ffffff" stroke="#bcc9d4" stroke-width="1"/>
+<text x="780" y="510" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="23" fill="#213547" text-anchor="start">常开自复位呼叫按钮</text>
+<rect x="785" y="542" width="320" height="123" fill="#f5f8fa" stroke="#bcc9d4" stroke-width="1"/>
+<text x="802" y="569" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="19" fill="#213547" text-anchor="start">J10  CALL BUTTON</text>
+<polyline points="805,595 840,595" fill="none" stroke="#246a57" stroke-width="2"/>
+<circle cx="805" cy="595" r="3" fill="#246a57"/>
+<text x="853" y="600" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="start">1</text>
+<text x="886" y="600" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">BTN</text>
+<polyline points="805,624 840,624" fill="none" stroke="#246a57" stroke-width="2"/>
+<circle cx="805" cy="624" r="3" fill="#246a57"/>
+<text x="853" y="629" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="start">2</text>
+<text x="886" y="629" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">GND</text>
+<rect x="1145" y="542" width="380" height="152" fill="#f5f8fa" stroke="#bcc9d4" stroke-width="1"/>
+<text x="1162" y="569" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="19" fill="#213547" text-anchor="start">JP1  BUTTON IO0 / IO9</text>
+<polyline points="1165,595 1200,595" fill="none" stroke="#246a57" stroke-width="2"/>
+<circle cx="1165" cy="595" r="3" fill="#246a57"/>
+<text x="1213" y="600" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="start">1</text>
+<text x="1246" y="600" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">IO0</text>
+<polyline points="1165,624 1200,624" fill="none" stroke="#246a57" stroke-width="2"/>
+<circle cx="1165" cy="624" r="3" fill="#246a57"/>
+<text x="1213" y="629" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="start">2</text>
+<text x="1246" y="629" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">BTN</text>
+<polyline points="1165,653 1200,653" fill="none" stroke="#246a57" stroke-width="2"/>
+<circle cx="1165" cy="653" r="3" fill="#246a57"/>
+<text x="1213" y="658" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="start">3</text>
+<text x="1246" y="658" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">IO9</text>
+<text x="925.0" y="743" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">R19  10k</text>
+<polyline points="795,785 895.0,785" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="955.0,785 1055,785" fill="none" stroke="#246a57" stroke-width="2"/>
+<rect x="895.0" y="775" width="60.0" height="20" fill="#ffffff" stroke="#246a57" stroke-width="2"/>
+<text x="795" y="815" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">V3V3</text>
+<text x="1055" y="815" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">BTN</text>
+<text x="1300.0" y="743" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">C15  100n</text>
+<polyline points="1170,785 1270.0,785" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1330.0,785 1430,785" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1290.0,766 1290.0,804" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1310.0,766 1310.0,804" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1270.0,785 1290.0,785" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1310.0,785 1330.0,785" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="1170" y="815" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">BTN</text>
+<text x="1430" y="815" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">GND</text>
+<text x="785" y="866" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#735223" text-anchor="start">按钮两端接BTN/GND。JP1：1-2选GPIO0，2-3选GPIO9。</text>
+<text x="785" y="893" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#735223" text-anchor="start">推荐避开GPIO0启动绑带；GPIO9和明确按下/消抖需固件适配。</text>
+<text x="785" y="920" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#735223" text-anchor="start">当前固件不是直接匹配新按钮电路，不由贴片商家自行更改。</text>
+</svg>

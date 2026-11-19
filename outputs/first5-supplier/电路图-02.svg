@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100">
+<rect width="1600" height="1100" fill="white"/>
+<text x="45" y="52" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="31" fill="#213547" text-anchor="start">语音对讲首批5台 - 电池升压与硬件欠压</text>
+<text x="45" y="87" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="start">V1工程电路图；同名绿色网络标签电气相连；按引脚编号接线。</text>
+<text x="45" y="1034" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#9b4b16" text-anchor="start">询价/复核版本：PCB未布线，电源与机械未验证，暂不下单生产。</text>
+<text x="1545" y="1070" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#213547" text-anchor="end">2026-11-19  /  2 of 5</text>
+<polyline points="45,107 1555,107" fill="none" stroke="#aebdca" stroke-width="1"/>
+<rect x="45" y="130" width="1510" height="440" fill="#ffffff" stroke="#bcc9d4" stroke-width="1"/>
+<text x="65" y="160" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="23" fill="#213547" text-anchor="start">升压IC及主电感</text>
+<rect x="445" y="200" width="330" height="232" fill="#f3f6f9" stroke="#526d85" stroke-width="2"/>
+<text x="610.0" y="229" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">U2  TPS61230ARNSR</text>
+<polyline points="380,265 445,265" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="455" y="259" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="start">1 CBST</text>
+<text x="373" y="259" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">CBST</text>
+<polyline points="380,308 445,308" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="455" y="302" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="start">2 EN</text>
+<text x="373" y="302" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">BOOST_EN</text>
+<polyline points="380,351 445,351" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="455" y="345" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="start">3 FB</text>
+<text x="373" y="345" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">BOOST_FB</text>
+<polyline points="380,394 445,394" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="455" y="388" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="start">4 VIN</text>
+<text x="373" y="388" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">VBAT</text>
+<polyline points="775,265 840,265" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="765" y="259" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="end">5 SW</text>
+<text x="847" y="259" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">SW</text>
+<polyline points="775,308 840,308" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="765" y="302" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="end">6 GND</text>
+<text x="847" y="302" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">GND</text>
+<polyline points="775,351 840,351" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="765" y="345" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="end">7 VOUT</text>
+<text x="847" y="345" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">BOOST5V</text>
+<text x="1200.0" y="208" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">L1  SWPA6045S1R0NT</text>
+<polyline points="1070,250 1170.0,250" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1230.0,250 1330,250" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1170.0,250.0 1170.9375,247.65891613580646 1171.875,245.40779881161893 1172.8125,243.33315720376478 1173.75,241.51471862576142 1174.6875,240.02236465236945 1175.625,238.91344560986457 1176.5625,238.23057663516124 1177.5,238.0 1178.4375,238.23057663516124 1179.375,238.91344560986457 1180.3125,240.02236465236945 1181.25,241.51471862576142 1182.1875,243.33315720376478 1183.125,245.40779881161893 1184.0625,247.65891613580646 1185.0,250.0 1185.9375,247.65891613580646 1186.875,245.40779881161893 1187.8125,243.33315720376478 1188.75,241.51471862576142 1189.6875,240.02236465236945 1190.625,238.91344560986457 1191.5625,238.23057663516124 1192.5,238.0 1193.4375,238.23057663516124 1194.375,238.91344560986457 1195.3125,240.02236465236945 1196.25,241.51471862576142 1197.1875,243.33315720376478 1198.125,245.4077988116189 1199.0625,247.65891613580646 1200.0,250.0 1200.9375,247.65891613580646 1201.875,245.40779881161893 1202.8125,243.33315720376478 1203.75,241.51471862576142 1204.6875,240.02236465236945 1205.625,238.91344560986457 1206.5625,238.23057663516124 1207.5,238.0 1208.4375,238.23057663516124 1209.375,238.91344560986457 1210.3125,240.02236465236945 1211.25,241.51471862576142 1212.1875,243.33315720376478 1213.125,245.4077988116189 1214.0625,247.65891613580646 1215.0,250.0 1215.9375,247.65891613580646 1216.875,245.40779881161893 1217.8125,243.33315720376478 1218.75,241.51471862576142 1219.6875,240.02236465236945 1220.625,238.91344560986457 1221.5625,238.23057663516124 1222.5,238.0 1223.4375,238.23057663516124 1224.375,238.91344560986457 1225.3125,240.02236465236945 1226.25,241.51471862576142 1227.1875,243.33315720376478 1228.125,245.4077988116189 1229.0625,247.65891613580646 1230.0,250.0" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="1070" y="280" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">VBAT</text>
+<text x="1330" y="280" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">SW</text>
+<text x="1200.0" y="343" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">C6  10n</text>
+<polyline points="1070,385 1170.0,385" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1230.0,385 1330,385" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1190.0,366 1190.0,404" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1210.0,366 1210.0,404" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1170.0,385 1190.0,385" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1210.0,385 1230.0,385" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="1070" y="415" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">CBST</text>
+<text x="1330" y="415" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">SW</text>
+<text x="1000" y="465" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#735223" text-anchor="start">VBAT - L1 - SW；C6连接CBST与SW。</text>
+<text x="1000" y="492" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#735223" text-anchor="start">SW是高频开关节点，不能长线绕行。</text>
+<text x="1000" y="519" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#735223" text-anchor="start">大电流铜皮/散热尚未完成设计。</text>
+<rect x="45" y="590" width="930" height="330" fill="#ffffff" stroke="#bcc9d4" stroke-width="1"/>
+<text x="65" y="620" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="23" fill="#213547" text-anchor="start">反馈和局部电容</text>
+<text x="205.0" y="658" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">R4  331k 0.1%</text>
+<polyline points="75,700 175.0,700" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="235.0,700 335,700" fill="none" stroke="#246a57" stroke-width="2"/>
+<rect x="175.0" y="690" width="60.0" height="20" fill="#ffffff" stroke="#246a57" stroke-width="2"/>
+<text x="75" y="730" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">BOOST5V</text>
+<text x="335" y="730" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">BOOST_FB</text>
+<text x="505.0" y="658" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">R5  100k 0.1%</text>
+<polyline points="375,700 475.0,700" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="535.0,700 635,700" fill="none" stroke="#246a57" stroke-width="2"/>
+<rect x="475.0" y="690" width="60.0" height="20" fill="#ffffff" stroke="#246a57" stroke-width="2"/>
+<text x="375" y="730" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">BOOST_FB</text>
+<text x="635" y="730" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">GND</text>
+<text x="805.0" y="658" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">C3  22u 10V</text>
+<polyline points="675,700 775.0,700" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="835.0,700 935,700" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="795.0,681 795.0,719" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="815.0,681 815.0,719" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="775.0,700 795.0,700" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="815.0,700 835.0,700" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="675" y="730" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">VBAT</text>
+<text x="935" y="730" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">GND</text>
+<text x="205.0" y="793" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">C4  22u 10V</text>
+<polyline points="75,835 175.0,835" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="235.0,835 335,835" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="195.0,816 195.0,854" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="215.0,816 215.0,854" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="175.0,835 195.0,835" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="215.0,835 235.0,835" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="75" y="865" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">BOOST5V</text>
+<text x="335" y="865" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">GND</text>
+<text x="505.0" y="793" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">C5  22u 10V</text>
+<polyline points="375,835 475.0,835" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="535.0,835 635,835" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="495.0,816 495.0,854" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="515.0,816 515.0,854" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="475.0,835 495.0,835" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="515.0,835 535.0,835" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="375" y="865" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">BOOST5V</text>
+<text x="635" y="865" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">GND</text>
+<text x="805.0" y="793" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">C10  100n</text>
+<polyline points="675,835 775.0,835" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="835.0,835 935,835" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="795.0,816 795.0,854" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="815.0,816 815.0,854" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="775.0,835 795.0,835" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="815.0,835 835.0,835" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="675" y="865" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">VBAT</text>
+<text x="935" y="865" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">GND</text>
+<rect x="995" y="590" width="560" height="330" fill="#ffffff" stroke="#bcc9d4" stroke-width="1"/>
+<text x="1015" y="620" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="23" fill="#213547" text-anchor="start">独立电池欠压保护</text>
+<rect x="1150" y="650" width="215" height="146" fill="#f3f6f9" stroke="#526d85" stroke-width="2"/>
+<text x="1257.5" y="679" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">U4  TLV803EA30DBZR</text>
+<polyline points="1085,715 1150,715" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="1160" y="709" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="start">1 GND</text>
+<text x="1078" y="709" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">GND</text>
+<polyline points="1085,758 1150,758" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="1160" y="752" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="start">2 RESET_N</text>
+<text x="1078" y="752" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">BOOST_EN</text>
+<polyline points="1365,715 1430,715" fill="none" stroke="#246a57" stroke-width="2"/>
+<text x="1355" y="709" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#213547" text-anchor="end">3 VDD</text>
+<text x="1437" y="709" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">VBAT</text>
+<text x="1180.0" y="823" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="18" fill="#213547" text-anchor="middle">R6  100k</text>
+<polyline points="1050,865 1150.0,865" fill="none" stroke="#246a57" stroke-width="2"/>
+<polyline points="1210.0,865 1310,865" fill="none" stroke="#246a57" stroke-width="2"/>
+<rect x="1150.0" y="855" width="60.0" height="20" fill="#ffffff" stroke="#246a57" stroke-width="2"/>
+<text x="1050" y="895" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="start">VBAT</text>
+<text x="1310" y="895" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="16" fill="#246a57" text-anchor="end">BOOST_EN</text>
+<text x="450" y="957" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#735223" text-anchor="start">反馈BOOST5V - R4 - BOOST_FB - R5 - GND；PWM典型约5.15V。</text>
+<text x="450" y="984" font-family="SimHei,Microsoft YaHei,Arial,sans-serif" font-size="17" fill="#735223" text-anchor="start">C4/C5须核直流偏压有效容量；U4标称3.08V/200ms，低电量回弹重复启动待测。</text>
+</svg>

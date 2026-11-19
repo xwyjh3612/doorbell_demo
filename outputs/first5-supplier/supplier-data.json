@@ -1,0 +1,640 @@
+{
+  "date": "2026-11-19",
+  "quantity": 5,
+  "status": "询价与工程复核；未发布生产",
+  "rows": [
+    {
+      "category": "SMT",
+      "refs": [
+        "U1"
+      ],
+      "model": "TP4056 / TPOWER",
+      "package": "ESOP8 / SOP8-PP",
+      "unit": 1,
+      "spare": 2,
+      "spec": "固定品牌；同名不同厂不得直接替换；散热焊盘待最终复核",
+      "status": "料号确定；设计/封装待复核",
+      "code": "C382139",
+      "source": "https://item.szlcsc.com/354934.html",
+      "required5": 5,
+      "suggested": 7
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "U2"
+      ],
+      "model": "TPS61230ARNSR / TI",
+      "package": "RNS0007A VQFN-HR-7",
+      "unit": 1,
+      "spare": 2,
+      "spec": "7脚非对称封装；不能用普通QFN替代",
+      "status": "料号确定；设计/封装待复核",
+      "code": "C376005",
+      "source": "https://item.szlcsc.com/348561.html",
+      "required5": 5,
+      "suggested": 7
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "U3"
+      ],
+      "model": "TPS2117DRLR / TI",
+      "package": "DRL0008A SOT-5X3-8",
+      "unit": 1,
+      "spare": 2,
+      "spec": "8脚0.5mm间距；型号后缀必须一致",
+      "status": "料号确定；设计/封装待复核",
+      "code": "C22399676",
+      "source": "https://item.szlcsc.com/24017237.html",
+      "required5": 5,
+      "suggested": 7
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "U4"
+      ],
+      "model": "TLV803EA30DBZR / TI",
+      "package": "SOT-23-3 / DBZ",
+      "unit": 1,
+      "spare": 2,
+      "spec": "开漏、下降阈值3.08V、释放延时200ms；不得换推挽版",
+      "status": "料号确定；设计/封装待复核",
+      "code": "C5218924",
+      "source": "https://item.szlcsc.com/5914664.html",
+      "required5": 5,
+      "suggested": 7
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "U5"
+      ],
+      "model": "LM393DR / TI",
+      "package": "SOIC-8",
+      "unit": 1,
+      "spare": 2,
+      "spec": "使用无B后缀的LM393DR；不得静默换型号",
+      "status": "料号确定；设计/封装待复核",
+      "code": "",
+      "source": "https://item.szlcsc.com/68565.html",
+      "required5": 5,
+      "suggested": 7
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "U6"
+      ],
+      "model": "TL431BIDBZR / TI",
+      "package": "SOT-23-3 / DBZ",
+      "unit": 1,
+      "spare": 2,
+      "spec": "TI引脚1=K、2=REF、3=A；核对厂家脚序",
+      "status": "料号确定；设计/封装待复核",
+      "code": "",
+      "source": "https://item.szlcsc.com/42267.html",
+      "required5": 5,
+      "suggested": 7
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "D1"
+      ],
+      "model": "BAT54C,215 / Nexperia",
+      "package": "SOT-23-3",
+      "unit": 1,
+      "spare": 2,
+      "spec": "双二极管共阴极；不是BAT54A/单二极管",
+      "status": "料号确定；设计/封装待复核",
+      "code": "",
+      "source": "https://item.szlcsc.com/38684.html",
+      "required5": 5,
+      "suggested": 7
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "L1"
+      ],
+      "model": "SWPA6045S1R0NT / Sunlord",
+      "package": "SMD 6x6mm / 6045",
+      "unit": 1,
+      "spare": 2,
+      "spec": "1uH±30%；额定5.14A、Isat9.85A、DCR11mΩ参考规格",
+      "status": "料号确定；设计/封装待复核",
+      "code": "C96955",
+      "source": "https://item.szlcsc.com/98160.html",
+      "required5": 5,
+      "suggested": 7
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "R1"
+      ],
+      "model": "2.7k 1%",
+      "package": "0603 / 公制1608",
+      "unit": 1,
+      "spare": 10,
+      "spec": "≥0.1W；按表中精度；温漂和额定电压按实际系列核对",
+      "status": "规格明确；实际采购料号待确认",
+      "code": "",
+      "source": "design.json / 原厂电容选择要求",
+      "required5": 5,
+      "suggested": 15
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "R2"
+      ],
+      "model": "9.1k 1%",
+      "package": "0603 / 公制1608",
+      "unit": 1,
+      "spare": 10,
+      "spec": "≥0.1W；按表中精度；温漂和额定电压按实际系列核对",
+      "status": "规格明确；实际采购料号待确认",
+      "code": "",
+      "source": "design.json / 原厂电容选择要求",
+      "required5": 5,
+      "suggested": 15
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "R3"
+      ],
+      "model": "3.3k 1%",
+      "package": "0603 / 公制1608",
+      "unit": 1,
+      "spare": 10,
+      "spec": "≥0.1W；按表中精度；温漂和额定电压按实际系列核对",
+      "status": "规格明确；实际采购料号待确认",
+      "code": "",
+      "source": "design.json / 原厂电容选择要求",
+      "required5": 5,
+      "suggested": 15
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "C1",
+        "C2",
+        "C16"
+      ],
+      "model": "10uF ≥10V X5R/X7R ±20%",
+      "package": "0805 / 公制2012",
+      "unit": 3,
+      "spare": 10,
+      "spec": "无固定厂家料号；商家提供实际品牌和型号后确认",
+      "status": "规格明确；实际采购料号待确认",
+      "code": "",
+      "source": "design.json / 原厂电容选择要求",
+      "required5": 15,
+      "suggested": 25
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "C3",
+        "C4",
+        "C5"
+      ],
+      "model": "22uF ≥10V X5R/X7R ±20%",
+      "package": "0805 / 公制2012",
+      "unit": 3,
+      "spare": 10,
+      "spec": "C4/C5在约5.15V直流偏压下的合计有效容量须满足升压要求；提供偏压曲线",
+      "status": "规格明确；实际采购料号待确认",
+      "code": "",
+      "source": "design.json / 原厂电容选择要求",
+      "required5": 15,
+      "suggested": 25
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "C6"
+      ],
+      "model": "10nF ≥10V X5R/X7R ±20%",
+      "package": "0603 / 公制1608",
+      "unit": 1,
+      "spare": 10,
+      "spec": "无固定厂家料号；商家提供实际品牌和型号后确认",
+      "status": "规格明确；实际采购料号待确认",
+      "code": "",
+      "source": "design.json / 原厂电容选择要求",
+      "required5": 5,
+      "suggested": 15
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "R4"
+      ],
+      "model": "331k 0.1%",
+      "package": "0603 / 公制1608",
+      "unit": 1,
+      "spare": 10,
+      "spec": "≥0.1W；按表中精度；温漂和额定电压按实际系列核对",
+      "status": "规格明确；实际采购料号待确认",
+      "code": "",
+      "source": "design.json / 原厂电容选择要求",
+      "required5": 5,
+      "suggested": 15
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "R5",
+        "R9"
+      ],
+      "model": "100k 0.1%",
+      "package": "0603 / 公制1608",
+      "unit": 2,
+      "spare": 10,
+      "spec": "≥0.1W；按表中精度；温漂和额定电压按实际系列核对",
+      "status": "规格明确；实际采购料号待确认",
+      "code": "",
+      "source": "design.json / 原厂电容选择要求",
+      "required5": 10,
+      "suggested": 20
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "C7",
+        "C8"
+      ],
+      "model": "1uF ≥10V X5R/X7R ±20%",
+      "package": "0603 / 公制1608",
+      "unit": 2,
+      "spare": 10,
+      "spec": "无固定厂家料号；商家提供实际品牌和型号后确认",
+      "status": "规格明确；实际采购料号待确认",
+      "code": "",
+      "source": "design.json / 原厂电容选择要求",
+      "required5": 10,
+      "suggested": 20
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "R6",
+        "R12",
+        "R13",
+        "R15"
+      ],
+      "model": "100k 1%",
+      "package": "0603 / 公制1608",
+      "unit": 4,
+      "spare": 10,
+      "spec": "≥0.1W；按表中精度；温漂和额定电压按实际系列核对",
+      "status": "规格明确；实际采购料号待确认",
+      "code": "",
+      "source": "design.json / 原厂电容选择要求",
+      "required5": 20,
+      "suggested": 30
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15"
+      ],
+      "model": "100nF ≥10V X5R/X7R ±20%",
+      "package": "0603 / 公制1608",
+      "unit": 6,
+      "spare": 10,
+      "spec": "无固定厂家料号；商家提供实际品牌和型号后确认",
+      "status": "规格明确；实际采购料号待确认",
+      "code": "",
+      "source": "design.json / 原厂电容选择要求",
+      "required5": 30,
+      "suggested": 40
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "R7"
+      ],
+      "model": "1.8k 1%",
+      "package": "0603 / 公制1608",
+      "unit": 1,
+      "spare": 10,
+      "spec": "≥0.1W；按表中精度；温漂和额定电压按实际系列核对",
+      "status": "规格明确；实际采购料号待确认",
+      "code": "",
+      "source": "design.json / 原厂电容选择要求",
+      "required5": 5,
+      "suggested": 15
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "R8"
+      ],
+      "model": "105k 0.1%",
+      "package": "0603 / 公制1608",
+      "unit": 1,
+      "spare": 10,
+      "spec": "≥0.1W；按表中精度；温漂和额定电压按实际系列核对",
+      "status": "规格明确；实际采购料号待确认",
+      "code": "",
+      "source": "design.json / 原厂电容选择要求",
+      "required5": 5,
+      "suggested": 15
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "R10"
+      ],
+      "model": "5.6M 1%",
+      "package": "0603 / 公制1608",
+      "unit": 1,
+      "spare": 10,
+      "spec": "≥0.1W；按表中精度；温漂和额定电压按实际系列核对",
+      "status": "规格明确；实际采购料号待确认",
+      "code": "",
+      "source": "design.json / 原厂电容选择要求",
+      "required5": 5,
+      "suggested": 15
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "R11",
+        "R16",
+        "R17",
+        "R18",
+        "R19"
+      ],
+      "model": "10k 1%",
+      "package": "0603 / 公制1608",
+      "unit": 5,
+      "spare": 10,
+      "spec": "≥0.1W；按表中精度；温漂和额定电压按实际系列核对",
+      "status": "规格明确；实际采购料号待确认",
+      "code": "",
+      "source": "design.json / 原厂电容选择要求",
+      "required5": 25,
+      "suggested": 35
+    },
+    {
+      "category": "SMT",
+      "refs": [
+        "R14"
+      ],
+      "model": "150k 1%",
+      "package": "0603 / 公制1608",
+      "unit": 1,
+      "spare": 10,
+      "spec": "≥0.1W；按表中精度；温漂和额定电压按实际系列核对",
+      "status": "规格明确；实际采购料号待确认",
+      "code": "",
+      "source": "design.json / 原厂电容选择要求",
+      "required5": 5,
+      "suggested": 15
+    },
+    {
+      "category": "THT",
+      "refs": [
+        "C9"
+      ],
+      "model": "470uF ≥10V 低ESR电解电容",
+      "package": "径向；直径8mm；脚距3.5mm占位",
+      "unit": 1,
+      "spare": 2,
+      "spec": "正极SYS5V；实际料号、高度、ESR/纹波及寿命待确认",
+      "status": "候选；确认后再采购",
+      "code": "",
+      "source": "",
+      "required5": 5,
+      "suggested": 7
+    },
+    {
+      "category": "THT",
+      "refs": [
+        "J1",
+        "J2",
+        "J3"
+      ],
+      "model": "2P 5.08mm 接线端子",
+      "package": "PCB插件 / 横向",
+      "unit": 3,
+      "spare": 2,
+      "spec": "Phoenix MKDS-1,5-2-5.08参考外形；普通同间距端子不能默认匹配；J1/J2按≥5A选型",
+      "status": "接口规格；具体供应型号待确认",
+      "code": "",
+      "source": "",
+      "required5": 15,
+      "suggested": 17
+    },
+    {
+      "category": "THT",
+      "refs": [
+        "J4",
+        "J10",
+        "JP2"
+      ],
+      "model": "1x2 2.54mm 直排针",
+      "package": "PCB插件",
+      "unit": 3,
+      "spare": 2,
+      "spec": "镀层、针长、额定电流和塑胶外形需确认",
+      "status": "接口规格；具体供应型号待确认",
+      "code": "",
+      "source": "",
+      "required5": 15,
+      "suggested": 17
+    },
+    {
+      "category": "THT",
+      "refs": [
+        "J5"
+      ],
+      "model": "2x12 2.54mm 直排针",
+      "package": "PCB插件",
+      "unit": 1,
+      "spare": 2,
+      "spec": "这是自定义线束接口，不是ESP32开发板直插座；供电脚额定电流需核对",
+      "status": "接口规格；具体供应型号待确认",
+      "code": "",
+      "source": "",
+      "required5": 5,
+      "suggested": 7
+    },
+    {
+      "category": "THT",
+      "refs": [
+        "J6",
+        "J9"
+      ],
+      "model": "1x4 2.54mm 直排针",
+      "package": "PCB插件",
+      "unit": 2,
+      "spare": 2,
+      "spec": "UART/可选雷达；保留雷达连接口",
+      "status": "接口规格；具体供应型号待确认",
+      "code": "",
+      "source": "",
+      "required5": 10,
+      "suggested": 12
+    },
+    {
+      "category": "THT",
+      "refs": [
+        "J7",
+        "J8"
+      ],
+      "model": "1x5 2.54mm 直排针",
+      "package": "PCB插件",
+      "unit": 2,
+      "spare": 2,
+      "spec": "麦克风/功放线束接口；电源脚额定电流需核对",
+      "status": "接口规格；具体供应型号待确认",
+      "code": "",
+      "source": "",
+      "required5": 10,
+      "suggested": 12
+    },
+    {
+      "category": "THT",
+      "refs": [
+        "JP1"
+      ],
+      "model": "1x3 2.54mm 直排针",
+      "package": "PCB插件",
+      "unit": 1,
+      "spare": 2,
+      "spec": "按钮GPIO0/9选择跳线",
+      "status": "接口规格；具体供应型号待确认",
+      "code": "",
+      "source": "",
+      "required5": 5,
+      "suggested": 7
+    }
+  ],
+  "modules": [
+    {
+      "item": "ESP32-S3开发板",
+      "spec": "沿用已验证板型；照片丝印ESP32-S3-N16R8",
+      "unit": 1,
+      "required5": 5,
+      "note": "已有可复用的扣减；先核板型/尺寸/供电，不能只按N16R8买不同板"
+    },
+    {
+      "item": "自研ML307 4G板",
+      "spec": "沿用自研板及已验证版本",
+      "unit": 1,
+      "required5": 5,
+      "note": "淘宝通用ML307板不作为自动替代；确认5V板级入口和UART电平"
+    },
+    {
+      "item": "4G天线和连接线",
+      "spec": "与当前4G板、目标频段和接头一致",
+      "unit": 1,
+      "required5": 5,
+      "note": "计入原基础硬件；保持装盒安装留空要求"
+    },
+    {
+      "item": "INMP441麦克风模块",
+      "spec": "沿用已验证模块版本",
+      "unit": 1,
+      "required5": 5,
+      "note": "3.3V；L/R焊盘接法沿用当前样机"
+    },
+    {
+      "item": "MAX98357 I2S功放模块",
+      "spec": "沿用已验证模块型号/增益接法",
+      "unit": 1,
+      "required5": 5,
+      "note": "5V；SD/GAIN等脚沿用原接法；不是模拟功放"
+    },
+    {
+      "item": "喇叭",
+      "spec": "型号、尺寸、阻抗和额定功率待实物核对",
+      "unit": 1,
+      "required5": 5,
+      "note": "保持当前已验证负载；不能先按未知阻抗换更大喇叭"
+    },
+    {
+      "item": "单节锂电池包",
+      "spec": "暂预算1000mAh；4.2V体系；带保护和10k NTC",
+      "unit": 1,
+      "required5": 5,
+      "note": "电芯/保护/线/端子≥5A持续放电目标；需规格、尺寸和NTC B值，未定型"
+    },
+    {
+      "item": "外部适配器及电源线",
+      "spec": "候选约5.2V稳压/3A；最终料号待确认",
+      "unit": 1,
+      "required5": 5,
+      "note": "系统5V/2A目标另留充电余量；通用5V±5%不保证雷达电压；勿直接按此购买"
+    },
+    {
+      "item": "面板呼叫按钮",
+      "spec": "12mm孔候选；常开自复位、两脚、不带灯",
+      "unit": 1,
+      "required5": 5,
+      "note": "实际尾部深度和面板厚度待核对；GPIO/消抖需固件适配"
+    },
+    {
+      "item": "外壳和内部支架",
+      "spec": "现成ABS盒加工或少量打印；尺寸待布局",
+      "unit": 1,
+      "required5": 5,
+      "note": "无需首批开模；当前90x65mm底板尚未匹配外壳"
+    },
+    {
+      "item": "连接线束",
+      "spec": "信号与电源分开；明确线径、长度、端子和极性",
+      "unit": 1,
+      "required5": 5,
+      "note": "按装配图制作；大电流线路不用松动细杜邦线承担"
+    },
+    {
+      "item": "螺丝/支柱/绝缘固定件",
+      "spec": "M3孔参考；按外壳固定结构确定",
+      "unit": 1,
+      "required5": 5,
+      "note": "一套/台；电池不受螺丝和线束挤压"
+    },
+    {
+      "item": "2.54mm跳线帽",
+      "spec": "按钮选择必需1个/台；雷达电源另1个/台",
+      "unit": 1,
+      "required5": 5,
+      "note": "基础5个；扩展可再备5个；不焊到PCB上"
+    },
+    {
+      "item": "SIM卡及流量",
+      "spec": "目标运营商/卡型",
+      "unit": 1,
+      "required5": 5,
+      "note": "服务费用单列，不计成贴片物料"
+    },
+    {
+      "item": "R60ABD1生命体征雷达（可选）",
+      "spec": "35x31x7.5mm公开规格；厂家串口模块",
+      "unit": 0,
+      "required5": 0,
+      "note": "基础款不采购；可先复用已有1块做扩展测试，不替代成裸雷达芯片"
+    }
+  ],
+  "counts": {
+    "SMT_per_board": 42,
+    "THT_per_board": 13,
+    "SMT_first5": 210,
+    "THT_first5": 65
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "diagram_components": 57,
+  "named_pins": 171,
+  "matches_design_json": true,
+  "SMT_per_board": 42,
+  "THT_per_board": 13,
+  "production_ready": false,
+  "reason": "PCB未布线/设计与实物验证未完成"
+}
