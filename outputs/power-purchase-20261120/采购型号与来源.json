@@ -16,7 +16,8 @@
     "power_leads_request": "20AWG about10cm, red/black tinned ends; protected output only; NTC leads separate",
     "pack_model": "not yet supplied",
     "supplier_quote": "not yet supplied",
-    "physical_test": "not performed"
+    "physical_test": "not performed",
+    "status": "previous electrical candidate; complete pack price and fit still unverified, compare against total80CNY target"
   },
   "core_purchases": [
     {
@@ -79,7 +80,7 @@
     }
   ],
   "board_status": "Power PCB not routed/released; remaining peripheral purchase needs reviewed final BOM",
-  "current_scope": "User asks for long-term plugged operation and a charger IC with purchasable test board. ESP32 ADC for coarse battery voltage. Prior three-IC raw purchases paused; first evaluate ETA6953 power path on UPS Module Mini bare board with same planned production battery, then build integration PCB.",
+  "current_scope": "User requires <=80CNY all-parts production material cost. Current candidate is user-provided 7CNY retail UPS board; seller states it meets UPS needs. Cost analysis assumes that statement without claiming physical test. Withdraw96CNY board recommendation; get exact same-board BOM/schematic and bulk quotes.",
   "core_purchases_status": "PAUSED; historical candidate list only",
   "charger_evaluation": {
     "IC": "ETA6953",
@@ -109,6 +110,52 @@
       "real system low-battery2A and long-time external behavior"
     ],
     "physical_test": "not performed",
-    "production_chip_BOM_quote": "not acquired; retail board price excluded from target production electronic BOM"
+    "production_chip_BOM_quote": "not acquired; retail board price excluded from target production electronic BOM",
+    "status": "superseded comparison only;96CNY board no longer recommended purchase"
+  },
+  "low_cost_UPS": {
+    "board_marking_observed": "JCH-DZ-1S-6223-V1",
+    "attachment": "D:\\AiCli\\attachments\\5AA207A0-B93C-4BA8-95E7-1828CF8E5CD3\\de849820-ea1e-438e-a6fd-49175e57dff9.jpg",
+    "retail_price_CNY": 7,
+    "price_source": "user reports seller retail price",
+    "performance_source": "seller statement relayed by user, cost-analysis premise only",
+    "charger_marking_tentative": "CS4056T",
+    "boost_model": "unconfirmed; do not infer ordering model from photo",
+    "observed_inductor_marking": "2R2",
+    "observed_diode_marking": "SL1045",
+    "sample_quantity_range": [
+      1,
+      2
+    ],
+    "production_cost_including_incremental_SMT_estimate_not_quote": {
+      "100units_CNY_range": [
+        4,
+        6
+      ],
+      "1000plusunits_CNY_range": [
+        3,
+        5
+      ]
+    },
+    "budget_CNY": 5,
+    "optimization_target_CNY": 4,
+    "cost_exclusions": [
+      "main PCB cost/incremental area",
+      "batch startup/stencil",
+      "design/debug",
+      "battery"
+    ],
+    "all_parts_device_target_CNY": 80,
+    "existing_base_hardware_CNY": 60,
+    "battery_pack_budget_CNY_range": [
+      5,
+      8
+    ],
+    "remaining_all_parts_CNY_range": [
+      6,
+      11
+    ],
+    "supplier_BOM_and_bulk_quote": "not obtained",
+    "physical_test": "not performed"
   }
 }
