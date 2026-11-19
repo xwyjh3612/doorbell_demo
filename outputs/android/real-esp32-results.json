@@ -1,0 +1,549 @@
+{
+  "passed": true,
+  "device": "189833342344184",
+  "startedAt": "2026-11-19T07:36:58.576Z",
+  "completedAt": "2026-11-19T07:40:10.183Z",
+  "appVersion": "0.2-demo",
+  "androidEndpoint": "API 29 emulator",
+  "transport": "real ESP32-S3/ML307 4G, public WSS/MQTT/TURN",
+  "results": [
+    {
+      "scenario": "esp32-calls-app",
+      "connected": true,
+      "observedSeconds": 60,
+      "audioSamples": [
+        {
+          "timestamp": "2026-11-19T15:37:11.534920",
+          "sentPackets": 84,
+          "sentBytes": 4032,
+          "receivedPackets": 84,
+          "receivedBytes": 3929
+        },
+        {
+          "timestamp": "2026-11-19T15:37:13.535641",
+          "sentPackets": 101,
+          "sentBytes": 4848,
+          "receivedPackets": 96,
+          "receivedBytes": 4467
+        },
+        {
+          "timestamp": "2026-11-19T15:37:15.538639",
+          "sentPackets": 101,
+          "sentBytes": 4848,
+          "receivedPackets": 101,
+          "receivedBytes": 4644
+        },
+        {
+          "timestamp": "2026-11-19T15:37:17.539389",
+          "sentPackets": 99,
+          "sentBytes": 4752,
+          "receivedPackets": 102,
+          "receivedBytes": 4751
+        },
+        {
+          "timestamp": "2026-11-19T15:37:19.540341",
+          "sentPackets": 101,
+          "sentBytes": 4848,
+          "receivedPackets": 100,
+          "receivedBytes": 4608
+        },
+        {
+          "timestamp": "2026-11-19T15:37:21.540700",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 96,
+          "receivedBytes": 4460
+        },
+        {
+          "timestamp": "2026-11-19T15:37:23.543064",
+          "sentPackets": 99,
+          "sentBytes": 4752,
+          "receivedPackets": 96,
+          "receivedBytes": 4414
+        },
+        {
+          "timestamp": "2026-11-19T15:37:25.544578",
+          "sentPackets": 99,
+          "sentBytes": 4752,
+          "receivedPackets": 101,
+          "receivedBytes": 4606
+        },
+        {
+          "timestamp": "2026-11-19T15:37:27.545741",
+          "sentPackets": 101,
+          "sentBytes": 4848,
+          "receivedPackets": 101,
+          "receivedBytes": 4670
+        },
+        {
+          "timestamp": "2026-11-19T15:37:29.547708",
+          "sentPackets": 99,
+          "sentBytes": 4752,
+          "receivedPackets": 103,
+          "receivedBytes": 4740
+        },
+        {
+          "timestamp": "2026-11-19T15:37:31.547757",
+          "sentPackets": 101,
+          "sentBytes": 4848,
+          "receivedPackets": 100,
+          "receivedBytes": 4632
+        },
+        {
+          "timestamp": "2026-11-19T15:37:33.549047",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 102,
+          "receivedBytes": 4554
+        },
+        {
+          "timestamp": "2026-11-19T15:37:35.551325",
+          "sentPackets": 99,
+          "sentBytes": 4752,
+          "receivedPackets": 101,
+          "receivedBytes": 4575
+        },
+        {
+          "timestamp": "2026-11-19T15:37:37.553894",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 99,
+          "receivedBytes": 4558
+        },
+        {
+          "timestamp": "2026-11-19T15:37:39.555051",
+          "sentPackets": 102,
+          "sentBytes": 4896,
+          "receivedPackets": 102,
+          "receivedBytes": 4589
+        },
+        {
+          "timestamp": "2026-11-19T15:37:41.556790",
+          "sentPackets": 99,
+          "sentBytes": 4752,
+          "receivedPackets": 99,
+          "receivedBytes": 4529
+        },
+        {
+          "timestamp": "2026-11-19T15:37:43.558445",
+          "sentPackets": 99,
+          "sentBytes": 4752,
+          "receivedPackets": 98,
+          "receivedBytes": 4463
+        },
+        {
+          "timestamp": "2026-11-19T15:37:45.561461",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 101,
+          "receivedBytes": 4639
+        },
+        {
+          "timestamp": "2026-11-19T15:37:47.563293",
+          "sentPackets": 99,
+          "sentBytes": 4752,
+          "receivedPackets": 101,
+          "receivedBytes": 4539
+        },
+        {
+          "timestamp": "2026-11-19T15:37:49.563906",
+          "sentPackets": 101,
+          "sentBytes": 4848,
+          "receivedPackets": 98,
+          "receivedBytes": 4464
+        },
+        {
+          "timestamp": "2026-11-19T15:37:51.565462",
+          "sentPackets": 101,
+          "sentBytes": 4848,
+          "receivedPackets": 102,
+          "receivedBytes": 4694
+        },
+        {
+          "timestamp": "2026-11-19T15:37:53.565598",
+          "sentPackets": 99,
+          "sentBytes": 4752,
+          "receivedPackets": 97,
+          "receivedBytes": 4458
+        },
+        {
+          "timestamp": "2026-11-19T15:37:55.566887",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 100,
+          "receivedBytes": 4579
+        },
+        {
+          "timestamp": "2026-11-19T15:37:57.569088",
+          "sentPackets": 99,
+          "sentBytes": 4752,
+          "receivedPackets": 101,
+          "receivedBytes": 4593
+        },
+        {
+          "timestamp": "2026-11-19T15:37:59.571474",
+          "sentPackets": 99,
+          "sentBytes": 4752,
+          "receivedPackets": 101,
+          "receivedBytes": 4664
+        },
+        {
+          "timestamp": "2026-11-19T15:38:01.572027",
+          "sentPackets": 101,
+          "sentBytes": 4848,
+          "receivedPackets": 102,
+          "receivedBytes": 4777
+        },
+        {
+          "timestamp": "2026-11-19T15:38:03.574689",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 100,
+          "receivedBytes": 4522
+        },
+        {
+          "timestamp": "2026-11-19T15:38:05.576576",
+          "sentPackets": 99,
+          "sentBytes": 4752,
+          "receivedPackets": 100,
+          "receivedBytes": 4594
+        },
+        {
+          "timestamp": "2026-11-19T15:38:07.577954",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 99,
+          "receivedBytes": 4551
+        },
+        {
+          "timestamp": "2026-11-19T15:38:09.579493",
+          "sentPackets": 98,
+          "sentBytes": 4704,
+          "receivedPackets": 100,
+          "receivedBytes": 4571
+        },
+        {
+          "timestamp": "2026-11-19T15:38:11.580945",
+          "sentPackets": 101,
+          "sentBytes": 4848,
+          "receivedPackets": 98,
+          "receivedBytes": 4490
+        }
+      ]
+    },
+    {
+      "scenario": "app-hangup-received-by-esp32",
+      "passed": true
+    },
+    {
+      "scenario": "app-calls-esp32",
+      "connected": true,
+      "observedSeconds": 60,
+      "audioSamples": [
+        {
+          "timestamp": "2026-11-19T15:38:23.585485",
+          "sentPackets": 52,
+          "sentBytes": 2496,
+          "receivedPackets": 48,
+          "receivedBytes": 2197
+        },
+        {
+          "timestamp": "2026-11-19T15:38:25.588518",
+          "sentPackets": 99,
+          "sentBytes": 4752,
+          "receivedPackets": 95,
+          "receivedBytes": 4411
+        },
+        {
+          "timestamp": "2026-11-19T15:38:27.590294",
+          "sentPackets": 102,
+          "sentBytes": 4896,
+          "receivedPackets": 99,
+          "receivedBytes": 4569
+        },
+        {
+          "timestamp": "2026-11-19T15:38:29.590752",
+          "sentPackets": 99,
+          "sentBytes": 4752,
+          "receivedPackets": 102,
+          "receivedBytes": 4689
+        },
+        {
+          "timestamp": "2026-11-19T15:38:31.591092",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 101,
+          "receivedBytes": 4663
+        },
+        {
+          "timestamp": "2026-11-19T15:38:33.592581",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 96,
+          "receivedBytes": 4441
+        },
+        {
+          "timestamp": "2026-11-19T15:38:35.593324",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 100,
+          "receivedBytes": 4625
+        },
+        {
+          "timestamp": "2026-11-19T15:38:37.595820",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 98,
+          "receivedBytes": 4555
+        },
+        {
+          "timestamp": "2026-11-19T15:38:39.597359",
+          "sentPackets": 101,
+          "sentBytes": 4848,
+          "receivedPackets": 103,
+          "receivedBytes": 4743
+        },
+        {
+          "timestamp": "2026-11-19T15:38:41.599393",
+          "sentPackets": 99,
+          "sentBytes": 4752,
+          "receivedPackets": 100,
+          "receivedBytes": 4615
+        },
+        {
+          "timestamp": "2026-11-19T15:38:43.600764",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 96,
+          "receivedBytes": 4460
+        },
+        {
+          "timestamp": "2026-11-19T15:38:45.601670",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 99,
+          "receivedBytes": 4569
+        },
+        {
+          "timestamp": "2026-11-19T15:38:47.602710",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 103,
+          "receivedBytes": 4757
+        },
+        {
+          "timestamp": "2026-11-19T15:38:49.604580",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 95,
+          "receivedBytes": 4366
+        },
+        {
+          "timestamp": "2026-11-19T15:38:51.606355",
+          "sentPackets": 101,
+          "sentBytes": 4848,
+          "receivedPackets": 100,
+          "receivedBytes": 4608
+        },
+        {
+          "timestamp": "2026-11-19T15:38:53.607425",
+          "sentPackets": 99,
+          "sentBytes": 4752,
+          "receivedPackets": 98,
+          "receivedBytes": 4538
+        },
+        {
+          "timestamp": "2026-11-19T15:38:55.607820",
+          "sentPackets": 101,
+          "sentBytes": 4848,
+          "receivedPackets": 102,
+          "receivedBytes": 4610
+        },
+        {
+          "timestamp": "2026-11-19T15:38:57.609455",
+          "sentPackets": 99,
+          "sentBytes": 4752,
+          "receivedPackets": 96,
+          "receivedBytes": 4416
+        },
+        {
+          "timestamp": "2026-11-19T15:38:59.610955",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 102,
+          "receivedBytes": 4736
+        },
+        {
+          "timestamp": "2026-11-19T15:39:01.612002",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 96,
+          "receivedBytes": 4307
+        },
+        {
+          "timestamp": "2026-11-19T15:39:03.612438",
+          "sentPackets": 101,
+          "sentBytes": 4848,
+          "receivedPackets": 97,
+          "receivedBytes": 4436
+        },
+        {
+          "timestamp": "2026-11-19T15:39:05.615013",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 100,
+          "receivedBytes": 4524
+        },
+        {
+          "timestamp": "2026-11-19T15:39:07.616350",
+          "sentPackets": 99,
+          "sentBytes": 4752,
+          "receivedPackets": 98,
+          "receivedBytes": 4413
+        },
+        {
+          "timestamp": "2026-11-19T15:39:09.617557",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 102,
+          "receivedBytes": 4597
+        },
+        {
+          "timestamp": "2026-11-19T15:39:11.619713",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 98,
+          "receivedBytes": 4517
+        },
+        {
+          "timestamp": "2026-11-19T15:39:13.620225",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 98,
+          "receivedBytes": 4487
+        },
+        {
+          "timestamp": "2026-11-19T15:39:15.621724",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 99,
+          "receivedBytes": 4552
+        },
+        {
+          "timestamp": "2026-11-19T15:39:17.622486",
+          "sentPackets": 101,
+          "sentBytes": 4848,
+          "receivedPackets": 100,
+          "receivedBytes": 4657
+        },
+        {
+          "timestamp": "2026-11-19T15:39:19.623811",
+          "sentPackets": 99,
+          "sentBytes": 4752,
+          "receivedPackets": 99,
+          "receivedBytes": 4544
+        },
+        {
+          "timestamp": "2026-11-19T15:39:21.624466",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 101,
+          "receivedBytes": 4624
+        },
+        {
+          "timestamp": "2026-11-19T15:39:23.625723",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 99,
+          "receivedBytes": 4500
+        }
+      ]
+    },
+    {
+      "scenario": "esp32-hangup-received-by-app",
+      "passed": true
+    },
+    {
+      "scenario": "app-rejects-esp32",
+      "passed": true
+    },
+    {
+      "scenario": "esp32-rejects-app",
+      "passed": true
+    },
+    {
+      "scenario": "redial-after-hangup-and-reject",
+      "connected": true,
+      "observedSeconds": 15,
+      "audioSamples": [
+        {
+          "timestamp": "2026-11-19T15:39:49.678661",
+          "sentPackets": 13,
+          "sentBytes": 624,
+          "receivedPackets": 20,
+          "receivedBytes": 890
+        },
+        {
+          "timestamp": "2026-11-19T15:39:51.695679",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 100,
+          "receivedBytes": 4475
+        },
+        {
+          "timestamp": "2026-11-19T15:39:53.696515",
+          "sentPackets": 101,
+          "sentBytes": 4848,
+          "receivedPackets": 98,
+          "receivedBytes": 4391
+        },
+        {
+          "timestamp": "2026-11-19T15:39:55.697159",
+          "sentPackets": 99,
+          "sentBytes": 4752,
+          "receivedPackets": 97,
+          "receivedBytes": 4364
+        },
+        {
+          "timestamp": "2026-11-19T15:39:57.698027",
+          "sentPackets": 101,
+          "sentBytes": 4848,
+          "receivedPackets": 104,
+          "receivedBytes": 4680
+        },
+        {
+          "timestamp": "2026-11-19T15:39:59.700244",
+          "sentPackets": 100,
+          "sentBytes": 4800,
+          "receivedPackets": 97,
+          "receivedBytes": 4436
+        },
+        {
+          "timestamp": "2026-11-19T15:40:01.701412",
+          "sentPackets": 99,
+          "sentBytes": 4752,
+          "receivedPackets": 101,
+          "receivedBytes": 4614
+        },
+        {
+          "timestamp": "2026-11-19T15:40:03.701695",
+          "sentPackets": 99,
+          "sentBytes": 4752,
+          "receivedPackets": 101,
+          "receivedBytes": 4549
+        },
+        {
+          "timestamp": "2026-11-19T15:40:05.703474",
+          "sentPackets": 101,
+          "sentBytes": 4848,
+          "receivedPackets": 101,
+          "receivedBytes": 4532
+        }
+      ]
+    }
+  ],
+  "apk_sha256": "7b598b5a56ec35c2bf488add343d72dcd92062edcab423e983573fccd3887847",
+  "firmware_sha256": "ff9709aa35d69b461b48756f9f41bb0b09df931716e51eb79c5b3d747fef657f",
+  "firmware_variant": "voice-radar",
+  "firmware_flash_verified": true
+}

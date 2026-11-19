@@ -338,6 +338,21 @@ void mqtt_sig_send_ring(const char *target)
     mqtt_sig_t *sg = (mqtt_sig_t *)g_mqtt_sig_handle;
     
     sg->is_initiator = true;
+
+    // The previous call may have been answered as a callee. Its cached ICE
+    // role survives closing the media connection, so refresh that local role
+    // before ACCEPT_CALL enables a new outgoing peer. Wire protocol unchanged.
+    if (sg->cfg.on_ice_info && sg->ice_url && sg->ice_user && sg->ice_psw) {
+        esp_peer_signaling_ice_info_t ice_info = {
+            .server_info = {
+                .stun_url = sg->ice_url,
+                .user = sg->ice_user,
+                .psw = sg->ice_psw,
+            },
+            .is_initiator = true,
+        };
+        sg->cfg.on_ice_info(&ice_info, sg->cfg.ctx);
+    }
     
     if (sg->cfg.on_msg) {
         const char *cmd = "ACCEPT_CALL";

@@ -1,6 +1,6 @@
 # ESP32 4G 语音对讲
 
-本项目是基于 ESP32-S3 + ML307 4G 的双向实时语音对讲系统。设备通过 MQTT 交换 WebRTC 信令，与浏览器进行 Opus 16kHz 单声道语音对讲。`audio_server` 是 Spring Boot 信令桥接服务，不承载音频编解码。
+本项目是基于 ESP32-S3 + ML307 4G 的双向实时语音对讲系统。ESP32 使用 MQTT，安卓 App 和浏览器使用 WebSocket/WSS，`audio_server` Spring Boot 服务在两者之间转发 WebRTC 信令。双方通过 WebRTC/UDP/TURN 进行 Opus 16kHz 单声道语音对讲，信令服务不承载音频编解码。
 
 独立安卓 App 支持呼叫、接听、拒接、挂断和麦克风控制，在线下载与现场操作见 [安卓演示说明.md](安卓演示说明.md)。演示入口：[https://voice.2811.top/demo.html](https://voice.2811.top/demo.html)。
 
@@ -29,6 +29,7 @@ Java `SignalingMessage.normalizeMediaFields()` 补齐两种媒体字段，不改
 - 呼出及接听后的连接超时使用 NVS 配置 `call_timeout`，默认 120 秒；0 或超过 3600 秒的旧配置回退为 120 秒。收到 answer 后仍等待实际 WebRTC connected，避免卡在连接中。
 - 固定 `call_control` 任务串行处理命令、框架事件和截止时间。框架回调只入队，不在 peer 自身线程中等待关闭 peer。
 - 固定 `mqtt_messages` 任务按接收顺序处理下行消息，避免每条消息创建临时任务。队列容量分别为 24 和 16；队列满时记录错误。
+- 设备接听过来电后再次呼出，先更新缓存 ICE 的主叫角色，再启动媒体连接，避免交替呼叫时沿用上一通的被叫角色。
 
 ## OTA
 

@@ -13,3 +13,19 @@ F:/nodejs/nvm/v22.16.0/node.exe tests/android/native-app-e2e.mjs
 ```
 
 输出位于忽略的 `build/android-e2e/`，包含结果和界面截图。测试断言 native UI 到达通话状态、模拟端收到/发出音频 RTP 包、TURN relay 使用、`ACCEPT_CALL`/`bye`/`reject` 确实通过 MQTT 到达模拟设备。静音和扬声器测试检查按钮状态，不代表已验证实体手机的声学表现。
+
+`real-esp32-call-e2e.mjs` 用于真实设备测试，必须显式指定 `--real-device 189833342344184 --hold-seconds 60`。App 设置为相同的真实设备 ID；先停止占用 COM13 的雷达采集，在项目根目录的一个终端启动本地串口桥接：
+
+```powershell
+F:/Espressif/python_env/idf5.4_py3.11_env/Scripts/python.exe tests/android/esp32-call-console.py --port COM13
+```
+
+桥接在 `http://127.0.0.1:18889` 提供状态行及白名单命令 `cmd ring/answer/reject/close`，并独占 ESP32 控制台。另一个终端沿用上方 ADB 环境变量，运行：
+
+```powershell
+F:/nodejs/nvm/v22.16.0/node.exe tests/android/real-esp32-call-e2e.mjs --real-device 189833342344184 --hold-seconds 60
+```
+
+可通过 `VOICE_TEST_CONSOLE` 覆盖本机桥接地址。测试后以 Ctrl+C 关闭桥接，再执行 `./examples/radar_monitor/start.ps1` 恢复采集。桥接的原始串口日志仅保存在被忽略的 `build/`。
+
+真实流程测试读取板子的 `esp_webrtc_query` 音频统计，同时核对 App“通话中”状态，覆盖双向呼叫、双方挂断、双方拒接和再次呼叫。输出仅保存音频包统计和结果，不保存完整的原始 MQTT/SDP 日志，避免把中继凭据写入公开测试记录。

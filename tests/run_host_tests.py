@@ -86,3 +86,15 @@ radar_command += ["-std=c11", "-Wall", "-Wextra", "-Werror", "-I", str(root / "m
                   str(root / "tests/host/test_radar_frame_parser.c"), "-o", str(radar_binary)]
 subprocess.run(radar_command, check=True, cwd=root)
 subprocess.run([str(radar_binary)], check=True, cwd=root, timeout=30)
+
+# Run the actual outgoing signaling function against a framework role stub.
+# This catches the answered-call -> hangup -> originate regression.
+signaling_source = (root / "main/mqtt_signaling.cpp").read_text(encoding="utf-8")
+ring_start = signaling_source.index("void mqtt_sig_send_ring(const char *target)\n{")
+ring_end = signaling_source.index("void mqtt_sig_trigger_offer(void)", ring_start)
+(output / "outgoing_ring_under_test.inc").write_text(signaling_source[ring_start:ring_end], encoding="utf-8")
+role_binary = output / ("test_outgoing_ice_role.exe" if sys.platform == "win32" else "test_outgoing_ice_role")
+role_command = ota_command[:2] if Path(compiler).stem == "zig" else ota_command[:1]
+role_command += ["-std=c++20", "-I", str(output), str(root / "tests/host/test_outgoing_ice_role.cpp"), "-o", str(role_binary)]
+subprocess.run(role_command, check=True, cwd=root)
+subprocess.run([str(role_binary)], check=True, cwd=root, timeout=30)

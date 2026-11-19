@@ -122,6 +122,11 @@ try {
           .map(s => ({ type: s.type, kind: s.kind, packetsReceived: s.packetsReceived, packetsSent: s.packetsSent })) };
     });
     if (!stats.relay) throw Error('TURN relay was not used');
+    const nativeSdp = messages.filter(m => m.type === 'offer' || m.type === 'answer').at(-1);
+    const sdp = nativeSdp?.data || nativeSdp?.sdp || '';
+    if (!sdp.includes(' typ relay') || / typ (host|srflx)/.test(sdp)) {
+      throw Error('Native initial SDP must include a usable relay, without private/host candidates');
+    }
     results.push({ name, ...stats }); await screenshot(name);
     console.log('PASS', name, JSON.stringify(stats));
   };

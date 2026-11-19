@@ -1,11 +1,12 @@
 {
-  "size": 44415056,
-  "sha256": "11366219df366e738e7fae6fe870e143fcbc3231924491b2b1f871fa4fa67822",
-  "version": "0.1-demo",
-  "version_code": 1,
+  "size": 44391613,
+  "sha256": "7b598b5a56ec35c2bf488add343d72dcd92062edcab423e983573fccd3887847",
+  "version": "0.2-demo",
+  "version_code": 2,
   "application_id": "com.youkong.voiceintercom",
   "min_android": 24,
   "download_url": "https://voice.2811.top/apks/voice-intercom-demo.apk",
   "signed_for": "demo/debug",
-  "verified_on": "2026-11-19"
+  "verified_on": "2026-11-19",
+  "public_apk_verified": true
 }

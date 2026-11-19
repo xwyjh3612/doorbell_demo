@@ -9,12 +9,12 @@
         {
           "type": "inbound-rtp",
           "kind": "audio",
-          "packetsReceived": 112
+          "packetsReceived": 84
         },
         {
           "type": "outbound-rtp",
           "kind": "audio",
-          "packetsSent": 137
+          "packetsSent": 85
         }
       ]
     },
@@ -30,12 +30,12 @@
         {
           "type": "inbound-rtp",
           "kind": "audio",
-          "packetsReceived": 84
+          "packetsReceived": 95
         },
         {
           "type": "outbound-rtp",
           "kind": "audio",
-          "packetsSent": 87
+          "packetsSent": 99
         }
       ]
     },
@@ -47,12 +47,12 @@
         {
           "type": "inbound-rtp",
           "kind": "audio",
-          "packetsReceived": 108
+          "packetsReceived": 82
         },
         {
           "type": "outbound-rtp",
           "kind": "audio",
-          "packetsSent": 112
+          "packetsSent": 85
         }
       ]
     },
@@ -60,5 +60,7 @@
       "name": "reject-before-offer",
       "passed": true
     }
-  ]
+  ],
+  "appVersion": "0.2-demo",
+  "verified_on": "2026-11-19"
 }

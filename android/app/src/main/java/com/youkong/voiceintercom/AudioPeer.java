@@ -30,6 +30,15 @@ final class AudioPeer {
     private boolean remoteReady;
     private boolean localSent;
     private final List<String> localCandidates = new ArrayList<>();
+    private SessionDescription pendingDescription;
+    private final Runnable sendGatheredDescription = this::sendLocalDescription;
+    private final Runnable gatheringTimeout = this::onGatheringTimeout;
+    private void onGatheringTimeout() {
+        if (pendingDescription != null && !localSent) {
+            if (localCandidates.isEmpty()) listener.error("未取得 TURN 中继地址，请检查网络");
+            else sendLocalDescription();
+        }
+    }
     private String remoteMid = "0";
     private int generation;
 
@@ -65,16 +74,30 @@ final class AudioPeer {
         }
         PeerConnection.RTCConfiguration config = new PeerConnection.RTCConfiguration(ice);
         config.sdpSemantics = PeerConnection.SdpSemantics.UNIFIED_PLAN;
+        // The existing ESP32 peer can fail immediately on an unreachable host
+        // candidate before a later relay candidate arrives. Use the configured
+        // TURN relay for the 4G demo and avoid private/IPv6 host candidates.
+        config.iceTransportsType = PeerConnection.IceTransportsType.RELAY;
         pc = factory.createPeerConnection(config, new PeerConnection.Observer() {
             public void onSignalingChange(PeerConnection.SignalingState state) { }
             public void onIceConnectionChange(PeerConnection.IceConnectionState state) { }
             public void onIceConnectionReceivingChange(boolean receiving) { }
-            public void onIceGatheringChange(PeerConnection.IceGatheringState state) { }
+            public void onIceGatheringChange(PeerConnection.IceGatheringState state) {
+                main.post(() -> {
+                    if (token == generation && state == PeerConnection.IceGatheringState.COMPLETE) sendLocalDescription();
+                });
+            }
             public void onIceCandidate(IceCandidate candidate) {
                 main.post(() -> {
                     if (token != generation) return;
                     if (localSent) listener.signal("candidate", candidate.sdp);
-                    else localCandidates.add(candidate.sdp);
+                    else {
+                        localCandidates.add(candidate.sdp);
+                        // Include the usable relay in the initial SDP so the
+                        // device starts with a complete candidate/SDP pair.
+                        main.removeCallbacks(sendGatheredDescription);
+                        main.postDelayed(sendGatheredDescription, 200);
+                    }
                 });
             }
             public void onIceCandidatesRemoved(IceCandidate[] candidates) { }
@@ -112,13 +135,27 @@ final class AudioPeer {
     void offer() { create(false); }
     private void create(boolean answer) {
         SdpObserver callback = observer(null, sdp -> pc.setLocalDescription(observer(() -> {
-            listener.signal(answer ? "answer" : "offer", sdp.description);
-            localSent = true;
-            for (String candidate : localCandidates) listener.signal("candidate", candidate);
-            localCandidates.clear();
+            pendingDescription = sdp;
+            main.postDelayed(gatheringTimeout, 8000);
+            if (!localCandidates.isEmpty()) {
+                main.removeCallbacks(sendGatheredDescription);
+                main.postDelayed(sendGatheredDescription, 200);
+            }
         }, null), sdp));
         if (answer) pc.createAnswer(callback, new MediaConstraints());
         else pc.createOffer(callback, new MediaConstraints());
+    }
+
+    private void sendLocalDescription() {
+        if (pc == null || localSent || pendingDescription == null || localCandidates.isEmpty()) return;
+        SessionDescription complete = pc.getLocalDescription();
+        if (complete == null || !complete.description.contains(" typ relay")) return;
+        localSent = true;
+        main.removeCallbacks(gatheringTimeout);
+        main.removeCallbacks(sendGatheredDescription);
+        listener.signal(pendingDescription.type == SessionDescription.Type.OFFER ? "offer" : "answer", complete.description);
+        pendingDescription = null;
+        localCandidates.clear();
     }
 
     void remote(String sdp, boolean offer) {
@@ -150,6 +187,9 @@ final class AudioPeer {
     void close() {
         generation++;
         remoteReady = false; localSent = false;
+        pendingDescription = null;
+        main.removeCallbacks(sendGatheredDescription);
+        main.removeCallbacks(gatheringTimeout);
         pendingCandidates.clear(); localCandidates.clear();
         if (pc != null) { pc.close(); pc.dispose(); pc = null; }
         if (track != null) { track.dispose(); track = null; }
