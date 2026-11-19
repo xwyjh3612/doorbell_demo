@@ -1,0 +1,232 @@
+{
+  "date": "2026-11-20",
+  "purpose": "Public price research for integrating user7CNY UPS circuit directly into main PCB",
+  "board_marking": "JCH-DZ-1S-6223-V1",
+  "user_retail_board_price_CNY": 7,
+  "user_material_cost_target_CNY": 80,
+  "confirmed_complete_original_BOM": false,
+  "original_charger_full_MPN": "unconfirmed; earlier CS4056T reading tentative",
+  "original_boost_full_MPN": "unconfirmed",
+  "original_complete_material_total_CNY": null,
+  "prior_cost_target_status": "4-6/3-5CNY estimates only; not calculated from verified original BOM",
+  "records": [
+    {
+      "reference_model": "SL1045",
+      "url": "https://www.taoic.com/item?w=SL1045",
+      "checked_date": "2026-11-20",
+      "currency": "CNY",
+      "unit": "piece",
+      "public_price_ladders": [
+        [
+          {
+            "6000": "0.87295"
+          },
+          {
+            "3000": "0.92213"
+          },
+          {
+            "500": "1.18348"
+          },
+          {
+            "150": "1.36727"
+          },
+          {
+            "50": "1.50672"
+          },
+          {
+            "5": "1.84863"
+          }
+        ]
+      ],
+      "photo_match_status": "same readable marking; manufacturer/package not confirmed",
+      "source_scope": "Public supplier listing product data; stock/order/tax/shipping to confirm; no quote requested"
+    },
+    {
+      "reference_model": "SWPA6045S2R2NT",
+      "url": "https://www.taoic.com/item?w=SWPA6045S2R2NT",
+      "checked_date": "2026-11-20",
+      "currency": "CNY",
+      "unit": "piece",
+      "public_price_ladders": [
+        [
+          {
+            "300": "0.28925"
+          },
+          {
+            "100": "0.32810"
+          },
+          {
+            "10": "0.40675"
+          }
+        ]
+      ],
+      "photo_match_status": "reference part only; exact photo part not identified",
+      "source_scope": "Public supplier listing product data; stock/order/tax/shipping to confirm; no quote requested"
+    },
+    {
+      "reference_model": "AO3401A",
+      "url": "https://www.taoic.com/item?w=AO3401A",
+      "checked_date": "2026-11-20",
+      "currency": "CNY",
+      "unit": "piece",
+      "public_price_ladders": [
+        [
+          {
+            "21000": "0.11541"
+          },
+          {
+            "9000": "0.12241"
+          },
+          {
+            "3000": "0.13641"
+          },
+          {
+            "600": "0.18278"
+          },
+          {
+            "200": "0.20765"
+          },
+          {
+            "20": "0.25479"
+          }
+        ],
+        [
+          {
+            "21000": "0.17061"
+          },
+          {
+            "9000": "0.18007"
+          },
+          {
+            "3000": "0.19898"
+          },
+          {
+            "600": "0.28387"
+          },
+          {
+            "200": "0.31526"
+          },
+          {
+            "20": "0.37392"
+          }
+        ],
+        [
+          {
+            "3000": "0.10065"
+          },
+          {
+            "600": "0.11635"
+          },
+          {
+            "200": "0.13795"
+          },
+          {
+            "20": "0.18439"
+          }
+        ]
+      ],
+      "photo_match_status": "reference part only; exact photo part not identified",
+      "source_scope": "Public supplier listing product data; stock/order/tax/shipping to confirm; no quote requested"
+    },
+    {
+      "reference_model": "0603WAF1003T5E",
+      "url": "https://www.taoic.com/item?w=0603WAF1003T5E",
+      "checked_date": "2026-11-20",
+      "currency": "CNY",
+      "unit": "piece",
+      "public_price_ladders": [
+        [
+          {
+            "50000": "0.00836"
+          },
+          {
+            "10000": "0.00922"
+          },
+          {
+            "5000": "0.01123"
+          },
+          {
+            "1000": "0.01315"
+          },
+          {
+            "100": "0.01707"
+          }
+        ]
+      ],
+      "photo_match_status": "reference part only; exact photo part not identified",
+      "source_scope": "Public supplier listing product data; stock/order/tax/shipping to confirm; no quote requested"
+    },
+    {
+      "reference_model": "CL21A226MAQNNNE",
+      "url": "https://www.taoic.com/item?w=CL21A226MAQNNNE",
+      "checked_date": "2026-11-20",
+      "currency": "CNY",
+      "unit": "piece",
+      "public_price_ladders": [
+        [
+          {
+            "2000": "0.63700"
+          },
+          {
+            "1000": "0.65856"
+          },
+          {
+            "500": "0.71392"
+          },
+          {
+            "100": "0.83129"
+          },
+          {
+            "10": "0.89706"
+          },
+          {
+            "1": "0.96768"
+          }
+        ]
+      ],
+      "photo_match_status": "reference part only; exact photo part not identified",
+      "source_scope": "Public supplier listing product data; stock/order/tax/shipping to confirm; no quote requested"
+    },
+    {
+      "reference_model": "CL21A106KAYNNNE",
+      "url": "https://www.taoic.com/item?w=CL21A106KAYNNNE",
+      "checked_date": "2026-11-20",
+      "currency": "CNY",
+      "unit": "piece",
+      "public_price_ladders": [
+        [
+          {
+            "10000": "0.13068"
+          },
+          {
+            "5000": "0.13365"
+          },
+          {
+            "2000": "0.14058"
+          },
+          {
+            "500": "0.15048"
+          },
+          {
+            "100": "0.16038"
+          },
+          {
+            "10": "0.17028"
+          }
+        ]
+      ],
+      "photo_match_status": "reference part only; capacitance/rating/package of actual capacitors unknown"
+    },
+    {
+      "reference_model": "TPOWER TP4056 C382139",
+      "url": "https://item.szlcsc.com/354934.html",
+      "checked_date": "2026-11-20",
+      "currency": "CNY",
+      "unit": "piece",
+      "public_page_price": "0.4012",
+      "quantity_tier": "not established by price field",
+      "photo_match_status": "same functional family reference only; not original charger IC identified"
+    }
+  ],
+  "integration_scope": "Supply circuit mounted on mainPCB, no separate chargerPCB. Remove only confirmed duplicate connectors and unneeded voltage selection after schematic review. MainPCB and incrementalSMT not quoted."
+}
