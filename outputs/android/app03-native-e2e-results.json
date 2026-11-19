@@ -1,0 +1,64 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "name": "outgoing",
+      "state": "connected",
+      "relay": true,
+      "audio": [
+        {
+          "type": "inbound-rtp",
+          "kind": "audio",
+          "packetsReceived": 137
+        },
+        {
+          "type": "outbound-rtp",
+          "kind": "audio",
+          "packetsSent": 140
+        }
+      ]
+    },
+    {
+      "name": "mute-speaker-remote-hangup",
+      "passed": true
+    },
+    {
+      "name": "incoming-offer",
+      "state": "connected",
+      "relay": true,
+      "audio": [
+        {
+          "type": "inbound-rtp",
+          "kind": "audio",
+          "packetsReceived": 110
+        },
+        {
+          "type": "outbound-rtp",
+          "kind": "audio",
+          "packetsSent": 113
+        }
+      ]
+    },
+    {
+      "name": "ring-accept-offer",
+      "state": "connected",
+      "relay": true,
+      "audio": [
+        {
+          "type": "inbound-rtp",
+          "kind": "audio",
+          "packetsReceived": 124
+        },
+        {
+          "type": "outbound-rtp",
+          "kind": "audio",
+          "packetsSent": 128
+        }
+      ]
+    },
+    {
+      "name": "reject-before-offer",
+      "passed": true
+    }
+  ]
+}

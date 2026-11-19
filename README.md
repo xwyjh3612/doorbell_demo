@@ -41,7 +41,7 @@ Java `SignalingMessage.normalizeMediaFields()` 补齐两种媒体字段，不改
 
 ## 构建与测试
 
-人体存在检测为编译时可选，默认关闭。运行`./tools/build-firmware.ps1 -Variant voice`生成基础语音版，`-Variant voice-radar`生成语音＋雷达版；关闭时不编译雷达模块和入口。接线、配置开关和验证说明见[可选雷达固件.md](可选雷达固件.md)。
+雷达检测为编译时可选，默认关闭。运行`./tools/build-firmware.ps1 -Variant voice`生成基础语音版，`-Variant voice-radar`生成24G感应版，`-Variant voice-radar60`生成60GHz呼吸/心率版；关闭时不编译雷达模块和入口。App 0.3支持感知数据及实际数值趋势，通话期间暂停网络上传、继续本地雷达接收。接线、配置开关和验证说明见[可选雷达固件.md](可选雷达固件.md)。
 
 恢复以前的整套联调环境，参阅 [测试环境恢复.md](测试环境恢复.md)。在项目根目录运行 `./audio_server/start-test.ps1` 可启动本机 Java 服务。
 
@@ -77,7 +77,7 @@ python tests/run_host_tests.py --idf /path/to/esp-idf
 
 也可通过 `--compiler` 指定 clang、gcc 或 zig。脚本可从现有 `build/project_description.json` 自动读取 ESP-IDF 路径。
 
-当前自动化覆盖 9 个通话场景（含呼入、呼出和联网提示音）、8 个 OTA 场景、4 个 UDP 最新包场景和 9 个 Java 协议兼容用例。UDP 测试使用实际双线程，验证主动丢旧包、读取快照完整性及 10 万次并发覆盖；改动和验证边界见 [tests/udp_receive_notes.md](tests/udp_receive_notes.md)。主机测试不验证 ML307 实际网络、音质或设备重启，需要硬件联调确认这些行为。
+当前自动化覆盖 9 个通话场景（含呼入、呼出和联网提示音）、8 个 OTA 场景、4 个 UDP 最新包场景、雷达解析及上传保护、14 个 Java 协议/观测/路由用例，以及9个Android状态检查。UDP 测试使用实际双线程，验证主动丢旧包、读取快照完整性及 10 万次并发覆盖；改动和验证边界见 [tests/udp_receive_notes.md](tests/udp_receive_notes.md)。主机测试不验证 ML307 实际网络、音质或设备重启，需要硬件联调确认这些行为。
 
 ## 阅读入口
 

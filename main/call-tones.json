@@ -6,29 +6,18 @@
     "channels": 1,
     "duration_seconds": 4,
     "frequencies_hz": [
-      800,
-      1000
+      440,
+      480
     ],
     "pulses_seconds": [
       [
         0,
-        0.35
-      ],
-      [
-        0.5,
-        0.85
-      ],
-      [
-        2,
-        2.35
-      ],
-      [
-        2.5,
-        2.85
+        2
       ]
     ],
-    "size": 9318,
-    "sha256": "80733605fd9dc1a2029df6a0582dc012dfb81879e464753e109651abcd1a2441"
+    "size": 8959,
+    "sha256": "955b17514dc9bff0c783a405f8a0807f3594f52c82bbed551dee683beaea8933",
+    "tremolo_hz": 20
   },
   {
     "name": "outgoing",

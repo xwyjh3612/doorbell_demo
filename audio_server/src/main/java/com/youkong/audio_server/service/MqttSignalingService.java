@@ -78,6 +78,7 @@ public class MqttSignalingService {
      * 通话状态管理
      */
     private final ConcurrentMap<String, CallSession> callSessions = new ConcurrentHashMap<>();
+    private final CallReplyRoutes replyRoutes = new CallReplyRoutes();
 
     @PostConstruct
     public void init() {
@@ -143,6 +144,13 @@ public class MqttSignalingService {
             }
 
             String type = message.getType();
+            // ESP32's existing replies omit target. Preserve explicit targets,
+            // otherwise answer the registered client that originated this call.
+            JSONObject raw = JSON.parseObject(payload);
+            if (!raw.containsKey("target") && ("answer".equals(type) || "candidate".equals(type)
+                    || "bye".equals(type) || "reject".equals(type) || "timeout".equals(type))) {
+                message.setTarget(replyRoutes.reply(message.getFrom(), message.getTarget()));
+            }
 
             switch (type) {
                 case "ice_request":
@@ -171,6 +179,9 @@ public class MqttSignalingService {
                     break;
                 default:
                     log.warn("未知的信令类型: {}", type);
+            }
+            if ("bye".equals(type) || "reject".equals(type) || "timeout".equals(type)) {
+                replyRoutes.end(message.getFrom());
             }
 
         } catch (Exception e) {
@@ -379,8 +390,12 @@ public class MqttSignalingService {
      * 从 WebSocket 转发信令到 ESP32
      */
     public void forwardToEsp32(String deviceId, String payload) {
+        SignalingMessage message = JSON.parseObject(payload, SignalingMessage.class);
+        if (message != null && "offer".equals(message.getType())) replyRoutes.begin(deviceId, message.getFrom());
         String downTopic = String.format("/voice/%s/%s/down", project, deviceId);
         sendMqttMessage(downTopic, payload);
+        if (message != null && ("bye".equals(message.getType()) || "reject".equals(message.getType())
+                || "timeout".equals(message.getType()))) replyRoutes.end(deviceId);
     }
 
     /**

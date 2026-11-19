@@ -87,6 +87,24 @@ radar_command += ["-std=c11", "-Wall", "-Wextra", "-Werror", "-I", str(root / "m
 subprocess.run(radar_command, check=True, cwd=root)
 subprocess.run([str(radar_binary)], check=True, cwd=root, timeout=30)
 
+readings_binary = output / ("test_radar_readings.exe" if sys.platform == "win32" else "test_radar_readings")
+readings_command = [compiler] + (["cc"] if Path(compiler).stem == "zig" else [])
+readings_command += ["-std=c11", "-Wall", "-Wextra", "-Werror", "-I", str(root / "main"),
+                     str(root / "tests/host/test_radar_readings.c"), "-o", str(readings_binary)]
+subprocess.run(readings_command, check=True, cwd=root)
+subprocess.run([str(readings_binary)], check=True, cwd=root, timeout=30)
+
+telemetry_source = (root / "main/radar_telemetry.cpp").read_text(encoding="utf-8")
+guard = re.search(r"static bool radar_telemetry_allowed\(void\)\n\{.*?\n\}", telemetry_source, re.S)
+assert guard, "Production radar upload guard missing"
+(output / "radar_telemetry_guard_under_test.inc").write_text(guard[0], encoding="utf-8")
+guard_binary = output / ("test_radar_telemetry.exe" if sys.platform == "win32" else "test_radar_telemetry")
+guard_command = ota_command[:2] if Path(compiler).stem == "zig" else ota_command[:1]
+guard_command += ["-std=c++17", "-I", str(root / "main"), "-I", str(output),
+                  str(root / "tests/host/test_radar_telemetry.cpp"), "-o", str(guard_binary)]
+subprocess.run(guard_command, check=True, cwd=root)
+subprocess.run([str(guard_binary)], check=True, cwd=root, timeout=30)
+
 # Run the actual outgoing signaling function against a framework role stub.
 # This catches the answered-call -> hangup -> originate regression.
 signaling_source = (root / "main/mqtt_signaling.cpp").read_text(encoding="utf-8")

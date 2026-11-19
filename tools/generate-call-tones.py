@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 RATE = 16000
 DURATION = 4
 TONES = (
-    ('incoming', 'ring.aac', (800, 1000), ((0, .35), (.5, .85), (2, 2.35), (2.5, 2.85))),
+    ('incoming', 'ring.aac', (440, 480), ((0, 2),)),
     ('outgoing', 'outgoing.aac', (450,), ((0, 1),)),
 )
 
@@ -22,6 +22,7 @@ TONES = (
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--ffmpeg', default=shutil.which('ffmpeg'))
+    parser.add_argument('--only', choices=('incoming', 'outgoing'))
     args = parser.parse_args()
     if not args.ffmpeg:
         parser.error('Install FFmpeg or specify --ffmpeg PATH')
@@ -29,6 +30,8 @@ def main():
     preview.mkdir(parents=True, exist_ok=True)
     records = []
     for name, filename, frequencies, pulses in TONES:
+        if args.only and args.only != name:
+            continue
         samples = array('h')
         for index in range(RATE * DURATION):
             t, value = index / RATE, 0.0
@@ -39,6 +42,10 @@ def main():
                     envelope = .5 - .5 * math.cos(math.pi * fade)
                     value = .45 * envelope * sum(math.sin(2 * math.pi * f * (t - start))
                                                 for f in frequencies) / len(frequencies)
+                    if name == 'incoming':
+                        # Familiar electronic desk-phone trill; less piercing
+                        # than the earlier 800/1000 Hz notification-like beeps.
+                        value *= .75 + .25 * math.cos(2 * math.pi * 20 * (t - start))
                     break
             samples.append(round(value * 32767))
         if sys.byteorder != 'little':
@@ -57,8 +64,13 @@ def main():
                             duration_seconds=DURATION, frequencies_hz=frequencies,
                             pulses_seconds=pulses, size=target.stat().st_size,
                             sha256=hashlib.sha256(target.read_bytes()).hexdigest()))
+        if name == 'incoming':
+            records[-1]['tremolo_hz'] = 20
         print(f'{name}: {target.name}; preview: {wav}')
-    (ROOT / 'main/call-tones.json').write_text(json.dumps(records, indent=2) + '\n', encoding='utf-8')
+    manifest = ROOT / 'main/call-tones.json'
+    if args.only and manifest.exists():
+        records += [r for r in json.loads(manifest.read_text(encoding='utf-8')) if r['name'] != args.only]
+    manifest.write_text(json.dumps(records, indent=2) + '\n', encoding='utf-8')
 
 
 if __name__ == '__main__':

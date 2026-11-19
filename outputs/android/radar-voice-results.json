@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "startedAt": "2026-11-19T10:15:25.834Z",
+  "completedAt": "2026-11-19T10:16:59.813Z",
+  "appVersion": "0.3-demo",
+  "endpoint": "API29 emulator / real ESP32-S3 + ML307 4G / public WSS MQTT TURN",
+  "results": [
+    {
+      "scenario": "esp32-incoming-ring-triggered",
+      "passed": true
+    },
+    {
+      "scenario": "call-with-radar",
+      "observedSeconds": 35,
+      "bidirectionalAudioSamples": 20,
+      "radarContinued": true,
+      "uploadsPaused": true
+    },
+    {
+      "scenario": "app-hangup-radar-resumes",
+      "passed": true
+    },
+    {
+      "scenario": "repeat-call-with-radar",
+      "observedSeconds": 15,
+      "bidirectionalAudioSamples": 10,
+      "radarContinued": true,
+      "uploadsPaused": true
+    },
+    {
+      "scenario": "esp32-hangup",
+      "passed": true
+    },
+    {
+      "scenario": "esp32-reject",
+      "passed": true
+    }
+  ]
+}

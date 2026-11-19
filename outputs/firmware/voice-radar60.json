@@ -1,0 +1,10 @@
+{
+  "variant": "voice-radar60",
+  "app_offset": "0x10000",
+  "built_at": "2026-11-19T18:00:53.5292071+08:00",
+  "size": 2781072,
+  "sha256": "05d9dd7273f5ea63f29f5db16a6b0012e6f9d08cf2baf4aae69bab6f9ab59beb",
+  "note": "App image only. Verify device partitions and preserve NVS/OTA selection before flashing.",
+  "radar60": true,
+  "radar": true
+}

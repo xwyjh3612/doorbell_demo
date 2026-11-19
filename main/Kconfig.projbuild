@@ -1,13 +1,21 @@
 menu "Voice intercom options"
 
 config VOICE_RADAR_ENABLE
-    bool "Include R24D presence radar"
+    bool "Include optional presence / vitals radar"
     depends on IDF_TARGET_ESP32S3
     default n
     help
-        Compile the optional receive-only 24 GHz presence radar into the
+        Compile the optional receive-only radar and separate telemetry into the
         voice firmware. Uses UART2 RX on GPIO6 at 115200 baud. GPIO8 stays
-        an undriven input. No call actions or network protocol changes.
+        an undriven input. No automatic call actions or call protocol changes.
         When disabled, radar sources and entry points are omitted entirely.
+
+config VOICE_RADAR_R60
+    bool "Use R60ABD1 60 GHz vitals model"
+    depends on VOICE_RADAR_ENABLE
+    default n
+    help
+        Decode confirmed R60ABD1 breathing, heart rate, motion and distance.
+        Disabled keeps the 24 GHz presence mode. Sleep remains a raw enum.
 
 endmenu

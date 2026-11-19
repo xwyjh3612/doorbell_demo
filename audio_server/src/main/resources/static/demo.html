@@ -4,29 +4,29 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>语音对讲 · 演示版</title>
   <style>
-    :root{color-scheme:light;--ink:#173e36;--green:#d5f1ad}
-    *{box-sizing:border-box}body{margin:0;background:#f5f7f0;color:var(--ink);font-family:system-ui,"Microsoft YaHei",sans-serif}
+    :root{color-scheme:dark;--ink:#e2edf9;--green:#43e2c7}
+    *{box-sizing:border-box}body{margin:0;background:#081323;color:var(--ink);font-family:system-ui,"Microsoft YaHei",sans-serif}
     main{max-width:980px;margin:auto;padding:68px 28px 48px}.tag{font-size:13px;letter-spacing:.16em}
     h1{font-size:clamp(36px,7vw,68px);line-height:1.15;letter-spacing:-.04em;margin:28px 0 20px}
-    .intro{color:#627568;font-size:18px;line-height:1.8;max-width:560px}
+    .intro{color:#a0b4c9;font-size:18px;line-height:1.8;max-width:620px}
     .grid{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;margin-top:36px}
-    .card{padding:30px;border-radius:24px;background:white;min-width:0}.primary{background:var(--ink);color:#fff}
+    .card{padding:30px;border-radius:24px;background:#112237;border:1px solid #224257;min-width:0}.primary{background:linear-gradient(135deg,#132d42,#0e1b2e);color:#fff}
     h2{font-size:23px;margin:0 0 16px}.primary p{color:#cadad0;line-height:1.8}
-    .button{display:block;padding:17px 22px;border-radius:14px;background:var(--green);color:var(--ink);text-decoration:none;text-align:center;font-weight:650;margin-top:24px}
+    .button{display:block;padding:17px 22px;border-radius:14px;background:var(--green);color:#06292d;text-decoration:none;text-align:center;font-weight:650;margin-top:24px}
     ol{padding-left:22px;line-height:1.9}li{margin:12px 0}code{font-size:13px;overflow-wrap:anywhere}
-    .small{font-size:13px;line-height:1.8;color:#627568;margin-top:28px}.version{color:var(--green);font-size:13px}
+    .small{font-size:13px;line-height:1.8;color:#859cb5;margin-top:28px}.version{color:var(--green);font-size:13px}
     @media(max-width:680px){main{padding:40px 20px}.grid{grid-template-columns:1fr}.card{padding:25px}}
   </style>
 </head>
 <body><main>
-  <div class="tag">VOICE / ESP32 语音对讲</div>
-  <h1>让声音，<br>即时抵达。</h1>
-  <p class="intro">手机与 4G 语音终端之间的双向对讲。打开 App，呼叫设备，或接听设备发起的来电。</p>
+  <div class="tag">VOICE LINK / 声联 · 智能对讲</div>
+  <h1>声音互联，<br>感知就在眼前。</h1>
+  <p class="intro">4G 双向语音与毫米波空间感知，在同一个 App 中呈现。呼叫终端、接听来电，查看有人感应、呼吸与心率变化。</p>
   <div class="grid">
     <section class="card primary">
-      <div class="version">ANDROID · 0.2 DEMO</div>
+      <div class="version">ANDROID · 0.3 DEMO</div>
       <h2 style="margin-top:16px">安卓演示 App</h2>
-      <p>呼叫、接听、拒接、挂断。支持麦克风静音、扬声器与听筒切换，连接参数可在 App 内设置。</p>
+      <p>全新设备演示台，支持呼叫、接听、静音和扬声器切换。选配 60GHz 雷达时，可显示生命体征数值及最近两分钟的实际数据趋势。</p>
       <a class="button" href="/apks/voice-intercom-demo.apk">下载安卓 APK</a>
       <p style="font-size:13px">Android 7.0 及以上 · 演示测试签名<br>首次安装请允许浏览器安装应用，并授权麦克风。</p>
     </section>
@@ -40,5 +40,5 @@
       <p class="small">默认设备：<code>189833342344184</code><br>同一接听端 ID 同时使用一个客户端。</p>
     </section>
   </div>
-  <p class="small">此版用于前台现场演示：离开 App 会结束通话，暂未加入后台或锁屏来电通知。服务连接成功表示信令已连通，设备在线与实际声音需通过设备通话确认。</p>
+  <p class="small">此版用于前台现场演示：离开 App 会结束通话，暂未加入后台或锁屏来电通知。雷达为可选功能，基础语音版也可正常呼叫。通话期间雷达继续本地采集，挂断后恢复上传；生命体征读数用于功能演示，准确性仍需对照验证。</p>
 </main></body></html>

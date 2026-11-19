@@ -1,5 +1,5 @@
 param(
-    [ValidateSet('voice', 'voice-radar')]
+    [ValidateSet('voice', 'voice-radar', 'voice-radar60')]
     [string]$Variant = 'voice'
 )
 $ErrorActionPreference = 'Stop'
@@ -21,10 +21,12 @@ if (-not (Test-Path -LiteralPath $voiceConfig)) {
     Copy-Item -LiteralPath $voiceSeed -Destination $voiceConfig
 }
 $voiceLines = @(Get-Content -LiteralPath $voiceConfig -Encoding UTF8 |
-    Where-Object { $_ -notmatch '^(CONFIG_VOICE_RADAR_ENABLE=|# CONFIG_VOICE_RADAR_ENABLE is not set)' })
-$voiceLines += $(if ($Variant -eq 'voice-radar') {
+    Where-Object { $_ -notmatch '^(CONFIG_VOICE_RADAR_(ENABLE|R60)=|# CONFIG_VOICE_RADAR_(ENABLE|R60) is not set)' })
+$voiceLines += $(if ($Variant -ne 'voice') {
     'CONFIG_VOICE_RADAR_ENABLE=y'
 } else { '# CONFIG_VOICE_RADAR_ENABLE is not set' })
+$voiceLines += $(if ($Variant -eq 'voice-radar60') { 'CONFIG_VOICE_RADAR_R60=y' }
+    else { '# CONFIG_VOICE_RADAR_R60 is not set' })
 [IO.File]::WriteAllLines($voiceConfig, $voiceLines, [Text.UTF8Encoding]::new($false))
 & $voicePython $voiceIdf -C $voiceWorkspace -B (Join-Path $voiceWorkspace 'build') `
     -D "SDKCONFIG=$($voiceConfig.Replace('\','/'))" build
@@ -35,7 +37,7 @@ if ($LASTEXITCODE -ne 0) { throw "固件编译失败：$Variant" }
 if ($LASTEXITCODE -ne 0) { throw "固件变体验证失败：$Variant" }
 $voiceImage = Join-Path $voiceOutput ($Variant + '.bin')
 Copy-Item -LiteralPath (Join-Path $voiceWorkspace 'build\doorbell_demo.bin') -Destination $voiceImage -Force
-$voiceRecord = @{variant=$Variant; radar=($Variant -eq 'voice-radar');
+$voiceRecord = @{variant=$Variant; radar=($Variant -ne 'voice'); radar60=($Variant -eq 'voice-radar60');
     size=(Get-Item -LiteralPath $voiceImage).Length;
     sha256=(Get-FileHash -LiteralPath $voiceImage -Algorithm SHA256).Hash.ToLower();
     built_at=(Get-Date -Format o); app_offset='0x10000';

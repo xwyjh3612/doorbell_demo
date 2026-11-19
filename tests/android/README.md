@@ -29,3 +29,11 @@ F:/nodejs/nvm/v22.16.0/node.exe tests/android/real-esp32-call-e2e.mjs --real-dev
 可通过 `VOICE_TEST_CONSOLE` 覆盖本机桥接地址。测试后以 Ctrl+C 关闭桥接，再执行 `./examples/radar_monitor/start.ps1` 恢复采集。桥接的原始串口日志仅保存在被忽略的 `build/`。
 
 真实流程测试读取板子的 `esp_webrtc_query` 音频统计，同时核对 App“通话中”状态，覆盖双向呼叫、双方挂断、双方拒接和再次呼叫。输出仅保存音频包统计和结果，不保存完整的原始 MQTT/SDP 日志，避免把中继凭据写入公开测试记录。
+
+`radar-voice-e2e.mjs`验证0.3版App与真实60G语音固件的联合行为。模拟器接听ID须设为独立`lead_demo_test_20261119`，目标为真实ESP32；使用同一本地串口桥接，通过App主动呼叫设备，检查来电铃声触发、35秒及再次15秒双向音频、通话期间雷达继续接收/暂停上传、挂断后恢复上传、静音及设备拒接。
+
+```powershell
+F:/nodejs/nvm/v22.16.0/node.exe tests/android/radar-voice-e2e.mjs --real-device 189833342344184
+```
+
+输出为忽略的`build/radar-voice-e2e`。测试完成后停止模拟器App并恢复偏好，避免后续与真实手机争用ID。此联合脚本仅通过App呼叫真实设备；设备呼叫App另外由隔离模拟设备验证，不把该结果描述为双向真实板子全流程。

@@ -4,7 +4,7 @@ ESP32 的呼入和呼出使用不同的电话提示音，均为本项目通过�
 
 | 用途 | 文件 | 声音与节奏 |
 | --- | --- | --- |
-| 呼入 | `ring.aac` | 800Hz + 1000Hz 双音，响 0.35 秒、停 0.15 秒、再响 0.35 秒；每 2 秒一组 |
+| 呼入 | `ring.aac` | 常规座机电子铃：440Hz + 480Hz 双音、20Hz 颤音，响 2 秒、停 2 秒 |
 | 呼出 | `outgoing.aac` | 450Hz 回铃音，响 1 秒、停 3 秒 |
 | 联网 | `join.aac` | 中文语音“联网成功”，播放一次 |
 
@@ -19,5 +19,7 @@ python tools/generate-call-tones.py --ffmpeg F:/ffmpeg/bin/ffmpeg.exe
 ```
 
 生成的 AAC 和校验清单位于 `main/`，可试听的 WAV 位于本地 `build/call-tones/incoming.wav` 与 `outgoing.wav`。FFmpeg 版本可能影响编码结果，以当次 `call-tones.json` 的 SHA256 为准。
+
+仅更新呼入素材可追加 `--only incoming`，保留呼出音频文件。
 
 联网语音使用 Windows 内置中文语音生成，可重新运行 `./tools/generate-network-prompt.ps1`。试听文件为 `build/call-tones/network-success.wav`，校验清单为 `main/network-prompt.json`。

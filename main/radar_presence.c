@@ -43,10 +43,17 @@ static void on_frame(void *ctx, const uint8_t *frame, size_t size)
 {
     (void)ctx;
     ++state.valid_frames;
+    int64_t now = esp_timer_get_time() / 1000;
+    radar_readings_apply(&state.readings, frame, size, now,
+#if CONFIG_VOICE_RADAR_R60
+                         true);
+#else
+                         false);
+#endif
     int presence = radar_frame_presence(frame, size);
     if (presence == -2) { return; }
     state.presence = presence;
-    state.last_presence_ms = presence >= 0 ? esp_timer_get_time() / 1000 : 0;
+    state.last_presence_ms = presence >= 0 ? now : 0;
 }
 
 static void show_status(void)
@@ -55,10 +62,12 @@ static void show_status(void)
     radar_presence_get_snapshot(&s);
     ESP_LOGI(TAG, "STATUS rx=%d baud=%d bytes=%" PRIu64 " errors=%" PRIu32
              " header5359=%" PRIu64 " level=%d valid=%" PRIu64
-             " invalid=%" PRIu32 " breaks=%" PRIu32 " presence=%d last_presence_ms=%" PRId64,
+             " invalid=%" PRIu32 " breaks=%" PRIu32 " presence=%d last_presence_ms=%" PRId64
+             " breath=%d heart=%d distance_cm=%d activity=%d",
              RADAR_RX, RADAR_BAUD, s.received_bytes, s.uart_errors,
              s.header_candidates, gpio_get_level(RADAR_RX), s.valid_frames,
-             s.invalid_frames, s.uart_breaks, s.presence, s.last_presence_ms);
+             s.invalid_frames, s.uart_breaks, s.presence, s.last_presence_ms,
+             s.readings.breath, s.readings.heart, s.readings.distance_cm, s.readings.activity);
 }
 
 static void show_history(void)
@@ -103,7 +112,7 @@ static int radar_cli(int argc, char **argv)
 esp_err_t radar_presence_register_console(void)
 {
     const esp_console_cmd_t command = {
-        .command = "radar", .help = "Read-only integrated R24D presence receiver",
+        .command = "radar", .help = "Read-only integrated presence/vitals receiver",
         .func = radar_cli,
     };
     return esp_console_cmd_register(&command);
@@ -133,6 +142,7 @@ static void radar_reader(void *arg)
                 else { ++state.uart_errors; }
                 state.presence = -1;
                 state.last_presence_ms = 0;
+                radar_readings_reset(&state.readings);
                 radar_frame_parser_reset(&parser);
                 xSemaphoreGive(state_lock);
                 have_previous = false;
@@ -168,6 +178,10 @@ static void radar_reader(void *arg)
         } else if (count < 0) {
             xSemaphoreTake(state_lock, portMAX_DELAY);
             ++state.uart_errors;
+            state.presence = -1;
+            state.last_presence_ms = 0;
+            radar_readings_reset(&state.readings);
+            radar_frame_parser_reset(&parser);
             xSemaphoreGive(state_lock);
         }
         if (now - summary_at >= 3000000) {
@@ -184,6 +198,7 @@ esp_err_t radar_presence_start(void)
     return ESP_ERR_NOT_SUPPORTED;
 #else
     if (state.enabled) { return ESP_OK; }
+    radar_readings_reset(&state.readings);
     if (uart_is_driver_installed(RADAR_UART)) { return ESP_ERR_INVALID_STATE; }
     state_lock = xSemaphoreCreateMutex();
     commands = xQueueCreate(4, sizeof(radar_command_t));

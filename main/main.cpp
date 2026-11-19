@@ -369,6 +369,8 @@ void app_main() {
     if (radar_ret != ESP_OK) {
         ESP_LOGW(TAG, "Radar receiver unavailable: %s; continuing voice startup",
                  esp_err_to_name(radar_ret));
+    } else if (radar_telemetry_start() != ESP_OK) {
+        ESP_LOGW(TAG, "Radar telemetry task unavailable; receiver and voice continue");
     }
 #endif
     

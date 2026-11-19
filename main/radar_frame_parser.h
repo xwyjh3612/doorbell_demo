@@ -5,7 +5,7 @@
 #include <stdint.h>
 #include <string.h>
 
-// R24D wire format: 53 59 ctrl cmd len_hi len_lo payload sum8 54 43.
+// R24D / R60ABD1 wire format: 53 59 ctrl cmd len_hi len_lo payload sum8 54 43.
 // Bound untrusted lengths and preserve partial frames between UART reads.
 #define RADAR_FRAME_CAPACITY 512
 typedef struct {

@@ -1,6 +1,7 @@
 package com.youkong.audio_server.config;
 
 import com.youkong.audio_server.service.MqttSignalingService;
+import com.youkong.audio_server.service.DeviceTelemetryService;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,6 +29,8 @@ public class MqttConfig {
 
     @Resource
     private MqttSignalingService mqttSignalingService;
+    @Resource
+    private DeviceTelemetryService telemetryService;
 
     @Value("${spring.mqtt.broker-url}")
     private String mqttUrl;
@@ -123,7 +126,7 @@ public class MqttConfig {
         MqttPahoMessageDrivenChannelAdapter adapter = new MqttPahoMessageDrivenChannelAdapter(
                 clientId + "-inbound", // 入站客户端ID，避免和出站重复
                 mqttClientFactory(),
-                upTopic); // 使用通配符订阅所有设备的上行主题
+                upTopic, "/voice/" + project + "/+/telemetry");
 
         // 设置消息转换器（UTF-8编码，QoS级别）
         adapter.setConverter(new DefaultPahoMessageConverter(qos, false));
@@ -143,6 +146,10 @@ public class MqttConfig {
         return message -> {
             String topic = message.getHeaders().get("mqtt_receivedTopic").toString();
             String payload = message.getPayload().toString();
+            if (telemetryService.isTelemetryTopic(topic)) {
+                telemetryService.handleTelemetry(topic, payload);
+                return;
+            }
             log.info("收到MQTT消息 - 主题: {}, 内容: {}", topic, payload);
             // 转发到信令服务处理
             mqttSignalingService.handleMqttMessage(topic, payload);
