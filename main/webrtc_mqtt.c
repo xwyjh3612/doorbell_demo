@@ -253,6 +253,12 @@ static void process_mqtt_event(mqtt_sig_event_t event, const char *peer_id)
         call_ctx_set_peer_id(peer_id);
     }
     switch (event) {
+        case MQTT_SIG_EVENT_NETWORK_READY:
+            // Play locally only after MQTT is online; never interrupt a call.
+            if (g_call_ctx.state == CALL_STATE_IDLE && !ota_is_in_progress()) {
+                play_tone(DOOR_BELL_TONE_NETWORK_SUCCESS);
+            }
+            break;
         case MQTT_SIG_EVENT_REMOTE_RING:
         case MQTT_SIG_EVENT_REMOTE_OFFER:
             if (ota_is_in_progress()) {
@@ -267,7 +273,7 @@ static void process_mqtt_event(mqtt_sig_event_t event, const char *peer_id)
                 g_call_ctx.reconnect_eligible = false;
                 g_call_ctx.has_pending_offer = true;
                 call_ctx_change_state(CALL_STATE_INCOMING, "remote_offer");
-                play_tone(DOOR_BELL_TONE_RING);
+                play_tone(DOOR_BELL_TONE_INCOMING);
             }
             break;
         case MQTT_SIG_EVENT_REMOTE_ANSWER:
@@ -313,7 +319,7 @@ static void process_peer_cmd(const char *cmd)
         return;
     }
     if (SAME_STR(cmd, DOOR_BELL_RING_CMD)) {
-        play_tone(DOOR_BELL_TONE_RING);
+        play_tone(DOOR_BELL_TONE_INCOMING);
         if (g_call_ctx.state == CALL_STATE_IDLE) {
             g_call_ctx.is_initiator = false;
             g_call_ctx.hangup_by_self = false;
@@ -481,7 +487,7 @@ static void begin_outgoing(bool reconnect)
     g_call_ctx.reconnect_eligible = false;
     g_call_ctx.has_pending_offer = false;
     call_ctx_change_state(CALL_STATE_OUTGOING, reconnect ? "auto_redial" : "local_ring");
-    play_tone(DOOR_BELL_TONE_RING);
+    play_tone(DOOR_BELL_TONE_OUTGOING);
     start_call_timeout();
     SEND_CMD(webrtc, DOOR_BELL_RING_CMD);
     mqtt_sig_send_ring(g_call_ctx.peer_id[0] ? g_call_ctx.peer_id : NULL);
@@ -790,7 +796,6 @@ int start_webrtc(char *url)
             media_lib_thread_handle_t key_thread;
             key_thread_started = media_lib_thread_create_from_scheduler(&key_thread, "Key", key_monitor_thread, NULL) == 0;
         }
-        play_tone(DOOR_BELL_TONE_JOIN_SUCCESS);
     }
     voice_call_unlock();
     return ret;

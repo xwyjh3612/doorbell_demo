@@ -8,6 +8,8 @@ extern "C" {
 
 extern const uint8_t ring_music_start[] asm("_binary_ring_aac_start");
 extern const uint8_t ring_music_end[] asm("_binary_ring_aac_end");
+extern const uint8_t outgoing_music_start[] asm("_binary_outgoing_aac_start");
+extern const uint8_t outgoing_music_end[] asm("_binary_outgoing_aac_end");
 extern const uint8_t open_music_start[] asm("_binary_open_aac_start");
 extern const uint8_t open_music_end[] asm("_binary_open_aac_end");
 extern const uint8_t join_music_start[] asm("_binary_join_aac_start");
@@ -19,12 +21,14 @@ typedef struct {
     const uint8_t *start;
     const uint8_t *end;
     int            duration;
+    const char    *name;
 } door_bell_tone_data_t;
 
 static door_bell_tone_data_t tone_data[] = {
-    { ring_music_start, ring_music_end, 4000 },
-    { open_music_start, open_music_end, 0 },
-    { join_music_start, join_music_end, 0 },
+    { ring_music_start, ring_music_end, 4000, "incoming" },
+    { open_music_start, open_music_end, 0, "open" },
+    { join_music_start, join_music_end, 0, "network_success" },
+    { outgoing_music_start, outgoing_music_end, 4000, "outgoing" },
 };
 
 int play_tone(door_bell_tone_type_t type)
@@ -33,6 +37,7 @@ int play_tone(door_bell_tone_type_t type)
         ESP_LOGE(TAG, "Invalid tone type: %d", type);
         return 0;
     }
+    ESP_LOGI(TAG, "Playing tone=%s duration_ms=%d", tone_data[type].name, tone_data[type].duration);
     return play_music(tone_data[type].start, (int)(tone_data[type].end - tone_data[type].start), tone_data[type].duration);
 }
 

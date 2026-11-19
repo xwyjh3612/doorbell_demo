@@ -4,5 +4,5 @@ if(CONFIG_VOICE_RADAR_ENABLE)
     list(APPEND voice_sources "radar_presence.c")
 endif()
 idf_component_register(SRCS ${voice_sources}
-                       EMBED_TXTFILES "ring.aac" "open.aac" "join.aac"
+                       EMBED_TXTFILES "ring.aac" "outgoing.aac" "open.aac" "join.aac"
                        INCLUDE_DIRS ".")

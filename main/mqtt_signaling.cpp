@@ -818,6 +818,7 @@ static void setup_mqtt_callbacks(void)
             if (sg->cfg.on_connected) {
                 sg->cfg.on_connected(sg->cfg.ctx);
             }
+            mqtt_sig_emit_event(MQTT_SIG_EVENT_NETWORK_READY, NULL);
         }
     });
 
@@ -889,6 +890,7 @@ static int mqtt_signal_start(esp_peer_signaling_cfg_t *cfg, esp_peer_signaling_h
         if (sg->cfg.on_connected) {
             sg->cfg.on_connected(sg->cfg.ctx);
         }
+        mqtt_sig_emit_event(MQTT_SIG_EVENT_NETWORK_READY, NULL);
     }
 
     g_mqtt_sig_handle = sg;

@@ -11,6 +11,9 @@ typedef enum {
     DOOR_BELL_TONE_RING,
     DOOR_BELL_TONE_OPEN_DOOR,
     DOOR_BELL_TONE_JOIN_SUCCESS,
+    DOOR_BELL_TONE_OUTGOING,
+    DOOR_BELL_TONE_INCOMING = DOOR_BELL_TONE_RING,
+    DOOR_BELL_TONE_NETWORK_SUCCESS = DOOR_BELL_TONE_JOIN_SUCCESS,
 } door_bell_tone_type_t;
 
 int play_tone(door_bell_tone_type_t type);

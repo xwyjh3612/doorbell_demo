@@ -9,6 +9,7 @@ typedef struct {
 static TickType_t fake_now;
 static bool fake_ota;
 static int ring_count, disable_count, close_count, timeout_count;
+static int tone_count, active_tone = -1;
 static event_handler_t fake_event_handler;
 static app_config_t config = {.call_timeout = 120};
 
@@ -64,8 +65,8 @@ int esp_webrtc_set_media_provider(esp_webrtc_handle_t h, esp_webrtc_media_provid
 int esp_webrtc_set_event_handler(esp_webrtc_handle_t h, event_handler_t cb, void *ctx) { fake_event_handler = cb; return 0; }
 void *esp_peer_get_default_impl(void) { return NULL; }
 int media_sys_get_provider(esp_webrtc_media_provider_t *p) { return 0; }
-int stop_music(void) { return 0; }
-int play_tone(door_bell_tone_type_t tone) { return 0; }
+int stop_music(void) { active_tone = -1; return 0; }
+int play_tone(door_bell_tone_type_t tone) { tone_count++; active_tone = tone; return 0; }
 app_config_t *app_config_get(void) { return &config; }
 bool ota_is_in_progress(void) { return fake_ota; }
 void mqtt_sig_set_event_handler(mqtt_sig_event_cb_t cb, void *ctx) {}
@@ -99,6 +100,8 @@ static void reset_fixture(void) {
     assert(start_webrtc("mqtt") == 0);
     pump();
     ring_count = disable_count = close_count = timeout_count = 0;
+    tone_count = 0;
+    active_tone = -1;
 }
 static void connected_call(void) {
     assert(voice_call_offer("remote_a") == 0);
@@ -204,6 +207,39 @@ static void test_tick_wrap_and_ota_guard(void) {
     assert(ring_count == 1 && webrtc_get_call_state() == CALL_STATE_IDLE);
 }
 
+static void test_call_tones_and_network_prompt(void) {
+    reset_fixture();
+    assert(tone_count == 0); // Starting signaling alone must not announce online.
+    on_mqtt_signaling_event(MQTT_SIG_EVENT_NETWORK_READY, "", NULL);
+    pump();
+    assert(active_tone == DOOR_BELL_TONE_NETWORK_SUCCESS && tone_count == 1);
+    send_cmd("ring");
+    pump();
+    assert(active_tone == DOOR_BELL_TONE_OUTGOING && tone_count == 2);
+    on_mqtt_signaling_event(MQTT_SIG_EVENT_NETWORK_READY, "", NULL);
+    pump();
+    assert(active_tone == DOOR_BELL_TONE_OUTGOING && tone_count == 2);
+    peer_event(ESP_WEBRTC_EVENT_CONNECTED);
+    assert(active_tone == -1);
+    on_mqtt_signaling_event(MQTT_SIG_EVENT_NETWORK_READY, "", NULL);
+    pump();
+    assert(active_tone == -1 && tone_count == 2);
+    send_cmd("close");
+    pump();
+    on_mqtt_signaling_event(MQTT_SIG_EVENT_REMOTE_OFFER, "remote_a", NULL);
+    pump();
+    assert(active_tone == DOOR_BELL_TONE_INCOMING && tone_count == 3);
+    send_cmd("answer");
+    pump();
+    assert(active_tone == -1);
+    send_cmd("close");
+    pump();
+    fake_ota = true;
+    on_mqtt_signaling_event(MQTT_SIG_EVENT_NETWORK_READY, "", NULL);
+    pump();
+    assert(active_tone == -1 && tone_count == 3);
+}
+
 int main(void) {
     test_close_then_redial();
     test_three_retries_after_disconnect();
@@ -213,6 +249,7 @@ int main(void) {
     test_busy_offer_cannot_replace_peer();
     test_restart_drops_old_commands();
     test_tick_wrap_and_ota_guard();
-    puts("PASS: 8 call lifecycle scenarios");
+    test_call_tones_and_network_prompt();
+    puts("PASS: 9 call lifecycle scenarios, including distinct call tones and guarded network prompt");
     return 0;
 }

@@ -1,0 +1,51 @@
+[
+  {
+    "name": "incoming",
+    "file": "ring.aac",
+    "sample_rate": 16000,
+    "channels": 1,
+    "duration_seconds": 4,
+    "frequencies_hz": [
+      800,
+      1000
+    ],
+    "pulses_seconds": [
+      [
+        0,
+        0.35
+      ],
+      [
+        0.5,
+        0.85
+      ],
+      [
+        2,
+        2.35
+      ],
+      [
+        2.5,
+        2.85
+      ]
+    ],
+    "size": 9318,
+    "sha256": "80733605fd9dc1a2029df6a0582dc012dfb81879e464753e109651abcd1a2441"
+  },
+  {
+    "name": "outgoing",
+    "file": "outgoing.aac",
+    "sample_rate": 16000,
+    "channels": 1,
+    "duration_seconds": 4,
+    "frequencies_hz": [
+      450
+    ],
+    "pulses_seconds": [
+      [
+        0,
+        1
+      ]
+    ],
+    "size": 5147,
+    "sha256": "1f8dadb57d22b31ac4d485184f4cd1753b04c0dcf5b052855c06582d76f4413c"
+  }
+]

@@ -14,6 +14,7 @@ typedef enum {
     MQTT_SIG_EVENT_REMOTE_REJECT,
     MQTT_SIG_EVENT_REMOTE_CLOSE,
     MQTT_SIG_EVENT_REMOTE_TIMEOUT,
+    MQTT_SIG_EVENT_NETWORK_READY,
 } mqtt_sig_event_t;
 
 typedef void (*mqtt_sig_event_cb_t)(mqtt_sig_event_t event, const char *peer_id, void *ctx);

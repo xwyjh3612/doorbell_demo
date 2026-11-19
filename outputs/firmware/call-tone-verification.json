@@ -1,0 +1,13 @@
+{
+  "verified_on": "2026-11-19",
+  "firmware_sha256": "c15ebf4275b8db40d641a14053ebeec47e5a4125113ebd2bb596eea36ae97fb2",
+  "app_flash_verified": true,
+  "outside_app_unchanged": true,
+  "boot_panic_detected": false,
+  "network_prompt_triggered_after_mqtt": true,
+  "outgoing_tone_triggered": true,
+  "host_call_scenarios": 9,
+  "real_call_flow_repeat_passed": false,
+  "real_call_flow_repeat_error": "App state not reached: \u8bbe\u5907\u6765\u7535",
+  "note": "Repeat could not reach the emulator incoming UI. Physical phone and emulator used the same recipient ID; routing conflict is suspected. Full flow and acoustic playback were not revalidated for this image."
+}
