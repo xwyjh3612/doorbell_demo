@@ -1,0 +1,16 @@
+{
+  "revision": "V1-PLACEMENT-DRAFT",
+  "kicad_version": "9.0.6",
+  "electrical_components": 57,
+  "mechanical_holes": 4,
+  "named_nets": 39,
+  "connected_pin_map_matches": 171,
+  "schematic_erc_violations": 0,
+  "placement_geometry_violations": 0,
+  "unrouted_links": 132,
+  "pcb_material_reference_cny": 17.203,
+  "manufacturing_ready": false,
+  "power_tested": false,
+  "module_fit_verified": false,
+  "status": "Net-labelled schematic and unrouted placement draft. Complete power layout, mechanical check and electrical validation before fabrication."
+}

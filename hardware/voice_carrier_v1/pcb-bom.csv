@@ -1,0 +1,62 @@
+﻿Reference,Value,Footprint,Qty,Reference CNY,Source,Status
+J1,5.2V INPUT,"TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",1,1.2,,reference/estimate; prototype
+J2,1S BATTERY,"TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",1,1.2,,reference/estimate; prototype
+J3,4G POWER,"TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",1,1.2,,reference/estimate; prototype
+J4,BAT NTC,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,1,0.2,,reference/estimate; prototype
+J5,ESP32 HARNESS,Connector_PinHeader_2.54mm:PinHeader_2x12_P2.54mm_Vertical,1,0.8,,reference/estimate; prototype
+J6,4G UART,Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical,1,0.25,,reference/estimate; prototype
+J7,INMP441,Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical,1,0.275,,reference/estimate; prototype
+J8,MAX98357,Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical,1,0.275,,reference/estimate; prototype
+J9,RADAR OPTIONAL,Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical,1,0.25,,reference/estimate; prototype
+J10,CALL BUTTON,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,1,0.2,,reference/estimate; prototype
+JP1,BUTTON IO0 / IO9,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,1,0.225,,reference/estimate; prototype
+JP2,RADAR POWER,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,1,0.2,,reference/estimate; prototype
+R1,2.7k,Resistor_SMD:R_0603_1608Metric,1,0.02,,reference/estimate; prototype
+R2,9.1k,Resistor_SMD:R_0603_1608Metric,1,0.02,,reference/estimate; prototype
+R3,3.3k,Resistor_SMD:R_0603_1608Metric,1,0.02,,reference/estimate; prototype
+U1,TP4056 TPOWER,Package_SO:SOIC-8-1EP_3.9x4.9mm_P1.27mm_EP2.29x3mm,1,0.4012,https://item.szlcsc.com/354934.html,reference/estimate; prototype
+C1,10u 10V,Capacitor_SMD:C_0805_2012Metric,1,0.15,,reference/estimate; prototype
+C2,10u 10V,Capacitor_SMD:C_0805_2012Metric,1,0.15,,reference/estimate; prototype
+U2,TPS61230ARNSR,Voice:TI_RNS0007A,1,3.14,https://item.szlcsc.com/348561.html,reference/estimate; prototype
+L1,SWPA6045S1R0NT,Inductor_SMD:L_Sunlord_SWPA6045S,1,0.335,https://item.szlcsc.com/98160.html,reference/estimate; prototype
+C3,22u 10V,Capacitor_SMD:C_0805_2012Metric,1,0.2,,reference/estimate; prototype
+C4,22u 10V,Capacitor_SMD:C_0805_2012Metric,1,0.2,,reference/estimate; prototype
+C5,22u 10V,Capacitor_SMD:C_0805_2012Metric,1,0.2,,reference/estimate; prototype
+C6,10n,Capacitor_SMD:C_0603_1608Metric,1,0.04,,reference/estimate; prototype
+R4,331k 0.1%,Resistor_SMD:R_0603_1608Metric,1,0.08,,reference/estimate; prototype
+R5,100k 0.1%,Resistor_SMD:R_0603_1608Metric,1,0.08,,reference/estimate; prototype
+U3,TPS2117DRLR,Voice:TI_DRL0008A,1,1.82,https://item.szlcsc.com/24017237.html,reference/estimate; prototype
+C7,1u,Capacitor_SMD:C_0603_1608Metric,1,0.06,,reference/estimate; prototype
+C8,1u,Capacitor_SMD:C_0603_1608Metric,1,0.06,,reference/estimate; prototype
+C9,470u 10V LOW ESR,Capacitor_THT:CP_Radial_D8.0mm_P3.50mm,1,1,,reference/estimate; prototype
+U4,TLV803EA30DBZR,Package_TO_SOT_SMD:SOT-23,1,1.57,https://item.szlcsc.com/5914664.html,reference/estimate; prototype
+R6,100k,Resistor_SMD:R_0603_1608Metric,1,0.02,,reference/estimate; prototype
+C10,100n,Capacitor_SMD:C_0603_1608Metric,1,0.06,,reference/estimate; prototype
+D1,"BAT54C,215",Package_TO_SOT_SMD:SOT-23,1,0.044,https://item.szlcsc.com/38684.html,reference/estimate; prototype
+U5,LM393DR,Package_SO:SOIC-8_3.9x4.9mm_P1.27mm,1,0.1941,https://item.szlcsc.com/68565.html,reference/estimate; prototype
+U6,TL431BIDBZR,Package_TO_SOT_SMD:SOT-23,1,0.2337,https://item.szlcsc.com/42267.html,reference/estimate; prototype
+R7,1.8k,Resistor_SMD:R_0603_1608Metric,1,0.02,,reference/estimate; prototype
+R8,105k 0.1%,Resistor_SMD:R_0603_1608Metric,1,0.08,,reference/estimate; prototype
+R9,100k 0.1%,Resistor_SMD:R_0603_1608Metric,1,0.08,,reference/estimate; prototype
+R10,5.6M 1%,Resistor_SMD:R_0603_1608Metric,1,0.02,,reference/estimate; prototype
+R11,10k,Resistor_SMD:R_0603_1608Metric,1,0.02,,reference/estimate; prototype
+C11,100n,Capacitor_SMD:C_0603_1608Metric,1,0.06,,reference/estimate; prototype
+C12,100n,Capacitor_SMD:C_0603_1608Metric,1,0.06,,reference/estimate; prototype
+R12,100k 1%,Resistor_SMD:R_0603_1608Metric,1,0.02,,reference/estimate; prototype
+R13,100k 1%,Resistor_SMD:R_0603_1608Metric,1,0.02,,reference/estimate; prototype
+C13,100n,Capacitor_SMD:C_0603_1608Metric,1,0.06,,reference/estimate; prototype
+R14,150k 1%,Resistor_SMD:R_0603_1608Metric,1,0.02,,reference/estimate; prototype
+R15,100k 1%,Resistor_SMD:R_0603_1608Metric,1,0.02,,reference/estimate; prototype
+C14,100n,Capacitor_SMD:C_0603_1608Metric,1,0.06,,reference/estimate; prototype
+R16,10k,Resistor_SMD:R_0603_1608Metric,1,0.02,,reference/estimate; prototype
+R17,10k,Resistor_SMD:R_0603_1608Metric,1,0.02,,reference/estimate; prototype
+R18,10k,Resistor_SMD:R_0603_1608Metric,1,0.02,,reference/estimate; prototype
+R19,10k,Resistor_SMD:R_0603_1608Metric,1,0.02,,reference/estimate; prototype
+C15,100n,Capacitor_SMD:C_0603_1608Metric,1,0.06,,reference/estimate; prototype
+C16,10u 10V,Capacitor_SMD:C_0805_2012Metric,1,0.15,,reference/estimate; prototype
+TP1,IO43,TestPoint:TestPoint_Pad_D1.5mm,1,0,,reference/estimate; prototype
+TP2,IO44,TestPoint:TestPoint_Pad_D1.5mm,1,0,,reference/estimate; prototype
+H1,M3,MountingHole:MountingHole_3.2mm_M3,1,0,,reference/estimate; prototype
+H2,M3,MountingHole:MountingHole_3.2mm_M3,1,0,,reference/estimate; prototype
+H3,M3,MountingHole:MountingHole_3.2mm_M3,1,0,,reference/estimate; prototype
+H4,M3,MountingHole:MountingHole_3.2mm_M3,1,0,,reference/estimate; prototype

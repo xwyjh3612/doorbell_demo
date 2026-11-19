@@ -1,0 +1,1 @@
+(sym_lib_table (version 7) (lib (name "Voice") (type "KiCad") (uri "${KIPRJMOD}/Voice.kicad_sym") (options "") (descr "V1 draft embedded pin-map symbols")))

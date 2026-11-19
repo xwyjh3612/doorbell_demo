@@ -1,0 +1,973 @@
+{
+  "revision": "V1-PLACEMENT-DRAFT",
+  "status": "Unrouted engineering draft; mechanical dimensions and power performance NOT verified",
+  "dimensions_mm": [
+    90,
+    65
+  ],
+  "parts": [
+    {
+      "ref": "J1",
+      "value": "5.2V INPUT",
+      "footprint": "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",
+      "pins": {
+        "1": "VIN_EXT",
+        "2": "GND"
+      },
+      "x": 13,
+      "y": 8,
+      "angle": 0,
+      "source": "",
+      "price": 1.2,
+      "kind": "pcb"
+    },
+    {
+      "ref": "J2",
+      "value": "1S BATTERY",
+      "footprint": "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",
+      "pins": {
+        "1": "VBAT",
+        "2": "GND"
+      },
+      "x": 13,
+      "y": 56,
+      "angle": 0,
+      "source": "",
+      "price": 1.2,
+      "kind": "pcb"
+    },
+    {
+      "ref": "J3",
+      "value": "4G POWER",
+      "footprint": "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",
+      "pins": {
+        "1": "SYS5V",
+        "2": "GND"
+      },
+      "x": 73,
+      "y": 8,
+      "angle": 0,
+      "source": "",
+      "price": 1.2,
+      "kind": "pcb"
+    },
+    {
+      "ref": "J4",
+      "value": "BAT NTC",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "pins": {
+        "1": "NTC",
+        "2": "GND"
+      },
+      "x": 26,
+      "y": 57,
+      "angle": 90,
+      "source": "",
+      "price": 0.2,
+      "kind": "pcb"
+    },
+    {
+      "ref": "J5",
+      "value": "ESP32 HARNESS",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_2x12_P2.54mm_Vertical",
+      "pins": {
+        "1": "SYS5V",
+        "2": "GND",
+        "3": "V3V3",
+        "4": "GND",
+        "5": "IO17",
+        "6": "IO18",
+        "7": "IO4",
+        "8": "IO14",
+        "9": "IO13",
+        "10": "IO12",
+        "11": "IO15",
+        "12": "IO16",
+        "13": "IO7",
+        "14": "IO6",
+        "15": "IO8",
+        "16": "IO0",
+        "17": "IO9",
+        "18": "ADC_BAT",
+        "19": "ADC_EXT",
+        "20": "MUX_ST",
+        "21": "CHRG",
+        "22": "DONE",
+        "23": "IO43",
+        "24": "IO44"
+      },
+      "x": 56,
+      "y": 14,
+      "angle": 0,
+      "source": "",
+      "price": 0.8,
+      "kind": "pcb"
+    },
+    {
+      "ref": "J6",
+      "value": "4G UART",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+      "pins": {
+        "1": "GND",
+        "2": "IO17",
+        "3": "IO18",
+        "4": "IO4"
+      },
+      "x": 73,
+      "y": 20,
+      "angle": 90,
+      "source": "",
+      "price": 0.25,
+      "kind": "pcb"
+    },
+    {
+      "ref": "J7",
+      "value": "INMP441",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical",
+      "pins": {
+        "1": "V3V3",
+        "2": "GND",
+        "3": "IO14",
+        "4": "IO13",
+        "5": "IO12"
+      },
+      "x": 73,
+      "y": 33,
+      "angle": 90,
+      "source": "",
+      "price": 0.275,
+      "kind": "pcb"
+    },
+    {
+      "ref": "J8",
+      "value": "MAX98357",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical",
+      "pins": {
+        "1": "SYS5V",
+        "2": "GND",
+        "3": "IO15",
+        "4": "IO16",
+        "5": "IO7"
+      },
+      "x": 73,
+      "y": 46,
+      "angle": 90,
+      "source": "",
+      "price": 0.275,
+      "kind": "pcb"
+    },
+    {
+      "ref": "J9",
+      "value": "RADAR OPTIONAL",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+      "pins": {
+        "1": "RADAR5V",
+        "2": "GND",
+        "3": "IO6",
+        "4": "IO8"
+      },
+      "x": 54,
+      "y": 56,
+      "angle": 90,
+      "source": "",
+      "price": 0.25,
+      "kind": "pcb"
+    },
+    {
+      "ref": "J10",
+      "value": "CALL BUTTON",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "pins": {
+        "1": "BTN",
+        "2": "GND"
+      },
+      "x": 81,
+      "y": 53,
+      "angle": 90,
+      "source": "",
+      "price": 0.2,
+      "kind": "pcb"
+    },
+    {
+      "ref": "JP1",
+      "value": "BUTTON IO0 / IO9",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+      "pins": {
+        "1": "IO0",
+        "2": "BTN",
+        "3": "IO9"
+      },
+      "x": 72,
+      "y": 56,
+      "angle": 90,
+      "source": "",
+      "price": 0.225,
+      "kind": "pcb"
+    },
+    {
+      "ref": "JP2",
+      "value": "RADAR POWER",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "pins": {
+        "1": "SYS5V",
+        "2": "RADAR5V"
+      },
+      "x": 43,
+      "y": 56,
+      "angle": 90,
+      "source": "",
+      "price": 0.2,
+      "kind": "pcb"
+    },
+    {
+      "ref": "R1",
+      "value": "2.7k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "CHG_PROG",
+        "2": "GND"
+      },
+      "x": 17,
+      "y": 20,
+      "angle": 0,
+      "source": "",
+      "price": 0.02,
+      "kind": "pcb"
+    },
+    {
+      "ref": "R2",
+      "value": "9.1k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "VIN_EXT",
+        "2": "TEMP"
+      },
+      "x": 8,
+      "y": 24,
+      "angle": 0,
+      "source": "",
+      "price": 0.02,
+      "kind": "pcb"
+    },
+    {
+      "ref": "R3",
+      "value": "3.3k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "TEMP",
+        "2": "NTC"
+      },
+      "x": 8,
+      "y": 29,
+      "angle": 0,
+      "source": "",
+      "price": 0.02,
+      "kind": "pcb"
+    },
+    {
+      "ref": "U1",
+      "value": "TP4056 TPOWER",
+      "footprint": "Package_SO:SOIC-8-1EP_3.9x4.9mm_P1.27mm_EP2.29x3mm",
+      "pins": {
+        "1": "TEMP",
+        "2": "CHG_PROG",
+        "3": "GND",
+        "4": "VIN_EXT",
+        "5": "VBAT",
+        "6": "DONE",
+        "7": "CHRG",
+        "8": "VIN_EXT",
+        "9": "GND"
+      },
+      "x": 16,
+      "y": 27,
+      "angle": 0,
+      "source": "https://item.szlcsc.com/354934.html",
+      "price": 0.4012,
+      "kind": "pcb"
+    },
+    {
+      "ref": "C1",
+      "value": "10u 10V",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "VIN_EXT",
+        "2": "GND"
+      },
+      "x": 23.5,
+      "y": 24,
+      "angle": 0,
+      "source": "",
+      "price": 0.15,
+      "kind": "pcb"
+    },
+    {
+      "ref": "C2",
+      "value": "10u 10V",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "VBAT",
+        "2": "GND"
+      },
+      "x": 23.5,
+      "y": 30,
+      "angle": 0,
+      "source": "",
+      "price": 0.15,
+      "kind": "pcb"
+    },
+    {
+      "ref": "U2",
+      "value": "TPS61230ARNSR",
+      "footprint": "Voice:TI_RNS0007A",
+      "pins": {
+        "1": "CBST",
+        "2": "BOOST_EN",
+        "3": "BOOST_FB",
+        "4": "VBAT",
+        "5": "SW",
+        "6": "GND",
+        "7": "BOOST5V"
+      },
+      "x": 33,
+      "y": 30,
+      "angle": 180,
+      "source": "https://item.szlcsc.com/348561.html",
+      "price": 3.14,
+      "kind": "pcb"
+    },
+    {
+      "ref": "L1",
+      "value": "SWPA6045S1R0NT",
+      "footprint": "Inductor_SMD:L_Sunlord_SWPA6045S",
+      "pins": {
+        "1": "VBAT",
+        "2": "SW"
+      },
+      "x": 32,
+      "y": 24,
+      "angle": -90,
+      "source": "https://item.szlcsc.com/98160.html",
+      "price": 0.335,
+      "kind": "pcb"
+    },
+    {
+      "ref": "C3",
+      "value": "22u 10V",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "VBAT",
+        "2": "GND"
+      },
+      "x": 38.2,
+      "y": 22.5,
+      "angle": 0,
+      "source": "",
+      "price": 0.2,
+      "kind": "pcb"
+    },
+    {
+      "ref": "C4",
+      "value": "22u 10V",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "BOOST5V",
+        "2": "GND"
+      },
+      "x": 37,
+      "y": 28.5,
+      "angle": 0,
+      "source": "",
+      "price": 0.2,
+      "kind": "pcb"
+    },
+    {
+      "ref": "C5",
+      "value": "22u 10V",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "BOOST5V",
+        "2": "GND"
+      },
+      "x": 39.5,
+      "y": 32,
+      "angle": 90,
+      "source": "",
+      "price": 0.2,
+      "kind": "pcb"
+    },
+    {
+      "ref": "C6",
+      "value": "10n",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "CBST",
+        "2": "SW"
+      },
+      "x": 30,
+      "y": 29,
+      "angle": 0,
+      "source": "",
+      "price": 0.04,
+      "kind": "pcb"
+    },
+    {
+      "ref": "R4",
+      "value": "331k 0.1%",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "BOOST5V",
+        "2": "BOOST_FB"
+      },
+      "x": 36,
+      "y": 35,
+      "angle": 0,
+      "source": "",
+      "price": 0.08,
+      "kind": "pcb"
+    },
+    {
+      "ref": "R5",
+      "value": "100k 0.1%",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "BOOST_FB",
+        "2": "GND"
+      },
+      "x": 36,
+      "y": 38,
+      "angle": 0,
+      "source": "",
+      "price": 0.08,
+      "kind": "pcb"
+    },
+    {
+      "ref": "U3",
+      "value": "TPS2117DRLR",
+      "footprint": "Voice:TI_DRL0008A",
+      "pins": {
+        "1": "GND",
+        "2": "SYS5V",
+        "3": "VIN_EXT",
+        "4": "PRIORITY",
+        "5": "VCTL",
+        "6": "BOOST5V",
+        "7": "SYS5V",
+        "8": "MUX_ST"
+      },
+      "x": 43,
+      "y": 20,
+      "angle": 0,
+      "source": "https://item.szlcsc.com/24017237.html",
+      "price": 1.82,
+      "kind": "pcb"
+    },
+    {
+      "ref": "C7",
+      "value": "1u",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "VIN_EXT",
+        "2": "GND"
+      },
+      "x": 43,
+      "y": 15,
+      "angle": 0,
+      "source": "",
+      "price": 0.06,
+      "kind": "pcb"
+    },
+    {
+      "ref": "C8",
+      "value": "1u",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "BOOST5V",
+        "2": "GND"
+      },
+      "x": 46,
+      "y": 23,
+      "angle": 0,
+      "source": "",
+      "price": 0.06,
+      "kind": "pcb"
+    },
+    {
+      "ref": "C9",
+      "value": "470u 10V LOW ESR",
+      "footprint": "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm",
+      "pins": {
+        "1": "SYS5V",
+        "2": "GND"
+      },
+      "x": 47,
+      "y": 34,
+      "angle": 0,
+      "source": "",
+      "price": 1,
+      "kind": "pcb"
+    },
+    {
+      "ref": "U4",
+      "value": "TLV803EA30DBZR",
+      "footprint": "Package_TO_SOT_SMD:SOT-23",
+      "pins": {
+        "1": "GND",
+        "2": "BOOST_EN",
+        "3": "VBAT"
+      },
+      "x": 27,
+      "y": 41,
+      "angle": 0,
+      "source": "https://item.szlcsc.com/5914664.html",
+      "price": 1.57,
+      "kind": "pcb"
+    },
+    {
+      "ref": "R6",
+      "value": "100k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "VBAT",
+        "2": "BOOST_EN"
+      },
+      "x": 23,
+      "y": 38,
+      "angle": 0,
+      "source": "",
+      "price": 0.02,
+      "kind": "pcb"
+    },
+    {
+      "ref": "C10",
+      "value": "100n",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "VBAT",
+        "2": "GND"
+      },
+      "x": 24,
+      "y": 44,
+      "angle": 0,
+      "source": "",
+      "price": 0.06,
+      "kind": "pcb"
+    },
+    {
+      "ref": "D1",
+      "value": "BAT54C,215",
+      "footprint": "Package_TO_SOT_SMD:SOT-23",
+      "pins": {
+        "1": "VIN_EXT",
+        "2": "BOOST5V",
+        "3": "VCTL"
+      },
+      "x": 10,
+      "y": 39,
+      "angle": 0,
+      "source": "https://item.szlcsc.com/38684.html",
+      "price": 0.044,
+      "kind": "pcb"
+    },
+    {
+      "ref": "U5",
+      "value": "LM393DR",
+      "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
+      "pins": {
+        "1": "PRIORITY",
+        "2": "REF2V5",
+        "3": "EXT_SENSE",
+        "4": "GND",
+        "5": "GND",
+        "6": "REF2V5",
+        "7": "",
+        "8": "VCTL"
+      },
+      "x": 15,
+      "y": 46,
+      "angle": 0,
+      "source": "https://item.szlcsc.com/68565.html",
+      "price": 0.1941,
+      "kind": "pcb"
+    },
+    {
+      "ref": "U6",
+      "value": "TL431BIDBZR",
+      "footprint": "Package_TO_SOT_SMD:SOT-23",
+      "pins": {
+        "1": "REF2V5",
+        "2": "REF2V5",
+        "3": "GND"
+      },
+      "x": 8,
+      "y": 46,
+      "angle": 0,
+      "source": "https://item.szlcsc.com/42267.html",
+      "price": 0.2337,
+      "kind": "pcb"
+    },
+    {
+      "ref": "R7",
+      "value": "1.8k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "VCTL",
+        "2": "REF2V5"
+      },
+      "x": 7,
+      "y": 42,
+      "angle": 0,
+      "source": "",
+      "price": 0.02,
+      "kind": "pcb"
+    },
+    {
+      "ref": "R8",
+      "value": "105k 0.1%",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "VIN_EXT",
+        "2": "EXT_SENSE"
+      },
+      "x": 17,
+      "y": 37,
+      "angle": 0,
+      "source": "",
+      "price": 0.08,
+      "kind": "pcb"
+    },
+    {
+      "ref": "R9",
+      "value": "100k 0.1%",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "EXT_SENSE",
+        "2": "GND"
+      },
+      "x": 17,
+      "y": 40,
+      "angle": 0,
+      "source": "",
+      "price": 0.08,
+      "kind": "pcb"
+    },
+    {
+      "ref": "R10",
+      "value": "5.6M 1%",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "PRIORITY",
+        "2": "EXT_SENSE"
+      },
+      "x": 22,
+      "y": 47,
+      "angle": 0,
+      "source": "",
+      "price": 0.02,
+      "kind": "pcb"
+    },
+    {
+      "ref": "R11",
+      "value": "10k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "VCTL",
+        "2": "PRIORITY"
+      },
+      "x": 23,
+      "y": 51,
+      "angle": 0,
+      "source": "",
+      "price": 0.02,
+      "kind": "pcb"
+    },
+    {
+      "ref": "C11",
+      "value": "100n",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "VCTL",
+        "2": "GND"
+      },
+      "x": 8,
+      "y": 50,
+      "angle": 0,
+      "source": "",
+      "price": 0.06,
+      "kind": "pcb"
+    },
+    {
+      "ref": "C12",
+      "value": "100n",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "VIN_EXT",
+        "2": "GND"
+      },
+      "x": 12,
+      "y": 35,
+      "angle": 0,
+      "source": "",
+      "price": 0.06,
+      "kind": "pcb"
+    },
+    {
+      "ref": "R12",
+      "value": "100k 1%",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "VBAT",
+        "2": "ADC_BAT"
+      },
+      "x": 35,
+      "y": 44,
+      "angle": 0,
+      "source": "",
+      "price": 0.02,
+      "kind": "pcb"
+    },
+    {
+      "ref": "R13",
+      "value": "100k 1%",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "ADC_BAT",
+        "2": "GND"
+      },
+      "x": 39,
+      "y": 44,
+      "angle": 0,
+      "source": "",
+      "price": 0.02,
+      "kind": "pcb"
+    },
+    {
+      "ref": "C13",
+      "value": "100n",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "ADC_BAT",
+        "2": "GND"
+      },
+      "x": 43,
+      "y": 44,
+      "angle": 0,
+      "source": "",
+      "price": 0.06,
+      "kind": "pcb"
+    },
+    {
+      "ref": "R14",
+      "value": "150k 1%",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "VIN_EXT",
+        "2": "ADC_EXT"
+      },
+      "x": 35,
+      "y": 48,
+      "angle": 0,
+      "source": "",
+      "price": 0.02,
+      "kind": "pcb"
+    },
+    {
+      "ref": "R15",
+      "value": "100k 1%",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "ADC_EXT",
+        "2": "GND"
+      },
+      "x": 39,
+      "y": 48,
+      "angle": 0,
+      "source": "",
+      "price": 0.02,
+      "kind": "pcb"
+    },
+    {
+      "ref": "C14",
+      "value": "100n",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "ADC_EXT",
+        "2": "GND"
+      },
+      "x": 43,
+      "y": 48,
+      "angle": 0,
+      "source": "",
+      "price": 0.06,
+      "kind": "pcb"
+    },
+    {
+      "ref": "R16",
+      "value": "10k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "V3V3",
+        "2": "MUX_ST"
+      },
+      "x": 51,
+      "y": 18,
+      "angle": 0,
+      "source": "",
+      "price": 0.02,
+      "kind": "pcb"
+    },
+    {
+      "ref": "R17",
+      "value": "10k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "V3V3",
+        "2": "CHRG"
+      },
+      "x": 51,
+      "y": 22,
+      "angle": 0,
+      "source": "",
+      "price": 0.02,
+      "kind": "pcb"
+    },
+    {
+      "ref": "R18",
+      "value": "10k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "V3V3",
+        "2": "DONE"
+      },
+      "x": 51,
+      "y": 26,
+      "angle": 0,
+      "source": "",
+      "price": 0.02,
+      "kind": "pcb"
+    },
+    {
+      "ref": "R19",
+      "value": "10k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "V3V3",
+        "2": "BTN"
+      },
+      "x": 79,
+      "y": 49,
+      "angle": 0,
+      "source": "",
+      "price": 0.02,
+      "kind": "pcb"
+    },
+    {
+      "ref": "C15",
+      "value": "100n",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "BTN",
+        "2": "GND"
+      },
+      "x": 84,
+      "y": 49,
+      "angle": 0,
+      "source": "",
+      "price": 0.06,
+      "kind": "pcb"
+    },
+    {
+      "ref": "C16",
+      "value": "10u 10V",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "RADAR5V",
+        "2": "GND"
+      },
+      "x": 79,
+      "y": 37,
+      "angle": 0,
+      "source": "",
+      "price": 0.15,
+      "kind": "pcb"
+    },
+    {
+      "ref": "TP1",
+      "value": "IO43",
+      "footprint": "TestPoint:TestPoint_Pad_D1.5mm",
+      "pins": {
+        "1": "IO43"
+      },
+      "x": 64,
+      "y": 10,
+      "angle": 0,
+      "source": "",
+      "price": 0,
+      "kind": "pcb"
+    },
+    {
+      "ref": "TP2",
+      "value": "IO44",
+      "footprint": "TestPoint:TestPoint_Pad_D1.5mm",
+      "pins": {
+        "1": "IO44"
+      },
+      "x": 67,
+      "y": 10,
+      "angle": 0,
+      "source": "",
+      "price": 0,
+      "kind": "pcb"
+    },
+    {
+      "ref": "H1",
+      "value": "M3",
+      "footprint": "MountingHole:MountingHole_3.2mm_M3",
+      "pins": {},
+      "x": 4,
+      "y": 4,
+      "angle": 0,
+      "source": "",
+      "price": 0,
+      "kind": "mechanical"
+    },
+    {
+      "ref": "H2",
+      "value": "M3",
+      "footprint": "MountingHole:MountingHole_3.2mm_M3",
+      "pins": {},
+      "x": 86,
+      "y": 4,
+      "angle": 0,
+      "source": "",
+      "price": 0,
+      "kind": "mechanical"
+    },
+    {
+      "ref": "H3",
+      "value": "M3",
+      "footprint": "MountingHole:MountingHole_3.2mm_M3",
+      "pins": {},
+      "x": 4,
+      "y": 61,
+      "angle": 0,
+      "source": "",
+      "price": 0,
+      "kind": "mechanical"
+    },
+    {
+      "ref": "H4",
+      "value": "M3",
+      "footprint": "MountingHole:MountingHole_3.2mm_M3",
+      "pins": {},
+      "x": 86,
+      "y": 61,
+      "angle": 0,
+      "source": "",
+      "price": 0,
+      "kind": "mechanical"
+    }
+  ],
+  "input_spec": "Regulated approximately 5.2V; <=5.5V; required minimum and exact adapter remain to be validated",
+  "radar_optional": true
+}

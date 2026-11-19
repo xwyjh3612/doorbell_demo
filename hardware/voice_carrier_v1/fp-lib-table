@@ -1,0 +1,1 @@
+(fp_lib_table (version 7) (lib (name "Voice") (type "KiCad") (uri "${KIPRJMOD}/Voice.pretty") (options "") (descr "TI asymmetric package draft footprints")))
