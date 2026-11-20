@@ -76,7 +76,6 @@ public final class CallService extends Service implements AudioPeer.Listener {
     private boolean networkCallbackRegistered;
     private final Runnable reconnect = this::connect;
     private final Runnable timeout = () -> end("对方未接听或连接超时", true);
-    private final Runnable disconnectedTimeout = () -> end("音频连接已断开", true);
     private final ConnectivityManager.NetworkCallback networkCallback = new ConnectivityManager.NetworkCallback() {
         @Override public void onAvailable(Network network) { main.post(() -> {
             if (!running) return;
@@ -249,6 +248,7 @@ public final class CallService extends Service implements AudioPeer.Listener {
         for (Runnable observer : new java.util.ArrayList<>(observers)) observer.run();
     }
     private void log(String value) {
+        android.util.Log.i("VoiceIntercom", value);
         history.append(new java.text.SimpleDateFormat("HH:mm:ss", java.util.Locale.ROOT).format(new java.util.Date())).append("  ").append(value).append('\n');
         if (history.length() > 1800) history.delete(0, history.indexOf("\n", 500) + 1);
     }
@@ -392,13 +392,15 @@ public final class CallService extends Service implements AudioPeer.Listener {
         if (call.phase == CallState.Phase.IDLE) return;
         log("音频连接：" + state);
         if ("CONNECTED".equals(state)) {
-            main.removeCallbacks(timeout); main.removeCallbacks(disconnectedTimeout);
+            main.removeCallbacks(timeout);
             if (call.phase != CallState.Phase.CONNECTED) connectedAt = System.currentTimeMillis();
             call.phase = CallState.Phase.CONNECTED; message = "双向语音已连接";
         } else if ("FAILED".equals(state)) end("音频连接失败，请重新呼叫", true);
         else if ("DISCONNECTED".equals(state)) {
-            message = "网络波动，正在等待恢复";
-            main.removeCallbacks(disconnectedTimeout); main.postDelayed(disconnectedTimeout, 8000);
+            // DISCONNECTED is recoverable; keep this peer, audio foreground
+            // service and call alive. Sending BYE after eight seconds destroys
+            // the session before ICE consent checks can recover it.
+            message = "音频暂时中断，正在等待恢复";
         }
         render();
     }
@@ -406,7 +408,7 @@ public final class CallService extends Service implements AudioPeer.Listener {
     private void stopRinging() { ringing = false; if (ringtone != null) { ringtone.stop(); ringtone = null; } vibrator.cancel(); }
     void end(String reason, boolean notify) {
         if (notify && call.phase != CallState.Phase.IDLE) send(call.phase == CallState.Phase.INCOMING ? "reject" : "bye", call.peer, null, null);
-        main.removeCallbacks(timeout); main.removeCallbacks(disconnectedTimeout); stopRinging();
+        main.removeCallbacks(timeout); stopRinging();
         call.reset(); earlyCandidates.clear(); negotiating = false; muted = false;
         if (media != null) media.close(); releaseAudio(); microphoneForeground = false;
         message = reason; log(reason); render();

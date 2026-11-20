@@ -4,6 +4,7 @@ import { createRequire } from 'node:module';
 import { execFile } from 'node:child_process';
 import fs from 'node:fs/promises';
 import { MqttProbe } from './mqtt-probe.mjs';
+import { checkAudioRecovery } from './audio-recovery.mjs';
 
 const device = process.env.VOICE_TEST_DEVICE || 'demo_virtual_20261119';
 const local = process.env.VOICE_TEST_LOCAL || 'demo_app_20261119';
@@ -157,6 +158,10 @@ try {
   if (process.env.VOICE_TEST_BACKGROUND_ONLY !== '1') {
   await page.evaluate(() => qaInit('outgoing'));
   await click('呼叫设备'); await connected('outgoing');
+  if (process.env.VOICE_TEST_RECOVERY === '1') {
+    results.push(await checkAudioRecovery({ adb, page, ui, messages, screenshot, pause }));
+    console.log('PASS audio-recovery-after-udp-interruption');
+  }
   await click('麦克风开'); await waitUi('麦克风关');
   await click('麦克风关'); await click('扬声器'); await waitUi('听筒'); await click('听筒');
   mqtt.publish({ type: 'bye', target: local }); await waitUi('待机');
@@ -171,6 +176,10 @@ try {
   await page.evaluate(() => qaInit('ring'));
   const beforeAccept = messages.length;
   mqtt.publish({ type: 'ring', data: 'RING', target: local }); await waitUi('设备来电');
+  const foregroundIncoming = await adb('shell', 'dumpsys', 'notification');
+  if (!/NotificationRecord[^\n]*pkg=com.youkong.voiceintercom[^\n]*id=11/.test(foregroundIncoming)) {
+    throw Error('Device call must post the incoming notification');
+  }
   await click('接听来电'); await connected('ring-accept-offer');
   if (!messages.slice(beforeAccept).some(m => m.type === 'customized' && m.data === 'ACCEPT_CALL')) throw Error('No ACCEPT_CALL received');
   await click('挂断通话'); await waitUi('待机');
