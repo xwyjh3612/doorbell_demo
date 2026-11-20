@@ -116,3 +116,15 @@ role_command = ota_command[:2] if Path(compiler).stem == "zig" else ota_command[
 role_command += ["-std=c++20", "-I", str(output), str(root / "tests/host/test_outgoing_ice_role.cpp"), "-o", str(role_binary)]
 subprocess.run(role_command, check=True, cwd=root)
 subprocess.run([str(role_binary)], check=True, cwd=root, timeout=30)
+
+# The actual ICE delivery function must not reset an established peer on MQTT
+# recovery, or free the configuration strings retained by that peer.
+ice_start = signaling_source.index("static void mqtt_sig_apply_ice(")
+ice_end = signaling_source.index("\nvoid mqtt_sig_set_device_id", ice_start)
+(output / "connected_ice_refresh_under_test.inc").write_text(signaling_source[ice_start:ice_end], encoding="utf-8")
+ice_binary = output / ("test_connected_ice_refresh.exe" if sys.platform == "win32" else "test_connected_ice_refresh")
+ice_command = ota_command[:2] if Path(compiler).stem == "zig" else ota_command[:1]
+ice_command += ["-std=c++20", "-I", str(root / "main"), "-I", str(output),
+                str(root / "tests/host/test_connected_ice_refresh.cpp"), "-o", str(ice_binary)]
+subprocess.run(ice_command, check=True, cwd=root)
+subprocess.run([str(ice_binary)], check=True, cwd=root, timeout=30)

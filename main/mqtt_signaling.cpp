@@ -25,6 +25,7 @@
 #include "door_bell_audio.h"
 #include "otaupgrade.h"
 #include "common.h"
+#include "webrtc_mqtt.h"
 
 class CallControlGuard {
 public:
@@ -130,6 +131,31 @@ typedef struct {
     char *pending_candidates[10];
     int pending_candidate_count;
 } mqtt_sig_t;
+
+static void mqtt_sig_apply_ice(mqtt_sig_t *sg, const char *url, const char *user, const char *password)
+{
+    // The official on_ice_info callback restarts an existing peer. A routine
+    // MQTT recovery/config refresh must not renegotiate a connected call.
+    // Keep the current strings alive too: the peer retains their pointers.
+    if (webrtc_get_call_state() == CALL_STATE_CONNECTED && sg->ice_url && sg->ice_user && sg->ice_psw) {
+        ESP_LOGI(TAG, "ICE refresh ignored during connected call; current peer/config retained");
+        return;
+    }
+    char *next_url = strdup(url), *next_user = strdup(user), *next_password = strdup(password);
+    if (!next_url || !next_user || !next_password) {
+        free(next_url); free(next_user); free(next_password);
+        ESP_LOGE(TAG, "Could not store ICE configuration; previous config retained");
+        return;
+    }
+    free(sg->ice_url); free(sg->ice_user); free(sg->ice_psw);
+    sg->ice_url = next_url; sg->ice_user = next_user; sg->ice_psw = next_password;
+    ESP_LOGI(TAG, "ICE configuration saved");
+    esp_peer_signaling_ice_info_t ice_info = {
+        .server_info = {.stun_url = sg->ice_url, .user = sg->ice_user, .psw = sg->ice_psw},
+        .is_initiator = sg->is_initiator,
+    };
+    if (sg->cfg.on_ice_info) sg->cfg.on_ice_info(&ice_info, sg->cfg.ctx);
+}
 
 void mqtt_sig_set_device_id(const char *device_id)
 {
@@ -542,27 +568,7 @@ static void mqtt_message_handler(const std::string& topic, const std::string& pa
                     if (g_mqtt_sig_handle) {
                         mqtt_sig_t *sg = (mqtt_sig_t *)g_mqtt_sig_handle;
                         
-                        if (sg->ice_url) free(sg->ice_url);
-                        if (sg->ice_user) free(sg->ice_user);
-                        if (sg->ice_psw) free(sg->ice_psw);
-                        
-                        sg->ice_url = strdup(ice_url);
-                        sg->ice_user = strdup(username->valuestring);
-                        sg->ice_psw = strdup(credential->valuestring);
-            ESP_LOGI(TAG, "ICE信息保存: %s user=%s psw=%s", ice_url, username->valuestring, credential->valuestring);
-
-                        esp_peer_signaling_ice_info_t ice_info = {
-                            .server_info = {
-                                .stun_url = sg->ice_url,
-                                .user = sg->ice_user,
-                                .psw = sg->ice_psw,
-                            },
-                            .is_initiator = sg->is_initiator,
-                        };
-
-                        if (sg->cfg.on_ice_info) {
-                            sg->cfg.on_ice_info(&ice_info, sg->cfg.ctx);
-                        }
+                        mqtt_sig_apply_ice(sg, ice_url, username->valuestring, credential->valuestring);
                     }
                 }
             }

@@ -31,6 +31,23 @@ namespace Network4g {
             return;
         }
 
+        // Observe only registration/boot control URCs. Never enable a raw AT
+        // dump: media packets and credentials share this UART.
+        modem->GetAtUart()->RegisterUrcCallback([](const std::string& command,
+                const std::vector<AtArgumentValue>& arguments) {
+            if (command == "MATREADY") {
+                static unsigned boot_notices = 0;
+                ESP_LOGW(TAG, "MODEM_EVT MATREADY boot_notice=%u", ++boot_notices);
+            } else if (command == "CEREG" || command == "MIPCALL") {
+                int p0 = arguments.size() > 0 && arguments[0].type == AtArgumentValue::Type::Int
+                             ? arguments[0].int_value : -1;
+                int p1 = arguments.size() > 1 && arguments[1].type == AtArgumentValue::Type::Int
+                             ? arguments[1].int_value : -1;
+                ESP_LOGI(TAG, "MODEM_EVT %s argc=%u p0=%d p1=%d", command.c_str(),
+                         (unsigned)arguments.size(), p0, p1);
+            }
+        });
+
         // 设置网络状态回调
         modem->OnNetworkStateChanged([](bool ready) {
             ESP_LOGI(TAG, "网络状态: %s", ready ? "已连接" : "已断开");
