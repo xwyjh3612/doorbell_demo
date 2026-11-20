@@ -3,6 +3,7 @@ package com.youkong.voiceintercom;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -53,6 +54,15 @@ public final class MainActivity extends Activity {
     private LinearLayout audioControls;
     private RadarVisual radarVisual;
     private TrendView breathTrend, heartTrend;
+    private PresenceTimeline timeline;
+    private TextView historyPeriod, historySummary, historySelection;
+    private LinearLayout historyRows;
+    private Button historyHour, historyToday, historyDate;
+    private Call historyRequest;
+    private int historyGeneration;
+    private boolean historyHourly = true;
+    private java.util.Calendar historyDay = java.util.Calendar.getInstance();
+    private long historyFetchedAt;
     private Button callButton, answerButton, rejectButton, hangupButton, muteButton, speakerButton, settingsButton;
     private final Runnable clock = new Runnable() {
         public void run() {
@@ -62,6 +72,7 @@ public final class MainActivity extends Activity {
                 durationLabel.setText(String.format(java.util.Locale.ROOT, "%02d:%02d", seconds / 60, seconds % 60));
             }
             if(android.os.SystemClock.elapsedRealtime()-telemetryRenderedAt>=5000)renderTelemetry();
+            if(android.os.SystemClock.elapsedRealtime()-historyFetchedAt>=30000 && historyRequest==null && (historyHourly || historyIsToday()))loadHistory();
             main.postDelayed(this, 1000);
         }
     };
@@ -96,7 +107,7 @@ public final class MainActivity extends Activity {
         android.content.Intent service = new android.content.Intent(this, CallService.class);
         if (Build.VERSION.SDK_INT >= 26) startForegroundService(service); else startService(service);
         bound = bindService(service, serviceConnection, BIND_AUTO_CREATE);
-        connectTelemetry(); main.post(clock);
+        connectTelemetry(); loadHistory(); main.post(clock);
     }
     @Override public void onResume() { super.onResume(); handleCallIntent(); }
     @Override public void onNewIntent(android.content.Intent intent) {
@@ -111,6 +122,7 @@ public final class MainActivity extends Activity {
     @Override public void onStop() {
         visible = false; main.removeCallbacks(clock); main.removeCallbacks(telemetryReconnect);
         disconnectTelemetry();
+        cancelHistory();
         if (calls != null) calls.detach(callObserver);
         if (bound) { unbindService(serviceConnection); bound = false; }
         calls = null;
@@ -186,7 +198,7 @@ public final class MainActivity extends Activity {
         LinearLayout deviceRow=new LinearLayout(this);deviceRow.setGravity(Gravity.CENTER_VERTICAL);card.addView(deviceRow);
         deviceRow.addView(text("感知终端 01",14,INK),new LinearLayout.LayoutParams(0,-2,1));deviceOnline=text("● 状态待确认",11,MUTED);deviceRow.addView(deviceOnline);
         deviceLabel=text(device,11,MUTED);deviceLabel.setPadding(0,dp(4),0,0);card.addView(deviceLabel);
-        radarVisual=new RadarVisual(this);card.addView(radarVisual,new LinearLayout.LayoutParams(-1,dp(170)));
+        radarVisual=new RadarVisual(this);card.addView(radarVisual,new LinearLayout.LayoutParams(-1,dp(215)));
         LinearLayout statusRow=new LinearLayout(this);statusRow.setGravity(Gravity.CENTER_VERTICAL);card.addView(statusRow);
         statusLabel=text("待机",25,INK);statusLabel.setTypeface(null,Typeface.BOLD);statusRow.addView(statusLabel,new LinearLayout.LayoutParams(0,-2,1));
         durationLabel=text("随时连接",19,GREEN);statusRow.addView(durationLabel);
@@ -206,6 +218,7 @@ public final class MainActivity extends Activity {
         controls.addView(speakerButton, half2);
         TextView sensingTitle=text("空间感知",17,INK);sensingTitle.setTypeface(null,Typeface.BOLD);sensingTitle.setPadding(0,dp(23),0,dp(7));root.addView(sensingTitle);
         radarSummary=text("等待终端上传感知状态",12,MUTED);root.addView(radarSummary);
+        buildHistory(root);
         vitalsPanel=new LinearLayout(this);vitalsPanel.setOrientation(LinearLayout.VERTICAL);root.addView(vitalsPanel);
         LinearLayout metrics=new LinearLayout(this);vitalsPanel.addView(metrics);
         TextView[] breathing=metric(metrics,"呼吸频率","次 / 分",GREEN);breathValue=breathing[0];breathNote=breathing[1];
@@ -219,6 +232,81 @@ public final class MainActivity extends Activity {
         Button details=button("运行记录",PANEL,MUTED,()->diagnostics.setVisibility(diagnostics.getVisibility()==View.GONE?View.VISIBLE:View.GONE));root.addView(details);root.addView(diagnostics);
         root.addView(button("后台与锁屏来电设置", PANEL, INK, this::backgroundSettings));
         render();
+    }
+    private boolean historyIsToday(){
+        java.util.Calendar today=java.util.Calendar.getInstance();
+        return today.get(java.util.Calendar.YEAR)==historyDay.get(java.util.Calendar.YEAR) && today.get(java.util.Calendar.DAY_OF_YEAR)==historyDay.get(java.util.Calendar.DAY_OF_YEAR);
+    }
+    private void buildHistory(LinearLayout root){
+        LinearLayout box=new LinearLayout(this);box.setOrientation(LinearLayout.VERTICAL);box.setPadding(dp(14),dp(16),dp(14),dp(14));box.setBackground(background(PANEL,18));
+        LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(-1,-2);lp.topMargin=dp(16);root.addView(box,lp);
+        LinearLayout heading=new LinearLayout(this);heading.setGravity(Gravity.CENTER_VERTICAL);box.addView(heading);
+        TextView title=text("感知时间线",16,INK);title.setTypeface(null,Typeface.BOLD);heading.addView(title,new LinearLayout.LayoutParams(0,-2,1));
+        heading.addView(text("HISTORY",10,GREEN));
+        historyPeriod=text("最近 1 小时",11,MUTED);historyPeriod.setPadding(0,dp(6),0,0);box.addView(historyPeriod);
+        LinearLayout filters=new LinearLayout(this);box.addView(filters);
+        historyHour=button("近1小时",PANEL,INK,()->{historyHourly=true;historyDay=java.util.Calendar.getInstance();loadHistory();});
+        historyToday=button("今天",PANEL,INK,()->{historyHourly=false;historyDay=java.util.Calendar.getInstance();loadHistory();});
+        historyDate=button("选日期",PANEL,INK,this::chooseHistoryDate);
+        for(Button b:new Button[]{historyHour,historyToday,historyDate}){b.setTextSize(12);LinearLayout.LayoutParams chip=new LinearLayout.LayoutParams(0,dp(44),1);chip.topMargin=dp(9);chip.rightMargin=dp(4);filters.addView(b,chip);}
+        timeline=new PresenceTimeline(this);box.addView(timeline,new LinearLayout.LayoutParams(-1,dp(72)));
+        LinearLayout legend=new LinearLayout(this);box.addView(legend);
+        for(String state:new String[]{"absent","still","moving","present","unknown"}){TextView tag=text("● "+PresenceTimeline.label(state),10,state.equals("unknown")?MUTED:PresenceTimeline.color(state));legend.addView(tag,new LinearLayout.LayoutParams(0,-2,1));}
+        historySummary=text("正在读取服务器记录…",11,MUTED);historySummary.setPadding(0,dp(13),0,dp(9));box.addView(historySummary);
+        historySelection=text("点击色带查看对应时段",11,MUTED);box.addView(historySelection);
+        historyRows=new LinearLayout(this);historyRows.setOrientation(LinearLayout.VERTICAL);box.addView(historyRows);
+        TextView note=text("历史保存 30 天 · 通话或上报空档显示为无数据",10,MUTED);note.setPadding(0,dp(12),0,0);box.addView(note);
+    }
+    private void chooseHistoryDate(){
+        DatePickerDialog dialog=new DatePickerDialog(this,(picker,y,m,d)->{
+            historyDay=java.util.Calendar.getInstance();historyDay.set(y,m,d,0,0,0);historyDay.set(java.util.Calendar.MILLISECOND,0);historyHourly=false;loadHistory();
+        },historyDay.get(java.util.Calendar.YEAR),historyDay.get(java.util.Calendar.MONTH),historyDay.get(java.util.Calendar.DAY_OF_MONTH));
+        java.util.Calendar first=java.util.Calendar.getInstance();first.add(java.util.Calendar.DAY_OF_MONTH,-29);
+        dialog.getDatePicker().setMinDate(first.getTimeInMillis());dialog.getDatePicker().setMaxDate(System.currentTimeMillis());dialog.show();
+    }
+    private void cancelHistory(){historyGeneration++;if(historyRequest!=null)historyRequest.cancel();historyRequest=null;}
+    private void loadHistory(){
+        if(!visible || timeline==null)return;
+        cancelHistory();int generation=historyGeneration;historyFetchedAt=android.os.SystemClock.elapsedRealtime();
+        long now=System.currentTimeMillis(),from,to;
+        if(historyHourly){from=now-3600000;to=now;historyPeriod.setText("最近 1 小时 · "+new java.text.SimpleDateFormat("MM-dd",java.util.Locale.CHINA).format(new java.util.Date(now)));}
+        else{java.util.Calendar start=(java.util.Calendar)historyDay.clone();start.set(java.util.Calendar.HOUR_OF_DAY,0);start.set(java.util.Calendar.MINUTE,0);start.set(java.util.Calendar.SECOND,0);start.set(java.util.Calendar.MILLISECOND,0);from=start.getTimeInMillis();start.add(java.util.Calendar.DAY_OF_MONTH,1);to=Math.min(now,start.getTimeInMillis());historyPeriod.setText(new java.text.SimpleDateFormat("yyyy-MM-dd",java.util.Locale.CHINA).format(new java.util.Date(from))+" · 全天记录");}
+        historyHour.setBackground(background(historyHourly?Color.rgb(30,75,78):Color.rgb(27,47,66),12));
+        historyToday.setBackground(background(!historyHourly && historyIsToday()?Color.rgb(30,75,78):Color.rgb(27,47,66),12));
+        historyDate.setBackground(background(!historyHourly && !historyIsToday()?Color.rgb(30,75,78):Color.rgb(27,47,66),12));
+        historySummary.setText("正在读取服务器记录…");historyRows.removeAllViews();historySelection.setText("点击色带查看对应时段");timeline.data(new PresenceTimeline.History(),null);
+        historyRequest=client.newCall(new Request.Builder().url(server+"/api/devices/"+device+"/radar-history?from_ms="+from+"&to_ms="+to).build());
+        historyRequest.enqueue(new Callback(){
+            @Override public void onFailure(Call request,java.io.IOException error){main.post(()->historyFailed(generation));}
+            @Override public void onResponse(Call request,Response response){
+                try(Response close=response){if(!response.isSuccessful() || response.body()==null)throw new java.io.IOException("History unavailable");
+                    PresenceTimeline.History data=PresenceTimeline.History.parse(new JSONObject(response.body().string()));
+                    main.post(()->{if(!visible || generation!=historyGeneration)return;historyRequest=null;renderHistory(data);});
+                }catch(Exception error){main.post(()->historyFailed(generation));}
+            }
+        });
+    }
+    private void historyFailed(int generation){if(visible && generation==historyGeneration){historyRequest=null;historySummary.setText("历史暂时无法读取，点击日期按钮重试");}}
+    private String historyDetail(PresenceTimeline.Segment s){return PresenceTimeline.label(s.state)+"  ·  "+PresenceTimeline.time(s.from)+" — "+PresenceTimeline.time(s.to)+"  ·  "+PresenceTimeline.duration(s.to-s.from);}
+    private void renderHistory(PresenceTimeline.History data){
+        timeline.data(data,s->historySelection.setText(historyDetail(s)));historyRows.removeAllViews();
+        long absent=0,still=0,moving=0,present=0;
+        for(PresenceTimeline.Segment s:data.segments){long duration=s.to-s.from;switch(s.state){case "absent":absent+=duration;break;case "still":still+=duration;break;case "moving":moving+=duration;break;case "present":present+=duration;break;}}
+        if(absent+still+moving+present==0)historySummary.setText(data.healthy?"这个时段暂无有效记录，历史从功能上线后开始积累":"记录保存异常，请稍后重试");
+        else historySummary.setText("静止 "+PresenceTimeline.duration(still)+"  ·  活动 "+PresenceTimeline.duration(moving)+"\n无人 "+PresenceTimeline.duration(absent)+(present>0?"  ·  有人 "+PresenceTimeline.duration(present):"")+(data.healthy?"":"\n记录保存异常，可能有缺失"));
+        int shown=0;
+        for(int i=data.segments.size()-1;i>=0 && shown<4;i--){PresenceTimeline.Segment s=data.segments.get(i);if(s.state.equals("unknown"))continue;shown++;
+            LinearLayout row=new LinearLayout(this);row.setGravity(Gravity.CENTER_VERTICAL);row.setPadding(0,dp(12),0,0);historyRows.addView(row);
+            TextView dot=text("●",12,PresenceTimeline.color(s.state));dot.setPadding(0,0,dp(10),0);row.addView(dot);
+            LinearLayout lines=new LinearLayout(this);lines.setOrientation(LinearLayout.VERTICAL);row.addView(lines,new LinearLayout.LayoutParams(0,-2,1));
+            lines.addView(text(PresenceTimeline.label(s.state),13,INK));lines.addView(text(PresenceTimeline.time(s.from)+" — "+PresenceTimeline.time(s.to),10,MUTED));row.addView(text(PresenceTimeline.duration(s.to-s.from),11,MUTED));
+            row.setOnClickListener(v->historySelection.setText(historyDetail(s)));
+        }
+        if(data.segments.size()>4){Button all=button("查看时段列表",Color.rgb(27,47,66),INK,()->{
+            int count=Math.min(500,data.segments.size());String[] items=new String[count];
+            for(int i=0;i<count;i++)items[i]=historyDetail(data.segments.get(data.segments.size()-1-i));
+            new AlertDialog.Builder(this).setTitle("时间轨迹 · 最近 "+count+" 个时段").setItems(items,(dialog,index)->historySelection.setText(items[index])).setNegativeButton("关闭",null).show();
+        });all.setTextSize(12);historyRows.addView(all);}
     }
     private TextView[] metric(LinearLayout row,String label,String unit,int color){
         LinearLayout box=new LinearLayout(this);box.setOrientation(LinearLayout.VERTICAL);box.setPadding(dp(12),dp(15),dp(10),dp(13));box.setBackground(background(PANEL,16));
@@ -277,17 +365,10 @@ public final class MainActivity extends Activity {
         boolean online=audioLive||telemetry.online(now), radarLive=telemetry.radarLive(now);
         deviceOnline.setText(online?"● 终端在线":telemetry.reportId>0?"● 状态暂未更新":"● 状态待确认");
         deviceOnline.setTextColor(online?GREEN:MUTED);
-        String target="等待感知数据";
-        if(radarLive){
-            target="雷达数据在线";
-            if(telemetry.presence==1)target="有人 · 感知中";
-            else if(telemetry.presence==0)target="无人 · 守候中";
-            else if(telemetry.activity==1)target="静止目标";
-            else if(telemetry.activity==2)target="活动目标";
-            else if(telemetry.activity==0)target="无活动目标";
-        }else if(active)target="语音连接优先";
-        else if(telemetry.reportId>0)target="等待数据更新";
-        radarVisual.state(target,radarLive);
+        String state=telemetry.targetState(now),target=RadarVisual.label(state);
+        String senseNote=radarLive?"感知在线 · 约 "+Math.max(0,(telemetry.serverAge+telemetry.elapsed(now))/1000)+" 秒前更新":active?"通话期间暂停上报":telemetry.reportId>0?"数据已过期 · 等待更新":"等待终端上传";
+        if(radarLive && state.equals("unknown"))senseNote="数据在线 · 目标状态未确认";
+        radarVisual.state(state,radarLive,senseNote);
         vitalsPanel.setVisibility("r24d".equals(telemetry.model)?View.GONE:View.VISIBLE);
         String model=telemetry.vitals()?"60GHz 生命体征":"r24d".equals(telemetry.model)?"24GHz 人体感应":"感知模块";
         if(active)radarSummary.setText(model+" · 通话期间本地采集，挂断后更新");
@@ -398,11 +479,12 @@ public final class MainActivity extends Activity {
                 if (!"https".equals(uri.getScheme()) || uri.getHost() == null || uri.getUserInfo() != null || uri.getQuery() != null
                         || uri.getFragment() != null || !uri.getPath().isEmpty()) throw new IllegalArgumentException("请填写 HTTPS 域名地址");
                 if (!nextDevice.matches("[A-Za-z0-9_-]{1,63}") || !nextLocal.matches("[A-Za-z0-9_-]{1,63}")) throw new IllegalArgumentException("ID 仅支持字母、数字、下划线和短横线");
-                disconnectTelemetry(); server = next; device = nextDevice; localId = nextLocal;
+                disconnectTelemetry(); cancelHistory(); server = next; device = nextDevice; localId = nextLocal;
                 telemetry=new TelemetryState();lastRadarUptime=0;breathTrend.clear();heartTrend.clear();
                 preferences.edit().putString("server", server).putString("device", device).putString("local", localId).apply();
                 if (calls != null) calls.reloadSettings();
-                dialog.dismiss(); connectTelemetry();
+                timeline.data(new PresenceTimeline.History(),null);historyRows.removeAllViews();historySelection.setText("");
+                dialog.dismiss(); connectTelemetry(); loadHistory();
             } catch (Exception error) { Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show(); }
         })); dialog.show();
     }

@@ -14,4 +14,11 @@ final class TelemetryState {
         return radarLive(now) && fieldAge >= 0 && fieldAge + serverAge + elapsed(now) < 12000;
     }
     boolean vitals() { return "r60abd1".equals(model); }
+    String targetState(long now) {
+        if (!radarLive(now)) return "unknown";
+        if (presence == 0) return "absent";
+        if (activity == 2) return "moving";
+        if (activity == 1) return "still";
+        return presence == 1 ? "present" : "unknown";
+    }
 }

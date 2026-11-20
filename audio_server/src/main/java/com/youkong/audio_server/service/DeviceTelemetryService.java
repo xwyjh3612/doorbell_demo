@@ -3,6 +3,7 @@ package com.youkong.audio_server.service;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -18,11 +19,15 @@ import java.util.concurrent.ConcurrentMap;
 @Service
 public class DeviceTelemetryService extends TextWebSocketHandler {
     private final String prefix;
+    private final RadarHistoryStore history;
     private final ConcurrentMap<String, Observation> latest = new ConcurrentHashMap<>();
     private final ConcurrentMap<String, Subscription> subscribers = new ConcurrentHashMap<>();
-    public DeviceTelemetryService(@Value("${signaling.project:project}") String project) {
+    @Autowired
+    public DeviceTelemetryService(@Value("${signaling.project:project}") String project, RadarHistoryStore history) {
         prefix = "/voice/" + project + "/";
+        this.history = history;
     }
+    public DeviceTelemetryService(String project) { this(project,null); }
     private static final class Observation {
         final JSONObject data; final long at;
         Observation(JSONObject data) { this.data = data; at = System.currentTimeMillis(); }
@@ -63,7 +68,9 @@ public class DeviceTelemetryService extends TextWebSocketHandler {
                 if (n < -1 || n > max[i] || ("heart".equals(keys[i]) && n > 0 && n < 60)) return;
                 safe.put(keys[i], n);
             }
-            latest.put(device, new Observation(safe));
+            Observation observation = new Observation(safe);
+            latest.put(device, observation);
+            if(history != null) history.record(device, safe, observation.at);
             for (Subscription subscription : subscribers.values()) {
                 if (device.equals(subscription.device)) send(subscription);
             }

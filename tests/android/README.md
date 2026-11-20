@@ -16,7 +16,11 @@ F:/nodejs/nvm/v22.16.0/node.exe tests/android/native-app-e2e.mjs
 
 0.4 增加后台、Activity 结束、PIN 锁屏、强制 Doze、息屏音频及通知拒接测试，设置 `VOICE_TEST_BACKGROUND=1` 启用。Android 14 以上设置 `VOICE_TEST_FALLBACK=1` 可验证全屏权限拒绝后的通知接听。必须使用模拟器并预先解锁、允许麦克风和通知；测试会临时设置 PIN、电池豁免和 Doze，结束后恢复偏好、清理测试锁和停止 App。
 
+0.5 删除 App 对可恢复 `DISCONNECTED` 状态的 8 秒自动挂断。设置 `VOICE_TEST_RECOVERY=1`，使用通过 `adb root` 启用 root 的测试模拟器，验证阻断 App 的 UDP 音频后，原生连接进入 `DISCONNECTED`，保持阻断超过 8 秒仍不发 `bye`，恢复 UDP 后同一连接恢复双向音频。测试只插入带独立标记的两条临时规则，`finally` 删除相同规则；不清空模拟器防火墙，不改真实 ESP32 或 TURN 服务。真正 `FAILED`、双方主动挂断和首次建连超时保留结束逻辑。
+
 `VOICE_TEST_DEVICE` / `VOICE_TEST_LOCAL` 支持独立 `demo_` ID，`VOICE_TEST_OUTPUT` 指定输出目录，`VOICE_TEST_BACKGROUND_ONLY=1` 只运行后台场景。并行运行须使用不同设备、接听和 MQTT client ID；MqttProbe 已为每个设备及进程生成独立 client ID。专项记录见 [安卓后台与锁屏接听验证.md](../../安卓后台与锁屏接听验证.md)。
+
+`presence-history-e2e.mjs`使用独立`demo_`设备验证无人、静止、活动的MQTT持久化历史和过期空档。设置`VOICE_HISTORY_NATIVE=1`时同时验证原生感知面板和时间线并保存截图；`VOICE_HISTORY_SERVER`及`VOICE_HISTORY_PROJECT`可选择本地独立测试服务。详见[感知时间线与历史记录.md](../../感知时间线与历史记录.md)。
 
 `real-esp32-call-e2e.mjs` 用于真实设备测试，必须显式指定 `--real-device 189833342344184 --hold-seconds 60`。App 设置为相同的真实设备 ID；先停止占用 COM13 的雷达采集，在项目根目录的一个终端启动本地串口桥接：
 
