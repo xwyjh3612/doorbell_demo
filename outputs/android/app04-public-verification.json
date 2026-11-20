@@ -1,0 +1,12 @@
+{
+  "version": "0.4-demo",
+  "url": "https://voice.2811.top/apks/voice-intercom-demo.apk?v=0.4",
+  "http": 200,
+  "size": 44454224,
+  "sha256": "bbeffec555819df0c0230d55431ffa826270f50bd550763dacdb587bd64b9204",
+  "matches_local": true,
+  "content_type": "application/vnd.android.package-archive",
+  "download_page": "https://voice.2811.top/demo.html",
+  "download_page_http": 200,
+  "download_page_matches_local": true
+}

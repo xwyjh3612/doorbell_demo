@@ -55,7 +55,7 @@ Java `SignalingMessage.normalizeMediaFields()` 补齐两种媒体字段，不改
 
 ## 构建与测试
 
-雷达检测为编译时可选，默认关闭。运行`./tools/build-firmware.ps1 -Variant voice`生成基础语音版，`-Variant voice-radar`生成24G感应版，`-Variant voice-radar60`生成60GHz呼吸/心率版；关闭时不编译雷达模块和入口。App 0.3支持感知数据及实际数值趋势，通话期间暂停网络上传、继续本地雷达接收。接线、配置开关和验证说明见[可选雷达固件.md](可选雷达固件.md)。
+雷达检测为编译时可选，默认关闭。运行`./tools/build-firmware.ps1 -Variant voice`生成基础语音版，`-Variant voice-radar`生成24G感应版，`-Variant voice-radar60`生成60GHz呼吸/心率版；关闭时不编译雷达模块和入口。App 0.4支持后台及锁屏接听、感知数据及实际数值趋势，通话期间暂停网络上传、继续本地雷达接收。接线、配置开关和验证说明见[可选雷达固件.md](可选雷达固件.md)。
 
 恢复以前的整套联调环境，参阅 [测试环境恢复.md](测试环境恢复.md)。在项目根目录运行 `./audio_server/start-test.ps1` 可启动本机 Java 服务。
 

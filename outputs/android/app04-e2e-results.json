@@ -1,0 +1,232 @@
+{
+  "date": "2026-11-20",
+  "version": "0.4-demo",
+  "apk_sha256": "bbeffec555819df0c0230d55431ffa826270f50bd550763dacdb587bd64b9204",
+  "transport": "public WSS <-> MQTT, WebRTC TURN relay",
+  "device_type": "Android emulators with browser-simulated ESP32 signaling endpoint",
+  "api29": {
+    "foreground_scenarios": [
+      {
+        "name": "outgoing",
+        "state": "connected",
+        "relay": true,
+        "audio": [
+          {
+            "type": "inbound-rtp",
+            "kind": "audio",
+            "packetsReceived": 132
+          },
+          {
+            "type": "outbound-rtp",
+            "kind": "audio",
+            "packetsSent": 135
+          }
+        ]
+      },
+      {
+        "name": "mute-speaker-remote-hangup",
+        "passed": true
+      },
+      {
+        "name": "incoming-offer",
+        "state": "connected",
+        "relay": true,
+        "audio": [
+          {
+            "type": "inbound-rtp",
+            "kind": "audio",
+            "packetsReceived": 151
+          },
+          {
+            "type": "outbound-rtp",
+            "kind": "audio",
+            "packetsSent": 155
+          }
+        ]
+      },
+      {
+        "name": "ring-accept-offer",
+        "state": "connected",
+        "relay": true,
+        "audio": [
+          {
+            "type": "inbound-rtp",
+            "kind": "audio",
+            "packetsReceived": 123
+          },
+          {
+            "type": "outbound-rtp",
+            "kind": "audio",
+            "packetsSent": 125
+          }
+        ]
+      },
+      {
+        "name": "reject-before-offer",
+        "passed": true
+      }
+    ],
+    "background_run": {
+      "passed": true,
+      "results": [
+        {
+          "name": "background-notification-answer",
+          "state": "connected",
+          "relay": true,
+          "audio": [
+            {
+              "type": "inbound-rtp",
+              "kind": "audio",
+              "packetsReceived": 131
+            },
+            {
+              "type": "outbound-rtp",
+              "kind": "audio",
+              "packetsSent": 135
+            }
+          ]
+        },
+        {
+          "name": "background-audio-after-activity-destroyed",
+          "passed": true,
+          "before": {
+            "received": 236,
+            "sent": 240
+          },
+          "after": {
+            "received": 744,
+            "sent": 747
+          }
+        },
+        {
+          "name": "doze-lockscreen-answer",
+          "state": "connected",
+          "relay": true,
+          "audio": [
+            {
+              "type": "inbound-rtp",
+              "kind": "audio",
+              "packetsReceived": 135
+            },
+            {
+              "type": "outbound-rtp",
+              "kind": "audio",
+              "packetsSent": 139
+            }
+          ]
+        },
+        {
+          "name": "screen-off-audio",
+          "passed": true,
+          "before": {
+            "received": 157,
+            "sent": 162
+          },
+          "after": {
+            "received": 665,
+            "sent": 668
+          }
+        },
+        {
+          "name": "background-notification-reject",
+          "passed": true
+        }
+      ]
+    }
+  },
+  "api35": {
+    "background_and_fullscreen_permission_fallback_run": {
+      "passed": true,
+      "results": [
+        {
+          "name": "background-notification-answer",
+          "state": "connected",
+          "relay": true,
+          "audio": [
+            {
+              "type": "inbound-rtp",
+              "kind": "audio",
+              "packetsReceived": 160
+            },
+            {
+              "type": "outbound-rtp",
+              "kind": "audio",
+              "packetsSent": 167
+            }
+          ]
+        },
+        {
+          "name": "background-audio-after-activity-destroyed",
+          "passed": true,
+          "before": {
+            "received": 252,
+            "sent": 261
+          },
+          "after": {
+            "received": 760,
+            "sent": 768
+          }
+        },
+        {
+          "name": "doze-lockscreen-answer",
+          "state": "connected",
+          "relay": true,
+          "audio": [
+            {
+              "type": "inbound-rtp",
+              "kind": "audio",
+              "packetsReceived": 156
+            },
+            {
+              "type": "outbound-rtp",
+              "kind": "audio",
+              "packetsSent": 164
+            }
+          ]
+        },
+        {
+          "name": "screen-off-audio",
+          "passed": true,
+          "before": {
+            "received": 174,
+            "sent": 182
+          },
+          "after": {
+            "received": 682,
+            "sent": 689
+          }
+        },
+        {
+          "name": "background-notification-reject",
+          "passed": true
+        },
+        {
+          "name": "fullscreen-denied-notification-answer",
+          "state": "connected",
+          "relay": true,
+          "audio": [
+            {
+              "type": "inbound-rtp",
+              "kind": "audio",
+              "packetsReceived": 161
+            },
+            {
+              "type": "outbound-rtp",
+              "kind": "audio",
+              "packetsSent": 168
+            }
+          ]
+        },
+        {
+          "name": "fullscreen-denied-service-survived",
+          "passed": true
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "No physical handset/OEM background-cleaner verification in this run.",
+    "No new physical ESP32 or overnight endurance test in this run.",
+    "Battery optimization exemption enabled during forced Doze test."
+  ]
+}
