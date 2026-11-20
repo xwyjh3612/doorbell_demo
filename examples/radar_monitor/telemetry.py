@@ -1,6 +1,6 @@
 """Parse diagnostic console snapshots, never guess presence from raw byte counts."""
 from collections import deque
-from datetime import datetime
+from datetime import datetime, timedelta
 import re
 import time
 
@@ -60,6 +60,7 @@ class Telemetry:
         self.connection = "connecting"
         self.connection_note = "正在连接串口"
         self.port = None
+        self.summary = None
 
     def _context(self, rx, baud, total, uptime):
         if (self.config is not None and
@@ -72,6 +73,7 @@ class Telemetry:
             self.presence = None
             self.presence_observed_at = None
             self.pending = None
+            self.summary = None
         elif self.previous_total is not None:
             self.new_bytes += max(0, total - self.previous_total)
         self.config = (rx, baud)
@@ -85,7 +87,8 @@ class Telemetry:
         # sequential STATUS/HISTORY records from the sole radar reader task.
         self.uptime_ms = max(self.uptime_ms, uptime)
         self.last_console_at = clock()
-        self.logs.append({"at": self.last_console_at, "line": line})
+        if not HEX.search(line):
+            self.logs.append({"at": self.last_console_at, "line": line})
         match = STATUS.search(line)
         if match:
             rx, baud, total, errors, headers, level = map(int, match.groups())
@@ -105,6 +108,16 @@ class Telemetry:
                 self.breaks = int(breaks[1])
             self.last_status_mono = time.monotonic()
             self.byte_samples.append({"at": clock(), "bytes": total, "epoch": self.epoch})
+            values = {key: int(value) for key, value in re.findall(
+                r"\b(valid|presence|last_presence_ms|breath|heart|distance_cm|activity)=(-?\d+)\b", line)}
+            if "valid" in values:
+                self.summary = dict(at=clock(), uptime_ms=uptime, **values)
+                # Last byte time is unavailable without a history query. Do not
+                # substitute the STATUS timestamp for a radar receive timestamp.
+                self.presence = bool(values["presence"]) if values.get("presence") in (0, 1) else None
+                observed = values.get("last_presence_ms", 0)
+                self.presence_observed_at = (datetime.now().astimezone() - timedelta(
+                    milliseconds=max(0, uptime-observed))).isoformat(timespec="seconds") if self.presence is not None and observed else None
             return
         match = HISTORY.search(line)
         if match:
@@ -181,4 +194,5 @@ class Telemetry:
                     breaks=self.breaks, snapshot_count=self.snapshot_count, epoch=self.epoch,
                     presence=self.presence, presence_observed_at=self.presence_observed_at,
                     rx_age_s=round(rx_age, 1) if rx_age is not None else None,
-                    frames=list(self.frames), logs=list(self.logs), samples=list(self.byte_samples))
+                    frames=list(self.frames), logs=list(self.logs), samples=list(self.byte_samples),
+                    summary=self.summary)

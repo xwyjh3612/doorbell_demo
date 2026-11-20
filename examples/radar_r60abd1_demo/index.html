@@ -37,10 +37,10 @@ details.panel{padding:17px 21px}summary{cursor:pointer;font-weight:600}summary s
 let paused=false,last=null,inflight=false;
 const $=id=>document.getElementById(id),timeText=at=>at?new Date(at).toLocaleTimeString('zh-CN',{hour12:false}):'—';
 function card(name,unit=''){
- const f=last.fields[name],bad=!f||f.stale||f.quality!=='valid';$('card-'+name).classList.toggle('invalid',bad);
+ const f=last.fields[name],bad=!f||f.stale||!['valid','snapshot'].includes(f.quality)||(['breath','heart','distance'].includes(name)&&f.value===0);$('card-'+name).classList.toggle('invalid',bad);
  const node=$('value-'+name);node.textContent=name==='activity'?(f?(f.stale?'状态过期':f.label):'等待上报'):(!bad?String(f.value):'—');
  if(unit){const small=document.createElement('small');small.textContent=unit;node.append(small)}
- $('stamp-'+name).textContent=!f?'等待本次新报文':(f.stale?'数据已过期':f.quality==='valid'?'采集于 '+timeText(f.at):f.label+' · 原始值 '+f.value);
+ $('stamp-'+name).textContent=!f?'等待本次新报文':(f.stale?'数据已过期':f.quality==='snapshot'?'固件摘要 '+timeText(f.at):f.quality==='valid'?'采集于 '+timeText(f.at):f.label+' · 原始值 '+f.value);
 }
 function stateRow(label,name){
  const f=last.fields[name],row=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;
@@ -65,7 +65,7 @@ function draw(){
  if(!last||!last.samples.some(s=>['breath','heart'].includes(s.name)&&s.quality==='valid'&&new Date(s.at).getTime()>=start)){c.fillStyle='#80928a';c.fillText('等待有效呼吸 / 心率数值',l+20,t+ploth/2)}
 }
 function render(){
- const s=last;$('connection').textContent=paused?'刷新已暂停':s.note;$('dot').classList.toggle('live',!paused&&s.connected&&s.rx_age_s!==null&&s.rx_age_s<12);
+ const s=last;$('connection').textContent=paused?'刷新已暂停':s.note;$('dot').classList.toggle('live',!paused&&s.connected&&(s.rx_age_s!==null&&s.rx_age_s<12||Object.values(s.fields).some(f=>f.source==='firmware_summary'&&!f.stale)));
  $('wiring').textContent='RX GPIO'+(s.uart.rx??'—')+' · '+(s.uart.baud??'—')+' baud';$('updated').textContent='本次 '+s.elapsed_s+' 秒 · 距接收 '+(s.rx_age_s??'—')+' 秒';
  card('activity');card('breath','次/分');card('heart','次/分');card('distance','cm');
  $('states').replaceChildren(...[['存在状态','presence'],['探测范围','range'],['体动 / 100','motion'],['呼吸状态','breath_status'],['床位状态','bed'],['睡眠状态','sleep'],['坐标原始值','coordinates'],['呼吸波形','breath_wave'],['心跳波形','heart_wave']].map(([label,name])=>stateRow(label,name)));

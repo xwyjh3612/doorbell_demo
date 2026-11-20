@@ -63,7 +63,6 @@ class Monitor:
                 buffer = bytearray()
                 identified = False
                 identify_deadline = time.monotonic() + 10
-                next_history = 0
                 next_save = 0
                 with (self.output / "console.bin").open("ab") as rawlog, \
                         (self.output / "console.log").open("a", encoding="utf-8") as textlog, \
@@ -100,11 +99,8 @@ class Monitor:
                         now = time.monotonic()
                         if not identified and now > identify_deadline:
                             raise OSError("没有识别到雷达接收固件；没有发送控制台命令")
-                        if identified and now >= next_history:
-                            # A local ESP32 history query only. Never configure GPIO,
-                            # reset, clear, or send commands through radar UART2.
-                            port.write(b"radar history\r\n")
-                            next_history = now + 5
+                        # Firmware emits STATUS itself. Passive collection avoids
+                        # repeated history hex dumps and extra work during calls.
                         if now >= next_save:
                             self.save_state()
                             next_save = now + 2

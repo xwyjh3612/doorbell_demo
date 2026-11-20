@@ -66,6 +66,20 @@ class DecodeTests(unittest.TestCase):
 
 
 class SessionTests(unittest.TestCase):
+    def test_passive_summary_updates_cards_without_relabeling_as_raw_measurement(self):
+        self.state["summary"] = dict(at=stamp(), valid=6, activity=1, breath=16,
+                                     heart=76, distance_cm=60, presence=-1)
+        self.demo.ingest(self.state)
+        fields = self.demo.snapshot()["fields"]
+        self.assertEqual(76, fields["heart"]["value"])
+        self.assertEqual("snapshot", fields["heart"]["quality"])
+        self.assertFalse(fields["heart"]["stale"])
+        self.assertNotIn("presence", fields)
+        old_at = fields["heart"]["at"]
+        self.state["summary"]["at"] = stamp()
+        self.demo.ingest(self.state)
+        self.assertEqual(old_at, self.demo.fields["heart"]["at"])
+
     def setUp(self):
         self.demo = Demo("http://127.0.0.1:18888")
         self.state = source()

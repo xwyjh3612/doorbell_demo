@@ -38,6 +38,7 @@ class Demo:
         self.baseline_bytes = self.baseline_errors = None
         self.previous_errors = None
         self.resets = 0
+        self.summary_valid = None
 
     def ingest(self, source):
         self.last_poll = time.monotonic()
@@ -58,6 +59,7 @@ class Demo:
             self.session = session
             self.baseline_bytes = status.get("bytes", 0)
             self.baseline_errors = self.previous_errors = errors
+            self.summary_valid = None
             # Do not import earlier radar/module data, even if it was once live.
             self.highwater = max((f["offset_end"] for f in source.get("frames", [])
                                   if f.get("epoch") == source.get("epoch")), default=-1)
@@ -97,6 +99,25 @@ class Demo:
             if name in ("breath", "heart", "motion", "distance"):
                 self.samples.append(dict(name=name, at=frame["at"], value=parsed["value"],
                                          quality=parsed["quality"]))
+        summary = source.get("summary")
+        if summary and summary.get("valid") != self.summary_valid:
+            self.summary_valid = summary.get("valid")
+            # Receive-only mode uses firmware summaries, not raw frames. The
+            # timestamp is when this snapshot was printed, not measurement time.
+            mapping = {"activity": ("activity", ""), "breath": ("breath", "次/分"),
+                       "heart": ("heart", "次/分"), "distance_cm": ("distance", "cm"),
+                       "presence": ("presence", "")}
+            for key, (name, unit) in mapping.items():
+                value = summary.get(key, -1)
+                if value < 0:
+                    self.fields.pop(name, None)
+                    continue
+                label = {0: "无活动目标", 1: "静止", 2: "活跃"}.get(value, str(value)) if name == "activity" else str(value)
+                if name == "presence":
+                    label = "有人" if value else "无人"
+                self.fields[name] = dict(name=name, value=value, label=label, unit=unit,
+                                         quality="snapshot", at=summary["at"], source="firmware_summary")
+            self.note = "正在接收固件摘要（非原始报文，时间为摘要打印时间）"
 
     def snapshot(self):
         now = time.monotonic()
@@ -106,11 +127,12 @@ class Demo:
             age = max(0, (datetime.now().astimezone() - datetime.fromisoformat(field["at"])).total_seconds())
             periodic = name in ("breath", "heart", "motion", "distance", "coordinates",
                                 "breath_wave", "heart_wave")
-            stale = not live or self.rx_age is None or self.rx_age > 12 or (periodic and age > 12)
+            stale = (not live or age > 12) if field.get("source") == "firmware_summary" else (
+                not live or self.rx_age is None or self.rx_age > 12 or (periodic and age > 12))
             fields[name] = dict(field, age_s=round(age, 1), stale=stale)
         status = self.status or {}
         note = self.note if live or not self.connected else "采集数据暂未更新"
-        if live and (self.rx_age is None or self.rx_age > 12):
+        if live and not self.summary_valid and (self.rx_age is None or self.rx_age > 12):
             note = "采集连接正常，雷达暂未更新"
         # Only radar fields leave this process; never expose MQTT/SDP console logs.
         return dict(model="R60ABD1.1 / V0220 (照片)", started_at=self.started_at,

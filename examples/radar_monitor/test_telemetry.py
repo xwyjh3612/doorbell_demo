@@ -21,6 +21,21 @@ def history(t, data, total=None, rx=6, ms=1001):
 
 
 class TelemetryTests(unittest.TestCase):
+    def test_passive_status_summary_does_not_invent_rx_time(self):
+        t = Telemetry()
+        t.feed("I (5000) RADAR_GPIO5: STATUS rx=6 baud=115200 bytes=50 errors=0 "
+               "header5359=5 level=1 valid=5 invalid=0 breaks=0 presence=1 last_presence_ms=4000 "
+               "breath=16 heart=76 distance_cm=60 activity=1")
+        snapshot = t.snapshot()
+        self.assertEqual(16, snapshot["summary"]["breath"])
+        self.assertEqual(5, snapshot["summary"]["valid"])
+        self.assertTrue(snapshot["presence"])
+        self.assertIsNone(snapshot["rx_age_s"])
+        t.feed("I (6000) RADAR_GPIO5: STATUS rx=6 baud=115200 bytes=50 errors=0 "
+               "header5359=5 level=1 valid=5 presence=-1 last_presence_ms=0 breath=-1 heart=-1")
+        self.assertIsNone(t.presence)
+        self.assertEqual(-1, t.summary["heart"])
+
     def test_corruption_and_recovery(self):
         good = frame(0x80, 1, b"\x01")
         bad = bytearray(good)
