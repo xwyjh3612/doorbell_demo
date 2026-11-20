@@ -72,6 +72,7 @@ typedef enum {
     CALL_ACTION_PEER_COMMAND,
     CALL_ACTION_MQTT_EVENT,
     CALL_ACTION_WEBRTC_EVENT,
+    CALL_ACTION_BUTTON,
 } call_action_type_t;
 
 typedef struct {
@@ -600,7 +601,8 @@ static void process_action(const call_action_t *action)
     if (action->generation != call_generation) {
         return;
     }
-    if ((action->type == CALL_ACTION_WEBRTC_EVENT || action->type == CALL_ACTION_PEER_COMMAND) &&
+    if ((action->type == CALL_ACTION_WEBRTC_EVENT || action->type == CALL_ACTION_PEER_COMMAND ||
+         action->type == CALL_ACTION_BUTTON) &&
         action->call_serial != call_serial) {
         return;
     }
@@ -620,6 +622,18 @@ static void process_action(const call_action_t *action)
         case CALL_ACTION_WEBRTC_EVENT:
             process_webrtc_event((esp_webrtc_event_type_t)action->event);
             break;
+        case CALL_ACTION_BUTTON:
+            // Resolve the physical key on the same task as TTL commands and
+            // signaling. An expired incoming press must not become a new call.
+            if (g_call_ctx.state != (call_state_t)action->event) {
+                break;
+            }
+            if (g_call_ctx.state == CALL_STATE_INCOMING) {
+                process_cmd("answer");
+            } else if (g_call_ctx.state == CALL_STATE_IDLE) {
+                process_cmd("ring");
+            }
+            break;
     }
 }
 
@@ -638,6 +652,32 @@ static void call_control_task(void *param)
     }
 }
 
+typedef struct {
+    int candidate_level;
+    unsigned stable_samples;
+    bool armed;
+} call_button_t;
+
+static void sample_call_button(call_button_t *button, int level)
+{
+    if (level != button->candidate_level) {
+        button->candidate_level = level;
+        button->stable_samples = 1;
+    } else if (button->stable_samples < 2) {
+        button->stable_samples++;
+    }
+    if (button->stable_samples < 2) {
+        return;
+    }
+    if (level != 0) {
+        button->armed = true;
+    } else if (button->armed) {
+        button->armed = false;
+        call_action_t action = {.type = CALL_ACTION_BUTTON, .event = g_call_ctx.state};
+        enqueue_action(&action);
+    }
+}
+
 static void key_monitor_thread(void *arg)
 {
     (void)arg;
@@ -645,27 +685,25 @@ static void key_monitor_thread(void *arg)
     memset(&io_conf, 0, sizeof(io_conf));
     io_conf.mode = GPIO_MODE_INPUT;
     io_conf.pin_bit_mask = BIT64(DOOR_BELL_RING_BUTTON);
-    io_conf.pull_down_en = 1;
+    // ESP32-S3 BOOT/GPIO0 is active low; do not pull its idle level down.
+    io_conf.pull_up_en = 1;
     esp_err_t ret = 0;
     ret |= gpio_config(&io_conf);
     (void)ret;
 
     media_lib_thread_sleep(50);
-    int last_level = gpio_get_level(DOOR_BELL_RING_BUTTON);
-    int init_level = last_level;
+    call_button_t button = {.candidate_level = 1};
 
     for (;;) {
         media_lib_thread_sleep(50);
         if (!monitor_key) {
+            button.armed = false;
+            button.stable_samples = 0;
             continue;
         }
-        int level = gpio_get_level(DOOR_BELL_RING_BUTTON);
-        if (level != last_level) {
-            last_level = level;
-            if (level != init_level) {
-                send_cmd("ring");
-            }
-        }
+        // Two consecutive 50ms samples debounce both press and release. One
+        // held press generates one action; release is required to re-arm.
+        sample_call_button(&button, gpio_get_level(DOOR_BELL_RING_BUTTON));
     }
 }
 

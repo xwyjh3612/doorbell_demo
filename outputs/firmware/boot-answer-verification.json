@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-20",
+  "variant": "voice-radar60",
+  "firmware_sha256": "b891dff79c25b73496af6b477fba04370a63422203a2733ec26aa02ee30c2aac",
+  "flashed": true,
+  "app_md5_verified": true,
+  "outside_app_unchanged": true,
+  "boot_panic_detected": false,
+  "boot_gpio0_pullup_verified": true,
+  "mqtt_online": true,
+  "radar_history_verified": true,
+  "host_call_scenarios": 11,
+  "other_host_regressions": "OTA, latest UDP packet, radar parser/readings/upload guard, outgoing ICE role passed",
+  "physical_button_call_test": "Not pressed by automation. GPIO configuration and production button/control functions verified; user must exercise the physical BOOT key.",
+  "backup": "C:\\project\\esp32\\doorbell_demo_voice\\build\\voice-radar-flash-20261120-102558\\before-flash-8MiB.bin"
+}

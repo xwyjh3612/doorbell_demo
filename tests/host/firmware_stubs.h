@@ -29,7 +29,7 @@ typedef int esp_err_t;
 #define ESP_LOGW(...) ((void)0)
 #define ESP_LOGE(...) ((void)0)
 
-typedef struct { int mode; uint64_t pin_bit_mask; int pull_down_en; } gpio_config_t;
+typedef struct { int mode; uint64_t pin_bit_mask; int pull_down_en; int pull_up_en; } gpio_config_t;
 typedef void *esp_webrtc_handle_t;
 typedef int esp_webrtc_custom_data_via_t;
 typedef enum {

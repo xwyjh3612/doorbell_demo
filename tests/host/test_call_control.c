@@ -8,7 +8,7 @@ typedef struct {
 } FakeQueue;
 static TickType_t fake_now;
 static bool fake_ota;
-static int ring_count, disable_count, close_count, timeout_count;
+static int ring_count, disable_count, close_count, timeout_count, answer_count;
 static int tone_count, active_tone = -1;
 static event_handler_t fake_event_handler;
 static app_config_t config = {.call_timeout = 120};
@@ -73,7 +73,7 @@ void mqtt_sig_set_event_handler(mqtt_sig_event_cb_t cb, void *ctx) {}
 void mqtt_sig_set_webrtc_handle(void *h) {}
 void mqtt_sig_send_ring(const char *target) { ring_count++; }
 void mqtt_sig_send_timeout(const char *target) { timeout_count++; }
-void mqtt_sig_answer_call(void) {}
+void mqtt_sig_answer_call(void) { answer_count++; }
 void mqtt_sig_reject_call(void) {}
 void mqtt_sig_close_call(void) {}
 const esp_peer_signaling_impl_t *esp_signaling_get_mqtt_impl(void) { return NULL; }
@@ -100,6 +100,7 @@ static void reset_fixture(void) {
     assert(start_webrtc("mqtt") == 0);
     pump();
     ring_count = disable_count = close_count = timeout_count = 0;
+    answer_count = 0;
     tone_count = 0;
     active_tone = -1;
 }
@@ -240,6 +241,63 @@ static void test_call_tones_and_network_prompt(void) {
     assert(active_tone == -1 && tone_count == 3);
 }
 
+static void release_button(call_button_t *button) {
+    sample_call_button(button, 1);
+    sample_call_button(button, 1);
+}
+static void press_button(call_button_t *button) {
+    sample_call_button(button, 0);
+    sample_call_button(button, 0);
+}
+static void test_boot_answer_and_debounce(void) {
+    reset_fixture();
+    call_button_t button = {.candidate_level = 1};
+    press_button(&button); pump(); // Held at startup must not call.
+    assert(ring_count == 0);
+    release_button(&button);
+    sample_call_button(&button, 0); // Single-sample bounce is ignored.
+    sample_call_button(&button, 1);
+    sample_call_button(&button, 1); pump();
+    assert(ring_count == 0);
+    press_button(&button); pump();
+    assert(ring_count == 1 && webrtc_get_call_state() == CALL_STATE_OUTGOING);
+    for (int i = 0; i < 20; i++) sample_call_button(&button, 0);
+    pump(); assert(ring_count == 1);
+    send_cmd("close"); pump();
+    on_mqtt_signaling_event(MQTT_SIG_EVENT_REMOTE_OFFER, "remote_a", NULL); pump();
+    sample_call_button(&button, 0); pump(); // Still held: cannot accept a later call.
+    assert(answer_count == 0);
+    release_button(&button); press_button(&button); pump();
+    assert(answer_count == 1 && ring_count == 1);
+    assert(webrtc_get_call_state() == CALL_STATE_INCOMING_CONNECTING);
+    assert(g_call_ctx.call_timeout_active && active_tone == -1);
+    release_button(&button); press_button(&button); pump();
+    assert(answer_count == 1); // Negotiating: ignore another press.
+    peer_event(ESP_WEBRTC_EVENT_CONNECTED);
+    release_button(&button); press_button(&button); pump();
+    assert(webrtc_get_call_state() == CALL_STATE_CONNECTED && answer_count == 1);
+}
+static void test_boot_stale_call_and_ota(void) {
+    reset_fixture();
+    call_button_t button = {.candidate_level = 1};
+    on_mqtt_signaling_event(MQTT_SIG_EVENT_REMOTE_OFFER, "remote_a", NULL); pump();
+    release_button(&button);
+    on_mqtt_signaling_event(MQTT_SIG_EVENT_REMOTE_CLOSE, "remote_a", NULL);
+    press_button(&button); pump(); // Close queued before key: no accidental dial.
+    assert(ring_count == 0 && answer_count == 0 && webrtc_get_call_state() == CALL_STATE_IDLE);
+    on_mqtt_signaling_event(MQTT_SIG_EVENT_REMOTE_OFFER, "remote_a", NULL); pump();
+    release_button(&button);
+    call_action_t old_press = {.type = CALL_ACTION_BUTTON, .event = CALL_STATE_INCOMING};
+    old_press.generation = call_generation; old_press.call_serial = call_serial;
+    on_mqtt_signaling_event(MQTT_SIG_EVENT_REMOTE_CLOSE, "remote_a", NULL); pump();
+    on_mqtt_signaling_event(MQTT_SIG_EVENT_REMOTE_OFFER, "remote_b", NULL); pump();
+    process_action(&old_press);
+    assert(answer_count == 0 && webrtc_get_call_state() == CALL_STATE_INCOMING);
+    send_cmd("close"); pump(); fake_ota = true;
+    release_button(&button); press_button(&button); pump();
+    assert(ring_count == 0 && webrtc_get_call_state() == CALL_STATE_IDLE);
+}
+
 int main(void) {
     test_close_then_redial();
     test_three_retries_after_disconnect();
@@ -250,6 +308,8 @@ int main(void) {
     test_restart_drops_old_commands();
     test_tick_wrap_and_ota_guard();
     test_call_tones_and_network_prompt();
-    puts("PASS: 9 call lifecycle scenarios, including distinct call tones and guarded network prompt");
+    test_boot_answer_and_debounce();
+    test_boot_stale_call_and_ota();
+    puts("PASS: 11 call lifecycle scenarios, including BOOT answer, debounce and stale-key guards");
     return 0;
 }
