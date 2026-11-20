@@ -1,4 +1,4 @@
-param(
+﻿param(
     [string]$Port = 'COM13',
     [int]$HttpPort = 18888,
     [string]$Python = 'F:\Espressif\python_env\idf5.4_py3.11_env\Scripts\python.exe'
