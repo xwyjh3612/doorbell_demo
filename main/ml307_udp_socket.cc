@@ -146,7 +146,7 @@ public:
             std::string packet;
             if (c->latest_packet.take(packet)) {
                 int n = std::min(len, (int)packet.size());
-                // packet is now owned by this reader, outside the mailbox lock.
+                // The reader owns these bytes independently of the mailbox.
                 memcpy(buf, packet.data(), n);
 
                 if (addr) {

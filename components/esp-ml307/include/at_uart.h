@@ -8,6 +8,8 @@
 #include <list>
 #include <cstdlib>
 #include <memory>
+#include <atomic>
+#include <cstdint>
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
 #include <freertos/queue.h>
@@ -119,6 +121,12 @@ private:
     EventGroupHandle_t event_group_handle_;
     
     std::string rx_buffer_;
+    // Passive timeout diagnostics. Never read rx_buffer_ from a sender task.
+    std::atomic<uint32_t> diagnostic_rx_bytes_{0};
+    std::atomic<uint32_t> diagnostic_rx_ms_{0};
+    std::atomic<uint32_t> diagnostic_partial_bytes_{0};
+    std::atomic<uint32_t> diagnostic_urc_{0};
+    std::atomic<uint32_t> diagnostic_urc_ms_{0};
     
     // 回调函数
     std::list<UrcCallback> urc_callbacks_;

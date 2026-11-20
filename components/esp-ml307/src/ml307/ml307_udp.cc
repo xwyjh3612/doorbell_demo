@@ -86,7 +86,11 @@ void Ml307Udp::handleUrc(const std::string& command, const std::vector<AtArgumen
     } else if (command == "FIFO_OVERFLOW") {
         xEventGroupSetBits(event_group_handle_, ML307_UDP_ERROR);
         ESP_LOGE(TAG, "[%d] FIFO overflow", udp_id_);
-        Disconnect();
+        // HandleUrc runs on the UART receiver under AtUart::mutex_. Calling
+        // Disconnect here sends another AT command and waits on that same
+        // mutex (or on a sender waiting for this receiver): permanent deadlock.
+        // UART loss does not close the modem's UDP socket. Report the loss and
+        // keep receiving subsequent datagrams; stale audio must not be queued.
     }
 }
 

@@ -16,6 +16,7 @@
 #include "network_4g.h"
 #include "ml307_udp_socket.h"
 #include "otaupgrade.h"
+#include "webrtc_mqtt.h"
 
 
 // C includes wrapped for C++
@@ -119,6 +120,12 @@ static int cmd_cli(int argc, char **argv) {
 }
 
 static int sys_cli(int argc, char **argv) {
+    if (webrtc_get_call_state() != CALL_STATE_IDLE) {
+        // uxTaskGetSystemState scans large audio stacks while scheduling is
+        // suspended. At 921600 baud this can overflow the modem UART FIFO.
+        ESP_LOGI("SYS_STATE", "正在呼叫或通话，任务统计请在挂断后查询");
+        return 0;
+    }
     sys_state_show();
     return 0;
 }

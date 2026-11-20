@@ -71,6 +71,8 @@ static void publish_latest(void *)
 extern "C" esp_err_t radar_telemetry_start(void)
 {
     if (telemetry_task) { return ESP_OK; }
-    return xTaskCreate(publish_latest, "radar_publish", 4096, nullptr, 1, &telemetry_task) == pdPASS
+    // JSON formatting and the modem's error logging share this stack. The
+    // 4 KiB stack overflowed on an MQTT publish error during modem recovery.
+    return xTaskCreate(publish_latest, "radar_publish", 8192, nullptr, 1, &telemetry_task) == pdPASS
         ? ESP_OK : ESP_ERR_NO_MEM;
 }

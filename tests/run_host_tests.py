@@ -128,3 +128,19 @@ ice_command += ["-std=c++20", "-I", str(root / "main"), "-I", str(output),
                 str(root / "tests/host/test_connected_ice_refresh.cpp"), "-o", str(ice_binary)]
 subprocess.run(ice_command, check=True, cwd=root)
 subprocess.run([str(ice_binary)], check=True, cwd=root, timeout=30)
+
+# Compile the production UDP URC handler and Disconnect together. The stub
+# rejects AT commands from inside the locked receive callback, reproducing the
+# FIFO-overrun deadlock without hanging the test process.
+modem_udp_source = (root / "components/esp-ml307/src/ml307/ml307_udp.cc").read_text(encoding="utf-8")
+handler_start = modem_udp_source.index("void Ml307Udp::handleUrc(")
+handler_end = modem_udp_source.index("\nMl307Udp::~Ml307Udp()", handler_start)
+close_start = modem_udp_source.index("void Ml307Udp::Disconnect()")
+close_end = modem_udp_source.index("\nint Ml307Udp::Send(", close_start)
+(output / "udp_fifo_under_test.inc").write_text(
+    modem_udp_source[handler_start:handler_end] + modem_udp_source[close_start:close_end], encoding="utf-8")
+fifo_binary = output / ("test_udp_fifo_overflow.exe" if sys.platform == "win32" else "test_udp_fifo_overflow")
+fifo_command = ota_command[:2] if Path(compiler).stem == "zig" else ota_command[:1]
+fifo_command += ["-std=c++20", "-I", str(output), str(root / "tests/host/test_udp_fifo_overflow.cpp"), "-o", str(fifo_binary)]
+subprocess.run(fifo_command, check=True, cwd=root)
+subprocess.run([str(fifo_binary)], check=True, cwd=root, timeout=10)

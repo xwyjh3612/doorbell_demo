@@ -38,6 +38,21 @@ F:/nodejs/nvm/v22.16.0/node.exe tests/android/real-esp32-call-e2e.mjs --real-dev
 
 真实流程测试读取板子的 `esp_webrtc_query` 音频统计，同时核对 App“通话中”状态，覆盖双向呼叫、双方挂断、双方拒接和再次呼叫。输出仅保存音频包统计和结果，不保存完整的原始 MQTT/SDP 日志，避免把中继凭据写入公开测试记录。
 
+`real-esp32-network-recovery.mjs` 用于连续通话观察，沿用同一串口桥与 ADB 配置。它通过原生 Android App 呼叫实物 ESP32，接通后交付一次标准重复 ICE 响应，验证通话中的配置保护，并继续观察音频统计。最长 1800 秒：
+
+```powershell
+$env:VOICE_TEST_HOLD_SECONDS='1800'
+$env:VOICE_TEST_OUTPUT='build/real-call-30min'
+$env:VOICE_TEST_SAFE_DIAGNOSTICS='1'
+F:/nodejs/nvm/v22.16.0/node.exe tests/android/real-esp32-network-recovery.mjs --real-device 189833342344184
+```
+
+每 5 秒更新 `progress.json`，结束写入 `results.json`。设备断开、AFE 满告警、模组启动通知、栈溢出/崩溃，或已开始的双向音频超过 12 秒没有新统计，均使本轮失败；最后还需核对 App 保持“通话中”及足够的双向音频样本。`VOICE_TEST_SAFE_DIAGNOSTICS=1` 另外验证通话中的 `i` 命令跳过任务栈扫描；旧固件对照时不要设置该变量。测试结束主动挂断自己的通话并恢复原偏好，不把测试挂断计入观察期中断。结果证明包级收发连续性，不测主观音质或端到端声音延迟。
+
+原始旧固件基准设置 `VOICE_TEST_SAFE_DIAGNOSTICS=0` 和 `VOICE_TEST_SKIP_ICE_REFRESH=1`，避免任务栈扫描及额外的重复 ICE 响应。跳过刷新不会跳过 AFE、断开或双向音频连续性的检查。启动后应先从串口确认 MQTT 就绪；未收到 Offer、未建立通话的准备失败不计作通话稳定性结果。
+
+诊断固件的 `AT_RX_DIAG` 单独保存在结果的 `receiverEvents`，记录读取字节增量、接收年龄、未解析缓冲及活动 URC 类别。未收到任何字节时年龄为 -1。它是任务间的近似取样，不测 GPIO 波形或供电电压；仍以音频、AFE、设备状态和模组事件共同判断本轮结果。
+
 `radar-voice-e2e.mjs`验证0.3版App与真实60G语音固件的联合行为。模拟器接听ID须设为独立`lead_demo_test_20261119`，目标为真实ESP32；使用同一本地串口桥接，通过App主动呼叫设备，检查来电铃声触发、35秒及再次15秒双向音频、通话期间雷达继续接收/暂停上传、挂断后恢复上传、静音及设备拒接。
 
 ```powershell

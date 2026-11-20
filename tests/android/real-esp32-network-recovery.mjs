@@ -7,7 +7,8 @@ const args=process.argv.slice(2),index=args.indexOf('--real-device');
 const device=index>=0?args[index+1]:'';
 if(!/^\d{12,20}$/.test(device))throw Error('Specify --real-device DEVICE_ID');
 const hold=Number(process.env.VOICE_TEST_HOLD_SECONDS || 180);
-if(!Number.isFinite(hold) || hold<20 || hold>600)throw Error('Hold range 20..600 seconds');
+const skipIceRefresh=process.env.VOICE_TEST_SKIP_ICE_REFRESH==='1';
+if(!Number.isFinite(hold) || hold<20 || hold>1800)throw Error('Hold range 20..1800 seconds');
 const output=process.env.VOICE_TEST_OUTPUT || 'build/real-network-recovery';
 await fs.mkdir(output,{recursive:true});
 const pkg='com.youkong.voiceintercom',local='demo_real_recovery_'+Date.now();
@@ -19,17 +20,21 @@ const command=async value=>{const r=await fetch(bridge,{method:'POST',headers:{'
 const ui=async()=>{await adb('shell','uiautomator','dump','/sdcard/recovery-ui.xml');return adb('shell','cat','/sdcard/recovery-ui.xml');};
 const waitUi=async label=>{const deadline=Date.now()+30000;while(Date.now()<deadline){if((await ui()).includes(`text="${label}"`))return;await delay(300);}throw Error('Missing native state '+label);};
 const click=async label=>{const m=(await ui()).match(new RegExp('<node[^>]*text="'+label+'"[^>]*bounds="\\[(\\d+),(\\d+)\\]\\[(\\d+),(\\d+)\\]"'));if(!m)throw Error('Missing control '+label);const [x,y,r,b]=m.slice(1).map(Number);await adb('shell','input','tap',String((x+r)>>1),String((y+b)>>1));};
-const waitLog=async(pattern,after)=>{const deadline=Date.now()+30000;while(Date.now()<deadline){if((await logs()).some(l=>l>after && pattern.test(l)))return;await delay(300);}throw Error('Expected device event missing '+pattern);};
-const result={device,local,startedAt:new Date().toISOString(),modemEvents:[],audioSamples:[],iceRefreshIgnored:false,passed:false};
+const waitLog=async(pattern,after)=>{const deadline=Date.now()+30000;while(Date.now()<deadline){const current=await logs();observe(current);if(result.failureEvent)throw Error('Device failed during call setup');const match=current.find(l=>l>after && pattern.test(l));if(match)return match;await delay(300);}throw Error('Expected device event missing '+pattern);};
+const result={device,local,startedAt:new Date().toISOString(),modemEvents:[],transportEvents:[],receiverEvents:[],audioSamples:[],afeAlerts:0,iceRefreshIgnored:false,passed:false};
 let original=null,mqtt=null,anchor='',seen=new Set();
 function observe(lines){
     for(const line of lines){if(line<=anchor || seen.has(line))continue;seen.add(line);
+        if(/reason=webrtc_connected/.test(line))result.connectedAt=line.slice(0,26);
         if(/MODEM_EVT|网络状态:|ICE refresh ignored/.test(line))result.modemEvents.push(line);
+        if(/AT_DIAG/.test(line))result.transportEvents.push(line);
+        if(/AT_RX_DIAG/.test(line))result.receiverEvents.push(line);
+        if(result.connectedAt && line.slice(0,26)>=result.connectedAt && /AFE: Ringbuffer/.test(line)){result.afeAlerts++;if(!result.firstAfeAlert)result.firstAfeAlert=line;}
         if(/ICE refresh ignored during connected call/.test(line))result.iceRefreshIgnored=true;
         const m=line.match(/Send A:\d+ \[(\d+):(\d+)\] Recv A:\d+ \[(\d+):(\d+)\]/);
         if(m)result.audioSamples.push({at:line.slice(0,26),sentPackets:Number(m[1]),sentBytes:Number(m[2]),receivedPackets:Number(m[3]),receivedBytes:Number(m[4])});
         if(/MATREADY/.test(line))result.modemBootObserved=true;
-        if(/Fail to new connection|Fail to get local description|Guru Meditation|reason=webrtc_connect_failed/.test(line))result.failureEvent=line;
+        if(/Fail to new connection|Fail to get local description|Guru Meditation|Brownout|A stack overflow|abort\(\) was called|reason=webrtc_connect_failed|reason=webrtc_disconnected/.test(line))result.failureEvent=line;
     }
 }
 try{
@@ -38,10 +43,12 @@ try{
     await fs.writeFile(`${output}/preferences.xml`,`<?xml version="1.0" encoding="utf-8"?><map><string name="server">https://voice.2811.top</string><string name="device">${device}</string><string name="local">${local}</string></map>`);
     await adb('push',`${output}/preferences.xml`,'/data/local/tmp/recovery-prefs.xml');await adb('shell','run-as',pkg,'mkdir','-p','shared_prefs');await adb('shell','run-as',pkg,'cp','/data/local/tmp/recovery-prefs.xml','shared_prefs/intercom.xml');
     await adb('shell','am','start','-n',pkg+'/.MainActivity');await waitUi('呼叫设备');await delay(2000);
-    anchor=(await logs()).at(-1)||'';await click('呼叫设备');await waitLog(/Offer cached, waiting for user/,anchor);await command('cmd answer');await waitUi('通话中');await waitLog(/reason=webrtc_connected/,anchor);
+    anchor=(await logs()).at(-1)||'';await click('呼叫设备');await waitLog(/Offer cached, waiting for user/,anchor);await command('cmd answer');await waitUi('通话中');result.connectedAt=(await waitLog(/reason=webrtc_connected/,anchor)).slice(0,26);
     // Fetch exactly the App's server-issued ICE info via a separate observation
     // WebSocket; forward a standard duplicate response through the real MQTT.
     // No credentials or full SDP are included in output/results.
+    if(!skipIceRefresh){
+    result.iceRefreshTested=true;
     const {createRequire}=await import('node:module');
     const require=createRequire((process.env.VOICE_TEST_PLAYWRIGHT || process.cwd()+'/build/radar-browser-tools')+'/package.json');
     const {chromium}=require('playwright');
@@ -54,14 +61,23 @@ try{
     mqtt=new MqttProbe('118.31.113.169',device,()=>{});await mqtt.ready;
     mqtt.write(0x30,Buffer.concat([mqtt.field('/voice/project/'+device+'/down'),Buffer.from(JSON.stringify({type:'ice_response',iceServers:ice,valid:true,timestamp:Math.floor(Date.now()/1000)}))]));
     await waitLog(/ICE refresh ignored during connected call/,anchor);
-    const deadline=Date.now()+hold*1000;
+    }else result.iceRefreshTested=false;
+    if(process.env.VOICE_TEST_SAFE_DIAGNOSTICS==='1'){
+        await command('i');
+        await waitLog(/任务统计请在挂断后查询/,anchor);
+        result.safeDiagnosticsVerified=true;
+    }
+    const deadline=Date.now()+hold*1000;let nextProgress=0;
     while(Date.now()<deadline){observe(await logs());if(result.failureEvent)throw Error('Peer failed during observation');
+        if(result.afeAlerts)throw Error('AFE feed buffer overflow during connected call');
+        if(result.modemBootObserved)throw Error('Modem startup notice during connected call');
         const valid=result.audioSamples.filter(s=>s.sentBytes>0 && s.receivedBytes>0).at(-1);
         if(valid && Date.now()-Date.parse(valid.at)>12000)throw Error('Bidirectional audio stopped for over 12 seconds');
+        if(Date.now()>=nextProgress){await fs.writeFile(`${output}/progress.json`,JSON.stringify(result,null,2));nextProgress=Date.now()+5000;}
         await delay(1000);
     }
     observe(await logs());await waitUi('通话中');
-    if(!result.iceRefreshIgnored || result.audioSamples.filter(s=>s.receivedBytes>0 && s.sentBytes>0).length<hold/4)throw Error('Insufficient connected audio samples');
+    if((!skipIceRefresh && !result.iceRefreshIgnored) || result.audioSamples.filter(s=>s.receivedBytes>0 && s.sentBytes>0).length<hold/4)throw Error('Insufficient connected audio samples');
     result.passed=true;result.observedSeconds=hold;console.log('PASS real-device ICE refresh / audio observation',hold+'s');
 }catch(error){result.error=error.message;observe(await logs().catch(()=>[]));console.error(error.message);process.exitCode=1;}
 finally{

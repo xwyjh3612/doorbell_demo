@@ -3,6 +3,7 @@
 #include <esp_err.h>
 #include <esp_pm.h>
 #include <esp_sleep.h>
+#include <esp_timer.h>
 #include <algorithm>
 #include <cstring>
 #include <cstdlib>
@@ -161,7 +162,11 @@ void AtUart::ReceiveTask() {
                 rx_buffer_.resize(rx_buffer_.size() + available);
                 char* rx_buffer_ptr = &rx_buffer_[rx_buffer_.size() - available];
                 uart_read_bytes(uart_num_, rx_buffer_ptr, available, portMAX_DELAY);
+                diagnostic_rx_bytes_.fetch_add((uint32_t)available, std::memory_order_relaxed);
+                diagnostic_rx_ms_.store((uint32_t)(esp_timer_get_time() / 1000), std::memory_order_relaxed);
+                diagnostic_partial_bytes_.store((uint32_t)rx_buffer_.size(), std::memory_order_relaxed);
                 while (ParseResponse()) {}
+                diagnostic_partial_bytes_.store((uint32_t)rx_buffer_.size(), std::memory_order_relaxed);
             }
         }
         if (bits & AT_EVENT_FIFO_OVF) {
@@ -322,10 +327,16 @@ void AtUart::HandleUrc(const std::string& command, const std::vector<AtArgumentV
         return;
     }
 
+    const uint32_t diagnostic_command = command == "MIPURC" ? 1 :
+        command == "MQTTURC" ? 2 : command == "CEREG" ? 3 :
+        command == "MATREADY" ? 4 : 5;
+    diagnostic_urc_ms_.store((uint32_t)(esp_timer_get_time() / 1000), std::memory_order_relaxed);
+    diagnostic_urc_.store(diagnostic_command, std::memory_order_release);
     std::lock_guard<std::mutex> lock(mutex_);
     for (auto& callback : urc_callbacks_) {
         callback(command, arguments);
     }
+    diagnostic_urc_.store(0, std::memory_order_release);
 }
 
 bool AtUart::DetectBaudRate(int timeout_ms) {
@@ -393,7 +404,38 @@ bool AtUart::SendData(const char* data, size_t length) {
 }
 
 bool AtUart::SendCommandWithData(const std::string& command, size_t timeout_ms, bool add_crlf, const char* data, size_t data_length) {
+    const int64_t entered_us = esp_timer_get_time();
+    const uint32_t diagnostic_rx_before = diagnostic_rx_bytes_.load(std::memory_order_relaxed);
     std::lock_guard<std::mutex> lock(command_mutex_);
+    const int64_t acquired_us = esp_timer_get_time();
+    auto trace_failure = [&](const char *phase, EventBits_t bits) {
+        static int64_t last_trace_us = -5000000;
+        const int64_t now_us = esp_timer_get_time();
+        if (now_us - last_trace_us < 5000000) { return; }
+        last_trace_us = now_us;
+        const char *op = command.rfind("AT+MIPSEND=", 0) == 0 ? "udp_send" :
+                         command.rfind("AT+MQTTSTATE=", 0) == 0 ? "mqtt_state" :
+                         command.rfind("AT+MQTTPUB=", 0) == 0 ? "mqtt_publish" : "other";
+        ESP_LOGW(TAG, "AT_DIAG op=%s phase=%s lock_ms=%lld wait_ms=%lld limit_ms=%u bits=%u cme=%d",
+                 op, phase, (long long)((acquired_us-entered_us)/1000),
+                 (long long)((now_us-acquired_us)/1000), (unsigned)timeout_ms,
+                 (unsigned)bits, cme_error_code_);
+        const uint32_t rx_ms = diagnostic_rx_ms_.load(std::memory_order_relaxed);
+        const uint32_t urc = diagnostic_urc_.load(std::memory_order_acquire);
+        const uint32_t urc_ms = diagnostic_urc_ms_.load(std::memory_order_relaxed);
+        const uint32_t rx_delta = diagnostic_rx_bytes_.load(std::memory_order_relaxed) - diagnostic_rx_before;
+        const uint32_t partial_bytes = diagnostic_partial_bytes_.load(std::memory_order_relaxed);
+        // The receiver may advance while the first log line is printed. Read
+        // its timestamps before sampling now, so recent events cannot produce
+        // an unsigned age close to UINT32_MAX. Millisecond wrap stays valid.
+        const uint32_t now_ms = (uint32_t)(esp_timer_get_time() / 1000);
+        const char *urc_name = urc == 1 ? "MIPURC" : urc == 2 ? "MQTTURC" :
+            urc == 3 ? "CEREG" : urc == 4 ? "MATREADY" : urc == 5 ? "other" : "none";
+        ESP_LOGW(TAG, "AT_RX_DIAG delta_bytes=%u rx_age_ms=%lld partial_bytes=%u urc=%s urc_age_ms=%u",
+                 (unsigned)rx_delta, rx_ms ? (long long)(uint32_t)(now_ms - rx_ms) : -1LL,
+                 (unsigned)partial_bytes,
+                 urc_name, (unsigned)(urc ? now_ms - urc_ms : 0));
+    };
     if (debug_) {
         ESP_LOGI(TAG, ">> %.64s (%u bytes)", command.data(), command.length());
     }
@@ -419,6 +461,7 @@ bool AtUart::SendCommandWithData(const std::string& command, size_t timeout_ms, 
         auto bits = xEventGroupWaitBits(event_group_handle_, AT_EVENT_COMMAND_DONE | AT_EVENT_COMMAND_ERROR, pdTRUE, pdFALSE, pdMS_TO_TICKS(timeout_ms));
         wait_for_response_ = false;
         if (!(bits & AT_EVENT_COMMAND_DONE)) {
+            trace_failure("command", bits);
             return false;
         }
     } else {
@@ -433,6 +476,7 @@ bool AtUart::SendCommandWithData(const std::string& command, size_t timeout_ms, 
         auto bits = xEventGroupWaitBits(event_group_handle_, AT_EVENT_COMMAND_DONE | AT_EVENT_COMMAND_ERROR, pdTRUE, pdFALSE, pdMS_TO_TICKS(timeout_ms));
         wait_for_response_ = false;
         if (!(bits & AT_EVENT_COMMAND_DONE)) {
+            trace_failure("data", bits);
             return false;
         }
     }
