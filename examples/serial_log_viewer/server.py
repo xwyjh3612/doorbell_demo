@@ -12,6 +12,7 @@ from urllib.parse import parse_qs, urlsplit
 ROOT = Path(__file__).resolve().parents[2]
 BUILD = ROOT / "build"
 ANSI = re.compile(r"\x1b\[[0-?]*[ -/]*[@-~]")
+LOG_TIMESTAMP = re.compile(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})?")
 
 
 class LogReader:
@@ -95,13 +96,18 @@ class LogReader:
             self.pending = parts.pop()
             for raw in parts:
                 text = ANSI.sub("", raw.decode("utf-8", "replace").rstrip("\r"))
+                # The serial collector timestamps empty UART lines too. They
+                # should not scroll the page or evict useful screen history.
+                content = text.strip()
+                if not content or LOG_TIMESTAMP.fullmatch(content):
+                    continue
                 self.sequence += 1
                 self.lines.append({"id": self.sequence, "text": text})
             self.note = "正在跟随实时日志" if self.selection == "live" else "正在查看历史日志"
 
     def snapshot(self, after=0, epoch=-1):
         with self.lock:
-            reset = epoch != self.epoch or (self.lines and after < self.lines[0]["id"] - 1)
+            reset = epoch != self.epoch or after > self.sequence or (self.lines and after < self.lines[0]["id"] - 1)
             selected = list(self.lines) if reset else [line for line in self.lines if line["id"] > after]
             stat = self.path.stat() if self.path and self.path.exists() else None
             return {"epoch": self.epoch, "last_id": self.sequence, "reset": bool(reset),
