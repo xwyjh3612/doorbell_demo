@@ -71,9 +71,11 @@ static QueueHandle_t mqtt_messages;
 struct MqttMessage {
     std::string topic;
     std::string payload;
+    enum class Kind { Message, Connected, Disconnected } kind = Kind::Message;
 };
 
 static void mqtt_message_handler(const std::string& topic, const std::string& payload);
+static void mqtt_connection_handler(bool connected);
 
 static void mqtt_message_task(void *param)
 {
@@ -81,7 +83,11 @@ static void mqtt_message_task(void *param)
     for (;;) {
         MqttMessage *message = NULL;
         if (xQueueReceive(mqtt_messages, &message, portMAX_DELAY) == pdPASS) {
-            mqtt_message_handler(message->topic, message->payload);
+            if (message->kind == MqttMessage::Kind::Message) {
+                mqtt_message_handler(message->topic, message->payload);
+            } else {
+                mqtt_connection_handler(message->kind == MqttMessage::Kind::Connected);
+            }
             delete message;
         }
     }
@@ -110,6 +116,16 @@ static void dispatch_mqtt_message(const std::string& topic, const std::string& p
     if (!message || !mqtt_messages || xQueueSend(mqtt_messages, &message, 0) != pdPASS) {
         delete message;
         ESP_LOGE(TAG, "MQTT 消息队列不可用或已满");
+    }
+}
+
+static void dispatch_mqtt_connection(bool connected)
+{
+    MqttMessage *message = new (std::nothrow) MqttMessage{
+        {}, {}, connected ? MqttMessage::Kind::Connected : MqttMessage::Kind::Disconnected};
+    if (!message || !mqtt_messages || xQueueSend(mqtt_messages, &message, 0) != pdPASS) {
+        delete message;
+        ESP_LOGE(TAG, "MQTT连接事件队列不可用或已满");
     }
 }
 
@@ -772,8 +788,7 @@ void mqtt_sig_restart(void)
     ESP_LOGI(TAG, "Requesting ICE servers after restart...");
     send_ice_request();
     
-    // 重新设置 MQTT 回调（因为 MQTT 重连后回调可能丢失）
-    mqtt->OnMessage(dispatch_mqtt_message);
+    // The MQTT client and callbacks now survive network recovery.
     
     if (g_mqtt_sig_handle != NULL) {
         mqtt_sig_t *sg = (mqtt_sig_t *)g_mqtt_sig_handle;
@@ -785,6 +800,23 @@ void mqtt_sig_restart(void)
         sg->signaling_ready = true;
         ESP_LOGI(TAG, "MQTT signaling restarted, subscribed to %s", topic);
     }
+}
+
+static void mqtt_connection_handler(bool connected)
+{
+    CallControlGuard guard;
+    Mqtt *mqtt = Network4g::GetMqttInstance();
+    // Ignore queued state changes superseded by a later URC.
+    if (!mqtt || mqtt->IsConnected() != connected) return;
+    g_mqtt_connected = connected;
+    if (!connected) {
+        ESP_LOGI(TAG, "MQTT disconnected");
+        return;
+    }
+    ESP_LOGI(TAG, "MQTT connected; restoring signaling on worker");
+    mqtt_sig_restart();
+    extern esp_peer_signaling_handle_t g_mqtt_sig_handle;
+    if (g_mqtt_sig_handle) mqtt_sig_emit_event(MQTT_SIG_EVENT_NETWORK_READY, NULL);
 }
 
 static void setup_mqtt_callbacks(void)
@@ -800,37 +832,11 @@ static void setup_mqtt_callbacks(void)
     }
 
     mqtt->OnConnected([](void) {
-        ESP_LOGI(TAG, "MQTT connected");
-        g_mqtt_connected = true;
-        
-        // Subscribe to device topic
-        char topic[128];
-        get_down_topic(topic, sizeof(topic));
-        
-        Mqtt* mqtt = Network4g::GetMqttInstance();
-        if (mqtt) {
-            mqtt->Subscribe(topic, 1);
-            ESP_LOGI(TAG, "Subscribed to %s", topic);
-            
-            // Send initial ICE request
-            send_ice_request();
-        }
-        
-        // Notify signaling connected
-        extern esp_peer_signaling_handle_t g_mqtt_sig_handle;
-        if (g_mqtt_sig_handle) {
-            mqtt_sig_t *sg = (mqtt_sig_t *)g_mqtt_sig_handle;
-            sg->signaling_ready = true;
-            if (sg->cfg.on_connected) {
-                sg->cfg.on_connected(sg->cfg.ctx);
-            }
-            mqtt_sig_emit_event(MQTT_SIG_EVENT_NETWORK_READY, NULL);
-        }
+        dispatch_mqtt_connection(true);
     });
 
     mqtt->OnDisconnected([](void) {
-        ESP_LOGI(TAG, "MQTT disconnected");
-        g_mqtt_connected = false;
+        dispatch_mqtt_connection(false);
     });
 
     //mqtt->OnMessage(mqtt_message_handler);

@@ -68,7 +68,7 @@ def main():
                 if not 0 < size <= 128:
                     raise ValueError('Invalid command size')
                 command = json.loads(self.rfile.read(size)).get('command')
-                if command not in ('i', 'cmd ring', 'cmd answer', 'cmd reject', 'cmd close'):
+                if command not in ('i', 'cmd ring', 'cmd answer', 'cmd reject', 'cmd close', 'modem restart'):
                     raise ValueError('Unknown command')
             except (ValueError, AttributeError):
                 self.send_error(400)

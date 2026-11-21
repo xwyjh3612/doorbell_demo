@@ -28,18 +28,25 @@ public:
     bool Unsubscribe(const std::string topic);
     bool IsConnected();
     int GetLastError() override;
+    void OnConnected(std::function<void()> callback) override;
+    void OnDisconnected(std::function<void()> callback) override;
+    void OnMessage(std::function<void(const std::string&, const std::string&)> callback) override;
+    void OnError(std::function<void(const std::string&)> callback) override;
 
 private:
     std::shared_ptr<AtUart> at_uart_;
     int mqtt_id_;
-    bool connected_ = false;
+    std::atomic<bool> connected_{false};
     EventGroupHandle_t event_group_handle_;
     std::string message_payload_;
-    int last_error_ = 0;
+    std::atomic<int> last_error_{0};
+    std::mutex callback_mutex_;
 
     std::list<UrcCallback>::iterator urc_callback_it_;
 
     std::string ErrorToString(int error_code);
+    bool QueryConnectionState();
+    void HandleUrc(const std::string& command, const std::vector<AtArgumentValue>& arguments);
 };
 
 #endif

@@ -1,10 +1,10 @@
 {
-  "size": 2782944,
+  "built_at": "2026-11-21T15:54:06.9224097+08:00",
+  "size": 2785344,
+  "sha256": "2f6fa727f62fc87ddfba863926dff95054119795e0696b1a134cdd09348a2069",
   "radar": true,
-  "sha256": "5ebad5ab81b6c7822e5a72e85002e98e87fbb947847c62b16f1700aba59ac085",
-  "variant": "voice-radar60",
   "radar60": true,
-  "note": "App image only. Verify device partitions and preserve NVS/OTA selection before flashing.",
+  "variant": "voice-radar60",
   "app_offset": "0x10000",
-  "built_at": "2026-11-20T18:22:53.4554681+08:00"
+  "note": "App image only. Verify device partitions and preserve NVS/OTA selection before flashing."
 }

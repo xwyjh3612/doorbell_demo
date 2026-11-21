@@ -144,3 +144,54 @@ fifo_command = ota_command[:2] if Path(compiler).stem == "zig" else ota_command[
 fifo_command += ["-std=c++20", "-I", str(output), str(root / "tests/host/test_udp_fifo_overflow.cpp"), "-o", str(fifo_binary)]
 subprocess.run(fifo_command, check=True, cwd=root)
 subprocess.run([str(fifo_binary)], check=True, cwd=root, timeout=10)
+
+# Run actual MQTT client and recovery code. The UART stub rejects recursive AT
+# sends on the receive callback; concurrent readers keep the original client
+# while two recovery callers run 200 reconnects.
+def without_includes(text):
+    return re.sub(r"^\s*#include[^\n]*", "", text, flags=re.MULTILINE)
+
+mqtt_dir = root / "components/esp-ml307"
+for name, source_path in (
+    ("mqtt_interface_under_test.inc", mqtt_dir / "include/mqtt.h"),
+    ("mqtt_client_header_under_test.inc", mqtt_dir / "src/ml307/ml307_mqtt.h"),
+    ("mqtt_client_under_test.inc", mqtt_dir / "src/ml307/ml307_mqtt.cc"),
+):
+    (output / name).write_text(without_includes(source_path.read_text(encoding="utf-8")), encoding="utf-8")
+
+def production_function(text, signature):
+    start = text.index(signature)
+    begin = text.index("{", start)
+    depth = 1
+    end = begin + 1
+    while depth:
+        if text[end] == "{": depth += 1
+        elif text[end] == "}": depth -= 1
+        end += 1
+    return text[start:end]
+
+network_source = (root / "main/network_4g.cpp").read_text(encoding="utf-8")
+for name, text, signature in (
+    ("mqtt_network_init_under_test.inc", network_source, "void initMqtt(){"),
+    ("mqtt_network_get_under_test.inc", network_source, "Mqtt* GetMqttInstance() {"),
+    ("mqtt_connection_dispatch_under_test.inc", signaling_source, "static void dispatch_mqtt_connection(bool connected)\n{"),
+    ("mqtt_connection_handler_under_test.inc", signaling_source, "static void mqtt_connection_handler(bool connected)\n{"),
+    ("mqtt_setup_callbacks_under_test.inc", signaling_source, "static void setup_mqtt_callbacks(void)\n{"),
+):
+    (output / name).write_text(production_function(text, signature), encoding="utf-8")
+mqtt_binary = output / ("test_mqtt_recovery.exe" if sys.platform == "win32" else "test_mqtt_recovery")
+mqtt_command = ota_command[:2] if Path(compiler).stem == "zig" else ota_command[:1]
+mqtt_command += ["-std=c++20", "-I", str(output), str(root / "tests/host/test_mqtt_recovery.cpp"), "-o", str(mqtt_binary)]
+if sys.platform != "win32": mqtt_command.append("-pthread")
+subprocess.run(mqtt_command, check=True, cwd=root)
+subprocess.run([str(mqtt_binary)], check=True, cwd=root, timeout=30)
+
+main_source = (root / "main/main.cpp").read_text(encoding="utf-8")
+(output / "modem_restart_under_test.inc").write_text(
+    production_function(main_source, "static int modem_cli(int argc, char **argv) {"), encoding="utf-8")
+restart_binary = output / ("test_modem_restart.exe" if sys.platform == "win32" else "test_modem_restart")
+restart_command = ota_command[:2] if Path(compiler).stem == "zig" else ota_command[:1]
+restart_command += ["-std=c++20", "-I", str(root / "main"), "-I", str(output),
+                    str(root / "tests/host/test_modem_restart.cpp"), "-o", str(restart_binary)]
+subprocess.run(restart_command, check=True, cwd=root)
+subprocess.run([str(restart_binary)], check=True, cwd=root, timeout=10)

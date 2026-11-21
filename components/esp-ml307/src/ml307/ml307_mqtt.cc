@@ -7,25 +7,47 @@ Ml307Mqtt::Ml307Mqtt(std::shared_ptr<AtUart> at_uart, int mqtt_id) : at_uart_(at
     event_group_handle_ = xEventGroupCreate();
 
     urc_callback_it_ = at_uart_->RegisterUrcCallback([this](const std::string& command, const std::vector<AtArgumentValue>& arguments) {
-        if (command == "MQTTURC" && arguments.size() >= 2) {
+        HandleUrc(command, arguments);
+    });
+}
+
+void Ml307Mqtt::HandleUrc(const std::string& command, const std::vector<AtArgumentValue>& arguments) {
+        if (command != "MQTTURC" && command != "MQTTSTATE" && command != "MATREADY") return;
+        // Callbacks may be installed concurrently with UART reception. Copy
+        // them under a separate mutex; invoke outside it. They must not issue
+        // AT commands on this receiver (AtUart still holds its callback lock).
+        std::function<void()> connected_callback, disconnected_callback;
+        std::function<void(const std::string&, const std::string&)> message_callback;
+        std::function<void(const std::string&)> error_callback;
+        {
+            std::lock_guard<std::mutex> lock(callback_mutex_);
+            connected_callback = on_connected_callback_;
+            disconnected_callback = on_disconnected_callback_;
+            message_callback = on_message_callback_;
+            error_callback = on_error_callback_;
+        }
+        if (command == "MATREADY") {
+            message_payload_.clear();
+            if (connected_.exchange(false) && disconnected_callback) disconnected_callback();
+            xEventGroupClearBits(event_group_handle_, MQTT_CONNECTED_EVENT | MQTT_INITIALIZED_EVENT);
+            xEventGroupSetBits(event_group_handle_, MQTT_DISCONNECTED_EVENT);
+        } else if (command == "MQTTURC" && arguments.size() >= 2) {
             if (arguments[1].int_value == mqtt_id_) {
                 auto type = arguments[0].string_value;
-                if (type == "conn") {
+                if (type == "conn" && arguments.size() >= 3) {
                     int error_code = arguments[2].int_value;
                     last_error_ = error_code;  // Store error code
                     if (error_code == 0) {
-                        if (!connected_) {
-                            connected_ = true;
-                            if (on_connected_callback_) {
-                                on_connected_callback_();
+                        if (!connected_.exchange(true)) {
+                            if (connected_callback) {
+                                connected_callback();
                             }
                         }
                         xEventGroupSetBits(event_group_handle_, MQTT_CONNECTED_EVENT);
                     } else {
-                        if (connected_) {
-                            connected_ = false;
-                            if (on_disconnected_callback_) {
-                                on_disconnected_callback_();
+                        if (connected_.exchange(false)) {
+                            if (disconnected_callback) {
+                                disconnected_callback();
                             }
                         }
                         xEventGroupSetBits(event_group_handle_, MQTT_DISCONNECTED_EVENT);
@@ -33,21 +55,21 @@ Ml307Mqtt::Ml307Mqtt(std::shared_ptr<AtUart> at_uart, int mqtt_id) : at_uart_(at
                     if (error_code == 5 || error_code == 6) {
                         auto error_message = ErrorToString(error_code);
                         ESP_LOGW(TAG, "MQTT error occurred: %s", error_message.c_str());
-                        if (on_error_callback_) {
-                            on_error_callback_(error_message);
+                        if (error_callback) {
+                            error_callback(error_message);
                         }
                     }
                 } else if (type == "suback") {
                 } else if (type == "publish" && arguments.size() >= 7) {
                     auto topic = arguments[3].string_value;
                     if (arguments[4].int_value == arguments[5].int_value) {
-                        if (on_message_callback_) {
-                            on_message_callback_(topic, at_uart_->DecodeHex(arguments[6].string_value));
+                        if (message_callback) {
+                            message_callback(topic, at_uart_->DecodeHex(arguments[6].string_value));
                         }
                     } else {
                         message_payload_.append(at_uart_->DecodeHex(arguments[6].string_value));
-                        if (message_payload_.size() >= arguments[4].int_value && on_message_callback_) {
-                            on_message_callback_(topic, message_payload_);
+                        if (message_payload_.size() >= arguments[4].int_value && message_callback) {
+                            message_callback(topic, message_payload_);
                             message_payload_.clear();
                         }
                     }
@@ -56,10 +78,9 @@ Ml307Mqtt::Ml307Mqtt(std::shared_ptr<AtUart> at_uart, int mqtt_id) : at_uart_(at
                 }
             }
         } else if (command == "MQTTSTATE" && arguments.size() == 1) {
-            connected_ = arguments[0].int_value != 3;
+            connected_ = arguments[0].int_value == 2;
             xEventGroupSetBits(event_group_handle_, MQTT_INITIALIZED_EVENT);
         }
-    });
 }
 
 Ml307Mqtt::~Ml307Mqtt() {
@@ -69,8 +90,12 @@ Ml307Mqtt::~Ml307Mqtt() {
 
 bool Ml307Mqtt::Connect(const std::string broker_address, int broker_port, const std::string client_id, const std::string username, const std::string password) {
     EventBits_t bits;
+    if (!QueryConnectionState()) {
+        return false;
+    }
     if (IsConnected()) {
         // 断开之前的连接
+        xEventGroupClearBits(event_group_handle_, MQTT_DISCONNECTED_EVENT);
         Disconnect();
         bits = xEventGroupWaitBits(event_group_handle_, MQTT_DISCONNECTED_EVENT, pdTRUE, pdFALSE, pdMS_TO_TICKS(MQTT_CONNECT_TIMEOUT_MS));
         if (!(bits & MQTT_DISCONNECTED_EVENT)) {
@@ -126,14 +151,41 @@ bool Ml307Mqtt::Connect(const std::string broker_address, int broker_port, const
 }
 
 bool Ml307Mqtt::IsConnected() {
-    // 检查这个 id 是否已经连接
-    at_uart_->SendCommand(std::string("AT+MQTTSTATE=") + std::to_string(mqtt_id_));
+    // URCs maintain this state. A local readiness check must not occupy the
+    // shared media UART or wait ten seconds on every signaling/telemetry call.
+    return connected_.load();
+}
+
+bool Ml307Mqtt::QueryConnectionState() {
+    xEventGroupClearBits(event_group_handle_, MQTT_INITIALIZED_EVENT);
+    if (!at_uart_->SendCommand(std::string("AT+MQTTSTATE=") + std::to_string(mqtt_id_))) {
+        connected_ = false;
+        return false;
+    }
     auto bits = xEventGroupWaitBits(event_group_handle_, MQTT_INITIALIZED_EVENT, pdTRUE, pdFALSE, pdMS_TO_TICKS(MQTT_CONNECT_TIMEOUT_MS));
     if (!(bits & MQTT_INITIALIZED_EVENT)) {
+        connected_ = false;
         ESP_LOGE(TAG, "Failed to initialize MQTT connection");
         return false;
     }
-    return connected_;
+    return true;
+}
+
+void Ml307Mqtt::OnConnected(std::function<void()> callback) {
+    std::lock_guard<std::mutex> lock(callback_mutex_);
+    on_connected_callback_ = std::move(callback);
+}
+void Ml307Mqtt::OnDisconnected(std::function<void()> callback) {
+    std::lock_guard<std::mutex> lock(callback_mutex_);
+    on_disconnected_callback_ = std::move(callback);
+}
+void Ml307Mqtt::OnMessage(std::function<void(const std::string&, const std::string&)> callback) {
+    std::lock_guard<std::mutex> lock(callback_mutex_);
+    on_message_callback_ = std::move(callback);
+}
+void Ml307Mqtt::OnError(std::function<void(const std::string&)> callback) {
+    std::lock_guard<std::mutex> lock(callback_mutex_);
+    on_error_callback_ = std::move(callback);
 }
 
 void Ml307Mqtt::Disconnect() {

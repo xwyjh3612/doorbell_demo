@@ -114,6 +114,35 @@ static int cmd_cli(int argc, char **argv) {
     return 0;
 }
 
+static int modem_cli(int argc, char **argv) {
+    if (argc != 2 || std::strcmp(argv[1], "restart") != 0) {
+        ESP_LOGI("MODEM_RECOVERY", "Usage: modem restart (idle only)");
+        return 1;
+    }
+    // Explicit operator/supervisor action only. Never restart from a URC or
+    // silently during a call. The call lock excludes a new call while this
+    // command is being submitted. GPIO4/EN is not a verified hardware reset.
+    voice_call_lock();
+    static int64_t last_restart_us = -120000000;
+    const int64_t now_us = esp_timer_get_time();
+    if (webrtc_get_call_state() != CALL_STATE_IDLE || now_us - last_restart_us < 120000000) {
+        ESP_LOGW("MODEM_RECOVERY", "Restart rejected: call active or 120s cooldown");
+        voice_call_unlock();
+        return 1;
+    }
+    AtModem *modem = Network4g::GetModemInstance();
+    if (!modem) {
+        voice_call_unlock();
+        return 1;
+    }
+    last_restart_us = now_us;
+    ESP_LOGW("MODEM_RECOVERY", "Explicit ML307 soft restart requested; previous call remains failed");
+    modem->Reboot();
+    ESP_LOGI("MODEM_RECOVERY", "Reboot command returned; MATREADY/network recovery still required");
+    voice_call_unlock();
+    return 0;
+}
+
 [[noreturn]] static int assert_cli(int argc, char **argv) {
     *(volatile int *)0 = 0;
     while (1);
@@ -201,6 +230,11 @@ static int capture_to_player_cli(int argc, char **argv) {
             .command = "cmd",
             .help = "Send command (ring etc)\n",
             .func = cmd_cli,
+        },
+        {
+            .command = "modem",
+            .help = "Restart ML307 after failed call: modem restart (idle only)\n",
+            .func = modem_cli,
         },
         {
             .command = "i",

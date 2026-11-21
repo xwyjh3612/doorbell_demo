@@ -1,4 +1,4 @@
-"""Observe an existing radar console log without opening or controlling serial."""
+"""Observe an existing console log without opening or controlling serial."""
 import argparse
 from datetime import datetime
 import json
@@ -20,6 +20,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--mark', choices=('external_unplugged', 'external_restored', 'measurement'))
     parser.add_argument('--note', default='', help='Local measurement notes; not firmware telemetry')
+    parser.add_argument('--source', type=Path, help='Existing live console log; defaults to the radar collector')
     args = parser.parse_args()
     metadata = ROOT / 'build/power-test-service.json'
     if args.mark:
@@ -29,8 +30,11 @@ def main():
         print('Recorded manual test marker; external power is not measured automatically')
         return
 
-    radar_meta = json.loads((ROOT / 'build/radar-monitor-service.json').read_text(encoding='utf-8-sig'))
-    source = Path(radar_meta['output']) / 'console.log'
+    if args.source is None:
+        radar_meta = json.loads((ROOT / 'build/radar-monitor-service.json').read_text(encoding='utf-8-sig'))
+        source = Path(radar_meta['output']) / 'console.log'
+    else:
+        source = args.source.resolve(strict=True)
     output = ROOT / 'build' / ('power-test-' + datetime.now().strftime('%Y%m%d-%H%M%S'))
     output.mkdir()
     metadata.write_text(json.dumps(dict(output=str(output), source=str(source), started_at=now()), indent=2), encoding='utf-8')
@@ -56,6 +60,9 @@ def main():
                 pending += chunk
                 while '\n' in pending:
                     line, pending = pending.split('\n', 1)
+                    if line.strip():
+                        state['last_console_at'] = now()
+                        last_console_mono = time.monotonic()
                     stamp = STAMP.search(line)
                     if stamp:
                         uptime = int(stamp[1])
@@ -65,8 +72,6 @@ def main():
                             event('uptime_regression', previous_ms=previous, current_ms=uptime)
                         # Only use the sole radar task's clock; other tasks can interleave.
                         state['firmware_uptime_ms'] = uptime
-                        state['last_console_at'] = now()
-                        last_console_mono = time.monotonic()
                     call = CALL.search(line)
                     if call:
                         state['call_state'] = call[2]

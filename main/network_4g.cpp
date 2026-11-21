@@ -3,6 +3,8 @@
 #include "network_4g.h"
 #include "mqtt_signaling.h"
 #include "app_config.h"
+#include <atomic>
+#include <mutex>
 
 #include <sys/socket.h>
 #include <arpa/inet.h>
@@ -17,8 +19,10 @@ namespace Network4g {
     static std::unique_ptr<AtModem> modem = nullptr;
 
     static std::unique_ptr<Mqtt> mqtt = nullptr;
-
-    static bool initialized = false;
+    static std::atomic<Mqtt *> published_mqtt{nullptr};
+    static std::mutex mqtt_init_mutex;
+    static std::atomic<bool> initialized{false};
+    static std::atomic<bool> mqtt_restart_pending{false};
 
     void init(void) {
         ESP_LOGI(TAG, "开始检测4G网络");
@@ -51,20 +55,24 @@ namespace Network4g {
         // 设置网络状态回调
         modem->OnNetworkStateChanged([](bool ready) {
             ESP_LOGI(TAG, "网络状态: %s", ready ? "已连接" : "已断开");
-            if (ready && initialized) { // 第二次为网络恢复，第一次为连接成功
+            if (ready && initialized.exchange(true) && !mqtt_restart_pending.exchange(true)) {
                 // 网络连接成功，延迟重启 MQTT 信令，避免干扰网络检测
                 ESP_LOGI(TAG, "网络已恢复，延迟重启MQTT信令...");
                 TaskHandle_t task_handle;
-                xTaskCreate([](void* arg) {
+                BaseType_t created = xTaskCreate([](void* arg) {
                     ESP_LOGI(TAG, "2秒后开始初始化mqtt");
                     vTaskDelay(pdMS_TO_TICKS(2000));  // 等待 2 秒让网络完全恢复
                     ESP_LOGI(TAG, "开始初始化MQTT...");
                     initMqtt();
                     mqtt_sig_restart();
+                    mqtt_restart_pending.store(false);
                     vTaskDelete(NULL);
-                }, "mqtt_restart", 4096, NULL, 5, &task_handle);
+                }, "mqtt_restart", 8192, NULL, 5, &task_handle);
+                if (created != pdPASS) {
+                    mqtt_restart_pending.store(false);
+                    ESP_LOGE(TAG, "无法创建MQTT恢复任务");
+                }
             }
-            initialized = true; //首次初始化完成
         });
 
         // 等待网络就绪
@@ -83,14 +91,21 @@ namespace Network4g {
     }
 
     void initMqtt(){
+        std::lock_guard<std::mutex> lock(mqtt_init_mutex);
         // 先检查 modem 是否初始化成功，避免空指针访问
         if (!modem) {
             ESP_LOGE(TAG, "模组未初始化，无法执行 HTTP 请求");
             return;
         }
 
-            // 创建 MQTT 客户端
+        // Readers retain this address. Recovery reconnects the same client;
+        // replacing it can delete an event group while telemetry is using it.
+        if (!mqtt) {
             mqtt = modem->CreateMqtt(0);
+            if (!mqtt) {
+                ESP_LOGE(TAG, "无法创建MQTT客户端");
+                return;
+            }
 
             // 设置回调函数
             mqtt->OnConnected([]() {
@@ -100,6 +115,8 @@ namespace Network4g {
             mqtt->OnDisconnected([]() {
                 ESP_LOGI(TAG, "MQTT 连接断开");
             });
+            published_mqtt.store(mqtt.get(), std::memory_order_release);
+        }
 
 /*	    mqtt->OnMessage([](const std::string& topic, const std::string& payload) {
 	        ESP_LOGI(TAG, "收到消息 [%s]: %s", topic.c_str(), payload.c_str());
@@ -136,8 +153,7 @@ namespace Network4g {
 
     // 对外提供智能指针的原始指针（供外部调用）
     Mqtt* GetMqttInstance() {
-        // 只有智能指针有效时才返回原始指针
-        return mqtt ? mqtt.get() : nullptr;
+        return published_mqtt.load(std::memory_order_acquire);
     }
 
 
