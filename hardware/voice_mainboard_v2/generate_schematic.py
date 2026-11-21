@@ -12,7 +12,7 @@ groups=[
  ('02 5V TO 3.8V MODEM BUCK',[]),
  ('03 ML307R-DL / 1.8V UART',[]),
  ('04 POWERKEY / RESET / DEBUG',[]),
- ('05 SIM / RF / USB SERVICE',[]),
+ ('05 SIM / RF / USB HOST-SERVICE SELECT',[]),
  ('06 ESP / AUDIO / BUTTON / RADAR',[])]
 for ref,p in parts.items():
     g=p['group'][:2]
@@ -71,6 +71,7 @@ for gi,(title,refs) in enumerate(groups):
 text('UPS RESERVE: actual charging, cell protection, power path, NTC and current limits must be designed after chip selection.',25,792,1.7)
 text('Battery ADC: GPIO2 ADC1_CH1, enable GPIO9; 150k/100k + 100nF; Vbat = 2.5 x calibrated ADC volts. Protected 1S 4.2V assumed.',25,801,1.7)
 text('No firmware changes: optional radar RX GPIO6 / reserved TX GPIO8; button GPIO0; modem PWRKEY GPIO11 / RESET GPIO21 proposed only.',25,810,1.7)
+text('USB POPULATION: SERVICE R26/R27/R30 OR HOST R28/R29/R31, never both. HOST DM19/DP20 via J13; UART remains. USB not routed/tested.',25,819,1.7)
 lib.append('''(symbol "VoiceV2:PWR_FLAG" (power) (pin_names (offset 0)) (in_bom no) (on_board no)
  (property "Reference" "#FLG" (at 0 2 0) (effects (font (size 1 1)) hide))
  (property "Value" "PWR_FLAG" (at 0 3 0) (effects (font (size 1 1))))

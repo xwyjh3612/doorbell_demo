@@ -2,3 +2,4 @@
 *.kicad_sch.lck
 *.kicad_pcb.lck
 *-backups/
+exports/**/*.log

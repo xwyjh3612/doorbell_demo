@@ -20,6 +20,8 @@ try {
  if($LASTEXITCODE -ne 0){throw 'Draft verification failed'}
  & 'F:\Espressif\python_env\idf5.4_py3.11_env\Scripts\python.exe' (Join-Path $PSScriptRoot 'simulate_power.py')
  if($LASTEXITCODE -ne 0){throw 'RC simulation failed'}
+ & 'F:\Espressif\python_env\idf5.4_py3.11_env\Scripts\python.exe' (Join-Path $PSScriptRoot 'simulate_functions.py')
+ if($LASTEXITCODE -ne 0){throw 'Functional simulation report generation failed'}
  & $pcbPython (Join-Path $PSScriptRoot 'generate_review_assets.py')
  if($LASTEXITCODE -ne 0){throw 'Review generation failed'}
  & $pcbCli sch export svg -o (Join-Path $PSScriptRoot 'exports\schematic') $sch
@@ -27,4 +29,6 @@ try {
  $exportedSvg=Join-Path $PSScriptRoot 'exports\schematic\voice_mainboard_v2.svg'
  $svgLines=[IO.File]::ReadAllLines($exportedSvg,[Text.Encoding]::UTF8)|ForEach-Object {$_.TrimEnd()}
  [IO.File]::WriteAllText($exportedSvg,($svgLines -join "`n")+"`n",[Text.UTF8Encoding]::new($false))
+ & 'F:\nodejs\nvm\v22.16.0\node.exe' (Join-Path $PSScriptRoot 'render_exports.mjs')
+ if($LASTEXITCODE -ne 0){throw 'PNG preview rendering failed'}
 } finally {Pop-Location}

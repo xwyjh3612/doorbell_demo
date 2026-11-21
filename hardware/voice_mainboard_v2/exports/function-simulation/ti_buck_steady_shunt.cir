@@ -1,0 +1,18 @@
+TI official model attempt
+.include "build/ml307-power-reference/tps563201-model/TPS563201_PSPICE_TRANS/TPS563201_TRANS.LIB"
+Ren vin en 100k
+Cbst bst sw 100n
+Cin vin 0 44u
+Rdcr outl out .04
+Resr out cap .05
+Rfbtop out fb 39.2k
+Rfbbottom fb 0 10k
+Rload out 0 12.6
+Vinput vin 0 5
+Xbuck en 0 sw bst fb vin TPS563201_TRANS PARAMS: STEADY_STATE=1
+Lout sw outl 2.2u IC=.3
+Cout cap 0 494u IC=3.75
+.ic v(out)=3.75 v(fb)=.762
+.tran 100n 1m 0 100n uic
+.options method=gear reltol=.01 rshunt=1e12 cshunt=1e-12
+.end

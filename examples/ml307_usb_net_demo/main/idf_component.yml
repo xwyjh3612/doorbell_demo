@@ -1,0 +1,8 @@
+dependencies:
+  idf: ">=5.4"
+  espressif/iot_usbh_rndis:
+    version: "0.5.3"
+    override_path: "../../../build/esp-iot-solution-cellular/components/usb/iot_usbh_rndis"
+  espressif/iot_usbh_ecm:
+    version: "0.4.0"
+    override_path: "../../../build/esp-iot-solution-cellular/components/usb/iot_usbh_ecm"

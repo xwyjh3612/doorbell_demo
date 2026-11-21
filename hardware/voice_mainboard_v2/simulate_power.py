@@ -3,38 +3,11 @@
 Uses KiCad's bundled ngspice shared library, via Python stdlib ctypes.
 """
 from pathlib import Path
-import ctypes as c
-import os, json, math
+import json
+from spice_runtime import run as simulate
 ROOT=Path(__file__).resolve().parent
-BIN=(ROOT.parents[1]/'build/cad-tools/kicad/bin').resolve()
-os.add_dll_directory(str(BIN))
-spice=c.CDLL(str(BIN/'ngspice.dll'))
-LOG=c.CFUNCTYPE(c.c_int,c.c_char_p,c.c_int,c.c_void_p)
-errors=[]
-@LOG
-def log(msg,i,u):
-    text=msg.decode(errors='replace')
-    if 'Error' in text:errors.append(text)
-    return 0
-spice.ngSpice_Init.argtypes=[LOG,c.c_void_p,c.c_void_p,c.c_void_p,c.c_void_p,c.c_void_p,c.c_void_p]
-assert spice.ngSpice_Init(log,None,None,None,None,None,None)==0
-spice.ngSpice_Circ.argtypes=[c.POINTER(c.c_char_p)]
-spice.ngSpice_Command.argtypes=[c.c_char_p]
-class Vector(c.Structure):
-    _fields_=[('name',c.c_char_p),('type',c.c_int),('flags',c.c_short),('real',c.POINTER(c.c_double)),('complex',c.c_void_p),('length',c.c_int)]
-spice.ngGet_Vec_Info.argtypes=[c.c_char_p]
-spice.ngGet_Vec_Info.restype=c.POINTER(Vector)
 def run(name,lines,signals):
-    circuit=[name,*lines,'.end']
-    (ROOT/'exports'/f'{name}.cir').write_text('\n'.join(circuit)+'\n',encoding='utf-8')
-    raw=[x.encode() for x in circuit]+[None]
-    assert spice.ngSpice_Circ((c.c_char_p*len(raw))(*raw))==0
-    assert spice.ngSpice_Command(b'run')==0
-    result={}
-    for sig in ['time',*signals]:
-        p=spice.ngGet_Vec_Info(sig.encode())
-        if not p:raise RuntimeError(sig)
-        v=p.contents;result[sig]=[v.real[i] for i in range(v.length)]
+    result,_=simulate(name,lines,signals,ROOT/'exports')
     return result
 adc=run('battery_adc_rc',['Vbat bat 0 PULSE(0 4.2 1m 1u 1u 100m 200m)','Rtop bat adc 150k','Rbottom adc 0 100k','Cf adc 0 100n','.tran 100u 60m uic'],['v(adc)'])
 settling=next(t-.001 for t,v in zip(adc['time'],adc['v(adc)']) if t>.001 and abs(v-1.68)<=.001*1.68)
@@ -60,7 +33,6 @@ report={'engine':'KiCad bundled ngspice shared library','battery_adc':{
  'scope':'Lumped RC model, ideal upstream 3.8V. No converter feedback/switching or cable inductance; pass here is not a hardware pass.'},
  'missing_power_hold_up':{'at_2A_max_0_4V_drop_with_484uF_us':484e-6*.4/2*1e6,'conclusion':'Reservoir cannot bridge milliseconds of UPS switch interruption; actual UPS break must be measured.'},
  'full_ups_simulated':False,'buck_model_simulated':False,'firmware_adc_implemented':False}
-if errors:raise RuntimeError(errors)
 (ROOT/'exports/power-simulation.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
 print(json.dumps({k:v for k,v in report['battery_adc'].items() if k!='trace'},ensure_ascii=False))
 print('Modem RC minimum volts:',[(x['path_resistance_ohm'],round(x['minimum_v'],4)) for x in cases])

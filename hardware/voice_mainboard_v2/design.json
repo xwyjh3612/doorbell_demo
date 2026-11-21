@@ -1,5 +1,5 @@
 {
-  "revision": "V2-ML307-SMT-UPS-RESERVE",
+  "revision": "V2-ML307-SMT-UPS-USB-RESERVE",
   "status": "UNROUTED REVIEW DRAFT - NOT FOR FABRICATION",
   "dimensions_mm": [
     100,
@@ -1961,12 +1961,12 @@
     },
     {
       "ref": "J12",
-      "value": "USB SERVICE 90 OHM PAIR",
+      "value": "USB SERVICE ONLY - ISOLATED IN HOST BUILD",
       "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
       "pins": {
-        "1": "USB_DETECT_5V",
-        "2": "M_USB_DM",
-        "3": "M_USB_DP",
+        "1": "SERVICE_USB_VBUS",
+        "2": "SERVICE_USB_DM",
+        "3": "SERVICE_USB_DP",
         "4": "GND"
       },
       "names": {},
@@ -1980,9 +1980,117 @@
       "kind": "pcb"
     },
     {
+      "ref": "R26",
+      "value": "0R USB SERVICE DP",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "M_USB_DP",
+        "2": "SERVICE_USB_DP"
+      },
+      "names": {},
+      "x": 79.5,
+      "y": 26,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R27",
+      "value": "0R USB SERVICE DM",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "M_USB_DM",
+        "2": "SERVICE_USB_DM"
+      },
+      "names": {},
+      "x": 79.5,
+      "y": 29,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R28",
+      "value": "0R USB HOST DP DNP",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "M_USB_DP",
+        "2": "ESP_USB_DP20"
+      },
+      "names": {},
+      "x": 79.5,
+      "y": 35,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": true,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R29",
+      "value": "0R USB HOST DM DNP",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "M_USB_DM",
+        "2": "ESP_USB_DM19"
+      },
+      "names": {},
+      "x": 79.5,
+      "y": 38,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": true,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R30",
+      "value": "0R VBUS FROM SERVICE",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "SERVICE_USB_VBUS",
+        "2": "USB_DETECT_5V"
+      },
+      "names": {},
+      "x": 83.5,
+      "y": 26,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R31",
+      "value": "0R VBUS DETECT FROM SYSTEM DNP",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "SYS_5V",
+        "2": "USB_DETECT_5V"
+      },
+      "names": {},
+      "x": 87.5,
+      "y": 26,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": true,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
       "ref": "J13",
-      "value": "ESP32-S3 HARNESS NOT DIRECT SOCKET",
-      "footprint": "Connector_PinHeader_2.54mm:PinHeader_2x14_P2.54mm_Vertical",
+      "value": "ESP32-S3 HARNESS WITH USB19/20 RESERVE",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_2x15_P2.54mm_Vertical",
       "pins": {
         "1": "ESP_5V",
         "2": "GND",
@@ -2011,7 +2119,9 @@
         "25": "DEBUG_ESP_TX43",
         "26": "DEBUG_ESP_RX44",
         "27": "ESP_EN",
-        "28": ""
+        "28": "ESP_USB_DM19",
+        "29": "ESP_USB_DP20",
+        "30": "GND"
       },
       "names": {},
       "x": 33,
@@ -2020,7 +2130,7 @@
       "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
       "dnp": false,
       "source": "",
-      "note": "Existing dev board connected by harness. PWRKEY proposed GPIO11, RESET proposed GPIO21; ADC proposed GPIO2; verify actual dev-board access before freeze.",
+      "note": "Harness draft, not final high-speed connector. Pins28/29 = USB DM19/DP20. PWRKEY GPIO11, RESET GPIO21, ADC GPIO2 proposed; verify dev-board access. Short 90-ohm USB pair/return path required; dev-board native USB cannot simultaneously connect another host.",
       "kind": "pcb"
     },
     {
@@ -2732,7 +2842,37 @@
   "proposed_gpio": {
     "external_power_present_n": 10,
     "modem_pwrkey": 11,
-    "modem_reset": 21
+    "modem_reset": 21,
+    "usb_dm": 19,
+    "usb_dp": 20
+  },
+  "usb_transport_reserve": {
+    "uart_retained": true,
+    "default_population": "service-only AT baseline",
+    "service_links": [
+      "R26",
+      "R27",
+      "R30"
+    ],
+    "host_links": [
+      "R28",
+      "R29",
+      "R31"
+    ],
+    "mutually_exclusive_population": true,
+    "host_firmware_choices": [
+      "AT UART",
+      "USB RNDIS",
+      "USB ECM"
+    ],
+    "runtime_switch_implemented": false,
+    "routed": false,
+    "verified_on_hardware": false,
+    "vbus_detect_range_v": [
+      3,
+      5.25
+    ],
+    "note": "VBUS detection is not module main power; USB ESD/impedance/final connector/host isolation pending. No two populated data pairs or VBUS sources simultaneously."
   },
   "manufacturing_ready": false,
   "firmware_modified": false

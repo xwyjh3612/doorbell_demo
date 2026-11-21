@@ -1,0 +1,1399 @@
+{
+  "generated_at": "2026-11-21T16:22:08.496242+08:00",
+  "engine": "KiCad 9 bundled ngspice shared library, PSpice compatibility / XSPICE",
+  "whole_product_pass": false,
+  "manufacturing_ready": false,
+  "firmware_changed": false,
+  "sources": {
+    "ml307": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1189/M307R_Hardware_Datasheet.pdf",
+    "buck_datasheet": "https://www.ti.com/lit/ds/symlink/tps563201.pdf",
+    "buck_original_model": "https://www.ti.com/lit/zip/SLVMBD1",
+    "translator": "https://www.ti.com/lit/ds/symlink/sn74axc1t45.pdf"
+  },
+  "model_limits": [
+    "Generic LEVEL=1 MOS envelope: VTO=0.8/1.5/2.5V, KP=0.005 A/V^2, explicit body diode. No vendor temperature model.",
+    "PMOS envelope: VTO=-0.8/-1.5/-2.5V, KP=0.002 A/V^2. Off leakage is an injected 0/1uA scenario, not a guarantee.",
+    "External GPIO uses 0.25/0.75 of 3.3V as conservative digital thresholds; actual ESP pin specifications must be checked.",
+    "ML307 PWRKEY/RESET internal pull-up modeled as assumed 100k to VBAT / 1.8V. Actual internal values not supplied.",
+    "RC power model has ideal upstream supply. No switching control, cable inductance, RF, thermal or UPS path model.",
+    "MOS sweeps are parameter scenarios, not a temperature, production tolerance or lifetime qualification."
+  ],
+  "sections": {
+    "interfaces": {
+      "checks": [
+        {
+          "ref": "U1",
+          "pin": "7",
+          "expected": "MODEM_PWRKEY_N",
+          "actual": "MODEM_PWRKEY_N",
+          "pass": true
+        },
+        {
+          "ref": "U1",
+          "pin": "11",
+          "expected": "M_SIM_DATA",
+          "actual": "M_SIM_DATA",
+          "pass": true
+        },
+        {
+          "ref": "U1",
+          "pin": "12",
+          "expected": "M_SIM_RESET",
+          "actual": "M_SIM_RESET",
+          "pass": true
+        },
+        {
+          "ref": "U1",
+          "pin": "13",
+          "expected": "M_SIM_CLK",
+          "actual": "M_SIM_CLK",
+          "pass": true
+        },
+        {
+          "ref": "U1",
+          "pin": "14",
+          "expected": "SIM_VCC",
+          "actual": "SIM_VCC",
+          "pass": true
+        },
+        {
+          "ref": "U1",
+          "pin": "15",
+          "expected": "MODEM_RESET_N",
+          "actual": "MODEM_RESET_N",
+          "pass": true
+        },
+        {
+          "ref": "U1",
+          "pin": "17",
+          "expected": "M_RX_1V8",
+          "actual": "M_RX_1V8",
+          "pass": true
+        },
+        {
+          "ref": "U1",
+          "pin": "18",
+          "expected": "M_TX_1V8",
+          "actual": "M_TX_1V8",
+          "pass": true
+        },
+        {
+          "ref": "U1",
+          "pin": "19",
+          "expected": "M_DTR_1V8",
+          "actual": "M_DTR_1V8",
+          "pass": true
+        },
+        {
+          "ref": "U1",
+          "pin": "24",
+          "expected": "MODEM_1V8",
+          "actual": "MODEM_1V8",
+          "pass": true
+        },
+        {
+          "ref": "U1",
+          "pin": "35",
+          "expected": "RF_ANT",
+          "actual": "RF_ANT",
+          "pass": true
+        },
+        {
+          "ref": "U1",
+          "pin": "42",
+          "expected": "MODEM_3V8",
+          "actual": "MODEM_3V8",
+          "pass": true
+        },
+        {
+          "ref": "U1",
+          "pin": "43",
+          "expected": "MODEM_3V8",
+          "actual": "MODEM_3V8",
+          "pass": true
+        },
+        {
+          "ref": "U1",
+          "pin": "59",
+          "expected": "M_USB_DP",
+          "actual": "M_USB_DP",
+          "pass": true
+        },
+        {
+          "ref": "U1",
+          "pin": "60",
+          "expected": "M_USB_DM",
+          "actual": "M_USB_DM",
+          "pass": true
+        },
+        {
+          "ref": "U1",
+          "pin": "61",
+          "expected": "USB_DETECT_5V",
+          "actual": "USB_DETECT_5V",
+          "pass": true
+        },
+        {
+          "ref": "U2",
+          "pin": "1",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "U2",
+          "pin": "2",
+          "expected": "BUCK_SW",
+          "actual": "BUCK_SW",
+          "pass": true
+        },
+        {
+          "ref": "U2",
+          "pin": "3",
+          "expected": "SYS_5V",
+          "actual": "SYS_5V",
+          "pass": true
+        },
+        {
+          "ref": "U2",
+          "pin": "4",
+          "expected": "BUCK_FB",
+          "actual": "BUCK_FB",
+          "pass": true
+        },
+        {
+          "ref": "U2",
+          "pin": "5",
+          "expected": "BUCK_EN",
+          "actual": "BUCK_EN",
+          "pass": true
+        },
+        {
+          "ref": "U2",
+          "pin": "6",
+          "expected": "BUCK_BST",
+          "actual": "BUCK_BST",
+          "pass": true
+        },
+        {
+          "ref": "U3",
+          "pin": "1",
+          "expected": "ESP_3V3",
+          "actual": "ESP_3V3",
+          "pass": true
+        },
+        {
+          "ref": "U3",
+          "pin": "2",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "U3",
+          "pin": "3",
+          "expected": "ESP_TX17",
+          "actual": "ESP_TX17",
+          "pass": true
+        },
+        {
+          "ref": "U3",
+          "pin": "4",
+          "expected": "M_RX_1V8",
+          "actual": "M_RX_1V8",
+          "pass": true
+        },
+        {
+          "ref": "U3",
+          "pin": "5",
+          "expected": "ESP_3V3",
+          "actual": "ESP_3V3",
+          "pass": true
+        },
+        {
+          "ref": "U3",
+          "pin": "6",
+          "expected": "MODEM_1V8",
+          "actual": "MODEM_1V8",
+          "pass": true
+        },
+        {
+          "ref": "U4",
+          "pin": "1",
+          "expected": "ESP_3V3",
+          "actual": "ESP_3V3",
+          "pass": true
+        },
+        {
+          "ref": "U4",
+          "pin": "2",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "U4",
+          "pin": "3",
+          "expected": "ESP_RX18",
+          "actual": "ESP_RX18",
+          "pass": true
+        },
+        {
+          "ref": "U4",
+          "pin": "4",
+          "expected": "M_TX_1V8",
+          "actual": "M_TX_1V8",
+          "pass": true
+        },
+        {
+          "ref": "U4",
+          "pin": "5",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "U4",
+          "pin": "6",
+          "expected": "MODEM_1V8",
+          "actual": "MODEM_1V8",
+          "pass": true
+        },
+        {
+          "ref": "U5",
+          "pin": "1",
+          "expected": "ESP_3V3",
+          "actual": "ESP_3V3",
+          "pass": true
+        },
+        {
+          "ref": "U5",
+          "pin": "2",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "U5",
+          "pin": "3",
+          "expected": "ESP_DTR4",
+          "actual": "ESP_DTR4",
+          "pass": true
+        },
+        {
+          "ref": "U5",
+          "pin": "4",
+          "expected": "M_DTR_1V8",
+          "actual": "M_DTR_1V8",
+          "pass": true
+        },
+        {
+          "ref": "U5",
+          "pin": "5",
+          "expected": "ESP_3V3",
+          "actual": "ESP_3V3",
+          "pass": true
+        },
+        {
+          "ref": "U5",
+          "pin": "6",
+          "expected": "MODEM_1V8",
+          "actual": "MODEM_1V8",
+          "pass": true
+        },
+        {
+          "ref": "J14",
+          "pin": "1",
+          "expected": "ESP_3V3",
+          "actual": "ESP_3V3",
+          "pass": true
+        },
+        {
+          "ref": "J14",
+          "pin": "2",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "J14",
+          "pin": "3",
+          "expected": "I2S_MIC_BCLK14",
+          "actual": "I2S_MIC_BCLK14",
+          "pass": true
+        },
+        {
+          "ref": "J14",
+          "pin": "4",
+          "expected": "I2S_MIC_WS13",
+          "actual": "I2S_MIC_WS13",
+          "pass": true
+        },
+        {
+          "ref": "J14",
+          "pin": "5",
+          "expected": "I2S_MIC_DATA12",
+          "actual": "I2S_MIC_DATA12",
+          "pass": true
+        },
+        {
+          "ref": "J15",
+          "pin": "1",
+          "expected": "SYS_5V",
+          "actual": "SYS_5V",
+          "pass": true
+        },
+        {
+          "ref": "J15",
+          "pin": "2",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "J15",
+          "pin": "3",
+          "expected": "I2S_AMP_BCLK15",
+          "actual": "I2S_AMP_BCLK15",
+          "pass": true
+        },
+        {
+          "ref": "J15",
+          "pin": "4",
+          "expected": "I2S_AMP_WS16",
+          "actual": "I2S_AMP_WS16",
+          "pass": true
+        },
+        {
+          "ref": "J15",
+          "pin": "5",
+          "expected": "I2S_AMP_DATA7",
+          "actual": "I2S_AMP_DATA7",
+          "pass": true
+        },
+        {
+          "ref": "J16",
+          "pin": "1",
+          "expected": "RADAR_5V",
+          "actual": "RADAR_5V",
+          "pass": true
+        },
+        {
+          "ref": "J16",
+          "pin": "2",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "J16",
+          "pin": "3",
+          "expected": "RADAR_TX_TO_IO6",
+          "actual": "RADAR_TX_TO_IO6",
+          "pass": true
+        },
+        {
+          "ref": "J16",
+          "pin": "4",
+          "expected": "RADAR_RX_FROM_IO8",
+          "actual": "RADAR_RX_FROM_IO8",
+          "pass": true
+        },
+        {
+          "ref": "J18",
+          "pin": "1",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "J18",
+          "pin": "2",
+          "expected": "DEBUG_ESP_TX43",
+          "actual": "DEBUG_ESP_TX43",
+          "pass": true
+        },
+        {
+          "ref": "J18",
+          "pin": "3",
+          "expected": "DEBUG_ESP_RX44",
+          "actual": "DEBUG_ESP_RX44",
+          "pass": true
+        },
+        {
+          "ref": "J18",
+          "pin": "4",
+          "expected": "TTL_5V",
+          "actual": "TTL_5V",
+          "pass": true
+        },
+        {
+          "ref": "JP3",
+          "pin": "1",
+          "expected": "SYS_5V",
+          "actual": "SYS_5V",
+          "pass": true
+        },
+        {
+          "ref": "JP3",
+          "pin": "2",
+          "expected": "ESP_5V",
+          "actual": "ESP_5V",
+          "pass": true
+        },
+        {
+          "ref": "JP3",
+          "pin": "3",
+          "expected": "TTL_5V",
+          "actual": "TTL_5V",
+          "pass": true
+        },
+        {
+          "ref": "J12",
+          "pin": "1",
+          "expected": "SERVICE_USB_VBUS",
+          "actual": "SERVICE_USB_VBUS",
+          "pass": true
+        },
+        {
+          "ref": "J12",
+          "pin": "2",
+          "expected": "SERVICE_USB_DM",
+          "actual": "SERVICE_USB_DM",
+          "pass": true
+        },
+        {
+          "ref": "J12",
+          "pin": "3",
+          "expected": "SERVICE_USB_DP",
+          "actual": "SERVICE_USB_DP",
+          "pass": true
+        },
+        {
+          "ref": "J12",
+          "pin": "4",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "J13",
+          "pin": "28",
+          "expected": "ESP_USB_DM19",
+          "actual": "ESP_USB_DM19",
+          "pass": true
+        },
+        {
+          "ref": "J13",
+          "pin": "29",
+          "expected": "ESP_USB_DP20",
+          "actual": "ESP_USB_DP20",
+          "pass": true
+        },
+        {
+          "ref": "J13",
+          "pin": "30",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "R26",
+          "pin": "1",
+          "expected": "M_USB_DP",
+          "actual": "M_USB_DP",
+          "pass": true
+        },
+        {
+          "ref": "R26",
+          "pin": "2",
+          "expected": "SERVICE_USB_DP",
+          "actual": "SERVICE_USB_DP",
+          "pass": true
+        },
+        {
+          "ref": "R27",
+          "pin": "1",
+          "expected": "M_USB_DM",
+          "actual": "M_USB_DM",
+          "pass": true
+        },
+        {
+          "ref": "R27",
+          "pin": "2",
+          "expected": "SERVICE_USB_DM",
+          "actual": "SERVICE_USB_DM",
+          "pass": true
+        },
+        {
+          "ref": "R28",
+          "pin": "1",
+          "expected": "M_USB_DP",
+          "actual": "M_USB_DP",
+          "pass": true
+        },
+        {
+          "ref": "R28",
+          "pin": "2",
+          "expected": "ESP_USB_DP20",
+          "actual": "ESP_USB_DP20",
+          "pass": true
+        },
+        {
+          "ref": "R29",
+          "pin": "1",
+          "expected": "M_USB_DM",
+          "actual": "M_USB_DM",
+          "pass": true
+        },
+        {
+          "ref": "R29",
+          "pin": "2",
+          "expected": "ESP_USB_DM19",
+          "actual": "ESP_USB_DM19",
+          "pass": true
+        },
+        {
+          "ref": "R30",
+          "pin": "1",
+          "expected": "SERVICE_USB_VBUS",
+          "actual": "SERVICE_USB_VBUS",
+          "pass": true
+        },
+        {
+          "ref": "R30",
+          "pin": "2",
+          "expected": "USB_DETECT_5V",
+          "actual": "USB_DETECT_5V",
+          "pass": true
+        },
+        {
+          "ref": "R31",
+          "pin": "1",
+          "expected": "SYS_5V",
+          "actual": "SYS_5V",
+          "pass": true
+        },
+        {
+          "ref": "R31",
+          "pin": "2",
+          "expected": "USB_DETECT_5V",
+          "actual": "USB_DETECT_5V",
+          "pass": true
+        },
+        {
+          "ref": "Q3",
+          "pin": "1",
+          "expected": "BAT_GATE",
+          "actual": "BAT_GATE",
+          "pass": true
+        },
+        {
+          "ref": "Q3",
+          "pin": "2",
+          "expected": "BAT_SENSE_IN",
+          "actual": "BAT_SENSE_IN",
+          "pass": true
+        },
+        {
+          "ref": "Q3",
+          "pin": "3",
+          "expected": "BAT_DIV_SW",
+          "actual": "BAT_DIV_SW",
+          "pass": true
+        },
+        {
+          "ref": "Q4",
+          "pin": "1",
+          "expected": "ADC_EN_IO9",
+          "actual": "ADC_EN_IO9",
+          "pass": true
+        },
+        {
+          "ref": "Q4",
+          "pin": "2",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "Q4",
+          "pin": "3",
+          "expected": "BAT_GATE",
+          "actual": "BAT_GATE",
+          "pass": true
+        },
+        {
+          "ref": "R17",
+          "pin": "1",
+          "expected": "BAT_DIV_SW",
+          "actual": "BAT_DIV_SW",
+          "pass": true
+        },
+        {
+          "ref": "R17",
+          "pin": "2",
+          "expected": "ADC_BAT_IO2",
+          "actual": "ADC_BAT_IO2",
+          "pass": true
+        },
+        {
+          "ref": "R18",
+          "pin": "1",
+          "expected": "ADC_BAT_IO2",
+          "actual": "ADC_BAT_IO2",
+          "pass": true
+        },
+        {
+          "ref": "R18",
+          "pin": "2",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "SW1",
+          "pin": "1",
+          "expected": "BOOT_BTN_IO0",
+          "actual": "BOOT_BTN_IO0",
+          "pass": true
+        },
+        {
+          "ref": "SW1",
+          "pin": "2",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "SW2",
+          "pin": "1",
+          "expected": "ESP_EN",
+          "actual": "ESP_EN",
+          "pass": true
+        },
+        {
+          "ref": "SW2",
+          "pin": "2",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        }
+      ],
+      "firmware_pin_checks": [
+        {
+          "name": "microphone active I2S",
+          "pass": true
+        },
+        {
+          "name": "amplifier active I2S",
+          "pass": true
+        },
+        {
+          "name": "modem TX17 RX18 DTR4 921600",
+          "pass": true
+        },
+        {
+          "name": "radar RX6 / reserved TX8",
+          "pass": true
+        }
+      ],
+      "pass": true,
+      "scope": "Static independent KiCad netlist / pin contract only. No UART timing or firmware execution.",
+      "source_hashes": {
+        "hardware\\voice_mainboard_v2\\exports\\voice_mainboard_v2.net.xml": "329a6827f90e966bc509ad7aad718fef04a87504f1c759e25a87d5b6fcf3ab56",
+        "components\\codec_board\\board_cfg.txt": "6a3603c04b9a4f723db3b8ce7de4ae86c9477b07bb81d6706413404864115957",
+        "main\\network_4g.cpp": "0512e43716c3e8ef31524da1529dd19545d3c4d0ff80dd8df0cc1af612495fa4",
+        "main\\radar_presence.c": "967aa69dae39a4a12c41356b1e326b6bcfe22e471635240e5cef2fcb084374df"
+      }
+    },
+    "battery_adc": {
+      "cases": [
+        {
+          "battery_v": 3.0,
+          "vto_abs_v": 0.8,
+          "resistor_corner": -1,
+          "adc_at_60ms_v": 1.2132173907403203,
+          "reconstructed_v": 3.033043476850801,
+          "reconstruction_error_percent": 1.1014492283600186,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.09544151993935435,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.00319575368196117,
+          "maximum_adc_v": 1.2132706883019155
+        },
+        {
+          "battery_v": 3.0,
+          "vto_abs_v": 0.8,
+          "resistor_corner": 0,
+          "adc_at_60ms_v": 1.1988062441042142,
+          "reconstructed_v": 2.9970156102605356,
+          "reconstruction_error_percent": -0.09947965798214886,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.09524470165928056,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.0029757389460520972,
+          "maximum_adc_v": 1.1988579332516647
+        },
+        {
+          "battery_v": 3.0,
+          "vto_abs_v": 0.8,
+          "resistor_corner": 1,
+          "adc_at_60ms_v": 1.1844526372692723,
+          "reconstructed_v": 2.9611315931731808,
+          "reconstruction_error_percent": -1.2956135608939712,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.0950481369322187,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.0027672861226446395,
+          "maximum_adc_v": 1.1845026627943815
+        },
+        {
+          "battery_v": 3.0,
+          "vto_abs_v": 1.5,
+          "resistor_corner": -1,
+          "adc_at_60ms_v": 1.2126977263367276,
+          "reconstructed_v": 3.031744315841819,
+          "reconstruction_error_percent": 1.0581438613939786,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.13818141053042465,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.003194093732548734,
+          "maximum_adc_v": 1.2127516762897823
+        },
+        {
+          "battery_v": 3.0,
+          "vto_abs_v": 1.5,
+          "resistor_corner": 0,
+          "adc_at_60ms_v": 1.1982937923149275,
+          "reconstructed_v": 2.995734480787319,
+          "reconstruction_error_percent": -0.1421839737560382,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.13789898574425585,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.0029741931010812497,
+          "maximum_adc_v": 1.1983461143354863
+        },
+        {
+          "battery_v": 3.0,
+          "vto_abs_v": 1.5,
+          "resistor_corner": 1,
+          "adc_at_60ms_v": 1.1839473455531775,
+          "reconstructed_v": 2.9598683638829435,
+          "reconstruction_error_percent": -1.337721203901887,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.13761714995444985,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.0027658483420688667,
+          "maximum_adc_v": 1.183997983719034
+        },
+        {
+          "battery_v": 3.0,
+          "vto_abs_v": 2.5,
+          "resistor_corner": -1,
+          "adc_at_60ms_v": 1.2093383657206809,
+          "reconstructed_v": 3.0233459143017023,
+          "reconstruction_error_percent": 0.7781971433900692,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.4147357115513839,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.003184903474653714,
+          "maximum_adc_v": 1.209393136815962
+        },
+        {
+          "battery_v": 3.0,
+          "vto_abs_v": 2.5,
+          "resistor_corner": 0,
+          "adc_at_60ms_v": 1.1949811039738671,
+          "reconstructed_v": 2.987452759934668,
+          "reconstruction_error_percent": -0.41824133551107145,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.41389290212173746,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.002965649143844006,
+          "maximum_adc_v": 1.1950342021298914
+        },
+        {
+          "battery_v": 3.0,
+          "vto_abs_v": 2.5,
+          "resistor_corner": 1,
+          "adc_at_60ms_v": 1.1806809811955357,
+          "reconstructed_v": 2.9517024529888394,
+          "reconstruction_error_percent": -1.6099182337053541,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.41305294687151717,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.0027579154179527333,
+          "maximum_adc_v": 1.1807323515900674
+        },
+        {
+          "battery_v": 3.7,
+          "vto_abs_v": 0.8,
+          "resistor_corner": -1,
+          "adc_at_60ms_v": 1.4966308038259697,
+          "reconstructed_v": 3.7415770095649243,
+          "reconstruction_error_percent": 1.123702961214157,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.07343547187932398,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.003942090012179193,
+          "maximum_adc_v": 1.4966968069924493
+        },
+        {
+          "battery_v": 3.7,
+          "vto_abs_v": 0.8,
+          "resistor_corner": 0,
+          "adc_at_60ms_v": 1.4788524914076133,
+          "reconstructed_v": 3.697131228519033,
+          "reconstruction_error_percent": -0.07753436435046224,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.07328264792733075,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.003670687892256241,
+          "maximum_adc_v": 1.4789165081078632
+        },
+        {
+          "battery_v": 3.7,
+          "vto_abs_v": 0.8,
+          "resistor_corner": 1,
+          "adc_at_60ms_v": 1.4611451793092902,
+          "reconstructed_v": 3.6528629482732256,
+          "reconstruction_error_percent": -1.2739743709939133,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.07312989837450212,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.0034135484295752575,
+          "maximum_adc_v": 1.4612071406889535
+        },
+        {
+          "battery_v": 3.7,
+          "vto_abs_v": 1.5,
+          "resistor_corner": -1,
+          "adc_at_60ms_v": 1.4962992790448826,
+          "reconstructed_v": 3.7407481976122066,
+          "reconstruction_error_percent": 1.1013026381677449,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.09553057013488297,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.003940877213271955,
+          "maximum_adc_v": 1.4963659009007333
+        },
+        {
+          "battery_v": 3.7,
+          "vto_abs_v": 1.5,
+          "resistor_corner": 0,
+          "adc_at_60ms_v": 1.4785255762510914,
+          "reconstructed_v": 3.6963139406277286,
+          "reconstruction_error_percent": -0.099623226277612,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.09533347148320548,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.0036695570657509845,
+          "maximum_adc_v": 1.478590187826584
+        },
+        {
+          "battery_v": 3.7,
+          "vto_abs_v": 1.5,
+          "resistor_corner": 1,
+          "adc_at_60ms_v": 1.4608228398887015,
+          "reconstructed_v": 3.6520570997217536,
+          "reconstruction_error_percent": -1.295754061574228,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.09513662118431077,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.00341249533703333,
+          "maximum_adc_v": 1.4608853722735076
+        },
+        {
+          "battery_v": 3.7,
+          "vto_abs_v": 2.5,
+          "resistor_corner": -1,
+          "adc_at_60ms_v": 1.4951428503805066,
+          "reconstructed_v": 3.7378571259512667,
+          "reconstruction_error_percent": 1.023165566250439,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.17274990317598382,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.00393746352110592,
+          "maximum_adc_v": 1.4952092911703676
+        },
+        {
+          "battery_v": 3.7,
+          "vto_abs_v": 2.5,
+          "resistor_corner": 0,
+          "adc_at_60ms_v": 1.4773851795957988,
+          "reconstructed_v": 3.693462948989497,
+          "reconstruction_error_percent": -0.1766770543379259,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.17239801504129737,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.0036663806579397807,
+          "maximum_adc_v": 1.477449611411733
+        },
+        {
+          "battery_v": 3.7,
+          "vto_abs_v": 2.5,
+          "resistor_corner": 1,
+          "adc_at_60ms_v": 1.4596983559282162,
+          "reconstructed_v": 3.6492458898205404,
+          "reconstruction_error_percent": -1.371732707552964,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.17204699675426038,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.0034095434630299144,
+          "maximum_adc_v": 1.4597607103799135
+        },
+        {
+          "battery_v": 4.2,
+          "vto_abs_v": 0.8,
+          "resistor_corner": -1,
+          "adc_at_60ms_v": 1.6990511042323286,
+          "reconstructed_v": 4.247627760580822,
+          "reconstruction_error_percent": 1.1339942995433727,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.06326510000751462,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.004475112013337298,
+          "maximum_adc_v": 1.699126052125662
+        },
+        {
+          "battery_v": 4.2,
+          "vto_abs_v": 0.8,
+          "resistor_corner": 0,
+          "adc_at_60ms_v": 1.678867927302604,
+          "reconstructed_v": 4.19716981825651,
+          "reconstruction_error_percent": -0.06738527960690188,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.0631325884489109,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.004167009592476466,
+          "maximum_adc_v": 1.6789406139674532
+        },
+        {
+          "battery_v": 4.2,
+          "vto_abs_v": 0.8,
+          "resistor_corner": 1,
+          "adc_at_60ms_v": 1.6587653625614123,
+          "reconstructed_v": 4.146913406403531,
+          "reconstruction_error_percent": -1.2639665142016532,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.06300007164328214,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.0038750986836570737,
+          "maximum_adc_v": 1.6588357103401714
+        },
+        {
+          "battery_v": 4.2,
+          "vto_abs_v": 1.5,
+          "resistor_corner": -1,
+          "adc_at_60ms_v": 1.6987897948798814,
+          "reconstructed_v": 4.2469744871997035,
+          "reconstruction_error_percent": 1.1184401714215086,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.07861905012956916,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.0044740896986291264,
+          "maximum_adc_v": 1.6988650177998483
+        },
+        {
+          "battery_v": 4.2,
+          "vto_abs_v": 1.5,
+          "resistor_corner": 0,
+          "adc_at_60ms_v": 1.6786102385420878,
+          "reconstructed_v": 4.19652559635522,
+          "reconstruction_error_percent": -0.08272389630429311,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.07845582407649543,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.004166055835909908,
+          "maximum_adc_v": 1.6786831970853349
+        },
+        {
+          "battery_v": 4.2,
+          "vto_abs_v": 1.5,
+          "resistor_corner": 1,
+          "adc_at_60ms_v": 1.6585112683425012,
+          "reconstructed_v": 4.146278170856253,
+          "reconstruction_error_percent": -1.2790911700892083,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.07829271221966305,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.003874209980013124,
+          "maximum_adc_v": 1.658581884126734
+        },
+        {
+          "battery_v": 4.2,
+          "vto_abs_v": 2.5,
+          "resistor_corner": -1,
+          "adc_at_60ms_v": 1.6980357906918493,
+          "reconstructed_v": 4.245089476729623,
+          "reconstruction_error_percent": 1.073558969752919,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.12293856406622172,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.004471702018361366,
+          "maximum_adc_v": 1.6981115198507464
+        },
+        {
+          "battery_v": 4.2,
+          "vto_abs_v": 2.5,
+          "resistor_corner": 0,
+          "adc_at_60ms_v": 1.6778667103446583,
+          "reconstructed_v": 4.194666775861646,
+          "reconstruction_error_percent": -0.1269815271036756,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.12268650251188173,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.0041638325018700986,
+          "maximum_adc_v": 1.677940142646764
+        },
+        {
+          "battery_v": 4.2,
+          "vto_abs_v": 2.5,
+          "resistor_corner": 1,
+          "adc_at_60ms_v": 1.6577781377137788,
+          "reconstructed_v": 4.144445344284447,
+          "reconstruction_error_percent": -1.3227298979893498,
+          "settled_0_1_percent_at_60ms": true,
+          "dc_switch_and_divider_error_percent": -0.12243491128883788,
+          "reconstruction_within_3_percent_model_target": true,
+          "off_after_60ms_v": 0.003872142276702707,
+          "maximum_adc_v": 1.6578491958631385
+        }
+      ],
+      "off_leakage_envelope": [
+        {
+          "assumed_off_leakage_uA": 0.0,
+          "off_adc_v": 9.40999475221786e-07,
+          "battery_current_uA": 1.8819516589909952e-05
+        },
+        {
+          "assumed_off_leakage_uA": 1.0,
+          "off_adc_v": 0.10000089099459614,
+          "battery_current_uA": 1.0000183195008954
+        }
+      ],
+      "unpowered_esp_envelope": {
+        "adc_v": 0.09999758270391698,
+        "rail_injection_uA": -2.4172946524414167e-05,
+        "limit": "Injected 1uA hypothetical leak, generic diode; no real ESP protection/power sequencing model."
+      },
+      "acceptance": "60ms settles within 0.1% of actual model steady state; reconstructed battery voltage within chosen 3% circuit-only target. ADC errors excluded.",
+      "pass_within_generic_on_envelope": true,
+      "real_adc_accuracy_verified": false,
+      "firmware_adc_implemented": false
+    },
+    "external_power_detector": {
+      "cases": [
+        {
+          "vto_v": 0.8,
+          "input_v": 4.5,
+          "present_low_v": 0.046883597099384965,
+          "removed_high_v": 3.299999923860962,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 0.8,
+          "input_v": 5,
+          "present_low_v": 0.04010166714977917,
+          "removed_high_v": 3.2999999240566424,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 0.8,
+          "input_v": 5.25,
+          "present_low_v": 0.03741882115705804,
+          "removed_high_v": 3.299999923970769,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 1.5,
+          "input_v": 4.5,
+          "present_low_v": 0.09234910981078756,
+          "removed_high_v": 3.299999923722848,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 1.5,
+          "input_v": 5,
+          "present_low_v": 0.0681629381794479,
+          "removed_high_v": 3.299999924183485,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 1.5,
+          "input_v": 5.25,
+          "present_low_v": 0.06044354530317227,
+          "removed_high_v": 3.2999999239521234,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 2.5,
+          "input_v": 4.5,
+          "present_low_v": 3.2999999238979494,
+          "removed_high_v": 3.2999999239019315,
+          "recognizes_presence": false,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 2.5,
+          "input_v": 5,
+          "present_low_v": 3.29999992389795,
+          "removed_high_v": 3.299999923901931,
+          "recognizes_presence": false,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 2.5,
+          "input_v": 5.25,
+          "present_low_v": 2.898569189766681,
+          "removed_high_v": 3.299999923901345,
+          "recognizes_presence": false,
+          "recognizes_removal": true
+        }
+      ],
+      "pass_within_generic_envelope": false,
+      "issue": "R19=R20=100k reduces 5V to 2.5V at gate. High-threshold envelope does not pull GPIO low reliably.",
+      "action": "Revise resistor ratio / choose a specified logic-level switch or a PGOOD/comparator after UPS selection. Verify slow ramps and actual thresholds.",
+      "precise_undervoltage_detection": false
+    },
+    "boot_reset": {
+      "cases": [
+        {
+          "name": "boot",
+          "pressed_v": 0.00032995143325844956,
+          "release_to_0_75Vdd_ms": 1.3922145778546713,
+          "pass_in_ideal_switch_model": true
+        },
+        {
+          "name": "esp_en",
+          "pressed_v": 0.00032995143325844956,
+          "release_to_0_75Vdd_ms": 1.3922145778546713,
+          "pass_in_ideal_switch_model": true
+        }
+      ],
+      "pass_in_ideal_switch_model": true,
+      "limitations": "1ms RC does not remove multi-ms contact bounce. Firmware debounce and real dev-board EN parallel RC must be checked. No ESP boot-ROM simulation."
+    },
+    "modem_control": {
+      "cases": [
+        {
+          "name": "pwrkey",
+          "vto_v": 0.8,
+          "low_v": 0.0031911767268867435,
+          "released_v": 3.799999139019621,
+          "low_duration_s": 2.5,
+          "starts_after_power_s": 0.6,
+          "minimum_tested_window_v": 0.0031911540005089833,
+          "maximum_tested_window_v": 0.0031911797909798642,
+          "pass_in_assumed_pullup_model": true
+        },
+        {
+          "name": "pwrkey",
+          "vto_v": 2.5,
+          "low_v": 0.00968426112184864,
+          "released_v": 3.7999991390186816,
+          "low_duration_s": 2.5,
+          "starts_after_power_s": 0.6,
+          "minimum_tested_window_v": 0.009684034415986987,
+          "maximum_tested_window_v": 0.009684359236844929,
+          "pass_in_assumed_pullup_model": true
+        },
+        {
+          "name": "modem_reset",
+          "vto_v": 0.8,
+          "low_v": 0.0015111199458099057,
+          "released_v": 1.7999995390053678,
+          "low_duration_s": 0.35,
+          "starts_after_power_s": 0.6,
+          "minimum_tested_window_v": 0.0015111110697126114,
+          "maximum_tested_window_v": 0.0015111786095662434,
+          "pass_in_assumed_pullup_model": true
+        },
+        {
+          "name": "modem_reset",
+          "vto_v": 2.5,
+          "low_v": 0.004573040532536211,
+          "released_v": 1.7999995390053585,
+          "low_duration_s": 0.35,
+          "starts_after_power_s": 0.6,
+          "minimum_tested_window_v": 0.0045730302661147965,
+          "maximum_tested_window_v": 0.004573064767018822,
+          "pass_in_assumed_pullup_model": true
+        }
+      ],
+      "pass_in_assumed_pullup_model": true,
+      "firmware_controls_implemented": false,
+      "limits": "Internal pull-ups assumed. Model only checks MOS open-drain low / release. Actual boot, shutdown, recovery and RESET timing need module tests."
+    },
+    "modem_power": {
+      "rc_cases": [
+        {
+          "resistance_ohm": 0.05,
+          "min_v": 3.7000000000679476,
+          "above_module_minimum": true
+        },
+        {
+          "resistance_ohm": 0.15,
+          "min_v": 3.5000076498599753,
+          "above_module_minimum": true
+        },
+        {
+          "resistance_ohm": 0.3,
+          "min_v": 3.201341294315615,
+          "above_module_minimum": false
+        }
+      ],
+      "capacitance_nominal_uF": 494,
+      "cap_note": "C6+C7+C8+C9+C10 = 494uF; previous 484uF illustration excluded C10. Bias/tolerance/temperature derating absent.",
+      "nominal_feedback_v": 3.77856,
+      "datasheet_dc_output_range_v": [
+        3.675297626293707,
+        3.882140176256256
+      ],
+      "worst_case_static_path_budget_before_ripple_ohm": 0.13764881314685362,
+      "hold_up_with_494uF_2A_0_4V_drop_us": 98.8,
+      "model_pass_all_resistance_scenarios": false,
+      "design_review_issue": "TI recommended output capacitor range is 20-68uF. Draft directly parallels ~494uF. Stability/startup/limit behavior not validated; cannot approve this buck BOM.",
+      "reference": "TPS563201 datasheet section 7.2.2.3 / ML307 hardware supply section 3.2.3",
+      "limits": "DC feedback calculation is not a regulated transient or thermal test. RC cases diagnose hypothetical paths, not actual board resistance.",
+      "capacitor_only_crosses_3v4_us": 98.89600000000156
+    },
+    "ti_buck_model": {
+      "original_model_url": "https://www.ti.com/lit/zip/SLVMBD1",
+      "model_unchanged": true,
+      "model_temperature_simulated": false,
+      "cases": [
+        {
+          "name": "startup",
+          "simulation_completed": false,
+          "reason": "Transient stopped at 0.000118610434s; expected 0.004s. stderr doAnalyses: TRAN:  Timestep too small; time = 0.00011861, timestep = 1.25e-19: trouble with node \"xbuck.x_u5_u13_u12.ch\"; stderr run simulation(s) aborted"
+        },
+        {
+          "name": "steady_gear",
+          "simulation_completed": false,
+          "reason": "Transient stopped at 0.00059191344s; expected 0.001s. stderr doAnalyses: TRAN:  Timestep too small; time = 0.000591913, timestep = 1.25e-19: trouble with node \"xbuck.x_u5_u13_u14.ch\"; stderr run simulation(s) aborted"
+        },
+        {
+          "name": "steady_shunt",
+          "simulation_completed": false,
+          "reason": "Transient stopped at 0.000906522775s; expected 0.001s. stderr doAnalyses: TRAN:  Timestep too small; time = 0.000906523, timestep = 1.25e-19: trouble with node \"xbuck.u5_llc_eco\"; stderr run simulation(s) aborted"
+        },
+        {
+          "name": "steady_trap",
+          "simulation_completed": false,
+          "reason": "Transient stopped at 0.000918394746s; expected 0.001s. stderr doAnalyses: TRAN:  Timestep too small; time = 0.000918395, timestep = 1.25e-19: trouble with node \"xbuck.x_u5_u11_u12.ch\"; stderr run simulation(s) aborted"
+        }
+      ],
+      "sha256": "aac041a7da401c22bd9331c7bfa1e6c5390f08539a14049f9d1872563e0ec9c8",
+      "status": "BLOCKED"
+    }
+  },
+  "coverage": [
+    {
+      "function": "引脚、UART电平转换方向、I2S和雷达接口",
+      "status": "STATIC_PASS",
+      "evidence": "Independent KiCad netlist / active firmware pin comparison",
+      "next": "实测921600串口、I2S和雷达；核对所用器件时序"
+    },
+    {
+      "function": "USB Host/维修通路及互斥贴装",
+      "status": "STATIC_PASS",
+      "evidence": "19 independent J12/J13/R26-R31 pin checks; population contract checked by verify_design.py",
+      "next": "完成90Ω差分、ESD与最终连接器；实测枚举和USB通话，不能同时连接两个主机"
+    },
+    {
+      "function": "电池采样打开、关闭、60ms等待、分压容差",
+      "status": "ENVELOPE_PASS",
+      "evidence": "27 generic MOS/RC parameter cases + leakage scenarios",
+      "next": "实测开关漏电、ADC校准及最终电池放电曲线"
+    },
+    {
+      "function": "外部电源插拔检测",
+      "status": "ENVELOPE_FAIL",
+      "evidence": "9 generic MOS cases; 2.5V gate high-threshold corner",
+      "next": "修改阈值裕量后重新仿真，并实测慢速掉压与插拔"
+    },
+    {
+      "function": "BOOT/呼叫按钮、ESP EN复位",
+      "status": "IDEAL_SWITCH_PASS",
+      "evidence": "RC switch transient; no boot-ROM",
+      "next": "核对固件去抖、开发板并联RC和TTL手动刷机"
+    },
+    {
+      "function": "ML307开机、复位控制电路",
+      "status": "ENVELOPE_PASS",
+      "evidence": "Open-drain transistor pull-down / release with assumed internal pull-up",
+      "next": "控制固件尚未实现；实测模组开关机、复位及电源循环"
+    },
+    {
+      "function": "模组2A负载、电源路径阻抗",
+      "status": "RC_FAIL_AT_300mOHM",
+      "evidence": "Ideal supply RC scenario, not actual board measurement",
+      "next": "确认稳压器和整条供电路径在峰值负载下仍高于3.4V"
+    },
+    {
+      "function": "TPS563201真实降压启动及闭环",
+      "status": "BLOCKED",
+      "evidence": "Official TI PSpice model run attempts; end-time validation",
+      "next": "在模型支持的PSpice环境验证，并处理约494µF输出网络"
+    },
+    {
+      "function": "长期充电、UPS切换、保护、备用电池续航",
+      "status": "BLOCKED",
+      "evidence": "UPS chip / cell / protection not selected",
+      "next": "提供芯片、电池及保护资料，补齐电源路径后再验证"
+    },
+    {
+      "function": "插拔TTL及双电源防倒灌",
+      "status": "STATIC_ONLY",
+      "evidence": "JP3 only powers ESP branch; no simultaneous links permitted",
+      "next": "核对开发板USB电源结构和实际倒灌；不能同时短接两侧"
+    },
+    {
+      "function": "ML307电源重启/残压放电",
+      "status": "MISSING_DESIGN",
+      "evidence": "No explicit VBAT discharge path; module guide requires <1.8V for >=100ms",
+      "next": "补齐残压放电设计及重新上电时序，验证低于1.8V至少100ms"
+    },
+    {
+      "function": "反接、短路、ESD、EMC、散热",
+      "status": "UNVERIFIED",
+      "evidence": "UPS/adapter protection unknown; no PCB routes or thermal model",
+      "next": "冻结BOM、完成保护/布线/叠层并进行实物测试"
+    },
+    {
+      "function": "SIM、USB、RF、天线及整机尺寸",
+      "status": "STATIC_ONLY",
+      "evidence": "Pins / candidate footprints only; unrouted links remain",
+      "next": "封装签核，RF50Ω/USB90Ω布线，外壳尺寸及实物信号验证"
+    },
+    {
+      "function": "4G入网、MQTT/WSS、双向语音、锁屏接听、掉线原因上报",
+      "status": "REAL_HARDWARE_REQUIRED",
+      "evidence": "No functional ESP/ML307/radio/OS model; existing physical call tests are separate",
+      "next": "用实际硬件、手机和蜂窝网络完成全流程与持续通话验收"
+    },
+    {
+      "function": "生命体征检测、声学音量",
+      "status": "REAL_HARDWARE_REQUIRED",
+      "evidence": "Radar algorithms / biological sensing / speaker cavity have no supplied validated model",
+      "next": "在最终装配外壳上实测雷达检测和喇叭音量/音质"
+    }
+  ],
+  "reproducibility": {
+    "run_from": "repository root",
+    "command": "python hardware/voice_mainboard_v2/simulate_functions.py",
+    "requires": "Python 3.11+, Windows KiCad bundled ngspice under build/cad-tools/kicad; optional matplotlib==3.10.7 under build/cad-tools/sim-python",
+    "netlist_sha256": "329a6827f90e966bc509ad7aad718fef04a87504f1c759e25a87d5b6fcf3ab56",
+    "model_download": "Original TI unencrypted file is local build-only. See URL and SHA256; never modify manufacturer model.",
+    "generic_decks": "exports/function-simulation/*.cir",
+    "full_ti_diagnostics": "build/v2-simulation-logs/*.log"
+  }
+}

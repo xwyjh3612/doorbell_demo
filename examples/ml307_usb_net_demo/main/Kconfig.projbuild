@@ -1,0 +1,17 @@
+menu "ML307 USB link test"
+    config VOICE_TEST_ECM
+        bool "Use ECM instead of priority RNDIS"
+        default n
+    config VOICE_TEST_APN
+        string "SIM APN; empty preserves modem configuration"
+        default ""
+    config VOICE_TEST_AUTO_MODE_CHANGE
+        bool "Allow one persistent USB mode change and modem reboot on startup"
+        default n
+        help
+            Enable only for a separate USB test after baseline calls finish.
+            Default query-only mode never changes USB personality or reboots.
+    config VOICE_TEST_UART_BAUD
+        int "Current modem UART baud"
+        default 921600
+endmenu

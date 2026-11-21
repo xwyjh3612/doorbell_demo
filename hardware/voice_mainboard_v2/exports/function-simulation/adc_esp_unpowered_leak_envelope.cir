@@ -1,0 +1,11 @@
+adc_esp_unpowered_leak_envelope
+Vbat bat 0 4.2
+Ileak bat switched 1u
+Rtop switched adc 150k
+Rbottom adc 0 100k
+Cfilter adc 0 100n
+Dclamp adc rail BODY
+Vdead rail 0 0
+.model BODY D (IS=1p N=1.2 RS=1 CJO=20p)
+.tran 100u 60m
+.end

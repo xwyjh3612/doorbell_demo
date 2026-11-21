@@ -1,0 +1,9 @@
+modem_supply_rc_300mohm
+* Ideal source / resistance / reservoir, NOT a converter or UPS model
+Vsupply src 0 3.8
+Rpath src modem 0.3
+Resr modem cap .05
+Cbulk cap 0 494u
+Iload modem 0 PULSE(.3 2 1m 1u 1u 1m 4m)
+.tran 1u 4m
+.end

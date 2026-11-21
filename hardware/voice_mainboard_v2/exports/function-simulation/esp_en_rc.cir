@@ -1,0 +1,9 @@
+esp_en_rc
+Vrail rail 0 3.3
+Vpress control 0 PULSE(0 3.3 2m 1u 1u 5m 30m)
+Rpull rail node 10000
+Cfilter node 0 1e-07
+Sbutton node 0 control 0 SWITCH
+.model SWITCH SW(RON=1 ROFF=1e12 VT=1.65 VH=.01)
+.tran 10u 15m
+.end

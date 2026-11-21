@@ -1,0 +1,12 @@
+pwrkey_8
+Vmodule rail 0 3.8
+Ven gate 0 PULSE(0 3.3 .6 1u 1u 2.5 10)
+Rinternal rail node 100k
+Rgate gate 0 100k
+Cf node 0 10n
+Mn node gate 0 0 NENV
+Dn 0 node BODY
+.model NENV NMOS (LEVEL=1 VTO=0.8 KP=0.005 LAMBDA=0.01 RD=2 RS=2 CGSO=100p CGDO=100p)
+.model BODY D (IS=1p N=1.2 RS=1 CJO=20p)
+.tran 1m 3.2
+.end

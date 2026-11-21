@@ -151,10 +151,19 @@ def design():
     c('C24','RF MATCH SHUNT DNP',81,10,'RF_ANT','GND',g,dnp=True)
     c('C25','RF MATCH SHUNT DNP',86,10,'RF_FEED','GND',g,dnp=True)
     add('J11','LTE ANT U.FL','Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical',86,15,{'1':'RF_FEED','2':'GND'},g,note='50 Ohm controlled-impedance route; stack-up and antenna tuning pending.')
-    hdr('J12','USB SERVICE 90 OHM PAIR',40,59,['USB_DETECT_5V','M_USB_DM','M_USB_DP','GND'],g,90)
+    # Population-selected USB route: do not tee the module data pair to two
+    # hosts. Place route links at the module with the unused branch isolated.
+    # UART remains connected in both population variants.
+    hdr('J12','USB SERVICE ONLY - ISOLATED IN HOST BUILD',40,59,['SERVICE_USB_VBUS','SERVICE_USB_DM','SERVICE_USB_DP','GND'],g,90)
+    r('R26','0R USB SERVICE DP',79.5,26,'M_USB_DP','SERVICE_USB_DP',g)
+    r('R27','0R USB SERVICE DM',79.5,29,'M_USB_DM','SERVICE_USB_DM',g)
+    r('R28','0R USB HOST DP DNP',79.5,35,'M_USB_DP','ESP_USB_DP20',g,dnp=True)
+    r('R29','0R USB HOST DM DNP',79.5,38,'M_USB_DM','ESP_USB_DM19',g,dnp=True)
+    r('R30','0R VBUS FROM SERVICE',83.5,26,'SERVICE_USB_VBUS','USB_DETECT_5V',g)
+    r('R31','0R VBUS DETECT FROM SYSTEM DNP',87.5,26,'SYS_5V','USB_DETECT_5V',g,dnp=True)
     g='05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC'
-    esp=['ESP_5V','GND','ESP_3V3','GND','ESP_TX17','ESP_RX18','ESP_DTR4','I2S_MIC_BCLK14','I2S_MIC_WS13','I2S_MIC_DATA12','I2S_AMP_BCLK15','I2S_AMP_WS16','I2S_AMP_DATA7','RADAR_TX_TO_IO6','RADAR_RX_FROM_IO8','BOOT_BTN_IO0','ADC_BAT_IO2','ADC_EN_IO9','EXT_PRESENT_N_IO10','PWRKEY_CTL','RESET_CTL','CHRG_OD','DONE_OD','UPS_PG_OD','DEBUG_ESP_TX43','DEBUG_ESP_RX44','ESP_EN','']
-    add('J13','ESP32-S3 HARNESS NOT DIRECT SOCKET','Connector_PinHeader_2.54mm:PinHeader_2x14_P2.54mm_Vertical',33,16,{str(i+1):n for i,n in enumerate(esp)},g,note='Existing dev board connected by harness. PWRKEY proposed GPIO11, RESET proposed GPIO21; ADC proposed GPIO2; verify actual dev-board access before freeze.')
+    esp=['ESP_5V','GND','ESP_3V3','GND','ESP_TX17','ESP_RX18','ESP_DTR4','I2S_MIC_BCLK14','I2S_MIC_WS13','I2S_MIC_DATA12','I2S_AMP_BCLK15','I2S_AMP_WS16','I2S_AMP_DATA7','RADAR_TX_TO_IO6','RADAR_RX_FROM_IO8','BOOT_BTN_IO0','ADC_BAT_IO2','ADC_EN_IO9','EXT_PRESENT_N_IO10','PWRKEY_CTL','RESET_CTL','CHRG_OD','DONE_OD','UPS_PG_OD','DEBUG_ESP_TX43','DEBUG_ESP_RX44','ESP_EN','ESP_USB_DM19','ESP_USB_DP20','GND']
+    add('J13','ESP32-S3 HARNESS WITH USB19/20 RESERVE','Connector_PinHeader_2.54mm:PinHeader_2x15_P2.54mm_Vertical',33,16,{str(i+1):n for i,n in enumerate(esp)},g,note='Harness draft, not final high-speed connector. Pins28/29 = USB DM19/DP20. PWRKEY GPIO11, RESET GPIO21, ADC GPIO2 proposed; verify dev-board access. Short 90-ohm USB pair/return path required; dev-board native USB cannot simultaneously connect another host.')
     hdr('J14','INMP441 3V3',38,50,['ESP_3V3','GND','I2S_MIC_BCLK14','I2S_MIC_WS13','I2S_MIC_DATA12'],g,90)
     hdr('J15','MAX98357 5V',38,55,['SYS_5V','GND','I2S_AMP_BCLK15','I2S_AMP_WS16','I2S_AMP_DATA7'],g,90)
     hdr('J16','RADAR OPTIONAL TX6 RX8',28,60,['RADAR_5V','GND','RADAR_TX_TO_IO6','RADAR_RX_FROM_IO8'],g,90)
@@ -199,7 +208,8 @@ def design():
     # Deliberate reserve drawing, not a made-up solder footprint for unknown PMIC.
     for a,b in [((6,17),(29,17)),((29,17),(29,45)),((29,45),(6,45)),((6,45),(6,17))]:line(board,a,b,pcb.Dwgs_User,.15)
     pcb.SaveBoard(str(ROOT/(PROJECT+'.kicad_pcb')),board)
-    data={'revision':'V2-ML307-SMT-UPS-RESERVE','status':'UNROUTED REVIEW DRAFT - NOT FOR FABRICATION','dimensions_mm':[100,75],'parts':parts,'ups_reserved_region_mm':[6,17,23,28],'ups_chip':'User to supply later; no charging/protection/switching design frozen','battery':'Protected 1S 4.2V Li-ion assumed for estimation; chemistry to confirm','adc':{'gpio':2,'channel':'ADC1_CH1','enable_gpio':9,'rtop_ohm':150000,'rbottom_ohm':100000,'cap_farad':1e-7,'scale':2.5,'max_battery_v':4.2,'max_adc_v':1.68},'proposed_gpio':{'external_power_present_n':10,'modem_pwrkey':11,'modem_reset':21},'manufacturing_ready':False,'firmware_modified':False}
+    data={'revision':'V2-ML307-SMT-UPS-USB-RESERVE','status':'UNROUTED REVIEW DRAFT - NOT FOR FABRICATION','dimensions_mm':[100,75],'parts':parts,'ups_reserved_region_mm':[6,17,23,28],'ups_chip':'User to supply later; no charging/protection/switching design frozen','battery':'Protected 1S 4.2V Li-ion assumed for estimation; chemistry to confirm','adc':{'gpio':2,'channel':'ADC1_CH1','enable_gpio':9,'rtop_ohm':150000,'rbottom_ohm':100000,'cap_farad':1e-7,'scale':2.5,'max_battery_v':4.2,'max_adc_v':1.68},'proposed_gpio':{'external_power_present_n':10,'modem_pwrkey':11,'modem_reset':21,'usb_dm':19,'usb_dp':20},
+      'usb_transport_reserve':{'uart_retained':True,'default_population':'service-only AT baseline','service_links':['R26','R27','R30'],'host_links':['R28','R29','R31'],'mutually_exclusive_population':True,'host_firmware_choices':['AT UART','USB RNDIS','USB ECM'],'runtime_switch_implemented':False,'routed':False,'verified_on_hardware':False,'vbus_detect_range_v':[3,5.25],'note':'VBUS detection is not module main power; USB ESD/impedance/final connector/host isolation pending. No two populated data pairs or VBUS sources simultaneously.'},'manufacturing_ready':False,'firmware_modified':False}
     (ROOT/'design.json').write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding='utf-8')
     prior=json.loads((ROOT.parent/'voice_carrier_v1/voice_carrier_v1.kicad_pro').read_text(encoding='utf-8'))
     prior['meta']['filename']=PROJECT+'.kicad_pro'

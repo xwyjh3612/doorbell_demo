@@ -1,8 +1,8 @@
-# 语音对讲 V2：ML307R-DL 贴主板、UPS预留
+# 语音对讲 V2：ML307R-DL 贴主板、UPS与USB预留
 
 这是可编辑的 KiCad 9 **原理图和未布线摆放草图**。供审查接口、电气连接和模块布局，尚不能交给贴片厂生产。旧 V1 留作历史参考。
 
-用户已确定：ML307R-DL 裸模组直接焊主板；电源采用 UPS，芯片后续提供；ESP32 测电池电压并估算剩余电量；电源为2.5mm圆口；ESP32 TTL刷机只留4针；可选生命体征雷达接口保留。
+用户已确定：ML307R-DL 裸模组直接焊主板；电源采用 UPS，芯片后续提供；ESP32 测电池电压并估算剩余电量；电源为2.5mm圆口；ESP32 TTL刷机只留4针；可选生命体征雷达接口保留；保留UART AT，并预留ESP32-S3 USB网络通路。
 
 ## 打开与预览
 
@@ -12,6 +12,8 @@
 - `exports/overview.svg`、`exports/review.html`：布局和供电采样仿真预览。
 - `exports/validation.json`：KiCad 独立网表与焊盘对比、ERC、摆放DRC及未布线数量。
 - `exports/power-simulation.json`、`exports/*.cir`：实际 ngspice RC 仿真结果和输入电路。
+- [仿真审查报告](仿真审查报告.md)：扩展电路仿真、失败项、未覆盖功能和打样前阻塞项。
+- `exports/function-simulation/index.html`：功能覆盖表、波形和可复现的SPICE输入。
 
 暂定板框100×75mm，4个通用M3孔。与曾讨论的115×90×55mm外壳**尚未核对内尺寸/螺柱/接口开孔**；ESP32、麦克风和功放仍通过线束接现有模块，不假装已知开发板排针间距。预留23×28mm UPS区域仅为布局预算，实际芯片、电感、散热及电池接口确定后可能调整板框。
 
@@ -77,9 +79,28 @@ SIM卡座、串联22Ω、可选33pF、低电容ESD、U.FL及天线π匹配位已
 
 PWRKEY用开漏MOS，手动启动接口保留；GPIO11控制和GPIO21复位仅预留，当前业务固件不会自动驱动。手动开机拉低2–3.5秒，需在VBAT稳定至少500ms后进行；正常关机需按厂家规定3.5–4秒。自动开机4.7k位置默认不贴，不能擅自让设备失去关机能力。
 
-麦克风GPIO14/13/12、功放GPIO15/16/7、雷达TX->GPIO6及预留RX<-GPIO8沿用已调通方案。雷达电源JP2可拔掉；固件仍使用现有可选编译配置。本轮没有改固件、音量、主动丢旧包策略或任何官方协议。
+麦克风GPIO14/13/12、功放GPIO15/16/7、雷达TX->GPIO6及预留RX<-GPIO8沿用已调通方案。雷达电源JP2可拔掉；固件仍使用现有可选编译配置。板图生成不接触实机固件；当前AT恢复修复与呼叫测试见[实机回归记录](../../tests/at_recovery_batch_20261121.md)，官方协议及主动丢旧包策略保持原样。
+
+## USB网络与维修口的选择
+
+裸ML307R-DL的59脚D+、60脚D−、61脚VBUS检测已在主板草图中连接到两组选装0Ω电阻。ESP32-S3使用GPIO20 D+、GPIO19 D−，通过J13新增的28/29/30针预留D−/D+/GND；原J13的1–27针不变。J12保留模组USB维修口。
+
+| 用途 | 贴装0Ω电阻 | 不贴电阻 | 数据与VBUS来源 |
+| --- | --- | --- | --- |
+| 默认：电脑维修模组 | R26、R27、R30 | R28、R29、R31 | J12电脑端D+/D−和VBUS |
+| 产品：ESP32 USB Host网络 | R28、R29、R31 | R26、R27、R30 | ESP32 GPIO20/19与SYS_5V检测电压 |
+
+**两组不可同时贴装。** 该选装隔开电脑维修口和ESP32主机，避免两个USB主机同时驱动模组或两路5V相连。模组61脚只做VBUS检测，范围3–5.25V，不能替代3.8V VBAT供电；SYS_5V峰值仍需实测满足上限。ESP32作为Host时，其原生USB口不能再接电脑；独立四针TTL调试保留。
+
+选装Host组后，UART17/18及DTR4仍连接，可编译选择当前AT方案或后续RNDIS/ECM方案。选择维修组时，USB没有连到ESP32，软件开关不能替代补焊Host组。当前量产草图预留这项能力，正式固件尚未加入统一的传输选择或运行中热切换；独立[USB实验项目](../../examples/ml307_usb_net_demo/README.md)已分别构建RNDIS/ECM，未做实物USB通话验证。
+
+J13目前是接口位置占位，最终须换成适合USB全速信号的短连接/板对板接口或将ESP32直接布在主板。USB差分90Ω叠层、低电容ESD、回流路径、分支长度及连接器尚未设计；长杜邦线不作为验收方案。现有Tiny CORE小板没有已确认的USB引出点，本次预留用于后续裸模组主板，不要求现在购买或改焊小板。
 
 ## 仿真和生产边界
+
+2026-11-21扩展审查已执行94项独立接口引脚核对（其中19项为新增USB接口/选装电阻）、4项当前固件引脚核对和49组完整SPICE瞬态（27组采样开关/分压参数、3组漏电与掉电情景、9组外部电源检测、2组按钮RC、4组模组控制、3组供电阻抗、1组电容储能）。MOS模型为显式标注的通用参数模型，不是厂家器件完整模型。另尝试4组未经修改的TI官方降压模型，均因ngspice瞬态步长错误提前中止，报告为未验证。
+
+**本版没有通过整机验收。** 外部输入检测的100k/100k分压使5V输入时门极仅2.5V，在高阈值通用MOS情景下检测失败。TPS563201约494µF输出电容超出数据表20–68µF推荐范围，稳定性/启动需单独确认；ML307电源循环要求VBAT在1.8V以下至少100ms，当前未设计专用残压放电路径。UPS芯片及电池未选定，不能验证充放电与切换。详见扩展报告。
 
 实际执行了ngspice分压RC阶跃仿真，以及理想3.8V源、等效供电电阻、484µF/50mΩ电容、0.3->2A负载的RC瞬态仿真。50/150/300mΩ供电路径对应最低约3.70/3.50/3.20V，说明供电阻抗必须控制；**不是对候选降压芯片或未选UPS的完整仿真**。没有模拟开关反馈、线缆电感、射频、实际语音芯片，也没有证明现有掉话根因是供电。
 
@@ -89,4 +110,6 @@ PWRKEY用开漏MOS，手动启动接口保留；GPIO11控制和GPIO21复位仅�
 
 ## 重生成
 
-在项目根目录用KiCad自带Python依次运行`generate_design.py`、`generate_schematic.py`；用kicad-cli输出KiCad XML网表、ERC JSON和PCB DRC JSON到exports，运行`verify_design.py`；系统Python运行`simulate_power.py`，最后用KiCad Python运行`generate_review_assets.py`。验证器独立对比KiCad网表和PCB焊盘，保留未布线数量；ERC通过不等于可生产。
+在项目根目录用KiCad自带Python依次运行`generate_design.py`、`generate_schematic.py`；用kicad-cli输出KiCad XML网表、ERC JSON和PCB DRC JSON到exports，运行`verify_design.py`；系统Python运行`simulate_power.py`与`simulate_functions.py`，最后用KiCad Python运行`generate_review_assets.py`。也可运行`regenerate.ps1`。验证器独立对比KiCad网表和PCB焊盘，保留未布线数量；ERC通过不等于可生产。扩展仿真需要KiCad配套ngspice；绘图可安装matplotlib 3.10.7到项目`build/cad-tools/sim-python`。TI模型自动从官方URL下载到被忽略的build目录，原文件不修改、不放进Git；SHA256及提前中止原因写入JSON报告。单独运行仿真不接触串口、当前固件或实机通话。
+
+`regenerate.ps1`最后调用`render_exports.mjs`同步布局和原理图PNG，使用`build/svg-render`内的`@resvg/resvg-js`2.6.2及系统字体。依赖可用`npm install --prefix build/svg-render @resvg/resvg-js@2.6.2`安装。SVG保留完整可缩放原图，PNG仅供快速预览。

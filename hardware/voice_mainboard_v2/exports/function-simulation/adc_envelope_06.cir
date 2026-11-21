@@ -1,0 +1,17 @@
+adc_envelope_06
+Vbat bat 0 3.0
+Ven ctl 0 PULSE(0 3.3 1m 1u 1u 79m 160m)
+Rgate bat gate 100k
+Ren ctl 0 100k
+Mn gate ctl 0 0 NENV
+Dn 0 gate BODY
+Mp switched gate bat bat PENV
+Dp switched bat BODY
+Rtop switched adc 148500.0
+Rbottom adc 0 101000.0
+Cfilter adc 0 100n
+.model NENV NMOS (LEVEL=1 VTO=2.5 KP=0.005 LAMBDA=0.01 RD=2 RS=2 CGSO=100p CGDO=100p)
+.model PENV PMOS (LEVEL=1 VTO=-2.5 KP=0.002 LAMBDA=0.01 RD=5 RS=5 CGSO=50p CGDO=50p)
+.model BODY D (IS=1p N=1.2 RS=1 CJO=20p)
+.tran 100u 140m
+.end

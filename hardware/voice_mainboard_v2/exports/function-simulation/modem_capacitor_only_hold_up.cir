@@ -1,0 +1,6 @@
+modem_capacitor_only_hold_up
+* 494uF only, precharged 3.8V; source removed, ideal constant 2A load
+Cbulk modem 0 494u IC=3.8
+Iload modem 0 2
+.tran 100n 150u uic
+.end

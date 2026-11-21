@@ -25,6 +25,11 @@ assert not drc['violations'],'Placement DRC failures'
 module=next(f for f in b.GetFootprints() if f.GetReference()=='U1')
 assert len(list(module.Pads()))==109
 assert len({p.GetNumber() for p in module.Pads()})==109
+route=d['usb_transport_reserve']
+part_map={p['ref']:p for p in d['parts']}
+assert all(not part_map[r]['dnp'] for r in route['service_links'])
+assert all(part_map[r]['dnp'] for r in route['host_links'])
+assert actual[('J13','28')]=='ESP_USB_DM19' and actual[('J13','29')]=='ESP_USB_DP20'
 ids=json.loads((ROOT/'schematic-ids.json').read_text(encoding='utf-8'))
 for f in b.GetFootprints():
     if f.GetReference() in ids['symbols']:
@@ -34,6 +39,7 @@ report={'revision':d['revision'],'kicad_version':pcb.Version(),'electrical_parts
  'ml307_pad_count':109,'connected_unique_pin_net_mappings':len(expected),'netlist_matches_pcb':True,'schematic_erc_violations':len(ev),
  'placement_drc_violations':len(drc['violations']),'unrouted_links':len(drc['unconnected_items']),
  'manufacturing_ready':False,'rf_routed':False,'usb_routed':False,'ups_chip_frozen':False,'supplier_ml307_footprint_signoff':False,
+ 'usb_host_reserved':True,'usb_route_population_checked':True,'usb_host_hardware_tested':False,
  'mechanical_fit_verified':False,'full_power_simulation':False,'physical_electrical_tests':False,'firmware_modified':False}
 (ROOT/'exports/validation.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
 print(json.dumps(report))
