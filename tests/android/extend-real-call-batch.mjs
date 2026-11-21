@@ -3,6 +3,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {spawn} from 'node:child_process';
+import {writeState,readState} from './state-file.mjs';
 
 const args=process.argv.slice(2);
 const option=(name,fallback)=>{const i=args.indexOf(name);return i<0?fallback:args[i+1];};
@@ -10,23 +11,24 @@ const initial=path.resolve(option('--initial','build/real-call-at-recovery-30'))
 const output=path.resolve(option('--output','build/real-call-at-recovery-40'));
 const device=option('--real-device','');
 const target=Number(option('--rounds','40'));
-const read=async dir=>JSON.parse(await fs.readFile(path.join(dir,'state.json'),'utf8'));
+const read=async dir=>readState(path.join(dir,'state.json'));
 const first=await read(initial);
-if(!/^\d{12,20}$/.test(device)||!Number.isInteger(target)||target<=first.requestedConnectedRounds||target>100){
+if(!/^\d{12,20}$/.test(device)||!Number.isInteger(target)||target<first.requestedConnectedRounds||target>100){
   throw Error('Invalid device/extension target');
 }
 if(first.requestedConnectedRounds%2)throw Error('First cohort must have an even target to preserve call directions');
 if(first.targetSecondsPerRound!==1800||!first.allowModemRestart)throw Error('Expected half-hour cohort with authorized modem recovery');
-await fs.mkdir(output,{recursive:false});
+if(!args.includes('--resume'))await fs.mkdir(output,{recursive:false});
 const extra=path.join(output,'additional-rounds');
 const state={startedAt:new Date().toISOString(),originalStartedAt:first.startedAt,
   requestedConnectedRounds:target,targetSecondsPerRound:1800,firmware:first.firmware,
   initialCohort:initial,additionalCohort:extra,additionalRequestedRounds:target-first.requestedConnectedRounds,
   phase:'waiting_for_initial_cohort',finished:false,completedConnectedRounds:0,passedRounds:0,
   failedConnectedRounds:0,attempts:[],recoveries:[],active:null,
-  note:'Same image and rules; initial running calls retained, then a separate appended cohort. No combined timing or discarded failures.'};
+  note:target===first.requestedConnectedRounds?'Mirrors the resumed main cohort; no additional call process is started.':
+    'Same image and rules; initial running calls retained, then a separate appended cohort. No combined timing or discarded failures.'};
 const pause=ms=>new Promise(r=>setTimeout(r,ms));
-const save=async()=>{state.updatedAt=new Date().toISOString();await fs.writeFile(path.join(output,'state.tmp'),JSON.stringify(state,null,2));await fs.rename(path.join(output,'state.tmp'),path.join(output,'state.json'));};
+const save=async()=>{state.updatedAt=new Date().toISOString();await writeState(path.join(output,'state.json'),state);};
 let nextProgress=0,child,childDone=false,childCode=null,stdout,stderr;
 function aggregate(a,b){
   if(b&&a.firmware.sha256!==b.firmware.sha256)throw Error('Firmware changed between cohorts');
@@ -49,6 +51,7 @@ try{
     if(!a.finished)state.phase='initial_cohort_running';
     else if(a.phase!=='completed'||a.completedConnectedRounds!==a.requestedConnectedRounds){
       state.phase='needs-recovery';state.error=a.error||'Initial cohort stopped before its target';break;
+    }else if(state.additionalRequestedRounds===0){state.phase='completed';break;
     }else if(!child){
       const currentImage=JSON.parse(await fs.readFile('outputs/firmware/voice-radar60.json','utf8'));
       if(currentImage.sha256!==first.firmware.sha256)throw Error('Current image differs from initial cohort');

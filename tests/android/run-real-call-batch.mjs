@@ -3,6 +3,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {spawn, execFile} from 'node:child_process';
+import {writeState,readState} from './state-file.mjs';
 
 const args=process.argv.slice(2);
 const option=(name,fallback)=>{const i=args.indexOf(name);return i<0?fallback:args[i+1];};
@@ -13,20 +14,48 @@ if(!/^\d{12,20}$/.test(device)||!Number.isInteger(rounds)||rounds<1||rounds>100|
 const root=process.cwd(), output=path.resolve(option('--output','build/real-call-at-recovery-30'));
 const bridge=process.env.VOICE_TEST_CONSOLE || 'http://127.0.0.1:18889';
 const allowRestart=args.includes('--allow-modem-restart');
+const resume=args.includes('--resume');
 const imagePath=path.resolve(option('--firmware','outputs/firmware/voice-radar60.json'));
 const image=JSON.parse(await fs.readFile(imagePath,'utf8'));
-await fs.mkdir(output,{recursive:false});
-const state={startedAt:new Date().toISOString(),requestedConnectedRounds:rounds,targetSecondsPerRound:hold,
+if(!resume)await fs.mkdir(output,{recursive:false});
+const state=resume?await readState(path.join(output,'state.json')):{startedAt:new Date().toISOString(),requestedConnectedRounds:rounds,targetSecondsPerRound:hold,
   // Existing ESP32 offers omit target; the deployed service defaults those
   // offers to web_client_001. Preserve that behavior in this transport test.
   localAppId:option('--app-id','web_client_001'),
   firmware:image,transport:'ML307R-DL UART AT; original latest UDP packet strategy',
   endpoint:'native Android App / physical ESP32-S3 over public WSS/MQTT/TURN',
   allowModemRestart:allowRestart,completedConnectedRounds:0,passedRounds:0,attempts:[],recoveries:[],phase:'starting',finished:false};
+if(resume){
+  if(state.firmware.sha256!==image.sha256||state.targetSecondsPerRound!==hold||state.localAppId!==option('--app-id','web_client_001'))throw Error('Resume cohort configuration mismatch');
+  const previousError=state.error;
+  state.supervisorInterruptions ||= [];
+  state.supervisorInterruptions.push({at:new Date().toISOString(),previousError,previousCompletedAt:state.completedAt});
+  // Preserve a connected round whose child finished after its supervisor exited.
+  for(let index=state.attempts.length+1;;++index){
+    let result;
+    try{result=JSON.parse(await fs.readFile(path.join(output,`attempt-${index}`,'results.json'),'utf8'));}catch{break;}
+    const samples=result.audioSamples||[],gaps=samples.slice(1).map((s,i)=>(Date.parse(s.at)-Date.parse(samples[i].at))/1000);
+    const summary={attempt:index,round:result.connectedAt?state.completedConnectedRounds+1:null,
+      direction:(state.completedConnectedRounds+1)%2?'app-calls-device':'device-calls-app',
+      connectedAt:result.connectedAt||null,completedAt:result.completedAt,passed:false,
+      error:result.error||previousError,supervisorError:previousError,failureClassification:'test-supervisor-interruption',
+      observedSeconds:result.observedSeconds||null,lastAudioAt:samples.at(-1)?.at||null,
+      firstAfeAlert:result.firstAfeAlert||null,failureEvent:result.failureEvent||null,
+      audioSamples:samples.length,bidirectionalSamples:samples.filter(s=>s.sentBytes>0&&s.receivedBytes>0).length,
+      maxStatisticsGapSeconds:gaps.length?Math.max(...gaps):null,afeAlerts:result.afeAlerts||0};
+    state.attempts.push(summary);
+    await fs.writeFile(path.join(output,`attempt-${index}`,'supervisor-interruption.json'),JSON.stringify(summary,null,2));
+    if(summary.connectedAt)++state.completedConnectedRounds;
+  }
+  if(rounds<state.completedConnectedRounds)throw Error('Target below completed rounds');
+  state.requestedConnectedRounds=rounds;state.allowModemRestart=allowRestart;
+  state.failedConnectedRounds=state.completedConnectedRounds-state.passedRounds;
+  state.finished=false;state.phase='resuming';state.active=null;
+  delete state.error;delete state.completedAt;delete state.allPassed;
+}
 const save=async()=>{
   state.updatedAt=new Date().toISOString();
-  await fs.writeFile(path.join(output,'state.tmp'),JSON.stringify(state,null,2));
-  await fs.rename(path.join(output,'state.tmp'),path.join(output,'state.json'));
+  await writeState(path.join(output,'state.json'),state);
 };
 const pause=ms=>new Promise(r=>setTimeout(r,ms));
 const logs=async()=>{const r=await fetch(bridge,{signal:AbortSignal.timeout(5000)});if(!r.ok)throw Error('Console unavailable');return (await r.json()).lines;};
@@ -74,8 +103,9 @@ async function recover(reason){
 await save();
 try{
   if(!(await adb('shell','pm','list','packages','com.youkong.voiceintercom')).includes('com.youkong.voiceintercom'))throw Error('Native App missing');
-  originalPreferences=await adb('shell','run-as','com.youkong.voiceintercom','cat','shared_prefs/intercom.xml').catch(()=>null);
-  if(originalPreferences!==null)await fs.writeFile(path.join(output,'original-app-preferences.xml'),originalPreferences);
+  originalPreferences=resume?await fs.readFile(path.join(output,'original-app-preferences.xml'),'utf8').catch(()=>null):
+    await adb('shell','run-as','com.youkong.voiceintercom','cat','shared_prefs/intercom.xml').catch(()=>null);
+  if(!resume&&originalPreferences!==null)await fs.writeFile(path.join(output,'original-app-preferences.xml'),originalPreferences);
   await logs();
   while(state.completedConnectedRounds<rounds){
     if(state.attempts.length>=rounds*4)throw Error('Setup attempt limit reached');
