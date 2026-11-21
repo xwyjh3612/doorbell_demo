@@ -84,12 +84,16 @@ def tp(ref,value,x,y,n,g):return add(ref,value,'TestPoint:TestPoint_Pad_D1.0mm',
 
 def design():
     g='01 UPS / BATTERY / SYSTEM'
-    add('J1','DC 5.5x2.5mm CENTER POSITIVE 5V','Connector_BarrelJack:BarrelJack_Wuerth_694108106102_2.5x5.5mm',9,8,{'1':'VIN_EXT_5V','2':'GND','3':''},g,names={'1':['CENTER_PLUS','passive'],'2':['SLEEVE_GND','passive'],'3':['SW_UNUSED','passive']},note='2.5mm inner / 5.5mm outer assumption. Exact low-cost purchased socket footprint must match; Wuerth geometry is a draft candidate, not mandatory purchase.')
-    hdr('J2','UPS INPUT TO DAUGHTERBOARD',8,15,['VIN_EXT_5V','GND'],g,90)
-    hdr('J3','UPS STABLE 5V RETURN',8,53,['SYS_5V','GND'],g,90)
+    add('J1','DC 4.5-5.5V 3A 5.5x2.5mm CENTER POSITIVE','Connector_BarrelJack:BarrelJack_Wuerth_694108106102_2.5x5.5mm',9,8,{'1':'VIN_DC','2':'GND','3':''},g,names={'1':['CENTER_PLUS','passive'],'2':['SLEEVE_GND','passive'],'3':['SW_UNUSED','passive']},note='User input range 4.5-5.5V at jack, nominal 5V; connector and input path design target >=3A. Exact purchased socket footprint and current rating must match; Wuerth geometry is a draft candidate. Input protection and trace rating not yet verified.')
+    hdr('J2','4.5-5.5V TO REGULATED POWER BOARD',8,15,['VIN_DC','GND'],g,90)
+    parts[-1]['note']='Raw input, not system 5V. Power board must regulate across 4.5-5.5V at J1 including path drop. Future UPS input rating must be checked; no direct bypass permitted.'
+    hdr('J3','REGULATED POWER RETURN 5V',8,53,['POWER_REG_5V','GND'],g,90)
     hdr('J4','1S BATTERY SENSE ONLY',8,60,['BAT_SENSE_IN','GND'],g,90)
     hdr('J5','UPS STATUS RESERVED 3V3 ONLY',15,53,['CHRG_OD','DONE_OD','UPS_PG_OD','GND'],g,90)
-    hdr('JP1','BENCH BYPASS UPS - REMOVE WITH UPS',15,8,['VIN_EXT_5V','SYS_5V'],g,90)
+    hdr('JP1','REGULATED / SYS / BENCH SELECT ONE',15,8,['POWER_REG_5V','SYS_5V','BENCH_REG_5V'],g,90)
+    parts[-1]['note']='One shunt only: 1-2 regulated power board via J3; 2-3 independent regulated bench 5V via J21. Neither source is raw VIN_DC. No shunt isolates SYS_5V; never join two sources. >=3A header/shunt purchase and contact drop pending.'
+    hdr('J21','BENCH REGULATED 5V ONLY',8,28,['BENCH_REG_5V','GND'],g,90)
+    parts[-1]['note']='Independent regulated 5V bench source, 4.75-5.25V at SYS_5V under load, sufficient total current. Do not connect raw 4.5-5.5V here. This bypasses the unfinished regulator/UPS for downstream testing only; it does not validate wide-input operation.'
     c('C1','22u 10V',20,8,'SYS_5V','GND',g,big=True)
     c('C2','100n',24,8,'SYS_5V','GND',g)
     # No invented UPS-chip footprint or battery current path. Sense wires only.
@@ -197,7 +201,7 @@ def design():
     # Avoid putting the gate at the worst-case 2.5V threshold at nominal 5V.
     # Specific Diodes part: VGS(th) max 2.5V at 1mA; digital sink is ~0.33mA.
     # This is insertion detection, not a calibrated undervoltage threshold.
-    r('R19','10k 1%',94,44,'VIN_EXT_5V','EXT_DETECT_GATE',g)
+    r('R19','10k 1%',94,44,'VIN_DC','EXT_DETECT_GATE',g)
     r('R20','100k 1%',94,48,'EXT_DETECT_GATE','GND',g)
     r('R21','10k',94,61,'ESP_3V3','EXT_PRESENT_N_IO10',g)
     c('C29','10n',94,52,'EXT_DETECT_GATE','GND',g)
@@ -218,6 +222,7 @@ def design():
     for a,b in [((6,17),(29,17)),((29,17),(29,45)),((29,45),(6,45)),((6,45),(6,17))]:line(board,a,b,pcb.Dwgs_User,.15)
     pcb.SaveBoard(str(ROOT/(PROJECT+'.kicad_pcb')),board)
     data={'revision':'V2-ML307-SMT-UPS-USB-RESERVE','status':'UNROUTED REVIEW DRAFT - NOT FOR FABRICATION','dimensions_mm':[100,75],'parts':parts,'ups_reserved_region_mm':[6,17,23,28],'ups_chip':'User to supply later; no charging/protection/switching design frozen','battery':'Protected 1S 4.2V Li-ion assumed for estimation; chemistry to confirm','adc':{'gpio':2,'channel':'ADC1_CH1','enable_gpio':9,'rtop_ohm':150000,'rbottom_ohm':100000,'cap_farad':1e-7,'scale':2.5,'max_battery_v':4.2,'max_adc_v':1.68},'proposed_gpio':{'external_power_present_n':10,'modem_pwrkey':11,'modem_reset':21,'usb_dm':19,'usb_dp':20},
+      'input_power':{'connector':'J1','range_at_connector_v':[4.5,5.5],'nominal_v':5.0,'center_positive':True,'barrel_outer_inner_mm':[5.5,2.5],'input_path_design_current_A':3,'raw_net':'VIN_DC','regulated_system_net':'SYS_5V','system_target_v':5.0,'system_acceptance_range_v':[4.75,5.25],'raw_bypass_removed':True,'power_board_input':'J2','power_board_return':'J3','regulated_selector':'JP1','bench_input':'J21','selector_pin_nets':['POWER_REG_5V','SYS_5V','BENCH_REG_5V'],'one_shunt_only':True,'regulator_frozen':False,'input_protection_verified':False,'wide_input_hardware_verified':False,'output_current_is_not_input_current':True},
       'modem_power_selection':{'selector':'J19','external_input':'J20','default_shunt':'1-2 on-board buck','diagnostic_shunt':'2-3 external 3.8V','one_shunt_only':True,'no_shunt_isolates_modem':True,'minimum_header_and_shunt_rating_A':3,'contact_resistance_in_budget':True,'hardware_verified':False,'warning':'No 5V at J20. Both shunts would tie independent sources. Internal-mode bulk capacitance still requires regulator validation.'},
       'usb_transport_reserve':{'uart_retained':True,'default_population':'service-only AT baseline','service_links':['R26','R27','R30'],'host_links':['R28','R29','R31'],'mutually_exclusive_population':True,'host_firmware_choices':['AT UART','USB RNDIS','USB ECM'],'runtime_switch_implemented':False,'routed':False,'verified_on_hardware':False,'vbus_detect_range_v':[3,5.25],'note':'VBUS detection is not module main power; USB ESD/impedance/final connector/host isolation pending. No two populated data pairs or VBUS sources simultaneously.'},'manufacturing_ready':False,'firmware_modified':False}
     (ROOT/'design.json').write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding='utf-8')

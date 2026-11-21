@@ -74,6 +74,9 @@ for ref,pins in {
     'R30':{'1':'SERVICE_USB_VBUS','2':'USB_DETECT_5V'},'R31':{'1':'SYS_5V','2':'USB_DETECT_5V'},
     'J19':{'1':'BUCK_3V8','2':'MODEM_3V8','3':'EXT_MODEM_3V8'},
     'J20':{'1':'EXT_MODEM_3V8','2':'GND'},
+    'J1':{'1':'VIN_DC','2':'GND'},'J2':{'1':'VIN_DC','2':'GND'},
+    'J3':{'1':'POWER_REG_5V','2':'GND'},'JP1':{'1':'POWER_REG_5V','2':'SYS_5V','3':'BENCH_REG_5V'},
+    'J21':{'1':'BENCH_REG_5V','2':'GND'},'R19':{'1':'VIN_DC','2':'EXT_DETECT_GATE'},
     'L1':{'1':'BUCK_SW','2':'BUCK_3V8'},'R2':{'1':'BUCK_3V8','2':'BUCK_FB'},
     'C6':{'1':'BUCK_3V8','2':'GND'},'C7':{'1':'BUCK_3V8','2':'GND'},
     'Q3':{'1':'BAT_GATE','2':'BAT_SENSE_IN','3':'BAT_DIV_SW'},
@@ -139,7 +142,7 @@ report['sections']['battery_adc']={'cases':adc,'off_leakage_envelope':leakage,
     'real_adc_accuracy_verified':False,'firmware_adc_implemented':False}
 
 detect=[]
-for idx,(vt,vb,corner) in enumerate(itertools.product([.8,1.5,2.5],[4.5,5,5.25],[-1,0,1])):
+for idx,(vt,vb,corner) in enumerate(itertools.product([.8,1.5,2.5],[4.5,5,5.5],[-1,0,1])):
     rt=10000*(1+.01*corner);rb=100000*(1-.01*corner)
     d,_=run(f'input_detect_envelope_{idx}',[
         f'Vext ext 0 PULSE(0 {vb} 1m 1u 1u 19m 40m)','Vesp rail 0 3.3',
@@ -152,6 +155,7 @@ for idx,(vt,vb,corner) in enumerate(itertools.product([.8,1.5,2.5],[4.5,5,5.25],
                    'recognizes_presence':high<=.825,'recognizes_removal':off>=2.475})
     if vt==2.5 and vb==4.5 and corner==1:traces['detector']=d
 report['sections']['external_power_detector']={'cases':detect,
+    'input_range_tested_v':[4.5,5.5],
     'pass_within_generic_envelope':all(c['recognizes_presence'] and c['recognizes_removal'] for c in detect),
     'revision':'R19=10k 1%, R20=100k 1%, Q5=Diodes 2N7002K-7; prior 100k/100k gate-threshold failure corrected in the generic envelope.',
     'datasheet':'https://www.diodes.com/assets/Datasheets/2N7002K.pdf',
@@ -336,7 +340,7 @@ md=f'''# 语音对讲主板V2 仿真审查报告
 
 ## 必须处理的设计项
 
-1. **外部电源检测已修正，实物验证未完成。** 旧100k/100k电路在高阈值模型下失败；现改R19=10k 1%、R20=100k 1%、Q5为Diodes 2N7002K-7。27组通用模型覆盖4.5/5/5.25V、VTO至2.5V及1%电阻相反方向容差；最低门极约{min(c['gate_present_v'] for c in detect):.3f}V。插入及移除判据通过，但温度、漏电、慢速降压与实际采购器件仍须测；不作为准确欠压检测器。
+1. **外部电源检测已修正，实物验证未完成。** 旧100k/100k电路在高阈值模型下失败；现改R19=10k 1%、R20=100k 1%、Q5为Diodes 2N7002K-7。27组通用模型覆盖4.5/5/5.5V、VTO至2.5V及1%电阻相反方向容差；最低门极约{min(c['gate_present_v'] for c in detect):.3f}V。插入及移除判据通过，但温度、漏电、慢速降压与实际采购器件仍须测；不作为准确欠压检测器。
 2. **降压候选BOM尚未验证。** 约494µF直接并到输出，超出TI数据表20–68µF推荐范围。必须验证闭环稳定性、启动、轻载、2A突发和限流；目前TI模型与ngspice的瞬态计算中止阻塞这项验证，不能确认候选芯片适用。
 3. **ML307供电循环缺少残压放电设计。** 厂家要求重新上电前VBAT低于1.8V保持至少100ms。草图没有专门放电路径或已确认时序，不能保证电源闪断后的重新启动。
 4. **UPS芯片、电池和保护电路未确定。** 充电、边充边用、无缝切换、过流/短路、低电关机、温升和续航均尚不能验证。494µF在2A负载下从3.8V降到3.4V的仿真时间约{power['capacitor_only_crosses_3v4_us']:.1f}µs，不能承担毫秒级UPS供电中断。

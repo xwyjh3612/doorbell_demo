@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-21T17:53:41.200378+08:00",
+  "generated_at": "2026-11-21T18:36:01.475652+08:00",
   "engine": "KiCad 9 bundled ngspice shared library, PSpice compatibility / XSPICE",
   "whole_product_pass": false,
   "manufacturing_ready": false,
@@ -617,6 +617,97 @@
           "pass": true
         },
         {
+          "ref": "J1",
+          "pin": "1",
+          "expected": "VIN_DC",
+          "actual": "VIN_DC",
+          "pass": true
+        },
+        {
+          "ref": "J1",
+          "pin": "2",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "J2",
+          "pin": "1",
+          "expected": "VIN_DC",
+          "actual": "VIN_DC",
+          "pass": true
+        },
+        {
+          "ref": "J2",
+          "pin": "2",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "J3",
+          "pin": "1",
+          "expected": "POWER_REG_5V",
+          "actual": "POWER_REG_5V",
+          "pass": true
+        },
+        {
+          "ref": "J3",
+          "pin": "2",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "JP1",
+          "pin": "1",
+          "expected": "POWER_REG_5V",
+          "actual": "POWER_REG_5V",
+          "pass": true
+        },
+        {
+          "ref": "JP1",
+          "pin": "2",
+          "expected": "SYS_5V",
+          "actual": "SYS_5V",
+          "pass": true
+        },
+        {
+          "ref": "JP1",
+          "pin": "3",
+          "expected": "BENCH_REG_5V",
+          "actual": "BENCH_REG_5V",
+          "pass": true
+        },
+        {
+          "ref": "J21",
+          "pin": "1",
+          "expected": "BENCH_REG_5V",
+          "actual": "BENCH_REG_5V",
+          "pass": true
+        },
+        {
+          "ref": "J21",
+          "pin": "2",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "R19",
+          "pin": "1",
+          "expected": "VIN_DC",
+          "actual": "VIN_DC",
+          "pass": true
+        },
+        {
+          "ref": "R19",
+          "pin": "2",
+          "expected": "EXT_DETECT_GATE",
+          "actual": "EXT_DETECT_GATE",
+          "pass": true
+        },
+        {
           "ref": "L1",
           "pin": "1",
           "expected": "BUCK_SW",
@@ -792,7 +883,7 @@
       "pass": true,
       "scope": "Static independent KiCad netlist / pin contract only. No UART timing or firmware execution.",
       "source_hashes": {
-        "hardware\\voice_mainboard_v2\\exports\\voice_mainboard_v2.net.xml": "bdc5b974ae57c8e493f2375bc4c060891912a52573feccc9dce4bbc2f413b95a",
+        "hardware\\voice_mainboard_v2\\exports\\voice_mainboard_v2.net.xml": "481b9c2430e12267087c05fdfdadefcb1aea6687316d13a90e2e2c1cd2256ad2",
         "components\\codec_board\\board_cfg.txt": "6a3603c04b9a4f723db3b8ce7de4ae86c9477b07bb81d6706413404864115957",
         "main\\network_4g.cpp": "0512e43716c3e8ef31524da1529dd19545d3c4d0ff80dd8df0cc1af612495fa4",
         "main\\radar_presence.c": "967aa69dae39a4a12c41356b1e326b6bcfe22e471635240e5cef2fcb084374df"
@@ -1238,31 +1329,31 @@
         },
         {
           "vto_v": 0.8,
-          "input_v": 5.25,
+          "input_v": 5.5,
           "resistor_corner": -1,
-          "gate_present_v": 4.781334535617674,
-          "present_low_v": 0.017675405160425376,
-          "removed_high_v": 3.2999999241359,
+          "gate_present_v": 5.009017132551849,
+          "present_low_v": 0.01704723801155289,
+          "removed_high_v": 3.2999999229352937,
           "recognizes_presence": true,
           "recognizes_removal": true
         },
         {
           "vto_v": 0.8,
-          "input_v": 5.25,
+          "input_v": 5.5,
           "resistor_corner": 0,
-          "gate_present_v": 4.7727272727272725,
-          "present_low_v": 0.017711533022496725,
-          "removed_high_v": 3.2999999233257338,
+          "gate_present_v": 5.0,
+          "present_low_v": 0.017094514383614496,
+          "removed_high_v": 3.299999924776633,
           "recognizes_presence": true,
           "recognizes_removal": true
         },
         {
           "vto_v": 0.8,
-          "input_v": 5.25,
+          "input_v": 5.5,
           "resistor_corner": 1,
-          "gate_present_v": 4.7639780018331805,
-          "present_low_v": 0.017750347550492443,
-          "removed_high_v": 3.2999999229621424,
+          "gate_present_v": 4.9908340971585705,
+          "present_low_v": 0.016879113248273105,
+          "removed_high_v": 3.2999999246646006,
           "recognizes_presence": true,
           "recognizes_removal": true
         },
@@ -1328,31 +1419,31 @@
         },
         {
           "vto_v": 1.5,
-          "input_v": 5.25,
+          "input_v": 5.5,
           "resistor_corner": -1,
-          "gate_present_v": 4.781334535617674,
-          "present_low_v": 0.021251234893968334,
-          "removed_high_v": 3.2999999249959324,
+          "gate_present_v": 5.009017132551849,
+          "present_low_v": 0.01983782158210349,
+          "removed_high_v": 3.299999922473769,
           "recognizes_presence": true,
           "recognizes_removal": true
         },
         {
           "vto_v": 1.5,
-          "input_v": 5.25,
+          "input_v": 5.5,
           "resistor_corner": 0,
-          "gate_present_v": 4.7727272727272725,
-          "present_low_v": 0.021344308784948817,
-          "removed_high_v": 3.299999924900711,
+          "gate_present_v": 5.0,
+          "present_low_v": 0.01988657384421249,
+          "removed_high_v": 3.2999999224660264,
           "recognizes_presence": true,
           "recognizes_removal": true
         },
         {
           "vto_v": 1.5,
-          "input_v": 5.25,
+          "input_v": 5.5,
           "resistor_corner": 1,
-          "gate_present_v": 4.7639780018331805,
-          "present_low_v": 0.021495656119648324,
-          "removed_high_v": 3.2999999247403027,
+          "gate_present_v": 4.9908340971585705,
+          "present_low_v": 0.019938696477122153,
+          "removed_high_v": 3.299999922473179,
           "recognizes_presence": true,
           "recognizes_removal": true
         },
@@ -1418,34 +1509,38 @@
         },
         {
           "vto_v": 2.5,
-          "input_v": 5.25,
+          "input_v": 5.5,
           "resistor_corner": -1,
-          "gate_present_v": 4.781334535617674,
-          "present_low_v": 0.030002127791026765,
-          "removed_high_v": 3.299999922501851,
+          "gate_present_v": 5.009017132551849,
+          "present_low_v": 0.027496167274852917,
+          "removed_high_v": 3.299999922426278,
           "recognizes_presence": true,
           "recognizes_removal": true
         },
         {
           "vto_v": 2.5,
-          "input_v": 5.25,
+          "input_v": 5.5,
           "resistor_corner": 0,
-          "gate_present_v": 4.7727272727272725,
-          "present_low_v": 0.030100894593798565,
-          "removed_high_v": 3.2999999225624026,
+          "gate_present_v": 5.0,
+          "present_low_v": 0.0276213581897992,
+          "removed_high_v": 3.2999999223592553,
           "recognizes_presence": true,
           "recognizes_removal": true
         },
         {
           "vto_v": 2.5,
-          "input_v": 5.25,
+          "input_v": 5.5,
           "resistor_corner": 1,
-          "gate_present_v": 4.7639780018331805,
-          "present_low_v": 0.030229240517411025,
-          "removed_high_v": 3.299999922637722,
+          "gate_present_v": 4.9908340971585705,
+          "present_low_v": 0.02776546047446048,
+          "removed_high_v": 3.2999999223140892,
           "recognizes_presence": true,
           "recognizes_removal": true
         }
+      ],
+      "input_range_tested_v": [
+        4.5,
+        5.5
       ],
       "pass_within_generic_envelope": true,
       "revision": "R19=10k 1%, R20=100k 1%, Q5=Diodes 2N7002K-7; prior 100k/100k gate-threshold failure corrected in the generic envelope.",
@@ -1687,7 +1782,7 @@
     "run_from": "repository root",
     "command": "python hardware/voice_mainboard_v2/simulate_functions.py",
     "requires": "Python 3.11+, Windows KiCad bundled ngspice under build/cad-tools/kicad; optional matplotlib==3.10.7 under build/cad-tools/sim-python",
-    "netlist_sha256": "bdc5b974ae57c8e493f2375bc4c060891912a52573feccc9dce4bbc2f413b95a",
+    "netlist_sha256": "481b9c2430e12267087c05fdfdadefcb1aea6687316d13a90e2e2c1cd2256ad2",
     "model_download": "Original TI unencrypted file is local build-only. See URL and SHA256; never modify manufacturer model.",
     "generic_decks": "exports/function-simulation/*.cir",
     "full_ti_diagnostics": "build/v2-simulation-logs/*.log"

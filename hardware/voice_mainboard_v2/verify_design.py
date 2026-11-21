@@ -33,6 +33,12 @@ assert actual[('J13','28')]=='ESP_USB_DM19' and actual[('J13','29')]=='ESP_USB_D
 assert [actual[('J19',str(n))] for n in [1,2,3]]==['BUCK_3V8','MODEM_3V8','EXT_MODEM_3V8']
 assert [actual[('J20',str(n))] for n in [1,2]]==['EXT_MODEM_3V8','GND']
 assert actual[('L1','2')]=='BUCK_3V8' and actual[('R2','1')]=='BUCK_3V8'
+power=d['input_power']
+assert power['range_at_connector_v']==[4.5,5.5] and power['input_path_design_current_A']==3
+assert actual[('J1','1')]==actual[('J2','1')]==actual[('R19','1')]=='VIN_DC'
+assert [actual[('JP1',str(n))] for n in [1,2,3]]==power['selector_pin_nets']
+assert actual[('J3','1')]=='POWER_REG_5V' and actual[('J21','1')]=='BENCH_REG_5V'
+assert not any('VIN_DC' in p['pins'].values() and 'SYS_5V' in p['pins'].values() for p in d['parts']), 'Raw input bypass must not exist'
 ids=json.loads((ROOT/'schematic-ids.json').read_text(encoding='utf-8'))
 for f in b.GetFootprints():
     if f.GetReference() in ids['symbols']:
@@ -44,6 +50,8 @@ report={'revision':d['revision'],'kicad_version':pcb.Version(),'electrical_parts
  'manufacturing_ready':False,'rf_routed':False,'usb_routed':False,'ups_chip_frozen':False,'supplier_ml307_footprint_signoff':False,
  'usb_host_reserved':True,'usb_route_population_checked':True,'usb_host_hardware_tested':False,
  'modem_power_selector_reserved':True,'modem_power_selector_hardware_tested':False,
+ 'input_range_v':power['range_at_connector_v'],'input_path_design_current_A':3,
+ 'raw_input_bypass_absent':True,'regulated_power_selector_checked':True,'wide_input_operation_verified':False,
  'mechanical_fit_verified':False,'full_power_simulation':False,'physical_electrical_tests':False,'firmware_modified':False}
 (ROOT/'exports/validation.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
 print(json.dumps(report))

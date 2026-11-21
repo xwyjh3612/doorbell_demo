@@ -1,5 +1,5 @@
 input_detect_envelope_25
-Vext ext 0 PULSE(0 5.25 1m 1u 1u 19m 40m)
+Vext ext 0 PULSE(0 5.5 1m 1u 1u 19m 40m)
 Vesp rail 0 3.3
 Rtop ext gate 10000.0
 Rbottom gate 0 100000.0

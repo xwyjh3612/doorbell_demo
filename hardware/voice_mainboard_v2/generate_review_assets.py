@@ -43,7 +43,7 @@ text('75 mm',970,509,17,'#59758d','middle')
 rect(1030,137,475,698,'white',radius=12)
 text('本轮已确定',1055,179,25,weight='bold')
 notes=[('ML307R-DL裸模组','109焊盘；VBAT约3.8V；UART 1.8V'),
- ('J1 圆口电源','5.5外径 / 2.5内径；5V中心正极'),
+ ('J1 宽压圆口电源','4.5～5.5V；中心正极；3A路径目标'),
  ('J18 四针TTL刷机','GND / TX43 / RX44 / 5V；3.3V串口'),
  ('SW1 / SW2','BOOT及RESET；四针口手动进下载'),
  ('UPS接口与预留区','芯片后续提供；充放电电路待补'),
@@ -70,6 +70,7 @@ canvas{display:block;width:100%;height:320px}.row{display:flex;gap:20px;flex-wra
 table{border-collapse:collapse;width:100%}td,th{padding:12px;border-bottom:1px solid #dee7ef;text-align:left}.small{color:#627b91;font-size:14px}
 </style><main><h1>语音对讲主板 V2</h1><p class="banner">未布线工程草图；UPS芯片和部分采购封装待确定，不能下单生产。板图生成不接触正在测试的设备。</p>
 <div class="panel"><img src="overview.svg" alt="ML307贴片、UPS预留及TTL口的实际焊盘摆放草图"></div>
+<div class="panel"><h2>4.5～5.5V宽压输入</h2><p>J1为5.5mm外径/2.5mm内径圆口、中心正极、标称5V，输入路径按3A设计。原始输入直通系统5V的旁路已移除。J2送稳压电源板，J3返回稳压5V；JP1仅一个跳帽，选择电源板或J21独立稳压台架5V。</p><p>宽压稳压/UPS尚未定型，3A输入不等于5V输出3A；低端需核对4G峰值、功放及雷达总负载。<a href="../宽压供电审查.md">查看各路电压目标、模型覆盖与功率预算</a> · <a href="power-contract.json">数值结果</a></p></div>
 <div class="panel"><h2>同一块样板分步测试</h2><p>新增J19供电选择：仅一个跳帽，1–2板载降压、2–3从J20接经验证的3.8V电源，无跳帽隔离模组。J20为3.8V/GND，不能接5V。先单独测降压，再接4G，有助于诊断与返修。</p><p>排针/跳帽须核对至少3A能力和接触压降；PCB未布线、实物未验证，正常模式的约494µF总电容仍需验证降压稳定性。</p></div>
 <div class="panel"><h2>预留USB，保留当前AT</h2><p>模组59/60脚连接D+/D−，ESP32-S3预留GPIO20/19。UART17/18及DTR4保留。Host连接完成后可做AT、RNDIS、ECM编译选择；正式固件统一选择及热切换尚未实现。</p>
 <table><tr><th>贴装用途</th><th>贴装0Ω</th><th>不贴</th></tr><tr><td>默认：电脑维修模组</td><td>R26 / R27 / R30</td><td>R28 / R29 / R31</td></tr><tr><td>产品：ESP32 USB Host</td><td>R28 / R29 / R31</td><td>R26 / R27 / R30</td></tr></table>

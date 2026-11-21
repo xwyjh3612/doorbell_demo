@@ -22,6 +22,8 @@ try {
  if($LASTEXITCODE -ne 0){throw 'RC simulation failed'}
  & 'F:\Espressif\python_env\idf5.4_py3.11_env\Scripts\python.exe' (Join-Path $PSScriptRoot 'simulate_functions.py')
  if($LASTEXITCODE -ne 0){throw 'Functional simulation report generation failed'}
+ & 'F:\Espressif\python_env\idf5.4_py3.11_env\Scripts\python.exe' (Join-Path $PSScriptRoot 'check_power_contract.py')
+ if($LASTEXITCODE -ne 0){throw 'Power contract verification failed'}
  & $pcbPython (Join-Path $PSScriptRoot 'generate_review_assets.py')
  if($LASTEXITCODE -ne 0){throw 'Review generation failed'}
  & $pcbCli sch export svg -o (Join-Path $PSScriptRoot 'exports\schematic') $sch

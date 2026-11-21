@@ -25,7 +25,7 @@ header=f'''(kicad_sch (version 20250114) (generator "voice_mainboard_generator")
  (uuid {rootuid}) (paper "A0")
  (title_block (title "VOICE INTERCOM - ML307R-DL SMT / UPS RESERVED") (date "2026-11-21")
  (rev "V2-UNROUTED") (company "Engineering review / not for manufacture")
- (comment 1 "Net-labelled electrical pin map; UPS chip not selected")
+ (comment 1 "DC input 4.5-5.5V / 3A path; regulated 5V required; UPS chip not selected")
  (comment 2 "109-pad land pattern transcribed from manufacturer; release signoff pending"))
 '''
 lib,placed,links=[],[],[]
@@ -73,13 +73,15 @@ text('Battery ADC: GPIO2 ADC1_CH1, enable GPIO9; 150k/100k + 100nF; Vbat = 2.5 x
 text('No firmware changes: optional radar RX GPIO6 / reserved TX GPIO8; button GPIO0; modem PWRKEY GPIO11 / RESET GPIO21 proposed only.',25,810,1.7)
 text('USB POPULATION: SERVICE R26/R27/R30 OR HOST R28/R29/R31, never both. HOST DM19/DP20 via J13; UART remains. USB not routed/tested.',25,819,1.7)
 text('J19 VBAT: one shunt only 1-2 internal buck OR 2-3 external regulated 3.8V at J20; none isolates modem. Never 5V at J20.',25,828,1.7)
+text('INPUT: J1 4.5-5.5V nominal 5V, center positive, 3A path target. J2 raw to regulator; J3 regulated return. NO RAW BYPASS.',25,837,1.7)
+text('JP1 one shunt: 1-2 POWER_REG_5V / SYS_5V OR 2-3 SYS_5V / J21 BENCH_REG_5V. Both supplies regulated 5V.',25,846,1.7)
 lib.append('''(symbol "VoiceV2:PWR_FLAG" (power) (pin_names (offset 0)) (in_bom no) (on_board no)
  (property "Reference" "#FLG" (at 0 2 0) (effects (font (size 1 1)) hide))
  (property "Value" "PWR_FLAG" (at 0 3 0) (effects (font (size 1 1))))
  (symbol "PWR_FLAG_0_1" (polyline (pts (xy -1 1) (xy 0 2) (xy 1 1) (xy 0 0) (xy -1 1)) (stroke (width 0.254) (type default)) (fill (type none))))
  (symbol "PWR_FLAG_1_1" (pin power_out line (at 0 0 90) (length 0) (name "pwr" (effects (font (size 1 1)))) (number "1" (effects (font (size 1 1)))))))''')
 # Explicit external/converted source assumptions. Flags are NOT voltage/current verification.
-for i,name in enumerate(['VIN_EXT_5V','SYS_5V','ESP_3V3','GND','MODEM_3V8','USB_DETECT_5V']):
+for i,name in enumerate(['VIN_DC','SYS_5V','ESP_3V3','GND','MODEM_3V8','USB_DETECT_5V']):
     x,y=round((700+i*68)/1.27)*1.27,770.89;ref=f'#FLG0{i+1:02d}'
     placed.append(f'''(symbol (lib_id "VoiceV2:PWR_FLAG") (at {x} {y} 0) (unit 1) (in_bom no) (on_board no) (dnp no) (uuid {UID(ref)})
      (property "Reference" "{ref}" (at {x} {y-2} 0) (effects (font (size 1 1)) hide))
