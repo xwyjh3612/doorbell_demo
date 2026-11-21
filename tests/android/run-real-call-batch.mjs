@@ -1,15 +1,18 @@
 // Physical ESP32/ML307 calls through the native Android App. Connected failures
-// count as failed rounds; setup failures and recovery actions are kept separate.
+// count as failed rounds; computer interruptions are excluded and replaced.
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {spawn, execFile} from 'node:child_process';
 import {writeState,readState} from './state-file.mjs';
+import {summarizeAttempts,nextCallDirection} from './call-batch-counts.mjs';
 
 const args=process.argv.slice(2);
 const option=(name,fallback)=>{const i=args.indexOf(name);return i<0?fallback:args[i+1];};
 const device=option('--real-device','');
 const rounds=Number(option('--rounds','30'));
 const hold=Number(option('--hold-seconds','1800'));
+const startDirection=option('--start-direction','app-calls-device');
+if(!['app-calls-device','device-calls-app'].includes(startDirection))throw Error('Invalid start direction');
 if(!/^\d{12,20}$/.test(device)||!Number.isInteger(rounds)||rounds<1||rounds>100||!Number.isInteger(hold)||hold<20||hold>1800)throw Error('Invalid device/rounds/hold');
 const root=process.cwd(), output=path.resolve(option('--output','build/real-call-at-recovery-30'));
 const bridge=process.env.VOICE_TEST_CONSOLE || 'http://127.0.0.1:18889';
@@ -24,7 +27,11 @@ const state=resume?await readState(path.join(output,'state.json')):{startedAt:ne
   localAppId:option('--app-id','web_client_001'),
   firmware:image,transport:'ML307R-DL UART AT; original latest UDP packet strategy',
   endpoint:'native Android App / physical ESP32-S3 over public WSS/MQTT/TURN',
-  allowModemRestart:allowRestart,completedConnectedRounds:0,passedRounds:0,attempts:[],recoveries:[],phase:'starting',finished:false};
+  allowModemRestart:allowRestart,startDirection,excludeSupervisorInterruptions:true,
+  completedConnectedRounds:0,passedRounds:0,attempts:[],recoveries:[],phase:'starting',finished:false};
+state.excludeSupervisorInterruptions=true;
+state.startDirection ||= startDirection;
+Object.assign(state,summarizeAttempts(state.attempts));
 if(resume){
   if(state.firmware.sha256!==image.sha256||state.targetSecondsPerRound!==hold||state.localAppId!==option('--app-id','web_client_001'))throw Error('Resume cohort configuration mismatch');
   const previousError=state.error;
@@ -36,7 +43,7 @@ if(resume){
     try{result=JSON.parse(await fs.readFile(path.join(output,`attempt-${index}`,'results.json'),'utf8'));}catch{break;}
     const samples=result.audioSamples||[],gaps=samples.slice(1).map((s,i)=>(Date.parse(s.at)-Date.parse(samples[i].at))/1000);
     const summary={attempt:index,round:result.connectedAt?state.completedConnectedRounds+1:null,
-      direction:(state.completedConnectedRounds+1)%2?'app-calls-device':'device-calls-app',
+      direction:nextCallDirection(state.attempts,state.startDirection),
       connectedAt:result.connectedAt||null,completedAt:result.completedAt,passed:false,
       error:result.error||previousError,supervisorError:previousError,failureClassification:'test-supervisor-interruption',
       observedSeconds:result.observedSeconds||null,lastAudioAt:samples.at(-1)?.at||null,
@@ -45,7 +52,7 @@ if(resume){
       maxStatisticsGapSeconds:gaps.length?Math.max(...gaps):null,afeAlerts:result.afeAlerts||0};
     state.attempts.push(summary);
     await fs.writeFile(path.join(output,`attempt-${index}`,'supervisor-interruption.json'),JSON.stringify(summary,null,2));
-    if(summary.connectedAt)++state.completedConnectedRounds;
+    Object.assign(state,summarizeAttempts(state.attempts));
   }
   if(rounds<state.completedConnectedRounds)throw Error('Target below completed rounds');
   state.requestedConnectedRounds=rounds;state.allowModemRestart=allowRestart;
@@ -54,6 +61,7 @@ if(resume){
   delete state.error;delete state.completedAt;delete state.allPassed;
 }
 const save=async()=>{
+  Object.assign(state,summarizeAttempts(state.attempts));
   state.updatedAt=new Date().toISOString();
   await writeState(path.join(output,'state.json'),state);
 };
@@ -110,7 +118,7 @@ try{
   while(state.completedConnectedRounds<rounds){
     if(state.attempts.length>=rounds*4)throw Error('Setup attempt limit reached');
     const index=state.attempts.length+1, round=state.completedConnectedRounds+1;
-    const direction=round%2?'app-calls-device':'device-calls-app';
+    const direction=nextCallDirection(state.attempts,state.startDirection);
     const attemptOutput=path.join(output,`attempt-${index}`);await fs.mkdir(attemptOutput);
     const began=new Date().toISOString();
     const source=path.join(root,'build/esp32-real-call-live.log');
@@ -161,8 +169,8 @@ try{
       capturedModemBootIncludingCleanup:eventLines.filter(l=>/MATREADY/.test(l)).length};
     await fs.writeFile(path.join(attemptOutput,'observed-timeline.json'),JSON.stringify({summary,eventLines},null,2));
     state.attempts.push(summary);state.active=null;
-    if(summary.connectedAt){++state.completedConnectedRounds;restartStreak=0;if(summary.passed)++state.passedRounds;}
-    state.failedConnectedRounds=state.completedConnectedRounds-state.passedRounds;
+    if(summary.connectedAt)restartStreak=0;
+    Object.assign(state,summarizeAttempts(state.attempts));
     await save();console.log(`Attempt ${index}: ${summary.connectedAt?'connected':'setup failed'} ${summary.passed?'PASS':'FAIL'}; ${state.completedConnectedRounds}/${rounds}, passed=${state.passedRounds}`);
     if(!summary.passed)await recover(summary.error||'failed call');
     else await pause(5000);
