@@ -46,10 +46,12 @@
 
 ## 隔离语音候选版本
 
-`prepare_voice_test.py`从固定基线commit17a62a4在Git忽略的`build/voice-usb-evaluation`生成拷贝；`build_voice_test.ps1`分别编译RNDIS/ECM。实验只将原UdpManager的UDP对象替换为USB原生socket传输，保留LatestUdpPacket、MQTT AT控制、官方媒体和信令协议；不修改根项目源码。
+`prepare_voice_test.py`从包含AT恢复修复的固定commit `b932fba5a14013653ef8f2e9756969b756e59a54`在Git忽略的`build/voice-usb-evaluation-recovery`生成拷贝；`build_voice_test.ps1`分别编译RNDIS/ECM。实验只将原UdpManager的UDP对象替换为USB原生socket传输，保留LatestUdpPacket、MQTT AT控制、官方媒体和信令协议；不修改根项目源码。旧17a62a4候选保留在`build/voice-usb-evaluation`，不会覆盖。
 
 USB媒体发送使用非阻塞socket，失败丢弃，不积压重试。接收线程有20ms超时，退出确认后才关闭fd；接收回调仍覆盖旧包。实际网络队列、调度、声学延迟需要实测，不能把socket非阻塞等同于端到端零延迟。
 
-本次发现原基线在网络恢复时有MQTT对象与雷达线程并发使用的生命周期问题，已留存匹配ELF调用栈。根项目的AT恢复版本已修复对象复用、连接状态读取及URC回调工作线程调度，并正在做实机回归；隔离USB语音候选仍从固定17a62a4生成，保留旧基线行为用于审查。进入USB实机验证前须同步根项目恢复修复并验证USB断网恢复，再做呼叫/挂断测试。当前小板USB未引出，候选只完成构建，未刷写、未通话验收。
+本次发现原基线在网络恢复时有MQTT对象与雷达线程并发使用的生命周期问题，已留存匹配ELF调用栈。根项目的AT恢复版本已修复对象复用、连接状态读取及URC回调工作线程调度，并正在做实机回归；当前隔离USB语音候选同步这些修复。USB断网/枚举恢复与应用状态联动仍须实测，不能把AT恢复通过等同于USB恢复通过。当前小板USB未引出，USB候选未刷写、未通话验收。
+
+2026-11-21恢复基线的RNDIS/ECM均通过ESP-IDF5.4.3编译。RNDIS app 2,899,136字节、SHA256 `122972d7b1aaa01ada5d2014b9ddf887711a5173b809ade0283d4224a43ad2d7`；ECM app 2,892,544字节、SHA256 `5b6e48530d13a1a92ba55cfaa67d46654b663164cde1931c2eb9c91e599702ad`。构建清单位于隔离目录各`build-*/test-manifest.json`，标明未刷写/未实机通话。编译结果不加入当前AT的40轮统计。
 
 参考：[官方RNDIS驱动](https://github.com/espressif/esp-iot-solution/tree/master/components/usb/iot_usbh_rndis)、[官方RNDIS示例](https://github.com/espressif/esp-iot-solution/tree/master/examples/usb/host/usb_rndis_4g_module)、[路线评估](../../tests/cellular_transport_review_20261121.md)。商家PDF保留在用户原文件夹，不上传。

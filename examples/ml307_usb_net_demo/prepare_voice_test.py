@@ -7,13 +7,13 @@ from pathlib import Path
 import hashlib,json,subprocess,shutil,zipfile
 ROOT=Path(__file__).resolve().parents[2]
 HERE=Path(__file__).resolve().parent
-TARGET=ROOT/'build/voice-usb-evaluation'
-baseline='17a62a4e32fb7dfab0edc04ff858938f1c90756f'
+TARGET=ROOT/'build/voice-usb-evaluation-recovery'
+baseline='b932fba5a14013653ef8f2e9756969b756e59a54'
 subprocess.run(['git','cat-file','-e',baseline+'^{commit}'],cwd=ROOT,check=True)
 TARGET.mkdir(parents=True,exist_ok=True)
 record=TARGET/'baseline.json'
 if not record.exists():
-    archive=ROOT/'build/voice-usb-baseline.zip'
+    archive=ROOT/'build/voice-usb-recovery-baseline.zip'
     subprocess.run(['git','archive','--format=zip',f'--output={archive}',baseline],cwd=ROOT,check=True)
     with zipfile.ZipFile(archive) as z:
         for item in z.infolist():
@@ -85,10 +85,11 @@ lines+=['CONFIG_ESP_CONSOLE_UART_DEFAULT=y','CONFIG_ESP_CONSOLE_SECONDARY_NONE=y
         '# CONFIG_VOICE_TEST_ECM is not set']
 (TARGET/'usb-rndis-defaults').write_text('\n'.join(lines)+'\n',encoding='utf-8')
 evidence={'baseline_commit':baseline,'official_peer_changed':False,'mqtt_protocol_changed':False,
+          'mqtt_lifetime_recovery_fix_included':True,
           'app_wss_changed':False,'latest_packet_mailbox_retained':True,'at_mqtt_retained':True,
           'media_send_nonblocking':True,'built':False,'flashed':False,'voice_tested':False,
           'change_scope':'Independent copied experiment: native USB UDP media; existing MQTT AT/signaling/audio retained.',
-          'limitations':['USB mode must be preconfigured; no automatic reset','Network recovery policy requires real hardware testing',
+          'limitations':['USB mode must be preconfigured; no automatic reset','USB network recovery policy requires real hardware testing',
                          'No actual voice-call evidence until USB wiring and flashing are performed'],
           'changed_files':['main/CMakeLists.txt','main/idf_component.yml','main/Kconfig.projbuild','main/network_4g.cpp',
                            'main/ml307_udp_socket.cc','main/usb_link.cpp','main/usb_udp.h','main/usb_udp.cc']}
