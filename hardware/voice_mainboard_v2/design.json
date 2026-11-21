@@ -2552,7 +2552,7 @@
     },
     {
       "ref": "Q5",
-      "value": "2N7002",
+      "value": "2N7002K-7 DIODES",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "pins": {
         "1": "EXT_DETECT_GATE",
@@ -2578,13 +2578,13 @@
       "angle": 0,
       "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
       "dnp": false,
-      "source": "",
-      "note": "",
+      "source": "https://www.diodes.com/assets/Datasheets/2N7002K.pdf",
+      "note": "Specific Diodes Incorporated 2N7002K-7; VGS(th) max 2.5V at ID=1mA, 25C. Gate-source rating +/-20V. 10k/100k insertion detector still needs actual temperature/ramp verification, not a precision undervoltage detector.",
       "kind": "pcb"
     },
     {
       "ref": "R19",
-      "value": "100k",
+      "value": "10k 1%",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "pins": {
         "1": "VIN_EXT_5V",
@@ -2602,7 +2602,7 @@
     },
     {
       "ref": "R20",
-      "value": "100k",
+      "value": "100k 1%",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "pins": {
         "1": "EXT_DETECT_GATE",

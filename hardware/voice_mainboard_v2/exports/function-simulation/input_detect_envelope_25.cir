@@ -1,0 +1,13 @@
+input_detect_envelope_25
+Vext ext 0 PULSE(0 5.25 1m 1u 1u 19m 40m)
+Vesp rail 0 3.3
+Rtop ext gate 10000.0
+Rbottom gate 0 100000.0
+Cf gate 0 10n
+Rpull rail present 10k
+Mn present gate 0 0 NENV
+Dn 0 present BODY
+.model NENV NMOS (LEVEL=1 VTO=2.5 KP=0.005 LAMBDA=0.01 RD=2 RS=2 CGSO=100p CGDO=100p)
+.model BODY D (IS=1p N=1.2 RS=1 CJO=20p)
+.tran 10u 30m
+.end

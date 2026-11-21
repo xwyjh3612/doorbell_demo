@@ -73,7 +73,7 @@ table{border-collapse:collapse;width:100%}td,th{padding:12px;border-bottom:1px s
 <div class="panel"><h2>预留USB，保留当前AT</h2><p>模组59/60脚连接D+/D−，ESP32-S3预留GPIO20/19。UART17/18及DTR4保留。Host连接完成后可做AT、RNDIS、ECM编译选择；正式固件统一选择及热切换尚未实现。</p>
 <table><tr><th>贴装用途</th><th>贴装0Ω</th><th>不贴</th></tr><tr><td>默认：电脑维修模组</td><td>R26 / R27 / R30</td><td>R28 / R29 / R31</td></tr><tr><td>产品：ESP32 USB Host</td><td>R28 / R29 / R31</td><td>R26 / R27 / R30</td></tr></table>
 <p>两组互斥；USB VBUS为检测端，不能代替3.8V主电源。差分90Ω、ESD及最终连接器待设计，尚未完成实机USB枚举/通话验证。</p></div>
-<div class="panel"><h2>扩展仿真审查</h2><p>已检查采样开关、按钮、模组控制、电源负载及接口。外部电源检测存在阈值情景失败，降压闭环和UPS尚未验证，整机未通过验收。</p><p><a href="function-simulation/index.html">打开完整覆盖表、波形及失败项</a></p></div>
+<div class="panel"><h2>扩展仿真审查</h2><p>已检查采样开关、按钮、模组控制、电源负载及接口。外部检测阈值已修正并通过27组通用模型情景，降压闭环、UPS和实物检测尚未验证，整机未通过验收。</p><p><a href="function-simulation/index.html">打开完整覆盖表、波形及失败项</a> · <a href="../首板设计与验收.md">首板设计与验收要求</a></p></div>
 <div class="panel"><h2>实际 ngspice RC 仿真</h2><div class="row"><section><h3>电池分压开启</h3><canvas id="adc" width="1200" height="640"></canvas><p>150kΩ / 100kΩ + 100nF；输入4.2V，稳态1.68V。建议等待60ms后取样。</p></section>
 <section><h3>模组供电阻抗</h3><div id="choices"></div><canvas id="modem" width="1200" height="640"></canvas><p id="voltage"></p></section></div><p class="small">理想电源与集总RC模型，未包含UPS切换、降压芯片反馈、线缆电感或射频。这里通过不能替代硬件负载测试。</p></div>
 <div class="panel"><h2>4针刷机口 J18</h2><table><tr><th>针序</th><th>板端</th><th>USB-TTL端</th></tr><tr><td>1</td><td>GND</td><td>GND</td></tr><tr><td>2</td><td>TX43</td><td>RX</td></tr><tr><td>3</td><td>RX44</td><td>TX</td></tr><tr><td>4</td><td>5V可选供电</td><td>5V；信号电平3.3V</td></tr></table><p>主电源供电时TTL的5V可不接。JP3选择系统/TTL给ESP32供电。按住BOOT，按下并松开RESET，再松开BOOT即可手动进入下载。</p>

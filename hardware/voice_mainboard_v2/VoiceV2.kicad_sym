@@ -141,7 +141,7 @@
 ))
 (symbol "Q5" (pin_names (offset 0.5)) (in_bom yes) (on_board yes)
 (property "Reference" "Q5" (at 0 6.35 0) (effects (font (size 1.27 1.27))))
-(property "Value" "2N7002" (at 0 -6.35 0) (effects (font (size 1.27 1.27))))
+(property "Value" "2N7002K-7 DIODES" (at 0 -6.35 0) (effects (font (size 1.27 1.27))))
 (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 0 0 0) (effects (font (size 1 1)) hide))
 (symbol "Q5_0_1" (rectangle (start -20.32 3.81) (end 20.32 -3.81) (stroke (width 0.254) (type default)) (fill (type background))))
 (symbol "Q5_1_1"
@@ -151,7 +151,7 @@
 ))
 (symbol "R19" (pin_names (offset 0.5)) (in_bom yes) (on_board yes)
 (property "Reference" "R19" (at 0 6.35 0) (effects (font (size 1.27 1.27))))
-(property "Value" "100k" (at 0 -6.35 0) (effects (font (size 1.27 1.27))))
+(property "Value" "10k 1%" (at 0 -6.35 0) (effects (font (size 1.27 1.27))))
 (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 0 0 0) (effects (font (size 1 1)) hide))
 (symbol "R19_0_1" (rectangle (start -20.32 3.81) (end 20.32 -3.81) (stroke (width 0.254) (type default)) (fill (type background))))
 (symbol "R19_1_1"
@@ -160,7 +160,7 @@
 ))
 (symbol "R20" (pin_names (offset 0.5)) (in_bom yes) (on_board yes)
 (property "Reference" "R20" (at 0 6.35 0) (effects (font (size 1.27 1.27))))
-(property "Value" "100k" (at 0 -6.35 0) (effects (font (size 1.27 1.27))))
+(property "Value" "100k 1%" (at 0 -6.35 0) (effects (font (size 1.27 1.27))))
 (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 0 0 0) (effects (font (size 1 1)) hide))
 (symbol "R20_0_1" (rectangle (start -20.32 3.81) (end 20.32 -3.81) (stroke (width 0.254) (type default)) (fill (type background))))
 (symbol "R20_1_1"

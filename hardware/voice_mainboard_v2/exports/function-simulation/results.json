@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-21T16:22:08.496242+08:00",
+  "generated_at": "2026-11-21T17:02:03.711683+08:00",
   "engine": "KiCad 9 bundled ngspice shared library, PSpice compatibility / XSPICE",
   "whole_product_pass": false,
   "manufacturing_ready": false,
@@ -701,7 +701,7 @@
       "pass": true,
       "scope": "Static independent KiCad netlist / pin contract only. No UART timing or firmware execution.",
       "source_hashes": {
-        "hardware\\voice_mainboard_v2\\exports\\voice_mainboard_v2.net.xml": "329a6827f90e966bc509ad7aad718fef04a87504f1c759e25a87d5b6fcf3ab56",
+        "hardware\\voice_mainboard_v2\\exports\\voice_mainboard_v2.net.xml": "0f56967c1204198d6590e323501b399ef32026f6bd7c0e07aca9c0a630c651d2",
         "components\\codec_board\\board_cfg.txt": "6a3603c04b9a4f723db3b8ce7de4ae86c9477b07bb81d6706413404864115957",
         "main\\network_4g.cpp": "0512e43716c3e8ef31524da1529dd19545d3c4d0ff80dd8df0cc1af612495fa4",
         "main\\radar_presence.c": "967aa69dae39a4a12c41356b1e326b6bcfe22e471635240e5cef2fcb084374df"
@@ -1088,79 +1088,278 @@
         {
           "vto_v": 0.8,
           "input_v": 4.5,
-          "present_low_v": 0.046883597099384965,
-          "removed_high_v": 3.299999923860962,
+          "resistor_corner": -1,
+          "gate_present_v": 4.098286744815149,
+          "present_low_v": 0.02143799711316054,
+          "removed_high_v": 3.2999999246692733,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 0.8,
+          "input_v": 4.5,
+          "resistor_corner": 0,
+          "gate_present_v": 4.090909090909091,
+          "present_low_v": 0.021488194305323373,
+          "removed_high_v": 3.299999924529445,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 0.8,
+          "input_v": 4.5,
+          "resistor_corner": 1,
+          "gate_present_v": 4.0834097158570115,
+          "present_low_v": 0.02153864908771942,
+          "removed_high_v": 3.2999999243634024,
           "recognizes_presence": true,
           "recognizes_removal": true
         },
         {
           "vto_v": 0.8,
           "input_v": 5,
-          "present_low_v": 0.04010166714977917,
-          "removed_high_v": 3.2999999240566424,
+          "resistor_corner": -1,
+          "gate_present_v": 4.553651938683498,
+          "present_low_v": 0.018701501504047032,
+          "removed_high_v": 3.299999923062486,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 0.8,
+          "input_v": 5,
+          "resistor_corner": 0,
+          "gate_present_v": 4.545454545454546,
+          "present_low_v": 0.018780820247124717,
+          "removed_high_v": 3.2999999231991866,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 0.8,
+          "input_v": 5,
+          "resistor_corner": 1,
+          "gate_present_v": 4.5371219065077915,
+          "present_low_v": 0.018808830074528285,
+          "removed_high_v": 3.2999999233621278,
           "recognizes_presence": true,
           "recognizes_removal": true
         },
         {
           "vto_v": 0.8,
           "input_v": 5.25,
-          "present_low_v": 0.03741882115705804,
-          "removed_high_v": 3.299999923970769,
+          "resistor_corner": -1,
+          "gate_present_v": 4.781334535617674,
+          "present_low_v": 0.017675405160425376,
+          "removed_high_v": 3.2999999241359,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 0.8,
+          "input_v": 5.25,
+          "resistor_corner": 0,
+          "gate_present_v": 4.7727272727272725,
+          "present_low_v": 0.017711533022496725,
+          "removed_high_v": 3.2999999233257338,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 0.8,
+          "input_v": 5.25,
+          "resistor_corner": 1,
+          "gate_present_v": 4.7639780018331805,
+          "present_low_v": 0.017750347550492443,
+          "removed_high_v": 3.2999999229621424,
           "recognizes_presence": true,
           "recognizes_removal": true
         },
         {
           "vto_v": 1.5,
           "input_v": 4.5,
-          "present_low_v": 0.09234910981078756,
-          "removed_high_v": 3.299999923722848,
+          "resistor_corner": -1,
+          "gate_present_v": 4.098286744815149,
+          "present_low_v": 0.026750754642653637,
+          "removed_high_v": 3.2999999224652314,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 1.5,
+          "input_v": 4.5,
+          "resistor_corner": 0,
+          "gate_present_v": 4.090909090909091,
+          "present_low_v": 0.026783257425040903,
+          "removed_high_v": 3.299999922468906,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 1.5,
+          "input_v": 4.5,
+          "resistor_corner": 1,
+          "gate_present_v": 4.0834097158570115,
+          "present_low_v": 0.026824454102115425,
+          "removed_high_v": 3.299999922485891,
           "recognizes_presence": true,
           "recognizes_removal": true
         },
         {
           "vto_v": 1.5,
           "input_v": 5,
-          "present_low_v": 0.0681629381794479,
-          "removed_high_v": 3.299999924183485,
+          "resistor_corner": -1,
+          "gate_present_v": 4.553651938683498,
+          "present_low_v": 0.022785473232172886,
+          "removed_high_v": 3.299999925312348,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 1.5,
+          "input_v": 5,
+          "resistor_corner": 0,
+          "gate_present_v": 4.545454545454546,
+          "present_low_v": 0.02282132435772899,
+          "removed_high_v": 3.2999999253322945,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 1.5,
+          "input_v": 5,
+          "resistor_corner": 1,
+          "gate_present_v": 4.5371219065077915,
+          "present_low_v": 0.02307500030151332,
+          "removed_high_v": 3.299999925329639,
           "recognizes_presence": true,
           "recognizes_removal": true
         },
         {
           "vto_v": 1.5,
           "input_v": 5.25,
-          "present_low_v": 0.06044354530317227,
-          "removed_high_v": 3.2999999239521234,
+          "resistor_corner": -1,
+          "gate_present_v": 4.781334535617674,
+          "present_low_v": 0.021251234893968334,
+          "removed_high_v": 3.2999999249959324,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 1.5,
+          "input_v": 5.25,
+          "resistor_corner": 0,
+          "gate_present_v": 4.7727272727272725,
+          "present_low_v": 0.021344308784948817,
+          "removed_high_v": 3.299999924900711,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 1.5,
+          "input_v": 5.25,
+          "resistor_corner": 1,
+          "gate_present_v": 4.7639780018331805,
+          "present_low_v": 0.021495656119648324,
+          "removed_high_v": 3.2999999247403027,
           "recognizes_presence": true,
           "recognizes_removal": true
         },
         {
           "vto_v": 2.5,
           "input_v": 4.5,
-          "present_low_v": 3.2999999238979494,
-          "removed_high_v": 3.2999999239019315,
-          "recognizes_presence": false,
+          "resistor_corner": -1,
+          "gate_present_v": 4.098286744815149,
+          "present_low_v": 0.0426061087258069,
+          "removed_high_v": 3.299999922183528,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 2.5,
+          "input_v": 4.5,
+          "resistor_corner": 0,
+          "gate_present_v": 4.090909090909091,
+          "present_low_v": 0.042771098096058766,
+          "removed_high_v": 3.299999922180897,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 2.5,
+          "input_v": 4.5,
+          "resistor_corner": 1,
+          "gate_present_v": 4.0834097158570115,
+          "present_low_v": 0.04295044565903299,
+          "removed_high_v": 3.299999922181927,
+          "recognizes_presence": true,
           "recognizes_removal": true
         },
         {
           "vto_v": 2.5,
           "input_v": 5,
-          "present_low_v": 3.29999992389795,
-          "removed_high_v": 3.299999923901931,
-          "recognizes_presence": false,
+          "resistor_corner": -1,
+          "gate_present_v": 4.553651938683498,
+          "present_low_v": 0.033325750675881845,
+          "removed_high_v": 3.2999999255876022,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 2.5,
+          "input_v": 5,
+          "resistor_corner": 0,
+          "gate_present_v": 4.545454545454546,
+          "present_low_v": 0.03342762605897161,
+          "removed_high_v": 3.2999999255983923,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 2.5,
+          "input_v": 5,
+          "resistor_corner": 1,
+          "gate_present_v": 4.5371219065077915,
+          "present_low_v": 0.0337274436919751,
+          "removed_high_v": 3.299999925606703,
+          "recognizes_presence": true,
           "recognizes_removal": true
         },
         {
           "vto_v": 2.5,
           "input_v": 5.25,
-          "present_low_v": 2.898569189766681,
-          "removed_high_v": 3.299999923901345,
-          "recognizes_presence": false,
+          "resistor_corner": -1,
+          "gate_present_v": 4.781334535617674,
+          "present_low_v": 0.030002127791026765,
+          "removed_high_v": 3.299999922501851,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 2.5,
+          "input_v": 5.25,
+          "resistor_corner": 0,
+          "gate_present_v": 4.7727272727272725,
+          "present_low_v": 0.030100894593798565,
+          "removed_high_v": 3.2999999225624026,
+          "recognizes_presence": true,
+          "recognizes_removal": true
+        },
+        {
+          "vto_v": 2.5,
+          "input_v": 5.25,
+          "resistor_corner": 1,
+          "gate_present_v": 4.7639780018331805,
+          "present_low_v": 0.030229240517411025,
+          "removed_high_v": 3.299999922637722,
+          "recognizes_presence": true,
           "recognizes_removal": true
         }
       ],
-      "pass_within_generic_envelope": false,
-      "issue": "R19=R20=100k reduces 5V to 2.5V at gate. High-threshold envelope does not pull GPIO low reliably.",
-      "action": "Revise resistor ratio / choose a specified logic-level switch or a PGOOD/comparator after UPS selection. Verify slow ramps and actual thresholds.",
+      "pass_within_generic_envelope": true,
+      "revision": "R19=10k 1%, R20=100k 1%, Q5=Diodes 2N7002K-7; prior 100k/100k gate-threshold failure corrected in the generic envelope.",
+      "datasheet": "https://www.diodes.com/assets/Datasheets/2N7002K.pdf",
+      "action": "Verify actual purchased part, temperature, slow ramps and insertion/removal; use a PGOOD/comparator for precise undervoltage detection.",
       "precise_undervoltage_detection": false
     },
     "boot_reset": {
@@ -1316,9 +1515,9 @@
     },
     {
       "function": "外部电源插拔检测",
-      "status": "ENVELOPE_FAIL",
-      "evidence": "9 generic MOS cases; 2.5V gate high-threshold corner",
-      "next": "修改阈值裕量后重新仿真，并实测慢速掉压与插拔"
+      "status": "ENVELOPE_PASS",
+      "evidence": "27 generic MOS cases; revised ratio, 1% resistor corners and VTO up to 2.5V",
+      "next": "10k/100k修正后通用模型通过；实测所选器件、慢速掉压、温度与插拔"
     },
     {
       "function": "BOOT/呼叫按钮、ESP EN复位",
@@ -1391,7 +1590,7 @@
     "run_from": "repository root",
     "command": "python hardware/voice_mainboard_v2/simulate_functions.py",
     "requires": "Python 3.11+, Windows KiCad bundled ngspice under build/cad-tools/kicad; optional matplotlib==3.10.7 under build/cad-tools/sim-python",
-    "netlist_sha256": "329a6827f90e966bc509ad7aad718fef04a87504f1c759e25a87d5b6fcf3ab56",
+    "netlist_sha256": "0f56967c1204198d6590e323501b399ef32026f6bd7c0e07aca9c0a630c651d2",
     "model_download": "Original TI unencrypted file is local build-only. See URL and SHA256; never modify manufacturer model.",
     "generic_decks": "exports/function-simulation/*.cir",
     "full_ti_diagnostics": "build/v2-simulation-logs/*.log"

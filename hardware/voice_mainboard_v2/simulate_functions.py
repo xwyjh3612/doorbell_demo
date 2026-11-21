@@ -42,10 +42,10 @@ nets={(n.attrib['ref'],n.attrib['pin']):net.attrib['name'].removeprefix('/')
       for net in xml.findall('./nets/net') for n in net.findall('node')}
 values={p.attrib['ref']:p.findtext('value') for p in xml.findall('./components/comp')}
 model_values={'R1':'100k','R2':'39.2k','R3':'10k','R14':'10k','R15':'100k','R16':'100k',
-              'R17':'150k','R18':'100k','R19':'100k','R20':'100k','R21':'10k','R25':'10k',
+              'R17':'150k','R18':'100k','R19':'10k','R20':'100k','R21':'10k','R25':'10k',
               'C27':'100n','C28':'100n','C29':'10n','C30':'100n','C19':'10n',
               'C6':'22u','C7':'22u','C8':'220u','C9':'220u','C10':'10u',
-              'Q1':'2N7002','Q2':'2N7002','Q3':'BSS84','Q4':'2N7002','Q5':'2N7002'}
+              'Q1':'2N7002','Q2':'2N7002','Q3':'BSS84','Q4':'2N7002','Q5':'2N7002K-7'}
 for ref,expected in model_values.items():
     if values[ref].split()[0]!=expected:raise RuntimeError(f'{ref} changed; revise simulation model: {values[ref]} != {expected}')
 def expect(ref,pins):
@@ -135,21 +135,23 @@ report['sections']['battery_adc']={'cases':adc,'off_leakage_envelope':leakage,
     'real_adc_accuracy_verified':False,'firmware_adc_implemented':False}
 
 detect=[]
-for idx,(vt,vb) in enumerate(itertools.product([.8,1.5,2.5],[4.5,5,5.25])):
+for idx,(vt,vb,corner) in enumerate(itertools.product([.8,1.5,2.5],[4.5,5,5.25],[-1,0,1])):
+    rt=10000*(1+.01*corner);rb=100000*(1-.01*corner)
     d,_=run(f'input_detect_envelope_{idx}',[
         f'Vext ext 0 PULSE(0 {vb} 1m 1u 1u 19m 40m)','Vesp rail 0 3.3',
-        'Rtop ext gate 100k','Rbottom gate 0 100k','Cf gate 0 10n',
+        f'Rtop ext gate {rt}',f'Rbottom gate 0 {rb}','Cf gate 0 10n',
         'Rpull rail present 10k','Mn present gate 0 0 NENV','Dn 0 present BODY',
         NM.format(vto=vt),DIODE,'.tran 10u 30m'],['v(gate)','v(present)'],OUT)
     high=next(v for t,v in zip(d['time'],d['v(present)']) if t>=.015)
     off=d['v(present)'][-1]
-    detect.append({'vto_v':vt,'input_v':vb,'present_low_v':high,'removed_high_v':off,
+    detect.append({'vto_v':vt,'input_v':vb,'resistor_corner':corner,'gate_present_v':vb*rb/(rt+rb),'present_low_v':high,'removed_high_v':off,
                    'recognizes_presence':high<=.825,'recognizes_removal':off>=2.475})
-    if vt==2.5 and vb==5:traces['detector']=d
+    if vt==2.5 and vb==4.5 and corner==1:traces['detector']=d
 report['sections']['external_power_detector']={'cases':detect,
     'pass_within_generic_envelope':all(c['recognizes_presence'] and c['recognizes_removal'] for c in detect),
-    'issue':'R19=R20=100k reduces 5V to 2.5V at gate. High-threshold envelope does not pull GPIO low reliably.',
-    'action':'Revise resistor ratio / choose a specified logic-level switch or a PGOOD/comparator after UPS selection. Verify slow ramps and actual thresholds.',
+    'revision':'R19=10k 1%, R20=100k 1%, Q5=Diodes 2N7002K-7; prior 100k/100k gate-threshold failure corrected in the generic envelope.',
+    'datasheet':'https://www.diodes.com/assets/Datasheets/2N7002K.pdf',
+    'action':'Verify actual purchased part, temperature, slow ramps and insertion/removal; use a PGOOD/comparator for precise undervoltage detection.',
     'precise_undervoltage_detection':False}
 
 buttons=[]
@@ -259,7 +261,7 @@ report['sections']['ti_buck_model']=buck
 report['coverage']=[
     {'function':'引脚、UART电平转换方向、I2S和雷达接口','status':'STATIC_PASS' if report['sections']['interfaces']['pass'] else 'FAIL','evidence':'Independent KiCad netlist / active firmware pin comparison','next':'921600 UART signals and I2S/radar real hardware verification'},
     {'function':'电池采样打开、关闭、60ms等待、分压容差','status':'ENVELOPE_PASS' if report['sections']['battery_adc']['pass_within_generic_on_envelope'] else 'FAIL','evidence':'27 generic MOS/RC parameter cases + leakage scenarios','next':'Actual part leakage / ESP ADC calibration / chosen cell discharge curve'},
-    {'function':'外部电源插拔检测','status':'ENVELOPE_FAIL' if not report['sections']['external_power_detector']['pass_within_generic_envelope'] else 'ENVELOPE_PASS','evidence':'9 generic MOS cases; 2.5V gate high-threshold corner','next':'Revise hardware before routing and repeat tests'},
+    {'function':'外部电源插拔检测','status':'ENVELOPE_FAIL' if not report['sections']['external_power_detector']['pass_within_generic_envelope'] else 'ENVELOPE_PASS','evidence':'27 generic MOS cases; revised ratio, 1% resistor corners and VTO up to 2.5V','next':'Verify exact part and slow ramps / temperature on hardware'},
     {'function':'BOOT/呼叫按钮、ESP EN复位','status':'IDEAL_SWITCH_PASS' if report['sections']['boot_reset']['pass_in_ideal_switch_model'] else 'FAIL','evidence':'RC switch transient; no boot-ROM','next':'Firmware debounce / actual board RC / manual TTL flash'},
     {'function':'ML307开机、复位控制电路','status':'ENVELOPE_PASS' if report['sections']['modem_control']['pass_in_assumed_pullup_model'] else 'FAIL','evidence':'Open-drain transistor pull-down / release with assumed internal pull-up','next':'Firmware control not implemented; real module timing and power cycle'},
     {'function':'模组2A负载、电源路径阻抗','status':'RC_FAIL_AT_300mOHM','evidence':'Ideal supply RC scenario, not actual board measurement','next':'Select regulator and prove supply voltage remains >=3.4V'},
@@ -274,7 +276,7 @@ report['coverage']=[
 next_steps=[
     '实测921600串口、I2S和雷达；核对所用器件时序',
     '实测开关漏电、ADC校准及最终电池放电曲线',
-    '修改阈值裕量后重新仿真，并实测慢速掉压与插拔',
+    '10k/100k修正后通用模型通过；实测所选器件、慢速掉压、温度与插拔',
     '核对固件去抖、开发板并联RC和TTL手动刷机',
     '控制固件尚未实现；实测模组开关机、复位及电源循环',
     '确认稳压器和整条供电路径在峰值负载下仍高于3.4V',
@@ -319,13 +321,13 @@ md=f'''# 语音对讲主板V2 仿真审查报告
 
 - {len(checks)}项独立接口引脚核对、{len(fw_checks)}项当前固件引脚核对均通过；KiCad现有报告为ERC {validation['schematic_erc_violations']}、摆放DRC {validation['placement_drc_violations']}、{validation['connected_unique_pin_net_mappings']}项网表/焊盘匹配，仍有{validation['unrouted_links']}处未布线连接。
 - 新增USB Host/维修口的19项独立引脚核对；默认贴R26/R27/R30，Host组R28/R29/R31不贴，互斥贴装由网表验证器检查。USB未布线、未枚举或通话实测；这一项不是USB信号仿真。
-- 49组ngspice瞬态计算完成到指定结束时间：27组采样参数、3组漏电/ESP无电情景、9组外部输入检测、2组按钮RC、4组模组控制、3组供电阻抗、1组电容储能。完成计算不代表每组都通过电气判据。
+- 67组ngspice瞬态计算完成到指定结束时间：27组采样参数、3组漏电/ESP无电情景、27组外部输入检测、2组按钮RC、4组模组控制、3组供电阻抗、1组电容储能。完成计算不代表每组都通过电气判据。
 - 4组TI原厂TPS563201 PSpice模型尝试均提前中止，统一标为未验证。记录实际停止时间和错误，不把部分波形算作通过。
 - 本仿真脚本不修改设备固件、不打开串口、不刷机；官方协议和主动丢旧UDP包策略保持原样。当前AT恢复固件的实机回归另见[实机记录](../../tests/at_recovery_batch_20261121.md)。
 
 ## 必须处理的设计项
 
-1. **外部电源检测阈值缺乏裕量。** R19/R20均为100k，5V仅给门极2.5V。9组通用模型情景中3组未识别输入存在；VTO=2.5V、输入5V时GPIO仍约3.30V。需要调整电路，并按最终器件规格验证慢速掉压、输入插拔和温度。当前检测器不能用来可靠判断欠压。
+1. **外部电源检测已修正，实物验证未完成。** 旧100k/100k电路在高阈值模型下失败；现改R19=10k 1%、R20=100k 1%、Q5为Diodes 2N7002K-7。27组通用模型覆盖4.5/5/5.25V、VTO至2.5V及1%电阻相反方向容差；最低门极约{min(c['gate_present_v'] for c in detect):.3f}V。插入及移除判据通过，但温度、漏电、慢速降压与实际采购器件仍须测；不作为准确欠压检测器。
 2. **降压候选BOM尚未验证。** 约494µF直接并到输出，超出TI数据表20–68µF推荐范围。必须验证闭环稳定性、启动、轻载、2A突发和限流；目前TI模型与ngspice的瞬态计算中止阻塞这项验证，不能确认候选芯片适用。
 3. **ML307供电循环缺少残压放电设计。** 厂家要求重新上电前VBAT低于1.8V保持至少100ms。草图没有专门放电路径或已确认时序，不能保证电源闪断后的重新启动。
 4. **UPS芯片、电池和保护电路未确定。** 充电、边充边用、无缝切换、过流/短路、低电关机、温升和续航均尚不能验证。494µF在2A负载下从3.8V降到3.4V的仿真时间约{power['capacitor_only_crosses_3v4_us']:.1f}µs，不能承担毫秒级UPS供电中断。
@@ -368,7 +370,7 @@ md=f'''# 语音对讲主板V2 仿真审查报告
 ## 从这份报告到打样
 
 1. 提供实际UPS芯片型号、参考原理图/测试板、电池化学体系及放电能力；补齐电源路径、保护与掉电行为。
-2. 修正外部检测阈值裕量；验证降压器输出网络；补齐ML307电源循环/放电时序。
+2. 实测修正后的外部检测；验证降压器输出网络；补齐ML307电源循环/放电时序及开机实现。
 3. 确认采购BOM、ML307封装、插座/SIM卡座尺寸、ESP开发板安装方法和外壳内尺寸。
 4. 完成叠层、RF/USB/电源布线，所有未连接项清零并复核接地、回流、温升与ESD。
 5. 打样后测5V/VBAT峰值、启动、切换、过流和低电行为，再做双向通话、反复上下电、后台/锁屏接听及雷达测试。测量应保留示波器波形和串口日志。
@@ -391,9 +393,9 @@ for c in report['coverage']:
     html_rows.append(f'<tr><td>{escape(c["function"])}</td><td class="{cls}">{escape(status_names[c["status"]])}</td><td>{escape(c["next"])}</td></tr>')
 html='''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>语音对讲V2 仿真审查</title><style>body{font:16px "Microsoft YaHei",sans-serif;background:#edf2f7;color:#24374b;margin:0}main{max-width:1320px;margin:auto;padding:28px}h1{font-size:30px}p{line-height:1.7}.card{background:white;border-radius:14px;padding:22px;margin:20px 0}.warning{background:#fff0d6;border-left:5px solid #bb7625;padding:16px}table{border-collapse:collapse;width:100%}th,td{padding:14px 10px;border-bottom:1px solid #dde5ed;text-align:left;vertical-align:top;line-height:1.5}.bad{color:#b83035;font-weight:bold}.good{color:#14675b}.pending{color:#8d651e}img{width:100%;height:auto}a{color:#14675b}</style>
-<main><h1>语音对讲主板V2 · 仿真审查</h1><p class="warning">整机尚未通过验收，禁止据此下单生产。49组电路瞬态完成计算，外部电源检测及高阻供电情景存在失败；TI降压模型、UPS及实机功能尚未验证。</p>
+<main><h1>语音对讲主板V2 · 仿真审查</h1><p class="warning">整机尚未通过验收，禁止据此下单生产。67组电路瞬态完成计算，外部检测阈值已修正并通过通用模型；高阻供电情景失败，TI降压模型、UPS及实机功能尚未验证。</p>
 <div class="card"><h2>已执行的检查</h2><p>__CHECKS__项接口引脚与__FW_CHECKS__项现有固件引脚核对通过，其中19项为USB预留接口。电池采样、按钮RC和开漏控制仅在对应模型假设下通过；本仿真不接触实机固件。</p><p><a href="../../仿真审查报告.md">完整文字报告</a> · <a href="results.json">全部数值与模型失败原因</a> · <a href="../review.html">板图与原理图预览</a></p></div>
-<div class="card"><h2>电路波形</h2><img src="waveforms.png" alt="电池采样、2A供电负载、输入检测失败及BOOT按钮的实际ngspice波形"></div>
+<div class="card"><h2>电路波形</h2><img src="waveforms.png" alt="电池采样、2A供电负载、修正后输入检测及BOOT按钮的实际ngspice波形"></div>
 <div class="card"><h2>功能覆盖与下一步</h2><table><thead><tr><th>功能</th><th>结果范围</th><th>还需完成</th></tr></thead><tbody>__ROWS__</tbody></table></div>
 <p>模型来源为TI官方PSpice模型及明确标注的通用MOS/RC模型。真实4G通话、UPS保护、PCB信号完整性和声学/雷达功能须另做实机验证。</p></main></html>'''.replace('__ROWS__',''.join(html_rows)).replace('__CHECKS__',str(len(checks))).replace('__FW_CHECKS__',str(len(fw_checks)))
 (OUT/'index.html').write_text(html,encoding='utf-8')
@@ -417,7 +419,7 @@ try:
     ax.plot([t*1000 for t in d['time']],d['v(gate)'],label='MOS门极')
     ax.plot([t*1000 for t in d['time']],d['v(present)'],label='GPIO检测')
     ax.axhline(.825,color='#c83939',ls='--',label='低电平判据0.825V');ax.legend()
-    ax.set(title='5V输入、VTO=2.5V情景：检测失败',xlabel='时间 ms',ylabel='电压 V')
+    ax.set(title='修正后输入检测：4.5V、VTO=2.5V、电阻容差',xlabel='时间 ms',ylabel='电压 V')
     ax=axes[1,1];d=traces['button'];ax.plot([t*1000 for t in d['time']],d['v(node)'],color='#405e9b')
     ax.axhline(2.475,color='#888',ls='--');ax.set(title='BOOT按钮：理想开关/1ms RC',xlabel='时间 ms',ylabel='GPIO0 V')
     for ax in axes.flat:ax.grid(alpha=.2)

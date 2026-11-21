@@ -2,7 +2,7 @@
 <export version="E">
   <design>
     <source>C:\project\esp32\doorbell_demo_voice\hardware\voice_mainboard_v2\voice_mainboard_v2.kicad_sch</source>
-    <date>2026-11-21T16:22:07+0800</date>
+    <date>2026-11-21T16:59:04+0800</date>
     <tool>Eeschema 9.0.6</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -870,7 +870,7 @@
       <tstamps>fda8fac3-1796-518b-b667-62f9ea473560</tstamps>
     </comp>
     <comp ref="Q5">
-      <value>2N7002</value>
+      <value>2N7002K-7 DIODES</value>
       <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
       <fields>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
@@ -1137,7 +1137,7 @@
       <tstamps>deb7579d-1592-5ab7-8c12-084f7339c808</tstamps>
     </comp>
     <comp ref="R19">
-      <value>100k</value>
+      <value>10k 1%</value>
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <fields>
         <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
@@ -1151,7 +1151,7 @@
       <tstamps>749c6dd5-da2f-551b-91d7-a0c17bc44c4f</tstamps>
     </comp>
     <comp ref="R20">
-      <value>100k</value>
+      <value>100k 1%</value>
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <fields>
         <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
@@ -2348,7 +2348,7 @@
     <libpart lib="VoiceV2" part="Q5">
       <fields>
         <field name="Reference">Q5</field>
-        <field name="Value">2N7002</field>
+        <field name="Value">2N7002K-7 DIODES</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
         <field name="Datasheet"/>
         <field name="Description"/>
@@ -2492,7 +2492,7 @@
     <libpart lib="VoiceV2" part="R19">
       <fields>
         <field name="Reference">R19</field>
-        <field name="Value">100k</field>
+        <field name="Value">10k 1%</field>
         <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
         <field name="Datasheet"/>
         <field name="Description"/>
@@ -2518,7 +2518,7 @@
     <libpart lib="VoiceV2" part="R20">
       <fields>
         <field name="Reference">R20</field>
-        <field name="Value">100k</field>
+        <field name="Value">100k 1%</field>
         <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
         <field name="Datasheet"/>
         <field name="Description"/>

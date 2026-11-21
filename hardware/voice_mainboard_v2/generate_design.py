@@ -187,9 +187,14 @@ def design():
     r('R18','100k 1%',97,33,'ADC_BAT_IO2','GND',g)
     c('C28','100n',97,37,'ADC_BAT_IO2','GND',g)
     # External input detector is open drain, separate from UPS boosted 5V.
-    mos('Q5','2N7002',94,56,'EXT_DETECT_GATE','GND','EXT_PRESENT_N_IO10',g)
-    r('R19','100k',94,44,'VIN_EXT_5V','EXT_DETECT_GATE',g)
-    r('R20','100k',94,48,'EXT_DETECT_GATE','GND',g)
+    mos('Q5','2N7002K-7 DIODES',94,56,'EXT_DETECT_GATE','GND','EXT_PRESENT_N_IO10',g)
+    parts[-1].update(source='https://www.diodes.com/assets/Datasheets/2N7002K.pdf',
+        note='Specific Diodes Incorporated 2N7002K-7; VGS(th) max 2.5V at ID=1mA, 25C. Gate-source rating +/-20V. 10k/100k insertion detector still needs actual temperature/ramp verification, not a precision undervoltage detector.')
+    # Avoid putting the gate at the worst-case 2.5V threshold at nominal 5V.
+    # Specific Diodes part: VGS(th) max 2.5V at 1mA; digital sink is ~0.33mA.
+    # This is insertion detection, not a calibrated undervoltage threshold.
+    r('R19','10k 1%',94,44,'VIN_EXT_5V','EXT_DETECT_GATE',g)
+    r('R20','100k 1%',94,48,'EXT_DETECT_GATE','GND',g)
     r('R21','10k',94,61,'ESP_3V3','EXT_PRESENT_N_IO10',g)
     c('C29','10n',94,52,'EXT_DETECT_GATE','GND',g)
     for ref,x,n in [('R22',10,'CHRG_OD'),('R23',15,'DONE_OD'),('R24',20,'UPS_PG_OD')]:r(ref,'10k DNP UNTIL UPS CONFIRMED',x,48,'ESP_3V3',n,g,dnp=True)
