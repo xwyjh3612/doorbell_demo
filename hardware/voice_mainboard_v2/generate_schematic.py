@@ -72,6 +72,7 @@ text('UPS RESERVE: actual charging, cell protection, power path, NTC and current
 text('Battery ADC: GPIO2 ADC1_CH1, enable GPIO9; 150k/100k + 100nF; Vbat = 2.5 x calibrated ADC volts. Protected 1S 4.2V assumed.',25,801,1.7)
 text('No firmware changes: optional radar RX GPIO6 / reserved TX GPIO8; button GPIO0; modem PWRKEY GPIO11 / RESET GPIO21 proposed only.',25,810,1.7)
 text('USB POPULATION: SERVICE R26/R27/R30 OR HOST R28/R29/R31, never both. HOST DM19/DP20 via J13; UART remains. USB not routed/tested.',25,819,1.7)
+text('J19 VBAT: one shunt only 1-2 internal buck OR 2-3 external regulated 3.8V at J20; none isolates modem. Never 5V at J20.',25,828,1.7)
 lib.append('''(symbol "VoiceV2:PWR_FLAG" (power) (pin_names (offset 0)) (in_bom no) (on_board no)
  (property "Reference" "#FLG" (at 0 2 0) (effects (font (size 1 1)) hide))
  (property "Value" "PWR_FLAG" (at 0 3 0) (effects (font (size 1 1))))

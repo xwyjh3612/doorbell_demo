@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-21T17:02:03.711683+08:00",
+  "generated_at": "2026-11-21T17:53:41.200378+08:00",
   "engine": "KiCad 9 bundled ngspice shared library, PSpice compatibility / XSPICE",
   "whole_product_pass": false,
   "manufacturing_ready": false,
@@ -582,6 +582,97 @@
           "pass": true
         },
         {
+          "ref": "J19",
+          "pin": "1",
+          "expected": "BUCK_3V8",
+          "actual": "BUCK_3V8",
+          "pass": true
+        },
+        {
+          "ref": "J19",
+          "pin": "2",
+          "expected": "MODEM_3V8",
+          "actual": "MODEM_3V8",
+          "pass": true
+        },
+        {
+          "ref": "J19",
+          "pin": "3",
+          "expected": "EXT_MODEM_3V8",
+          "actual": "EXT_MODEM_3V8",
+          "pass": true
+        },
+        {
+          "ref": "J20",
+          "pin": "1",
+          "expected": "EXT_MODEM_3V8",
+          "actual": "EXT_MODEM_3V8",
+          "pass": true
+        },
+        {
+          "ref": "J20",
+          "pin": "2",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "L1",
+          "pin": "1",
+          "expected": "BUCK_SW",
+          "actual": "BUCK_SW",
+          "pass": true
+        },
+        {
+          "ref": "L1",
+          "pin": "2",
+          "expected": "BUCK_3V8",
+          "actual": "BUCK_3V8",
+          "pass": true
+        },
+        {
+          "ref": "R2",
+          "pin": "1",
+          "expected": "BUCK_3V8",
+          "actual": "BUCK_3V8",
+          "pass": true
+        },
+        {
+          "ref": "R2",
+          "pin": "2",
+          "expected": "BUCK_FB",
+          "actual": "BUCK_FB",
+          "pass": true
+        },
+        {
+          "ref": "C6",
+          "pin": "1",
+          "expected": "BUCK_3V8",
+          "actual": "BUCK_3V8",
+          "pass": true
+        },
+        {
+          "ref": "C6",
+          "pin": "2",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "C7",
+          "pin": "1",
+          "expected": "BUCK_3V8",
+          "actual": "BUCK_3V8",
+          "pass": true
+        },
+        {
+          "ref": "C7",
+          "pin": "2",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
           "ref": "Q3",
           "pin": "1",
           "expected": "BAT_GATE",
@@ -701,7 +792,7 @@
       "pass": true,
       "scope": "Static independent KiCad netlist / pin contract only. No UART timing or firmware execution.",
       "source_hashes": {
-        "hardware\\voice_mainboard_v2\\exports\\voice_mainboard_v2.net.xml": "0f56967c1204198d6590e323501b399ef32026f6bd7c0e07aca9c0a630c651d2",
+        "hardware\\voice_mainboard_v2\\exports\\voice_mainboard_v2.net.xml": "bdc5b974ae57c8e493f2375bc4c060891912a52573feccc9dce4bbc2f413b95a",
         "components\\codec_board\\board_cfg.txt": "6a3603c04b9a4f723db3b8ce7de4ae86c9477b07bb81d6706413404864115957",
         "main\\network_4g.cpp": "0512e43716c3e8ef31524da1529dd19545d3c4d0ff80dd8df0cc1af612495fa4",
         "main\\radar_presence.c": "967aa69dae39a4a12c41356b1e326b6bcfe22e471635240e5cef2fcb084374df"
@@ -1508,6 +1599,12 @@
       "next": "完成90Ω差分、ESD与最终连接器；实测枚举和USB通话，不能同时连接两个主机"
     },
     {
+      "function": "模组VBAT隔离及外部3.8V诊断供电",
+      "status": "STATIC_PASS",
+      "evidence": "13 independent J19/J20/L1/R2/C6/C7 pin checks; selector pin2 feeds modem, pin1 buck, pin3 external",
+      "next": "仅一个跳帽；核对>=3A连接器及接触压降，实测切换/倒灌；内置降压稳定性仍未验证"
+    },
+    {
       "function": "电池采样打开、关闭、60ms等待、分压容差",
       "status": "ENVELOPE_PASS",
       "evidence": "27 generic MOS/RC parameter cases + leakage scenarios",
@@ -1590,7 +1687,7 @@
     "run_from": "repository root",
     "command": "python hardware/voice_mainboard_v2/simulate_functions.py",
     "requires": "Python 3.11+, Windows KiCad bundled ngspice under build/cad-tools/kicad; optional matplotlib==3.10.7 under build/cad-tools/sim-python",
-    "netlist_sha256": "0f56967c1204198d6590e323501b399ef32026f6bd7c0e07aca9c0a630c651d2",
+    "netlist_sha256": "bdc5b974ae57c8e493f2375bc4c060891912a52573feccc9dce4bbc2f413b95a",
     "model_download": "Original TI unencrypted file is local build-only. See URL and SHA256; never modify manufacturer model.",
     "generic_decks": "exports/function-simulation/*.cir",
     "full_ti_diagnostics": "build/v2-simulation-logs/*.log"

@@ -30,6 +30,9 @@ part_map={p['ref']:p for p in d['parts']}
 assert all(not part_map[r]['dnp'] for r in route['service_links'])
 assert all(part_map[r]['dnp'] for r in route['host_links'])
 assert actual[('J13','28')]=='ESP_USB_DM19' and actual[('J13','29')]=='ESP_USB_DP20'
+assert [actual[('J19',str(n))] for n in [1,2,3]]==['BUCK_3V8','MODEM_3V8','EXT_MODEM_3V8']
+assert [actual[('J20',str(n))] for n in [1,2]]==['EXT_MODEM_3V8','GND']
+assert actual[('L1','2')]=='BUCK_3V8' and actual[('R2','1')]=='BUCK_3V8'
 ids=json.loads((ROOT/'schematic-ids.json').read_text(encoding='utf-8'))
 for f in b.GetFootprints():
     if f.GetReference() in ids['symbols']:
@@ -40,6 +43,7 @@ report={'revision':d['revision'],'kicad_version':pcb.Version(),'electrical_parts
  'placement_drc_violations':len(drc['violations']),'unrouted_links':len(drc['unconnected_items']),
  'manufacturing_ready':False,'rf_routed':False,'usb_routed':False,'ups_chip_frozen':False,'supplier_ml307_footprint_signoff':False,
  'usb_host_reserved':True,'usb_route_population_checked':True,'usb_host_hardware_tested':False,
+ 'modem_power_selector_reserved':True,'modem_power_selector_hardware_tested':False,
  'mechanical_fit_verified':False,'full_power_simulation':False,'physical_electrical_tests':False,'firmware_modified':False}
 (ROOT/'exports/validation.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
 print(json.dumps(report))

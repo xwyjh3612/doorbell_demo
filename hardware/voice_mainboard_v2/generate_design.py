@@ -100,10 +100,10 @@ def design():
     c('C3','100n BST',43,4.5,'BUCK_BST','BUCK_SW',g)
     c('C4','22u 10V',36,4.5,'SYS_5V','GND',g,big=True)
     c('C5','22u 10V',31,4.5,'SYS_5V','GND',g,big=True)
-    add('L1','2.2uH Isat>=4.5A DCR<50mOhm','Inductor_SMD:L_Sunlord_SWPA6045S',49,6.5,{'1':'BUCK_SW','2':'MODEM_3V8'},g,90,note='Footprint candidate; procure exact inductor before routing.')
-    c('C6','22u 10V',51,12,'MODEM_3V8','GND',g,big=True)
-    c('C7','22u 10V',46,12,'MODEM_3V8','GND',g,big=True)
-    r('R2','39.2k 0.1%',39,13,'MODEM_3V8','BUCK_FB',g)
+    add('L1','2.2uH Isat>=4.5A DCR<50mOhm','Inductor_SMD:L_Sunlord_SWPA6045S',49,6.5,{'1':'BUCK_SW','2':'BUCK_3V8'},g,90,note='Footprint candidate; procure exact inductor before routing.')
+    c('C6','22u 10V',51,12,'BUCK_3V8','GND',g,big=True)
+    c('C7','22u 10V',46,12,'BUCK_3V8','GND',g,big=True)
+    r('R2','39.2k 0.1%',39,13,'BUCK_3V8','BUCK_FB',g)
     r('R3','10k 0.1%',34,13,'BUCK_FB','GND',g)
     for ref,x in [('C8',59),('C9',73)]:
         add(ref,'220u 6.3V LOW ESR <=100mOhm','Capacitor_SMD:CP_Elec_6.3x5.8',x,6,{'1':'MODEM_3V8','2':'GND'},g,note='Transient reservoir per module guide; exact capacitor/ripple rating pending.')
@@ -111,6 +111,10 @@ def design():
     c('C11','100n',65,10,'MODEM_3V8','GND',g)
     c('C12','33p',69,10,'MODEM_3V8','GND',g)
     tp('TP1','MODEM VBAT',78,8,'MODEM_3V8',g)
+    hdr('J19','VBAT SELECT BUCK / MODEM / EXT 3V8',14,70,['BUCK_3V8','MODEM_3V8','EXT_MODEM_3V8'],g,90)
+    parts[-1]['note']='Fit one shunt only: 1-2 on-board buck, 2-3 external 3.8V. No shunt isolates modem VBAT. Header and shunt must each be rated >=3A and their contact drop included in VBAT budget; exact purchase pending. Bulk modem capacitors remain connected in internal mode, so buck stability is still unverified.'
+    hdr('J20','EXTERNAL 3V8 ONLY NEVER 5V',13,65,['EXT_MODEM_3V8','GND'],g,90)
+    parts[-1]['note']='Diagnostic fallback source: regulated 3.8V, compliant 3.4-4.5V at modem with >=2A transient capacity. Select J19 2-3 before connecting. Common ground. Source/current/contact-drop verification required; not a battery charging connector.'
     g='03 ML307R-DL / UART / CONTROL'
     ground={1,10,27,34,36,37,40,41,*range(45,49),*range(70,74),*range(88,96)}
     reserved={*range(2,7),8,26,*range(30,33),44,*range(50,59),*range(62,70),78,80,81,*range(83,86),*range(97,110)}
@@ -214,6 +218,7 @@ def design():
     for a,b in [((6,17),(29,17)),((29,17),(29,45)),((29,45),(6,45)),((6,45),(6,17))]:line(board,a,b,pcb.Dwgs_User,.15)
     pcb.SaveBoard(str(ROOT/(PROJECT+'.kicad_pcb')),board)
     data={'revision':'V2-ML307-SMT-UPS-USB-RESERVE','status':'UNROUTED REVIEW DRAFT - NOT FOR FABRICATION','dimensions_mm':[100,75],'parts':parts,'ups_reserved_region_mm':[6,17,23,28],'ups_chip':'User to supply later; no charging/protection/switching design frozen','battery':'Protected 1S 4.2V Li-ion assumed for estimation; chemistry to confirm','adc':{'gpio':2,'channel':'ADC1_CH1','enable_gpio':9,'rtop_ohm':150000,'rbottom_ohm':100000,'cap_farad':1e-7,'scale':2.5,'max_battery_v':4.2,'max_adc_v':1.68},'proposed_gpio':{'external_power_present_n':10,'modem_pwrkey':11,'modem_reset':21,'usb_dm':19,'usb_dp':20},
+      'modem_power_selection':{'selector':'J19','external_input':'J20','default_shunt':'1-2 on-board buck','diagnostic_shunt':'2-3 external 3.8V','one_shunt_only':True,'no_shunt_isolates_modem':True,'minimum_header_and_shunt_rating_A':3,'contact_resistance_in_budget':True,'hardware_verified':False,'warning':'No 5V at J20. Both shunts would tie independent sources. Internal-mode bulk capacitance still requires regulator validation.'},
       'usb_transport_reserve':{'uart_retained':True,'default_population':'service-only AT baseline','service_links':['R26','R27','R30'],'host_links':['R28','R29','R31'],'mutually_exclusive_population':True,'host_firmware_choices':['AT UART','USB RNDIS','USB ECM'],'runtime_switch_implemented':False,'routed':False,'verified_on_hardware':False,'vbus_detect_range_v':[3,5.25],'note':'VBUS detection is not module main power; USB ESD/impedance/final connector/host isolation pending. No two populated data pairs or VBUS sources simultaneously.'},'manufacturing_ready':False,'firmware_modified':False}
     (ROOT/'design.json').write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding='utf-8')
     prior=json.loads((ROOT.parent/'voice_carrier_v1/voice_carrier_v1.kicad_pro').read_text(encoding='utf-8'))

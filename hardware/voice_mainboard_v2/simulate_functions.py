@@ -72,6 +72,10 @@ for ref,pins in {
     'R26':{'1':'M_USB_DP','2':'SERVICE_USB_DP'},'R27':{'1':'M_USB_DM','2':'SERVICE_USB_DM'},
     'R28':{'1':'M_USB_DP','2':'ESP_USB_DP20'},'R29':{'1':'M_USB_DM','2':'ESP_USB_DM19'},
     'R30':{'1':'SERVICE_USB_VBUS','2':'USB_DETECT_5V'},'R31':{'1':'SYS_5V','2':'USB_DETECT_5V'},
+    'J19':{'1':'BUCK_3V8','2':'MODEM_3V8','3':'EXT_MODEM_3V8'},
+    'J20':{'1':'EXT_MODEM_3V8','2':'GND'},
+    'L1':{'1':'BUCK_SW','2':'BUCK_3V8'},'R2':{'1':'BUCK_3V8','2':'BUCK_FB'},
+    'C6':{'1':'BUCK_3V8','2':'GND'},'C7':{'1':'BUCK_3V8','2':'GND'},
     'Q3':{'1':'BAT_GATE','2':'BAT_SENSE_IN','3':'BAT_DIV_SW'},
     'Q4':{'1':'ADC_EN_IO9','2':'GND','3':'BAT_GATE'},
     'R17':{'1':'BAT_DIV_SW','2':'ADC_BAT_IO2'},'R18':{'1':'ADC_BAT_IO2','2':'GND'},
@@ -294,6 +298,10 @@ report['coverage'].insert(1,{'function':'USB Host/维修通路及互斥贴装',
     'status':'STATIC_PASS' if report['sections']['interfaces']['pass'] else 'FAIL',
     'evidence':'19 independent J12/J13/R26-R31 pin checks; population contract checked by verify_design.py',
     'next':'完成90Ω差分、ESD与最终连接器；实测枚举和USB通话，不能同时连接两个主机'})
+report['coverage'].insert(2,{'function':'模组VBAT隔离及外部3.8V诊断供电',
+    'status':'STATIC_PASS' if report['sections']['interfaces']['pass'] else 'FAIL',
+    'evidence':'13 independent J19/J20/L1/R2/C6/C7 pin checks; selector pin2 feeds modem, pin1 buck, pin3 external',
+    'next':'仅一个跳帽；核对>=3A连接器及接触压降，实测切换/倒灌；内置降压稳定性仍未验证'})
 
 report['reproducibility']={'run_from':'repository root','command':'python hardware/voice_mainboard_v2/simulate_functions.py',
     'requires':'Python 3.11+, Windows KiCad bundled ngspice under build/cad-tools/kicad; optional matplotlib==3.10.7 under build/cad-tools/sim-python',
@@ -321,6 +329,7 @@ md=f'''# 语音对讲主板V2 仿真审查报告
 
 - {len(checks)}项独立接口引脚核对、{len(fw_checks)}项当前固件引脚核对均通过；KiCad现有报告为ERC {validation['schematic_erc_violations']}、摆放DRC {validation['placement_drc_violations']}、{validation['connected_unique_pin_net_mappings']}项网表/焊盘匹配，仍有{validation['unrouted_links']}处未布线连接。
 - 新增USB Host/维修口的19项独立引脚核对；默认贴R26/R27/R30，Host组R28/R29/R31不贴，互斥贴装由网表验证器检查。USB未布线、未枚举或通话实测；这一项不是USB信号仿真。
+- 模组供电新增13项独立引脚核对：J19仅一个跳帽，1–2内置降压，2–3外部3.8V，全部拔掉隔离VBAT；J20不能接5V。接触压降、额定电流与实物切换未测，内置模式的总电容问题仍在。
 - 67组ngspice瞬态计算完成到指定结束时间：27组采样参数、3组漏电/ESP无电情景、27组外部输入检测、2组按钮RC、4组模组控制、3组供电阻抗、1组电容储能。完成计算不代表每组都通过电气判据。
 - 4组TI原厂TPS563201 PSpice模型尝试均提前中止，统一标为未验证。记录实际停止时间和错误，不把部分波形算作通过。
 - 本仿真脚本不修改设备固件、不打开串口、不刷机；官方协议和主动丢旧UDP包策略保持原样。当前AT恢复固件的实机回归另见[实机记录](../../tests/at_recovery_batch_20261121.md)。

@@ -291,7 +291,7 @@
       "footprint": "Inductor_SMD:L_Sunlord_SWPA6045S",
       "pins": {
         "1": "BUCK_SW",
-        "2": "MODEM_3V8"
+        "2": "BUCK_3V8"
       },
       "names": {},
       "x": 49,
@@ -308,7 +308,7 @@
       "value": "22u 10V",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "pins": {
-        "1": "MODEM_3V8",
+        "1": "BUCK_3V8",
         "2": "GND"
       },
       "names": {},
@@ -326,7 +326,7 @@
       "value": "22u 10V",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "pins": {
-        "1": "MODEM_3V8",
+        "1": "BUCK_3V8",
         "2": "GND"
       },
       "names": {},
@@ -344,7 +344,7 @@
       "value": "39.2k 0.1%",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "pins": {
-        "1": "MODEM_3V8",
+        "1": "BUCK_3V8",
         "2": "BUCK_FB"
       },
       "names": {},
@@ -480,6 +480,43 @@
       "dnp": false,
       "source": "",
       "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "J19",
+      "value": "VBAT SELECT BUCK / MODEM / EXT 3V8",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+      "pins": {
+        "1": "BUCK_3V8",
+        "2": "MODEM_3V8",
+        "3": "EXT_MODEM_3V8"
+      },
+      "names": {},
+      "x": 14,
+      "y": 70,
+      "angle": 90,
+      "group": "02 MODEM 3.8V BUCK / DECOUPLING",
+      "dnp": false,
+      "source": "",
+      "note": "Fit one shunt only: 1-2 on-board buck, 2-3 external 3.8V. No shunt isolates modem VBAT. Header and shunt must each be rated >=3A and their contact drop included in VBAT budget; exact purchase pending. Bulk modem capacitors remain connected in internal mode, so buck stability is still unverified.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "J20",
+      "value": "EXTERNAL 3V8 ONLY NEVER 5V",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "pins": {
+        "1": "EXT_MODEM_3V8",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 13,
+      "y": 65,
+      "angle": 90,
+      "group": "02 MODEM 3.8V BUCK / DECOUPLING",
+      "dnp": false,
+      "source": "",
+      "note": "Diagnostic fallback source: regulated 3.8V, compliant 3.4-4.5V at modem with >=2A transient capacity. Select J19 2-3 before connecting. Common ground. Source/current/contact-drop verification required; not a battery charging connector.",
       "kind": "pcb"
     },
     {
@@ -2845,6 +2882,18 @@
     "modem_reset": 21,
     "usb_dm": 19,
     "usb_dp": 20
+  },
+  "modem_power_selection": {
+    "selector": "J19",
+    "external_input": "J20",
+    "default_shunt": "1-2 on-board buck",
+    "diagnostic_shunt": "2-3 external 3.8V",
+    "one_shunt_only": true,
+    "no_shunt_isolates_modem": true,
+    "minimum_header_and_shunt_rating_A": 3,
+    "contact_resistance_in_budget": true,
+    "hardware_verified": false,
+    "warning": "No 5V at J20. Both shunts would tie independent sources. Internal-mode bulk capacitance still requires regulator validation."
   },
   "usb_transport_reserve": {
     "uart_retained": true,

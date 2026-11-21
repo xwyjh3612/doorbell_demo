@@ -49,7 +49,7 @@ notes=[('ML307R-DL裸模组','109焊盘；VBAT约3.8V；UART 1.8V'),
  ('UPS接口与预留区','芯片后续提供；充放电电路待补'),
  ('电池ADC','GPIO2建议；GPIO9开关；比例2.5'),
  ('USB Host / 维修选装','GPIO20 D+ / 19 D−；两组0Ω互斥'),
- ('音频 / 雷达 / 生产确认','雷达TX→6；封装、外壳与布线待定')]
+ ('J19 / J20 模组供电选择','内置降压或外部3.8V；仅一个跳帽')]
 for i,(a,bb) in enumerate(notes):
     y=225+i*73;text(a,1055,y,19,weight='bold');text(bb,1055,y+28,16,'#627b91')
 rect(55,873,1450,217,'white',radius=12)
@@ -70,6 +70,7 @@ canvas{display:block;width:100%;height:320px}.row{display:flex;gap:20px;flex-wra
 table{border-collapse:collapse;width:100%}td,th{padding:12px;border-bottom:1px solid #dee7ef;text-align:left}.small{color:#627b91;font-size:14px}
 </style><main><h1>语音对讲主板 V2</h1><p class="banner">未布线工程草图；UPS芯片和部分采购封装待确定，不能下单生产。板图生成不接触正在测试的设备。</p>
 <div class="panel"><img src="overview.svg" alt="ML307贴片、UPS预留及TTL口的实际焊盘摆放草图"></div>
+<div class="panel"><h2>同一块样板分步测试</h2><p>新增J19供电选择：仅一个跳帽，1–2板载降压、2–3从J20接经验证的3.8V电源，无跳帽隔离模组。J20为3.8V/GND，不能接5V。先单独测降压，再接4G，有助于诊断与返修。</p><p>排针/跳帽须核对至少3A能力和接触压降；PCB未布线、实物未验证，正常模式的约494µF总电容仍需验证降压稳定性。</p></div>
 <div class="panel"><h2>预留USB，保留当前AT</h2><p>模组59/60脚连接D+/D−，ESP32-S3预留GPIO20/19。UART17/18及DTR4保留。Host连接完成后可做AT、RNDIS、ECM编译选择；正式固件统一选择及热切换尚未实现。</p>
 <table><tr><th>贴装用途</th><th>贴装0Ω</th><th>不贴</th></tr><tr><td>默认：电脑维修模组</td><td>R26 / R27 / R30</td><td>R28 / R29 / R31</td></tr><tr><td>产品：ESP32 USB Host</td><td>R28 / R29 / R31</td><td>R26 / R27 / R30</td></tr></table>
 <p>两组互斥；USB VBUS为检测端，不能代替3.8V主电源。差分90Ω、ESD及最终连接器待设计，尚未完成实机USB枚举/通话验证。</p></div>
