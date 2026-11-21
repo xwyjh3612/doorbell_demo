@@ -1,0 +1,2739 @@
+{
+  "revision": "V2-ML307-SMT-UPS-RESERVE",
+  "status": "UNROUTED REVIEW DRAFT - NOT FOR FABRICATION",
+  "dimensions_mm": [
+    100,
+    75
+  ],
+  "parts": [
+    {
+      "ref": "J1",
+      "value": "DC 5.5x2.5mm CENTER POSITIVE 5V",
+      "footprint": "Connector_BarrelJack:BarrelJack_Wuerth_694108106102_2.5x5.5mm",
+      "pins": {
+        "1": "VIN_EXT_5V",
+        "2": "GND",
+        "3": ""
+      },
+      "names": {
+        "1": [
+          "CENTER_PLUS",
+          "passive"
+        ],
+        "2": [
+          "SLEEVE_GND",
+          "passive"
+        ],
+        "3": [
+          "SW_UNUSED",
+          "passive"
+        ]
+      },
+      "x": 14,
+      "y": 8,
+      "angle": 0,
+      "group": "01 UPS / BATTERY / SYSTEM",
+      "dnp": false,
+      "source": "",
+      "note": "2.5mm inner / 5.5mm outer assumption. Exact low-cost purchased socket footprint must match; Wuerth geometry is a draft candidate, not mandatory purchase.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "J2",
+      "value": "UPS INPUT TO DAUGHTERBOARD",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "pins": {
+        "1": "VIN_EXT_5V",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 8,
+      "y": 20,
+      "angle": 90,
+      "group": "01 UPS / BATTERY / SYSTEM",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "J3",
+      "value": "UPS STABLE 5V RETURN",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "pins": {
+        "1": "SYS_5V",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 8,
+      "y": 53,
+      "angle": 90,
+      "group": "01 UPS / BATTERY / SYSTEM",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "J4",
+      "value": "1S BATTERY SENSE ONLY",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "pins": {
+        "1": "BAT_SENSE_IN",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 8,
+      "y": 60,
+      "angle": 90,
+      "group": "01 UPS / BATTERY / SYSTEM",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "J5",
+      "value": "UPS STATUS RESERVED 3V3 ONLY",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+      "pins": {
+        "1": "CHRG_OD",
+        "2": "DONE_OD",
+        "3": "UPS_PG_OD",
+        "4": "GND"
+      },
+      "names": {},
+      "x": 15,
+      "y": 53,
+      "angle": 90,
+      "group": "01 UPS / BATTERY / SYSTEM",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "JP1",
+      "value": "BENCH BYPASS UPS - REMOVE WITH UPS",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "pins": {
+        "1": "VIN_EXT_5V",
+        "2": "SYS_5V"
+      },
+      "names": {},
+      "x": 24,
+      "y": 13,
+      "angle": 90,
+      "group": "01 UPS / BATTERY / SYSTEM",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C1",
+      "value": "22u 10V",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "SYS_5V",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 24,
+      "y": 8,
+      "angle": 0,
+      "group": "01 UPS / BATTERY / SYSTEM",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C2",
+      "value": "100n",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "SYS_5V",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 29,
+      "y": 8,
+      "angle": 0,
+      "group": "01 UPS / BATTERY / SYSTEM",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "U2",
+      "value": "TPS563201DDCR CANDIDATE",
+      "footprint": "Package_TO_SOT_SMD:SOT-23-6",
+      "pins": {
+        "1": "GND",
+        "2": "BUCK_SW",
+        "3": "SYS_5V",
+        "4": "BUCK_FB",
+        "5": "BUCK_EN",
+        "6": "BUCK_BST"
+      },
+      "names": {
+        "1": [
+          "GND",
+          "power_in"
+        ],
+        "2": [
+          "SW",
+          "passive"
+        ],
+        "3": [
+          "VIN",
+          "power_in"
+        ],
+        "4": [
+          "VFB",
+          "input"
+        ],
+        "5": [
+          "EN",
+          "input"
+        ],
+        "6": [
+          "VBST",
+          "passive"
+        ]
+      },
+      "x": 42,
+      "y": 8,
+      "angle": 0,
+      "group": "02 MODEM 3.8V BUCK / DECOUPLING",
+      "dnp": false,
+      "source": "https://www.ti.com/lit/ds/symlink/tps563201.pdf",
+      "note": "3A candidate, minimum input 4.5V. Not the UPS PMIC; output/current/thermal validation pending.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R1",
+      "value": "100k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "SYS_5V",
+        "2": "BUCK_EN"
+      },
+      "names": {},
+      "x": 35,
+      "y": 8,
+      "angle": 0,
+      "group": "02 MODEM 3.8V BUCK / DECOUPLING",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C3",
+      "value": "100n BST",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "BUCK_BST",
+        "2": "BUCK_SW"
+      },
+      "names": {},
+      "x": 43,
+      "y": 4.5,
+      "angle": 0,
+      "group": "02 MODEM 3.8V BUCK / DECOUPLING",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C4",
+      "value": "22u 10V",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "SYS_5V",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 36,
+      "y": 4.5,
+      "angle": 0,
+      "group": "02 MODEM 3.8V BUCK / DECOUPLING",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C5",
+      "value": "22u 10V",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "SYS_5V",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 31,
+      "y": 4.5,
+      "angle": 0,
+      "group": "02 MODEM 3.8V BUCK / DECOUPLING",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "L1",
+      "value": "2.2uH Isat>=4.5A DCR<50mOhm",
+      "footprint": "Inductor_SMD:L_Sunlord_SWPA6045S",
+      "pins": {
+        "1": "BUCK_SW",
+        "2": "MODEM_3V8"
+      },
+      "names": {},
+      "x": 49,
+      "y": 6.5,
+      "angle": 90,
+      "group": "02 MODEM 3.8V BUCK / DECOUPLING",
+      "dnp": false,
+      "source": "",
+      "note": "Footprint candidate; procure exact inductor before routing.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C6",
+      "value": "22u 10V",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "MODEM_3V8",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 51,
+      "y": 12,
+      "angle": 0,
+      "group": "02 MODEM 3.8V BUCK / DECOUPLING",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C7",
+      "value": "22u 10V",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "MODEM_3V8",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 46,
+      "y": 12,
+      "angle": 0,
+      "group": "02 MODEM 3.8V BUCK / DECOUPLING",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R2",
+      "value": "39.2k 0.1%",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "MODEM_3V8",
+        "2": "BUCK_FB"
+      },
+      "names": {},
+      "x": 39,
+      "y": 13,
+      "angle": 0,
+      "group": "02 MODEM 3.8V BUCK / DECOUPLING",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R3",
+      "value": "10k 0.1%",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "BUCK_FB",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 34,
+      "y": 13,
+      "angle": 0,
+      "group": "02 MODEM 3.8V BUCK / DECOUPLING",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C8",
+      "value": "220u 6.3V LOW ESR <=100mOhm",
+      "footprint": "Capacitor_SMD:CP_Elec_6.3x5.8",
+      "pins": {
+        "1": "MODEM_3V8",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 59,
+      "y": 6,
+      "angle": 0,
+      "group": "02 MODEM 3.8V BUCK / DECOUPLING",
+      "dnp": false,
+      "source": "",
+      "note": "Transient reservoir per module guide; exact capacitor/ripple rating pending.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C9",
+      "value": "220u 6.3V LOW ESR <=100mOhm",
+      "footprint": "Capacitor_SMD:CP_Elec_6.3x5.8",
+      "pins": {
+        "1": "MODEM_3V8",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 73,
+      "y": 6,
+      "angle": 0,
+      "group": "02 MODEM 3.8V BUCK / DECOUPLING",
+      "dnp": false,
+      "source": "",
+      "note": "Transient reservoir per module guide; exact capacitor/ripple rating pending.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C10",
+      "value": "10u 10V",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "MODEM_3V8",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 66,
+      "y": 3,
+      "angle": 0,
+      "group": "02 MODEM 3.8V BUCK / DECOUPLING",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C11",
+      "value": "100n",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "MODEM_3V8",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 63,
+      "y": 11,
+      "angle": 0,
+      "group": "02 MODEM 3.8V BUCK / DECOUPLING",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C12",
+      "value": "33p",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "MODEM_3V8",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 66.5,
+      "y": 11,
+      "angle": 0,
+      "group": "02 MODEM 3.8V BUCK / DECOUPLING",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "TP1",
+      "value": "MODEM VBAT",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": {
+        "1": "MODEM_3V8"
+      },
+      "names": {},
+      "x": 78,
+      "y": 8,
+      "angle": 0,
+      "group": "02 MODEM 3.8V BUCK / DECOUPLING",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "U1",
+      "value": "ML307R-DL SMT",
+      "footprint": "VoiceV2:ML307R_DL_109_15.8x17.7mm_DRAFT",
+      "pins": {
+        "1": "GND",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+        "6": "",
+        "7": "MODEM_PWRKEY_N",
+        "8": "",
+        "9": "",
+        "10": "GND",
+        "11": "M_SIM_DATA",
+        "12": "M_SIM_RESET",
+        "13": "M_SIM_CLK",
+        "14": "SIM_VCC",
+        "15": "MODEM_RESET_N",
+        "16": "MODEM_NETLIGHT",
+        "17": "M_RX_1V8",
+        "18": "M_TX_1V8",
+        "19": "M_DTR_1V8",
+        "20": "",
+        "21": "",
+        "22": "",
+        "23": "",
+        "24": "MODEM_1V8",
+        "25": "MODEM_STATE_1V8",
+        "26": "",
+        "27": "GND",
+        "28": "",
+        "29": "",
+        "30": "",
+        "31": "",
+        "32": "",
+        "33": "",
+        "34": "GND",
+        "35": "RF_ANT",
+        "36": "GND",
+        "37": "GND",
+        "38": "DBG_RX_1V8",
+        "39": "DBG_TX_1V8",
+        "40": "GND",
+        "41": "GND",
+        "42": "MODEM_3V8",
+        "43": "MODEM_3V8",
+        "44": "",
+        "45": "GND",
+        "46": "GND",
+        "47": "GND",
+        "48": "GND",
+        "49": "",
+        "50": "",
+        "51": "",
+        "52": "",
+        "53": "",
+        "54": "",
+        "55": "",
+        "56": "",
+        "57": "",
+        "58": "",
+        "59": "M_USB_DP",
+        "60": "M_USB_DM",
+        "61": "USB_DETECT_5V",
+        "62": "",
+        "63": "",
+        "64": "",
+        "65": "",
+        "66": "",
+        "67": "",
+        "68": "",
+        "69": "",
+        "70": "GND",
+        "71": "GND",
+        "72": "GND",
+        "73": "GND",
+        "74": "",
+        "75": "",
+        "76": "",
+        "77": "",
+        "78": "",
+        "79": "SIM_DETECT",
+        "80": "",
+        "81": "",
+        "82": "MODEM_BOOT_N",
+        "83": "",
+        "84": "",
+        "85": "",
+        "86": "",
+        "87": "",
+        "88": "GND",
+        "89": "GND",
+        "90": "GND",
+        "91": "GND",
+        "92": "GND",
+        "93": "GND",
+        "94": "GND",
+        "95": "GND",
+        "96": "",
+        "97": "",
+        "98": "",
+        "99": "",
+        "100": "",
+        "101": "",
+        "102": "",
+        "103": "",
+        "104": "",
+        "105": "",
+        "106": "",
+        "107": "",
+        "108": "",
+        "109": ""
+      },
+      "names": {
+        "1": [
+          "GND",
+          "power_in"
+        ],
+        "2": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "3": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "4": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "5": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "6": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "7": [
+          "PWR_ON_OFF",
+          "input"
+        ],
+        "8": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "9": [
+          "ADC0",
+          "input"
+        ],
+        "10": [
+          "GND",
+          "power_in"
+        ],
+        "11": [
+          "USIM_DATA",
+          "bidirectional"
+        ],
+        "12": [
+          "USIM_RESET",
+          "output"
+        ],
+        "13": [
+          "USIM_CLK",
+          "output"
+        ],
+        "14": [
+          "USIM_PWR",
+          "power_out"
+        ],
+        "15": [
+          "RESET_N",
+          "input"
+        ],
+        "16": [
+          "NETLIGHT",
+          "output"
+        ],
+        "17": [
+          "UART0_RXD",
+          "input"
+        ],
+        "18": [
+          "UART0_TXD",
+          "output"
+        ],
+        "19": [
+          "UART0_DTR",
+          "input"
+        ],
+        "20": [
+          "UART0_RI",
+          "output"
+        ],
+        "21": [
+          "UART0_DCD",
+          "output"
+        ],
+        "22": [
+          "UART0_CTS",
+          "input"
+        ],
+        "23": [
+          "UART0_RTS",
+          "output"
+        ],
+        "24": [
+          "VDD_EXT",
+          "power_out"
+        ],
+        "25": [
+          "STATE",
+          "output"
+        ],
+        "26": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "27": [
+          "GND",
+          "power_in"
+        ],
+        "28": [
+          "UART1_RXD",
+          "input"
+        ],
+        "29": [
+          "UART1_TXD",
+          "output"
+        ],
+        "30": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "31": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "32": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "33": [
+          "PCM_OUT",
+          "output"
+        ],
+        "34": [
+          "GND",
+          "power_in"
+        ],
+        "35": [
+          "ANT_MAIN",
+          "passive"
+        ],
+        "36": [
+          "GND",
+          "power_in"
+        ],
+        "37": [
+          "GND",
+          "power_in"
+        ],
+        "38": [
+          "DBG_RXD",
+          "input"
+        ],
+        "39": [
+          "DBG_TXD",
+          "output"
+        ],
+        "40": [
+          "GND",
+          "power_in"
+        ],
+        "41": [
+          "GND",
+          "power_in"
+        ],
+        "42": [
+          "VBAT",
+          "power_in"
+        ],
+        "43": [
+          "VBAT",
+          "power_in"
+        ],
+        "44": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "45": [
+          "GND",
+          "power_in"
+        ],
+        "46": [
+          "GND",
+          "power_in"
+        ],
+        "47": [
+          "GND",
+          "power_in"
+        ],
+        "48": [
+          "GND",
+          "power_in"
+        ],
+        "49": [
+          "WAKEUPOUT",
+          "output"
+        ],
+        "50": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "51": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "52": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "53": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "54": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "55": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "56": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "57": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "58": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "59": [
+          "USB_DP",
+          "bidirectional"
+        ],
+        "60": [
+          "USB_DM",
+          "bidirectional"
+        ],
+        "61": [
+          "USB_VBUS",
+          "power_in"
+        ],
+        "62": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "63": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "64": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "65": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "66": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "67": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "68": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "69": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "70": [
+          "GND",
+          "power_in"
+        ],
+        "71": [
+          "GND",
+          "power_in"
+        ],
+        "72": [
+          "GND",
+          "power_in"
+        ],
+        "73": [
+          "GND",
+          "power_in"
+        ],
+        "74": [
+          "PWM0",
+          "output"
+        ],
+        "75": [
+          "PWM1",
+          "output"
+        ],
+        "76": [
+          "GPIO0",
+          "bidirectional"
+        ],
+        "77": [
+          "GPIO1",
+          "bidirectional"
+        ],
+        "78": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "79": [
+          "USIM_DET",
+          "input"
+        ],
+        "80": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "81": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "82": [
+          "BOOT_MODE",
+          "input"
+        ],
+        "83": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "84": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "85": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "86": [
+          "GPIO2",
+          "bidirectional"
+        ],
+        "87": [
+          "GPIO3",
+          "bidirectional"
+        ],
+        "88": [
+          "GND",
+          "power_in"
+        ],
+        "89": [
+          "GND",
+          "power_in"
+        ],
+        "90": [
+          "GND",
+          "power_in"
+        ],
+        "91": [
+          "GND",
+          "power_in"
+        ],
+        "92": [
+          "GND",
+          "power_in"
+        ],
+        "93": [
+          "GND",
+          "power_in"
+        ],
+        "94": [
+          "GND",
+          "power_in"
+        ],
+        "95": [
+          "GND",
+          "power_in"
+        ],
+        "96": [
+          "ADC1",
+          "input"
+        ],
+        "97": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "98": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "99": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "100": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "101": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "102": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "103": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "104": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "105": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "106": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "107": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "108": [
+          "RSV_FLOAT",
+          "no_connect"
+        ],
+        "109": [
+          "RSV_FLOAT",
+          "no_connect"
+        ]
+      },
+      "x": 66,
+      "y": 26,
+      "angle": 0,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1189/M307R_Hardware_Datasheet.pdf",
+      "note": "All reserved pins float. Supplier footprint and stencil signoff pending.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "U3",
+      "value": "SN74AXC1T45DBVR",
+      "footprint": "Package_TO_SOT_SMD:SOT-23-6",
+      "pins": {
+        "1": "ESP_3V3",
+        "2": "GND",
+        "3": "ESP_TX17",
+        "4": "M_RX_1V8",
+        "5": "ESP_3V3",
+        "6": "MODEM_1V8"
+      },
+      "names": {
+        "1": [
+          "VCCA",
+          "power_in"
+        ],
+        "2": [
+          "GND",
+          "power_in"
+        ],
+        "3": [
+          "A",
+          "bidirectional"
+        ],
+        "4": [
+          "B",
+          "bidirectional"
+        ],
+        "5": [
+          "DIR",
+          "input"
+        ],
+        "6": [
+          "VCCB",
+          "power_in"
+        ]
+      },
+      "x": 45,
+      "y": 19,
+      "angle": 0,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "https://www.ti.com/lit/ds/symlink/sn74axc1t45.pdf",
+      "note": "Direction fixed per signal; power-off isolation. 921600 baud; never use slow I2C MOSFET shifter here.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "U4",
+      "value": "SN74AXC1T45DBVR",
+      "footprint": "Package_TO_SOT_SMD:SOT-23-6",
+      "pins": {
+        "1": "ESP_3V3",
+        "2": "GND",
+        "3": "ESP_RX18",
+        "4": "M_TX_1V8",
+        "5": "GND",
+        "6": "MODEM_1V8"
+      },
+      "names": {
+        "1": [
+          "VCCA",
+          "power_in"
+        ],
+        "2": [
+          "GND",
+          "power_in"
+        ],
+        "3": [
+          "A",
+          "bidirectional"
+        ],
+        "4": [
+          "B",
+          "bidirectional"
+        ],
+        "5": [
+          "DIR",
+          "input"
+        ],
+        "6": [
+          "VCCB",
+          "power_in"
+        ]
+      },
+      "x": 45,
+      "y": 25,
+      "angle": 0,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "https://www.ti.com/lit/ds/symlink/sn74axc1t45.pdf",
+      "note": "Direction fixed per signal; power-off isolation. 921600 baud; never use slow I2C MOSFET shifter here.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "U5",
+      "value": "SN74AXC1T45DBVR",
+      "footprint": "Package_TO_SOT_SMD:SOT-23-6",
+      "pins": {
+        "1": "ESP_3V3",
+        "2": "GND",
+        "3": "ESP_DTR4",
+        "4": "M_DTR_1V8",
+        "5": "ESP_3V3",
+        "6": "MODEM_1V8"
+      },
+      "names": {
+        "1": [
+          "VCCA",
+          "power_in"
+        ],
+        "2": [
+          "GND",
+          "power_in"
+        ],
+        "3": [
+          "A",
+          "bidirectional"
+        ],
+        "4": [
+          "B",
+          "bidirectional"
+        ],
+        "5": [
+          "DIR",
+          "input"
+        ],
+        "6": [
+          "VCCB",
+          "power_in"
+        ]
+      },
+      "x": 45,
+      "y": 31,
+      "angle": 0,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "https://www.ti.com/lit/ds/symlink/sn74axc1t45.pdf",
+      "note": "Direction fixed per signal; power-off isolation. 921600 baud; never use slow I2C MOSFET shifter here.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C13",
+      "value": "100n",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "ESP_3V3",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 40,
+      "y": 19,
+      "angle": 0,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C14",
+      "value": "100n",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "MODEM_1V8",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 49,
+      "y": 19,
+      "angle": 0,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C15",
+      "value": "100n",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "ESP_3V3",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 40,
+      "y": 25,
+      "angle": 0,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C16",
+      "value": "100n",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "MODEM_1V8",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 49,
+      "y": 25,
+      "angle": 0,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C17",
+      "value": "100n",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "ESP_3V3",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 40,
+      "y": 31,
+      "angle": 0,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C18",
+      "value": "100n",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "MODEM_1V8",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 49,
+      "y": 31,
+      "angle": 0,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R4",
+      "value": "10k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "ESP_3V3",
+        "2": "ESP_TX17"
+      },
+      "names": {},
+      "x": 40,
+      "y": 35,
+      "angle": 0,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R5",
+      "value": "100k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "ESP_DTR4",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 45,
+      "y": 35,
+      "angle": 0,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "Q1",
+      "value": "2N7002",
+      "footprint": "Package_TO_SOT_SMD:SOT-23",
+      "pins": {
+        "1": "PWRKEY_CTL",
+        "2": "GND",
+        "3": "MODEM_PWRKEY_N"
+      },
+      "names": {
+        "1": [
+          "G",
+          "input"
+        ],
+        "2": [
+          "S",
+          "passive"
+        ],
+        "3": [
+          "D",
+          "passive"
+        ]
+      },
+      "x": 52,
+      "y": 43,
+      "angle": 0,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R6",
+      "value": "100k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "PWRKEY_CTL",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 47,
+      "y": 43,
+      "angle": 0,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "J6",
+      "value": "MANUAL PWRKEY HOLD 2-3.5s",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "pins": {
+        "1": "MODEM_PWRKEY_N",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 57,
+      "y": 48,
+      "angle": 90,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R7",
+      "value": "4.7k AUTO ON LINK",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "MODEM_PWRKEY_N",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 60,
+      "y": 43,
+      "angle": 0,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": true,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "Q2",
+      "value": "2N7002",
+      "footprint": "Package_TO_SOT_SMD:SOT-23",
+      "pins": {
+        "1": "RESET_CTL",
+        "2": "GND",
+        "3": "MODEM_RESET_N"
+      },
+      "names": {
+        "1": [
+          "G",
+          "input"
+        ],
+        "2": [
+          "S",
+          "passive"
+        ],
+        "3": [
+          "D",
+          "passive"
+        ]
+      },
+      "x": 65,
+      "y": 43,
+      "angle": 0,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R8",
+      "value": "100k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "RESET_CTL",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 70,
+      "y": 43,
+      "angle": 0,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C19",
+      "value": "10n",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "MODEM_RESET_N",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 65,
+      "y": 39.5,
+      "angle": 0,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "J7",
+      "value": "RESET SERVICE ONLY",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "pins": {
+        "1": "MODEM_RESET_N",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 74,
+      "y": 41,
+      "angle": 90,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "J8",
+      "value": "DOWNLOAD STRAP - OPEN NORMAL",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "pins": {
+        "1": "MODEM_BOOT_N",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 85,
+      "y": 43.5,
+      "angle": 90,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "J9",
+      "value": "MODEM DEBUG 1V8 ONLY",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+      "pins": {
+        "1": "GND",
+        "2": "DBG_TX_1V8",
+        "3": "DBG_RX_1V8",
+        "4": "MODEM_1V8"
+      },
+      "names": {},
+      "x": 83,
+      "y": 32,
+      "angle": 0,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "TP2",
+      "value": "STATE 1V8",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": {
+        "1": "MODEM_STATE_1V8"
+      },
+      "names": {},
+      "x": 80,
+      "y": 23,
+      "angle": 0,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "TP3",
+      "value": "NETLIGHT 1V8",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": {
+        "1": "MODEM_NETLIGHT"
+      },
+      "names": {},
+      "x": 80,
+      "y": 20,
+      "angle": 0,
+      "group": "03 ML307R-DL / UART / CONTROL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "J10",
+      "value": "JAE SF72S006 SIM CANDIDATE",
+      "footprint": "Connector_JAE:JAE_SIM_Card_SF72S006",
+      "pins": {
+        "C1": "SIM_VCC",
+        "C2": "SIM_RESET",
+        "C3": "SIM_CLK",
+        "C5": "GND",
+        "C6": "",
+        "C7": "SIM_DATA",
+        "CSW": "GND",
+        "DSW": "SIM_DETECT",
+        "SH": "GND"
+      },
+      "names": {
+        "C1": [
+          "VCC",
+          "passive"
+        ],
+        "C2": [
+          "RST",
+          "passive"
+        ],
+        "C3": [
+          "CLK",
+          "passive"
+        ],
+        "C5": [
+          "GND",
+          "passive"
+        ],
+        "C6": [
+          "VPP_UNUSED",
+          "passive"
+        ],
+        "C7": [
+          "IO",
+          "passive"
+        ],
+        "CSW": [
+          "DETECT_COM",
+          "passive"
+        ],
+        "DSW": [
+          "DETECT",
+          "passive"
+        ],
+        "SH": [
+          "SHIELD",
+          "passive"
+        ]
+      },
+      "x": 77,
+      "y": 55,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": false,
+      "source": "",
+      "note": "Candidate SIM socket; exact purchase model/card size/height to confirm. Keep SIM traces <150mm, preferably <50mm.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R9",
+      "value": "22R",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "M_SIM_DATA",
+        "2": "SIM_DATA"
+      },
+      "names": {},
+      "x": 63,
+      "y": 49,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R10",
+      "value": "22R",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "M_SIM_CLK",
+        "2": "SIM_CLK"
+      },
+      "names": {},
+      "x": 63,
+      "y": 52,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R11",
+      "value": "22R",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "M_SIM_RESET",
+        "2": "SIM_RESET"
+      },
+      "names": {},
+      "x": 63,
+      "y": 55,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R12",
+      "value": "10k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "MODEM_1V8",
+        "2": "SIM_DETECT"
+      },
+      "names": {},
+      "x": 63,
+      "y": 58,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C20",
+      "value": "100n",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "SIM_VCC",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 68,
+      "y": 58,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C21",
+      "value": "33p OPTIONAL",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "SIM_DATA",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 68,
+      "y": 49,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": true,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C22",
+      "value": "33p OPTIONAL",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "SIM_CLK",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 68,
+      "y": 52,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": true,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C23",
+      "value": "33p OPTIONAL",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "SIM_RESET",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 68,
+      "y": 55,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": true,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "D1",
+      "value": "SIM ESD <=10pF CANDIDATE",
+      "footprint": "Diode_SMD:D_SOD-323",
+      "pins": {
+        "1": "SIM_DATA",
+        "2": "GND"
+      },
+      "names": {
+        "1": [
+          "K",
+          "passive"
+        ],
+        "2": [
+          "A",
+          "passive"
+        ]
+      },
+      "x": 70,
+      "y": 47,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": false,
+      "source": "",
+      "note": "Choose compatible 1.8/3V low-leakage SIM ESD part and verify actual polarity footprint.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "D2",
+      "value": "SIM ESD <=10pF CANDIDATE",
+      "footprint": "Diode_SMD:D_SOD-323",
+      "pins": {
+        "1": "SIM_CLK",
+        "2": "GND"
+      },
+      "names": {
+        "1": [
+          "K",
+          "passive"
+        ],
+        "2": [
+          "A",
+          "passive"
+        ]
+      },
+      "x": 74,
+      "y": 47,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": false,
+      "source": "",
+      "note": "Choose compatible 1.8/3V low-leakage SIM ESD part and verify actual polarity footprint.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "D3",
+      "value": "SIM ESD <=10pF CANDIDATE",
+      "footprint": "Diode_SMD:D_SOD-323",
+      "pins": {
+        "1": "SIM_RESET",
+        "2": "GND"
+      },
+      "names": {
+        "1": [
+          "K",
+          "passive"
+        ],
+        "2": [
+          "A",
+          "passive"
+        ]
+      },
+      "x": 78,
+      "y": 47,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": false,
+      "source": "",
+      "note": "Choose compatible 1.8/3V low-leakage SIM ESD part and verify actual polarity footprint.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "D4",
+      "value": "SIM ESD <=10pF CANDIDATE",
+      "footprint": "Diode_SMD:D_SOD-323",
+      "pins": {
+        "1": "SIM_VCC",
+        "2": "GND"
+      },
+      "names": {
+        "1": [
+          "K",
+          "passive"
+        ],
+        "2": [
+          "A",
+          "passive"
+        ]
+      },
+      "x": 82,
+      "y": 47,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": false,
+      "source": "",
+      "note": "Choose compatible 1.8/3V low-leakage SIM ESD part and verify actual polarity footprint.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R13",
+      "value": "0R RF SERIES",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "RF_ANT",
+        "2": "RF_FEED"
+      },
+      "names": {},
+      "x": 82,
+      "y": 13,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C24",
+      "value": "RF MATCH SHUNT DNP",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "RF_ANT",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 81,
+      "y": 10,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": true,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C25",
+      "value": "RF MATCH SHUNT DNP",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "RF_FEED",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 86,
+      "y": 10,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": true,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "J11",
+      "value": "LTE ANT U.FL",
+      "footprint": "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical",
+      "pins": {
+        "1": "RF_FEED",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 86,
+      "y": 15,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": false,
+      "source": "",
+      "note": "50 Ohm controlled-impedance route; stack-up and antenna tuning pending.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "J12",
+      "value": "USB SERVICE 90 OHM PAIR",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+      "pins": {
+        "1": "USB_DETECT_5V",
+        "2": "M_USB_DM",
+        "3": "M_USB_DP",
+        "4": "GND"
+      },
+      "names": {},
+      "x": 26,
+      "y": 65,
+      "angle": 90,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "J13",
+      "value": "ESP32-S3 HARNESS NOT DIRECT SOCKET",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_2x14_P2.54mm_Vertical",
+      "pins": {
+        "1": "ESP_5V",
+        "2": "GND",
+        "3": "ESP_3V3",
+        "4": "GND",
+        "5": "ESP_TX17",
+        "6": "ESP_RX18",
+        "7": "ESP_DTR4",
+        "8": "I2S_MIC_BCLK14",
+        "9": "I2S_MIC_WS13",
+        "10": "I2S_MIC_DATA12",
+        "11": "I2S_AMP_BCLK15",
+        "12": "I2S_AMP_WS16",
+        "13": "I2S_AMP_DATA7",
+        "14": "RADAR_TX_TO_IO6",
+        "15": "RADAR_RX_FROM_IO8",
+        "16": "BOOT_BTN_IO0",
+        "17": "ADC_BAT_IO2",
+        "18": "ADC_EN_IO9",
+        "19": "EXT_PRESENT_N_IO10",
+        "20": "PWRKEY_CTL",
+        "21": "RESET_CTL",
+        "22": "CHRG_OD",
+        "23": "DONE_OD",
+        "24": "UPS_PG_OD",
+        "25": "DEBUG_ESP_TX43",
+        "26": "DEBUG_ESP_RX44",
+        "27": "ESP_EN",
+        "28": ""
+      },
+      "names": {},
+      "x": 33,
+      "y": 16,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "Existing dev board connected by harness. PWRKEY proposed GPIO11, RESET proposed GPIO21; ADC proposed GPIO2; verify actual dev-board access before freeze.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "J14",
+      "value": "INMP441 3V3",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical",
+      "pins": {
+        "1": "ESP_3V3",
+        "2": "GND",
+        "3": "I2S_MIC_BCLK14",
+        "4": "I2S_MIC_WS13",
+        "5": "I2S_MIC_DATA12"
+      },
+      "names": {},
+      "x": 43,
+      "y": 52,
+      "angle": 90,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "J15",
+      "value": "MAX98357 5V",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical",
+      "pins": {
+        "1": "SYS_5V",
+        "2": "GND",
+        "3": "I2S_AMP_BCLK15",
+        "4": "I2S_AMP_WS16",
+        "5": "I2S_AMP_DATA7"
+      },
+      "names": {},
+      "x": 40,
+      "y": 57,
+      "angle": 90,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "J16",
+      "value": "RADAR OPTIONAL TX6 RX8",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+      "pins": {
+        "1": "RADAR_5V",
+        "2": "GND",
+        "3": "RADAR_TX_TO_IO6",
+        "4": "RADAR_RX_FROM_IO8"
+      },
+      "names": {},
+      "x": 28,
+      "y": 60,
+      "angle": 90,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "JP2",
+      "value": "RADAR POWER REMOVE TO OMIT",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "pins": {
+        "1": "SYS_5V",
+        "2": "RADAR_5V"
+      },
+      "names": {},
+      "x": 20,
+      "y": 60,
+      "angle": 90,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C26",
+      "value": "10u 10V",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "RADAR_5V",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 28,
+      "y": 55,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "J17",
+      "value": "CALL BUTTON NORMALLY OPEN",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "pins": {
+        "1": "BOOT_BTN_IO0",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 55,
+      "y": 60,
+      "angle": 90,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R14",
+      "value": "10k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "ESP_3V3",
+        "2": "BOOT_BTN_IO0"
+      },
+      "names": {},
+      "x": 54,
+      "y": 56,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C27",
+      "value": "100n",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "BOOT_BTN_IO0",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 57,
+      "y": 55,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "J18",
+      "value": "ESP FLASH TTL GND TX43 RX44 5V",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+      "pins": {
+        "1": "GND",
+        "2": "DEBUG_ESP_TX43",
+        "3": "DEBUG_ESP_RX44",
+        "4": "TTL_5V"
+      },
+      "names": {},
+      "x": 39,
+      "y": 70,
+      "angle": 90,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "JP3",
+      "value": "ESP POWER SYS / ESP / TTL",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+      "pins": {
+        "1": "SYS_5V",
+        "2": "ESP_5V",
+        "3": "TTL_5V"
+      },
+      "names": {},
+      "x": 29,
+      "y": 70,
+      "angle": 90,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "SW1",
+      "value": "BOOT / CALL",
+      "footprint": "Button_Switch_THT:SW_PUSH_6mm_H5mm",
+      "pins": {
+        "1": "BOOT_BTN_IO0",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 52,
+      "y": 65,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "SW2",
+      "value": "ESP RESET",
+      "footprint": "Button_Switch_THT:SW_PUSH_6mm_H5mm",
+      "pins": {
+        "1": "ESP_EN",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 62.5,
+      "y": 68.5,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R25",
+      "value": "10k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "ESP_3V3",
+        "2": "ESP_EN"
+      },
+      "names": {},
+      "x": 74,
+      "y": 69,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C30",
+      "value": "100n",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "ESP_EN",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 79,
+      "y": 69,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "Q3",
+      "value": "BSS84",
+      "footprint": "Package_TO_SOT_SMD:SOT-23",
+      "pins": {
+        "1": "BAT_GATE",
+        "2": "BAT_SENSE_IN",
+        "3": "BAT_DIV_SW"
+      },
+      "names": {
+        "1": [
+          "G",
+          "input"
+        ],
+        "2": [
+          "S",
+          "passive"
+        ],
+        "3": [
+          "D",
+          "passive"
+        ]
+      },
+      "x": 94,
+      "y": 18,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "Q4",
+      "value": "2N7002",
+      "footprint": "Package_TO_SOT_SMD:SOT-23",
+      "pins": {
+        "1": "ADC_EN_IO9",
+        "2": "GND",
+        "3": "BAT_GATE"
+      },
+      "names": {
+        "1": [
+          "G",
+          "input"
+        ],
+        "2": [
+          "S",
+          "passive"
+        ],
+        "3": [
+          "D",
+          "passive"
+        ]
+      },
+      "x": 94,
+      "y": 24,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R15",
+      "value": "100k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "BAT_SENSE_IN",
+        "2": "BAT_GATE"
+      },
+      "names": {},
+      "x": 93,
+      "y": 14,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R16",
+      "value": "100k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "ADC_EN_IO9",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 89,
+      "y": 24,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R17",
+      "value": "150k 1%",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "BAT_DIV_SW",
+        "2": "ADC_BAT_IO2"
+      },
+      "names": {},
+      "x": 97,
+      "y": 29,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R18",
+      "value": "100k 1%",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "ADC_BAT_IO2",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 97,
+      "y": 33,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C28",
+      "value": "100n",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "ADC_BAT_IO2",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 97,
+      "y": 37,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "Q5",
+      "value": "2N7002",
+      "footprint": "Package_TO_SOT_SMD:SOT-23",
+      "pins": {
+        "1": "EXT_DETECT_GATE",
+        "2": "GND",
+        "3": "EXT_PRESENT_N_IO10"
+      },
+      "names": {
+        "1": [
+          "G",
+          "input"
+        ],
+        "2": [
+          "S",
+          "passive"
+        ],
+        "3": [
+          "D",
+          "passive"
+        ]
+      },
+      "x": 94,
+      "y": 56,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R19",
+      "value": "100k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "VIN_EXT_5V",
+        "2": "EXT_DETECT_GATE"
+      },
+      "names": {},
+      "x": 94,
+      "y": 44,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R20",
+      "value": "100k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "EXT_DETECT_GATE",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 94,
+      "y": 48,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R21",
+      "value": "10k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "ESP_3V3",
+        "2": "EXT_PRESENT_N_IO10"
+      },
+      "names": {},
+      "x": 94,
+      "y": 61,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C29",
+      "value": "10n",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "EXT_DETECT_GATE",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 94,
+      "y": 52,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R22",
+      "value": "10k DNP UNTIL UPS CONFIRMED",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "ESP_3V3",
+        "2": "CHRG_OD"
+      },
+      "names": {},
+      "x": 10,
+      "y": 48,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": true,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R23",
+      "value": "10k DNP UNTIL UPS CONFIRMED",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "ESP_3V3",
+        "2": "DONE_OD"
+      },
+      "names": {},
+      "x": 15,
+      "y": 48,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": true,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R24",
+      "value": "10k DNP UNTIL UPS CONFIRMED",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "ESP_3V3",
+        "2": "UPS_PG_OD"
+      },
+      "names": {},
+      "x": 20,
+      "y": 48,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": true,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "TP4",
+      "value": "DEBUG_ESP_TX43",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": {
+        "1": "DEBUG_ESP_TX43"
+      },
+      "names": {},
+      "x": 40,
+      "y": 39,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "TP5",
+      "value": "DEBUG_ESP_RX44",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": {
+        "1": "DEBUG_ESP_RX44"
+      },
+      "names": {},
+      "x": 44,
+      "y": 39,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "TP6",
+      "value": "GND",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": {
+        "1": "GND"
+      },
+      "names": {},
+      "x": 48,
+      "y": 39,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "H1",
+      "value": "M3 GENERIC",
+      "footprint": "MountingHole:MountingHole_3.2mm_M3",
+      "pins": {},
+      "names": {},
+      "x": 3,
+      "y": 3,
+      "angle": 0,
+      "group": "MECHANICAL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "mechanical"
+    },
+    {
+      "ref": "H2",
+      "value": "M3 GENERIC",
+      "footprint": "MountingHole:MountingHole_3.2mm_M3",
+      "pins": {},
+      "names": {},
+      "x": 96,
+      "y": 4,
+      "angle": 0,
+      "group": "MECHANICAL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "mechanical"
+    },
+    {
+      "ref": "H3",
+      "value": "M3 GENERIC",
+      "footprint": "MountingHole:MountingHole_3.2mm_M3",
+      "pins": {},
+      "names": {},
+      "x": 4,
+      "y": 71,
+      "angle": 0,
+      "group": "MECHANICAL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "mechanical"
+    },
+    {
+      "ref": "H4",
+      "value": "M3 GENERIC",
+      "footprint": "MountingHole:MountingHole_3.2mm_M3",
+      "pins": {},
+      "names": {},
+      "x": 96,
+      "y": 71,
+      "angle": 0,
+      "group": "MECHANICAL",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "mechanical"
+    }
+  ],
+  "ups_reserved_region_mm": [
+    6,
+    17,
+    23,
+    28
+  ],
+  "ups_chip": "User to supply later; no charging/protection/switching design frozen",
+  "battery": "Protected 1S 4.2V Li-ion assumed for estimation; chemistry to confirm",
+  "adc": {
+    "gpio": 2,
+    "channel": "ADC1_CH1",
+    "enable_gpio": 9,
+    "rtop_ohm": 150000,
+    "rbottom_ohm": 100000,
+    "cap_farad": 1e-07,
+    "scale": 2.5,
+    "max_battery_v": 4.2,
+    "max_adc_v": 1.68
+  },
+  "proposed_gpio": {
+    "external_power_present_n": 10,
+    "modem_pwrkey": 11,
+    "modem_reset": 21
+  },
+  "manufacturing_ready": false,
+  "firmware_modified": false
+}

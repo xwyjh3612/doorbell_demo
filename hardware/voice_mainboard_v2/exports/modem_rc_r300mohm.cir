@@ -1,0 +1,10 @@
+modem_rc_r300mohm
+* Ideal 3.8V source + lumped resistance + 484uF ESR reservoir.
+* NOT a switching regulator / UPS / RF model.
+Vsource src 0 3.8
+Rpath src modem 0.3
+Resr modem cap 0.05
+Cbulk cap 0 484u
+Iload modem 0 PULSE(0.3 2 1m 1u 1u 1m 4m)
+.tran 1u 4m
+.end

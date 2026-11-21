@@ -1,0 +1,7 @@
+battery_adc_rc
+Vbat bat 0 PULSE(0 4.2 1m 1u 1u 100m 200m)
+Rtop bat adc 150k
+Rbottom adc 0 100k
+Cf adc 0 100n
+.tran 100u 60m uic
+.end

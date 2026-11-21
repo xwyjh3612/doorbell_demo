@@ -1,0 +1,20 @@
+{
+  "revision": "V2-ML307-SMT-UPS-RESERVE",
+  "kicad_version": "9.0.6",
+  "electrical_parts": 99,
+  "ml307_pad_count": 109,
+  "connected_unique_pin_net_mappings": 305,
+  "netlist_matches_pcb": true,
+  "schematic_erc_violations": 0,
+  "placement_drc_violations": 0,
+  "unrouted_links": 257,
+  "manufacturing_ready": false,
+  "rf_routed": false,
+  "usb_routed": false,
+  "ups_chip_frozen": false,
+  "supplier_ml307_footprint_signoff": false,
+  "mechanical_fit_verified": false,
+  "full_power_simulation": false,
+  "physical_electrical_tests": false,
+  "firmware_modified": false
+}
