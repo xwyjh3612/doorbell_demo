@@ -2,7 +2,7 @@
 <export version="E">
   <design>
     <source>C:\project\esp32\doorbell_demo_voice\hardware\voice_mainboard_v2\voice_mainboard_v2.kicad_sch</source>
-    <date>2026-11-21T18:31:36+0800</date>
+    <date>2026-11-22T09:54:17+0800</date>
     <tool>Eeschema 9.0.6</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -11,7 +11,7 @@
         <rev>V2-UNROUTED</rev>
         <date>2026-11-21</date>
         <source>voice_mainboard_v2.kicad_sch</source>
-        <comment number="1" value="DC input 4.5-5.5V / 3A path; regulated 5V required; UPS chip not selected"/>
+        <comment number="1" value="DC 4.5-5.5V, nominal 5V/2A; separate 3.8V and 5V rails; future UPS plug-in"/>
         <comment number="2" value="109-pad land pattern transcribed from manufacturer; release signoff pending"/>
         <comment number="3" value=""/>
         <comment number="4" value=""/>
@@ -67,7 +67,7 @@
       <tstamps>6c0e3e5a-a2ff-5f94-8e52-371a2078a438</tstamps>
     </comp>
     <comp ref="C4">
-      <value>22u 10V</value>
+      <value>22u 16V X5R</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <fields>
         <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
@@ -81,7 +81,7 @@
       <tstamps>e7b1aa2f-a8fa-541e-8535-270d7e989084</tstamps>
     </comp>
     <comp ref="C5">
-      <value>22u 10V</value>
+      <value>22u 16V X5R</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <fields>
         <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
@@ -449,6 +449,104 @@
       <sheetpath names="/" tstamps="/"/>
       <tstamps>e25ef1d1-1180-5172-a68e-f782bc33a583</tstamps>
     </comp>
+    <comp ref="C31">
+      <value>100n VAUX</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="VoiceV2" part="C31" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b37e067e-d778-5097-8f72-20f71adbfc03</tstamps>
+    </comp>
+    <comp ref="C32">
+      <value>22u 16V X5R</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="VoiceV2" part="C32" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>24ba3dc0-c003-5665-9a90-76612670426c</tstamps>
+    </comp>
+    <comp ref="C33">
+      <value>22u 16V X5R</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="VoiceV2" part="C33" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4cfdd516-e740-5bdb-9bdc-354f49bdcdf8</tstamps>
+    </comp>
+    <comp ref="C34">
+      <value>22u 16V X5R</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="VoiceV2" part="C34" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>70ee4909-d230-5807-8f0c-69ca9255463c</tstamps>
+    </comp>
+    <comp ref="C35">
+      <value>22u 16V X5R</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="VoiceV2" part="C35" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6ebc3fab-9975-5ad9-a7f4-b7150304d429</tstamps>
+    </comp>
+    <comp ref="C36">
+      <value>22u 16V X5R</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="VoiceV2" part="C36" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>67166700-fc77-5d20-9ac9-d3693f9b7084</tstamps>
+    </comp>
+    <comp ref="C37">
+      <value>33p C0G CFF</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="VoiceV2" part="C37" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>fb36ae99-cd25-55df-9062-f228d7bb4c8c</tstamps>
+    </comp>
     <comp ref="D1">
       <value>SIM ESD &lt;=10pF CANDIDATE</value>
       <footprint>Diode_SMD:D_SOD-323</footprint>
@@ -505,8 +603,22 @@
       <sheetpath names="/" tstamps="/"/>
       <tstamps>6a4509f6-abd9-5ffe-bb9c-192849629448</tstamps>
     </comp>
+    <comp ref="F1">
+      <value>3A FUSE 8A I2t VERIFY</value>
+      <footprint>Fuse:Fuse_1812_4532Metric</footprint>
+      <fields>
+        <field name="Footprint">Fuse:Fuse_1812_4532Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="VoiceV2" part="F1" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>49379d41-1737-55ec-9dd5-6bd718b39b56</tstamps>
+    </comp>
     <comp ref="J1">
-      <value>DC 4.5-5.5V 3A 5.5x2.5mm CENTER POSITIVE</value>
+      <value>DC 4.5-5.5V 2A 5.5x2.5mm CENTER POSITIVE</value>
       <footprint>Connector_BarrelJack:BarrelJack_Wuerth_694108106102_2.5x5.5mm</footprint>
       <fields>
         <field name="Footprint">Connector_BarrelJack:BarrelJack_Wuerth_694108106102_2.5x5.5mm</field>
@@ -520,7 +632,7 @@
       <tstamps>3a8f5384-1528-5a4c-aa53-65d4e6f9dfcd</tstamps>
     </comp>
     <comp ref="J2">
-      <value>4.5-5.5V TO REGULATED POWER BOARD</value>
+      <value>PROTECTED INPUT TO FUTURE UPS</value>
       <footprint>Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical</footprint>
       <fields>
         <field name="Footprint">Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical</field>
@@ -660,7 +772,7 @@
       <tstamps>d7bd668a-f842-5011-b24f-615ed62f3901</tstamps>
     </comp>
     <comp ref="J12">
-      <value>USB SERVICE ONLY - ISOLATED IN HOST BUILD</value>
+      <value>USB SERVICE VBUS DM DP GND</value>
       <footprint>Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical</footprint>
       <fields>
         <field name="Footprint">Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical</field>
@@ -674,7 +786,7 @@
       <tstamps>096d81a4-a67a-57c9-83e9-b20c727a4eb8</tstamps>
     </comp>
     <comp ref="J13">
-      <value>ESP32-S3 HARNESS WITH USB19/20 RESERVE</value>
+      <value>ESP32-S3 SIGNAL HARNESS; USB AT J22</value>
       <footprint>Connector_PinHeader_2.54mm:PinHeader_2x15_P2.54mm_Vertical</footprint>
       <fields>
         <field name="Footprint">Connector_PinHeader_2.54mm:PinHeader_2x15_P2.54mm_Vertical</field>
@@ -799,8 +911,23 @@
       <sheetpath names="/" tstamps="/"/>
       <tstamps>8cb9f936-839f-54a1-8976-ed9a4f2e9fac</tstamps>
     </comp>
+    <comp ref="J22">
+      <value>USB HOST GND DP20 DM19 [DNP]</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</footprint>
+      <fields>
+        <field name="Footprint">Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="VoiceV2" part="J22" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
+      <property name="dnp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f2ad31a6-f097-5e73-a14c-a0a8ee9ee0d3</tstamps>
+    </comp>
     <comp ref="JP1">
-      <value>REGULATED / SYS / BENCH SELECT ONE</value>
+      <value>BOARD 5V / SYS / BENCH SELECT ONE</value>
       <footprint>Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</footprint>
       <fields>
         <field name="Footprint">Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</field>
@@ -841,6 +968,20 @@
       <sheetpath names="/" tstamps="/"/>
       <tstamps>756b202b-1c16-5b01-bec7-570111d20ab9</tstamps>
     </comp>
+    <comp ref="JP4">
+      <value>DIRECT / BUS / FUTURE UPS SELECT ONE</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</footprint>
+      <fields>
+        <field name="Footprint">Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="VoiceV2" part="JP4" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>52d07364-238f-53b0-b1ba-1389da952dcc</tstamps>
+    </comp>
     <comp ref="L1">
       <value>2.2uH Isat&gt;=4.5A DCR&lt;50mOhm</value>
       <footprint>Inductor_SMD:L_Sunlord_SWPA6045S</footprint>
@@ -854,6 +995,20 @@
       <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>efec3126-aff2-5c23-bb76-db3fb09705ad</tstamps>
+    </comp>
+    <comp ref="L2">
+      <value>1.5uH Isat&gt;=4.4A DCR&lt;=30mOhm</value>
+      <footprint>Inductor_SMD:L_Sunlord_SWPA6045S</footprint>
+      <fields>
+        <field name="Footprint">Inductor_SMD:L_Sunlord_SWPA6045S</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="VoiceV2" part="L2" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9d04b76f-883c-517c-99de-73c3c853fcdd</tstamps>
     </comp>
     <comp ref="Q1">
       <value>2N7002</value>
@@ -925,6 +1080,20 @@
       <sheetpath names="/" tstamps="/"/>
       <tstamps>84f53bcd-949c-5682-b9a3-0531ccf143a6</tstamps>
     </comp>
+    <comp ref="Q6">
+      <value>AO3401A</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <fields>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="VoiceV2" part="Q6" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>89ae888e-7caf-5fa1-ae67-9e1a91ec59fb</tstamps>
+    </comp>
     <comp ref="R1">
       <value>100k</value>
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
@@ -940,7 +1109,7 @@
       <tstamps>06d21fe6-7644-567f-9b61-e040b2c1d7f6</tstamps>
     </comp>
     <comp ref="R2">
-      <value>39.2k 0.1%</value>
+      <value>37.4k 0.1%</value>
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <fields>
         <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
@@ -1281,9 +1450,9 @@
     </comp>
     <comp ref="R26">
       <value>0R USB SERVICE DP</value>
-      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
       <fields>
-        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
         <field name="Datasheet"/>
         <field name="Description"/>
       </fields>
@@ -1295,9 +1464,9 @@
     </comp>
     <comp ref="R27">
       <value>0R USB SERVICE DM</value>
-      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
       <fields>
-        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
         <field name="Datasheet"/>
         <field name="Description"/>
       </fields>
@@ -1308,10 +1477,10 @@
       <tstamps>16b16882-2bf5-5e47-9093-d86e4a8c18dd</tstamps>
     </comp>
     <comp ref="R28">
-      <value>0R USB HOST DP DNP [DNP]</value>
-      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <value>0R USB HOST DP [DNP]</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
       <fields>
-        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
         <field name="Datasheet"/>
         <field name="Description"/>
       </fields>
@@ -1323,10 +1492,10 @@
       <tstamps>cced9b10-a695-577e-aef9-ea5e3d90f99c</tstamps>
     </comp>
     <comp ref="R29">
-      <value>0R USB HOST DM DNP [DNP]</value>
-      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <value>0R USB HOST DM [DNP]</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
       <fields>
-        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
         <field name="Datasheet"/>
         <field name="Description"/>
       </fields>
@@ -1365,6 +1534,48 @@
       <property name="dnp"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>61215c63-f278-5f06-bd48-8c0359fa6036</tstamps>
+    </comp>
+    <comp ref="R32">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="VoiceV2" part="R32" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d7475048-1fe5-51a4-a232-f730c13ed8d0</tstamps>
+    </comp>
+    <comp ref="R33">
+      <value>10k PG</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="VoiceV2" part="R33" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1e78c2b4-2652-5ed3-b6b3-16ac010212c4</tstamps>
+    </comp>
+    <comp ref="R34">
+      <value>10k PG</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="VoiceV2" part="R34" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d0ebfc51-d765-58ba-9621-c7eb1ce5b027</tstamps>
     </comp>
     <comp ref="SW1">
       <value>BOOT / CALL</value>
@@ -1478,6 +1689,76 @@
       <sheetpath names="/" tstamps="/"/>
       <tstamps>ef0d042a-044f-5c6d-96b6-ee87290b0f56</tstamps>
     </comp>
+    <comp ref="TP7">
+      <value>PROTECTED INPUT</value>
+      <footprint>TestPoint:TestPoint_Pad_D1.0mm</footprint>
+      <fields>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="VoiceV2" part="TP7" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a3980868-737b-57e6-95cd-5a861c87cf4d</tstamps>
+    </comp>
+    <comp ref="TP8">
+      <value>POWER BUS</value>
+      <footprint>TestPoint:TestPoint_Pad_D1.0mm</footprint>
+      <fields>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="VoiceV2" part="TP8" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>80f57309-3fcc-5121-863a-a19d788aaa58</tstamps>
+    </comp>
+    <comp ref="TP9">
+      <value>SYSTEM 5V</value>
+      <footprint>TestPoint:TestPoint_Pad_D1.0mm</footprint>
+      <fields>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="VoiceV2" part="TP9" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f315da39-0788-5bec-8995-8a153f8591da</tstamps>
+    </comp>
+    <comp ref="TP10">
+      <value>SYSTEM POWER GOOD</value>
+      <footprint>TestPoint:TestPoint_Pad_D1.0mm</footprint>
+      <fields>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="VoiceV2" part="TP10" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>466bdd1f-f2da-5525-a64a-042098462d49</tstamps>
+    </comp>
+    <comp ref="TP11">
+      <value>MODEM POWER GOOD</value>
+      <footprint>TestPoint:TestPoint_Pad_D1.0mm</footprint>
+      <fields>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="VoiceV2" part="TP11" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>31914109-dff1-5a5c-919f-5cd65b974ea2</tstamps>
+    </comp>
     <comp ref="U1">
       <value>ML307R-DL SMT</value>
       <footprint>VoiceV2:ML307R_DL_109_15.8x17.7mm_DRAFT</footprint>
@@ -1493,10 +1774,10 @@
       <tstamps>4ae9f0f2-8895-5509-863c-6298e1e38467</tstamps>
     </comp>
     <comp ref="U2">
-      <value>TPS563201DDCR CANDIDATE</value>
-      <footprint>Package_TO_SOT_SMD:SOT-23-6</footprint>
+      <value>TPS62933PDRLR 3.8V</value>
+      <footprint>Package_TO_SOT_SMD:SOT-583-8</footprint>
       <fields>
-        <field name="Footprint">Package_TO_SOT_SMD:SOT-23-6</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-583-8</field>
         <field name="Datasheet"/>
         <field name="Description"/>
       </fields>
@@ -1547,6 +1828,34 @@
       <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>5b11cd5b-bc37-5b43-a542-cd3279ef2602</tstamps>
+    </comp>
+    <comp ref="U6">
+      <value>TPS63061DSCR 5V</value>
+      <footprint>VoiceV2:TPS63061_DSC0010E_3x3mm</footprint>
+      <fields>
+        <field name="Footprint">VoiceV2:TPS63061_DSC0010E_3x3mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="VoiceV2" part="U6" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>59bde7f1-837a-544f-907d-9139f0b83dca</tstamps>
+    </comp>
+    <comp ref="U7">
+      <value>TPD2E2U06DCKR</value>
+      <footprint>Package_TO_SOT_SMD:SOT-323_SC-70</footprint>
+      <fields>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-323_SC-70</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="VoiceV2" part="U7" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="voice_mainboard_v2.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>20a14fe4-92bd-5ea3-b0f4-85ae4401be4a</tstamps>
     </comp>
   </components>
   <libparts>
@@ -1862,10 +2171,101 @@
         <pin num="2" name="2" type="passive"/>
       </pins>
     </libpart>
+    <libpart lib="VoiceV2" part="C31">
+      <fields>
+        <field name="Reference">C31</field>
+        <field name="Value">100n VAUX</field>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="VoiceV2" part="C32">
+      <fields>
+        <field name="Reference">C32</field>
+        <field name="Value">22u 16V X5R</field>
+        <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="VoiceV2" part="C33">
+      <fields>
+        <field name="Reference">C33</field>
+        <field name="Value">22u 16V X5R</field>
+        <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="VoiceV2" part="C34">
+      <fields>
+        <field name="Reference">C34</field>
+        <field name="Value">22u 16V X5R</field>
+        <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="VoiceV2" part="C35">
+      <fields>
+        <field name="Reference">C35</field>
+        <field name="Value">22u 16V X5R</field>
+        <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="VoiceV2" part="C36">
+      <fields>
+        <field name="Reference">C36</field>
+        <field name="Value">22u 16V X5R</field>
+        <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="VoiceV2" part="C37">
+      <fields>
+        <field name="Reference">C37</field>
+        <field name="Value">33p C0G CFF</field>
+        <field name="Footprint">Capacitor_SMD:C_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
     <libpart lib="VoiceV2" part="C4">
       <fields>
         <field name="Reference">C4</field>
-        <field name="Value">22u 10V</field>
+        <field name="Value">22u 16V X5R</field>
         <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
         <field name="Datasheet"/>
         <field name="Description"/>
@@ -1878,7 +2278,7 @@
     <libpart lib="VoiceV2" part="C5">
       <fields>
         <field name="Reference">C5</field>
-        <field name="Value">22u 10V</field>
+        <field name="Value">22u 16V X5R</field>
         <field name="Footprint">Capacitor_SMD:C_0805_2012Metric</field>
         <field name="Datasheet"/>
         <field name="Description"/>
@@ -1992,10 +2392,23 @@
         <pin num="2" name="A" type="passive"/>
       </pins>
     </libpart>
+    <libpart lib="VoiceV2" part="F1">
+      <fields>
+        <field name="Reference">F1</field>
+        <field name="Value">3A FUSE 8A I2t VERIFY</field>
+        <field name="Footprint">Fuse:Fuse_1812_4532Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
     <libpart lib="VoiceV2" part="J1">
       <fields>
         <field name="Reference">J1</field>
-        <field name="Value">DC 4.5-5.5V 3A 5.5x2.5mm CENTER POSITIVE</field>
+        <field name="Value">DC 4.5-5.5V 2A 5.5x2.5mm CENTER POSITIVE</field>
         <field name="Footprint">Connector_BarrelJack:BarrelJack_Wuerth_694108106102_2.5x5.5mm</field>
         <field name="Datasheet"/>
         <field name="Description"/>
@@ -2042,7 +2455,7 @@
     <libpart lib="VoiceV2" part="J12">
       <fields>
         <field name="Reference">J12</field>
-        <field name="Value">USB SERVICE ONLY - ISOLATED IN HOST BUILD</field>
+        <field name="Value">USB SERVICE VBUS DM DP GND</field>
         <field name="Footprint">Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical</field>
         <field name="Datasheet"/>
         <field name="Description"/>
@@ -2057,7 +2470,7 @@
     <libpart lib="VoiceV2" part="J13">
       <fields>
         <field name="Reference">J13</field>
-        <field name="Value">ESP32-S3 HARNESS WITH USB19/20 RESERVE</field>
+        <field name="Value">ESP32-S3 SIGNAL HARNESS; USB AT J22</field>
         <field name="Footprint">Connector_PinHeader_2.54mm:PinHeader_2x15_P2.54mm_Vertical</field>
         <field name="Datasheet"/>
         <field name="Description"/>
@@ -2187,7 +2600,7 @@
     <libpart lib="VoiceV2" part="J2">
       <fields>
         <field name="Reference">J2</field>
-        <field name="Value">4.5-5.5V TO REGULATED POWER BOARD</field>
+        <field name="Value">PROTECTED INPUT TO FUTURE UPS</field>
         <field name="Footprint">Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical</field>
         <field name="Datasheet"/>
         <field name="Description"/>
@@ -2221,6 +2634,20 @@
       <pins>
         <pin num="1" name="1" type="passive"/>
         <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="VoiceV2" part="J22">
+      <fields>
+        <field name="Reference">J22</field>
+        <field name="Value">USB HOST GND DP20 DM19</field>
+        <field name="Footprint">Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
       </pins>
     </libpart>
     <libpart lib="VoiceV2" part="J3">
@@ -2321,7 +2748,7 @@
     <libpart lib="VoiceV2" part="JP1">
       <fields>
         <field name="Reference">JP1</field>
-        <field name="Value">REGULATED / SYS / BENCH SELECT ONE</field>
+        <field name="Value">BOARD 5V / SYS / BENCH SELECT ONE</field>
         <field name="Footprint">Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</field>
         <field name="Datasheet"/>
         <field name="Description"/>
@@ -2359,10 +2786,37 @@
         <pin num="3" name="3" type="passive"/>
       </pins>
     </libpart>
+    <libpart lib="VoiceV2" part="JP4">
+      <fields>
+        <field name="Reference">JP4</field>
+        <field name="Value">DIRECT / BUS / FUTURE UPS SELECT ONE</field>
+        <field name="Footprint">Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+      </pins>
+    </libpart>
     <libpart lib="VoiceV2" part="L1">
       <fields>
         <field name="Reference">L1</field>
         <field name="Value">2.2uH Isat&gt;=4.5A DCR&lt;50mOhm</field>
+        <field name="Footprint">Inductor_SMD:L_Sunlord_SWPA6045S</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="VoiceV2" part="L2">
+      <fields>
+        <field name="Reference">L2</field>
+        <field name="Value">1.5uH Isat&gt;=4.4A DCR&lt;=30mOhm</field>
         <field name="Footprint">Inductor_SMD:L_Sunlord_SWPA6045S</field>
         <field name="Datasheet"/>
         <field name="Description"/>
@@ -2432,6 +2886,20 @@
       <fields>
         <field name="Reference">Q5</field>
         <field name="Value">2N7002K-7 DIODES</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="G" type="input"/>
+        <pin num="2" name="S" type="passive"/>
+        <pin num="3" name="D" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="VoiceV2" part="Q6">
+      <fields>
+        <field name="Reference">Q6</field>
+        <field name="Value">AO3401A</field>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
         <field name="Datasheet"/>
         <field name="Description"/>
@@ -2588,7 +3056,7 @@
     <libpart lib="VoiceV2" part="R2">
       <fields>
         <field name="Reference">R2</field>
-        <field name="Value">39.2k 0.1%</field>
+        <field name="Value">37.4k 0.1%</field>
         <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
         <field name="Datasheet"/>
         <field name="Description"/>
@@ -2680,7 +3148,7 @@
       <fields>
         <field name="Reference">R26</field>
         <field name="Value">0R USB SERVICE DP</field>
-        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
         <field name="Datasheet"/>
         <field name="Description"/>
       </fields>
@@ -2693,7 +3161,7 @@
       <fields>
         <field name="Reference">R27</field>
         <field name="Value">0R USB SERVICE DM</field>
-        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
         <field name="Datasheet"/>
         <field name="Description"/>
       </fields>
@@ -2705,8 +3173,8 @@
     <libpart lib="VoiceV2" part="R28">
       <fields>
         <field name="Reference">R28</field>
-        <field name="Value">0R USB HOST DP DNP</field>
-        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Value">0R USB HOST DP</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
         <field name="Datasheet"/>
         <field name="Description"/>
       </fields>
@@ -2718,8 +3186,8 @@
     <libpart lib="VoiceV2" part="R29">
       <fields>
         <field name="Reference">R29</field>
-        <field name="Value">0R USB HOST DM DNP</field>
-        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Value">0R USB HOST DM</field>
+        <field name="Footprint">Resistor_SMD:R_0402_1005Metric</field>
         <field name="Datasheet"/>
         <field name="Description"/>
       </fields>
@@ -2758,6 +3226,45 @@
       <fields>
         <field name="Reference">R31</field>
         <field name="Value">0R VBUS DETECT FROM SYSTEM DNP</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="VoiceV2" part="R32">
+      <fields>
+        <field name="Reference">R32</field>
+        <field name="Value">100k</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="VoiceV2" part="R33">
+      <fields>
+        <field name="Reference">R33</field>
+        <field name="Value">10k PG</field>
+        <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="VoiceV2" part="R34">
+      <fields>
+        <field name="Reference">R34</field>
+        <field name="Value">10k PG</field>
         <field name="Footprint">Resistor_SMD:R_0603_1608Metric</field>
         <field name="Datasheet"/>
         <field name="Description"/>
@@ -2883,6 +3390,30 @@
         <pin num="1" name="1" type="passive"/>
       </pins>
     </libpart>
+    <libpart lib="VoiceV2" part="TP10">
+      <fields>
+        <field name="Reference">TP10</field>
+        <field name="Value">SYSTEM POWER GOOD</field>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="VoiceV2" part="TP11">
+      <fields>
+        <field name="Reference">TP11</field>
+        <field name="Value">MODEM POWER GOOD</field>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
     <libpart lib="VoiceV2" part="TP2">
       <fields>
         <field name="Reference">TP2</field>
@@ -2935,6 +3466,42 @@
       <fields>
         <field name="Reference">TP6</field>
         <field name="Value">GND</field>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="VoiceV2" part="TP7">
+      <fields>
+        <field name="Reference">TP7</field>
+        <field name="Value">PROTECTED INPUT</field>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="VoiceV2" part="TP8">
+      <fields>
+        <field name="Reference">TP8</field>
+        <field name="Value">POWER BUS</field>
+        <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="VoiceV2" part="TP9">
+      <fields>
+        <field name="Reference">TP9</field>
+        <field name="Value">SYSTEM 5V</field>
         <field name="Footprint">TestPoint:TestPoint_Pad_D1.0mm</field>
         <field name="Datasheet"/>
         <field name="Description"/>
@@ -3066,18 +3633,20 @@
     <libpart lib="VoiceV2" part="U2">
       <fields>
         <field name="Reference">U2</field>
-        <field name="Value">TPS563201DDCR CANDIDATE</field>
-        <field name="Footprint">Package_TO_SOT_SMD:SOT-23-6</field>
+        <field name="Value">TPS62933PDRLR 3.8V</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-583-8</field>
         <field name="Datasheet"/>
         <field name="Description"/>
       </fields>
       <pins>
-        <pin num="1" name="GND" type="power_in"/>
-        <pin num="2" name="SW" type="passive"/>
+        <pin num="1" name="RT_1P2MHz" type="input"/>
+        <pin num="2" name="EN" type="input"/>
         <pin num="3" name="VIN" type="power_in"/>
-        <pin num="4" name="VFB" type="input"/>
-        <pin num="5" name="EN" type="input"/>
-        <pin num="6" name="VBST" type="passive"/>
+        <pin num="4" name="GND" type="power_in"/>
+        <pin num="5" name="SW" type="passive"/>
+        <pin num="6" name="BST" type="passive"/>
+        <pin num="7" name="PG" type="open_collector"/>
+        <pin num="8" name="FB" type="input"/>
       </pins>
     </libpart>
     <libpart lib="VoiceV2" part="U3">
@@ -3131,6 +3700,42 @@
         <pin num="6" name="VCCB" type="power_in"/>
       </pins>
     </libpart>
+    <libpart lib="VoiceV2" part="U6">
+      <fields>
+        <field name="Reference">U6</field>
+        <field name="Value">TPS63061DSCR 5V</field>
+        <field name="Footprint">VoiceV2:TPS63061_DSC0010E_3x3mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="L1" type="passive"/>
+        <pin num="2" name="VIN" type="power_in"/>
+        <pin num="3" name="EN" type="input"/>
+        <pin num="4" name="PS_SYNC" type="input"/>
+        <pin num="5" name="PG" type="open_collector"/>
+        <pin num="6" name="VAUX" type="passive"/>
+        <pin num="7" name="GND" type="power_in"/>
+        <pin num="8" name="FB_FIXED_TO_VOUT" type="input"/>
+        <pin num="9" name="VOUT" type="power_out"/>
+        <pin num="10" name="L2" type="passive"/>
+        <pin num="11" name="EP_PGND" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="VoiceV2" part="U7">
+      <fields>
+        <field name="Reference">U7</field>
+        <field name="Value">TPD2E2U06DCKR</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-323_SC-70</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="IO1" type="bidirectional"/>
+        <pin num="2" name="IO2" type="bidirectional"/>
+        <pin num="3" name="GND" type="power_in"/>
+      </pins>
+    </libpart>
   </libparts>
   <libraries>
     <library logical="VoiceV2">
@@ -3167,67 +3772,77 @@
       <node ref="J21" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="JP1" pin="3" pinfunction="3" pintype="passive"/>
     </net>
-    <net code="7" name="/BOOT_BTN_IO0" class="Default">
+    <net code="7" name="/BOARD_REG_5V" class="Default">
+      <node ref="C34" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="C35" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="C36" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="JP1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U6" pin="8" pinfunction="FB_FIXED_TO_VOUT" pintype="input"/>
+      <node ref="U6" pin="9" pinfunction="VOUT" pintype="power_out"/>
+    </net>
+    <net code="8" name="/BOOT_BTN_IO0" class="Default">
       <node ref="C27" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="J13" pin="16" pinfunction="16" pintype="passive"/>
       <node ref="J17" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="R14" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="SW1" pin="1" pinfunction="1" pintype="passive"/>
     </net>
-    <net code="8" name="/BUCK_3V8" class="Default">
+    <net code="9" name="/BUCK_3V8" class="Default">
+      <node ref="C37" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="C6" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="C7" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="J19" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="L1" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="R2" pin="1" pinfunction="1" pintype="passive"/>
     </net>
-    <net code="9" name="/BUCK_BST" class="Default">
+    <net code="10" name="/BUCK_BST" class="Default">
       <node ref="C3" pin="1" pinfunction="1" pintype="passive"/>
-      <node ref="U2" pin="6" pinfunction="VBST" pintype="passive"/>
+      <node ref="U2" pin="6" pinfunction="BST" pintype="passive"/>
     </net>
-    <net code="10" name="/BUCK_EN" class="Default">
+    <net code="11" name="/BUCK_EN" class="Default">
       <node ref="R1" pin="2" pinfunction="2" pintype="passive"/>
-      <node ref="U2" pin="5" pinfunction="EN" pintype="input"/>
+      <node ref="U2" pin="2" pinfunction="EN" pintype="input"/>
     </net>
-    <net code="11" name="/BUCK_FB" class="Default">
+    <net code="12" name="/BUCK_FB" class="Default">
+      <node ref="C37" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="R2" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="R3" pin="1" pinfunction="1" pintype="passive"/>
-      <node ref="U2" pin="4" pinfunction="VFB" pintype="input"/>
+      <node ref="U2" pin="8" pinfunction="FB" pintype="input"/>
     </net>
-    <net code="12" name="/BUCK_SW" class="Default">
+    <net code="13" name="/BUCK_SW" class="Default">
       <node ref="C3" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="L1" pin="1" pinfunction="1" pintype="passive"/>
-      <node ref="U2" pin="2" pinfunction="SW" pintype="passive"/>
+      <node ref="U2" pin="5" pinfunction="SW" pintype="passive"/>
     </net>
-    <net code="13" name="/CHRG_OD" class="Default">
+    <net code="14" name="/CHRG_OD" class="Default">
       <node ref="J13" pin="22" pinfunction="22" pintype="passive"/>
       <node ref="J5" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="R22" pin="2" pinfunction="2" pintype="passive"/>
     </net>
-    <net code="14" name="/DBG_RX_1V8" class="Default">
+    <net code="15" name="/DBG_RX_1V8" class="Default">
       <node ref="J9" pin="3" pinfunction="3" pintype="passive"/>
       <node ref="U1" pin="38" pinfunction="DBG_RXD" pintype="input"/>
     </net>
-    <net code="15" name="/DBG_TX_1V8" class="Default">
+    <net code="16" name="/DBG_TX_1V8" class="Default">
       <node ref="J9" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="U1" pin="39" pinfunction="DBG_TXD" pintype="output"/>
     </net>
-    <net code="16" name="/DEBUG_ESP_RX44" class="Default">
+    <net code="17" name="/DEBUG_ESP_RX44" class="Default">
       <node ref="J13" pin="26" pinfunction="26" pintype="passive"/>
       <node ref="J18" pin="3" pinfunction="3" pintype="passive"/>
       <node ref="TP5" pin="1" pinfunction="1" pintype="passive"/>
     </net>
-    <net code="17" name="/DEBUG_ESP_TX43" class="Default">
+    <net code="18" name="/DEBUG_ESP_TX43" class="Default">
       <node ref="J13" pin="25" pinfunction="25" pintype="passive"/>
       <node ref="J18" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="TP4" pin="1" pinfunction="1" pintype="passive"/>
     </net>
-    <net code="18" name="/DONE_OD" class="Default">
+    <net code="19" name="/DONE_OD" class="Default">
       <node ref="J13" pin="23" pinfunction="23" pintype="passive"/>
       <node ref="J5" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="R23" pin="2" pinfunction="2" pintype="passive"/>
     </net>
-    <net code="19" name="/ESP_3V3" class="Default">
+    <net code="20" name="/ESP_3V3" class="Default">
       <node ref="C13" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="C15" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="C17" pin="1" pinfunction="1" pintype="passive"/>
@@ -3239,6 +3854,8 @@
       <node ref="R23" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="R24" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="R25" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="R33" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="R34" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="R4" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="U3" pin="1" pinfunction="VCCA" pintype="power_in"/>
       <node ref="U3" pin="5" pinfunction="DIR" pintype="input"/>
@@ -3246,54 +3863,54 @@
       <node ref="U5" pin="1" pinfunction="VCCA" pintype="power_in"/>
       <node ref="U5" pin="5" pinfunction="DIR" pintype="input"/>
     </net>
-    <net code="20" name="/ESP_5V" class="Default">
+    <net code="21" name="/ESP_5V" class="Default">
       <node ref="J13" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="JP3" pin="2" pinfunction="2" pintype="passive"/>
     </net>
-    <net code="21" name="/ESP_DTR4" class="Default">
+    <net code="22" name="/ESP_DTR4" class="Default">
       <node ref="J13" pin="7" pinfunction="7" pintype="passive"/>
       <node ref="R5" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="U5" pin="3" pinfunction="A" pintype="bidirectional"/>
     </net>
-    <net code="22" name="/ESP_EN" class="Default">
+    <net code="23" name="/ESP_EN" class="Default">
       <node ref="C30" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="J13" pin="27" pinfunction="27" pintype="passive"/>
       <node ref="R25" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="SW2" pin="1" pinfunction="1" pintype="passive"/>
     </net>
-    <net code="23" name="/ESP_RX18" class="Default">
+    <net code="24" name="/ESP_RX18" class="Default">
       <node ref="J13" pin="6" pinfunction="6" pintype="passive"/>
       <node ref="U4" pin="3" pinfunction="A" pintype="bidirectional"/>
     </net>
-    <net code="24" name="/ESP_TX17" class="Default">
+    <net code="25" name="/ESP_TX17" class="Default">
       <node ref="J13" pin="5" pinfunction="5" pintype="passive"/>
       <node ref="R4" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="U3" pin="3" pinfunction="A" pintype="bidirectional"/>
     </net>
-    <net code="25" name="/ESP_USB_DM19" class="Default">
-      <node ref="J13" pin="28" pinfunction="28" pintype="passive"/>
+    <net code="26" name="/ESP_USB_DM19" class="Default">
+      <node ref="J22" pin="3" pinfunction="3" pintype="passive"/>
       <node ref="R29" pin="2" pinfunction="2" pintype="passive"/>
     </net>
-    <net code="26" name="/ESP_USB_DP20" class="Default">
-      <node ref="J13" pin="29" pinfunction="29" pintype="passive"/>
+    <net code="27" name="/ESP_USB_DP20" class="Default">
+      <node ref="J22" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="R28" pin="2" pinfunction="2" pintype="passive"/>
     </net>
-    <net code="27" name="/EXT_DETECT_GATE" class="Default">
+    <net code="28" name="/EXT_DETECT_GATE" class="Default">
       <node ref="C29" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="Q5" pin="1" pinfunction="G" pintype="input"/>
       <node ref="R19" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="R20" pin="1" pinfunction="1" pintype="passive"/>
     </net>
-    <net code="28" name="/EXT_MODEM_3V8" class="Default">
+    <net code="29" name="/EXT_MODEM_3V8" class="Default">
       <node ref="J19" pin="3" pinfunction="3" pintype="passive"/>
       <node ref="J20" pin="1" pinfunction="1" pintype="passive"/>
     </net>
-    <net code="29" name="/EXT_PRESENT_N_IO10" class="Default">
+    <net code="30" name="/EXT_PRESENT_N_IO10" class="Default">
       <node ref="J13" pin="19" pinfunction="19" pintype="passive"/>
       <node ref="Q5" pin="3" pinfunction="D" pintype="passive"/>
       <node ref="R21" pin="2" pinfunction="2" pintype="passive"/>
     </net>
-    <net code="30" name="/GND" class="Default">
+    <net code="31" name="/GND" class="Default">
       <node ref="C1" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="C10" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="C11" pin="2" pinfunction="2" pintype="passive"/>
@@ -3317,6 +3934,12 @@
       <node ref="C28" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="C29" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="C30" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="C31" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="C32" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="C33" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="C34" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="C35" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="C36" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="C4" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="C5" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="C6" pin="2" pinfunction="2" pintype="passive"/>
@@ -3344,6 +3967,7 @@
       <node ref="J2" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="J20" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="J21" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="J22" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="J3" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="J4" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="J5" pin="4" pinfunction="4" pintype="passive"/>
@@ -3359,6 +3983,7 @@
       <node ref="R18" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="R20" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="R3" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="R32" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="R5" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="R6" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="R7" pin="2" pinfunction="2" pintype="passive"/>
@@ -3390,37 +4015,42 @@
       <node ref="U1" pin="93" pinfunction="GND" pintype="power_in"/>
       <node ref="U1" pin="94" pinfunction="GND" pintype="power_in"/>
       <node ref="U1" pin="95" pinfunction="GND" pintype="power_in"/>
-      <node ref="U2" pin="1" pinfunction="GND" pintype="power_in"/>
+      <node ref="U2" pin="1" pinfunction="RT_1P2MHz" pintype="input"/>
+      <node ref="U2" pin="4" pinfunction="GND" pintype="power_in"/>
       <node ref="U3" pin="2" pinfunction="GND" pintype="power_in"/>
       <node ref="U4" pin="2" pinfunction="GND" pintype="power_in"/>
       <node ref="U4" pin="5" pinfunction="DIR" pintype="input"/>
       <node ref="U5" pin="2" pinfunction="GND" pintype="power_in"/>
+      <node ref="U6" pin="11" pinfunction="EP_PGND" pintype="power_in"/>
+      <node ref="U6" pin="4" pinfunction="PS_SYNC" pintype="input"/>
+      <node ref="U6" pin="7" pinfunction="GND" pintype="power_in"/>
+      <node ref="U7" pin="3" pinfunction="GND" pintype="power_in"/>
     </net>
-    <net code="31" name="/I2S_AMP_BCLK15" class="Default">
+    <net code="32" name="/I2S_AMP_BCLK15" class="Default">
       <node ref="J13" pin="11" pinfunction="11" pintype="passive"/>
       <node ref="J15" pin="3" pinfunction="3" pintype="passive"/>
     </net>
-    <net code="32" name="/I2S_AMP_DATA7" class="Default">
+    <net code="33" name="/I2S_AMP_DATA7" class="Default">
       <node ref="J13" pin="13" pinfunction="13" pintype="passive"/>
       <node ref="J15" pin="5" pinfunction="5" pintype="passive"/>
     </net>
-    <net code="33" name="/I2S_AMP_WS16" class="Default">
+    <net code="34" name="/I2S_AMP_WS16" class="Default">
       <node ref="J13" pin="12" pinfunction="12" pintype="passive"/>
       <node ref="J15" pin="4" pinfunction="4" pintype="passive"/>
     </net>
-    <net code="34" name="/I2S_MIC_BCLK14" class="Default">
+    <net code="35" name="/I2S_MIC_BCLK14" class="Default">
       <node ref="J13" pin="8" pinfunction="8" pintype="passive"/>
       <node ref="J14" pin="3" pinfunction="3" pintype="passive"/>
     </net>
-    <net code="35" name="/I2S_MIC_DATA12" class="Default">
+    <net code="36" name="/I2S_MIC_DATA12" class="Default">
       <node ref="J13" pin="10" pinfunction="10" pintype="passive"/>
       <node ref="J14" pin="5" pinfunction="5" pintype="passive"/>
     </net>
-    <net code="36" name="/I2S_MIC_WS13" class="Default">
+    <net code="37" name="/I2S_MIC_WS13" class="Default">
       <node ref="J13" pin="9" pinfunction="9" pintype="passive"/>
       <node ref="J14" pin="4" pinfunction="4" pintype="passive"/>
     </net>
-    <net code="37" name="/MODEM_1V8" class="Default">
+    <net code="38" name="/MODEM_1V8" class="Default">
       <node ref="C14" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="C16" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="C18" pin="1" pinfunction="1" pintype="passive"/>
@@ -3431,7 +4061,7 @@
       <node ref="U4" pin="6" pinfunction="VCCB" pintype="power_in"/>
       <node ref="U5" pin="6" pinfunction="VCCB" pintype="power_in"/>
     </net>
-    <net code="38" name="/MODEM_3V8" class="Default">
+    <net code="39" name="/MODEM_3V8" class="Default">
       <node ref="C10" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="C11" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="C12" pin="1" pinfunction="1" pintype="passive"/>
@@ -3442,367 +4072,420 @@
       <node ref="U1" pin="42" pinfunction="VBAT" pintype="power_in"/>
       <node ref="U1" pin="43" pinfunction="VBAT" pintype="power_in"/>
     </net>
-    <net code="39" name="/MODEM_BOOT_N" class="Default">
+    <net code="40" name="/MODEM_BOOT_N" class="Default">
       <node ref="J8" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="U1" pin="82" pinfunction="BOOT_MODE" pintype="input"/>
     </net>
-    <net code="40" name="/MODEM_NETLIGHT" class="Default">
+    <net code="41" name="/MODEM_NETLIGHT" class="Default">
       <node ref="TP3" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="U1" pin="16" pinfunction="NETLIGHT" pintype="output"/>
     </net>
-    <net code="41" name="/MODEM_PWRKEY_N" class="Default">
+    <net code="42" name="/MODEM_PWRKEY_N" class="Default">
       <node ref="J6" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="Q1" pin="3" pinfunction="D" pintype="passive"/>
       <node ref="R7" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="U1" pin="7" pinfunction="PWR_ON_OFF" pintype="input"/>
     </net>
-    <net code="42" name="/MODEM_RESET_N" class="Default">
+    <net code="43" name="/MODEM_REG_PG" class="Default">
+      <node ref="R34" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="TP11" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="7" pinfunction="PG" pintype="open_collector"/>
+    </net>
+    <net code="44" name="/MODEM_RESET_N" class="Default">
       <node ref="C19" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="J7" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="Q2" pin="3" pinfunction="D" pintype="passive"/>
       <node ref="U1" pin="15" pinfunction="RESET_N" pintype="input"/>
     </net>
-    <net code="43" name="/MODEM_STATE_1V8" class="Default">
+    <net code="45" name="/MODEM_STATE_1V8" class="Default">
       <node ref="TP2" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="U1" pin="25" pinfunction="STATE" pintype="output"/>
     </net>
-    <net code="44" name="/M_DTR_1V8" class="Default">
+    <net code="46" name="/M_DTR_1V8" class="Default">
       <node ref="U1" pin="19" pinfunction="UART0_DTR" pintype="input"/>
       <node ref="U5" pin="4" pinfunction="B" pintype="bidirectional"/>
     </net>
-    <net code="45" name="/M_RX_1V8" class="Default">
+    <net code="47" name="/M_RX_1V8" class="Default">
       <node ref="U1" pin="17" pinfunction="UART0_RXD" pintype="input"/>
       <node ref="U3" pin="4" pinfunction="B" pintype="bidirectional"/>
     </net>
-    <net code="46" name="/M_SIM_CLK" class="Default">
+    <net code="48" name="/M_SIM_CLK" class="Default">
       <node ref="R10" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="U1" pin="13" pinfunction="USIM_CLK" pintype="output"/>
     </net>
-    <net code="47" name="/M_SIM_DATA" class="Default">
+    <net code="49" name="/M_SIM_DATA" class="Default">
       <node ref="R9" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="U1" pin="11" pinfunction="USIM_DATA" pintype="bidirectional"/>
     </net>
-    <net code="48" name="/M_SIM_RESET" class="Default">
+    <net code="50" name="/M_SIM_RESET" class="Default">
       <node ref="R11" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="U1" pin="12" pinfunction="USIM_RESET" pintype="output"/>
     </net>
-    <net code="49" name="/M_TX_1V8" class="Default">
+    <net code="51" name="/M_TX_1V8" class="Default">
       <node ref="U1" pin="18" pinfunction="UART0_TXD" pintype="output"/>
       <node ref="U4" pin="4" pinfunction="B" pintype="bidirectional"/>
     </net>
-    <net code="50" name="/M_USB_DM" class="Default">
+    <net code="52" name="/M_USB_DM" class="Default">
       <node ref="R27" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="R29" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="U1" pin="60" pinfunction="USB_DM" pintype="bidirectional"/>
     </net>
-    <net code="51" name="/M_USB_DP" class="Default">
+    <net code="53" name="/M_USB_DP" class="Default">
       <node ref="R26" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="R28" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="U1" pin="59" pinfunction="USB_DP" pintype="bidirectional"/>
     </net>
-    <net code="52" name="/POWER_REG_5V" class="Default">
-      <node ref="J3" pin="1" pinfunction="1" pintype="passive"/>
-      <node ref="JP1" pin="1" pinfunction="1" pintype="passive"/>
+    <net code="54" name="/POWER_BUS" class="Default">
+      <node ref="C32" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="C33" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="C4" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="C5" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="JP4" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="R1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="TP8" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="3" pinfunction="VIN" pintype="power_in"/>
+      <node ref="U6" pin="2" pinfunction="VIN" pintype="power_in"/>
+      <node ref="U6" pin="3" pinfunction="EN" pintype="input"/>
     </net>
-    <net code="53" name="/PWRKEY_CTL" class="Default">
+    <net code="55" name="/POWER_REG_5V" class="Default">
+      <node ref="J3" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="JP4" pin="3" pinfunction="3" pintype="passive"/>
+    </net>
+    <net code="56" name="/PWRKEY_CTL" class="Default">
       <node ref="J13" pin="20" pinfunction="20" pintype="passive"/>
       <node ref="Q1" pin="1" pinfunction="G" pintype="input"/>
       <node ref="R6" pin="1" pinfunction="1" pintype="passive"/>
     </net>
-    <net code="54" name="/RADAR_5V" class="Default">
+    <net code="57" name="/RADAR_5V" class="Default">
       <node ref="C26" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="J16" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="JP2" pin="2" pinfunction="2" pintype="passive"/>
     </net>
-    <net code="55" name="/RADAR_RX_FROM_IO8" class="Default">
+    <net code="58" name="/RADAR_RX_FROM_IO8" class="Default">
       <node ref="J13" pin="15" pinfunction="15" pintype="passive"/>
       <node ref="J16" pin="4" pinfunction="4" pintype="passive"/>
     </net>
-    <net code="56" name="/RADAR_TX_TO_IO6" class="Default">
+    <net code="59" name="/RADAR_TX_TO_IO6" class="Default">
       <node ref="J13" pin="14" pinfunction="14" pintype="passive"/>
       <node ref="J16" pin="3" pinfunction="3" pintype="passive"/>
     </net>
-    <net code="57" name="/RESET_CTL" class="Default">
+    <net code="60" name="/RESET_CTL" class="Default">
       <node ref="J13" pin="21" pinfunction="21" pintype="passive"/>
       <node ref="Q2" pin="1" pinfunction="G" pintype="input"/>
       <node ref="R8" pin="1" pinfunction="1" pintype="passive"/>
     </net>
-    <net code="58" name="/RF_ANT" class="Default">
+    <net code="61" name="/REVERSE_GATE" class="Default">
+      <node ref="Q6" pin="1" pinfunction="G" pintype="input"/>
+      <node ref="R32" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="62" name="/RF_ANT" class="Default">
       <node ref="C24" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="R13" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="U1" pin="35" pinfunction="ANT_MAIN" pintype="passive"/>
     </net>
-    <net code="59" name="/RF_FEED" class="Default">
+    <net code="63" name="/RF_FEED" class="Default">
       <node ref="C25" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="J11" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="R13" pin="2" pinfunction="2" pintype="passive"/>
     </net>
-    <net code="60" name="/SERVICE_USB_DM" class="Default">
+    <net code="64" name="/SERVICE_USB_DM" class="Default">
       <node ref="J12" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="R27" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="U7" pin="1" pinfunction="IO1" pintype="bidirectional"/>
     </net>
-    <net code="61" name="/SERVICE_USB_DP" class="Default">
+    <net code="65" name="/SERVICE_USB_DP" class="Default">
       <node ref="J12" pin="3" pinfunction="3" pintype="passive"/>
       <node ref="R26" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="U7" pin="2" pinfunction="IO2" pintype="bidirectional"/>
     </net>
-    <net code="62" name="/SERVICE_USB_VBUS" class="Default">
+    <net code="66" name="/SERVICE_USB_VBUS" class="Default">
       <node ref="J12" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="R30" pin="1" pinfunction="1" pintype="passive"/>
     </net>
-    <net code="63" name="/SIM_CLK" class="Default">
+    <net code="67" name="/SIM_CLK" class="Default">
       <node ref="C22" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="D2" pin="1" pinfunction="K" pintype="passive"/>
       <node ref="J10" pin="C3" pinfunction="CLK" pintype="passive"/>
       <node ref="R10" pin="2" pinfunction="2" pintype="passive"/>
     </net>
-    <net code="64" name="/SIM_DATA" class="Default">
+    <net code="68" name="/SIM_DATA" class="Default">
       <node ref="C21" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="D1" pin="1" pinfunction="K" pintype="passive"/>
       <node ref="J10" pin="C7" pinfunction="IO" pintype="passive"/>
       <node ref="R9" pin="2" pinfunction="2" pintype="passive"/>
     </net>
-    <net code="65" name="/SIM_DETECT" class="Default">
+    <net code="69" name="/SIM_DETECT" class="Default">
       <node ref="J10" pin="DSW" pinfunction="DETECT" pintype="passive"/>
       <node ref="R12" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="U1" pin="79" pinfunction="USIM_DET" pintype="input"/>
     </net>
-    <net code="66" name="/SIM_RESET" class="Default">
+    <net code="70" name="/SIM_RESET" class="Default">
       <node ref="C23" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="D3" pin="1" pinfunction="K" pintype="passive"/>
       <node ref="J10" pin="C2" pinfunction="RST" pintype="passive"/>
       <node ref="R11" pin="2" pinfunction="2" pintype="passive"/>
     </net>
-    <net code="67" name="/SIM_VCC" class="Default">
+    <net code="71" name="/SIM_VCC" class="Default">
       <node ref="C20" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="D4" pin="1" pinfunction="K" pintype="passive"/>
       <node ref="J10" pin="C1" pinfunction="VCC" pintype="passive"/>
       <node ref="U1" pin="14" pinfunction="USIM_PWR" pintype="power_out"/>
     </net>
-    <net code="68" name="/SYS_5V" class="Default">
+    <net code="72" name="/SYS_5V" class="Default">
       <node ref="C1" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="C2" pin="1" pinfunction="1" pintype="passive"/>
-      <node ref="C4" pin="1" pinfunction="1" pintype="passive"/>
-      <node ref="C5" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="J15" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="JP1" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="JP2" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="JP3" pin="1" pinfunction="1" pintype="passive"/>
-      <node ref="R1" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="R31" pin="1" pinfunction="1" pintype="passive"/>
-      <node ref="U2" pin="3" pinfunction="VIN" pintype="power_in"/>
+      <node ref="TP9" pin="1" pinfunction="1" pintype="passive"/>
     </net>
-    <net code="69" name="/TTL_5V" class="Default">
+    <net code="73" name="/SYS_AUX" class="Default">
+      <node ref="C31" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U6" pin="6" pinfunction="VAUX" pintype="passive"/>
+    </net>
+    <net code="74" name="/SYS_L1" class="Default">
+      <node ref="L2" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U6" pin="1" pinfunction="L1" pintype="passive"/>
+    </net>
+    <net code="75" name="/SYS_L2" class="Default">
+      <node ref="L2" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="U6" pin="10" pinfunction="L2" pintype="passive"/>
+    </net>
+    <net code="76" name="/SYS_REG_PG" class="Default">
+      <node ref="R33" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="TP10" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U6" pin="5" pinfunction="PG" pintype="open_collector"/>
+    </net>
+    <net code="77" name="/TTL_5V" class="Default">
       <node ref="J18" pin="4" pinfunction="4" pintype="passive"/>
       <node ref="JP3" pin="3" pinfunction="3" pintype="passive"/>
     </net>
-    <net code="70" name="/UPS_PG_OD" class="Default">
+    <net code="78" name="/UPS_PG_OD" class="Default">
       <node ref="J13" pin="24" pinfunction="24" pintype="passive"/>
       <node ref="J5" pin="3" pinfunction="3" pintype="passive"/>
       <node ref="R24" pin="2" pinfunction="2" pintype="passive"/>
     </net>
-    <net code="71" name="/USB_DETECT_5V" class="Default">
+    <net code="79" name="/USB_DETECT_5V" class="Default">
       <node ref="R30" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="R31" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="U1" pin="61" pinfunction="USB_VBUS" pintype="power_in"/>
     </net>
-    <net code="72" name="/VIN_DC" class="Default">
+    <net code="80" name="/VIN_DC" class="Default">
+      <node ref="F1" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="J1" pin="1" pinfunction="CENTER_PLUS" pintype="passive"/>
-      <node ref="J2" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="R19" pin="1" pinfunction="1" pintype="passive"/>
     </net>
-    <net code="73" name="unconnected-(J1-SW_UNUSED-Pad3)" class="Default">
+    <net code="81" name="/VIN_FUSED" class="Default">
+      <node ref="F1" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="Q6" pin="3" pinfunction="D" pintype="passive"/>
+    </net>
+    <net code="82" name="/VIN_PROTECTED" class="Default">
+      <node ref="J2" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="JP4" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="Q6" pin="2" pinfunction="S" pintype="passive"/>
+      <node ref="TP7" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="83" name="unconnected-(J1-SW_UNUSED-Pad3)" class="Default">
       <node ref="J1" pin="3" pinfunction="SW_UNUSED" pintype="passive+no_connect"/>
     </net>
-    <net code="74" name="unconnected-(J10-VPP_UNUSED-PadC6)" class="Default">
+    <net code="84" name="unconnected-(J10-VPP_UNUSED-PadC6)" class="Default">
       <node ref="J10" pin="C6" pinfunction="VPP_UNUSED" pintype="passive+no_connect"/>
     </net>
-    <net code="75" name="unconnected-(U1-ADC0-Pad9)" class="Default">
+    <net code="85" name="unconnected-(J13-Pad28)" class="Default">
+      <node ref="J13" pin="28" pinfunction="28" pintype="passive+no_connect"/>
+    </net>
+    <net code="86" name="unconnected-(J13-Pad29)" class="Default">
+      <node ref="J13" pin="29" pinfunction="29" pintype="passive+no_connect"/>
+    </net>
+    <net code="87" name="unconnected-(U1-ADC0-Pad9)" class="Default">
       <node ref="U1" pin="9" pinfunction="ADC0" pintype="input+no_connect"/>
     </net>
-    <net code="76" name="unconnected-(U1-ADC1-Pad96)" class="Default">
+    <net code="88" name="unconnected-(U1-ADC1-Pad96)" class="Default">
       <node ref="U1" pin="96" pinfunction="ADC1" pintype="input+no_connect"/>
     </net>
-    <net code="77" name="unconnected-(U1-GPIO0-Pad76)" class="Default">
+    <net code="89" name="unconnected-(U1-GPIO0-Pad76)" class="Default">
       <node ref="U1" pin="76" pinfunction="GPIO0" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="78" name="unconnected-(U1-GPIO1-Pad77)" class="Default">
+    <net code="90" name="unconnected-(U1-GPIO1-Pad77)" class="Default">
       <node ref="U1" pin="77" pinfunction="GPIO1" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="79" name="unconnected-(U1-GPIO2-Pad86)" class="Default">
+    <net code="91" name="unconnected-(U1-GPIO2-Pad86)" class="Default">
       <node ref="U1" pin="86" pinfunction="GPIO2" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="80" name="unconnected-(U1-GPIO3-Pad87)" class="Default">
+    <net code="92" name="unconnected-(U1-GPIO3-Pad87)" class="Default">
       <node ref="U1" pin="87" pinfunction="GPIO3" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="81" name="unconnected-(U1-PCM_OUT-Pad33)" class="Default">
+    <net code="93" name="unconnected-(U1-PCM_OUT-Pad33)" class="Default">
       <node ref="U1" pin="33" pinfunction="PCM_OUT" pintype="output+no_connect"/>
     </net>
-    <net code="82" name="unconnected-(U1-PWM0-Pad74)" class="Default">
+    <net code="94" name="unconnected-(U1-PWM0-Pad74)" class="Default">
       <node ref="U1" pin="74" pinfunction="PWM0" pintype="output+no_connect"/>
     </net>
-    <net code="83" name="unconnected-(U1-PWM1-Pad75)" class="Default">
+    <net code="95" name="unconnected-(U1-PWM1-Pad75)" class="Default">
       <node ref="U1" pin="75" pinfunction="PWM1" pintype="output+no_connect"/>
     </net>
-    <net code="84" name="unconnected-(U1-RSV_FLOAT-Pad2)" class="Default">
+    <net code="96" name="unconnected-(U1-RSV_FLOAT-Pad2)" class="Default">
       <node ref="U1" pin="2" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="85" name="unconnected-(U1-RSV_FLOAT-Pad3)" class="Default">
+    <net code="97" name="unconnected-(U1-RSV_FLOAT-Pad3)" class="Default">
       <node ref="U1" pin="3" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="86" name="unconnected-(U1-RSV_FLOAT-Pad4)" class="Default">
+    <net code="98" name="unconnected-(U1-RSV_FLOAT-Pad4)" class="Default">
       <node ref="U1" pin="4" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="87" name="unconnected-(U1-RSV_FLOAT-Pad5)" class="Default">
+    <net code="99" name="unconnected-(U1-RSV_FLOAT-Pad5)" class="Default">
       <node ref="U1" pin="5" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="88" name="unconnected-(U1-RSV_FLOAT-Pad6)" class="Default">
+    <net code="100" name="unconnected-(U1-RSV_FLOAT-Pad6)" class="Default">
       <node ref="U1" pin="6" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="89" name="unconnected-(U1-RSV_FLOAT-Pad8)" class="Default">
+    <net code="101" name="unconnected-(U1-RSV_FLOAT-Pad8)" class="Default">
       <node ref="U1" pin="8" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="90" name="unconnected-(U1-RSV_FLOAT-Pad26)" class="Default">
+    <net code="102" name="unconnected-(U1-RSV_FLOAT-Pad26)" class="Default">
       <node ref="U1" pin="26" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="91" name="unconnected-(U1-RSV_FLOAT-Pad30)" class="Default">
+    <net code="103" name="unconnected-(U1-RSV_FLOAT-Pad30)" class="Default">
       <node ref="U1" pin="30" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="92" name="unconnected-(U1-RSV_FLOAT-Pad31)" class="Default">
+    <net code="104" name="unconnected-(U1-RSV_FLOAT-Pad31)" class="Default">
       <node ref="U1" pin="31" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="93" name="unconnected-(U1-RSV_FLOAT-Pad32)" class="Default">
+    <net code="105" name="unconnected-(U1-RSV_FLOAT-Pad32)" class="Default">
       <node ref="U1" pin="32" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="94" name="unconnected-(U1-RSV_FLOAT-Pad44)" class="Default">
+    <net code="106" name="unconnected-(U1-RSV_FLOAT-Pad44)" class="Default">
       <node ref="U1" pin="44" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="95" name="unconnected-(U1-RSV_FLOAT-Pad50)" class="Default">
+    <net code="107" name="unconnected-(U1-RSV_FLOAT-Pad50)" class="Default">
       <node ref="U1" pin="50" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="96" name="unconnected-(U1-RSV_FLOAT-Pad51)" class="Default">
+    <net code="108" name="unconnected-(U1-RSV_FLOAT-Pad51)" class="Default">
       <node ref="U1" pin="51" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="97" name="unconnected-(U1-RSV_FLOAT-Pad52)" class="Default">
+    <net code="109" name="unconnected-(U1-RSV_FLOAT-Pad52)" class="Default">
       <node ref="U1" pin="52" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="98" name="unconnected-(U1-RSV_FLOAT-Pad53)" class="Default">
+    <net code="110" name="unconnected-(U1-RSV_FLOAT-Pad53)" class="Default">
       <node ref="U1" pin="53" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="99" name="unconnected-(U1-RSV_FLOAT-Pad54)" class="Default">
+    <net code="111" name="unconnected-(U1-RSV_FLOAT-Pad54)" class="Default">
       <node ref="U1" pin="54" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="100" name="unconnected-(U1-RSV_FLOAT-Pad55)" class="Default">
+    <net code="112" name="unconnected-(U1-RSV_FLOAT-Pad55)" class="Default">
       <node ref="U1" pin="55" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="101" name="unconnected-(U1-RSV_FLOAT-Pad56)" class="Default">
+    <net code="113" name="unconnected-(U1-RSV_FLOAT-Pad56)" class="Default">
       <node ref="U1" pin="56" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="102" name="unconnected-(U1-RSV_FLOAT-Pad57)" class="Default">
+    <net code="114" name="unconnected-(U1-RSV_FLOAT-Pad57)" class="Default">
       <node ref="U1" pin="57" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="103" name="unconnected-(U1-RSV_FLOAT-Pad58)" class="Default">
+    <net code="115" name="unconnected-(U1-RSV_FLOAT-Pad58)" class="Default">
       <node ref="U1" pin="58" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="104" name="unconnected-(U1-RSV_FLOAT-Pad62)" class="Default">
+    <net code="116" name="unconnected-(U1-RSV_FLOAT-Pad62)" class="Default">
       <node ref="U1" pin="62" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="105" name="unconnected-(U1-RSV_FLOAT-Pad63)" class="Default">
+    <net code="117" name="unconnected-(U1-RSV_FLOAT-Pad63)" class="Default">
       <node ref="U1" pin="63" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="106" name="unconnected-(U1-RSV_FLOAT-Pad64)" class="Default">
+    <net code="118" name="unconnected-(U1-RSV_FLOAT-Pad64)" class="Default">
       <node ref="U1" pin="64" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="107" name="unconnected-(U1-RSV_FLOAT-Pad65)" class="Default">
+    <net code="119" name="unconnected-(U1-RSV_FLOAT-Pad65)" class="Default">
       <node ref="U1" pin="65" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="108" name="unconnected-(U1-RSV_FLOAT-Pad66)" class="Default">
+    <net code="120" name="unconnected-(U1-RSV_FLOAT-Pad66)" class="Default">
       <node ref="U1" pin="66" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="109" name="unconnected-(U1-RSV_FLOAT-Pad67)" class="Default">
+    <net code="121" name="unconnected-(U1-RSV_FLOAT-Pad67)" class="Default">
       <node ref="U1" pin="67" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="110" name="unconnected-(U1-RSV_FLOAT-Pad68)" class="Default">
+    <net code="122" name="unconnected-(U1-RSV_FLOAT-Pad68)" class="Default">
       <node ref="U1" pin="68" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="111" name="unconnected-(U1-RSV_FLOAT-Pad69)" class="Default">
+    <net code="123" name="unconnected-(U1-RSV_FLOAT-Pad69)" class="Default">
       <node ref="U1" pin="69" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="112" name="unconnected-(U1-RSV_FLOAT-Pad78)" class="Default">
+    <net code="124" name="unconnected-(U1-RSV_FLOAT-Pad78)" class="Default">
       <node ref="U1" pin="78" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="113" name="unconnected-(U1-RSV_FLOAT-Pad80)" class="Default">
+    <net code="125" name="unconnected-(U1-RSV_FLOAT-Pad80)" class="Default">
       <node ref="U1" pin="80" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="114" name="unconnected-(U1-RSV_FLOAT-Pad81)" class="Default">
+    <net code="126" name="unconnected-(U1-RSV_FLOAT-Pad81)" class="Default">
       <node ref="U1" pin="81" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="115" name="unconnected-(U1-RSV_FLOAT-Pad83)" class="Default">
+    <net code="127" name="unconnected-(U1-RSV_FLOAT-Pad83)" class="Default">
       <node ref="U1" pin="83" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="116" name="unconnected-(U1-RSV_FLOAT-Pad84)" class="Default">
+    <net code="128" name="unconnected-(U1-RSV_FLOAT-Pad84)" class="Default">
       <node ref="U1" pin="84" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="117" name="unconnected-(U1-RSV_FLOAT-Pad85)" class="Default">
+    <net code="129" name="unconnected-(U1-RSV_FLOAT-Pad85)" class="Default">
       <node ref="U1" pin="85" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="118" name="unconnected-(U1-RSV_FLOAT-Pad97)" class="Default">
+    <net code="130" name="unconnected-(U1-RSV_FLOAT-Pad97)" class="Default">
       <node ref="U1" pin="97" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="119" name="unconnected-(U1-RSV_FLOAT-Pad98)" class="Default">
+    <net code="131" name="unconnected-(U1-RSV_FLOAT-Pad98)" class="Default">
       <node ref="U1" pin="98" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="120" name="unconnected-(U1-RSV_FLOAT-Pad99)" class="Default">
+    <net code="132" name="unconnected-(U1-RSV_FLOAT-Pad99)" class="Default">
       <node ref="U1" pin="99" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="121" name="unconnected-(U1-RSV_FLOAT-Pad100)" class="Default">
+    <net code="133" name="unconnected-(U1-RSV_FLOAT-Pad100)" class="Default">
       <node ref="U1" pin="100" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="122" name="unconnected-(U1-RSV_FLOAT-Pad101)" class="Default">
+    <net code="134" name="unconnected-(U1-RSV_FLOAT-Pad101)" class="Default">
       <node ref="U1" pin="101" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="123" name="unconnected-(U1-RSV_FLOAT-Pad102)" class="Default">
+    <net code="135" name="unconnected-(U1-RSV_FLOAT-Pad102)" class="Default">
       <node ref="U1" pin="102" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="124" name="unconnected-(U1-RSV_FLOAT-Pad103)" class="Default">
+    <net code="136" name="unconnected-(U1-RSV_FLOAT-Pad103)" class="Default">
       <node ref="U1" pin="103" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="125" name="unconnected-(U1-RSV_FLOAT-Pad104)" class="Default">
+    <net code="137" name="unconnected-(U1-RSV_FLOAT-Pad104)" class="Default">
       <node ref="U1" pin="104" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="126" name="unconnected-(U1-RSV_FLOAT-Pad105)" class="Default">
+    <net code="138" name="unconnected-(U1-RSV_FLOAT-Pad105)" class="Default">
       <node ref="U1" pin="105" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="127" name="unconnected-(U1-RSV_FLOAT-Pad106)" class="Default">
+    <net code="139" name="unconnected-(U1-RSV_FLOAT-Pad106)" class="Default">
       <node ref="U1" pin="106" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="128" name="unconnected-(U1-RSV_FLOAT-Pad107)" class="Default">
+    <net code="140" name="unconnected-(U1-RSV_FLOAT-Pad107)" class="Default">
       <node ref="U1" pin="107" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="129" name="unconnected-(U1-RSV_FLOAT-Pad108)" class="Default">
+    <net code="141" name="unconnected-(U1-RSV_FLOAT-Pad108)" class="Default">
       <node ref="U1" pin="108" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="130" name="unconnected-(U1-RSV_FLOAT-Pad109)" class="Default">
+    <net code="142" name="unconnected-(U1-RSV_FLOAT-Pad109)" class="Default">
       <node ref="U1" pin="109" pinfunction="RSV_FLOAT" pintype="no_connect"/>
     </net>
-    <net code="131" name="unconnected-(U1-UART0_CTS-Pad22)" class="Default">
+    <net code="143" name="unconnected-(U1-UART0_CTS-Pad22)" class="Default">
       <node ref="U1" pin="22" pinfunction="UART0_CTS" pintype="input+no_connect"/>
     </net>
-    <net code="132" name="unconnected-(U1-UART0_DCD-Pad21)" class="Default">
+    <net code="144" name="unconnected-(U1-UART0_DCD-Pad21)" class="Default">
       <node ref="U1" pin="21" pinfunction="UART0_DCD" pintype="output+no_connect"/>
     </net>
-    <net code="133" name="unconnected-(U1-UART0_RI-Pad20)" class="Default">
+    <net code="145" name="unconnected-(U1-UART0_RI-Pad20)" class="Default">
       <node ref="U1" pin="20" pinfunction="UART0_RI" pintype="output+no_connect"/>
     </net>
-    <net code="134" name="unconnected-(U1-UART0_RTS-Pad23)" class="Default">
+    <net code="146" name="unconnected-(U1-UART0_RTS-Pad23)" class="Default">
       <node ref="U1" pin="23" pinfunction="UART0_RTS" pintype="output+no_connect"/>
     </net>
-    <net code="135" name="unconnected-(U1-UART1_RXD-Pad28)" class="Default">
+    <net code="147" name="unconnected-(U1-UART1_RXD-Pad28)" class="Default">
       <node ref="U1" pin="28" pinfunction="UART1_RXD" pintype="input+no_connect"/>
     </net>
-    <net code="136" name="unconnected-(U1-UART1_TXD-Pad29)" class="Default">
+    <net code="148" name="unconnected-(U1-UART1_TXD-Pad29)" class="Default">
       <node ref="U1" pin="29" pinfunction="UART1_TXD" pintype="output+no_connect"/>
     </net>
-    <net code="137" name="unconnected-(U1-WAKEUPOUT-Pad49)" class="Default">
+    <net code="149" name="unconnected-(U1-WAKEUPOUT-Pad49)" class="Default">
       <node ref="U1" pin="49" pinfunction="WAKEUPOUT" pintype="output+no_connect"/>
     </net>
   </nets>

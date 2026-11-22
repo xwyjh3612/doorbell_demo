@@ -13,6 +13,7 @@ LOCAL = ROOT/'VoiceV2.pretty'
 LOCAL.mkdir(exist_ok=True)
 (ROOT/'exports').mkdir(exist_ok=True)
 board = pcb.BOARD()
+board.SetCopperLayerCount(4)
 io = pcb.PCB_IO_MGR.PluginFind(pcb.PCB_IO_MGR.KICAD_SEXP)
 mm = pcb.FromMM
 v = lambda x,y: pcb.VECTOR2I(mm(x),mm(y))
@@ -63,11 +64,42 @@ def ml307_footprint():
     io.FootprintSave(str(LOCAL),fp)
     (ROOT/'ml307-landpattern.json').write_text(json.dumps({'source':'ML307R Hardware Design AT V1.0.1, Fig.3 p19 and Fig.20 p56','source_url':'https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1189/M307R_Hardware_Datasheet.pdf','view':'PCB TOP, NOT module bottom','body_mm':[15.8,17.7,2.2],'land_extent_mm':[18.4,20.3],'pads':pads,'release':'DRAFT: supplier CAD/physical overlay/stencil confirmation required'},indent=2),encoding='utf-8')
 
+def tps63061_footprint():
+    # TI's embedded Ultra Librarian DSC0010E copper drawing, in mils, was
+    # independently measured. This is DSC, not the similar DRC package.
+    fp=pcb.FOOTPRINT(board);fp.SetFPID(pcb.LIB_ID('VoiceV2','TPS63061_DSC0010E_3x3mm'))
+    def pad(number,x,y,w,h,layers,shape=pcb.PAD_SHAPE_RECT):
+        p=pcb.PAD(fp);p.SetNumber(str(number));p.SetAttribute(pcb.PAD_ATTRIB_SMD)
+        p.SetShape(shape);p.SetSize(v(w,h));p.SetPosition(v(x,y))
+        ls=pcb.LSET()
+        for layer in layers:ls.AddLayer(layer)
+        p.SetLayerSet(ls);fp.Add(p)
+    all_layers=[pcb.F_Cu,pcb.F_Mask,pcb.F_Paste]
+    for number in range(1,11):
+        x=-1.4 if number<=5 else 1.4
+        y=-1+(number-1)*.5 if number<=5 else 1-(number-6)*.5
+        pad(number,x,y,.6,.24,all_layers,pcb.PAD_SHAPE_OVAL)
+    pad(11,0,0,1.7,2.15,[pcb.F_Cu,pcb.F_Mask])
+    # Eight exposed-ground fingers are part of pad 11. No thermal via is
+    # silently placed inside a stencil opening.
+    for x in [-.6,-.2,.2,.6]:
+        for y in [-1.28,1.28]:pad(11,x,y,.2,.44,all_layers)
+    for x in [-.425,.425]:
+        for y in [-.525,.525]:pad('',x,y,.7,.8,[pcb.F_Paste])
+    rectangle(fp,3,3,pcb.F_Fab);rectangle(fp,3.9,3.7)
+    line(fp,(-1.9,-1.6),(-1.4,-1.6),pcb.F_SilkS,.15)
+    fp.SetAttributes(pcb.FP_SMD)
+    fp.SetLibDescription('TPS63061DSCR DSC0010E; TI linked Ultra Librarian geometry. EP=1.70x2.15mm plus 8 ground fingers; four-window EP paste ~61%.')
+    io.FootprintSave(str(LOCAL),fp)
+    evidence={'part':'TPS63061DSCR','package':'DSC0010E','source_url':'https://vendor.ultralibrarian.com/TI/embedded/?gpn=TPS63061&package=DSC&pin=10','preview_url':'https://static.ultralibrarian.com/part-previews/footprints/5165265/detailed-DSC0010E.svg','source_units':'mils; 1mil=0.0254mm','pad_centers_x_mm':[-1.4,1.4],'pad_pitch_mm':.5,'signal_pad_size_mm':[.6,.24],'ep_main_mm':[1.7,2.15],'ep_fingers':{'x_mm':[-.6,-.2,.2,.6],'y_mm':[-1.28,1.28],'size_mm':[.2,.44],'same_pin':11},'paste_main_windows':4,'paste_main_coverage_percent':round(4*.7*.8/(1.7*2.15)*100,2),'thermal_vias_inside_paste':False,'assembly_process_verified':False}
+    (ROOT/'tps63061-landpattern.json').write_text(json.dumps(evidence,indent=2)+'\n',encoding='utf-8')
+
 def add(ref,value,footprint,x,y,pins,group,angle=0,names=None,dnp=False,source='',note=''):
     lib,name=footprint.split(':')
     fp=io.FootprintLoad(str(LOCAL if lib=='VoiceV2' else LIB/(lib+'.pretty')),name,False)
     if fp is None:raise RuntimeError(footprint)
     fp.SetReference(ref);fp.SetValue(value);fp.SetPosition(v(x,y));fp.SetOrientationDegrees(angle)
+    fp.SetDNP(dnp)
     for pd in fp.Pads():
         n=pd.GetNumber()
         if pins.get(n):pd.SetNet(net(pins[n]))
@@ -84,40 +116,64 @@ def tp(ref,value,x,y,n,g):return add(ref,value,'TestPoint:TestPoint_Pad_D1.0mm',
 
 def design():
     g='01 UPS / BATTERY / SYSTEM'
-    add('J1','DC 4.5-5.5V 3A 5.5x2.5mm CENTER POSITIVE','Connector_BarrelJack:BarrelJack_Wuerth_694108106102_2.5x5.5mm',9,8,{'1':'VIN_DC','2':'GND','3':''},g,names={'1':['CENTER_PLUS','passive'],'2':['SLEEVE_GND','passive'],'3':['SW_UNUSED','passive']},note='User input range 4.5-5.5V at jack, nominal 5V; connector and input path design target >=3A. Exact purchased socket footprint and current rating must match; Wuerth geometry is a draft candidate. Input protection and trace rating not yet verified.')
-    hdr('J2','4.5-5.5V TO REGULATED POWER BOARD',8,15,['VIN_DC','GND'],g,90)
+    add('J1','DC 4.5-5.5V 2A 5.5x2.5mm CENTER POSITIVE','Connector_BarrelJack:BarrelJack_Wuerth_694108106102_2.5x5.5mm',9,8,{'1':'VIN_DC','2':'GND','3':''},g,names={'1':['CENTER_PLUS','passive'],'2':['SLEEVE_GND','passive'],'3':['SW_UNUSED','passive']},note='User input range 4.5-5.5V at jack, nominal 5V; nominal input design baseline 5V/2A. Exact purchased socket footprint and current rating must match; Wuerth geometry is a draft candidate. Input protection and trace rating not yet verified.')
+    hdr('J2','PROTECTED INPUT TO FUTURE UPS',8,15,['VIN_PROTECTED','GND'],g,90)
     parts[-1]['note']='Raw input, not system 5V. Power board must regulate across 4.5-5.5V at J1 including path drop. Future UPS input rating must be checked; no direct bypass permitted.'
     hdr('J3','REGULATED POWER RETURN 5V',8,53,['POWER_REG_5V','GND'],g,90)
     hdr('J4','1S BATTERY SENSE ONLY',8,60,['BAT_SENSE_IN','GND'],g,90)
     hdr('J5','UPS STATUS RESERVED 3V3 ONLY',15,53,['CHRG_OD','DONE_OD','UPS_PG_OD','GND'],g,90)
-    hdr('JP1','REGULATED / SYS / BENCH SELECT ONE',15,8,['POWER_REG_5V','SYS_5V','BENCH_REG_5V'],g,90)
+    hdr('JP1','BOARD 5V / SYS / BENCH SELECT ONE',15,8,['BOARD_REG_5V','SYS_5V','BENCH_REG_5V'],g,90)
     parts[-1]['note']='One shunt only: 1-2 regulated power board via J3; 2-3 independent regulated bench 5V via J21. Neither source is raw VIN_DC. No shunt isolates SYS_5V; never join two sources. >=3A header/shunt purchase and contact drop pending.'
     hdr('J21','BENCH REGULATED 5V ONLY',8,28,['BENCH_REG_5V','GND'],g,90)
     parts[-1]['note']='Independent regulated 5V bench source, 4.75-5.25V at SYS_5V under load, sufficient total current. Do not connect raw 4.5-5.5V here. This bypasses the unfinished regulator/UPS for downstream testing only; it does not validate wide-input operation.'
     c('C1','22u 10V',20,8,'SYS_5V','GND',g,big=True)
     c('C2','100n',24,8,'SYS_5V','GND',g)
+    # Nominal 5V/2A adapter is the user's baseline. Modem peak rating is at
+    # VBAT, not at the jack. Feed both converters in parallel, avoiding a
+    # mandatory 5V conversion upstream of the modem's 3.8V buck.
+    add('F1','3A FUSE 8A I2t VERIFY','Fuse:Fuse_1812_4532Metric',22,19,{'1':'VIN_DC','2':'VIN_FUSED'},g,note='Input fault protection; 2A nominal equipment load. Fuse curve/temperature derating and adapter short-circuit behavior require review.')
+    mos('Q6','AO3401A',25,24,'REVERSE_GATE','VIN_PROTECTED','VIN_FUSED',g)
+    parts[-1].update(source='https://www.aosmd.com/sites/default/files/res/data_sheets/AO3401A.pdf',note='P-channel reverse input protection: drain toward jack, source toward protected load, gate returned to ground. No claim of reverse-current isolation between power sources.')
+    r('R32','100k',24,28,'REVERSE_GATE','GND',g)
+    hdr('JP4','DIRECT / BUS / FUTURE UPS SELECT ONE',10,24,['VIN_PROTECTED','POWER_BUS','POWER_REG_5V'],g,90)
+    parts[-1]['note']='Single shunt: 1-2 direct protected adapter, 2-3 future regulated UPS return J3. Two sources must never be joined. Both regulators downstream remain connected to POWER_BUS.'
+    g='06 SEPARATE SYSTEM 5V BUCK-BOOST'
+    add('U6','TPS63061DSCR 5V','VoiceV2:TPS63061_DSC0010E_3x3mm',21,35,{'1':'SYS_L1','2':'POWER_BUS','3':'POWER_BUS','4':'GND','5':'SYS_REG_PG','6':'SYS_AUX','7':'GND','8':'BOARD_REG_5V','9':'BOARD_REG_5V','10':'SYS_L2','11':'GND'},g,names={'1':['L1','passive'],'2':['VIN','power_in'],'3':['EN','input'],'4':['PS_SYNC','input'],'5':['PG','open_collector'],'6':['VAUX','passive'],'7':['GND','power_in'],'8':['FB_FIXED_TO_VOUT','input'],'9':['VOUT','power_out'],'10':['L2','passive'],'11':['EP_PGND','power_in']},source='https://www.ti.com/lit/ds/symlink/tps63061.pdf',note='5V fixed buck-boost branch; modem does not load this branch. 1.3A specified in boost for VIN>4V; actual ESP/amplifier/radar load must be measured. DSC land pattern checked against TI linked Ultra Librarian; stencil process and thermal load await prototype validation.')
+    add('L2','1.5uH Isat>=4.4A DCR<=30mOhm','Inductor_SMD:L_Sunlord_SWPA6045S',21,41,{'1':'SYS_L1','2':'SYS_L2'},g,90,note='Same package family as L1. Exact 1.5uH purchase must meet saturation/DCR limits; do not substitute value only.')
+    c('C31','100n VAUX',25,35,'SYS_AUX','GND',g)
+    c('C32','22u 16V X5R',15,33,'POWER_BUS','GND',g,big=True)
+    c('C33','22u 16V X5R',15,37,'POWER_BUS','GND',g,big=True)
+    for ref,y in [('C34',33),('C35',38),('C36',43)]:c(ref,'22u 16V X5R',28,y,'BOARD_REG_5V','GND',g,big=True)
+    tp('TP7','PROTECTED INPUT',7,38,'VIN_PROTECTED',g)
+    tp('TP8','POWER BUS',7,43,'POWER_BUS',g)
+    tp('TP9','SYSTEM 5V',24,49,'SYS_5V',g)
+    r('R33','10k PG',26,30,'ESP_3V3','SYS_REG_PG',g)
+    tp('TP10','SYSTEM POWER GOOD',29,47,'SYS_REG_PG',g)
     # No invented UPS-chip footprint or battery current path. Sense wires only.
     # Bare modem needs a separate buck; it must NEVER be connected to 5V.
     g='02 MODEM 3.8V BUCK / DECOUPLING'
-    add('U2','TPS563201DDCR CANDIDATE','Package_TO_SOT_SMD:SOT-23-6',42,8,{'1':'GND','2':'BUCK_SW','3':'SYS_5V','4':'BUCK_FB','5':'BUCK_EN','6':'BUCK_BST'},g,names={'1':['GND','power_in'],'2':['SW','passive'],'3':['VIN','power_in'],'4':['VFB','input'],'5':['EN','input'],'6':['VBST','passive']},source='https://www.ti.com/lit/ds/symlink/tps563201.pdf',note='3A candidate, minimum input 4.5V. Not the UPS PMIC; output/current/thermal validation pending.')
-    r('R1','100k',35,8,'SYS_5V','BUCK_EN',g)
+    add('U2','TPS62933PDRLR 3.8V','Package_TO_SOT_SMD:SOT-583-8',42,8,{'1':'GND','2':'BUCK_EN','3':'POWER_BUS','4':'GND','5':'BUCK_SW','6':'BUCK_BST','7':'MODEM_REG_PG','8':'BUCK_FB'},g,names={'1':['RT_1P2MHz','input'],'2':['EN','input'],'3':['VIN','power_in'],'4':['GND','power_in'],'5':['SW','passive'],'6':['BST','passive'],'7':['PG','open_collector'],'8':['FB','input']},source='https://www.ti.com/lit/ds/symlink/tps62933.pdf',note='3.8-30V input 3A-rated part for a 2A modem peak requirement; extended on-time supports low dropout. Mixed 440uF electrolytic + ceramic load requires prototype loop/transient validation. Unencrypted model has not yielded a completed passing run; do not call this qualified.')
+    r('R1','100k',35,8,'POWER_BUS','BUCK_EN',g)
     c('C3','100n BST',43,4.5,'BUCK_BST','BUCK_SW',g)
-    c('C4','22u 10V',36,4.5,'SYS_5V','GND',g,big=True)
-    c('C5','22u 10V',31,4.5,'SYS_5V','GND',g,big=True)
+    c('C4','22u 16V X5R',36,4.5,'POWER_BUS','GND',g,big=True)
+    c('C5','22u 16V X5R',31,4.5,'POWER_BUS','GND',g,big=True)
     add('L1','2.2uH Isat>=4.5A DCR<50mOhm','Inductor_SMD:L_Sunlord_SWPA6045S',49,6.5,{'1':'BUCK_SW','2':'BUCK_3V8'},g,90,note='Footprint candidate; procure exact inductor before routing.')
     c('C6','22u 10V',51,12,'BUCK_3V8','GND',g,big=True)
     c('C7','22u 10V',46,12,'BUCK_3V8','GND',g,big=True)
-    r('R2','39.2k 0.1%',39,13,'BUCK_3V8','BUCK_FB',g)
-    r('R3','10k 0.1%',34,13,'BUCK_FB','GND',g)
+    r('R2','37.4k 0.1%',39,13,'BUCK_3V8','BUCK_FB',g)
+    r('R3','10k 0.1%',39.825,16,'BUCK_FB','GND',g,angle=270)
+    c('C37','33p C0G CFF',42,13,'BUCK_3V8','BUCK_FB',g)
+    r('R34','10k PG',46,16,'ESP_3V3','MODEM_REG_PG',g)
+    tp('TP11','MODEM POWER GOOD',51,16,'MODEM_REG_PG',g)
     for ref,x in [('C8',59),('C9',73)]:
         add(ref,'220u 6.3V LOW ESR <=100mOhm','Capacitor_SMD:CP_Elec_6.3x5.8',x,6,{'1':'MODEM_3V8','2':'GND'},g,note='Transient reservoir per module guide; exact capacitor/ripple rating pending.')
     c('C10','10u 10V',65,7,'MODEM_3V8','GND',g,big=True)
     c('C11','100n',65,10,'MODEM_3V8','GND',g)
     c('C12','33p',69,10,'MODEM_3V8','GND',g)
     tp('TP1','MODEM VBAT',78,8,'MODEM_3V8',g)
-    hdr('J19','VBAT SELECT BUCK / MODEM / EXT 3V8',14,70,['BUCK_3V8','MODEM_3V8','EXT_MODEM_3V8'],g,90)
+    hdr('J19','VBAT SELECT BUCK / MODEM / EXT 3V8',79.5,4,['BUCK_3V8','MODEM_3V8','EXT_MODEM_3V8'],g,90)
     parts[-1]['note']='Fit one shunt only: 1-2 on-board buck, 2-3 external 3.8V. No shunt isolates modem VBAT. Header and shunt must each be rated >=3A and their contact drop included in VBAT budget; exact purchase pending. Bulk modem capacitors remain connected in internal mode, so buck stability is still unverified.'
-    hdr('J20','EXTERNAL 3V8 ONLY NEVER 5V',13,65,['EXT_MODEM_3V8','GND'],g,90)
+    hdr('J20','EXTERNAL 3V8 ONLY NEVER 5V',92,10,['EXT_MODEM_3V8','GND'],g,90)
     parts[-1]['note']='Diagnostic fallback source: regulated 3.8V, compliant 3.4-4.5V at modem with >=2A transient capacity. Select J19 2-3 before connecting. Common ground. Source/current/contact-drop verification required; not a battery charging connector.'
     g='03 ML307R-DL / UART / CONTROL'
     ground={1,10,27,34,36,37,40,41,*range(45,49),*range(70,74),*range(88,96)}
@@ -144,9 +200,9 @@ def design():
     c('C19','10n',65,39.5,'MODEM_RESET_N','GND',g)
     hdr('J7','RESET SERVICE ONLY',68,48,['MODEM_RESET_N','GND'],g,90)
     hdr('J8','DOWNLOAD STRAP - OPEN NORMAL',81,45,['MODEM_BOOT_N','GND'],g,90)
-    hdr('J9','MODEM DEBUG 1V8 ONLY',83,32,['GND','DBG_TX_1V8','DBG_RX_1V8','MODEM_1V8'],g)
+    hdr('J9','MODEM DEBUG 1V8 ONLY',89.5,31,['GND','DBG_TX_1V8','DBG_RX_1V8','MODEM_1V8'],g)
     tp('TP2','STATE 1V8',80,23,'MODEM_STATE_1V8',g)
-    tp('TP3','NETLIGHT 1V8',80,20,'MODEM_NETLIGHT',g)
+    tp('TP3','NETLIGHT 1V8',82,23,'MODEM_NETLIGHT',g)
     g='04 SIM / RF / USB SERVICE'
     add('J10','JAE SF72S006 SIM CANDIDATE','Connector_JAE:JAE_SIM_Card_SF72S006',77,55,{'C1':'SIM_VCC','C2':'SIM_RESET','C3':'SIM_CLK','C5':'GND','C6':'','C7':'SIM_DATA','CSW':'GND','DSW':'SIM_DETECT','SH':'GND'},g,names={'C1':['VCC','passive'],'C2':['RST','passive'],'C3':['CLK','passive'],'C5':['GND','passive'],'C6':['VPP_UNUSED','passive'],'C7':['IO','passive'],'CSW':['DETECT_COM','passive'],'DSW':['DETECT','passive'],'SH':['SHIELD','passive']},note='Candidate SIM socket; exact purchase model/card size/height to confirm. Keep SIM traces <150mm, preferably <50mm.')
     for ref,y,a,b in [('R9',49,'M_SIM_DATA','SIM_DATA'),('R10',52,'M_SIM_CLK','SIM_CLK'),('R11',55,'M_SIM_RESET','SIM_RESET')]:r(ref,'22R',63,y,a,b,g)
@@ -155,23 +211,32 @@ def design():
     for i,y,n in [(21,49,'SIM_DATA'),(22,52,'SIM_CLK'),(23,55,'SIM_RESET')]:c(f'C{i}','33p OPTIONAL',68,y,n,'GND',g,dnp=True)
     for ref,x,n in [('D1',71,'SIM_DATA'),('D2',74,'SIM_CLK'),('D3',77,'SIM_RESET'),('D4',80,'SIM_VCC')]:
         add(ref,'SIM ESD <=10pF CANDIDATE','Diode_SMD:D_SOD-323',x,47,{'1':n,'2':'GND'},g,names={'1':['K','passive'],'2':['A','passive']},note='Choose compatible 1.8/3V low-leakage SIM ESD part and verify actual polarity footprint.')
-    r('R13','0R RF SERIES',82,13,'RF_ANT','RF_FEED',g)
-    c('C24','RF MATCH SHUNT DNP',81,10,'RF_ANT','GND',g,dnp=True)
-    c('C25','RF MATCH SHUNT DNP',86,10,'RF_FEED','GND',g,dnp=True)
+    r('R13','0R RF SERIES',81,19.4,'RF_ANT','RF_FEED',g)
+    c('C24','RF MATCH SHUNT DNP',78.5,18.625,'RF_ANT','GND',g,angle=90,dnp=True)
+    c('C25','RF MATCH SHUNT DNP',83.65,18.625,'RF_FEED','GND',g,angle=90,dnp=True)
     add('J11','LTE ANT U.FL','Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical',86,15,{'1':'RF_FEED','2':'GND'},g,note='50 Ohm controlled-impedance route; stack-up and antenna tuning pending.')
     # Population-selected USB route: do not tee the module data pair to two
     # hosts. Place route links at the module with the unused branch isolated.
     # UART remains connected in both population variants.
-    hdr('J12','USB SERVICE ONLY - ISOLATED IN HOST BUILD',40,59,['SERVICE_USB_VBUS','SERVICE_USB_DM','SERVICE_USB_DP','GND'],g,90)
-    r('R26','0R USB SERVICE DP',79.5,26,'M_USB_DP','SERVICE_USB_DP',g)
-    r('R27','0R USB SERVICE DM',79.5,29,'M_USB_DM','SERVICE_USB_DM',g)
-    r('R28','0R USB HOST DP DNP',79.5,35,'M_USB_DP','ESP_USB_DP20',g,dnp=True)
-    r('R29','0R USB HOST DM DNP',79.5,38,'M_USB_DM','ESP_USB_DM19',g,dnp=True)
+    hdr('J12','USB SERVICE VBUS DM DP GND',93.5,28,['SERVICE_USB_VBUS','SERVICE_USB_DM','SERVICE_USB_DP','GND'],g)
+    for ref,label,x,y,a,b,angle,omit in [
+        ('R26','USB SERVICE DP',81.1,30.8,'M_USB_DP','SERVICE_USB_DP',0,False),
+        ('R27','USB SERVICE DM',81.1,29.6,'M_USB_DM','SERVICE_USB_DM',0,False),
+        ('R28','USB HOST DP',79,30.8,'M_USB_DP','ESP_USB_DP20',180,True),
+        ('R29','USB HOST DM',79,29.6,'M_USB_DM','ESP_USB_DM19',180,True)]:
+        add(ref,'0R '+label,'Resistor_SMD:R_0402_1005Metric',x,y,{'1':a,'2':b},g,angle,dnp=omit,
+            note='USB population selector; 0402 links allow paired rows at 1.2mm pitch. Service and host variants are mutually exclusive.')
     r('R30','0R VBUS FROM SERVICE',83.5,26,'SERVICE_USB_VBUS','USB_DETECT_5V',g)
     r('R31','0R VBUS DETECT FROM SYSTEM DNP',87.5,26,'SYS_5V','USB_DETECT_5V',g,dnp=True)
+    add('U7','TPD2E2U06DCKR','Package_TO_SOT_SMD:SOT-323_SC-70',86,28.5,
+        {'1':'SERVICE_USB_DM','2':'SERVICE_USB_DP','3':'GND'},g,
+        names={'1':['IO1','bidirectional'],'2':['IO2','bidirectional'],'3':['GND','power_in']},
+        source='https://www.ti.com/lit/ds/symlink/tpd2e2u06.pdf',
+        note='DCK 3-pin SC70 version: pins 1/2 are protected channels and pin 3 is ground. Typical 1.5pF per line. Service USB ESD only; actual system ESD immunity requires hardware testing.')
     g='05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC'
-    esp=['ESP_5V','GND','ESP_3V3','GND','ESP_TX17','ESP_RX18','ESP_DTR4','I2S_MIC_BCLK14','I2S_MIC_WS13','I2S_MIC_DATA12','I2S_AMP_BCLK15','I2S_AMP_WS16','I2S_AMP_DATA7','RADAR_TX_TO_IO6','RADAR_RX_FROM_IO8','BOOT_BTN_IO0','ADC_BAT_IO2','ADC_EN_IO9','EXT_PRESENT_N_IO10','PWRKEY_CTL','RESET_CTL','CHRG_OD','DONE_OD','UPS_PG_OD','DEBUG_ESP_TX43','DEBUG_ESP_RX44','ESP_EN','ESP_USB_DM19','ESP_USB_DP20','GND']
-    add('J13','ESP32-S3 HARNESS WITH USB19/20 RESERVE','Connector_PinHeader_2.54mm:PinHeader_2x15_P2.54mm_Vertical',33,16,{str(i+1):n for i,n in enumerate(esp)},g,note='Harness draft, not final high-speed connector. Pins28/29 = USB DM19/DP20. PWRKEY GPIO11, RESET GPIO21, ADC GPIO2 proposed; verify dev-board access. Short 90-ohm USB pair/return path required; dev-board native USB cannot simultaneously connect another host.')
+    esp=['ESP_5V','GND','ESP_3V3','GND','ESP_TX17','ESP_RX18','ESP_DTR4','I2S_MIC_BCLK14','I2S_MIC_WS13','I2S_MIC_DATA12','I2S_AMP_BCLK15','I2S_AMP_WS16','I2S_AMP_DATA7','RADAR_TX_TO_IO6','RADAR_RX_FROM_IO8','BOOT_BTN_IO0','ADC_BAT_IO2','ADC_EN_IO9','EXT_PRESENT_N_IO10','PWRKEY_CTL','RESET_CTL','CHRG_OD','DONE_OD','UPS_PG_OD','DEBUG_ESP_TX43','DEBUG_ESP_RX44','ESP_EN','','','GND']
+    add('J13','ESP32-S3 SIGNAL HARNESS; USB AT J22','Connector_PinHeader_2.54mm:PinHeader_2x15_P2.54mm_Vertical',33,16,{str(i+1):n for i,n in enumerate(esp)},g,note='Existing pins1-27 preserved, pins28/29 deliberately NC to avoid a cross-board USB stub; pin30 ground. USB uses short dedicated J22 beside modem. PWRKEY GPIO11, RESET GPIO21, ADC GPIO2 proposed; verify dev-board access.')
+    add('J22','USB HOST GND DP20 DM19','Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical',82.5,34.8,{'1':'GND','2':'ESP_USB_DP20','3':'ESP_USB_DM19'},g,dnp=True,note='Host-option header only, DNP for default AT/service assembly. Pins1/2/3 = GND/ESP GPIO20 D+/ESP GPIO19 D-. Keep twisted USB data pair with nearby ground short; dev-board native USB must not connect another host. This is a prototype harness interface, not a certified USB connector.')
     hdr('J14','INMP441 3V3',38,50,['ESP_3V3','GND','I2S_MIC_BCLK14','I2S_MIC_WS13','I2S_MIC_DATA12'],g,90)
     hdr('J15','MAX98357 5V',38,55,['SYS_5V','GND','I2S_AMP_BCLK15','I2S_AMP_WS16','I2S_AMP_DATA7'],g,90)
     hdr('J16','RADAR OPTIONAL TX6 RX8',28,60,['RADAR_5V','GND','RADAR_TX_TO_IO6','RADAR_RX_FROM_IO8'],g,90)
@@ -209,26 +274,51 @@ def design():
     for ref,x,n in [('TP4',40,'DEBUG_ESP_TX43'),('TP5',44,'DEBUG_ESP_RX44'),('TP6',48,'GND')]:tp(ref,n,x,39,n,g)
     for ref,x,y in [('H1',4,4),('H2',96,4),('H3',4,71),('H4',96,71)]:add(ref,'M3 GENERIC','MountingHole:MountingHole_3.2mm_M3',x,y,{},'MECHANICAL')
     # Placement refinement from actual KiCad courtyard/pad DRC, not body guesses.
-    positions={'J1':(14,8),'H1':(3,3),'J2':(8,20),'JP1':(24,13),'C1':(24,8),'C2':(29,8),
+    positions={'J1':(7.3,13.5),'H1':(17,3),'J2':(8,33),'JP1':(24,13),'C1':(24,8),'C2':(29,8),
       'C10':(66,3),'C11':(63,11),'C12':(66.5,11),
       'J7':(74,41),'J8':(85,43.5),'D1':(70,47),'D2':(74,47),'D3':(78,47),'D4':(82,47),
-      'C20':(68,58),'R15':(93,14),'J18':(39,70),'SW2':(62.5,68.5),'J14':(43,52),'J15':(40,57),'J6':(57,48),'J12':(26,65),'J17':(55,60),'R14':(54,56)}
+      'L2':(21,29),'R32':(21,22),'C32':(17,37),'C33':(15,41),'C34':(25.5,36),'C31':(23.5,39),
+      'C20':(68,58),'R15':(93,14),'J18':(39,70),'SW2':(62.5,68.5),'J14':(43,52),'J15':(40,57),'J6':(57,48),'J17':(55,60),'R14':(54,56)}
     for fp in board.GetFootprints():
         if fp.GetReference() in positions:fp.SetPosition(v(*positions[fp.GetReference()]))
     for p in parts:
         if p['ref'] in positions:p['x'],p['y']=positions[p['ref']]
+    # The 5V converter's inductor is above the IC, with both switch-node
+    # connections on the front copper. The copper contract records this angle.
+    next(fp for fp in board.GetFootprints() if fp.GetReference()=='L2').SetOrientationDegrees(0)
+    next(p for p in parts if p['ref']=='L2')['angle']=0
     for a,b in [((0,0),(100,0)),((100,0),(100,75)),((100,75),(0,75)),((0,75),(0,0))]:line(board,a,b,pcb.Edge_Cuts,.05)
     # Deliberate reserve drawing, not a made-up solder footprint for unknown PMIC.
-    for a,b in [((6,17),(29,17)),((29,17),(29,45)),((29,45),(6,45)),((6,45),(6,17))]:line(board,a,b,pcb.Dwgs_User,.15)
+    # Future UPS is pluggable through J2/J3/J4/J5. The original empty area is
+    # now used by first-board protection and 5V regulation; no unknown PMIC
+    # or fixed future module dimensions are promised.
     pcb.SaveBoard(str(ROOT/(PROJECT+'.kicad_pcb')),board)
     data={'revision':'V2-ML307-SMT-UPS-USB-RESERVE','status':'UNROUTED REVIEW DRAFT - NOT FOR FABRICATION','dimensions_mm':[100,75],'parts':parts,'ups_reserved_region_mm':[6,17,23,28],'ups_chip':'User to supply later; no charging/protection/switching design frozen','battery':'Protected 1S 4.2V Li-ion assumed for estimation; chemistry to confirm','adc':{'gpio':2,'channel':'ADC1_CH1','enable_gpio':9,'rtop_ohm':150000,'rbottom_ohm':100000,'cap_farad':1e-7,'scale':2.5,'max_battery_v':4.2,'max_adc_v':1.68},'proposed_gpio':{'external_power_present_n':10,'modem_pwrkey':11,'modem_reset':21,'usb_dm':19,'usb_dp':20},
       'input_power':{'connector':'J1','range_at_connector_v':[4.5,5.5],'nominal_v':5.0,'center_positive':True,'barrel_outer_inner_mm':[5.5,2.5],'input_path_design_current_A':3,'raw_net':'VIN_DC','regulated_system_net':'SYS_5V','system_target_v':5.0,'system_acceptance_range_v':[4.75,5.25],'raw_bypass_removed':True,'power_board_input':'J2','power_board_return':'J3','regulated_selector':'JP1','bench_input':'J21','selector_pin_nets':['POWER_REG_5V','SYS_5V','BENCH_REG_5V'],'one_shunt_only':True,'regulator_frozen':False,'input_protection_verified':False,'wide_input_hardware_verified':False,'output_current_is_not_input_current':True},
       'modem_power_selection':{'selector':'J19','external_input':'J20','default_shunt':'1-2 on-board buck','diagnostic_shunt':'2-3 external 3.8V','one_shunt_only':True,'no_shunt_isolates_modem':True,'minimum_header_and_shunt_rating_A':3,'contact_resistance_in_budget':True,'hardware_verified':False,'warning':'No 5V at J20. Both shunts would tie independent sources. Internal-mode bulk capacitance still requires regulator validation.'},
       'usb_transport_reserve':{'uart_retained':True,'default_population':'service-only AT baseline','service_links':['R26','R27','R30'],'host_links':['R28','R29','R31'],'mutually_exclusive_population':True,'host_firmware_choices':['AT UART','USB RNDIS','USB ECM'],'runtime_switch_implemented':False,'routed':False,'verified_on_hardware':False,'vbus_detect_range_v':[3,5.25],'note':'VBUS detection is not module main power; USB ESD/impedance/final connector/host isolation pending. No two populated data pairs or VBUS sources simultaneously.'},'manufacturing_ready':False,'firmware_modified':False}
+    data['revision']='V2-PARALLEL-RAILS-2A-20261122'
+    data['status']='PARTIAL ROUTING / POWER REDESIGN - NOT FOR FABRICATION'
+    data['ups_reserved_region_mm']=None
+    data['ups_mounting']='Future external plug-in UPS via J2/J3; no unknown PMIC mounting geometry frozen'
+    data['input_power'].update(input_path_design_current_A=2,adapter_baseline='5V/2A user-tested prototype',selector_pin_nets=['BOARD_REG_5V','SYS_5V','BENCH_REG_5V'],protected_net='VIN_PROTECTED',bus_net='POWER_BUS',bus_selector='JP4',parallel_converters=True,regulator_frozen=False)
+    data['input_power']['input_current_is_not_modem_vbat_current']=True
+    data['power_architecture']={'normal_shunts':['JP4 1-2','JP1 1-2','J19 1-2','JP3 1-2'],'future_ups_shunt':'JP4 2-3','modem_converter':'U2 TPS62933PDRLR','system_converter':'U6 TPS63061DSCR','no_mandatory_two_stage_modem_conversion':True,'nominal_3v8_V':.8*(1+37.4/10),'input_protection':'F1 fuse / Q6 reverse-polarity PMOS','converter_hardware_tested':False,'converter_closed_loop_simulation_passed':False}
+    for p in parts:
+        if p['ref']=='JP1':p['note']='One shunt: 1-2 board 5V regulator, 2-3 independent regulated bench 5V J21. Never join sources; no shunt isolates SYS_5V.'
+        if p['ref']=='J3':p['note']='Future regulated UPS 5V return to JP4. Normal first-board power uses JP4 1-2; future UPS uses 2-3. Not a battery connection.'
+        if p['ref']=='J2':p['note']='Protected adapter input to future UPS, not raw jack. Input range includes fuse/MOS/contact drop; future UPS qualification pending.'
     (ROOT/'design.json').write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding='utf-8')
     prior=json.loads((ROOT.parent/'voice_carrier_v1/voice_carrier_v1.kicad_pro').read_text(encoding='utf-8'))
     prior['meta']['filename']=PROJECT+'.kicad_pro'
+    # Explicit minimum geometry, not just the nominal default net class.
+    prior['board']['design_settings']['rules'].update(min_clearance=0.2,min_track_width=0.2,min_via_diameter=.45,min_through_hole_diameter=.2,min_via_annular_width=.125)
+    base=prior['net_settings']['classes'][0]
+    for name,width,vd,dd in [('POWER',1.0,1.0,.5),('GROUND',.4,.6,.3),('RF',.28,.6,.3)]:
+        cls=dict(base);cls.update(name=name,track_width=width,via_diameter=vd,via_drill=dd,priority=1)
+        prior['net_settings']['classes'].append(cls)
+    prior['net_settings']['netclass_patterns']=[{'netclass':'GROUND','pattern':'GND'}]+[{'netclass':'POWER','pattern':n} for n in ['VIN_DC','VIN_FUSED','VIN_PROTECTED','POWER_BUS','POWER_REG_5V','BOARD_REG_5V','BENCH_REG_5V','SYS_5V','BUCK_3V8','MODEM_3V8','EXT_MODEM_3V8']]+[{'netclass':'RF','pattern':n}for n in ['RF_ANT','RF_FEED']]
     (ROOT/(PROJECT+'.kicad_pro')).write_text(json.dumps(prior,indent=2),encoding='utf-8')
     print('Created',len(parts),'parts',len(nets),'nets; UNROUTED')
 
-if __name__=='__main__':ml307_footprint();design()
+if __name__=='__main__':ml307_footprint();tps63061_footprint();design()

@@ -1,0 +1,122 @@
+{
+  "method": "2D finite-volume electrostatics / air-reference quasi-TEM estimate",
+  "scope": "Nominal RF grounded coplanar uniform cross-section only",
+  "assumptions": {
+    "prepreg_mm": 0.18,
+    "FR4_er": 4.2,
+    "copper_mm": 0.035,
+    "coplanar_ground_gap_mm": 0.2,
+    "mask_mm": 0.01,
+    "mask_er": 3.5
+  },
+  "cases": [
+    {
+      "width": 0.24,
+      "capacitance_pF_per_m": 104.59404123607851,
+      "air_capacitance_pF_per_m": 36.11260614149547,
+      "effective_permittivity": 2.896330462173261,
+      "impedance_ohm": 54.274572298465294,
+      "max_discrete_residual": 1.2878587085651816e-14,
+      "unknown_cells": 114778
+    },
+    {
+      "width": 0.26,
+      "capacitance_pF_per_m": 109.09580415066802,
+      "air_capacitance_pF_per_m": 37.44751316254569,
+      "effective_permittivity": 2.9132990401024443,
+      "impedance_ohm": 52.187174263302474,
+      "max_discrete_residual": 1.6431300764452317e-14,
+      "unknown_cells": 114778
+    },
+    {
+      "width": 0.28,
+      "capacitance_pF_per_m": 113.5791422451674,
+      "air_capacitance_pF_per_m": 38.76887130149992,
+      "effective_permittivity": 2.929647896165942,
+      "impedance_ohm": 50.267631894987126,
+      "max_discrete_residual": 1.5987211554602254e-14,
+      "unknown_cells": 114778
+    },
+    {
+      "width": 0.3,
+      "capacitance_pF_per_m": 118.04741867211497,
+      "air_capacitance_pF_per_m": 40.07859299123612,
+      "effective_permittivity": 2.9453982752819714,
+      "impedance_ohm": 48.49476021771062,
+      "max_discrete_residual": 2.042810365310288e-14,
+      "unknown_cells": 114778
+    },
+    {
+      "width": 0.32,
+      "capacitance_pF_per_m": 122.50319941797954,
+      "air_capacitance_pF_per_m": 41.378228093291945,
+      "effective_permittivity": 2.9605714179394553,
+      "impedance_ohm": 46.85108325528872,
+      "max_discrete_residual": 8.881784197001252e-15,
+      "unknown_cells": 114778
+    }
+  ],
+  "elapsed_seconds": 3.5862574577331543,
+  "manufacturer_stackup_confirmed": false,
+  "measured_impedance": false,
+  "antenna_matching_verified": false,
+  "whole_product_pass": false,
+  "convergence_and_material_checks": [
+    {
+      "width": 0.28,
+      "dx": 0.0025,
+      "capacitance_pF_per_m": 114.57586124011002,
+      "air_capacitance_pF_per_m": 39.19016928827651,
+      "effective_permittivity": 2.923586790281732,
+      "impedance_ohm": 49.778770096111835,
+      "max_discrete_residual": 1.3322676295501878e-14,
+      "unknown_cells": 462272
+    },
+    {
+      "width": 0.28,
+      "span": 4,
+      "ceiling": 1.3,
+      "capacitance_pF_per_m": 113.23874661187854,
+      "air_capacitance_pF_per_m": 38.43246924172772,
+      "effective_permittivity": 2.946434326133033,
+      "impedance_ohm": 50.56297584299578,
+      "max_discrete_residual": 1.4210854715202004e-14,
+      "unknown_cells": 200858
+    },
+    {
+      "width": 0.28,
+      "height": 0.17,
+      "er": 4.4,
+      "capacitance_pF_per_m": 121.56659262358204,
+      "air_capacitance_pF_per_m": 39.622965115567425,
+      "effective_permittivity": 3.0680841847401235,
+      "impedance_ohm": 48.06165138797555,
+      "max_discrete_residual": 1.0658141036401503e-14,
+      "unknown_cells": 114778
+    },
+    {
+      "width": 0.28,
+      "height": 0.19,
+      "er": 4.0,
+      "capacitance_pF_per_m": 106.28682211682073,
+      "air_capacitance_pF_per_m": 38.01609020454597,
+      "effective_permittivity": 2.7958378030182325,
+      "impedance_ohm": 52.475412506171054,
+      "max_discrete_residual": 1.554312234475219e-14,
+      "unknown_cells": 114778
+    },
+    {
+      "width": 0.28,
+      "gap": 10,
+      "capacitance_pF_per_m": 110.38722554561319,
+      "air_capacitance_pF_per_m": 36.21585059638407,
+      "effective_permittivity": 3.0480362528509732,
+      "impedance_ohm": 52.75584008499628,
+      "max_discrete_residual": 1.1546319456101628e-14,
+      "unknown_cells": 118012
+    }
+  ],
+  "selected_width_mm": 0.28,
+  "uniform_cross_section_estimated_ohm": 50.267631894987126,
+  "remaining_assumptions": "Actual manufacturer laminate/press thickness and loss tangent must satisfy fabrication drawing; pad, connector and interrupted coplanar ground sections are not simulated."
+}

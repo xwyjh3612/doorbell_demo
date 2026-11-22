@@ -1,0 +1,18 @@
+{
+  "status": "CONNECTED_ENGINEERING_REVIEW_NOT_FOR_FABRICATION",
+  "placement_net_signature": "033d32f6c3882ced730ac4f0fb873c5e8cba34b3b607585c0718d6bee54109d0",
+  "copper_sha256": "cb2e9cb26e6792aff9782d50cbe8b17601c15328540ecf010295693019e3bb8d",
+  "source_board_sha256": "0746ec0a9e623b5516d2af2686716aa5f021d9be4d1f0be299d56589d5bdc470",
+  "source_drc_sha256": "fae43301e71bf9b7839d11411c432586719344d3becc2e7434b1d4d58879fca1",
+  "drc_violations": 0,
+  "unconnected": 0,
+  "kicad_version": "9.0.6",
+  "copper_items": 1422,
+  "zones": 5,
+  "reference_layer": "In1.Cu: no signal traces",
+  "minimum_via_diameter_mm": 0.45,
+  "minimum_through_drill_mm": 0.2,
+  "minimum_via_annular_ring_mm": 0.125,
+  "power_rf_usb_review_complete": false,
+  "manufacturing_ready": false
+}

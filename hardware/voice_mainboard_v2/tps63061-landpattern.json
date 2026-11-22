@@ -1,0 +1,41 @@
+{
+  "part": "TPS63061DSCR",
+  "package": "DSC0010E",
+  "source_url": "https://vendor.ultralibrarian.com/TI/embedded/?gpn=TPS63061&package=DSC&pin=10",
+  "preview_url": "https://static.ultralibrarian.com/part-previews/footprints/5165265/detailed-DSC0010E.svg",
+  "source_units": "mils; 1mil=0.0254mm",
+  "pad_centers_x_mm": [
+    -1.4,
+    1.4
+  ],
+  "pad_pitch_mm": 0.5,
+  "signal_pad_size_mm": [
+    0.6,
+    0.24
+  ],
+  "ep_main_mm": [
+    1.7,
+    2.15
+  ],
+  "ep_fingers": {
+    "x_mm": [
+      -0.6,
+      -0.2,
+      0.2,
+      0.6
+    ],
+    "y_mm": [
+      -1.28,
+      1.28
+    ],
+    "size_mm": [
+      0.2,
+      0.44
+    ],
+    "same_pin": 11
+  },
+  "paste_main_windows": 4,
+  "paste_main_coverage_percent": 61.29,
+  "thermal_vias_inside_paste": false,
+  "assembly_process_verified": false
+}

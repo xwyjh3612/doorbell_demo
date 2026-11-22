@@ -17,14 +17,14 @@ OUT=ROOT/'exports/function-simulation'
 OUT.mkdir(parents=True,exist_ok=True)
 LOGS=WORK/'build/v2-simulation-logs'
 LOGS.mkdir(parents=True,exist_ok=True)
-MODEL_URL='https://www.ti.com/lit/zip/SLVMBD1'
-MODEL_DIR=WORK/'build/ml307-power-reference/tps563201-model'
-MODEL=MODEL_DIR/'TPS563201_PSPICE_TRANS/TPS563201_TRANS.LIB'
+MODEL_URL='https://www.ti.com/lit/zip/SLUM818'
+MODEL_DIR=WORK/'build/first-board-reference/tps62933-model'
+MODEL=MODEL_DIR/'TPS62933P_PSPICE_TRANS/TPS62933P_TRANS.lib'
 report={'generated_at':datetime.now().astimezone().isoformat(),
         'engine':'KiCad 9 bundled ngspice shared library, PSpice compatibility / XSPICE',
         'whole_product_pass':False,'manufacturing_ready':False,'firmware_changed':False,
         'sources':{'ml307':'https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1189/M307R_Hardware_Datasheet.pdf',
-                   'buck_datasheet':'https://www.ti.com/lit/ds/symlink/tps563201.pdf',
+                   'buck_datasheet':'https://www.ti.com/lit/ds/symlink/tps62933.pdf',
                    'buck_original_model':MODEL_URL,
                    'translator':'https://www.ti.com/lit/ds/symlink/sn74axc1t45.pdf'},
         'model_limits':[
@@ -41,7 +41,7 @@ xml=ET.parse(netxml).getroot()
 nets={(n.attrib['ref'],n.attrib['pin']):net.attrib['name'].removeprefix('/')
       for net in xml.findall('./nets/net') for n in net.findall('node')}
 values={p.attrib['ref']:p.findtext('value') for p in xml.findall('./components/comp')}
-model_values={'R1':'100k','R2':'39.2k','R3':'10k','R14':'10k','R15':'100k','R16':'100k',
+model_values={'R1':'100k','R2':'37.4k','R3':'10k','R14':'10k','R15':'100k','R16':'100k',
               'R17':'150k','R18':'100k','R19':'10k','R20':'100k','R21':'10k','R25':'10k',
               'C27':'100n','C28':'100n','C29':'10n','C30':'100n','C19':'10n',
               'C6':'22u','C7':'22u','C8':'220u','C9':'220u','C10':'10u',
@@ -58,7 +58,10 @@ for ref,pins in {
     'U1':{'7':'MODEM_PWRKEY_N','11':'M_SIM_DATA','12':'M_SIM_RESET','13':'M_SIM_CLK','14':'SIM_VCC',
           '15':'MODEM_RESET_N','17':'M_RX_1V8','18':'M_TX_1V8','19':'M_DTR_1V8','24':'MODEM_1V8',
           '35':'RF_ANT','42':'MODEM_3V8','43':'MODEM_3V8','59':'M_USB_DP','60':'M_USB_DM','61':'USB_DETECT_5V'},
-    'U2':{'1':'GND','2':'BUCK_SW','3':'SYS_5V','4':'BUCK_FB','5':'BUCK_EN','6':'BUCK_BST'},
+    'U2':{'1':'GND','2':'BUCK_EN','3':'POWER_BUS','4':'GND','5':'BUCK_SW','6':'BUCK_BST','7':'MODEM_REG_PG','8':'BUCK_FB'},
+    'U6':{'1':'SYS_L1','2':'POWER_BUS','3':'POWER_BUS','4':'GND','5':'SYS_REG_PG','6':'SYS_AUX','7':'GND','8':'BOARD_REG_5V','9':'BOARD_REG_5V','10':'SYS_L2','11':'GND'},
+    'F1':{'1':'VIN_DC','2':'VIN_FUSED'},'Q6':{'1':'REVERSE_GATE','2':'VIN_PROTECTED','3':'VIN_FUSED'},
+    'JP4':{'1':'VIN_PROTECTED','2':'POWER_BUS','3':'POWER_REG_5V'},
     'U3':{'1':'ESP_3V3','2':'GND','3':'ESP_TX17','4':'M_RX_1V8','5':'ESP_3V3','6':'MODEM_1V8'},
     'U4':{'1':'ESP_3V3','2':'GND','3':'ESP_RX18','4':'M_TX_1V8','5':'GND','6':'MODEM_1V8'},
     'U5':{'1':'ESP_3V3','2':'GND','3':'ESP_DTR4','4':'M_DTR_1V8','5':'ESP_3V3','6':'MODEM_1V8'},
@@ -68,14 +71,14 @@ for ref,pins in {
     'J18':{'1':'GND','2':'DEBUG_ESP_TX43','3':'DEBUG_ESP_RX44','4':'TTL_5V'},
     'JP3':{'1':'SYS_5V','2':'ESP_5V','3':'TTL_5V'},
     'J12':{'1':'SERVICE_USB_VBUS','2':'SERVICE_USB_DM','3':'SERVICE_USB_DP','4':'GND'},
-    'J13':{'28':'ESP_USB_DM19','29':'ESP_USB_DP20','30':'GND'},
+    'J13':{'30':'GND'},'J22':{'1':'GND','2':'ESP_USB_DP20','3':'ESP_USB_DM19'},
     'R26':{'1':'M_USB_DP','2':'SERVICE_USB_DP'},'R27':{'1':'M_USB_DM','2':'SERVICE_USB_DM'},
     'R28':{'1':'M_USB_DP','2':'ESP_USB_DP20'},'R29':{'1':'M_USB_DM','2':'ESP_USB_DM19'},
     'R30':{'1':'SERVICE_USB_VBUS','2':'USB_DETECT_5V'},'R31':{'1':'SYS_5V','2':'USB_DETECT_5V'},
     'J19':{'1':'BUCK_3V8','2':'MODEM_3V8','3':'EXT_MODEM_3V8'},
     'J20':{'1':'EXT_MODEM_3V8','2':'GND'},
-    'J1':{'1':'VIN_DC','2':'GND'},'J2':{'1':'VIN_DC','2':'GND'},
-    'J3':{'1':'POWER_REG_5V','2':'GND'},'JP1':{'1':'POWER_REG_5V','2':'SYS_5V','3':'BENCH_REG_5V'},
+    'J1':{'1':'VIN_DC','2':'GND'},'J2':{'1':'VIN_PROTECTED','2':'GND'},
+    'J3':{'1':'POWER_REG_5V','2':'GND'},'JP1':{'1':'BOARD_REG_5V','2':'SYS_5V','3':'BENCH_REG_5V'},
     'J21':{'1':'BENCH_REG_5V','2':'GND'},'R19':{'1':'VIN_DC','2':'EXT_DETECT_GATE'},
     'L1':{'1':'BUCK_SW','2':'BUCK_3V8'},'R2':{'1':'BUCK_3V8','2':'BUCK_FB'},
     'C6':{'1':'BUCK_3V8','2':'GND'},'C7':{'1':'BUCK_3V8','2':'GND'},
@@ -209,17 +212,17 @@ for r in [.05,.15,.30]:
                       'above_module_minimum':min(d['v(modem)'])>=3.4})
     traces['supply_'+str(r)]=d
 fb=[]
-for vr,top,bottom,ibias in itertools.product([.749,.768,.787],[.999,1.001],[.999,1.001],[-.1e-6,.1e-6]):
+for vr,top,bottom,ibias in itertools.product([.784,.800,.816],[.999,1.001],[.999,1.001],[-.15e-6,.15e-6]):
     # DC relation with specified VFB current; no switching behavior.
-    fb.append(vr*(1+39200*top/(10000*bottom))+ibias*39200*top)
+    fb.append(vr*(1+37400*top/(10000*bottom))+ibias*37400*top)
 report['sections']['modem_power']={'rc_cases':loadcases,'capacitance_nominal_uF':494,
     'cap_note':'C6+C7+C8+C9+C10 = 494uF; previous 484uF illustration excluded C10. Bias/tolerance/temperature derating absent.',
-    'nominal_feedback_v':.768*(1+39200/10000),'datasheet_dc_output_range_v':[min(fb),max(fb)],
+    'nominal_feedback_v':.800*(1+37400/10000),'datasheet_dc_output_range_v':[min(fb),max(fb)],
     'worst_case_static_path_budget_before_ripple_ohm':(min(fb)-3.4)/2,
     'hold_up_with_494uF_2A_0_4V_drop_us':494e-6*.4/2*1e6,
     'model_pass_all_resistance_scenarios':all(c['above_module_minimum'] for c in loadcases),
-    'design_review_issue':'TI recommended output capacitor range is 20-68uF. Draft directly parallels ~494uF. Stability/startup/limit behavior not validated; cannot approve this buck BOM.',
-    'reference':'TPS563201 datasheet section 7.2.2.3 / ML307 hardware supply section 3.2.3',
+    'design_review_issue':'New TPS62933P uses a mixed ~494uF output network. Startup, loop stability and load-transient tests remain unverified; former TPS563201 20-68uF recommendation does not apply to the replacement part.',
+    'reference':'TPS62933 datasheet section 10.2.2.8 / ML307 hardware supply section 3.2.3',
     'limits':'DC feedback calculation is not a regulated transient or thermal test. RC cases diagnose hypothetical paths, not actual board resistance.'}
 hold,_=run('modem_capacitor_only_hold_up',[
     '* 494uF only, precharged 3.8V; source removed, ideal constant 2A load',
@@ -227,43 +230,19 @@ hold,_=run('modem_capacitor_only_hold_up',[
     '.tran 100n 150u uic'],['v(modem)'],OUT)
 report['sections']['modem_power']['capacitor_only_crosses_3v4_us']=next(t*1e6 for t,v in zip(hold['time'],hold['v(modem)']) if v<3.4)
 
-# Real TI model: original file stays local, recorded with its hash. A partial run is BLOCKED.
-buck={'original_model_url':MODEL_URL,'model_unchanged':True,'model_temperature_simulated':False,'cases':[]}
-try:
-    if not MODEL.exists():
-        archive=WORK/'build/ml307-power-reference/tps563201-unencrypted.zip'
-        archive.parent.mkdir(parents=True,exist_ok=True)
-        request=urllib.request.Request(MODEL_URL,headers={'User-Agent':'Mozilla/5.0'})
-        with urllib.request.urlopen(request,timeout=40) as response:archive.write_bytes(response.read())
-        with zipfile.ZipFile(archive) as z:
-            for info in z.infolist():
-                target=(MODEL_DIR/info.filename).resolve()
-                if not target.is_relative_to(MODEL_DIR.resolve()):raise RuntimeError('Unsafe model archive path')
-            z.extractall(MODEL_DIR)
-    buck['sha256']=hashlib.sha256(MODEL.read_bytes()).hexdigest()
-    include=MODEL.relative_to(WORK).as_posix()
-    common=[f'.include "{include}"','Ren vin en 100k','Cbst bst sw 100n','Cin vin 0 44u',
-            'Rdcr outl out .04','Resr out cap .05','Rfbtop out fb 39.2k','Rfbbottom fb 0 10k','Rload out 0 12.6']
-    for name,options,initial in [
-        ('startup','.options method=gear reltol=.003',False),
-        ('steady_gear','.options method=gear reltol=.01 abstol=1u vntol=10u',True),
-        ('steady_shunt','.options method=gear reltol=.01 rshunt=1e12 cshunt=1e-12',True),
-        ('steady_trap','.options method=trap reltol=.01 gmin=1e-10',True)]:
-        deck=common+([ 'Vinput vin 0 5','Xbuck en 0 sw bst fb vin TPS563201_TRANS PARAMS: STEADY_STATE=1',
-                       'Lout sw outl 2.2u IC=.3','Cout cap 0 494u IC=3.75','.ic v(out)=3.75 v(fb)=.762',
-                       '.tran 100n 1m 0 100n uic'] if initial else
-                     ['Vinput vin 0 PWL(0 0 100u 5)','Xbuck en 0 sw bst fb vin TPS563201_TRANS',
-                      'Lout sw outl 2.2u','Cout cap 0 494u','.tran 200n 4m 0 100n'])+[options]
-        try:
-            d,_=run('ti_buck_'+name,deck,['v(out)','i(lout)'],LOGS)
-            buck['cases'].append({'name':name,'simulation_completed':True,
-                                  'min_v':min(d['v(out)']),'max_v':max(d['v(out)']),
-                                  'last_v':d['v(out)'][-1],'electrical_acceptance':'Unqualified; requires startup/steady-state criteria and model validation.'})
-        except RuntimeError as error:
-            buck['cases'].append({'name':name,'simulation_completed':False,'reason':str(error)})
-        (OUT/('ti_buck_'+name+'.cir')).write_text('TI official model attempt\n'+'\n'.join(deck)+'\n.end\n',encoding='utf-8')
-    buck['status']='BLOCKED' if any(not c['simulation_completed'] for c in buck['cases']) else 'REQUIRES_REVIEW'
-except Exception as error:buck.update(status='BLOCKED',reason=str(error))
+# Isolated manufacturer-model probe is evidence only; no passing result exists.
+buck={'original_model_url':MODEL_URL,'model_unchanged':True,
+      'model_temperature_simulated':False,'cases':[],'status':'UNVERIFIED'}
+if MODEL.exists():buck['sha256']=hashlib.sha256(MODEL.read_bytes()).hexdigest()
+probe=WORK/'build/first-board-reference/tps62933-probe-result.json'
+if probe.exists():
+    diagnostic=json.loads(probe.read_text(encoding='utf-8-sig'))
+    buck['cases'].append({'name':'isolated_tps62933p_startup',
+        'simulation_completed':bool(diagnostic.get('completed')),
+        'reason':diagnostic.get('reason',diagnostic.get('error','No accepted electrical result')),
+        'diagnostic':diagnostic,'electrical_acceptance':'Unqualified'})
+else:
+    buck['reason']='No completed manufacturer-model validation is available.'
 report['sections']['ti_buck_model']=buck
 
 report['coverage']=[
@@ -273,12 +252,12 @@ report['coverage']=[
     {'function':'BOOT/呼叫按钮、ESP EN复位','status':'IDEAL_SWITCH_PASS' if report['sections']['boot_reset']['pass_in_ideal_switch_model'] else 'FAIL','evidence':'RC switch transient; no boot-ROM','next':'Firmware debounce / actual board RC / manual TTL flash'},
     {'function':'ML307开机、复位控制电路','status':'ENVELOPE_PASS' if report['sections']['modem_control']['pass_in_assumed_pullup_model'] else 'FAIL','evidence':'Open-drain transistor pull-down / release with assumed internal pull-up','next':'Firmware control not implemented; real module timing and power cycle'},
     {'function':'模组2A负载、电源路径阻抗','status':'RC_FAIL_AT_300mOHM','evidence':'Ideal supply RC scenario, not actual board measurement','next':'Select regulator and prove supply voltage remains >=3.4V'},
-    {'function':'TPS563201真实降压启动及闭环','status':buck['status'],'evidence':'Official TI PSpice model run attempts; end-time validation','next':'Use model-supported PSpice / TI validation; resolve ~494uF output capacitance'},
+    {'function':'TPS62933P真实降压启动及闭环','status':buck['status'],'evidence':'Official TI PSpice model run attempts; end-time validation','next':'Use model-supported PSpice / TI validation; resolve ~494uF output capacitance'},
     {'function':'长期充电、UPS切换、保护、备用电池续航','status':'BLOCKED','evidence':'UPS chip / cell / protection not selected','next':'Supply exact chip and battery specs, design power path then simulate / measure'},
     {'function':'插拔TTL及双电源防倒灌','status':'STATIC_ONLY','evidence':'JP3 only powers ESP branch; no simultaneous links permitted','next':'Dev-board USB power path unknown; external USB backfeed needs validation'},
     {'function':'ML307电源重启/残压放电','status':'MISSING_DESIGN','evidence':'No explicit VBAT discharge path; module guide requires <1.8V for >=100ms','next':'Design and verify discharge / restart sequence; do not improvise during calls'},
-    {'function':'反接、短路、ESD、EMC、散热','status':'UNVERIFIED','evidence':'UPS/adapter protection unknown; no PCB routes or thermal model','next':'Freeze BOM / complete protection and PCB stack-up / laboratory tests'},
-    {'function':'SIM、USB、RF、天线及整机尺寸','status':'STATIC_ONLY','evidence':'Pins / candidate footprints only; unrouted links remain','next':'Part signoff, RF50Ω / USB90Ω routing, real enclosure fit and signal tests'},
+    {'function':'反接、短路、ESD、EMC、散热','status':'UNVERIFIED','evidence':'F1/Q6 and ESD parts drawn, connected four-layer copper; no qualified thermal or system protection test','next':'Freeze BOM / review protection and PCB stack-up / laboratory tests'},
+    {'function':'SIM、USB、RF、天线及整机尺寸','status':'STATIC_ONLY','evidence':'Connected four-layer routes; uniform RF/USB cross-section field estimates are separate reports','next':'Part signoff, factory impedance verification, real enclosure fit and signal tests'},
     {'function':'4G入网、MQTT/WSS、双向语音、锁屏接听、掉线原因上报','status':'REAL_HARDWARE_REQUIRED','evidence':'No functional ESP/ML307/radio/OS model; existing physical call tests are separate','next':'Physical integration tests; cannot claim product pass from circuit simulation'},
     {'function':'生命体征检测、声学音量','status':'REAL_HARDWARE_REQUIRED','evidence':'Radar algorithms / biological sensing / speaker cavity have no supplied validated model','next':'Real radar and acoustic tests on final assembled enclosure'}]
 next_steps=[
@@ -300,7 +279,7 @@ next_steps=[
 for c,text in zip(report['coverage'],next_steps):c['next']=text
 report['coverage'].insert(1,{'function':'USB Host/维修通路及互斥贴装',
     'status':'STATIC_PASS' if report['sections']['interfaces']['pass'] else 'FAIL',
-    'evidence':'19 independent J12/J13/R26-R31 pin checks; population contract checked by verify_design.py',
+    'evidence':'20 independent J12/J13/J22/R26-R31 pin checks; population contract checked by verify_design.py',
     'next':'完成90Ω差分、ESD与最终连接器；实测枚举和USB通话，不能同时连接两个主机'})
 report['coverage'].insert(2,{'function':'模组VBAT隔离及外部3.8V诊断供电',
     'status':'STATIC_PASS' if report['sections']['interfaces']['pass'] else 'FAIL',
@@ -325,26 +304,26 @@ for c in report['coverage']:rows.append('| '+c['function']+' | '+status_names[c[
 validation=json.loads((ROOT/'exports/validation.json').read_text(encoding='utf-8'))
 md=f'''# 语音对讲主板V2 仿真审查报告
 
-生成时间：{report['generated_at']}。对象：现有100×75mm未布线草图、ML307R-DL贴主板、UPS接口预留。
+生成时间：{report['generated_at']}。对象：现有100×75mm四层连接工程、ML307R-DL贴主板、UPS接口预留。
 
 **本版未通过整机验收，不能据此下单生产。** 本轮完成了现有可建模电路的仿真与功能覆盖盘点；ESP32/ML307固件、真实4G网络、UPS及声学/雷达行为没有完整仿真。电路模型通过只代表对应假设下的结果。
 
 ## 本轮执行结果
 
 - {len(checks)}项独立接口引脚核对、{len(fw_checks)}项当前固件引脚核对均通过；KiCad现有报告为ERC {validation['schematic_erc_violations']}、摆放DRC {validation['placement_drc_violations']}、{validation['connected_unique_pin_net_mappings']}项网表/焊盘匹配，仍有{validation['unrouted_links']}处未布线连接。
-- 新增USB Host/维修口的19项独立引脚核对；默认贴R26/R27/R30，Host组R28/R29/R31不贴，互斥贴装由网表验证器检查。USB未布线、未枚举或通话实测；这一项不是USB信号仿真。
+- USB Host/维修口的20项独立引脚核对；默认贴R26/R27/R30，Host组R28/R29/R31及J22不贴，互斥贴装由网表验证器检查。Host已布线至模组旁J22，J13 28/29不接；尚未枚举或通话实测。二维场估算和参考地审查分别见usb-field-estimate.json、usb-reference-audit.json，这一项引脚核对本身不是USB信号仿真。
 - 模组供电新增13项独立引脚核对：J19仅一个跳帽，1–2内置降压，2–3外部3.8V，全部拔掉隔离VBAT；J20不能接5V。接触压降、额定电流与实物切换未测，内置模式的总电容问题仍在。
 - 67组ngspice瞬态计算完成到指定结束时间：27组采样参数、3组漏电/ESP无电情景、27组外部输入检测、2组按钮RC、4组模组控制、3组供电阻抗、1组电容储能。完成计算不代表每组都通过电气判据。
-- 4组TI原厂TPS563201 PSpice模型尝试均提前中止，统一标为未验证。记录实际停止时间和错误，不把部分波形算作通过。
+- 当前TPS62933P原厂模型的独立尝试未取得完整通过结果；旧TPS563201运行记录是历史资料，不能当作新芯片验证。
 - 本仿真脚本不修改设备固件、不打开串口、不刷机；官方协议和主动丢旧UDP包策略保持原样。当前AT恢复固件的实机回归另见[实机记录](../../tests/at_recovery_batch_20261121.md)。
 
 ## 必须处理的设计项
 
 1. **外部电源检测已修正，实物验证未完成。** 旧100k/100k电路在高阈值模型下失败；现改R19=10k 1%、R20=100k 1%、Q5为Diodes 2N7002K-7。27组通用模型覆盖4.5/5/5.5V、VTO至2.5V及1%电阻相反方向容差；最低门极约{min(c['gate_present_v'] for c in detect):.3f}V。插入及移除判据通过，但温度、漏电、慢速降压与实际采购器件仍须测；不作为准确欠压检测器。
-2. **降压候选BOM尚未验证。** 约494µF直接并到输出，超出TI数据表20–68µF推荐范围。必须验证闭环稳定性、启动、轻载、2A突发和限流；目前TI模型与ngspice的瞬态计算中止阻塞这项验证，不能确认候选芯片适用。
+2. **降压候选BOM尚未验证。** U2已改TPS62933P，约494µF混合输出网络仍未完成验证。必须验证闭环稳定性、启动、轻载、2A突发和限流；目前TI模型与ngspice的瞬态计算中止阻塞这项验证，不能确认候选芯片适用。
 3. **ML307供电循环缺少残压放电设计。** 厂家要求重新上电前VBAT低于1.8V保持至少100ms。草图没有专门放电路径或已确认时序，不能保证电源闪断后的重新启动。
 4. **UPS芯片、电池和保护电路未确定。** 充电、边充边用、无缝切换、过流/短路、低电关机、温升和续航均尚不能验证。494µF在2A负载下从3.8V降到3.4V的仿真时间约{power['capacitor_only_crosses_3v4_us']:.1f}µs，不能承担毫秒级UPS供电中断。
-5. **PCB尚未布线。** RF、USB、大电流、接地、回流路径、EMC、散热、实际封装/外壳尺寸尚未完成；摆放DRC没有替代这些工作。
+5. **PCB连接检查通过，生产复核尚未完成。** 当前ERC/DRC及未连接项均为0，RF和USB已有二维截面场估算，USB成对部分的参考地中心覆盖100%。这些不验证排针、线缆、天线、EMC、温升或封装/外壳适配；电源与装配审查继续进行。
 
 ## 功能覆盖表
 
@@ -368,11 +347,11 @@ md=f'''# 语音对讲主板V2 仿真审查报告
 
 上述电阻是人为设置的情景，不是现有设备或PCB的测量值；不能据此确定掉话原因。
 
-39.2k/10k、0.1%反馈电阻，参考电压749–787mV、VFB输入电流±0.1µA的直流计算范围为{min(fb):.4f}–{max(fb):.4f}V。按最低端计算，2A时给路径压降留下约{power['worst_case_static_path_budget_before_ripple_ohm']*1000:.1f}mΩ总预算；纹波、负载调整率、线缆电感及温升会继续消耗裕量。整机5V电流还包括ESP32、功放和雷达，适配器与UPS需测总峰值。
+37.4k/10k、0.1%反馈电阻，参考电压784–816mV、VFB输入电流±0.15µA的直流计算范围为{min(fb):.4f}–{max(fb):.4f}V。按最低端计算，2A时给路径压降留下约{power['worst_case_static_path_budget_before_ripple_ohm']*1000:.1f}mΩ总预算；纹波、负载调整率、线缆电感及温升会继续消耗裕量。整机输入电流还包括ESP32、功放和雷达，适配器与UPS需测总峰值。
 
 ## 官方降压模型尝试
 
-模型来源：[TI SLVMBD1]({MODEL_URL})；数据表：[TPS563201](https://www.ti.com/lit/ds/symlink/tps563201.pdf)。原始文件保持不变，仅下载至被Git忽略的build目录。
+模型来源：[TI SLUM818]({MODEL_URL})；数据表：[TPS62933P](https://www.ti.com/lit/ds/symlink/tps62933.pdf)。原始文件保持不变，仅下载至被Git忽略的build目录。
 
 模型SHA256：`{buck.get('sha256','下载未完成')}`。
 

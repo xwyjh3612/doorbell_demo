@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-21T18:36:01.475652+08:00",
+  "generated_at": "2026-11-22T09:54:20.565595+08:00",
   "engine": "KiCad 9 bundled ngspice shared library, PSpice compatibility / XSPICE",
   "whole_product_pass": false,
   "manufacturing_ready": false,
   "firmware_changed": false,
   "sources": {
     "ml307": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1189/M307R_Hardware_Datasheet.pdf",
-    "buck_datasheet": "https://www.ti.com/lit/ds/symlink/tps563201.pdf",
-    "buck_original_model": "https://www.ti.com/lit/zip/SLVMBD1",
+    "buck_datasheet": "https://www.ti.com/lit/ds/symlink/tps62933.pdf",
+    "buck_original_model": "https://www.ti.com/lit/zip/SLUM818",
     "translator": "https://www.ti.com/lit/ds/symlink/sn74axc1t45.pdf"
   },
   "model_limits": [
@@ -143,29 +143,29 @@
         {
           "ref": "U2",
           "pin": "2",
-          "expected": "BUCK_SW",
-          "actual": "BUCK_SW",
+          "expected": "BUCK_EN",
+          "actual": "BUCK_EN",
           "pass": true
         },
         {
           "ref": "U2",
           "pin": "3",
-          "expected": "SYS_5V",
-          "actual": "SYS_5V",
+          "expected": "POWER_BUS",
+          "actual": "POWER_BUS",
           "pass": true
         },
         {
           "ref": "U2",
           "pin": "4",
-          "expected": "BUCK_FB",
-          "actual": "BUCK_FB",
+          "expected": "GND",
+          "actual": "GND",
           "pass": true
         },
         {
           "ref": "U2",
           "pin": "5",
-          "expected": "BUCK_EN",
-          "actual": "BUCK_EN",
+          "expected": "BUCK_SW",
+          "actual": "BUCK_SW",
           "pass": true
         },
         {
@@ -173,6 +173,153 @@
           "pin": "6",
           "expected": "BUCK_BST",
           "actual": "BUCK_BST",
+          "pass": true
+        },
+        {
+          "ref": "U2",
+          "pin": "7",
+          "expected": "MODEM_REG_PG",
+          "actual": "MODEM_REG_PG",
+          "pass": true
+        },
+        {
+          "ref": "U2",
+          "pin": "8",
+          "expected": "BUCK_FB",
+          "actual": "BUCK_FB",
+          "pass": true
+        },
+        {
+          "ref": "U6",
+          "pin": "1",
+          "expected": "SYS_L1",
+          "actual": "SYS_L1",
+          "pass": true
+        },
+        {
+          "ref": "U6",
+          "pin": "2",
+          "expected": "POWER_BUS",
+          "actual": "POWER_BUS",
+          "pass": true
+        },
+        {
+          "ref": "U6",
+          "pin": "3",
+          "expected": "POWER_BUS",
+          "actual": "POWER_BUS",
+          "pass": true
+        },
+        {
+          "ref": "U6",
+          "pin": "4",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "U6",
+          "pin": "5",
+          "expected": "SYS_REG_PG",
+          "actual": "SYS_REG_PG",
+          "pass": true
+        },
+        {
+          "ref": "U6",
+          "pin": "6",
+          "expected": "SYS_AUX",
+          "actual": "SYS_AUX",
+          "pass": true
+        },
+        {
+          "ref": "U6",
+          "pin": "7",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "U6",
+          "pin": "8",
+          "expected": "BOARD_REG_5V",
+          "actual": "BOARD_REG_5V",
+          "pass": true
+        },
+        {
+          "ref": "U6",
+          "pin": "9",
+          "expected": "BOARD_REG_5V",
+          "actual": "BOARD_REG_5V",
+          "pass": true
+        },
+        {
+          "ref": "U6",
+          "pin": "10",
+          "expected": "SYS_L2",
+          "actual": "SYS_L2",
+          "pass": true
+        },
+        {
+          "ref": "U6",
+          "pin": "11",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "F1",
+          "pin": "1",
+          "expected": "VIN_DC",
+          "actual": "VIN_DC",
+          "pass": true
+        },
+        {
+          "ref": "F1",
+          "pin": "2",
+          "expected": "VIN_FUSED",
+          "actual": "VIN_FUSED",
+          "pass": true
+        },
+        {
+          "ref": "Q6",
+          "pin": "1",
+          "expected": "REVERSE_GATE",
+          "actual": "REVERSE_GATE",
+          "pass": true
+        },
+        {
+          "ref": "Q6",
+          "pin": "2",
+          "expected": "VIN_PROTECTED",
+          "actual": "VIN_PROTECTED",
+          "pass": true
+        },
+        {
+          "ref": "Q6",
+          "pin": "3",
+          "expected": "VIN_FUSED",
+          "actual": "VIN_FUSED",
+          "pass": true
+        },
+        {
+          "ref": "JP4",
+          "pin": "1",
+          "expected": "VIN_PROTECTED",
+          "actual": "VIN_PROTECTED",
+          "pass": true
+        },
+        {
+          "ref": "JP4",
+          "pin": "2",
+          "expected": "POWER_BUS",
+          "actual": "POWER_BUS",
+          "pass": true
+        },
+        {
+          "ref": "JP4",
+          "pin": "3",
+          "expected": "POWER_REG_5V",
+          "actual": "POWER_REG_5V",
           "pass": true
         },
         {
@@ -478,23 +625,30 @@
         },
         {
           "ref": "J13",
-          "pin": "28",
-          "expected": "ESP_USB_DM19",
-          "actual": "ESP_USB_DM19",
+          "pin": "30",
+          "expected": "GND",
+          "actual": "GND",
           "pass": true
         },
         {
-          "ref": "J13",
-          "pin": "29",
+          "ref": "J22",
+          "pin": "1",
+          "expected": "GND",
+          "actual": "GND",
+          "pass": true
+        },
+        {
+          "ref": "J22",
+          "pin": "2",
           "expected": "ESP_USB_DP20",
           "actual": "ESP_USB_DP20",
           "pass": true
         },
         {
-          "ref": "J13",
-          "pin": "30",
-          "expected": "GND",
-          "actual": "GND",
+          "ref": "J22",
+          "pin": "3",
+          "expected": "ESP_USB_DM19",
+          "actual": "ESP_USB_DM19",
           "pass": true
         },
         {
@@ -633,8 +787,8 @@
         {
           "ref": "J2",
           "pin": "1",
-          "expected": "VIN_DC",
-          "actual": "VIN_DC",
+          "expected": "VIN_PROTECTED",
+          "actual": "VIN_PROTECTED",
           "pass": true
         },
         {
@@ -661,8 +815,8 @@
         {
           "ref": "JP1",
           "pin": "1",
-          "expected": "POWER_REG_5V",
-          "actual": "POWER_REG_5V",
+          "expected": "BOARD_REG_5V",
+          "actual": "BOARD_REG_5V",
           "pass": true
         },
         {
@@ -883,7 +1037,7 @@
       "pass": true,
       "scope": "Static independent KiCad netlist / pin contract only. No UART timing or firmware execution.",
       "source_hashes": {
-        "hardware\\voice_mainboard_v2\\exports\\voice_mainboard_v2.net.xml": "481b9c2430e12267087c05fdfdadefcb1aea6687316d13a90e2e2c1cd2256ad2",
+        "hardware\\voice_mainboard_v2\\exports\\voice_mainboard_v2.net.xml": "fb464d32d35a584877b525922861524b112e3f419ad271f6e9f3c9f612b836f9",
         "components\\codec_board\\board_cfg.txt": "6a3603c04b9a4f723db3b8ce7de4ae86c9477b07bb81d6706413404864115957",
         "main\\network_4g.cpp": "0512e43716c3e8ef31524da1529dd19545d3c4d0ff80dd8df0cc1af612495fa4",
         "main\\radar_presence.c": "967aa69dae39a4a12c41356b1e326b6bcfe22e471635240e5cef2fcb084374df"
@@ -1637,47 +1791,38 @@
       ],
       "capacitance_nominal_uF": 494,
       "cap_note": "C6+C7+C8+C9+C10 = 494uF; previous 484uF illustration excluded C10. Bias/tolerance/temperature derating absent.",
-      "nominal_feedback_v": 3.77856,
+      "nominal_feedback_v": 3.7920000000000003,
       "datasheet_dc_output_range_v": [
-        3.675297626293707,
-        3.882140176256256
+        3.7046971484615385,
+        3.8795653997897888
       ],
-      "worst_case_static_path_budget_before_ripple_ohm": 0.13764881314685362,
+      "worst_case_static_path_budget_before_ripple_ohm": 0.1523485742307693,
       "hold_up_with_494uF_2A_0_4V_drop_us": 98.8,
       "model_pass_all_resistance_scenarios": false,
-      "design_review_issue": "TI recommended output capacitor range is 20-68uF. Draft directly parallels ~494uF. Stability/startup/limit behavior not validated; cannot approve this buck BOM.",
-      "reference": "TPS563201 datasheet section 7.2.2.3 / ML307 hardware supply section 3.2.3",
+      "design_review_issue": "New TPS62933P uses a mixed ~494uF output network. Startup, loop stability and load-transient tests remain unverified; former TPS563201 20-68uF recommendation does not apply to the replacement part.",
+      "reference": "TPS62933 datasheet section 10.2.2.8 / ML307 hardware supply section 3.2.3",
       "limits": "DC feedback calculation is not a regulated transient or thermal test. RC cases diagnose hypothetical paths, not actual board resistance.",
       "capacitor_only_crosses_3v4_us": 98.89600000000156
     },
     "ti_buck_model": {
-      "original_model_url": "https://www.ti.com/lit/zip/SLVMBD1",
+      "original_model_url": "https://www.ti.com/lit/zip/SLUM818",
       "model_unchanged": true,
       "model_temperature_simulated": false,
       "cases": [
         {
-          "name": "startup",
+          "name": "isolated_tps62933p_startup",
           "simulation_completed": false,
-          "reason": "Transient stopped at 0.000118610434s; expected 0.004s. stderr doAnalyses: TRAN:  Timestep too small; time = 0.00011861, timestep = 1.25e-19: trouble with node \"xbuck.x_u5_u13_u12.ch\"; stderr run simulation(s) aborted"
-        },
-        {
-          "name": "steady_gear",
-          "simulation_completed": false,
-          "reason": "Transient stopped at 0.00059191344s; expected 0.001s. stderr doAnalyses: TRAN:  Timestep too small; time = 0.000591913, timestep = 1.25e-19: trouble with node \"xbuck.x_u5_u13_u14.ch\"; stderr run simulation(s) aborted"
-        },
-        {
-          "name": "steady_shunt",
-          "simulation_completed": false,
-          "reason": "Transient stopped at 0.000906522775s; expected 0.001s. stderr doAnalyses: TRAN:  Timestep too small; time = 0.000906523, timestep = 1.25e-19: trouble with node \"xbuck.u5_llc_eco\"; stderr run simulation(s) aborted"
-        },
-        {
-          "name": "steady_trap",
-          "simulation_completed": false,
-          "reason": "Transient stopped at 0.000918394746s; expected 0.001s. stderr doAnalyses: TRAN:  Timestep too small; time = 0.000918395, timestep = 1.25e-19: trouble with node \"xbuck.x_u5_u11_u12.ch\"; stderr run simulation(s) aborted"
+          "reason": "Isolated ngspice probe exceeded 180 seconds; terminated without claiming a regulator PASS",
+          "diagnostic": {
+            "completed": false,
+            "reason": "Isolated ngspice probe exceeded 180 seconds; terminated without claiming a regulator PASS",
+            "model_unchanged": true
+          },
+          "electrical_acceptance": "Unqualified"
         }
       ],
-      "sha256": "aac041a7da401c22bd9331c7bfa1e6c5390f08539a14049f9d1872563e0ec9c8",
-      "status": "BLOCKED"
+      "status": "UNVERIFIED",
+      "sha256": "8da0906f99774c9cc9cb1c0f11ce40f630703797d859569e15cc30f9d52db25b"
     }
   },
   "coverage": [
@@ -1690,7 +1835,7 @@
     {
       "function": "USB Host/维修通路及互斥贴装",
       "status": "STATIC_PASS",
-      "evidence": "19 independent J12/J13/R26-R31 pin checks; population contract checked by verify_design.py",
+      "evidence": "20 independent J12/J13/J22/R26-R31 pin checks; population contract checked by verify_design.py",
       "next": "完成90Ω差分、ESD与最终连接器；实测枚举和USB通话，不能同时连接两个主机"
     },
     {
@@ -1730,8 +1875,8 @@
       "next": "确认稳压器和整条供电路径在峰值负载下仍高于3.4V"
     },
     {
-      "function": "TPS563201真实降压启动及闭环",
-      "status": "BLOCKED",
+      "function": "TPS62933P真实降压启动及闭环",
+      "status": "UNVERIFIED",
       "evidence": "Official TI PSpice model run attempts; end-time validation",
       "next": "在模型支持的PSpice环境验证，并处理约494µF输出网络"
     },
@@ -1756,13 +1901,13 @@
     {
       "function": "反接、短路、ESD、EMC、散热",
       "status": "UNVERIFIED",
-      "evidence": "UPS/adapter protection unknown; no PCB routes or thermal model",
+      "evidence": "F1/Q6 and ESD parts drawn, connected four-layer copper; no qualified thermal or system protection test",
       "next": "冻结BOM、完成保护/布线/叠层并进行实物测试"
     },
     {
       "function": "SIM、USB、RF、天线及整机尺寸",
       "status": "STATIC_ONLY",
-      "evidence": "Pins / candidate footprints only; unrouted links remain",
+      "evidence": "Connected four-layer routes; uniform RF/USB cross-section field estimates are separate reports",
       "next": "封装签核，RF50Ω/USB90Ω布线，外壳尺寸及实物信号验证"
     },
     {
@@ -1782,7 +1927,7 @@
     "run_from": "repository root",
     "command": "python hardware/voice_mainboard_v2/simulate_functions.py",
     "requires": "Python 3.11+, Windows KiCad bundled ngspice under build/cad-tools/kicad; optional matplotlib==3.10.7 under build/cad-tools/sim-python",
-    "netlist_sha256": "481b9c2430e12267087c05fdfdadefcb1aea6687316d13a90e2e2c1cd2256ad2",
+    "netlist_sha256": "fb464d32d35a584877b525922861524b112e3f419ad271f6e9f3c9f612b836f9",
     "model_download": "Original TI unencrypted file is local build-only. See URL and SHA256; never modify manufacturer model.",
     "generic_decks": "exports/function-simulation/*.cir",
     "full_ti_diagnostics": "build/v2-simulation-logs/*.log"

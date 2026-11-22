@@ -1,0 +1,34 @@
+{
+  "total_copper_and_laminate_mm": 1.6,
+  "finished_board_nominal_mm": 1.6,
+  "finished_board_tolerance_percent": 10,
+  "outer_copper_um": 35,
+  "inner_copper_um": 17.5,
+  "outer_prepreg_mm": 0.18,
+  "outer_prepreg_requirement_mm": [
+    0.17,
+    0.19
+  ],
+  "dielectric_er_nominal": 4.2,
+  "dielectric_er_requirement": [
+    4.0,
+    4.4
+  ],
+  "reference_plane": "In1.Cu continuous GND",
+  "rf_geometry": {
+    "width_mm": 0.28,
+    "coplanar_gap_mm": 0.2,
+    "target_ohm": 50,
+    "tolerance_percent": 10
+  },
+  "usb_host_pair": {
+    "layer": "F.Cu",
+    "width_mm": 0.28,
+    "gap_mm": 0.22,
+    "target_differential_ohm": 90,
+    "measured": false,
+    "reference_review_required": true
+  },
+  "supplier_stackup_confirmed": false,
+  "impedance_coupons_measured": false
+}

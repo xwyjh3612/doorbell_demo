@@ -1,6 +1,6 @@
 {
-  "revision": "V2-ML307-SMT-UPS-USB-RESERVE",
-  "status": "UNROUTED REVIEW DRAFT - NOT FOR FABRICATION",
+  "revision": "V2-PARALLEL-RAILS-2A-20261122",
+  "status": "CONNECTED ENGINEERING REVIEW - POWER/RF/USB AND MANUFACTURING REVIEW REQUIRED",
   "dimensions_mm": [
     100,
     75
@@ -8,7 +8,7 @@
   "parts": [
     {
       "ref": "J1",
-      "value": "DC 4.5-5.5V 3A 5.5x2.5mm CENTER POSITIVE",
+      "value": "DC 4.5-5.5V 2A 5.5x2.5mm CENTER POSITIVE",
       "footprint": "Connector_BarrelJack:BarrelJack_Wuerth_694108106102_2.5x5.5mm",
       "pins": {
         "1": "VIN_DC",
@@ -29,31 +29,31 @@
           "passive"
         ]
       },
-      "x": 14,
-      "y": 8,
+      "x": 7.3,
+      "y": 13.5,
       "angle": 0,
       "group": "01 UPS / BATTERY / SYSTEM",
       "dnp": false,
       "source": "",
-      "note": "User input range 4.5-5.5V at jack, nominal 5V; connector and input path design target >=3A. Exact purchased socket footprint and current rating must match; Wuerth geometry is a draft candidate. Input protection and trace rating not yet verified.",
+      "note": "User input range 4.5-5.5V at jack, nominal 5V; nominal input design baseline 5V/2A. Exact purchased socket footprint and current rating must match; Wuerth geometry is a draft candidate. Input protection and trace rating not yet verified.",
       "kind": "pcb"
     },
     {
       "ref": "J2",
-      "value": "4.5-5.5V TO REGULATED POWER BOARD",
+      "value": "PROTECTED INPUT TO FUTURE UPS",
       "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
       "pins": {
-        "1": "VIN_DC",
+        "1": "VIN_PROTECTED",
         "2": "GND"
       },
       "names": {},
       "x": 8,
-      "y": 20,
+      "y": 33,
       "angle": 90,
       "group": "01 UPS / BATTERY / SYSTEM",
       "dnp": false,
       "source": "",
-      "note": "Raw input, not system 5V. Power board must regulate across 4.5-5.5V at J1 including path drop. Future UPS input rating must be checked; no direct bypass permitted.",
+      "note": "Protected adapter input to future UPS, not raw jack. Input range includes fuse/MOS/contact drop; future UPS qualification pending.",
       "kind": "pcb"
     },
     {
@@ -71,7 +71,7 @@
       "group": "01 UPS / BATTERY / SYSTEM",
       "dnp": false,
       "source": "",
-      "note": "",
+      "note": "Future regulated UPS 5V return to JP4. Normal first-board power uses JP4 1-2; future UPS uses 2-3. Not a battery connection.",
       "kind": "pcb"
     },
     {
@@ -114,10 +114,10 @@
     },
     {
       "ref": "JP1",
-      "value": "REGULATED / SYS / BENCH SELECT ONE",
+      "value": "BOARD 5V / SYS / BENCH SELECT ONE",
       "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
       "pins": {
-        "1": "POWER_REG_5V",
+        "1": "BOARD_REG_5V",
         "2": "SYS_5V",
         "3": "BENCH_REG_5V"
       },
@@ -128,7 +128,7 @@
       "group": "01 UPS / BATTERY / SYSTEM",
       "dnp": false,
       "source": "",
-      "note": "One shunt only: 1-2 regulated power board via J3; 2-3 independent regulated bench 5V via J21. Neither source is raw VIN_DC. No shunt isolates SYS_5V; never join two sources. >=3A header/shunt purchase and contact drop pending.",
+      "note": "One shunt: 1-2 board 5V regulator, 2-3 independent regulated bench 5V J21. Never join sources; no shunt isolates SYS_5V.",
       "kind": "pcb"
     },
     {
@@ -186,41 +186,422 @@
       "kind": "pcb"
     },
     {
-      "ref": "U2",
-      "value": "TPS563201DDCR CANDIDATE",
-      "footprint": "Package_TO_SOT_SMD:SOT-23-6",
+      "ref": "F1",
+      "value": "3A FUSE 8A I2t VERIFY",
+      "footprint": "Fuse:Fuse_1812_4532Metric",
       "pins": {
-        "1": "GND",
-        "2": "BUCK_SW",
-        "3": "SYS_5V",
-        "4": "BUCK_FB",
-        "5": "BUCK_EN",
-        "6": "BUCK_BST"
+        "1": "VIN_DC",
+        "2": "VIN_FUSED"
+      },
+      "names": {},
+      "x": 22,
+      "y": 19,
+      "angle": 0,
+      "group": "01 UPS / BATTERY / SYSTEM",
+      "dnp": false,
+      "source": "",
+      "note": "Input fault protection; 2A nominal equipment load. Fuse curve/temperature derating and adapter short-circuit behavior require review.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "Q6",
+      "value": "AO3401A",
+      "footprint": "Package_TO_SOT_SMD:SOT-23",
+      "pins": {
+        "1": "REVERSE_GATE",
+        "2": "VIN_PROTECTED",
+        "3": "VIN_FUSED"
       },
       "names": {
         "1": [
+          "G",
+          "input"
+        ],
+        "2": [
+          "S",
+          "passive"
+        ],
+        "3": [
+          "D",
+          "passive"
+        ]
+      },
+      "x": 25,
+      "y": 24,
+      "angle": 0,
+      "group": "01 UPS / BATTERY / SYSTEM",
+      "dnp": false,
+      "source": "https://www.aosmd.com/sites/default/files/res/data_sheets/AO3401A.pdf",
+      "note": "P-channel reverse input protection: drain toward jack, source toward protected load, gate returned to ground. No claim of reverse-current isolation between power sources.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R32",
+      "value": "100k",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "REVERSE_GATE",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 21,
+      "y": 22,
+      "angle": 0,
+      "group": "01 UPS / BATTERY / SYSTEM",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "JP4",
+      "value": "DIRECT / BUS / FUTURE UPS SELECT ONE",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+      "pins": {
+        "1": "VIN_PROTECTED",
+        "2": "POWER_BUS",
+        "3": "POWER_REG_5V"
+      },
+      "names": {},
+      "x": 10,
+      "y": 24,
+      "angle": 90,
+      "group": "01 UPS / BATTERY / SYSTEM",
+      "dnp": false,
+      "source": "",
+      "note": "Single shunt: 1-2 direct protected adapter, 2-3 future regulated UPS return J3. Two sources must never be joined. Both regulators downstream remain connected to POWER_BUS.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "U6",
+      "value": "TPS63061DSCR 5V",
+      "footprint": "VoiceV2:TPS63061_DSC0010E_3x3mm",
+      "pins": {
+        "1": "SYS_L1",
+        "2": "POWER_BUS",
+        "3": "POWER_BUS",
+        "4": "GND",
+        "5": "SYS_REG_PG",
+        "6": "SYS_AUX",
+        "7": "GND",
+        "8": "BOARD_REG_5V",
+        "9": "BOARD_REG_5V",
+        "10": "SYS_L2",
+        "11": "GND"
+      },
+      "names": {
+        "1": [
+          "L1",
+          "passive"
+        ],
+        "2": [
+          "VIN",
+          "power_in"
+        ],
+        "3": [
+          "EN",
+          "input"
+        ],
+        "4": [
+          "PS_SYNC",
+          "input"
+        ],
+        "5": [
+          "PG",
+          "open_collector"
+        ],
+        "6": [
+          "VAUX",
+          "passive"
+        ],
+        "7": [
           "GND",
           "power_in"
         ],
-        "2": [
-          "SW",
+        "8": [
+          "FB_FIXED_TO_VOUT",
+          "input"
+        ],
+        "9": [
+          "VOUT",
+          "power_out"
+        ],
+        "10": [
+          "L2",
           "passive"
+        ],
+        "11": [
+          "EP_PGND",
+          "power_in"
+        ]
+      },
+      "x": 21,
+      "y": 35,
+      "angle": 0,
+      "group": "06 SEPARATE SYSTEM 5V BUCK-BOOST",
+      "dnp": false,
+      "source": "https://www.ti.com/lit/ds/symlink/tps63061.pdf",
+      "note": "5V fixed buck-boost branch; modem does not load this branch. 1.3A specified in boost for VIN>4V; actual ESP/amplifier/radar load must be measured. DSC land pattern checked against TI linked Ultra Librarian; stencil process and thermal load await prototype validation.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "L2",
+      "value": "1.5uH Isat>=4.4A DCR<=30mOhm",
+      "footprint": "Inductor_SMD:L_Sunlord_SWPA6045S",
+      "pins": {
+        "1": "SYS_L1",
+        "2": "SYS_L2"
+      },
+      "names": {},
+      "x": 21,
+      "y": 29,
+      "angle": 0,
+      "group": "06 SEPARATE SYSTEM 5V BUCK-BOOST",
+      "dnp": false,
+      "source": "",
+      "note": "Same package family as L1. Exact 1.5uH purchase must meet saturation/DCR limits; do not substitute value only.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C31",
+      "value": "100n VAUX",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "SYS_AUX",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 23.5,
+      "y": 39,
+      "angle": 0,
+      "group": "06 SEPARATE SYSTEM 5V BUCK-BOOST",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C32",
+      "value": "22u 16V X5R",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "POWER_BUS",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 17,
+      "y": 37,
+      "angle": 0,
+      "group": "06 SEPARATE SYSTEM 5V BUCK-BOOST",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C33",
+      "value": "22u 16V X5R",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "POWER_BUS",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 15,
+      "y": 41,
+      "angle": 0,
+      "group": "06 SEPARATE SYSTEM 5V BUCK-BOOST",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C34",
+      "value": "22u 16V X5R",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "BOARD_REG_5V",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 25.5,
+      "y": 36,
+      "angle": 0,
+      "group": "06 SEPARATE SYSTEM 5V BUCK-BOOST",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C35",
+      "value": "22u 16V X5R",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "BOARD_REG_5V",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 28,
+      "y": 38,
+      "angle": 0,
+      "group": "06 SEPARATE SYSTEM 5V BUCK-BOOST",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C36",
+      "value": "22u 16V X5R",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "pins": {
+        "1": "BOARD_REG_5V",
+        "2": "GND"
+      },
+      "names": {},
+      "x": 28,
+      "y": 43,
+      "angle": 0,
+      "group": "06 SEPARATE SYSTEM 5V BUCK-BOOST",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "TP7",
+      "value": "PROTECTED INPUT",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": {
+        "1": "VIN_PROTECTED"
+      },
+      "names": {},
+      "x": 7,
+      "y": 38,
+      "angle": 0,
+      "group": "06 SEPARATE SYSTEM 5V BUCK-BOOST",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "TP8",
+      "value": "POWER BUS",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": {
+        "1": "POWER_BUS"
+      },
+      "names": {},
+      "x": 7,
+      "y": 43,
+      "angle": 0,
+      "group": "06 SEPARATE SYSTEM 5V BUCK-BOOST",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "TP9",
+      "value": "SYSTEM 5V",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": {
+        "1": "SYS_5V"
+      },
+      "names": {},
+      "x": 24,
+      "y": 49,
+      "angle": 0,
+      "group": "06 SEPARATE SYSTEM 5V BUCK-BOOST",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R33",
+      "value": "10k PG",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "ESP_3V3",
+        "2": "SYS_REG_PG"
+      },
+      "names": {},
+      "x": 26,
+      "y": 30,
+      "angle": 0,
+      "group": "06 SEPARATE SYSTEM 5V BUCK-BOOST",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "TP10",
+      "value": "SYSTEM POWER GOOD",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": {
+        "1": "SYS_REG_PG"
+      },
+      "names": {},
+      "x": 29,
+      "y": 47,
+      "angle": 0,
+      "group": "06 SEPARATE SYSTEM 5V BUCK-BOOST",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "U2",
+      "value": "TPS62933PDRLR 3.8V",
+      "footprint": "Package_TO_SOT_SMD:SOT-583-8",
+      "pins": {
+        "1": "GND",
+        "2": "BUCK_EN",
+        "3": "POWER_BUS",
+        "4": "GND",
+        "5": "BUCK_SW",
+        "6": "BUCK_BST",
+        "7": "MODEM_REG_PG",
+        "8": "BUCK_FB"
+      },
+      "names": {
+        "1": [
+          "RT_1P2MHz",
+          "input"
+        ],
+        "2": [
+          "EN",
+          "input"
         ],
         "3": [
           "VIN",
           "power_in"
         ],
         "4": [
-          "VFB",
-          "input"
+          "GND",
+          "power_in"
         ],
         "5": [
-          "EN",
-          "input"
+          "SW",
+          "passive"
         ],
         "6": [
-          "VBST",
+          "BST",
           "passive"
+        ],
+        "7": [
+          "PG",
+          "open_collector"
+        ],
+        "8": [
+          "FB",
+          "input"
         ]
       },
       "x": 42,
@@ -228,8 +609,8 @@
       "angle": 0,
       "group": "02 MODEM 3.8V BUCK / DECOUPLING",
       "dnp": false,
-      "source": "https://www.ti.com/lit/ds/symlink/tps563201.pdf",
-      "note": "3A candidate, minimum input 4.5V. Not the UPS PMIC; output/current/thermal validation pending.",
+      "source": "https://www.ti.com/lit/ds/symlink/tps62933.pdf",
+      "note": "3.8-30V input 3A-rated part for a 2A modem peak requirement; extended on-time supports low dropout. Mixed 440uF electrolytic + ceramic load requires prototype loop/transient validation. Unencrypted model has not yielded a completed passing run; do not call this qualified.",
       "kind": "pcb"
     },
     {
@@ -237,7 +618,7 @@
       "value": "100k",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "pins": {
-        "1": "SYS_5V",
+        "1": "POWER_BUS",
         "2": "BUCK_EN"
       },
       "names": {},
@@ -270,10 +651,10 @@
     },
     {
       "ref": "C4",
-      "value": "22u 10V",
+      "value": "22u 16V X5R",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "pins": {
-        "1": "SYS_5V",
+        "1": "POWER_BUS",
         "2": "GND"
       },
       "names": {},
@@ -288,10 +669,10 @@
     },
     {
       "ref": "C5",
-      "value": "22u 10V",
+      "value": "22u 16V X5R",
       "footprint": "Capacitor_SMD:C_0805_2012Metric",
       "pins": {
-        "1": "SYS_5V",
+        "1": "POWER_BUS",
         "2": "GND"
       },
       "names": {},
@@ -360,7 +741,7 @@
     },
     {
       "ref": "R2",
-      "value": "39.2k 0.1%",
+      "value": "37.4k 0.1%",
       "footprint": "Resistor_SMD:R_0603_1608Metric",
       "pins": {
         "1": "BUCK_3V8",
@@ -385,8 +766,61 @@
         "2": "GND"
       },
       "names": {},
-      "x": 34,
+      "x": 39.825,
+      "y": 16,
+      "angle": 270,
+      "group": "02 MODEM 3.8V BUCK / DECOUPLING",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "C37",
+      "value": "33p C0G CFF",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "pins": {
+        "1": "BUCK_3V8",
+        "2": "BUCK_FB"
+      },
+      "names": {},
+      "x": 42,
       "y": 13,
+      "angle": 0,
+      "group": "02 MODEM 3.8V BUCK / DECOUPLING",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "R34",
+      "value": "10k PG",
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "pins": {
+        "1": "ESP_3V3",
+        "2": "MODEM_REG_PG"
+      },
+      "names": {},
+      "x": 46,
+      "y": 16,
+      "angle": 0,
+      "group": "02 MODEM 3.8V BUCK / DECOUPLING",
+      "dnp": false,
+      "source": "",
+      "note": "",
+      "kind": "pcb"
+    },
+    {
+      "ref": "TP11",
+      "value": "MODEM POWER GOOD",
+      "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+      "pins": {
+        "1": "MODEM_REG_PG"
+      },
+      "names": {},
+      "x": 51,
+      "y": 16,
       "angle": 0,
       "group": "02 MODEM 3.8V BUCK / DECOUPLING",
       "dnp": false,
@@ -511,8 +945,8 @@
         "3": "EXT_MODEM_3V8"
       },
       "names": {},
-      "x": 14,
-      "y": 70,
+      "x": 79.5,
+      "y": 4,
       "angle": 90,
       "group": "02 MODEM 3.8V BUCK / DECOUPLING",
       "dnp": false,
@@ -529,8 +963,8 @@
         "2": "GND"
       },
       "names": {},
-      "x": 13,
-      "y": 65,
+      "x": 92,
+      "y": 10,
       "angle": 90,
       "group": "02 MODEM 3.8V BUCK / DECOUPLING",
       "dnp": false,
@@ -1586,8 +2020,8 @@
         "4": "MODEM_1V8"
       },
       "names": {},
-      "x": 83,
-      "y": 32,
+      "x": 89.5,
+      "y": 31,
       "angle": 0,
       "group": "03 ML307R-DL / UART / CONTROL",
       "dnp": false,
@@ -1620,8 +2054,8 @@
         "1": "MODEM_NETLIGHT"
       },
       "names": {},
-      "x": 80,
-      "y": 20,
+      "x": 82,
+      "y": 23,
       "angle": 0,
       "group": "03 ML307R-DL / UART / CONTROL",
       "dnp": false,
@@ -1952,8 +2386,8 @@
         "2": "RF_FEED"
       },
       "names": {},
-      "x": 82,
-      "y": 13,
+      "x": 81,
+      "y": 19.4,
       "angle": 0,
       "group": "04 SIM / RF / USB SERVICE",
       "dnp": false,
@@ -1970,9 +2404,9 @@
         "2": "GND"
       },
       "names": {},
-      "x": 81,
-      "y": 10,
-      "angle": 0,
+      "x": 78.5,
+      "y": 18.625,
+      "angle": 90,
       "group": "04 SIM / RF / USB SERVICE",
       "dnp": true,
       "source": "",
@@ -1988,9 +2422,9 @@
         "2": "GND"
       },
       "names": {},
-      "x": 86,
-      "y": 10,
-      "angle": 0,
+      "x": 83.65,
+      "y": 18.625,
+      "angle": 90,
       "group": "04 SIM / RF / USB SERVICE",
       "dnp": true,
       "source": "",
@@ -2017,7 +2451,7 @@
     },
     {
       "ref": "J12",
-      "value": "USB SERVICE ONLY - ISOLATED IN HOST BUILD",
+      "value": "USB SERVICE VBUS DM DP GND",
       "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
       "pins": {
         "1": "SERVICE_USB_VBUS",
@@ -2026,9 +2460,9 @@
         "4": "GND"
       },
       "names": {},
-      "x": 26,
-      "y": 65,
-      "angle": 90,
+      "x": 93.5,
+      "y": 28,
+      "angle": 0,
       "group": "04 SIM / RF / USB SERVICE",
       "dnp": false,
       "source": "",
@@ -2038,73 +2472,73 @@
     {
       "ref": "R26",
       "value": "0R USB SERVICE DP",
-      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
       "pins": {
         "1": "M_USB_DP",
         "2": "SERVICE_USB_DP"
       },
       "names": {},
-      "x": 79.5,
-      "y": 26,
+      "x": 81.1,
+      "y": 30.8,
       "angle": 0,
       "group": "04 SIM / RF / USB SERVICE",
       "dnp": false,
       "source": "",
-      "note": "",
+      "note": "USB population selector; 0402 links allow paired rows at 1.2mm pitch. Service and host variants are mutually exclusive.",
       "kind": "pcb"
     },
     {
       "ref": "R27",
       "value": "0R USB SERVICE DM",
-      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
       "pins": {
         "1": "M_USB_DM",
         "2": "SERVICE_USB_DM"
       },
       "names": {},
-      "x": 79.5,
-      "y": 29,
+      "x": 81.1,
+      "y": 29.6,
       "angle": 0,
       "group": "04 SIM / RF / USB SERVICE",
       "dnp": false,
       "source": "",
-      "note": "",
+      "note": "USB population selector; 0402 links allow paired rows at 1.2mm pitch. Service and host variants are mutually exclusive.",
       "kind": "pcb"
     },
     {
       "ref": "R28",
-      "value": "0R USB HOST DP DNP",
-      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "value": "0R USB HOST DP",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
       "pins": {
         "1": "M_USB_DP",
         "2": "ESP_USB_DP20"
       },
       "names": {},
-      "x": 79.5,
-      "y": 35,
-      "angle": 0,
+      "x": 79,
+      "y": 30.8,
+      "angle": 180,
       "group": "04 SIM / RF / USB SERVICE",
       "dnp": true,
       "source": "",
-      "note": "",
+      "note": "USB population selector; 0402 links allow paired rows at 1.2mm pitch. Service and host variants are mutually exclusive.",
       "kind": "pcb"
     },
     {
       "ref": "R29",
-      "value": "0R USB HOST DM DNP",
-      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "value": "0R USB HOST DM",
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
       "pins": {
         "1": "M_USB_DM",
         "2": "ESP_USB_DM19"
       },
       "names": {},
-      "x": 79.5,
-      "y": 38,
-      "angle": 0,
+      "x": 79,
+      "y": 29.6,
+      "angle": 180,
       "group": "04 SIM / RF / USB SERVICE",
       "dnp": true,
       "source": "",
-      "note": "",
+      "note": "USB population selector; 0402 links allow paired rows at 1.2mm pitch. Service and host variants are mutually exclusive.",
       "kind": "pcb"
     },
     {
@@ -2144,8 +2578,40 @@
       "kind": "pcb"
     },
     {
+      "ref": "U7",
+      "value": "TPD2E2U06DCKR",
+      "footprint": "Package_TO_SOT_SMD:SOT-323_SC-70",
+      "pins": {
+        "1": "SERVICE_USB_DM",
+        "2": "SERVICE_USB_DP",
+        "3": "GND"
+      },
+      "names": {
+        "1": [
+          "IO1",
+          "bidirectional"
+        ],
+        "2": [
+          "IO2",
+          "bidirectional"
+        ],
+        "3": [
+          "GND",
+          "power_in"
+        ]
+      },
+      "x": 86,
+      "y": 28.5,
+      "angle": 0,
+      "group": "04 SIM / RF / USB SERVICE",
+      "dnp": false,
+      "source": "https://www.ti.com/lit/ds/symlink/tpd2e2u06.pdf",
+      "note": "DCK 3-pin SC70 version: pins 1/2 are protected channels and pin 3 is ground. Typical 1.5pF per line. Service USB ESD only; actual system ESD immunity requires hardware testing.",
+      "kind": "pcb"
+    },
+    {
       "ref": "J13",
-      "value": "ESP32-S3 HARNESS WITH USB19/20 RESERVE",
+      "value": "ESP32-S3 SIGNAL HARNESS; USB AT J22",
       "footprint": "Connector_PinHeader_2.54mm:PinHeader_2x15_P2.54mm_Vertical",
       "pins": {
         "1": "ESP_5V",
@@ -2175,8 +2641,8 @@
         "25": "DEBUG_ESP_TX43",
         "26": "DEBUG_ESP_RX44",
         "27": "ESP_EN",
-        "28": "ESP_USB_DM19",
-        "29": "ESP_USB_DP20",
+        "28": "",
+        "29": "",
         "30": "GND"
       },
       "names": {},
@@ -2186,7 +2652,26 @@
       "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
       "dnp": false,
       "source": "",
-      "note": "Harness draft, not final high-speed connector. Pins28/29 = USB DM19/DP20. PWRKEY GPIO11, RESET GPIO21, ADC GPIO2 proposed; verify dev-board access. Short 90-ohm USB pair/return path required; dev-board native USB cannot simultaneously connect another host.",
+      "note": "Existing pins1-27 preserved, pins28/29 deliberately NC to avoid a cross-board USB stub; pin30 ground. USB uses short dedicated J22 beside modem. PWRKEY GPIO11, RESET GPIO21, ADC GPIO2 proposed; verify dev-board access.",
+      "kind": "pcb"
+    },
+    {
+      "ref": "J22",
+      "value": "USB HOST GND DP20 DM19",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+      "pins": {
+        "1": "GND",
+        "2": "ESP_USB_DP20",
+        "3": "ESP_USB_DM19"
+      },
+      "names": {},
+      "x": 82.5,
+      "y": 34.8,
+      "angle": 0,
+      "group": "05 ESP / AUDIO / BUTTON / OPTIONAL RADAR / ADC",
+      "dnp": true,
+      "source": "",
+      "note": "Host-option header only, DNP for default AT/service assembly. Pins1/2/3 = GND/ESP GPIO20 D+/ESP GPIO19 D-. Keep twisted USB data pair with nearby ground short; dev-board native USB must not connect another host. This is a prototype harness interface, not a certified USB connector.",
       "kind": "pcb"
     },
     {
@@ -2821,7 +3306,7 @@
       "footprint": "MountingHole:MountingHole_3.2mm_M3",
       "pins": {},
       "names": {},
-      "x": 3,
+      "x": 17,
       "y": 3,
       "angle": 0,
       "group": "MECHANICAL",
@@ -2876,12 +3361,7 @@
       "kind": "mechanical"
     }
   ],
-  "ups_reserved_region_mm": [
-    6,
-    17,
-    23,
-    28
-  ],
+  "ups_reserved_region_mm": null,
   "ups_chip": "User to supply later; no charging/protection/switching design frozen",
   "battery": "Protected 1S 4.2V Li-ion assumed for estimation; chemistry to confirm",
   "adc": {
@@ -2914,7 +3394,7 @@
       5.5,
       2.5
     ],
-    "input_path_design_current_A": 3,
+    "input_path_design_current_A": 2,
     "raw_net": "VIN_DC",
     "regulated_system_net": "SYS_5V",
     "system_target_v": 5.0,
@@ -2928,7 +3408,7 @@
     "regulated_selector": "JP1",
     "bench_input": "J21",
     "selector_pin_nets": [
-      "POWER_REG_5V",
+      "BOARD_REG_5V",
       "SYS_5V",
       "BENCH_REG_5V"
     ],
@@ -2936,7 +3416,13 @@
     "regulator_frozen": false,
     "input_protection_verified": false,
     "wide_input_hardware_verified": false,
-    "output_current_is_not_input_current": true
+    "output_current_is_not_input_current": true,
+    "adapter_baseline": "5V/2A user-tested prototype",
+    "protected_net": "VIN_PROTECTED",
+    "bus_net": "POWER_BUS",
+    "bus_selector": "JP4",
+    "parallel_converters": true,
+    "input_current_is_not_modem_vbat_current": true
   },
   "modem_power_selection": {
     "selector": "J19",
@@ -2970,14 +3456,32 @@
       "USB ECM"
     ],
     "runtime_switch_implemented": false,
-    "routed": false,
+    "routed": true,
     "verified_on_hardware": false,
     "vbus_detect_range_v": [
       3,
       5.25
     ],
-    "note": "VBUS detection is not module main power; USB ESD/impedance/final connector/host isolation pending. No two populated data pairs or VBUS sources simultaneously."
+    "note": "VBUS detection is not module main power; USB ESD/impedance/final connector/host isolation pending. No two populated data pairs or VBUS sources simultaneously.",
+    "host_connector": "J22 GND/DP20/DM19; J13 pins28/29 NC"
   },
   "manufacturing_ready": false,
-  "firmware_modified": false
+  "firmware_modified": false,
+  "ups_mounting": "Future external plug-in UPS via J2/J3; no unknown PMIC mounting geometry frozen",
+  "power_architecture": {
+    "normal_shunts": [
+      "JP4 1-2",
+      "JP1 1-2",
+      "J19 1-2",
+      "JP3 1-2"
+    ],
+    "future_ups_shunt": "JP4 2-3",
+    "modem_converter": "U2 TPS62933PDRLR",
+    "system_converter": "U6 TPS63061DSCR",
+    "no_mandatory_two_stage_modem_conversion": true,
+    "nominal_3v8_V": 3.7920000000000003,
+    "input_protection": "F1 fuse / Q6 reverse-polarity PMOS",
+    "converter_hardware_tested": false,
+    "converter_closed_loop_simulation_passed": false
+  }
 }

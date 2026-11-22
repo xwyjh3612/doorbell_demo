@@ -1,0 +1,25 @@
+{
+  "method": "KiCad filled ground polygons; 0.025mm centreline samples",
+  "signal_layer": "F.Cu",
+  "reference_layer": "In1.Cu",
+  "checks": [
+    {
+      "net": "ESP_USB_DM19",
+      "paired_sampled_length_mm": 6.954524315747598,
+      "reference_covered_length_mm": 6.954524315747598,
+      "reference_coverage_percent": 100.0,
+      "samples_outside_reference": []
+    },
+    {
+      "net": "ESP_USB_DP20",
+      "paired_sampled_length_mm": 6.850513394534849,
+      "reference_covered_length_mm": 6.850513394534849,
+      "reference_coverage_percent": 100.0,
+      "samples_outside_reference": []
+    }
+  ],
+  "reference_plane_continuous_under_paired_traces": true,
+  "purpose": "Locate reference-plane interruptions for engineering review",
+  "actual_usb_eye_test_passed": false,
+  "measured_impedance": false
+}

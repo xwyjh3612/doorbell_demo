@@ -14,10 +14,18 @@ def text(s,x,y,size=18,color='#1b3149',anchor='start',weight='normal'):
     svg.append(f'<text x="{x}" y="{y}" font-size="{size}" fill="{color}" text-anchor="{anchor}" font-weight="{weight}">{escape(s)}</text>')
 def rect(x,y,w,h,fill,stroke='none',radius=0):svg.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{fill}" stroke="{stroke}" rx="{radius}"/>')
 text('语音对讲主板 V2',55,57,34,weight='bold')
-text('ML307R-DL 直接贴板 · UPS预留 · USB Host选装 · 电池采样',55,94,20,'#536b82')
+text('ML307R-DL 直接贴板 · 2A基准 · 分支供电 · USB与UPS接口',55,94,20,'#536b82')
 rect(1055,35,450,59,'#fff0d6',radius=12)
-text('未布线工程草图 · 不可下单',1280,73,24,'#915100','middle','bold')
+text('连接检查通过 · 生产审查中',1280,73,24,'#915100','middle','bold')
 rect(X,Y,100*S,75*S,'#124e47','#072f2a',7)
+for copper in b.GetTracks():
+    if isinstance(copper,pcb.PCB_VIA):
+        p=copper.GetPosition()
+        svg.append(f'<circle cx="{X+pcb.ToMM(p.x)*S}" cy="{Y+pcb.ToMM(p.y)*S}" r="{pcb.ToMM(copper.GetWidth(pcb.F_Cu))*S/2}" fill="#91cbe8"/>')
+    else:
+        a,bb=copper.GetStart(),copper.GetEnd()
+        color='#dd8c63' if copper.GetLayer()==pcb.F_Cu else '#91cbe8'
+        svg.append(f'<line x1="{X+pcb.ToMM(a.x)*S}" y1="{Y+pcb.ToMM(a.y)*S}" x2="{X+pcb.ToMM(bb.x)*S}" y2="{Y+pcb.ToMM(bb.y)*S}" stroke="{color}" stroke-width="{pcb.ToMM(copper.GetWidth())*S}"/>')
 for fp in b.GetFootprints():
     ref=fp.GetReference()
     if ref.startswith('H'):
@@ -32,23 +40,19 @@ for fp in b.GetFootprints():
             r=pcb.ToMM(p.GetDrillSize().x)*S/2
             if r:svg.append(f'<circle cx="{X+x*S}" cy="{Y+y*S}" r="{r}" fill="#124e47"/>')
     text(ref,X+a*S,Y+bb*S-2,10,'#ddf3eb',weight='bold')
-ux,uy,uw,uh=d['ups_reserved_region_mm']
-rect(X+ux*S,Y+uy*S,uw*S,uh*S,'#244f65','#7bb3ce',6)
-text('UPS预留',X+(ux+uw/2)*S,Y+(uy+11)*S,23,'#e2eff9','middle','bold')
-text('芯片待提供',X+(ux+uw/2)*S,Y+(uy+17)*S,15,'#c5ddea','middle')
-text('23 × 28 mm',X+(ux+uw/2)*S,Y+(uy+23)*S,14,'#c5ddea','middle')
+text('独立5V稳压支路',X+18*S,Y+16*S,14,'#c5ddea','middle')
 # Reserve overlay is conceptual; the draft input header is adjacent to/inside border.
 text('100 mm 暂定板框',495,150,17,'#59758d','middle')
 text('75 mm',970,509,17,'#59758d','middle')
 rect(1030,137,475,698,'white',radius=12)
 text('本轮已确定',1055,179,25,weight='bold')
 notes=[('ML307R-DL裸模组','109焊盘；VBAT约3.8V；UART 1.8V'),
- ('J1 宽压圆口电源','4.5～5.5V；中心正极；3A路径目标'),
+ ('J1 宽压圆口电源','4.5～5.5V；中心正极；5V/2A基准'),
  ('J18 四针TTL刷机','GND / TX43 / RX44 / 5V；3.3V串口'),
  ('SW1 / SW2','BOOT及RESET；四针口手动进下载'),
- ('UPS接口与预留区','芯片后续提供；充放电电路待补'),
+ ('并行供电与UPS接口','3.8V / 5V独立；UPS后续插接'),
  ('电池ADC','GPIO2建议；GPIO9开关；比例2.5'),
- ('USB Host / 维修选装','GPIO20 D+ / 19 D−；两组0Ω互斥'),
+ ('USB Host / 维修选装','J22 地 / D+20 / D−19；0Ω互斥'),
  ('J19 / J20 模组供电选择','内置降压或外部3.8V；仅一个跳帽')]
 for i,(a,bb) in enumerate(notes):
     y=225+i*73;text(a,1055,y,19,weight='bold');text(bb,1055,y+28,16,'#627b91')
@@ -68,10 +72,10 @@ h1{font-size:28px;margin:0 0 12px}p{line-height:1.7}.banner{padding:14px 18px;ba
 .panel{background:white;border-radius:16px;padding:24px;margin:20px 0}img{width:100%;height:auto}button{border:1px solid #c1d3e2;border-radius:8px;padding:9px 14px;background:white;color:#203650;cursor:pointer;margin-right:10px}button.active{background:#12655d;color:white}
 canvas{display:block;width:100%;height:320px}.row{display:flex;gap:20px;flex-wrap:wrap}.row>section{flex:1;min-width:360px}a{color:#12655d}
 table{border-collapse:collapse;width:100%}td,th{padding:12px;border-bottom:1px solid #dee7ef;text-align:left}.small{color:#627b91;font-size:14px}
-</style><main><h1>语音对讲主板 V2</h1><p class="banner">未布线工程草图；UPS芯片和部分采购封装待确定，不能下单生产。板图生成不接触正在测试的设备。</p>
+</style><main><h1>语音对讲主板 V2</h1><p class="banner">四层工程已连接，ERC、DRC及未连接项均为0；供电环路、具体物料封装和生产资料仍在审查，尚不能下单。USB Host已改为模组旁的J22短接口；UPS保留插接接口。板图生成不接触正在测试的设备。</p>
 <div class="panel"><img src="overview.svg" alt="ML307贴片、UPS预留及TTL口的实际焊盘摆放草图"></div>
-<div class="panel"><h2>4.5～5.5V宽压输入</h2><p>J1为5.5mm外径/2.5mm内径圆口、中心正极、标称5V，输入路径按3A设计。原始输入直通系统5V的旁路已移除。J2送稳压电源板，J3返回稳压5V；JP1仅一个跳帽，选择电源板或J21独立稳压台架5V。</p><p>宽压稳压/UPS尚未定型，3A输入不等于5V输出3A；低端需核对4G峰值、功放及雷达总负载。<a href="../宽压供电审查.md">查看各路电压目标、模型覆盖与功率预算</a> · <a href="power-contract.json">数值结果</a></p></div>
-<div class="panel"><h2>同一块样板分步测试</h2><p>新增J19供电选择：仅一个跳帽，1–2板载降压、2–3从J20接经验证的3.8V电源，无跳帽隔离模组。J20为3.8V/GND，不能接5V。先单独测降压，再接4G，有助于诊断与返修。</p><p>排针/跳帽须核对至少3A能力和接触压降；PCB未布线、实物未验证，正常模式的约494µF总电容仍需验证降压稳定性。</p></div>
+<div class="panel"><h2>4.5～5.5V宽压输入</h2><p>J1为5.5mm外径/2.5mm内径圆口、中心正极、标称5V，按用户已测5V/2A适配器作为基准。J1经保险与反接保护，通过JP4选择直供或未来UPS返回，POWER_BUS并行给3.8V模组降压与5V系统升降压。JP1选择板载5V或J21独立台架5V，每个选择位仅一个跳帽。</p><p>两路稳压已加入原理图，环路和负载验证未完成。2A模组VBAT峰值与5V适配器2A不同；低端仍需测总峰值。UPS充放电尚未设计。<a href="../宽压供电审查.md">查看各路电压目标、模型覆盖与功率预算</a> · <a href="power-contract.json">数值结果</a></p></div>
+<div class="panel"><h2>同一块样板分步测试</h2><p>J19供电选择：仅一个跳帽，1–2板载降压、2–3从J20接经验证的3.8V电源，无跳帽隔离模组。J20为3.8V/GND，不能接5V。先单独测降压，再接4G，有助于诊断与返修。</p><p>排针/跳帽须核对至少3A能力和接触压降；PCB连接检查通过、实物未验证，正常模式的约494µF总电容仍需验证降压稳定性。</p></div>
 <div class="panel"><h2>预留USB，保留当前AT</h2><p>模组59/60脚连接D+/D−，ESP32-S3预留GPIO20/19。UART17/18及DTR4保留。Host连接完成后可做AT、RNDIS、ECM编译选择；正式固件统一选择及热切换尚未实现。</p>
 <table><tr><th>贴装用途</th><th>贴装0Ω</th><th>不贴</th></tr><tr><td>默认：电脑维修模组</td><td>R26 / R27 / R30</td><td>R28 / R29 / R31</td></tr><tr><td>产品：ESP32 USB Host</td><td>R28 / R29 / R31</td><td>R26 / R27 / R30</td></tr></table>
 <p>两组互斥；USB VBUS为检测端，不能代替3.8V主电源。差分90Ω、ESD及最终连接器待设计，尚未完成实机USB枚举/通话验证。</p></div>

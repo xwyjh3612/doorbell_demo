@@ -13,10 +13,11 @@ groups=[
  ('03 ML307R-DL / 1.8V UART',[]),
  ('04 POWERKEY / RESET / DEBUG',[]),
  ('05 SIM / RF / USB HOST-SERVICE SELECT',[]),
- ('06 ESP / AUDIO / BUTTON / RADAR',[])]
+ ('06 ESP / AUDIO / BUTTON / RADAR',[]),
+ ('07 SEPARATE SYSTEM 5V CONVERTER',[])]
 for ref,p in parts.items():
     g=p['group'][:2]
-    i={'01':0,'02':1,'03':2,'04':4,'05':5}[g]
+    i={'01':0,'02':1,'03':2,'04':4,'05':5,'06':6}[g]
     if g=='03' and ref not in ['U1','U3','U4','U5','R4','R5',*[f'C{k}' for k in range(13,19)]]:i=3
     if ref in ['Q3','Q4','Q5',*[f'R{k}' for k in range(15,25)],'C28','C29']:i=0
     groups[i][1].append(ref)
@@ -25,20 +26,20 @@ header=f'''(kicad_sch (version 20250114) (generator "voice_mainboard_generator")
  (uuid {rootuid}) (paper "A0")
  (title_block (title "VOICE INTERCOM - ML307R-DL SMT / UPS RESERVED") (date "2026-11-21")
  (rev "V2-UNROUTED") (company "Engineering review / not for manufacture")
- (comment 1 "DC input 4.5-5.5V / 3A path; regulated 5V required; UPS chip not selected")
+ (comment 1 "DC 4.5-5.5V, nominal 5V/2A; separate 3.8V and 5V rails; future UPS plug-in")
  (comment 2 "109-pad land pattern transcribed from manufacturer; release signoff pending"))
 '''
 lib,placed,links=[],[],[]
 def text(s,x,y,size=2):links.append(f'(text {Q(s)} (at {x} {y} 0) (effects (font (size {size} {size})) (justify left)) (uuid {UID("text/"+s)}))')
 for gi,(title,refs) in enumerate(groups):
-    xb=round((25+gi*191)/1.27)*1.27;text(title,xb,25,2)
+    xb=round((25+gi*163)/1.27)*1.27;text(title,xb,25,1.65)
     yc=40.64
     for ref in refs:
         p=parts[ref];names=p['names']
         pins=[(n,names.get(n,[n,'passive'])) for n in p['pins']]
         n=len(pins);split=math.ceil(n/2) if ref.startswith(('U','Q')) else n
         rows=max(split,n-split);h=max(7.62,(rows+1)*2.54)
-        left,right=-20.32,20.32;xc=xb+86.36;ym=yc+h/2;libname='VoiceV2:'+ref
+        left,right=-20.32,20.32;xc=xb+71.12;ym=yc+h/2;libname='VoiceV2:'+ref
         s=[f'(symbol {Q(libname)} (pin_names (offset 0.5)) (in_bom yes) (on_board yes)',
           f'(property "Reference" {Q(ref)} (at 0 {h/2+2.54} 0) (effects (font (size 1.27 1.27))))',
           f'(property "Value" {Q(p["value"])} (at 0 {-h/2-2.54} 0) (effects (font (size 1.27 1.27))))',
@@ -71,17 +72,17 @@ for gi,(title,refs) in enumerate(groups):
 text('UPS RESERVE: actual charging, cell protection, power path, NTC and current limits must be designed after chip selection.',25,792,1.7)
 text('Battery ADC: GPIO2 ADC1_CH1, enable GPIO9; 150k/100k + 100nF; Vbat = 2.5 x calibrated ADC volts. Protected 1S 4.2V assumed.',25,801,1.7)
 text('No firmware changes: optional radar RX GPIO6 / reserved TX GPIO8; button GPIO0; modem PWRKEY GPIO11 / RESET GPIO21 proposed only.',25,810,1.7)
-text('USB POPULATION: SERVICE R26/R27/R30 OR HOST R28/R29/R31, never both. HOST DM19/DP20 via J13; UART remains. USB not routed/tested.',25,819,1.7)
+text('USB: SERVICE R26/R27/R30 OR HOST R28/R29/R31 + J22, never both. J22 = GND/DP20/DM19. J13 pins28/29 NC. Hardware USB test pending.',25,819,1.7)
 text('J19 VBAT: one shunt only 1-2 internal buck OR 2-3 external regulated 3.8V at J20; none isolates modem. Never 5V at J20.',25,828,1.7)
-text('INPUT: J1 4.5-5.5V nominal 5V, center positive, 3A path target. J2 raw to regulator; J3 regulated return. NO RAW BYPASS.',25,837,1.7)
-text('JP1 one shunt: 1-2 POWER_REG_5V / SYS_5V OR 2-3 SYS_5V / J21 BENCH_REG_5V. Both supplies regulated 5V.',25,846,1.7)
+text('INPUT: nominal 5V/2A, 4.5-5.5V range. F1/Q6 protection; JP4 selects direct or future UPS; parallel 3.8V/5V rails.',25,837,1.7)
+text('JP1 one shunt: 1-2 BOARD_REG_5V / SYS_5V OR 2-3 SYS_5V / BENCH_REG_5V. Both sources regulated 5V.',25,846,1.7)
 lib.append('''(symbol "VoiceV2:PWR_FLAG" (power) (pin_names (offset 0)) (in_bom no) (on_board no)
  (property "Reference" "#FLG" (at 0 2 0) (effects (font (size 1 1)) hide))
  (property "Value" "PWR_FLAG" (at 0 3 0) (effects (font (size 1 1))))
  (symbol "PWR_FLAG_0_1" (polyline (pts (xy -1 1) (xy 0 2) (xy 1 1) (xy 0 0) (xy -1 1)) (stroke (width 0.254) (type default)) (fill (type none))))
  (symbol "PWR_FLAG_1_1" (pin power_out line (at 0 0 90) (length 0) (name "pwr" (effects (font (size 1 1)))) (number "1" (effects (font (size 1 1)))))))''')
 # Explicit external/converted source assumptions. Flags are NOT voltage/current verification.
-for i,name in enumerate(['VIN_DC','SYS_5V','ESP_3V3','GND','MODEM_3V8','USB_DETECT_5V']):
+for i,name in enumerate(['VIN_DC','POWER_BUS','SYS_5V','ESP_3V3','GND','MODEM_3V8','USB_DETECT_5V']):
     x,y=round((700+i*68)/1.27)*1.27,770.89;ref=f'#FLG0{i+1:02d}'
     placed.append(f'''(symbol (lib_id "VoiceV2:PWR_FLAG") (at {x} {y} 0) (unit 1) (in_bom no) (on_board no) (dnp no) (uuid {UID(ref)})
      (property "Reference" "{ref}" (at {x} {y-2} 0) (effects (font (size 1 1)) hide))

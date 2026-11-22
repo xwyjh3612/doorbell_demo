@@ -8,6 +8,14 @@ try {
  if($LASTEXITCODE -ne 0){throw 'PCB generation failed'}
  & $pcbPython (Join-Path $PSScriptRoot 'generate_schematic.py')
  if($LASTEXITCODE -ne 0){throw 'Schematic generation failed'}
+ if(-not(Test-Path -LiteralPath (Join-Path $PSScriptRoot 'routing\review-copper.json'))){
+  & $pcbPython (Join-Path $PSScriptRoot 'route_review.py')
+  if($LASTEXITCODE -ne 0){throw 'Partial signal routing failed'}
+ }
+ & $pcbPython (Join-Path $PSScriptRoot 'restore_review_routes.py')
+ if($LASTEXITCODE -ne 0){throw 'Saved review routing restoration failed'}
+ & $pcbPython (Join-Path $PSScriptRoot 'apply_stackup.py')
+ if($LASTEXITCODE -ne 0){throw 'Stackup recording failed'}
  $sch=Join-Path $PSScriptRoot 'voice_mainboard_v2.kicad_sch'
  $brd=Join-Path $PSScriptRoot 'voice_mainboard_v2.kicad_pcb'
  & $pcbCli sch export netlist --format kicadxml -o (Join-Path $PSScriptRoot 'exports\voice_mainboard_v2.net.xml') $sch
