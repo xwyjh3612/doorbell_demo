@@ -1,0 +1,19 @@
+stdout Note: Compatibility modes selected: ps
+stdout Circuit: ups_battery_triangle
+stdout Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+stdout Using SPARSE 1.3 as Direct Linear Solver
+stdout Initial Transient Solution
+stdout --------------------------
+stdout Node                                   Voltage
+stdout ----                                   -------
+stdout source                                     4.2
+stdout ref                                       0.62
+stdout sense                                 0.829787
+stdout result                                 4.14474
+stdout supply                                     4.2
+stdout diff                                 -0.209787
+stdout bsupply#branch                    -5.52597e-06
+stdout bdiff#branch                                 0
+stdout vref#branch                                  0
+stdout vsource#branch                    -6.75393e-06
+stdout No. of Data Rows : 20020

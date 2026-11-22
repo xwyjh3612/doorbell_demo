@@ -1,0 +1,2075 @@
+[
+  {
+    "id": "573571",
+    "url": "https://item.szlcsc.com/573571.html",
+    "data": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.szlcsc.com/#website",
+            "name": "立创商城",
+            "url": "https://www.szlcsc.com/",
+            "inLanguage": "zh-CN",
+            "publisher": {
+              "@id": "https://www.szlcsc.com/#organization"
+            }
+          },
+          {
+            "@type": [
+              "Organization",
+              "OnlineStore"
+            ],
+            "@id": "https://www.szlcsc.com/#organization",
+            "name": "立创商城",
+            "alternateName": [
+              "LCSC",
+              "立创"
+            ],
+            "url": "https://www.szlcsc.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://static.szlcsc.com/ecp/assets/newWeb/common/images/lcsc-logo.png"
+            }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://item.szlcsc.com/573571.html#product",
+            "name": "Nexperia(安世) PESD5V0U1BA,115",
+            "url": "https://item.szlcsc.com/573571.html",
+            "image": [
+              "https://alimg.szlcsc.com/upload/public/product/source/20230104/F13B0A8C02594A083D515C6C8E886890.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20230104/1185FF49A160999585F8FFDC0FE48F58.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20230104/C0C6D418A45163559E1D16C82E74C49A.jpg"
+            ],
+            "description": "PESD5V0U1BA,115静电和浪涌保护(TVS/ESD)，Nexperia(安世)原厂出品，封装SOD-323，价格￥0.8525元。提供高清引脚图、PCB焊盘图、3D模型及Datasheet数据手册，支持选型与设计参考，正品现货，一站式元器件采购尽在立创商城。",
+            "sku": "C552574",
+            "mpn": "PESD5V0U1BA,115",
+            "brand": {
+              "@type": "Brand",
+              "name": "Nexperia(安世)"
+            },
+            "manufacturer": {
+              "@type": "Organization",
+              "name": "Nexperia(安世)"
+            },
+            "category": "静电和浪涌保护(TVS/ESD)",
+            "subjectOf": {
+              "@type": "CreativeWork",
+              "name": "PESD5V0U1BA,115 Datasheet",
+              "url": "https://atta.szlcsc.com/upload/public/pdf/source/20230811/79A49E0224DB130F9556164C91A5BB0A.pdf"
+            },
+            "isRelatedTo": {
+              "@type": "Service",
+              "@id": "https://www.szlcsc.com/lc_agent.html#service",
+              "name": "立创商城 Agent 服务",
+              "url": "https://www.szlcsc.com/lc_agent.html",
+              "description": "立创商城 Agent 服务，支持接入 WorkBuddy、DeepSeek Harness、豆包、千问等 AI 助手，通过自然语言查询电子元器件型号、价格、库存及交期，支持替代料查询、Datasheet 获取与解析、BOM 智能配单，帮助工程师和采购人员高效完成元器件选型与采购。"
+            },
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "CNY",
+              "price": 0.8525,
+              "availability": "https://schema.org/InStock",
+              "inventoryLevel": {
+                "@type": "QuantitativeValue",
+                "value": 17038
+              },
+              "seller": {
+                "@id": "https://www.szlcsc.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://item.szlcsc.com/573571.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "首页",
+                "item": "https://www.szlcsc.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "电子元器件",
+                "item": "https://www.szlcsc.com/catalog.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "静电和浪涌保护(TVS/ESD)",
+                "item": "https://list.szlcsc.com/catalog/526.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "PESD5V0U1BA,115",
+                "item": "https://item.szlcsc.com/573571.html"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2801085",
+    "url": "https://item.szlcsc.com/2801085.html",
+    "data": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.szlcsc.com/#website",
+            "name": "立创商城",
+            "url": "https://www.szlcsc.com/",
+            "inLanguage": "zh-CN",
+            "publisher": {
+              "@id": "https://www.szlcsc.com/#organization"
+            }
+          },
+          {
+            "@type": [
+              "Organization",
+              "OnlineStore"
+            ],
+            "@id": "https://www.szlcsc.com/#organization",
+            "name": "立创商城",
+            "alternateName": [
+              "LCSC",
+              "立创"
+            ],
+            "url": "https://www.szlcsc.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://static.szlcsc.com/ecp/assets/newWeb/common/images/lcsc-logo.png"
+            }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://item.szlcsc.com/2801085.html#product",
+            "name": "XFCN(兴飞) PZ254V-11-04P",
+            "url": "https://item.szlcsc.com/2801085.html",
+            "image": [
+              "https://alimg.szlcsc.com/upload/public/product/source/20230105/00619CE962F718DFFBF7BA0B8E047AEE.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20230105/FBADE48549199829491793699A08E0A6.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20230105/137E47FDFD6DDB3FA14C3188D80DCDA8.jpg",
+              "https://alimg.szlcsc.com/upload/public/brand/product/certificate/20240102/1EA0A29683E4B3085559CE67F4058079.jpg"
+            ],
+            "description": "PZ254V-11-04P排针，XFCN(兴飞)原厂出品，封装插件,P=2.54mm，价格￥0.0757元。提供高清引脚图、PCB焊盘图、3D模型及Datasheet数据手册，支持选型与设计参考，正品现货，一站式元器件采购尽在立创商城。",
+            "sku": "C2691448",
+            "mpn": "PZ254V-11-04P",
+            "brand": {
+              "@type": "Brand",
+              "name": "XFCN(兴飞)"
+            },
+            "manufacturer": {
+              "@type": "Organization",
+              "name": "XFCN(兴飞)"
+            },
+            "category": "排针",
+            "subjectOf": {
+              "@type": "CreativeWork",
+              "name": "PZ254V-11-04P Datasheet",
+              "url": "https://atta.szlcsc.com/upload/public/pdf/source/20260728/FCDE680580DD89D896389311C7AED201.pdf"
+            },
+            "isRelatedTo": {
+              "@type": "Service",
+              "@id": "https://www.szlcsc.com/lc_agent.html#service",
+              "name": "立创商城 Agent 服务",
+              "url": "https://www.szlcsc.com/lc_agent.html",
+              "description": "立创商城 Agent 服务，支持接入 WorkBuddy、DeepSeek Harness、豆包、千问等 AI 助手，通过自然语言查询电子元器件型号、价格、库存及交期，支持替代料查询、Datasheet 获取与解析、BOM 智能配单，帮助工程师和采购人员高效完成元器件选型与采购。"
+            },
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "CNY",
+              "price": 0.0757,
+              "availability": "https://schema.org/InStock",
+              "inventoryLevel": {
+                "@type": "QuantitativeValue",
+                "value": 711256
+              },
+              "seller": {
+                "@id": "https://www.szlcsc.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://item.szlcsc.com/2801085.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "首页",
+                "item": "https://www.szlcsc.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "电子元器件",
+                "item": "https://www.szlcsc.com/catalog.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "排针",
+                "item": "https://list.szlcsc.com/catalog/644.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "PZ254V-11-04P",
+                "item": "https://item.szlcsc.com/2801085.html"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "502960",
+    "url": "https://item.szlcsc.com/502960.html",
+    "data": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.szlcsc.com/#website",
+            "name": "立创商城",
+            "url": "https://www.szlcsc.com/",
+            "inLanguage": "zh-CN",
+            "publisher": {
+              "@id": "https://www.szlcsc.com/#organization"
+            }
+          },
+          {
+            "@type": [
+              "Organization",
+              "OnlineStore"
+            ],
+            "@id": "https://www.szlcsc.com/#organization",
+            "name": "立创商城",
+            "alternateName": [
+              "LCSC",
+              "立创"
+            ],
+            "url": "https://www.szlcsc.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://static.szlcsc.com/ecp/assets/newWeb/common/images/lcsc-logo.png"
+            }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://item.szlcsc.com/502960.html#product",
+            "name": "XFCN(兴飞) PZ254V-11-05P",
+            "url": "https://item.szlcsc.com/502960.html",
+            "image": [
+              "https://alimg.szlcsc.com/upload/public/product/source/20240304/C2FAA86C28A6ED6E39FA3DB90DB70BBE.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20240304/F0259D925171B56A1AFB8B328CEB3212.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20240304/2272B4FB7BB998C0AC8F0B2D2EA7EF80.jpg",
+              "https://alimg.szlcsc.com/upload/public/brand/product/certificate/20240102/1EA0A29683E4B3085559CE67F4058079.jpg"
+            ],
+            "description": "PZ254V-11-05P排针，XFCN(兴飞)原厂出品，封装插件,P=2.54mm，价格￥0.087元。提供高清引脚图、PCB焊盘图、3D模型及Datasheet数据手册，支持选型与设计参考，正品现货，一站式元器件采购尽在立创商城。",
+            "sku": "C492404",
+            "mpn": "PZ254V-11-05P",
+            "brand": {
+              "@type": "Brand",
+              "name": "XFCN(兴飞)"
+            },
+            "manufacturer": {
+              "@type": "Organization",
+              "name": "XFCN(兴飞)"
+            },
+            "category": "排针",
+            "subjectOf": {
+              "@type": "CreativeWork",
+              "name": "PZ254V-11-05P Datasheet",
+              "url": "https://atta.szlcsc.com/upload/public/pdf/source/20260728/FCDE680580DD89D896389311C7AED201.pdf"
+            },
+            "isRelatedTo": {
+              "@type": "Service",
+              "@id": "https://www.szlcsc.com/lc_agent.html#service",
+              "name": "立创商城 Agent 服务",
+              "url": "https://www.szlcsc.com/lc_agent.html",
+              "description": "立创商城 Agent 服务，支持接入 WorkBuddy、DeepSeek Harness、豆包、千问等 AI 助手，通过自然语言查询电子元器件型号、价格、库存及交期，支持替代料查询、Datasheet 获取与解析、BOM 智能配单，帮助工程师和采购人员高效完成元器件选型与采购。"
+            },
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "CNY",
+              "price": 0.087,
+              "availability": "https://schema.org/InStock",
+              "inventoryLevel": {
+                "@type": "QuantitativeValue",
+                "value": 182006
+              },
+              "seller": {
+                "@id": "https://www.szlcsc.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://item.szlcsc.com/502960.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "首页",
+                "item": "https://www.szlcsc.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "电子元器件",
+                "item": "https://www.szlcsc.com/catalog.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "排针",
+                "item": "https://list.szlcsc.com/catalog/644.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "PZ254V-11-05P",
+                "item": "https://item.szlcsc.com/502960.html"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "16532",
+    "url": "https://item.szlcsc.com/16532.html",
+    "data": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.szlcsc.com/#website",
+            "name": "立创商城",
+            "url": "https://www.szlcsc.com/",
+            "inLanguage": "zh-CN",
+            "publisher": {
+              "@id": "https://www.szlcsc.com/#organization"
+            }
+          },
+          {
+            "@type": [
+              "Organization",
+              "OnlineStore"
+            ],
+            "@id": "https://www.szlcsc.com/#organization",
+            "name": "立创商城",
+            "alternateName": [
+              "LCSC",
+              "立创"
+            ],
+            "url": "https://www.szlcsc.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://static.szlcsc.com/ecp/assets/newWeb/common/images/lcsc-logo.png"
+            }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://item.szlcsc.com/16532.html#product",
+            "name": "SAMSUNG(三星) CL21A106KAYNNNE",
+            "url": "https://item.szlcsc.com/16532.html",
+            "image": [
+              "https://alimg.szlcsc.com/upload/public/product/source/20221228/D3325A0FDAD994CB215E3779F563E840.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20221228/68D5FAB9BF7879C2DC09DF84B95CB37C.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20221228/0BAB7F2D9B8AC10CE38E6F616800B056.jpg"
+            ],
+            "description": "CL21A106KAYNNNE贴片电容(MLCC)，SAMSUNG(三星)原厂出品，封装0805，价格￥0.096元。提供高清引脚图、PCB焊盘图、3D模型及Datasheet数据手册，支持选型与设计参考，正品现货，一站式元器件采购尽在立创商城。",
+            "sku": "C15850",
+            "mpn": "CL21A106KAYNNNE",
+            "brand": {
+              "@type": "Brand",
+              "name": "SAMSUNG(三星)"
+            },
+            "manufacturer": {
+              "@type": "Organization",
+              "name": "SAMSUNG(三星)"
+            },
+            "category": "贴片电容(MLCC)",
+            "subjectOf": {
+              "@type": "CreativeWork",
+              "name": "CL21A106KAYNNNE Datasheet",
+              "url": "https://atta.szlcsc.com/upload/public/pdf/source/20160218/1457707763339.pdf"
+            },
+            "isRelatedTo": {
+              "@type": "Service",
+              "@id": "https://www.szlcsc.com/lc_agent.html#service",
+              "name": "立创商城 Agent 服务",
+              "url": "https://www.szlcsc.com/lc_agent.html",
+              "description": "立创商城 Agent 服务，支持接入 WorkBuddy、DeepSeek Harness、豆包、千问等 AI 助手，通过自然语言查询电子元器件型号、价格、库存及交期，支持替代料查询、Datasheet 获取与解析、BOM 智能配单，帮助工程师和采购人员高效完成元器件选型与采购。"
+            },
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "CNY",
+              "price": 0.096,
+              "availability": "https://schema.org/InStock",
+              "inventoryLevel": {
+                "@type": "QuantitativeValue",
+                "value": 1874779
+              },
+              "seller": {
+                "@id": "https://www.szlcsc.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://item.szlcsc.com/16532.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "首页",
+                "item": "https://www.szlcsc.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "电子元器件",
+                "item": "https://www.szlcsc.com/catalog.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "贴片电容(MLCC)",
+                "item": "https://list.szlcsc.com/catalog/313.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "CL21A106KAYNNNE",
+                "item": "https://item.szlcsc.com/16532.html"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "1943",
+    "url": "https://item.szlcsc.com/1943.html",
+    "data": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.szlcsc.com/#website",
+            "name": "立创商城",
+            "url": "https://www.szlcsc.com/",
+            "inLanguage": "zh-CN",
+            "publisher": {
+              "@id": "https://www.szlcsc.com/#organization"
+            }
+          },
+          {
+            "@type": [
+              "Organization",
+              "OnlineStore"
+            ],
+            "@id": "https://www.szlcsc.com/#organization",
+            "name": "立创商城",
+            "alternateName": [
+              "LCSC",
+              "立创"
+            ],
+            "url": "https://www.szlcsc.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://static.szlcsc.com/ecp/assets/newWeb/common/images/lcsc-logo.png"
+            }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://item.szlcsc.com/1943.html#product",
+            "name": "SAMSUNG(三星) CL10B104KB8NNNC",
+            "url": "https://item.szlcsc.com/1943.html",
+            "image": [
+              "https://alimg.szlcsc.com/upload/public/product/source/20230108/ED41954D034C40AB3C90253639010900.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20230108/6CAE36A563EF7CC6663AB73547FAECB1.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20230108/0C7A37048355FC9EFA2D3C1CCBE2E74C.jpg"
+            ],
+            "description": "CL10B104KB8NNNC贴片电容(MLCC)，SAMSUNG(三星)原厂出品，封装0603，价格￥0.0193元。提供高清引脚图、PCB焊盘图、3D模型及Datasheet数据手册，支持选型与设计参考，正品现货，一站式元器件采购尽在立创商城。",
+            "sku": "C1591",
+            "mpn": "CL10B104KB8NNNC",
+            "brand": {
+              "@type": "Brand",
+              "name": "SAMSUNG(三星)"
+            },
+            "manufacturer": {
+              "@type": "Organization",
+              "name": "SAMSUNG(三星)"
+            },
+            "category": "贴片电容(MLCC)",
+            "subjectOf": {
+              "@type": "CreativeWork",
+              "name": "CL10B104KB8NNNC Datasheet",
+              "url": "https://atta.szlcsc.com/upload/public/pdf/source/20160218/1457707763339.pdf"
+            },
+            "isRelatedTo": {
+              "@type": "Service",
+              "@id": "https://www.szlcsc.com/lc_agent.html#service",
+              "name": "立创商城 Agent 服务",
+              "url": "https://www.szlcsc.com/lc_agent.html",
+              "description": "立创商城 Agent 服务，支持接入 WorkBuddy、DeepSeek Harness、豆包、千问等 AI 助手，通过自然语言查询电子元器件型号、价格、库存及交期，支持替代料查询、Datasheet 获取与解析、BOM 智能配单，帮助工程师和采购人员高效完成元器件选型与采购。"
+            },
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "CNY",
+              "price": 0.0193,
+              "availability": "https://schema.org/InStock",
+              "inventoryLevel": {
+                "@type": "QuantitativeValue",
+                "value": 142849
+              },
+              "seller": {
+                "@id": "https://www.szlcsc.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://item.szlcsc.com/1943.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "首页",
+                "item": "https://www.szlcsc.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "电子元器件",
+                "item": "https://www.szlcsc.com/catalog.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "贴片电容(MLCC)",
+                "item": "https://list.szlcsc.com/catalog/313.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "CL10B104KB8NNNC",
+                "item": "https://item.szlcsc.com/1943.html"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "1941",
+    "url": "https://item.szlcsc.com/1941.html",
+    "data": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.szlcsc.com/#website",
+            "name": "立创商城",
+            "url": "https://www.szlcsc.com/",
+            "inLanguage": "zh-CN",
+            "publisher": {
+              "@id": "https://www.szlcsc.com/#organization"
+            }
+          },
+          {
+            "@type": [
+              "Organization",
+              "OnlineStore"
+            ],
+            "@id": "https://www.szlcsc.com/#organization",
+            "name": "立创商城",
+            "alternateName": [
+              "LCSC",
+              "立创"
+            ],
+            "url": "https://www.szlcsc.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://static.szlcsc.com/ecp/assets/newWeb/common/images/lcsc-logo.png"
+            }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://item.szlcsc.com/1941.html#product",
+            "name": "SAMSUNG(三星) CL10B103KB8NNNC",
+            "url": "https://item.szlcsc.com/1941.html",
+            "image": [
+              "https://alimg.szlcsc.com/upload/public/product/source/20230108/1E059E54F84EE63012070ADCCD1E71BD.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20230108/F472D469D1506E31FC9BDBD98C7A0735.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20230108/B1C80615D64179D24D3E11F0830D91CC.jpg"
+            ],
+            "description": "CL10B103KB8NNNC贴片电容(MLCC)，SAMSUNG(三星)原厂出品，封装0603，价格￥0.019元。提供高清引脚图、PCB焊盘图、3D模型及Datasheet数据手册，支持选型与设计参考，正品现货，一站式元器件采购尽在立创商城。",
+            "sku": "C1589",
+            "mpn": "CL10B103KB8NNNC",
+            "brand": {
+              "@type": "Brand",
+              "name": "SAMSUNG(三星)"
+            },
+            "manufacturer": {
+              "@type": "Organization",
+              "name": "SAMSUNG(三星)"
+            },
+            "category": "贴片电容(MLCC)",
+            "subjectOf": {
+              "@type": "CreativeWork",
+              "name": "CL10B103KB8NNNC Datasheet",
+              "url": "https://atta.szlcsc.com/upload/public/pdf/source/20160218/1457707763339.pdf"
+            },
+            "isRelatedTo": {
+              "@type": "Service",
+              "@id": "https://www.szlcsc.com/lc_agent.html#service",
+              "name": "立创商城 Agent 服务",
+              "url": "https://www.szlcsc.com/lc_agent.html",
+              "description": "立创商城 Agent 服务，支持接入 WorkBuddy、DeepSeek Harness、豆包、千问等 AI 助手，通过自然语言查询电子元器件型号、价格、库存及交期，支持替代料查询、Datasheet 获取与解析、BOM 智能配单，帮助工程师和采购人员高效完成元器件选型与采购。"
+            },
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "CNY",
+              "price": 0.019,
+              "availability": "https://schema.org/InStock",
+              "inventoryLevel": {
+                "@type": "QuantitativeValue",
+                "value": 1295046
+              },
+              "seller": {
+                "@id": "https://www.szlcsc.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://item.szlcsc.com/1941.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "首页",
+                "item": "https://www.szlcsc.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "电子元器件",
+                "item": "https://www.szlcsc.com/catalog.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "贴片电容(MLCC)",
+                "item": "https://list.szlcsc.com/catalog/313.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "CL10B103KB8NNNC",
+                "item": "https://item.szlcsc.com/1941.html"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "16531",
+    "url": "https://item.szlcsc.com/16531.html",
+    "data": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.szlcsc.com/#website",
+            "name": "立创商城",
+            "url": "https://www.szlcsc.com/",
+            "inLanguage": "zh-CN",
+            "publisher": {
+              "@id": "https://www.szlcsc.com/#organization"
+            }
+          },
+          {
+            "@type": [
+              "Organization",
+              "OnlineStore"
+            ],
+            "@id": "https://www.szlcsc.com/#organization",
+            "name": "立创商城",
+            "alternateName": [
+              "LCSC",
+              "立创"
+            ],
+            "url": "https://www.szlcsc.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://static.szlcsc.com/ecp/assets/newWeb/common/images/lcsc-logo.png"
+            }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://item.szlcsc.com/16531.html#product",
+            "name": "SAMSUNG(三星) CL10A105KB8NNNC",
+            "url": "https://item.szlcsc.com/16531.html",
+            "image": [
+              "https://alimg.szlcsc.com/upload/public/product/source/20221228/5F5303D0D45633FD8A94BF04275D83DA.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20221228/715E3F599E56A5CC54A2375754926434.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20221228/2698DC6568DAF637335FB14D1B200109.jpg"
+            ],
+            "description": "CL10A105KB8NNNC贴片电容(MLCC)，SAMSUNG(三星)原厂出品，封装0603，价格￥0.0327元。提供高清引脚图、PCB焊盘图、3D模型及Datasheet数据手册，支持选型与设计参考，正品现货，一站式元器件采购尽在立创商城。",
+            "sku": "C15849",
+            "mpn": "CL10A105KB8NNNC",
+            "brand": {
+              "@type": "Brand",
+              "name": "SAMSUNG(三星)"
+            },
+            "manufacturer": {
+              "@type": "Organization",
+              "name": "SAMSUNG(三星)"
+            },
+            "category": "贴片电容(MLCC)",
+            "subjectOf": {
+              "@type": "CreativeWork",
+              "name": "CL10A105KB8NNNC Datasheet",
+              "url": "https://atta.szlcsc.com/upload/public/pdf/source/20160218/1457707763339.pdf"
+            },
+            "isRelatedTo": {
+              "@type": "Service",
+              "@id": "https://www.szlcsc.com/lc_agent.html#service",
+              "name": "立创商城 Agent 服务",
+              "url": "https://www.szlcsc.com/lc_agent.html",
+              "description": "立创商城 Agent 服务，支持接入 WorkBuddy、DeepSeek Harness、豆包、千问等 AI 助手，通过自然语言查询电子元器件型号、价格、库存及交期，支持替代料查询、Datasheet 获取与解析、BOM 智能配单，帮助工程师和采购人员高效完成元器件选型与采购。"
+            },
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "CNY",
+              "price": 0.0327,
+              "availability": "https://schema.org/InStock",
+              "inventoryLevel": {
+                "@type": "QuantitativeValue",
+                "value": 648639
+              },
+              "seller": {
+                "@id": "https://www.szlcsc.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://item.szlcsc.com/16531.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "首页",
+                "item": "https://www.szlcsc.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "电子元器件",
+                "item": "https://www.szlcsc.com/catalog.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "贴片电容(MLCC)",
+                "item": "https://list.szlcsc.com/catalog/313.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "CL10A105KB8NNNC",
+                "item": "https://item.szlcsc.com/16531.html"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2015",
+    "url": "https://item.szlcsc.com/2015.html",
+    "data": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.szlcsc.com/#website",
+            "name": "立创商城",
+            "url": "https://www.szlcsc.com/",
+            "inLanguage": "zh-CN",
+            "publisher": {
+              "@id": "https://www.szlcsc.com/#organization"
+            }
+          },
+          {
+            "@type": [
+              "Organization",
+              "OnlineStore"
+            ],
+            "@id": "https://www.szlcsc.com/#organization",
+            "name": "立创商城",
+            "alternateName": [
+              "LCSC",
+              "立创"
+            ],
+            "url": "https://www.szlcsc.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://static.szlcsc.com/ecp/assets/newWeb/common/images/lcsc-logo.png"
+            }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://item.szlcsc.com/2015.html#product",
+            "name": "SAMSUNG(三星) CL10C330JB8NNNC",
+            "url": "https://item.szlcsc.com/2015.html",
+            "image": [
+              "https://alimg.szlcsc.com/upload/public/product/source/20230108/821C21FB27FF6F2D1A6CFD11085A72C3.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20230108/7280B717DE5CA79383C2C3B61EE55AD5.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20230108/360C22BCC1A266B8CA6479F075052472.jpg"
+            ],
+            "description": "CL10C330JB8NNNC贴片电容(MLCC)，SAMSUNG(三星)原厂出品，封装0603，价格￥0.0289元。提供高清引脚图、PCB焊盘图、3D模型及Datasheet数据手册，支持选型与设计参考，正品现货，一站式元器件采购尽在立创商城。",
+            "sku": "C1663",
+            "mpn": "CL10C330JB8NNNC",
+            "brand": {
+              "@type": "Brand",
+              "name": "SAMSUNG(三星)"
+            },
+            "manufacturer": {
+              "@type": "Organization",
+              "name": "SAMSUNG(三星)"
+            },
+            "category": "贴片电容(MLCC)",
+            "subjectOf": {
+              "@type": "CreativeWork",
+              "name": "CL10C330JB8NNNC Datasheet",
+              "url": "https://atta.szlcsc.com/upload/public/pdf/source/20160218/1457707763339.pdf"
+            },
+            "isRelatedTo": {
+              "@type": "Service",
+              "@id": "https://www.szlcsc.com/lc_agent.html#service",
+              "name": "立创商城 Agent 服务",
+              "url": "https://www.szlcsc.com/lc_agent.html",
+              "description": "立创商城 Agent 服务，支持接入 WorkBuddy、DeepSeek Harness、豆包、千问等 AI 助手，通过自然语言查询电子元器件型号、价格、库存及交期，支持替代料查询、Datasheet 获取与解析、BOM 智能配单，帮助工程师和采购人员高效完成元器件选型与采购。"
+            },
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "CNY",
+              "price": 0.0289,
+              "availability": "https://schema.org/InStock",
+              "inventoryLevel": {
+                "@type": "QuantitativeValue",
+                "value": 305917
+              },
+              "seller": {
+                "@id": "https://www.szlcsc.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://item.szlcsc.com/2015.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "首页",
+                "item": "https://www.szlcsc.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "电子元器件",
+                "item": "https://www.szlcsc.com/catalog.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "贴片电容(MLCC)",
+                "item": "https://list.szlcsc.com/catalog/313.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "CL10C330JB8NNNC",
+                "item": "https://item.szlcsc.com/2015.html"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "174890",
+    "url": "https://item.szlcsc.com/174890.html",
+    "data": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.szlcsc.com/#website",
+            "name": "立创商城",
+            "url": "https://www.szlcsc.com/",
+            "inLanguage": "zh-CN",
+            "publisher": {
+              "@id": "https://www.szlcsc.com/#organization"
+            }
+          },
+          {
+            "@type": [
+              "Organization",
+              "OnlineStore"
+            ],
+            "@id": "https://www.szlcsc.com/#organization",
+            "name": "立创商城",
+            "alternateName": [
+              "LCSC",
+              "立创"
+            ],
+            "url": "https://www.szlcsc.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://static.szlcsc.com/ecp/assets/newWeb/common/images/lcsc-logo.png"
+            }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://item.szlcsc.com/174890.html#product",
+            "name": "SAMSUNG(三星) CL10C102JB8NNNC",
+            "url": "https://item.szlcsc.com/174890.html",
+            "image": [
+              "https://alimg.szlcsc.com/upload/public/product/source/20250802/681AD961405F386C026DC609CDB1E1CC.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20250802/619FC38ABCBDF76899F8BEF88166D8F8.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20250802/4D6FC0F1C0C350705FDFC18BC30D3A19.jpg"
+            ],
+            "description": "CL10C102JB8NNNC贴片电容(MLCC)，SAMSUNG(三星)原厂出品，封装0603，价格￥0.0286元。提供高清引脚图、PCB焊盘图、3D模型及Datasheet数据手册，支持选型与设计参考，正品现货，一站式元器件采购尽在立创商城。",
+            "sku": "C163508",
+            "mpn": "CL10C102JB8NNNC",
+            "brand": {
+              "@type": "Brand",
+              "name": "SAMSUNG(三星)"
+            },
+            "manufacturer": {
+              "@type": "Organization",
+              "name": "SAMSUNG(三星)"
+            },
+            "category": "贴片电容(MLCC)",
+            "subjectOf": {
+              "@type": "CreativeWork",
+              "name": "CL10C102JB8NNNC Datasheet",
+              "url": "https://atta.szlcsc.com/upload/public/pdf/source/20171228/C163510_15144412327381213809.pdf"
+            },
+            "isRelatedTo": {
+              "@type": "Service",
+              "@id": "https://www.szlcsc.com/lc_agent.html#service",
+              "name": "立创商城 Agent 服务",
+              "url": "https://www.szlcsc.com/lc_agent.html",
+              "description": "立创商城 Agent 服务，支持接入 WorkBuddy、DeepSeek Harness、豆包、千问等 AI 助手，通过自然语言查询电子元器件型号、价格、库存及交期，支持替代料查询、Datasheet 获取与解析、BOM 智能配单，帮助工程师和采购人员高效完成元器件选型与采购。"
+            },
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "CNY",
+              "price": 0.0286,
+              "availability": "https://schema.org/InStock",
+              "inventoryLevel": {
+                "@type": "QuantitativeValue",
+                "value": 180098
+              },
+              "seller": {
+                "@id": "https://www.szlcsc.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://item.szlcsc.com/174890.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "首页",
+                "item": "https://www.szlcsc.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "电子元器件",
+                "item": "https://www.szlcsc.com/catalog.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "贴片电容(MLCC)",
+                "item": "https://list.szlcsc.com/catalog/313.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "CL10C102JB8NNNC",
+                "item": "https://item.szlcsc.com/174890.html"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "98160",
+    "url": "https://item.szlcsc.com/98160.html",
+    "data": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.szlcsc.com/#website",
+            "name": "立创商城",
+            "url": "https://www.szlcsc.com/",
+            "inLanguage": "zh-CN",
+            "publisher": {
+              "@id": "https://www.szlcsc.com/#organization"
+            }
+          },
+          {
+            "@type": [
+              "Organization",
+              "OnlineStore"
+            ],
+            "@id": "https://www.szlcsc.com/#organization",
+            "name": "立创商城",
+            "alternateName": [
+              "LCSC",
+              "立创"
+            ],
+            "url": "https://www.szlcsc.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://static.szlcsc.com/ecp/assets/newWeb/common/images/lcsc-logo.png"
+            }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://item.szlcsc.com/98160.html#product",
+            "name": "Sunlord(顺络) SWPA6045S1R0NT",
+            "url": "https://item.szlcsc.com/98160.html",
+            "image": [
+              "https://alimg.szlcsc.com/upload/public/product/source/20221231/07BF1CFB16CB14D050FC8E29B5C2A330.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20221231/7DB23CCC1B50B8FFE918FC8ADE201B10.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20221231/9C27D39447CEB9C1F0ADF38ED17C6658.jpg"
+            ],
+            "description": "SWPA6045S1R0NT功率电感，Sunlord(顺络)原厂出品，封装SMD,6x6mm，价格￥0.335元。提供高清引脚图、PCB焊盘图、3D模型及Datasheet数据手册，支持选型与设计参考，正品现货，一站式元器件采购尽在立创商城。",
+            "sku": "C96955",
+            "mpn": "SWPA6045S1R0NT",
+            "brand": {
+              "@type": "Brand",
+              "name": "Sunlord(顺络)"
+            },
+            "manufacturer": {
+              "@type": "Organization",
+              "name": "Sunlord(顺络)"
+            },
+            "category": "功率电感",
+            "subjectOf": {
+              "@type": "CreativeWork",
+              "name": "SWPA6045S1R0NT Datasheet",
+              "url": "https://atta.szlcsc.com/upload/public/pdf/source/20250613/C109B0365842EAE552EDCE87CD96529A.pdf"
+            },
+            "isRelatedTo": {
+              "@type": "Service",
+              "@id": "https://www.szlcsc.com/lc_agent.html#service",
+              "name": "立创商城 Agent 服务",
+              "url": "https://www.szlcsc.com/lc_agent.html",
+              "description": "立创商城 Agent 服务，支持接入 WorkBuddy、DeepSeek Harness、豆包、千问等 AI 助手，通过自然语言查询电子元器件型号、价格、库存及交期，支持替代料查询、Datasheet 获取与解析、BOM 智能配单，帮助工程师和采购人员高效完成元器件选型与采购。"
+            },
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "CNY",
+              "price": 0.335,
+              "availability": "https://schema.org/InStock",
+              "inventoryLevel": {
+                "@type": "QuantitativeValue",
+                "value": 1400
+              },
+              "seller": {
+                "@id": "https://www.szlcsc.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://item.szlcsc.com/98160.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "首页",
+                "item": "https://www.szlcsc.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "电子元器件",
+                "item": "https://www.szlcsc.com/catalog.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "功率电感",
+                "item": "https://list.szlcsc.com/catalog/544.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "SWPA6045S1R0NT",
+                "item": "https://item.szlcsc.com/98160.html"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "3084938",
+    "url": "https://item.szlcsc.com/3084938.html",
+    "data": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.szlcsc.com/#website",
+            "name": "立创商城",
+            "url": "https://www.szlcsc.com/",
+            "inLanguage": "zh-CN",
+            "publisher": {
+              "@id": "https://www.szlcsc.com/#organization"
+            }
+          },
+          {
+            "@type": [
+              "Organization",
+              "OnlineStore"
+            ],
+            "@id": "https://www.szlcsc.com/#organization",
+            "name": "立创商城",
+            "alternateName": [
+              "LCSC",
+              "立创"
+            ],
+            "url": "https://www.szlcsc.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://static.szlcsc.com/ecp/assets/newWeb/common/images/lcsc-logo.png"
+            }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://item.szlcsc.com/3084938.html#product",
+            "name": "TI(德州仪器) TPS63061DSCR",
+            "url": "https://item.szlcsc.com/3084938.html",
+            "image": [
+              "https://alimg.szlcsc.com/upload/public/product/source/20230410/03863C5748F103FB5DC42D7A7265678F.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20230410/9D5F45D72A4F49D5E02DED5B08123087.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20230410/EE7207FC7ADC30D41E498CEE17B22259.jpg"
+            ],
+            "description": "TPS63061DSCRDC-DC电源芯片，TI(德州仪器)原厂出品，封装WSON-10-EP(3x3)，价格￥9.01元。提供高清引脚图、PCB焊盘图、3D模型及Datasheet数据手册，支持选型与设计参考，正品现货，一站式元器件采购尽在立创商城。",
+            "sku": "C2876326",
+            "mpn": "TPS63061DSCR",
+            "brand": {
+              "@type": "Brand",
+              "name": "TI(德州仪器)"
+            },
+            "manufacturer": {
+              "@type": "Organization",
+              "name": "TI(德州仪器)"
+            },
+            "category": "DC-DC电源芯片",
+            "isRelatedTo": {
+              "@type": "Service",
+              "@id": "https://www.szlcsc.com/lc_agent.html#service",
+              "name": "立创商城 Agent 服务",
+              "url": "https://www.szlcsc.com/lc_agent.html",
+              "description": "立创商城 Agent 服务，支持接入 WorkBuddy、DeepSeek Harness、豆包、千问等 AI 助手，通过自然语言查询电子元器件型号、价格、库存及交期，支持替代料查询、Datasheet 获取与解析、BOM 智能配单，帮助工程师和采购人员高效完成元器件选型与采购。"
+            },
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "CNY",
+              "price": 9.01,
+              "availability": "https://schema.org/InStock",
+              "inventoryLevel": {
+                "@type": "QuantitativeValue",
+                "value": 4636
+              },
+              "seller": {
+                "@id": "https://www.szlcsc.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://item.szlcsc.com/3084938.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "首页",
+                "item": "https://www.szlcsc.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "电子元器件",
+                "item": "https://www.szlcsc.com/catalog.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "DC-DC电源芯片",
+                "item": "https://list.szlcsc.com/catalog/484.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "TPS63061DSCR",
+                "item": "https://item.szlcsc.com/3084938.html"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "5914994",
+    "url": "https://item.szlcsc.com/5914994.html",
+    "data": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.szlcsc.com/#website",
+            "name": "立创商城",
+            "url": "https://www.szlcsc.com/",
+            "inLanguage": "zh-CN",
+            "publisher": {
+              "@id": "https://www.szlcsc.com/#organization"
+            }
+          },
+          {
+            "@type": [
+              "Organization",
+              "OnlineStore"
+            ],
+            "@id": "https://www.szlcsc.com/#organization",
+            "name": "立创商城",
+            "alternateName": [
+              "LCSC",
+              "立创"
+            ],
+            "url": "https://www.szlcsc.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://static.szlcsc.com/ecp/assets/newWeb/common/images/lcsc-logo.png"
+            }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://item.szlcsc.com/5914994.html#product",
+            "name": "TI(德州仪器) TPS62933PDRLR",
+            "url": "https://item.szlcsc.com/5914994.html",
+            "image": [
+              "https://alimg.szlcsc.com/upload/public/product/source/20251027/945C54F7FF30CDCFBC771B5BB0883CE1.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20251027/CB886586E5EA5699F552479FE70BAF35.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20251027/3E8EA7612582782F23C4E9BA2C124CBA.jpg"
+            ],
+            "description": "TPS62933PDRLRDC-DC电源芯片，TI(德州仪器)原厂出品，封装SOT-583，价格￥2.65元。提供高清引脚图、PCB焊盘图、3D模型及Datasheet数据手册，支持选型与设计参考，正品现货，一站式元器件采购尽在立创商城。",
+            "sku": "C5219254",
+            "mpn": "TPS62933PDRLR",
+            "brand": {
+              "@type": "Brand",
+              "name": "TI(德州仪器)"
+            },
+            "manufacturer": {
+              "@type": "Organization",
+              "name": "TI(德州仪器)"
+            },
+            "category": "DC-DC电源芯片",
+            "isRelatedTo": {
+              "@type": "Service",
+              "@id": "https://www.szlcsc.com/lc_agent.html#service",
+              "name": "立创商城 Agent 服务",
+              "url": "https://www.szlcsc.com/lc_agent.html",
+              "description": "立创商城 Agent 服务，支持接入 WorkBuddy、DeepSeek Harness、豆包、千问等 AI 助手，通过自然语言查询电子元器件型号、价格、库存及交期，支持替代料查询、Datasheet 获取与解析、BOM 智能配单，帮助工程师和采购人员高效完成元器件选型与采购。"
+            },
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "CNY",
+              "price": 2.65,
+              "availability": "https://schema.org/InStock",
+              "inventoryLevel": {
+                "@type": "QuantitativeValue",
+                "value": 5746
+              },
+              "seller": {
+                "@id": "https://www.szlcsc.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://item.szlcsc.com/5914994.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "首页",
+                "item": "https://www.szlcsc.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "电子元器件",
+                "item": "https://www.szlcsc.com/catalog.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "DC-DC电源芯片",
+                "item": "https://list.szlcsc.com/catalog/484.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "TPS62933PDRLR",
+                "item": "https://item.szlcsc.com/5914994.html"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "4227045",
+    "url": "https://item.szlcsc.com/4227045.html",
+    "data": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.szlcsc.com/#website",
+            "name": "立创商城",
+            "url": "https://www.szlcsc.com/",
+            "inLanguage": "zh-CN",
+            "publisher": {
+              "@id": "https://www.szlcsc.com/#organization"
+            }
+          },
+          {
+            "@type": [
+              "Organization",
+              "OnlineStore"
+            ],
+            "@id": "https://www.szlcsc.com/#organization",
+            "name": "立创商城",
+            "alternateName": [
+              "LCSC",
+              "立创"
+            ],
+            "url": "https://www.szlcsc.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://static.szlcsc.com/ecp/assets/newWeb/common/images/lcsc-logo.png"
+            }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://item.szlcsc.com/4227045.html#product",
+            "name": "TI(德州仪器) LM393LVDGKR",
+            "url": "https://item.szlcsc.com/4227045.html",
+            "image": [
+              "https://alimg.szlcsc.com/upload/public/product/source/20240201/C0CBBB41404E9009A223905C8B2923ED.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20240201/38FC82D25E517093ECAC8AEB9DCA9273.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20240201/2B918CC50E71013FF0FD171F8D890EA6.jpg"
+            ],
+            "description": "LM393LVDGKR比较器，TI(德州仪器)原厂出品，封装VSSOP-8，价格￥1.0033元。提供高清引脚图、PCB焊盘图、3D模型及Datasheet数据手册，支持选型与设计参考，正品现货，一站式元器件采购尽在立创商城。",
+            "sku": "C3659248",
+            "mpn": "LM393LVDGKR",
+            "brand": {
+              "@type": "Brand",
+              "name": "TI(德州仪器)"
+            },
+            "manufacturer": {
+              "@type": "Organization",
+              "name": "TI(德州仪器)"
+            },
+            "category": "比较器",
+            "isRelatedTo": {
+              "@type": "Service",
+              "@id": "https://www.szlcsc.com/lc_agent.html#service",
+              "name": "立创商城 Agent 服务",
+              "url": "https://www.szlcsc.com/lc_agent.html",
+              "description": "立创商城 Agent 服务，支持接入 WorkBuddy、DeepSeek Harness、豆包、千问等 AI 助手，通过自然语言查询电子元器件型号、价格、库存及交期，支持替代料查询、Datasheet 获取与解析、BOM 智能配单，帮助工程师和采购人员高效完成元器件选型与采购。"
+            },
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "CNY",
+              "price": 1.0033,
+              "availability": "https://schema.org/InStock",
+              "inventoryLevel": {
+                "@type": "QuantitativeValue",
+                "value": 1338
+              },
+              "seller": {
+                "@id": "https://www.szlcsc.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://item.szlcsc.com/4227045.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "首页",
+                "item": "https://www.szlcsc.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "电子元器件",
+                "item": "https://www.szlcsc.com/catalog.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "比较器",
+                "item": "https://list.szlcsc.com/catalog/517.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "LM393LVDGKR",
+                "item": "https://item.szlcsc.com/4227045.html"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "19545770",
+    "url": "https://item.szlcsc.com/19545770.html",
+    "data": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.szlcsc.com/#website",
+            "name": "立创商城",
+            "url": "https://www.szlcsc.com/",
+            "inLanguage": "zh-CN",
+            "publisher": {
+              "@id": "https://www.szlcsc.com/#organization"
+            }
+          },
+          {
+            "@type": [
+              "Organization",
+              "OnlineStore"
+            ],
+            "@id": "https://www.szlcsc.com/#organization",
+            "name": "立创商城",
+            "alternateName": [
+              "LCSC",
+              "立创"
+            ],
+            "url": "https://www.szlcsc.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://static.szlcsc.com/ecp/assets/newWeb/common/images/lcsc-logo.png"
+            }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://item.szlcsc.com/19545770.html#product",
+            "name": "hanxia(韩下) HX DC005-2.5-T",
+            "url": "https://item.szlcsc.com/19545770.html",
+            "image": [
+              "https://alimg.szlcsc.com/upload/public/product/source/20231027/85FAF974465C114FBB0F15E14DE33B89.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20231027/405FA0DFC1BFBAFEF17806421CEFBA9A.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20231027/F003BC0F7A72409C12EC38EA67F4C455.jpg",
+              "https://alimg.szlcsc.com/upload/public/brand/product/certificate/20221227/3AAB0B48E086C332A77797BDE2EFAFC6.jpg"
+            ],
+            "description": "HX DC005-2.5-TDC电源连接器，hanxia(韩下)原厂出品，封装插件，价格￥0.3837元。提供高清引脚图、PCB焊盘图、3D模型及Datasheet数据手册，支持选型与设计参考，正品现货，一站式元器件采购尽在立创商城。",
+            "sku": "C18357600",
+            "mpn": "HX DC005-2.5-T",
+            "brand": {
+              "@type": "Brand",
+              "name": "hanxia(韩下)"
+            },
+            "manufacturer": {
+              "@type": "Organization",
+              "name": "hanxia(韩下)"
+            },
+            "category": "DC电源连接器",
+            "subjectOf": {
+              "@type": "CreativeWork",
+              "name": "HX DC005-2.5-T Datasheet",
+              "url": "https://atta.szlcsc.com/upload/public/pdf/source/20241121/629D41EBAA71FF385580F34F5C153DE3.pdf"
+            },
+            "isRelatedTo": {
+              "@type": "Service",
+              "@id": "https://www.szlcsc.com/lc_agent.html#service",
+              "name": "立创商城 Agent 服务",
+              "url": "https://www.szlcsc.com/lc_agent.html",
+              "description": "立创商城 Agent 服务，支持接入 WorkBuddy、DeepSeek Harness、豆包、千问等 AI 助手，通过自然语言查询电子元器件型号、价格、库存及交期，支持替代料查询、Datasheet 获取与解析、BOM 智能配单，帮助工程师和采购人员高效完成元器件选型与采购。"
+            },
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "CNY",
+              "price": 0.3837,
+              "availability": "https://schema.org/InStock",
+              "inventoryLevel": {
+                "@type": "QuantitativeValue",
+                "value": 4187
+              },
+              "seller": {
+                "@id": "https://www.szlcsc.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://item.szlcsc.com/19545770.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "首页",
+                "item": "https://www.szlcsc.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "电子元器件",
+                "item": "https://www.szlcsc.com/catalog.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "DC电源连接器",
+                "item": "https://list.szlcsc.com/catalog/557.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "HX DC005-2.5-T",
+                "item": "https://item.szlcsc.com/19545770.html"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2882221",
+    "url": "https://item.szlcsc.com/2882221.html",
+    "data": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.szlcsc.com/#website",
+            "name": "立创商城",
+            "url": "https://www.szlcsc.com/",
+            "inLanguage": "zh-CN",
+            "publisher": {
+              "@id": "https://www.szlcsc.com/#organization"
+            }
+          },
+          {
+            "@type": [
+              "Organization",
+              "OnlineStore"
+            ],
+            "@id": "https://www.szlcsc.com/#organization",
+            "name": "立创商城",
+            "alternateName": [
+              "LCSC",
+              "立创"
+            ],
+            "url": "https://www.szlcsc.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://static.szlcsc.com/ecp/assets/newWeb/common/images/lcsc-logo.png"
+            }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://item.szlcsc.com/2882221.html#product",
+            "name": "DEGSON(高正/高松) DG350-3.5-02P-14-00A(H)",
+            "url": "https://item.szlcsc.com/2882221.html",
+            "image": [
+              "https://alimg.szlcsc.com/upload/public/product/source/20230105/9F1A29530F0A2EEC9E90D184961B8C61.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20230105/990111A13D645916403230328E930260.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20230105/07A1641992EC2659EBFB6361436DFD03.jpg"
+            ],
+            "description": "DG350-3.5-02P-14-00A(H)螺钉式接线端子，DEGSON(高正/高松)原厂出品，封装插件,P=3.5mm，价格￥0.6998元。提供高清引脚图、PCB焊盘图、3D模型及Datasheet数据手册，支持选型与设计参考，正品现货，一站式元器件采购尽在立创商城。",
+            "sku": "C2760668",
+            "mpn": "DG350-3.5-02P-14-00A(H)",
+            "brand": {
+              "@type": "Brand",
+              "name": "DEGSON(高正/高松)"
+            },
+            "manufacturer": {
+              "@type": "Organization",
+              "name": "DEGSON(高正/高松)"
+            },
+            "category": "螺钉式接线端子",
+            "subjectOf": {
+              "@type": "CreativeWork",
+              "name": "DG350-3.5-02P-14-00A(H) Datasheet",
+              "url": "https://atta.szlcsc.com/upload/public/pdf/source/20210316/C2760669_BAE9BF83C61E3D80DAE42C02ACE41578.pdf"
+            },
+            "isRelatedTo": {
+              "@type": "Service",
+              "@id": "https://www.szlcsc.com/lc_agent.html#service",
+              "name": "立创商城 Agent 服务",
+              "url": "https://www.szlcsc.com/lc_agent.html",
+              "description": "立创商城 Agent 服务，支持接入 WorkBuddy、DeepSeek Harness、豆包、千问等 AI 助手，通过自然语言查询电子元器件型号、价格、库存及交期，支持替代料查询、Datasheet 获取与解析、BOM 智能配单，帮助工程师和采购人员高效完成元器件选型与采购。"
+            },
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "CNY",
+              "price": 0.6998,
+              "availability": "https://schema.org/InStock",
+              "inventoryLevel": {
+                "@type": "QuantitativeValue",
+                "value": 1464
+              },
+              "seller": {
+                "@id": "https://www.szlcsc.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://item.szlcsc.com/2882221.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "首页",
+                "item": "https://www.szlcsc.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "电子元器件",
+                "item": "https://www.szlcsc.com/catalog.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "螺钉式接线端子",
+                "item": "https://list.szlcsc.com/catalog/11140.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "DG350-3.5-02P-14-00A(H)",
+                "item": "https://item.szlcsc.com/2882221.html"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "504270",
+    "url": "https://item.szlcsc.com/504270.html",
+    "data": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.szlcsc.com/#website",
+            "name": "立创商城",
+            "url": "https://www.szlcsc.com/",
+            "inLanguage": "zh-CN",
+            "publisher": {
+              "@id": "https://www.szlcsc.com/#organization"
+            }
+          },
+          {
+            "@type": [
+              "Organization",
+              "OnlineStore"
+            ],
+            "@id": "https://www.szlcsc.com/#organization",
+            "name": "立创商城",
+            "alternateName": [
+              "LCSC",
+              "立创"
+            ],
+            "url": "https://www.szlcsc.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://static.szlcsc.com/ecp/assets/newWeb/common/images/lcsc-logo.png"
+            }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://item.szlcsc.com/504270.html#product",
+            "name": "Nexperia(安世) BSS84,215",
+            "url": "https://item.szlcsc.com/504270.html",
+            "image": [
+              "https://alimg.szlcsc.com/upload/public/product/source/20230107/AF57A21BFC5AEB977BF72DCBB62BB3B1.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20230107/55F8CD3C06DF499FE95606CCA14F3C23.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20230107/3E1F8AF1B8AD88CF55AEDC1EC1824E10.jpg"
+            ],
+            "description": "BSS84,215场效应管(MOSFET)，Nexperia(安世)原厂出品，封装SOT-23，价格￥0.1765元。提供高清引脚图、PCB焊盘图、3D模型及Datasheet数据手册，支持选型与设计参考，正品现货，一站式元器件采购尽在立创商城。",
+            "sku": "C493579",
+            "mpn": "BSS84,215",
+            "brand": {
+              "@type": "Brand",
+              "name": "Nexperia(安世)"
+            },
+            "manufacturer": {
+              "@type": "Organization",
+              "name": "Nexperia(安世)"
+            },
+            "category": "场效应管(MOSFET)",
+            "subjectOf": {
+              "@type": "CreativeWork",
+              "name": "BSS84,215 Datasheet",
+              "url": "https://atta.szlcsc.com/upload/public/pdf/source/20200310/C493579_AC1E42EAECEF89DE401195CE068ACE7E.pdf"
+            },
+            "isRelatedTo": {
+              "@type": "Service",
+              "@id": "https://www.szlcsc.com/lc_agent.html#service",
+              "name": "立创商城 Agent 服务",
+              "url": "https://www.szlcsc.com/lc_agent.html",
+              "description": "立创商城 Agent 服务，支持接入 WorkBuddy、DeepSeek Harness、豆包、千问等 AI 助手，通过自然语言查询电子元器件型号、价格、库存及交期，支持替代料查询、Datasheet 获取与解析、BOM 智能配单，帮助工程师和采购人员高效完成元器件选型与采购。"
+            },
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "CNY",
+              "price": 0.1765,
+              "availability": "https://schema.org/InStock",
+              "inventoryLevel": {
+                "@type": "QuantitativeValue",
+                "value": 6508
+              },
+              "seller": {
+                "@id": "https://www.szlcsc.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://item.szlcsc.com/504270.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "首页",
+                "item": "https://www.szlcsc.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "电子元器件",
+                "item": "https://www.szlcsc.com/catalog.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "场效应管(MOSFET)",
+                "item": "https://list.szlcsc.com/catalog/381.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "BSS84,215",
+                "item": "https://item.szlcsc.com/504270.html"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "3101770",
+    "url": "https://item.szlcsc.com/3101770.html",
+    "status": 200,
+    "data": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.szlcsc.com/#website",
+            "name": "立创商城",
+            "url": "https://www.szlcsc.com/",
+            "inLanguage": "zh-CN",
+            "publisher": {
+              "@id": "https://www.szlcsc.com/#organization"
+            }
+          },
+          {
+            "@type": [
+              "Organization",
+              "OnlineStore"
+            ],
+            "@id": "https://www.szlcsc.com/#organization",
+            "name": "立创商城",
+            "alternateName": [
+              "LCSC",
+              "立创"
+            ],
+            "url": "https://www.szlcsc.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://static.szlcsc.com/ecp/assets/newWeb/common/images/lcsc-logo.png"
+            }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://item.szlcsc.com/3101770.html#product",
+            "name": "E-Switch TL1105AF250Q",
+            "url": "https://item.szlcsc.com/3101770.html",
+            "image": [
+              "https://alimg.szlcsc.com/upload/public/product/source/20260908/2F6E9616FC05580348C47EC49D9C7082.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20260908/AD4D1318740408D83C002006DAD315EC.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20260908/1DACF6B559866D58CFBBBBC770F5FC5F.jpg"
+            ],
+            "description": "TL1105AF250Q轻触开关，E-Switch原厂出品，封装插件，价格￥0.5263元。提供高清引脚图、PCB焊盘图、3D模型及Datasheet数据手册，支持选型与设计参考，正品现货，一站式元器件采购尽在立创商城。",
+            "sku": "C2886978",
+            "mpn": "TL1105AF250Q",
+            "brand": {
+              "@type": "Brand",
+              "name": "E-Switch"
+            },
+            "manufacturer": {
+              "@type": "Organization",
+              "name": "E-Switch"
+            },
+            "category": "轻触开关",
+            "isRelatedTo": {
+              "@type": "Service",
+              "@id": "https://www.szlcsc.com/lc_agent.html#service",
+              "name": "立创商城 Agent 服务",
+              "url": "https://www.szlcsc.com/lc_agent.html",
+              "description": "立创商城 Agent 服务，支持接入 WorkBuddy、DeepSeek Harness、豆包、千问等 AI 助手，通过自然语言查询电子元器件型号、价格、库存及交期，支持替代料查询、Datasheet 获取与解析、BOM 智能配单，帮助工程师和采购人员高效完成元器件选型与采购。"
+            },
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "CNY",
+              "price": 0.5263,
+              "availability": "https://schema.org/OutOfStock",
+              "inventoryLevel": {
+                "@type": "QuantitativeValue",
+                "value": 0
+              },
+              "seller": {
+                "@id": "https://www.szlcsc.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://item.szlcsc.com/3101770.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "首页",
+                "item": "https://www.szlcsc.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "电子元器件",
+                "item": "https://www.szlcsc.com/catalog.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "轻触开关",
+                "item": "https://list.szlcsc.com/catalog/427.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "TL1105AF250Q",
+                "item": "https://item.szlcsc.com/3101770.html"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "94352",
+    "url": "https://item.szlcsc.com/94352.html",
+    "status": 200,
+    "data": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.szlcsc.com/#website",
+            "name": "立创商城",
+            "url": "https://www.szlcsc.com/",
+            "inLanguage": "zh-CN",
+            "publisher": {
+              "@id": "https://www.szlcsc.com/#organization"
+            }
+          },
+          {
+            "@type": [
+              "Organization",
+              "OnlineStore"
+            ],
+            "@id": "https://www.szlcsc.com/#organization",
+            "name": "立创商城",
+            "alternateName": [
+              "LCSC",
+              "立创"
+            ],
+            "url": "https://www.szlcsc.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://static.szlcsc.com/ecp/assets/newWeb/common/images/lcsc-logo.png"
+            }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://item.szlcsc.com/94352.html#product",
+            "name": "OMRON(欧姆龙) B3F-1000",
+            "url": "https://item.szlcsc.com/94352.html",
+            "image": [
+              "https://alimg.szlcsc.com/upload/public/product/source/20221231/5F12BE179AE8498942A74AFA40F34790.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20221231/75AB957BAC9A644237D38A0055C8CA02.jpg",
+              "https://alimg.szlcsc.com/upload/public/product/source/20221231/913BCE28413A589806576493A362FE77.jpg"
+            ],
+            "description": "B3F-1000轻触开关，OMRON(欧姆龙)原厂出品，封装插件-4P,6x6mm，价格￥0.6904元。提供高清引脚图、PCB焊盘图、3D模型及Datasheet数据手册，支持选型与设计参考，正品现货，一站式元器件采购尽在立创商城。",
+            "sku": "C93157",
+            "mpn": "B3F-1000",
+            "brand": {
+              "@type": "Brand",
+              "name": "OMRON(欧姆龙)"
+            },
+            "manufacturer": {
+              "@type": "Organization",
+              "name": "OMRON(欧姆龙)"
+            },
+            "category": "轻触开关",
+            "subjectOf": {
+              "@type": "CreativeWork",
+              "name": "B3F-1000 Datasheet",
+              "url": "https://atta.szlcsc.com/upload/public/pdf/source/20191212/C469135_90BE0DB612FA51D178D2ECFD00DF8DE6.pdf"
+            },
+            "isRelatedTo": {
+              "@type": "Service",
+              "@id": "https://www.szlcsc.com/lc_agent.html#service",
+              "name": "立创商城 Agent 服务",
+              "url": "https://www.szlcsc.com/lc_agent.html",
+              "description": "立创商城 Agent 服务，支持接入 WorkBuddy、DeepSeek Harness、豆包、千问等 AI 助手，通过自然语言查询电子元器件型号、价格、库存及交期，支持替代料查询、Datasheet 获取与解析、BOM 智能配单，帮助工程师和采购人员高效完成元器件选型与采购。"
+            },
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "CNY",
+              "price": 0.6904,
+              "availability": "https://schema.org/InStock",
+              "inventoryLevel": {
+                "@type": "QuantitativeValue",
+                "value": 688
+              },
+              "seller": {
+                "@id": "https://www.szlcsc.com/#organization"
+              }
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://item.szlcsc.com/94352.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "首页",
+                "item": "https://www.szlcsc.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "电子元器件",
+                "item": "https://www.szlcsc.com/catalog.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "轻触开关",
+                "item": "https://list.szlcsc.com/catalog/427.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "B3F-1000",
+                "item": "https://item.szlcsc.com/94352.html"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

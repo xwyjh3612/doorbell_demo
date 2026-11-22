@@ -16,6 +16,10 @@ const lines=async()=>{const r=await fetch(bridge,{signal:AbortSignal.timeout(500
 const pause=ms=>new Promise(r=>setTimeout(r,ms));
 let anchor=(await lines()).at(-1)||'';
 let nextProgress=0;
+// One-time operator option after a separately recorded, verified ESP reset.
+// A fresh successful radar publish proves MQTT connectivity and CALL_STATE_IDLE
+// in the current firmware. Subscription/call behavior is then tested normally.
+let allowIdleTelemetryProof=args.includes('--allow-idle-telemetry-proof-after-esp-reset');
 async function start(script,values,label){
   const out=await fs.open(path.join(output,`recovery-${label}.stdout.log`),'a');
   const err=await fs.open(path.join(output,`recovery-${label}.stderr.log`),'a');
@@ -36,11 +40,14 @@ while(true){
   let recent=[];
   try{recent=(await lines()).filter(l=>l>anchor);}catch(error){console.error(error.message);}
   // An old MATREADY or an old connected call cannot authorize resumption.
-  if(recent.some(l=>/MQTT signaling restarted, subscribed|MQTT signaling started, subscribed/.test(l))){
+  const freshSubscription=recent.some(l=>/MQTT signaling restarted, subscribed|MQTT signaling started, subscribed/.test(l));
+  const freshIdleAfterVerifiedReset=allowIdleTelemetryProof&&recent.some(l=>/RADAR_TELEMETRY: published model=/.test(l));
+  if(freshSubscription||freshIdleAfterVerifiedReset){
     const cohort=await readState(path.join(initial,'state.json'));
     if(!cohort.finished)throw Error('Another cohort runner is active');
     if(cohort.phase==='completed')throw Error('Initial completed: use extension supervisor directly');
-    await writeState(file,{phase:'resuming_after_observed_recovery',at:new Date().toISOString(),evidence:recent.filter(l=>/MATREADY|MQTT signaling .*subscribed/.test(l)),previousError:cohort.error});
+    await writeState(file,{phase:'resuming_after_observed_recovery',at:new Date().toISOString(),proof:freshSubscription?'fresh-subscription':'fresh-idle-mqtt-publish-after-verified-esp-reset',evidence:recent.filter(l=>/MATREADY|MQTT signaling .*subscribed|RADAR_TELEMETRY: published model=/.test(l)),previousError:cohort.error});
+    allowIdleTelemetryProof=false;
     const base=await start('tests/android/run-real-call-batch.mjs',['--real-device',device,'--rounds','40','--hold-seconds','1800','--allow-modem-restart','--resume','--output',initial],'initial');
     let started=false;
     for(let n=0;n<15;++n){await pause(1000);const s=await readState(path.join(initial,'state.json'));if(!s.finished){started=true;break;}}

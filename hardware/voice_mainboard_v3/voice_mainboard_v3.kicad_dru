@@ -1,0 +1,4 @@
+(version 1)
+(rule "LM393LV DGK manufacturer fine pitch pad spacing"
+  (condition "A.Type == 'Pad' && B.Type == 'Pad' && A.memberOfFootprint('U11') && B.memberOfFootprint('U11')")
+  (constraint clearance (min 0.15mm)))

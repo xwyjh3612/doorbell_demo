@@ -1,0 +1,15 @@
+ups_external_triangle
+Vsource source 0 PWL(0 0 .05 0 .45 5.5 .55 5.5 .95 0 1 0)
+Vref ref 0 .62
+Rtop source sense 54900
+Rbottom sense 0 10000
+Rfeedback result sense 3900000
+Rpullup supply result 10000
+Rpulldown result 0 1000000
+Cfilter sense 0 1n
+Bdiff diff 0 V=V(ref)-V(sense)
+Ssink result 0 diff 0 COMP
+.model COMP SW(Ron=1 Roff=1e12 Vt=0 Vh=0)
+Bsupply supply 0 V=max(V(source),4.2)-.4
+.tran 50u 1
+.end

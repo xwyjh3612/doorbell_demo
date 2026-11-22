@@ -1,0 +1,7 @@
+* text eol=lf
+*.zip binary
+# Keep native KiCad plots and captured public quote text verbatim.
+exports/*.svg -whitespace
+exports/**/*.svg -whitespace
+exports/review.html -whitespace
+cost/pcb-public-*.txt -whitespace

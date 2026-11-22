@@ -1,0 +1,810 @@
+[
+  {
+    "sku": "C85047",
+    "name": "DIODES(美台) 2N7002K-7",
+    "url": "https://item.szlcsc.com/86219.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.2474,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 855462
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "2N7002K-7 Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20241225/5224818CDE598928086277DCF0B05BC1.pdf"
+    }
+  },
+  {
+    "sku": "C2161900",
+    "name": "NCC(日本贵弥功) APXE6R3ARA221MF61G",
+    "url": "https://item.szlcsc.com/2253950.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 5.23,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 94
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "APXE6R3ARA221MF61G Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20241023/120BA497646BE45FFE6967BAAA071E41.pdf"
+    }
+  },
+  {
+    "sku": "C55014590",
+    "name": "JDTfuse(集电通) ASMD1812-400-16V",
+    "url": "https://item.szlcsc.com/58601642.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.4972,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 2626
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "ASMD1812-400-16V Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20260519/534D63AAAF3F33C1E80D593834ED41A6.pdf"
+    }
+  },
+  {
+    "sku": "C37704",
+    "name": "BAT54C,215",
+    "url": "https://item.szlcsc.com/38684.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.0431,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 408693
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": null
+  },
+  {
+    "sku": "C493579",
+    "name": "Nexperia(安世) BSS84,215",
+    "url": "https://item.szlcsc.com/504270.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.1765,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 6508
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "BSS84,215 Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20200310/C493579_AC1E42EAECEF89DE401195CE068ACE7E.pdf"
+    }
+  },
+  {
+    "sku": "C15849",
+    "name": "SAMSUNG(三星) CL10A105KB8NNNC",
+    "url": "https://item.szlcsc.com/16531.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.0327,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 648639
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "CL10A105KB8NNNC Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20160218/1457707763339.pdf"
+    }
+  },
+  {
+    "sku": "C1589",
+    "name": "SAMSUNG(三星) CL10B103KB8NNNC",
+    "url": "https://item.szlcsc.com/1941.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.019,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 1295046
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "CL10B103KB8NNNC Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20160218/1457707763339.pdf"
+    }
+  },
+  {
+    "sku": "C1591",
+    "name": "SAMSUNG(三星) CL10B104KB8NNNC",
+    "url": "https://item.szlcsc.com/1943.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.0193,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 142849
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "CL10B104KB8NNNC Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20160218/1457707763339.pdf"
+    }
+  },
+  {
+    "sku": "C163508",
+    "name": "SAMSUNG(三星) CL10C102JB8NNNC",
+    "url": "https://item.szlcsc.com/174890.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.0286,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 180098
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "CL10C102JB8NNNC Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20171228/C163510_15144412327381213809.pdf"
+    }
+  },
+  {
+    "sku": "C1663",
+    "name": "SAMSUNG(三星) CL10C330JB8NNNC",
+    "url": "https://item.szlcsc.com/2015.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.0289,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 305917
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "CL10C330JB8NNNC Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20160218/1457707763339.pdf"
+    }
+  },
+  {
+    "sku": "C15850",
+    "name": "SAMSUNG(三星) CL21A106KAYNNNE",
+    "url": "https://item.szlcsc.com/16532.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.096,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 1874779
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "CL21A106KAYNNNE Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20160218/1457707763339.pdf"
+    }
+  },
+  {
+    "sku": "C398815",
+    "name": "SAMSUNG(三星) CL21A226MOCLRNC",
+    "url": "https://item.szlcsc.com/381139.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.2619,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 16580
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "CL21A226MOCLRNC Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20190620/C398815_20AAFF598B03288BF85DE788BB79EE78.pdf"
+    }
+  },
+  {
+    "sku": "C110499",
+    "name": "DMP2035U-7",
+    "url": null,
+    "offers": {
+      "price": 0.3881,
+      "inventoryLevel": {
+        "value": 215547
+      }
+    },
+    "datasheet": {
+      "url": "https://www.diodes.com/assets/Datasheets/DMP2035U.pdf"
+    }
+  },
+  {
+    "sku": "C3659248",
+    "name": "TI(德州仪器) LM393LVDGKR",
+    "url": "https://item.szlcsc.com/4227045.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 1.0033,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 1338
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": null
+  },
+  {
+    "sku": "C48982537",
+    "name": "ML307R-DL",
+    "url": "https://item.szlcsc.com/51313686.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 16.5,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 1144
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": null
+  },
+  {
+    "sku": "C112125",
+    "name": "Sunlord(顺络) MWSA0603S-1R0MT",
+    "url": "https://item.szlcsc.com/113356.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.3697,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 11722
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "MWSA0603S-1R0MT Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20250613/CEE4AE5EC9F7EB97495A767C9ECB8960.pdf"
+    }
+  },
+  {
+    "sku": "C250035",
+    "name": "Lelon(立隆) OCV471M1ATR-1010",
+    "url": "https://item.szlcsc.com/246157.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 1.1262,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 1778
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "OCV471M1ATR-1010 Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20250114/3B2ED620D42A24BACB2588D2B788CA22.pdf"
+    }
+  },
+  {
+    "sku": "C552574",
+    "name": "Nexperia(安世) PESD5V0U1BA,115",
+    "url": "https://item.szlcsc.com/573571.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.8525,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 17038
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "PESD5V0U1BA,115 Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20230811/79A49E0224DB130F9556164C91A5BB0A.pdf"
+    }
+  },
+  {
+    "sku": "C2977286",
+    "name": "SF72S006VBDR2500",
+    "url": "https://item.szlcsc.com/3386692.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 2.51,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 7284
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": null
+  },
+  {
+    "sku": "C2677376",
+    "name": "SN74AXC1T45DBVR",
+    "url": "https://item.szlcsc.com/2769292.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 1.51,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 6675
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": null
+  },
+  {
+    "sku": "C98203",
+    "name": "Sunlord(顺络) SWPA6045S1R5MT",
+    "url": "https://item.szlcsc.com/99412.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.2862,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 73
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "SWPA6045S1R5MT Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20250613/C109B0365842EAE552EDCE87CD96529A.pdf"
+    }
+  },
+  {
+    "sku": "C83455",
+    "name": "Sunlord(顺络) SWPA6045S2R2MT",
+    "url": "https://item.szlcsc.com/84619.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.2756,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 21
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "SWPA6045S2R2MT Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20250613/C109B0365842EAE552EDCE87CD96529A.pdf"
+    }
+  },
+  {
+    "sku": "C398375",
+    "name": "TLV431BIDBZR",
+    "url": null,
+    "offers": {
+      "price": 1.25,
+      "inventoryLevel": {
+        "value": 14109
+      }
+    },
+    "datasheet": {
+      "url": "https://www.ti.com/lit/ds/symlink/tlv431.pdf"
+    }
+  },
+  {
+    "sku": "C382139",
+    "name": "TP4056",
+    "url": "https://item.szlcsc.com/354934.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.4012,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 19367
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": null
+  },
+  {
+    "sku": "C5350871",
+    "name": "TPD2E2U06DCKR-TP",
+    "url": "https://item.szlcsc.com/6138721.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.341,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 35945
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": null
+  },
+  {
+    "sku": "C22399676",
+    "name": "TPS2117DRLR",
+    "url": "https://item.szlcsc.com/24017237.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 1.91,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 11122
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": null
+  },
+  {
+    "sku": "C376005",
+    "name": "TPS61230ARNSR",
+    "url": "https://item.szlcsc.com/348561.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 3.29,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 1078
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": null
+  },
+  {
+    "sku": "C5219254",
+    "name": "TI(德州仪器) TPS62933PDRLR",
+    "url": "https://item.szlcsc.com/5914994.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 2.65,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 5746
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": null
+  },
+  {
+    "sku": "C2876326",
+    "name": "TI(德州仪器) TPS63061DSCR",
+    "url": "https://item.szlcsc.com/3084938.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 9.01,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 4636
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": null
+  },
+  {
+    "sku": "C88374",
+    "name": "U.FL-R-SMT-1(80)",
+    "url": "https://item.szlcsc.com/89553.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.389,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 266729
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": null
+  },
+  {
+    "sku": "C93157",
+    "name": "OMRON(欧姆龙) B3F-1000",
+    "url": "https://item.szlcsc.com/94352.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.6904,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 688
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "B3F-1000 Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20191212/C469135_90BE0DB612FA51D178D2ECFD00DF8DE6.pdf"
+    }
+  },
+  {
+    "sku": "C2760668",
+    "name": "DEGSON(高正/高松) DG350-3.5-02P-14-00A(H)",
+    "url": "https://item.szlcsc.com/2882221.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.6998,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 1464
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "DG350-3.5-02P-14-00A(H) Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20210316/C2760669_BAE9BF83C61E3D80DAE42C02ACE41578.pdf"
+    }
+  },
+  {
+    "sku": "C18357600",
+    "name": "hanxia(韩下) HX DC005-2.5-T",
+    "url": "https://item.szlcsc.com/19545770.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.3837,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 4187
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "HX DC005-2.5-T Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20241121/629D41EBAA71FF385580F34F5C153DE3.pdf"
+    }
+  },
+  {
+    "sku": "C492401",
+    "name": "XFCN(兴飞) PZ254V-11-02P",
+    "url": "https://item.szlcsc.com/502957.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.0534,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 658661
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "PZ254V-11-02P Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20260728/FCDE680580DD89D896389311C7AED201.pdf"
+    }
+  },
+  {
+    "sku": "C2937625",
+    "name": "XFCN(兴飞) PZ254V-11-03P",
+    "url": "https://item.szlcsc.com/3293280.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.0568,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 858114
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "PZ254V-11-03P Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20260728/FCDE680580DD89D896389311C7AED201.pdf"
+    }
+  },
+  {
+    "sku": "C2691448",
+    "name": "XFCN(兴飞) PZ254V-11-04P",
+    "url": "https://item.szlcsc.com/2801085.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.0757,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 711256
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "PZ254V-11-04P Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20260728/FCDE680580DD89D896389311C7AED201.pdf"
+    }
+  },
+  {
+    "sku": "C492404",
+    "name": "XFCN(兴飞) PZ254V-11-05P",
+    "url": "https://item.szlcsc.com/502960.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.087,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 182006
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "PZ254V-11-05P Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20260728/FCDE680580DD89D896389311C7AED201.pdf"
+    }
+  },
+  {
+    "sku": "C22465939",
+    "name": "XFCN(兴飞) PZ254V-12-30P",
+    "url": "https://item.szlcsc.com/24163081.html",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": 0.6028,
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": {
+        "@type": "QuantitativeValue",
+        "value": 711
+      },
+      "seller": {
+        "@id": "https://www.szlcsc.com/#organization"
+      }
+    },
+    "datasheet": {
+      "@type": "CreativeWork",
+      "name": "PZ254V-12-30P Datasheet",
+      "url": "https://atta.szlcsc.com/upload/public/pdf/source/20240617/7BDC3EEBCF4C501A0924363F71CB3FB4.pdf"
+    }
+  }
+]

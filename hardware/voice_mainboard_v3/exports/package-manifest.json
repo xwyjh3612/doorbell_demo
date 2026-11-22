@@ -1,0 +1,422 @@
+{
+  "revision": "V3-INTEGRATED-UPS-20261122",
+  "manufacturing_released": false,
+  "description": "Saved native engineering design, unreleased fabrication/DFM files, source-priced BOM and final old-device call-test summary",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 360,
+      "sha256": "622219f264961f1b277d0ce17192f3d2058b85e982afb61d1b43b6b94eda8d63"
+    },
+    {
+      "path": "hardware/voice_mainboard_v2/generate_schematic.py",
+      "bytes": 7994,
+      "sha256": "37ee91b7407c338a06cd59e04d636f8b649c31003861c1ec4018055f9c17319d"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/.gitattributes",
+      "bytes": 215,
+      "sha256": "64fa9c6e6a0ed314b1320a5a83d2840ae73343c990ddb1d1ac5986db8b27ce08"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/.gitignore",
+      "bytes": 30,
+      "sha256": "09b6e0c5d96e2225ab3f27cbb9247e94c38b9e109b8a2d869bbcab331b6aafa9"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/audit_power.py",
+      "bytes": 4847,
+      "sha256": "96ee2d1ec421a10b17d46ba63b888c7cf834a1c7bd974cfdf2a2e5767eb84309"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/build_bom.py",
+      "bytes": 7703,
+      "sha256": "9fd15161fdcf2d8d7ea2a6305eeffb74ca76dba9acda729453a0115076182405"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/build_cost.py",
+      "bytes": 9655,
+      "sha256": "6b338c4bdec16c6f313381bda7d18647a0a6ccb1b9e4f1ed9b79694c4bfb8dbe"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/build_review.py",
+      "bytes": 11282,
+      "sha256": "5a0a17362c599171de7b5944aeae9957520abbc8ae0bda5f07f4e51e36a231ae"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/cost/assembly-bom.csv",
+      "bytes": 4840,
+      "sha256": "4d355f4faba7ad656d9253f527ad58caa2e7c6293f9e8e5a8a17cbf6e78f235d"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/cost/bom-and-process.json",
+      "bytes": 39817,
+      "sha256": "9b362e6b03391c08a4c5ceaf53593146f541fedd7c7ba5369d13c279f29c3f7f"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/cost/estimate.json",
+      "bytes": 46887,
+      "sha256": "80a15b15610b89d417aa05f9a623ef63c0335d0eb120a4da2792cfe9f7abac03"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/cost/extra-public-parts.json",
+      "bytes": 81687,
+      "sha256": "eba51d6c6c37a1ad93df5152dfbf95c9c54a37118a6cd57e8016c7bebfd9a01a"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/cost/jlc-smt-100.json",
+      "bytes": 1750,
+      "sha256": "23af5e2465f79c11ebec9bfca6d4766993263c14748f9b800e0696cafa14bd24"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/cost/jlc-smt-1000.json",
+      "bytes": 1758,
+      "sha256": "0d76ae45244f0b024d32297624ea28dd076544d21aaa610c5674ca680b0ea7d4"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/cost/jlc-smt-5.json",
+      "bytes": 1746,
+      "sha256": "c716fed11855d54925a9432d6fbcf4691f42f968a8895992f885a2eff7251185"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/cost/pcb-public-100.txt",
+      "bytes": 7468,
+      "sha256": "a04088acc80d72a4600eeaee304ccd21c45a69eb344158be91a5ce15e7e62d0f"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/cost/pcb-public-1000.json",
+      "bytes": 2669,
+      "sha256": "c587e62099fb7bd890ff761d0a8b9411f020d6eb0842dbf7b1b27d299565fdb2"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/cost/pcb-public-5.txt",
+      "bytes": 7245,
+      "sha256": "3e7cc544f6f45fa50ad39f0e178b44e0a2315dec6588577b16936b1d15210faa"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/cost/positions.csv",
+      "bytes": 9927,
+      "sha256": "8ecb4a79789160fa6c9d84a88f0503894421488239282199bab14c913f9a451d"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/cost/processing-baseline-100.json",
+      "bytes": 4739,
+      "sha256": "735a09d50e5944bc31573082e1195c7a2d3fd005ba81a0c71bd039b8ea26a324"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/cost/processing-baseline-1000.json",
+      "bytes": 4780,
+      "sha256": "74c40ebdc340b8110f751274ba2249aa2dad445846f9baec9f51ea1b26273114"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/cost/processing-baseline-5.json",
+      "bytes": 3634,
+      "sha256": "808e2f0de93a88f7aa2b7fed894fc4915899a4b71eb2a8b35cd8d4f2dc7ce917"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/cost/public-sources.json",
+      "bytes": 21935,
+      "sha256": "c596dc9308caba5bdff709d60fd4942734e2a8d5e5b272c842e5bab4bfc087ca"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/cost/费用说明.md",
+      "bytes": 3113,
+      "sha256": "e2b5df4a0fb95913ee41e2fba02a4bad89d54386e7ff19e5a719319de050bb10"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/derive_processing_budget.py",
+      "bytes": 3985,
+      "sha256": "f8004ac354a4d0697b20303493b17d3a509360bdf99d2e627e16ae9ea43c2287"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/design.json",
+      "bytes": 134249,
+      "sha256": "2613d43fcb994d48e308a92f35f7a3f4ea0c101a9c8f8f389eb430d26e050f11"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/back.svg",
+      "bytes": 545644,
+      "sha256": "b35271e301bae2446ea1f85e9c165fe6c70a062af28b157ff93a541a6f5af2c5"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/current-drc.json",
+      "bytes": 284,
+      "sha256": "556c3a41d903231c1e8bbd445df1e93fb408ad70c9d10c730e97d1bb902fcdb0"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/erc.json",
+      "bytes": 368,
+      "sha256": "59651e435dad91e104faafcb4eacb020882886607a276cd658eadf4e14db2b15"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/fabrication-unreleased/README.md",
+      "bytes": 859,
+      "sha256": "ad6d1cdc047092aea2d0267e2fc3e48352b57135a180a62ffcbb5cd659af7428"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/fabrication-unreleased/voice_mainboard_v3-B_Cu.gbl",
+      "bytes": 422310,
+      "sha256": "f1f68d458400989bf0784c6007bcb454490e54cd59688f7edaf7074f832016cb"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/fabrication-unreleased/voice_mainboard_v3-B_Mask.gbs",
+      "bytes": 6732,
+      "sha256": "f3214aaacfa70efc7743c40bcc84758b4c45907fa4993db37dfc83c73b3592e3"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/fabrication-unreleased/voice_mainboard_v3-B_Paste.gbp",
+      "bytes": 3338,
+      "sha256": "3c2050c1ea433c5905473154fc332b642f0bd6b343058fb298d5b47d083a76a8"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/fabrication-unreleased/voice_mainboard_v3-B_Silkscreen.gbo",
+      "bytes": 4864,
+      "sha256": "0c8ad6d6501137ece3f65af05e72965a5e1f01c3a1ccd0ca2a611b127ad3f879"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/fabrication-unreleased/voice_mainboard_v3-Edge_Cuts.gm1",
+      "bytes": 627,
+      "sha256": "1caf96c80d0dbda0c0645385a5857369e5420df5b69ac697995669a03cfe2af5"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/fabrication-unreleased/voice_mainboard_v3-F_Cu.gtl",
+      "bytes": 636296,
+      "sha256": "bb9bbed65da8cc189a447f02634e20858dfd6b49d282c7254647608655965dda"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/fabrication-unreleased/voice_mainboard_v3-F_Mask.gts",
+      "bytes": 20415,
+      "sha256": "d481d950ca417de666dd57708c6fe138e12a413a0dbee0a7702ce048d5c57d1b"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/fabrication-unreleased/voice_mainboard_v3-F_Paste.gtp",
+      "bytes": 16509,
+      "sha256": "6c22f4b722cd73d82590a98991672b545dd26044e6f6a03307611a0100a61776"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/fabrication-unreleased/voice_mainboard_v3-F_Silkscreen.gto",
+      "bytes": 27312,
+      "sha256": "5fd670a20d2c37e92d1a53ccfd9e727e7f292135e04749695784415ff5dc1b21"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/fabrication-unreleased/voice_mainboard_v3-In1_Cu.g1",
+      "bytes": 296725,
+      "sha256": "469939a619a955403c3047d80eda2ade61972529f068affc637a4f6ab557a085"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/fabrication-unreleased/voice_mainboard_v3-In2_Cu.g2",
+      "bytes": 348985,
+      "sha256": "0cdcbd6b46f903a5cf432b9e620e55d54263377e2dcb0d5611cd8aa46c459e18"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/fabrication-unreleased/voice_mainboard_v3-job.gbrjob",
+      "bytes": 3994,
+      "sha256": "b13d8bd649fb6aafb9ba5e36a42b599ce5d0ab7b9a745500836f5b6617d33cde"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/fabrication-unreleased/voice_mainboard_v3-NPTH-drl_map.svg",
+      "bytes": 24624,
+      "sha256": "27b6371d6612e09297e4ae25b46b220fc9f77cb2dd52a974166103659ce3269a"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/fabrication-unreleased/voice_mainboard_v3-NPTH.drl",
+      "bytes": 378,
+      "sha256": "d055147483635f4204f5270816d07e8b0a95a0fcdd60a4e2ae76980af3afcf83"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/fabrication-unreleased/voice_mainboard_v3-PTH-drl_map.svg",
+      "bytes": 156730,
+      "sha256": "d0e88c62839e1df0c0a970daf11a6ab933a9b53730927f4fc4a705457645b8fd"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/fabrication-unreleased/voice_mainboard_v3-PTH.drl",
+      "bytes": 8428,
+      "sha256": "2df6844c2578328b0ef34b5cf4ba46e507124b9ebb11d1d6ac8fd091265f2ccb"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/front.svg",
+      "bytes": 1285716,
+      "sha256": "df19ff7f155e7fec6a8455e9bb0dc9c8d59921dc8ec1c646e8f50bc26346b660"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/power-audit.json",
+      "bytes": 5616,
+      "sha256": "8219c6bc12b8d7fa9f87f739e57c0c80c04c40726a22a8c872b3de2ed473a784"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/review.html",
+      "bytes": 1841246,
+      "sha256": "492e4e4b293771ca93bb947e7e0a0fb9906604e273b74c2d77e5586ef0983dc6"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/schematic/voice_mainboard_v3.svg",
+      "bytes": 6054926,
+      "sha256": "11342cc107c6d3d4af08ef1e09f954161d5c4b8739a962ad108a16e6157240d6"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/ups-simulation/results.json",
+      "bytes": 225582,
+      "sha256": "764085816c0a8d4f8142a121956c1da8ca4bffb4a99d0a741937b06161915e9a"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/ups-simulation/ups_battery_triangle.cir",
+      "bytes": 402,
+      "sha256": "52c097ed0ae4c74fe6490f84ea75a68be3971508c4edf6d9a039f731d2508903"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/ups-simulation/ups_battery_triangle.log",
+      "bytes": 942,
+      "sha256": "c76b2a632910ac2197066e8e586f75de29cae54d24abb09063b2909cb8c237d0"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/ups-simulation/ups_external_triangle.cir",
+      "bytes": 404,
+      "sha256": "d5c9923d537ff24ba8b91ce51137a486ed6e2f55251d45d532a88c2712bcfddf"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/ups-simulation/ups_external_triangle.log",
+      "bytes": 943,
+      "sha256": "2eb56f3a5dcfd2a82f2d7ee0481c3fb54b091c41ba164d8307b104ce669d581d"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/validation.json",
+      "bytes": 1050,
+      "sha256": "b70e1027450ea65e6b8d161e52156e44c92312134983f605f9aeb1b318a068dd"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/exports/voice_mainboard_v3.net.xml",
+      "bytes": 241183,
+      "sha256": "b41385354f740da1871ed3624acf02bd31232436e8c59b816fafa9fb0f15fb7a"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/fix_assembly_attributes.py",
+      "bytes": 1274,
+      "sha256": "8d8c3e54ba3b226104967739f7699051908bbb36fe780017d853a5cbe5b8ce35"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/fp-lib-table",
+      "bytes": 178,
+      "sha256": "1939b3dc48c3fc865f34dffeab5a499026f6070df6147c138b71f05d996c7302"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/generate_schematic.py",
+      "bytes": 2175,
+      "sha256": "aeff0744816194b5061267067d610d33685c15366b6453e4e543ff5ce6b1f83a"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/package_review.py",
+      "bytes": 2935,
+      "sha256": "cfe9d0a21f2d0de74337479821ab459787802ec147f6745f1b83dd23a52cec1f"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/README.md",
+      "bytes": 8308,
+      "sha256": "09ab8da9ae4e4c5e51809ce001980f888b1e1a548b0d4bd88b5c9875bfa1d91d"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/schematic-ids.json",
+      "bytes": 8795,
+      "sha256": "fbdc52a0b915c1ca0fb8da916c670a5e1a8483679674d9fbf270e16b6c445a89"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/serve_review.py",
+      "bytes": 1439,
+      "sha256": "d6fffa7dfb002d22dc5b86e754c15b21d66f47fea96c56734cc0981dbb945cac"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/simulate_ups_controls.py",
+      "bytes": 5882,
+      "sha256": "dc831583b5d25a2838a3128354c4413a15b10cf0e8a5754636c22adfccff71ea"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/sym-lib-table",
+      "bytes": 162,
+      "sha256": "51ba3c52acd2bd308ff7d16d165ef600bfc67ab9073363d1690317cf34aa3285"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/verify_design.py",
+      "bytes": 4947,
+      "sha256": "6624749693337127f048b7e2bf503dacf414abaf55e0f101c2dbcc475dea3ae7"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/voice_mainboard_v3.kicad_dru",
+      "bytes": 218,
+      "sha256": "a6b9233b41eebcfa5d6522c1b75f0062aa3efa27ba8b139818efe343a78241fc"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/voice_mainboard_v3.kicad_pcb",
+      "bytes": 2700184,
+      "sha256": "c5792f761accacccd507c87a2a4be3d6bdde11867b9010b2b37f47ee28f66dcc"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/voice_mainboard_v3.kicad_pro",
+      "bytes": 11284,
+      "sha256": "c76fd4282753b417dd0334a41c59c2084855b3820d2b133739601ceb27d8198f"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/voice_mainboard_v3.kicad_sch",
+      "bytes": 442660,
+      "sha256": "362f635288aee422430763de9cb268312d7121d3145018c174ba7cf3c780745a"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/VoiceV2.kicad_sym",
+      "bytes": 163296,
+      "sha256": "054761a1681daf96f6546d13a58bfd5e2206d220f8291bdb2d784a10f6fc23c6"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/VoiceV2.pretty/DG350_3.5_2P.kicad_mod",
+      "bytes": 2713,
+      "sha256": "5783386dfec1e86c31183aeeb48124b2933371c540e7727fbcf7fdb7b83a82f1"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/VoiceV2.pretty/HX_DC005_2p5_T.kicad_mod",
+      "bytes": 3058,
+      "sha256": "08d8c4e3960dc9f0cbfabb1dbbb1c325eb1b78be476aabf06399df014b833c8a"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/VoiceV2.pretty/ML307R_DL_109_15.8x17.7mm_DRAFT.kicad_mod",
+      "bytes": 20898,
+      "sha256": "8d6b209b8977914cfc882b7e6c387c48307eb5446bf994232920b9c6a5fcb369"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/VoiceV2.pretty/TI_DRL0008A.kicad_mod",
+      "bytes": 2923,
+      "sha256": "2d0a2fe181afe3ea29ac432c9d6d96d4ef76af8c138f8e3e879481d9d9f707fe"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/VoiceV2.pretty/TI_RNS0007A.kicad_mod",
+      "bytes": 2739,
+      "sha256": "b1ac62dfdf9cade2e7ea0dfc95cb1e579b0aa1d44943d9c98d5b5dab3d8bfd09"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/VoiceV2.pretty/TPS63061_DSC0010E_3x3mm.kicad_mod",
+      "bytes": 6350,
+      "sha256": "9203bc0d68b2d425b00a09a9922ba56f818a80deaa93ac46a3ab94e08af40834"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/工程复核及首板验收.md",
+      "bytes": 5477,
+      "sha256": "a67481f48ad16d0316c12da836931603a7592be8ae28edefd349813ea4cc0cd3"
+    },
+    {
+      "path": "outputs/voice-v3-20261122/语音对讲V3主板费用.xlsx",
+      "bytes": 13780,
+      "sha256": "0a73a23015fa446ba6c1d9ccc138da6a29f27d416b438e7175cbf5e8a8403cc7"
+    },
+    {
+      "path": "tests/at_recovery_32_hangup_panic.txt",
+      "bytes": 1786,
+      "sha256": "bb2eb5207a24fa7fcd4f8cbd5c2a56129fc877c6acd2adc8ea14f79f11994415"
+    },
+    {
+      "path": "tests/at_recovery_40_final.json",
+      "bytes": 31787,
+      "sha256": "712c3f541a5b58cb69b76e7788c4dcdd1b59f8bf9da6b01bca7a0602351ca84c"
+    },
+    {
+      "path": "tests/at_recovery_batch_20261121.md",
+      "bytes": 14465,
+      "sha256": "d5a3cebe6ad37ea0b8ce35c86081ec00f826023d053283f215def91cc7a218e0"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "source": "https://www.jlc-smt.com/calc-online",
+  "date": "2026-11-22",
+  "parameters": {
+    "patchLocation": "TB",
+    "patchQuantity": 5,
+    "patchComponentQuantity": 431,
+    "patchComponentType": 49,
+    "plugInQuantity": 97,
+    "plugInType": 8,
+    "steelType": "jlc",
+    "boardWidth": 7.5,
+    "boardLength": 10
+  },
+  "fees": {
+    "projectMoney": 300,
+    "padMoney": 21.55,
+    "manualPadMoney": 48.5,
+    "manualWeldProjectMoney": 20,
+    "changeMaterielMoney": 392.0,
+    "plateChangeMaterialCountMoney": 245.0,
+    "steelMoney": 100,
+    "packageMoney": 3.08,
+    "singlePieceProcessingDifferenceFee": 0,
+    "totalMoney": 738.13
+  },
+  "economic_double_side_available": false,
+  "fresh_calculator_response_for_these_parameters": false,
+  "pricing_basis": "rate-adjusted_budget_from_observed_API_fees",
+  "baseline_record": "processing-baseline-5.json",
+  "observed_unit_rates": {
+    "smt_per_pad": 0.01,
+    "tht_per_pad": 0.1,
+    "change_material_per_type": 8.0,
+    "discounted_change_per_type": 5.0
+  },
+  "assumptions": [
+    "2 fewer SMT pads, one fewer SMT type; battery terminal adds 2 THT pads and one THT type.",
+    "Use the same quantity-specific pad rates; manual engineering, PCB size, steel and package fees retained.",
+    "Minimum per-board processing difference follows the formula that exactly reproduces each original response.",
+    "Corrected public-calculator refresh unavailable (browser host unavailable; direct request returned web anti-automation page).",
+    "This adjustment is an estimate; current parameters require a fresh final DFM/BOM/order quotation."
+  ],
+  "note": "Original response preserved separately. Display discount is restored to full change-material fee in the main budget."
+}

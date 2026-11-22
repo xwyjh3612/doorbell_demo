@@ -1,0 +1,36 @@
+{
+  "revision": "V3-INTEGRATED-UPS-20261122",
+  "electrical_parts": 172,
+  "footprints": 176,
+  "connected_unique_pin_net_mappings": 490,
+  "xml_netlist_equals_pcb": true,
+  "erc_violations": 0,
+  "drc_violations": 0,
+  "unconnected_links": 0,
+  "assembly_values_dnp_placement_checked": true,
+  "input_and_ups_pin_contract_checked": true,
+  "native_assembly_flags_match_physical_pad_technology": true,
+  "reference_layer": "In1.Cu; no signal traces",
+  "through_via_drills_mm": {
+    "0.3": 478,
+    "0.2": 21,
+    "0.5": 15,
+    "0.4": 1
+  },
+  "board_size_mm": [
+    100,
+    75
+  ],
+  "layers": 4,
+  "routing_complete": true,
+  "integrated_ups": true,
+  "official_protocol_modified": false,
+  "firmware_modified": false,
+  "manufacturing_ready": false,
+  "open_qualifications": [
+    "Power-converter closed-loop / startup / load / switch / thermal tests",
+    "ML307 module and SIM/socket physical land signoff",
+    "Exact power shunt/contact resistance and stock for all MPNs",
+    "Actual enclosure, harness, antenna and USB validation"
+  ]
+}

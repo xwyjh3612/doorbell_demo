@@ -1,0 +1,186 @@
+{
+  "source": "Saved KiCad V3 board; component resistance limits plus explicit allowances",
+  "local_switching_paths": [
+    {
+      "from": [
+        "U9",
+        4
+      ],
+      "to": [
+        "C41",
+        1
+      ],
+      "net": "BAT_SENSE_IN",
+      "layer": "F.Cu",
+      "length_mm": 3.9286,
+      "min_track_width_mm": 0.2,
+      "trace_resistance_20C_mohm": 4.8179,
+      "segments": [
+        {
+          "length_mm": 1.1673,
+          "width_mm": 0.2
+        },
+        {
+          "length_mm": 2.7613,
+          "width_mm": 0.7
+        }
+      ]
+    },
+    {
+      "from": [
+        "U9",
+        5
+      ],
+      "to": [
+        "L3",
+        2
+      ],
+      "net": "UPS_SW",
+      "layer": "F.Cu",
+      "length_mm": 4.2137,
+      "min_track_width_mm": 0.25,
+      "trace_resistance_20C_mohm": 5.031,
+      "segments": [
+        {
+          "length_mm": 2.0,
+          "width_mm": 0.25
+        },
+        {
+          "length_mm": 2.2137,
+          "width_mm": 1.0
+        }
+      ]
+    },
+    {
+      "from": [
+        "U9",
+        7
+      ],
+      "to": [
+        "C42",
+        1
+      ],
+      "net": "UPS_BACKUP_5V",
+      "layer": "F.Cu",
+      "length_mm": 2.4536,
+      "min_track_width_mm": 0.25,
+      "trace_resistance_20C_mohm": 4.8343,
+      "segments": [
+        {
+          "length_mm": 2.4536,
+          "width_mm": 0.25
+        }
+      ]
+    }
+  ],
+  "input_series_resistance": {
+    "jack_both_contacts_ohm": 0.1,
+    "ptc_R1max_ohm": 0.025,
+    "reverse_fet_max_low_gate_ohm": 0.045,
+    "mux_max_5V_high_temp_ohm": 0.033,
+    "trace_via_return_allowance_ohm": 0.05,
+    "power_shunt_allowance_ohm": 0.04
+  },
+  "scenarios": [
+    {
+      "connector_v": 4.5,
+      "input_a": 1.0,
+      "protected_v_before_mux": 4.33,
+      "power_bus_v_estimate": 4.207,
+      "path_loss_w_estimate": 0.293,
+      "power_after_series_loss_w": 4.207,
+      "example_2A_modem_plus_350mA_system_and_100mA_charge_w": 10.8211,
+      "example_continuous_load_power_budget_pass": false
+    },
+    {
+      "connector_v": 4.5,
+      "input_a": 1.5,
+      "protected_v_before_mux": 4.245,
+      "power_bus_v_estimate": 4.0605,
+      "path_loss_w_estimate": 0.6593,
+      "power_after_series_loss_w": 6.0907,
+      "example_2A_modem_plus_350mA_system_and_100mA_charge_w": 10.8211,
+      "example_continuous_load_power_budget_pass": false
+    },
+    {
+      "connector_v": 4.5,
+      "input_a": 2.0,
+      "protected_v_before_mux": 4.16,
+      "power_bus_v_estimate": 3.914,
+      "path_loss_w_estimate": 1.172,
+      "power_after_series_loss_w": 7.828,
+      "example_2A_modem_plus_350mA_system_and_100mA_charge_w": 10.8211,
+      "example_continuous_load_power_budget_pass": false
+    },
+    {
+      "connector_v": 5.0,
+      "input_a": 1.0,
+      "protected_v_before_mux": 4.83,
+      "power_bus_v_estimate": 4.707,
+      "path_loss_w_estimate": 0.293,
+      "power_after_series_loss_w": 4.707,
+      "example_2A_modem_plus_350mA_system_and_100mA_charge_w": 10.8711,
+      "example_continuous_load_power_budget_pass": false
+    },
+    {
+      "connector_v": 5.0,
+      "input_a": 1.5,
+      "protected_v_before_mux": 4.745,
+      "power_bus_v_estimate": 4.5605,
+      "path_loss_w_estimate": 0.6593,
+      "power_after_series_loss_w": 6.8407,
+      "example_2A_modem_plus_350mA_system_and_100mA_charge_w": 10.8711,
+      "example_continuous_load_power_budget_pass": false
+    },
+    {
+      "connector_v": 5.0,
+      "input_a": 2.0,
+      "protected_v_before_mux": 4.66,
+      "power_bus_v_estimate": 4.414,
+      "path_loss_w_estimate": 1.172,
+      "power_after_series_loss_w": 8.828,
+      "example_2A_modem_plus_350mA_system_and_100mA_charge_w": 10.8711,
+      "example_continuous_load_power_budget_pass": false
+    },
+    {
+      "connector_v": 5.5,
+      "input_a": 1.0,
+      "protected_v_before_mux": 5.33,
+      "power_bus_v_estimate": 5.207,
+      "path_loss_w_estimate": 0.293,
+      "power_after_series_loss_w": 5.207,
+      "example_2A_modem_plus_350mA_system_and_100mA_charge_w": 10.9211,
+      "example_continuous_load_power_budget_pass": false
+    },
+    {
+      "connector_v": 5.5,
+      "input_a": 1.5,
+      "protected_v_before_mux": 5.245,
+      "power_bus_v_estimate": 5.0605,
+      "path_loss_w_estimate": 0.6593,
+      "power_after_series_loss_w": 7.5907,
+      "example_2A_modem_plus_350mA_system_and_100mA_charge_w": 10.9211,
+      "example_continuous_load_power_budget_pass": false
+    },
+    {
+      "connector_v": 5.5,
+      "input_a": 2.0,
+      "protected_v_before_mux": 5.16,
+      "power_bus_v_estimate": 4.914,
+      "path_loss_w_estimate": 1.172,
+      "power_after_series_loss_w": 9.828,
+      "example_2A_modem_plus_350mA_system_and_100mA_charge_w": 10.9211,
+      "example_continuous_load_power_budget_pass": false
+    }
+  ],
+  "capacitor_review": "C41 is the local 22uF VIN bypass; C40 is additional input bulk farther away. Removing or relocating C40 is not required solely from its VIN distance.",
+  "conclusion": "5V/2A is a nominal adapter baseline, not a proven simultaneous continuous 2A modem / loud audio / radar specification. The 4.5V boundary and modem rail dropout remain unqualified.",
+  "assumptions": [
+    "90% efficiency on each branch is an assumption, not a measured minimum.",
+    "No actual copper-zone spreading / ground-return / connector or shunt contact resistance extraction.",
+    "No pulsed modem current profile, converter startup, control loop or thermal model.",
+    "TPS2117 RON bound is specified at 5V; lower-voltage maximum needs separate characterization."
+  ],
+  "hardware_validated": false,
+  "manufacturing_release": false
+}

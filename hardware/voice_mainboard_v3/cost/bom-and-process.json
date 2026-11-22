@@ -1,0 +1,1505 @@
+{
+  "revision": "V3-INTEGRATED-UPS-20261122",
+  "source_pcb_sha256": "c5792f761accacccd507c87a2a4be3d6bdde11867b9010b2b37f47ee28f66dcc",
+  "date": "2026-11-22",
+  "currency": "CNY",
+  "counts": {
+    "SMT": {
+      "types": 49,
+      "components": 128,
+      "pads": 431
+    },
+    "THT": {
+      "types": 8,
+      "components": 23,
+      "pads": 97
+    }
+  },
+  "smt_sides": 2,
+  "physical_paste_apertures_not_double_counted_as_duplicate_EP_pins": true,
+  "tht_switch_four_physical_leads_counted": true,
+  "groups": [
+    {
+      "mpn": "2N7002K-7",
+      "lcsc": "C85047",
+      "footprint": "Package_TO_SOT_SMD:SOT-23",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "Q1",
+        "Q2",
+        "Q4",
+        "Q5",
+        "Q7"
+      ],
+      "quantity_per_board": 5,
+      "unique_electrical_pads_per_board": 15,
+      "sides": [
+        "F",
+        "B"
+      ],
+      "unit_public_reference_cny": 0.2474,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/86219.html",
+      "stock": 855462,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "APXE6R3ARA221MF61G",
+      "lcsc": "C2161900",
+      "footprint": "Capacitor_SMD:CP_Elec_6.3x5.8",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "C8",
+        "C9"
+      ],
+      "quantity_per_board": 2,
+      "unique_electrical_pads_per_board": 4,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 5.23,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/2253950.html",
+      "stock": 94,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "ASMD1812-400-16V",
+      "lcsc": "C55014590",
+      "footprint": "Fuse:Fuse_1812_4532Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "F1"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 2,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.4972,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/58601642.html",
+      "stock": 2626,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "BAT54C,215",
+      "lcsc": "C37704",
+      "footprint": "Package_TO_SOT_SMD:SOT-23",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "D5"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 3,
+      "sides": [
+        "B"
+      ],
+      "unit_public_reference_cny": 0.0431,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/38684.html",
+      "stock": 408693,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "BSS84,215",
+      "lcsc": "C493579",
+      "footprint": "Package_TO_SOT_SMD:SOT-23",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "Q3"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 3,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.1765,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/504270.html",
+      "stock": 6508,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "CL10A105KB8NNNC",
+      "lcsc": "C15849",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "C46",
+        "C47"
+      ],
+      "quantity_per_board": 2,
+      "unique_electrical_pads_per_board": 4,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.0327,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/16531.html",
+      "stock": 648639,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "CL10B103KB8NNNC",
+      "lcsc": "C1589",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "C19",
+        "C29",
+        "C45",
+        "C51"
+      ],
+      "quantity_per_board": 4,
+      "unique_electrical_pads_per_board": 8,
+      "sides": [
+        "F",
+        "B"
+      ],
+      "unit_public_reference_cny": 0.019,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/1941.html",
+      "stock": 1295046,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "CL10B104KB8NNNC",
+      "lcsc": "C1591",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "C2",
+        "C31",
+        "C3",
+        "C11",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C20",
+        "C27",
+        "C30",
+        "C28",
+        "C50"
+      ],
+      "quantity_per_board": 15,
+      "unique_electrical_pads_per_board": 30,
+      "sides": [
+        "F",
+        "B"
+      ],
+      "unit_public_reference_cny": 0.0193,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/1943.html",
+      "stock": 142849,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "CL10C102JB8NNNC",
+      "lcsc": "C163508",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "C49",
+        "C52"
+      ],
+      "quantity_per_board": 2,
+      "unique_electrical_pads_per_board": 4,
+      "sides": [
+        "B"
+      ],
+      "unit_public_reference_cny": 0.0286,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/174890.html",
+      "stock": 180098,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "CL10C330JB8NNNC",
+      "lcsc": "C1663",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "C37",
+        "C12"
+      ],
+      "quantity_per_board": 2,
+      "unique_electrical_pads_per_board": 4,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.0289,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/2015.html",
+      "stock": 305917,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "CL21A106KAYNNNE",
+      "lcsc": "C15850",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "C10",
+        "C26",
+        "C38",
+        "C39",
+        "C53"
+      ],
+      "quantity_per_board": 5,
+      "unique_electrical_pads_per_board": 10,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.096,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/16532.html",
+      "stock": 1874779,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "CL21A226MOCLRNC",
+      "lcsc": "C398815",
+      "footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "C1",
+        "C32",
+        "C33",
+        "C34",
+        "C35",
+        "C36",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C40",
+        "C41",
+        "C42",
+        "C43",
+        "C44"
+      ],
+      "quantity_per_board": 15,
+      "unique_electrical_pads_per_board": 30,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.2619,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/381139.html",
+      "stock": 16580,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "DMP2035U-7",
+      "lcsc": "C110499",
+      "footprint": "Package_TO_SOT_SMD:SOT-23",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "Q6"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 3,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.3881,
+      "unit_allowance_cny": null,
+      "source": null,
+      "stock": 215547,
+      "procurement_status": "land_and_stock_review_pending",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "LM393LVDGKR",
+      "lcsc": "C3659248",
+      "footprint": "Package_SO:VSSOP-8_3x3mm_P0.65mm",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "U11"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 8,
+      "sides": [
+        "B"
+      ],
+      "unit_public_reference_cny": 1.0033,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/4227045.html",
+      "stock": 1338,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "ML307R-DL",
+      "lcsc": "C48982537",
+      "footprint": "VoiceV2:ML307R_DL_109_15.8x17.7mm_DRAFT",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "U1"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 109,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 16.5,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/51313686.html",
+      "stock": 1144,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "MWSA0603S-1R0MT",
+      "lcsc": "C112125",
+      "footprint": "Inductor_SMD:L_Sunlord_MWSA0603S",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "L3"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 2,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.3697,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/113356.html",
+      "stock": 11722,
+      "procurement_status": "land_and_stock_review_pending",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "OCV471M1ATR-1010",
+      "lcsc": "C250035",
+      "footprint": "Capacitor_SMD:CP_Elec_10x10",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "C48"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 2,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 1.1262,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/246157.html",
+      "stock": 1778,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "PESD5V0U1BA,115",
+      "lcsc": "C552574",
+      "footprint": "Diode_SMD:D_SOD-323",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "D1",
+        "D2",
+        "D3",
+        "D4"
+      ],
+      "quantity_per_board": 4,
+      "unique_electrical_pads_per_board": 8,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.8525,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/573571.html",
+      "stock": 17038,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "RC0402JR070RL",
+      "lcsc": null,
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "R26",
+        "R27"
+      ],
+      "quantity_per_board": 2,
+      "unique_electrical_pads_per_board": 4,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": 0.025,
+      "source": null,
+      "stock": null,
+      "procurement_status": "exact_mpn_stock_and_datasheet_pending",
+      "price_basis": "unquoted_allowance"
+    },
+    {
+      "mpn": "RC0603FR07100KL",
+      "lcsc": null,
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "R32",
+        "R1",
+        "R5",
+        "R6",
+        "R8",
+        "R15",
+        "R16",
+        "R18",
+        "R20",
+        "R38",
+        "R39"
+      ],
+      "quantity_per_board": 11,
+      "unique_electrical_pads_per_board": 22,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": 0.025,
+      "source": null,
+      "stock": null,
+      "procurement_status": "exact_mpn_stock_and_datasheet_pending",
+      "price_basis": "unquoted_allowance"
+    },
+    {
+      "mpn": "RC0603FR0710KL",
+      "lcsc": null,
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "R33",
+        "R34",
+        "R4",
+        "R12",
+        "R14",
+        "R25",
+        "R19",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R48",
+        "R53"
+      ],
+      "quantity_per_board": 13,
+      "unique_electrical_pads_per_board": 26,
+      "sides": [
+        "F",
+        "B"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": 0.025,
+      "source": null,
+      "stock": null,
+      "procurement_status": "exact_mpn_stock_and_datasheet_pending",
+      "price_basis": "unquoted_allowance"
+    },
+    {
+      "mpn": "RC0603FR0711KL",
+      "lcsc": null,
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "R35"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 2,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": 0.025,
+      "source": null,
+      "stock": null,
+      "procurement_status": "exact_mpn_stock_and_datasheet_pending",
+      "price_basis": "unquoted_allowance"
+    },
+    {
+      "mpn": "RC0603FR07150KL",
+      "lcsc": null,
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "R17"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 2,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": 0.025,
+      "source": null,
+      "stock": null,
+      "procurement_status": "exact_mpn_stock_and_datasheet_pending",
+      "price_basis": "unquoted_allowance"
+    },
+    {
+      "mpn": "RC0603FR071ML",
+      "lcsc": null,
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "R49",
+        "R54"
+      ],
+      "quantity_per_board": 2,
+      "unique_electrical_pads_per_board": 4,
+      "sides": [
+        "B"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": 0.025,
+      "source": null,
+      "stock": null,
+      "procurement_status": "exact_mpn_stock_and_datasheet_pending",
+      "price_basis": "unquoted_allowance"
+    },
+    {
+      "mpn": "RC0603FR0722RL",
+      "lcsc": null,
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "R9",
+        "R10",
+        "R11"
+      ],
+      "quantity_per_board": 3,
+      "unique_electrical_pads_per_board": 6,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": 0.025,
+      "source": null,
+      "stock": null,
+      "procurement_status": "exact_mpn_stock_and_datasheet_pending",
+      "price_basis": "unquoted_allowance"
+    },
+    {
+      "mpn": "RC0603FR072M4L",
+      "lcsc": null,
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "R47"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 2,
+      "sides": [
+        "B"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": 0.025,
+      "source": null,
+      "stock": null,
+      "procurement_status": "exact_mpn_stock_and_datasheet_pending",
+      "price_basis": "unquoted_allowance"
+    },
+    {
+      "mpn": "RC0603FR073K3L",
+      "lcsc": null,
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "R37",
+        "R42"
+      ],
+      "quantity_per_board": 2,
+      "unique_electrical_pads_per_board": 4,
+      "sides": [
+        "F",
+        "B"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": 0.025,
+      "source": null,
+      "stock": null,
+      "procurement_status": "exact_mpn_stock_and_datasheet_pending",
+      "price_basis": "unquoted_allowance"
+    },
+    {
+      "mpn": "RC0603FR073M9L",
+      "lcsc": null,
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "R52"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 2,
+      "sides": [
+        "B"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": 0.025,
+      "source": null,
+      "stock": null,
+      "procurement_status": "exact_mpn_stock_and_datasheet_pending",
+      "price_basis": "unquoted_allowance"
+    },
+    {
+      "mpn": "RC0603FR079K1L",
+      "lcsc": null,
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "R36"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 2,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": 0.025,
+      "source": null,
+      "stock": null,
+      "procurement_status": "exact_mpn_stock_and_datasheet_pending",
+      "price_basis": "unquoted_allowance"
+    },
+    {
+      "mpn": "RC0603JR070RL",
+      "lcsc": null,
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "R13",
+        "R30"
+      ],
+      "quantity_per_board": 2,
+      "unique_electrical_pads_per_board": 4,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": 0.025,
+      "source": null,
+      "stock": null,
+      "procurement_status": "exact_mpn_stock_and_datasheet_pending",
+      "price_basis": "unquoted_allowance"
+    },
+    {
+      "mpn": "RT0603BRD07100KL",
+      "lcsc": null,
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "R41"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 2,
+      "sides": [
+        "B"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": 0.06,
+      "source": null,
+      "stock": null,
+      "procurement_status": "exact_mpn_stock_and_datasheet_pending",
+      "price_basis": "unquoted_allowance"
+    },
+    {
+      "mpn": "RT0603BRD07102KL",
+      "lcsc": null,
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "R46"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 2,
+      "sides": [
+        "B"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": 0.06,
+      "source": null,
+      "stock": null,
+      "procurement_status": "exact_mpn_stock_and_datasheet_pending",
+      "price_basis": "unquoted_allowance"
+    },
+    {
+      "mpn": "RT0603BRD0710KL",
+      "lcsc": null,
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "R3",
+        "R43",
+        "R44",
+        "R51"
+      ],
+      "quantity_per_board": 4,
+      "unique_electrical_pads_per_board": 8,
+      "sides": [
+        "F",
+        "B"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": 0.06,
+      "source": null,
+      "stock": null,
+      "procurement_status": "exact_mpn_stock_and_datasheet_pending",
+      "price_basis": "unquoted_allowance"
+    },
+    {
+      "mpn": "RT0603BRD07316KL",
+      "lcsc": null,
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "R40"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 2,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": 0.06,
+      "source": null,
+      "stock": null,
+      "procurement_status": "exact_mpn_stock_and_datasheet_pending",
+      "price_basis": "unquoted_allowance"
+    },
+    {
+      "mpn": "RT0603BRD0737K4L",
+      "lcsc": null,
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "R2"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 2,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": 0.06,
+      "source": null,
+      "stock": null,
+      "procurement_status": "exact_mpn_stock_and_datasheet_pending",
+      "price_basis": "unquoted_allowance"
+    },
+    {
+      "mpn": "RT0603BRD07499KL",
+      "lcsc": null,
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "R45"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 2,
+      "sides": [
+        "B"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": 0.06,
+      "source": null,
+      "stock": null,
+      "procurement_status": "exact_mpn_stock_and_datasheet_pending",
+      "price_basis": "unquoted_allowance"
+    },
+    {
+      "mpn": "RT0603BRD0754K9L",
+      "lcsc": null,
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "R50"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 2,
+      "sides": [
+        "B"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": 0.06,
+      "source": null,
+      "stock": null,
+      "procurement_status": "exact_mpn_stock_and_datasheet_pending",
+      "price_basis": "unquoted_allowance"
+    },
+    {
+      "mpn": "SF72S006VBD",
+      "lcsc": "C2977286",
+      "footprint": "Connector_JAE:JAE_SIM_Card_SF72S006",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "J10"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 9,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 2.51,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/3386692.html",
+      "stock": 7284,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "SN74AXC1T45DBVR",
+      "lcsc": "C2677376",
+      "footprint": "Package_TO_SOT_SMD:SOT-23-6",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "U3",
+        "U4",
+        "U5"
+      ],
+      "quantity_per_board": 3,
+      "unique_electrical_pads_per_board": 18,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 1.51,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/2769292.html",
+      "stock": 6675,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "SWPA6045S1R5MT",
+      "lcsc": "C98203",
+      "footprint": "Inductor_SMD:L_Sunlord_SWPA6045S",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "L2"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 2,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.2862,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/99412.html",
+      "stock": 73,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "SWPA6045S2R2MT",
+      "lcsc": "C83455",
+      "footprint": "Inductor_SMD:L_Sunlord_SWPA6045S",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "L1"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 2,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.2756,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/84619.html",
+      "stock": 21,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "TLV431BIDBZR",
+      "lcsc": "C398375",
+      "footprint": "Package_TO_SOT_SMD:SOT-23",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "U12"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 3,
+      "sides": [
+        "B"
+      ],
+      "unit_public_reference_cny": 1.25,
+      "unit_allowance_cny": null,
+      "source": null,
+      "stock": 14109,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "TP4056",
+      "lcsc": "C382139",
+      "footprint": "Package_SO:SOIC-8-1EP_3.9x4.9mm_P1.27mm_EP2.29x3mm",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "U8"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 9,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.4012,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/354934.html",
+      "stock": 19367,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "TPD2E2U06DCKR-TP",
+      "lcsc": "C5350871",
+      "footprint": "Package_TO_SOT_SMD:SOT-323_SC-70",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "U7"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 3,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.341,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/6138721.html",
+      "stock": 35945,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "TPS2117DRLR",
+      "lcsc": "C22399676",
+      "footprint": "VoiceV2:TI_DRL0008A",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "U10"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 8,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 1.91,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/24017237.html",
+      "stock": 11122,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "TPS61230ARNSR",
+      "lcsc": "C376005",
+      "footprint": "VoiceV2:TI_RNS0007A",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "U9"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 7,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 3.29,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/348561.html",
+      "stock": 1078,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "TPS62933PDRLR",
+      "lcsc": "C5219254",
+      "footprint": "Package_TO_SOT_SMD:SOT-583-8",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "U2"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 8,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 2.65,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/5914994.html",
+      "stock": 5746,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "TPS63061DSCR",
+      "lcsc": "C2876326",
+      "footprint": "VoiceV2:TPS63061_DSC0010E_3x3mm",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "U6"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 11,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 9.01,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/3084938.html",
+      "stock": 4636,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "U.FL-R-SMT-1(80)",
+      "lcsc": "C88374",
+      "footprint": "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical",
+      "dnp": false,
+      "process": "SMT",
+      "refs": [
+        "J11"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 2,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.389,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/89553.html",
+      "stock": 266729,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "B3F-1000",
+      "lcsc": "C93157",
+      "footprint": "Button_Switch_THT:SW_PUSH_6mm_H4.3mm",
+      "dnp": false,
+      "process": "THT",
+      "refs": [
+        "SW1",
+        "SW2"
+      ],
+      "quantity_per_board": 2,
+      "unique_electrical_pads_per_board": 8,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.6904,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/94352.html",
+      "stock": 688,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "DG350-3.5-02P-14-00A(H)",
+      "lcsc": "C2760668",
+      "footprint": "VoiceV2:DG350_3.5_2P",
+      "dnp": false,
+      "process": "THT",
+      "refs": [
+        "J2"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 2,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.6998,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/2882221.html",
+      "stock": 1464,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "HX DC005-2.5-T",
+      "lcsc": "C18357600",
+      "footprint": "VoiceV2:HX_DC005_2p5_T",
+      "dnp": false,
+      "process": "THT",
+      "refs": [
+        "J1"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 3,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.3837,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/19545770.html",
+      "stock": 4187,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "PZ254V-11-02P",
+      "lcsc": "C492401",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "dnp": false,
+      "process": "THT",
+      "refs": [
+        "J21",
+        "J20",
+        "J6",
+        "J7",
+        "J8",
+        "JP2",
+        "J17",
+        "J4"
+      ],
+      "quantity_per_board": 8,
+      "unique_electrical_pads_per_board": 16,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.0534,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/502957.html",
+      "stock": 658661,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "PZ254V-11-03P",
+      "lcsc": "C2937625",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+      "dnp": false,
+      "process": "THT",
+      "refs": [
+        "JP1",
+        "JP4",
+        "J19",
+        "JP3"
+      ],
+      "quantity_per_board": 4,
+      "unique_electrical_pads_per_board": 12,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.0568,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/3293280.html",
+      "stock": 858114,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "PZ254V-11-04P",
+      "lcsc": "C2691448",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+      "dnp": false,
+      "process": "THT",
+      "refs": [
+        "J9",
+        "J12",
+        "J16",
+        "J18"
+      ],
+      "quantity_per_board": 4,
+      "unique_electrical_pads_per_board": 16,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.0757,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/2801085.html",
+      "stock": 711256,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "PZ254V-11-05P",
+      "lcsc": "C492404",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical",
+      "dnp": false,
+      "process": "THT",
+      "refs": [
+        "J14",
+        "J15"
+      ],
+      "quantity_per_board": 2,
+      "unique_electrical_pads_per_board": 10,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.087,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/502960.html",
+      "stock": 182006,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "PZ254V-12-30P",
+      "lcsc": "C22465939",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_2x15_P2.54mm_Vertical",
+      "dnp": false,
+      "process": "THT",
+      "refs": [
+        "J13"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 30,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.6028,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/24163081.html",
+      "stock": 711,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "CL10C330JB8NNNC",
+      "lcsc": "C1663",
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "dnp": true,
+      "process": "SMT",
+      "refs": [
+        "C21",
+        "C22",
+        "C23"
+      ],
+      "quantity_per_board": 3,
+      "unique_electrical_pads_per_board": 6,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.0289,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/2015.html",
+      "stock": 305917,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    },
+    {
+      "mpn": "RC0402JR070RL",
+      "lcsc": null,
+      "footprint": "Resistor_SMD:R_0402_1005Metric",
+      "dnp": true,
+      "process": "SMT",
+      "refs": [
+        "R28",
+        "R29"
+      ],
+      "quantity_per_board": 2,
+      "unique_electrical_pads_per_board": 4,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": null,
+      "source": null,
+      "stock": null,
+      "procurement_status": "exact_mpn_stock_and_datasheet_pending"
+    },
+    {
+      "mpn": "RC0603FR074K7L",
+      "lcsc": null,
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "dnp": true,
+      "process": "SMT",
+      "refs": [
+        "R7"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 2,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": null,
+      "source": null,
+      "stock": null,
+      "procurement_status": "exact_mpn_stock_and_datasheet_pending"
+    },
+    {
+      "mpn": "RC0603JR070RL",
+      "lcsc": null,
+      "footprint": "Resistor_SMD:R_0603_1608Metric",
+      "dnp": true,
+      "process": "SMT",
+      "refs": [
+        "R31"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 2,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": null,
+      "source": null,
+      "stock": null,
+      "procurement_status": "exact_mpn_stock_and_datasheet_pending"
+    },
+    {
+      "mpn": "RF MATCH SHUNT DNP",
+      "lcsc": null,
+      "footprint": "Capacitor_SMD:C_0603_1608Metric",
+      "dnp": true,
+      "process": "SMT",
+      "refs": [
+        "C24",
+        "C25"
+      ],
+      "quantity_per_board": 2,
+      "unique_electrical_pads_per_board": 4,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": null,
+      "unit_allowance_cny": null,
+      "source": null,
+      "stock": null,
+      "procurement_status": "land_and_stock_review_pending"
+    },
+    {
+      "mpn": "PZ254V-11-03P",
+      "lcsc": "C2937625",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+      "dnp": true,
+      "process": "THT",
+      "refs": [
+        "J22"
+      ],
+      "quantity_per_board": 1,
+      "unique_electrical_pads_per_board": 3,
+      "sides": [
+        "F"
+      ],
+      "unit_public_reference_cny": 0.0568,
+      "unit_allowance_cny": null,
+      "source": "https://item.szlcsc.com/3293280.html",
+      "stock": 858114,
+      "procurement_status": "selected_catalog_part_land_review_required",
+      "price_basis": "public_unit_reference_not_quantity_tier"
+    }
+  ],
+  "public_reference_material_per_board_cny": 71.2068,
+  "unquoted_allowance_material_per_board_cny": 1.6,
+  "estimated_material_per_board_cny": 72.8068,
+  "missing_without_allowance": [],
+  "unquoted_refs": [
+    "R32",
+    "R33",
+    "R1",
+    "R2",
+    "R3",
+    "R34",
+    "R4",
+    "R5",
+    "R6",
+    "R8",
+    "R9",
+    "R10",
+    "R11",
+    "R12",
+    "R13",
+    "R26",
+    "R27",
+    "R30",
+    "R14",
+    "R25",
+    "R15",
+    "R16",
+    "R17",
+    "R18",
+    "R19",
+    "R20",
+    "R21",
+    "R22",
+    "R23",
+    "R24",
+    "R35",
+    "R36",
+    "R37",
+    "R38",
+    "R39",
+    "R40",
+    "R41",
+    "R42",
+    "R43",
+    "R44",
+    "R45",
+    "R46",
+    "R47",
+    "R48",
+    "R49",
+    "R50",
+    "R51",
+    "R52",
+    "R53",
+    "R54"
+  ],
+  "final_supplier_quote": false,
+  "extra_external_modules_included": false,
+  "note": "Carrier PCBA only. ESP32-S3/INMP441/MAX98357 complete modules and power shunts/harnesses are separate mainboard-assembly lines. No battery/speaker/radar/enclosure/charger included."
+}

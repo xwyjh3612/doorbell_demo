@@ -1,0 +1,23 @@
+2026-11-22T10:14:40.598041 Guru Meditation Error: Core  1 panic'ed (LoadProhibited). Exception was unhandled.
+2026-11-22T10:14:40.598041 
+2026-11-22T10:14:40.598041 Core  1 register dump:
+2026-11-22T10:14:40.608767 PC      : 0x4204d040  PS      : 0x00060330  A0      : 0x8204b32f  A1      : 0x3c34b760  
+2026-11-22T10:14:40.614767 A2      : 0x3c33fab0  A3      : 0x00000012  A4      : 0x00000000  A5      : 0x00000014  
+2026-11-22T10:14:40.619767 A6      : 0x3c33fb20  A7      : 0x00000000  A8      : 0x00000001  A9      : 0x00000000  
+2026-11-22T10:14:40.630767 A10     : 0x254c034f  A11     : 0x00000000  A12     : 0x00000578  A13     : 0x3c340084  
+2026-11-22T10:14:40.636768 A14     : 0x00000096  A15     : 0x00000057  SAR     : 0x0000001d  EXCCAUSE: 0x0000001c  
+2026-11-22T10:14:40.647768 EXCVADDR: 0x00000014  LBEG    : 0x400570e8  LEND    : 0x400570f3  LCOUNT  : 0x00000000  
+2026-11-22T10:14:40.647768 
+2026-11-22T10:14:40.647768 
+2026-11-22T10:14:40.669678 Backtrace: 0x4204d03d:0x3c34b760 0x4204b32c:0x3c34b790 0x4204b503:0x3c34bd90 0x4204b9be:0x3c34c390 0x4204bdad:0x3c34ca30 0x4204c4ce:0x3c34d040 0x42049924:0x3c34d070 0x42049b22:0x3c34d090 0x421d7f4f:0x3c34d0b0 0x420406ad:0x3c34d0d0 0x40384441:0x3c34d0f0
+2026-11-22T10:14:40.669678 
+2026-11-22T10:14:40.669678 
+2026-11-22T10:14:40.669678 
+2026-11-22T10:14:40.669678 
+2026-11-22T10:14:40.669678 ELF file SHA256: 554bd1549
+
+Matched app SHA256: 2f6fa727f62fc87ddfba863926dff95054119795e0696b1a134cdd09348a2069
+Symbol decode with build/doorbell_demo.elf:
+0x4204d040: stun_msg_write_attr, official peer_default/agent/stun.c:229
+0x4204b32c: agent_send_indication, official peer_default/agent/agent.c:722
+Media duration passed; post-call lifecycle failure retained separately. Protocol and firmware unchanged during the cohort.
