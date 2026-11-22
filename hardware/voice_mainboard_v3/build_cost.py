@@ -30,6 +30,13 @@ modules=[{'item':'ESP32-S3完整开发板','unit_cny':20,'basis':'未询价预�
  {'item':'模块插接、烧录与功能验收','unit_cny':5,'basis':'未询价人工预算，不含试验台和仪器购置'}]
 module_unit=sum(x['unit_cny']for x in modules)
 loss=.03;reserve=200;material=bom['estimated_material_per_board_cny'];rows=[]
+tiers_record=json.loads((out/'ml307-user-price-tiers-20261122.json').read_text(encoding='utf8'))
+ml307_tiers=next(x['tiers'] for x in tiers_record['models'] if x['lcsc']=='C48982537')
+ml307_group=next(g for g in bom['groups'] if 'U1' in g['refs'])
+assert ml307_group['lcsc']=='C48982537' and ml307_group['quantity_per_board']==1
+ml307_base=ml307_group['unit_public_reference_cny']
+def ml307_unit_for_quantity(quantity):
+    return max((t for t in ml307_tiers if t['minimum_quantity']<=quantity),key=lambda t:t['minimum_quantity'])['unit_cny']
 for q in [5,100,1000]:
     src=out/f'jlc-smt-{q}.json'
     raw=Path(f'build/smt-double-api-{q}-{smt_pads}-{smt_types}-{tht_pads}-{tht_types}.json')
@@ -50,16 +57,19 @@ for q in [5,100,1000]:
     assert params['patchComponentQuantity']==smt_pads and params['patchComponentType']==smt_types
     assert params['plugInQuantity']==tht_pads and params['plugInType']==tht_types
     processing=fees['totalMoney']+fees['changeMaterielMoney']-fees['plateChangeMaterialCountMoney']
-    carrier=pcb[q]+material*q+processing
+    ml307_unit=ml307_unit_for_quantity(q)
+    quantity_material=material+(ml307_unit-ml307_base)
+    carrier=pcb[q]+quantity_material*q+processing
     assembly=carrier+module_unit*q
-    budget=assembly+material*q*loss+reserve
-    rows.append({'quantity':q,'pcb_cny':pcb[q],'material_cny':round(material*q,4),
+    budget=assembly+quantity_material*q*loss+reserve
+    rows.append({'quantity':q,'ml307_unit_cny':ml307_unit,'material_per_board_cny':round(quantity_material,4),
+      'pcb_cny':pcb[q],'material_cny':round(quantity_material*q,4),
       'smt_and_tht_cny':round(processing,4),'carrier_subtotal_cny':round(carrier,4),
       'carrier_per_board_cny':round(carrier/q,4),'external_modules_assembly_cny':module_unit*q,
       'mainboard_assembly_subtotal_cny':round(assembly,4),'mainboard_assembly_per_board_cny':round(assembly/q,4),
-      'loss_budget_cny':round(material*q*loss,4),'engineering_reserve_cny':reserve,
+      'loss_budget_cny':round(quantity_material*q*loss,4),'engineering_reserve_cny':reserve,
       'mainboard_budget_cny':round(budget,4),'budget_per_board_cny':round(budget/q,4)})
-conditional=rows[-1]['mainboard_budget_cny']-(16.5-5)*1000*(1+loss)
+conditional=rows[-1]['mainboard_budget_cny']-(rows[-1]['ml307_unit_cny']-5)*1000*(1+loss)
 data={'revision':bom['revision'],'date':'2026-11-22','currency':'CNY','source_pcb_sha256':bom['source_pcb_sha256'],
  'supplier_quote_obtained':False,'manufacturing_ready':False,'bom':bom,'module_allowances':modules,
  'module_allowance_per_board_cny':module_unit,'material_loss_budget_rate':loss,
@@ -74,24 +84,25 @@ data={'revision':bom['revision'],'date':'2026-11-22','currency':'CNY','source_pc
    'auto_selected':'TG155 and four-wire low-resistance test','controlled_impedance_and_exact_stackup_quote_obtained':False},
  'excluded':['外壳','外置电池包及NTC','扬声器','外置雷达模块','5V适配器','运费'],
  'reserve_purpose':'指定叠层/阻抗、器件起订损耗、ML307装配工艺等未取得正式报价的预算预留；200元为假设，正式金额待DFM/BOM订单确认。',
- 'volume_price_basis':'同一公开物料单价用于5/100/1000，未虚构采购阶梯折扣；加工费按各数量已有公开响应费率，调整为最终实际贴片/插件数量的预算，尚无当前数量整单报价。',
+ 'volume_price_basis':'ML307R-DL按用户提供页面阶梯价：5只26.94、100只18.11、1000只16.50元；其余物料沿用公开参考和明确预算，尚未取得完整阶梯价。加工费按已有数量费率调整估算，尚无当前数量整单报价。',
+ 'ml307_tiers_source':'ml307-user-price-tiers-20261122.json',
  'production_target_80_cny_achieved':False}
 (out/'estimate.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
 lines=['# V3主板费用：按保存的PCB与BOM计算','',
- '2026-11-22追加[网站价格复核与降本候选](网站价格复核与降本候选.md)：原表36个料号的页面参考价已重查，一致；便宜的电容候选已另列，尚未验证替换或取得全部采购阶梯价。本表总预算不等于厂家实际采购报价。','',
+ '2026-11-22修正：用户提供完整阶梯价后确认，原ML307R-DL的16.50元是1000只档位。5只应按26.94元/只、100只按18.11元/只，本表已重新计算。其余物料的页面参考价仍不代表完整采购阶梯价。本表总预算不等于厂家实际采购报价。','',
  f'2026-11-22。100×75mm四层、1.6mm，最小钻孔0.2mm，双面SMT。{smt_types}种SMT物料、{smt_pads}个贴片焊点；{tht_types}种插件、{tht_pads}个插件焊点。',
  '', '这是当前载板设计的预算，尚未取得整单报价或生产放行。板上集成ML307和UPS；ESP32-S3、麦克风、功放沿用完整模块并单独计入主板总成。',
  '', '| 项目 | 5片 | 100片 | 1000片 |','|---|---:|---:|---:|']
-for label,key in [('PCB板费','pcb_cny'),('板载物料','material_cny'),('标准型双面SMT及插件','smt_and_tht_cny'),
+for label,key in [('ML307R-DL单价','ml307_unit_cny'),('PCB板费','pcb_cny'),('板载物料','material_cny'),('标准型双面SMT及插件','smt_and_tht_cny'),
  ('载板小计','carrier_subtotal_cny'),('每片载板','carrier_per_board_cny'),('外挂模块、线束、插接烧录验收','external_modules_assembly_cny'),
  ('主板总成小计','mainboard_assembly_subtotal_cny'),('每片主板总成','mainboard_assembly_per_board_cny'),
  ('3%物料损耗预算','loss_budget_cny'),('每批工程预留','engineering_reserve_cny'),('主板总成预算','mainboard_budget_cny'),('每片预算','budget_per_board_cny')]:
     lines.append('| '+label+' | '+' | '.join(f'{r[key]:,.2f}'for r in rows)+' |')
 lines+=['', '币种人民币。含板上UPS控制器、连接器和按钮；不含外壳、电池包/NTC、喇叭、雷达、适配器及运费。',
- '', f'板载物料：公开参考合计{bom["public_reference_material_per_board_cny"]:.4f}元/板，未询价电阻预算{bom["unquoted_allowance_material_per_board_cny"]:.4f}元/板。外挂模块/线束/插接烧录预算{module_unit:.2f}元/板，逐项在Excel中可改。',
+ '', f'BOM基准材料金额{material:.4f}元/板含ML307R-DL的1000只档位16.50元；各批次按对应模组阶梯价调整。未询价电阻预算{bom["unquoted_allowance_material_per_board_cny"]:.4f}元/板。外挂模块/线束/插接烧录预算{module_unit:.2f}元/板，逐项在Excel中可改。',
  '', '公开PCB价格包含0.2mm孔工艺自动要求的TG155和四线低阻全测；指定叠层与±10%阻抗控制尚未获得正式报价。200元/批是工程与起订补差预算，不是嘉立创收费项目的确认金额。',
  '', '双面经济型在公开计算器返回不可用，采用标准型。旧公开响应的物料分类包含一次端子分类误差，原响应保留在processing-baseline文件；当前按实际128个SMT、23个插件及已有数量费率调整估算，49种SMT的换料费392元，整盘优惠245元，本预算恢复未享受优惠的147元差额。修正参数未取得新的公开计算器响应，手工工程/钢网/包装沿用观察值，正式金额待DFM配单。',
- '', '物料单价没有取得5/100/1000阶梯价，统一沿用公开参考。C8/C9电容现货94只，L1现货21只、L2现货73只等不能直接支持大批量；厂商BOM配单、起订数量、供货周期和模块贴装工艺仍要复核。',
+ '', 'ML307R-DL已按用户提供的商城阶梯价计算，来源保存在ml307-user-price-tiers-20261122.json；其余物料尚未取得完整阶梯价。C8/C9电容记录现货94只，L1现货21只、L2现货73只等不能直接支持大批量；厂商BOM配单、起订数量、供货周期和模块贴装工艺仍要复核。',
  '', f'1000片只有在ML307确实采购到5元/只时，按同一板子的条件预算为{conditional:,.2f}元，即{conditional/1000:.2f}元/片。5元是未确认目标，仍未达到整机80元目标。',
  '', '这版适合继续做工程复核和首板验证。当前载板与外挂模块架构按1000片复制也不会自动成为80元整机；量产版本需进一步集成ESP32/音频、减少测试排针与插件人工，并重新选定经验证的低成本电源物料后重新布板和核价。',
  '', '[查看BOM与工艺数据](bom-and-process.json) · [加工费5片](jlc-smt-5.json) · [加工费100片](jlc-smt-100.json) · [加工费1000片](jlc-smt-1000.json)',

@@ -30,18 +30,23 @@
     },
     {
       "path": "hardware/voice_mainboard_v3/build_bom.py",
-      "bytes": 7703,
-      "sha256": "9fd15161fdcf2d8d7ea2a6305eeffb74ca76dba9acda729453a0115076182405"
+      "bytes": 8087,
+      "sha256": "f89a6b74da3a502df41db2b50ccc55175fe725c03a08615b6c4fa041b305f21c"
     },
     {
       "path": "hardware/voice_mainboard_v3/build_cost.py",
-      "bytes": 9946,
-      "sha256": "d6291c82fd689bcfe765543c39506c57fcd41a2a7aeaaa8d708fa563bcf61e51"
+      "bytes": 10984,
+      "sha256": "3e08093b1770fc0124763c4301b927776b4e4721cff346df6541f60c6e3adfc6"
     },
     {
       "path": "hardware/voice_mainboard_v3/build_review.py",
       "bytes": 11282,
       "sha256": "5a0a17362c599171de7b5944aeae9957520abbc8ae0bda5f07f4e51e36a231ae"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/cost/50元量产主板目标.md",
+      "bytes": 2816,
+      "sha256": "545a811108fdee8dd96f13f012824db26f827494f8e942912313db8b96ffcaff"
     },
     {
       "path": "hardware/voice_mainboard_v3/cost/assembly-bom.csv",
@@ -50,13 +55,13 @@
     },
     {
       "path": "hardware/voice_mainboard_v3/cost/bom-and-process.json",
-      "bytes": 39817,
-      "sha256": "9b362e6b03391c08a4c5ceaf53593146f541fedd7c7ba5369d13c279f29c3f7f"
+      "bytes": 40103,
+      "sha256": "931b8cf217f4c811fdddc2871ac095dc1e5e64a2d8431989e4477762a550a801"
     },
     {
       "path": "hardware/voice_mainboard_v3/cost/estimate.json",
-      "bytes": 46887,
-      "sha256": "80a15b15610b89d417aa05f9a623ef63c0335d0eb120a4da2792cfe9f7abac03"
+      "bytes": 47492,
+      "sha256": "63c8af4bbf8222440aff3c972184043fa72c0f9f12b4bb7ca9e1c0d339bdcdf6"
     },
     {
       "path": "hardware/voice_mainboard_v3/cost/extra-public-parts.json",
@@ -77,6 +82,16 @@
       "path": "hardware/voice_mainboard_v3/cost/jlc-smt-5.json",
       "bytes": 1746,
       "sha256": "c716fed11855d54925a9432d6fbcf4691f42f968a8895992f885a2eff7251185"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/cost/ml307-user-price-tiers-20261122.json",
+      "bytes": 1651,
+      "sha256": "e65587e2b0acefcbdd07f94d848c8488e7dbe0d62ebc428a2e38d7cd6b0d76b5"
+    },
+    {
+      "path": "hardware/voice_mainboard_v3/cost/ML307阶梯价修正及型号对比.md",
+      "bytes": 3009,
+      "sha256": "bf0107ca521adbf36f4cfa8090c238d581b771112a5a87fe145d8b17e6ffb76a"
     },
     {
       "path": "hardware/voice_mainboard_v3/cost/pcb-public-100.txt",
@@ -100,8 +115,8 @@
     },
     {
       "path": "hardware/voice_mainboard_v3/cost/price-recheck-20261122.json",
-      "bytes": 22743,
-      "sha256": "7c8e01268ec1f7e19a08775101a1b5c83946f8f56c7763a51c61739459d56d1d"
+      "bytes": 22934,
+      "sha256": "6be6b693440d887248ae6dffa5acbf0aa5ea9621d20e71b0b3e7e63c6fdffd0e"
     },
     {
       "path": "hardware/voice_mainboard_v3/cost/processing-baseline-100.json",
@@ -119,19 +134,24 @@
       "sha256": "808e2f0de93a88f7aa2b7fed894fc4915899a4b71eb2a8b35cd8d4f2dc7ce917"
     },
     {
+      "path": "hardware/voice_mainboard_v3/cost/production-target-50.json",
+      "bytes": 2847,
+      "sha256": "a6b459cc7db707e0975a3fc40e26af97225fd391e45b7e76b7077d0a55899291"
+    },
+    {
       "path": "hardware/voice_mainboard_v3/cost/public-sources.json",
       "bytes": 21935,
       "sha256": "c596dc9308caba5bdff709d60fd4942734e2a8d5e5b272c842e5bab4bfc087ca"
     },
     {
       "path": "hardware/voice_mainboard_v3/cost/网站价格复核与降本候选.md",
-      "bytes": 2515,
-      "sha256": "31198ab62b6283fc8c4f2072564d0ec21c4e67f27c8730a9baed87a3e5cb9728"
+      "bytes": 2882,
+      "sha256": "a14441ca164d46b7c155b1b523ec9cc4b53d2cc0ee823a5c3d852b03138cf0d4"
     },
     {
       "path": "hardware/voice_mainboard_v3/cost/费用说明.md",
-      "bytes": 3398,
-      "sha256": "b3cfa4d638b589b352f7c35d2b2603b3565b63a5c5f24220b60c27d831003da4"
+      "bytes": 3598,
+      "sha256": "41313a20f89dd25fca0bd422762dc7c0c0ce7e17491bc7ae1e5f4b0274264401"
     },
     {
       "path": "hardware/voice_mainboard_v3/derive_processing_budget.py",
@@ -256,7 +276,7 @@
     {
       "path": "hardware/voice_mainboard_v3/exports/review.html",
       "bytes": 1841246,
-      "sha256": "492e4e4b293771ca93bb947e7e0a0fb9906604e273b74c2d77e5586ef0983dc6"
+      "sha256": "373142553e2cdcda90fa61585703f4c79e541a62c0c0d8d876ba8ac8705714d8"
     },
     {
       "path": "hardware/voice_mainboard_v3/exports/schematic/voice_mainboard_v3.svg",
@@ -320,8 +340,8 @@
     },
     {
       "path": "hardware/voice_mainboard_v3/README.md",
-      "bytes": 8490,
-      "sha256": "c29f5b97728d03d2d6d64ee9368af9bc8aee589915f1e13e308fde729c043e33"
+      "bytes": 8913,
+      "sha256": "bd136022e19cdd0fc6fe61cfc7d6315986966252e3f326506a3f8937dea587ba"
     },
     {
       "path": "hardware/voice_mainboard_v3/schematic-ids.json",
@@ -410,8 +430,8 @@
     },
     {
       "path": "outputs/voice-v3-20261122/语音对讲V3主板费用.xlsx",
-      "bytes": 13780,
-      "sha256": "0a73a23015fa446ba6c1d9ccc138da6a29f27d416b438e7175cbf5e8a8403cc7"
+      "bytes": 13965,
+      "sha256": "d145b830cd6b84c43e8ef4ee561da4dcda53f28cf0e41823698b38abdf47a627"
     },
     {
       "path": "tests/at_recovery_32_hangup_panic.txt",

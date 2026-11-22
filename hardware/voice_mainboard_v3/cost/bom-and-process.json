@@ -378,7 +378,7 @@
       "source": "https://item.szlcsc.com/51313686.html",
       "stock": 1144,
       "procurement_status": "selected_catalog_part_land_review_required",
-      "price_basis": "public_unit_reference_not_quantity_tier"
+      "price_basis": "1000+ tier baseline; batch unit prices from user supplied ml307-user-price-tiers-20261122.json applied by build_cost.py"
     },
     {
       "mpn": "MWSA0603S-1R0MT",
@@ -1501,5 +1501,6 @@
   ],
   "final_supplier_quote": false,
   "extra_external_modules_included": false,
+  "material_reference_basis": "ML307R-DL uses its 1000+ tier as BOM baseline only; build_cost.py adjusts each batch using user supplied tiers. Other parts remain public references or unquoted allowances.",
   "note": "Carrier PCBA only. ESP32-S3/INMP441/MAX98357 complete modules and power shunts/harnesses are separate mainboard-assembly lines. No battery/speaker/radar/enclosure/charger included."
 }

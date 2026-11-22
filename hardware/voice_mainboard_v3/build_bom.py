@@ -74,6 +74,8 @@ for x in d['parts']:
         g.update(unit_public_reference_cny=float(data['offers']['price']),source=data['url'],
           stock=data['offers'].get('inventoryLevel',{}).get('value'),
           price_basis=data.get('observation_basis','public_unit_reference_not_quantity_tier'))
+        if sku=='C48982537':
+            g['price_basis']='1000+ tier baseline; batch unit prices from user supplied ml307-user-price-tiers-20261122.json applied by build_cost.py'
     elif not g['dnp']:
         # Explicit estimation inputs, never supplier prices or final order totals.
         if ref.startswith('R'):allowance=.06 if '0.1%'in x['value']else .025
@@ -102,6 +104,7 @@ report={'revision':d['revision'],'source_pcb_sha256':hashlib.sha256((root/'voice
  'estimated_material_per_board_cny':round(priced+allowance,4)if not missing else None,
  'missing_without_allowance':missing,'unquoted_refs':pending,
  'final_supplier_quote':False,'extra_external_modules_included':False,
+ 'material_reference_basis':'ML307R-DL uses its 1000+ tier as BOM baseline only; build_cost.py adjusts each batch using user supplied tiers. Other parts remain public references or unquoted allowances.',
  'note':'Carrier PCBA only. ESP32-S3/INMP441/MAX98357 complete modules and power shunts/harnesses are separate mainboard-assembly lines. No battery/speaker/radar/enclosure/charger included.'}
 (out/'bom-and-process.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
 (out/'public-sources.json').write_text(json.dumps([metadata[g['lcsc']]for g in active if g['lcsc']in metadata],ensure_ascii=False,indent=2)+'\n',encoding='utf8')

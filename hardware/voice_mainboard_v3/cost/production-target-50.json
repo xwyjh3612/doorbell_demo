@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-22",
+  "quantity_basis": 1000,
+  "currency": "CNY",
+  "target_assembled_mainboard_unit_cny": 50,
+  "target_achieved": false,
+  "new_integrated_design_completed": false,
+  "supplier_quote_obtained": false,
+  "scope": "Assembled and function-tested mainboard, with ESP32-S3, 4G, audio electronics and integrated UPS. External battery/NTC, speaker, radar, enclosure, adapter and freight excluded.",
+  "current_design": {
+    "architecture": "4-layer carrier with external ESP32 and audio modules",
+    "board_materials_unit_cny": 72.8068,
+    "carrier_including_pcb_and_processing_unit_cny": 89.0528,
+    "mainboard_assembly_unit_cny_before_reserve": 123.0528,
+    "cost_reference": "estimate.json"
+  },
+  "allocations": [
+    {"item": "ML307R-DL", "unit_cap_cny": 16.5, "basis": "User supplied LCSC 1000+ tier; final PCBA procurement quote not obtained"},
+    {"item": "ESP32-S3 module with required Flash and PSRAM", "unit_cap_cny": 10, "basis": "Design/procurement target only; suitable module and purchase quote unconfirmed"},
+    {"item": "Microphone and amplifier electronics", "unit_cap_cny": 4, "basis": "Target including local passives; suitable sourced parts unconfirmed"},
+    {"item": "Complete UPS, charge, system/modem regulators and ADC sampling", "unit_cap_cny": 7, "basis": "Target including power passives; circuit, parts, 4.5-5.5V/2A operation and prototype testing unresolved"},
+    {"item": "SIM socket, RF interface, UART level translation, buttons, connectors and remaining passives", "unit_cap_cny": 5.5, "basis": "Target only; complete BOM and live stock quote unconfirmed"},
+    {"item": "PCB, SMT, insertion, programming and function test", "unit_cap_cny": 4, "basis": "Target for simplified 2-layer/single-side SMT production; current 100x75 board and current processing do not demonstrate this rate"},
+    {"item": "Remaining procurement/assembly loss allowance", "unit_cap_cny": 3, "basis": "Target allowance; does not include product development NRE or freight"}
+  ],
+  "qualification_gates": [
+    "Complete compatible ESP32-S3 memory and integrated audio design; existing official WebRTC protocol unchanged",
+    "Complete UPS power architecture and actual input/transient/dropout/thermal validation",
+    "Finish 2-layer layout with sufficient ground return and RF/USB layout checks; no removal of inner layers from saved V3 without rerouting",
+    "Obtain complete quantity BOM, stock/consignment, PCB/process/programming/test quotations and reconcile total",
+    "Repeat actual integrated-board call/UPS acceptance; old wired-device tests are not new-board validation"
+  ],
+  "interpretation": "Allocations are spending limits that sum to 50, not observed market prices or evidence that a 50 CNY product has been designed or can already be purchased. Retain this distinction in any report."
+}

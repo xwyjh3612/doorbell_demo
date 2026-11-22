@@ -385,7 +385,7 @@
         "source": "https://item.szlcsc.com/51313686.html",
         "stock": 1144,
         "procurement_status": "selected_catalog_part_land_review_required",
-        "price_basis": "public_unit_reference_not_quantity_tier"
+        "price_basis": "1000+ tier baseline; batch unit prices from user supplied ml307-user-price-tiers-20261122.json applied by build_cost.py"
       },
       {
         "mpn": "MWSA0603S-1R0MT",
@@ -1508,6 +1508,7 @@
     ],
     "final_supplier_quote": false,
     "extra_external_modules_included": false,
+    "material_reference_basis": "ML307R-DL uses its 1000+ tier as BOM baseline only; build_cost.py adjusts each batch using user supplied tiers. Other parts remain public references or unquoted allowances.",
     "note": "Carrier PCBA only. ESP32-S3/INMP441/MAX98357 complete modules and power shunts/harnesses are separate mainboard-assembly lines. No battery/speaker/radar/enclosure/charger included."
   },
   "module_allowances": [
@@ -1543,36 +1544,42 @@
   "rows": [
     {
       "quantity": 5,
+      "ml307_unit_cny": 26.94,
+      "material_per_board_cny": 83.2468,
       "pcb_cny": 310.89,
-      "material_cny": 364.034,
+      "material_cny": 416.234,
       "smt_and_tht_cny": 885.13,
-      "carrier_subtotal_cny": 1560.054,
-      "carrier_per_board_cny": 312.0108,
+      "carrier_subtotal_cny": 1612.254,
+      "carrier_per_board_cny": 322.4508,
       "external_modules_assembly_cny": 170.0,
-      "mainboard_assembly_subtotal_cny": 1730.054,
-      "mainboard_assembly_per_board_cny": 346.0108,
-      "loss_budget_cny": 10.921,
+      "mainboard_assembly_subtotal_cny": 1782.254,
+      "mainboard_assembly_per_board_cny": 356.4508,
+      "loss_budget_cny": 12.487,
       "engineering_reserve_cny": 200,
-      "mainboard_budget_cny": 1940.975,
-      "budget_per_board_cny": 388.195
+      "mainboard_budget_cny": 1994.741,
+      "budget_per_board_cny": 398.9482
     },
     {
       "quantity": 100,
+      "ml307_unit_cny": 18.11,
+      "material_per_board_cny": 74.4168,
       "pcb_cny": 1018.0,
-      "material_cny": 7280.68,
+      "material_cny": 7441.68,
       "smt_and_tht_cny": 2217.5,
-      "carrier_subtotal_cny": 10516.18,
-      "carrier_per_board_cny": 105.1618,
+      "carrier_subtotal_cny": 10677.18,
+      "carrier_per_board_cny": 106.7718,
       "external_modules_assembly_cny": 3400.0,
-      "mainboard_assembly_subtotal_cny": 13916.18,
-      "mainboard_assembly_per_board_cny": 139.1618,
-      "loss_budget_cny": 218.4204,
+      "mainboard_assembly_subtotal_cny": 14077.18,
+      "mainboard_assembly_per_board_cny": 140.7718,
+      "loss_budget_cny": 223.2504,
       "engineering_reserve_cny": 200,
-      "mainboard_budget_cny": 14334.6004,
-      "budget_per_board_cny": 143.346
+      "mainboard_budget_cny": 14500.4304,
+      "budget_per_board_cny": 145.0043
     },
     {
       "quantity": 1000,
+      "ml307_unit_cny": 16.5,
+      "material_per_board_cny": 72.8068,
       "pcb_cny": 6418.0,
       "material_cny": 72806.8,
       "smt_and_tht_cny": 9828.0,
@@ -1626,6 +1633,7 @@
     "运费"
   ],
   "reserve_purpose": "指定叠层/阻抗、器件起订损耗、ML307装配工艺等未取得正式报价的预算预留；200元为假设，正式金额待DFM/BOM订单确认。",
-  "volume_price_basis": "同一公开物料单价用于5/100/1000，未虚构采购阶梯折扣；加工费按各数量已有公开响应费率，调整为最终实际贴片/插件数量的预算，尚无当前数量整单报价。",
+  "volume_price_basis": "ML307R-DL按用户提供页面阶梯价：5只26.94、100只18.11、1000只16.50元；其余物料沿用公开参考和明确预算，尚未取得完整阶梯价。加工费按已有数量费率调整估算，尚无当前数量整单报价。",
+  "ml307_tiers_source": "ml307-user-price-tiers-20261122.json",
   "production_target_80_cny_achieved": false
 }

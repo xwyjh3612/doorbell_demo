@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-22",
+  "currency": "CNY",
+  "source_basis": "User supplied current LCSC product-page text; complete tiers were not obtained by the earlier automated page extraction",
+  "supplier_order_quote_obtained": false,
+  "models": [
+    {
+      "mpn": "ML307R-DL",
+      "lcsc": "C48982537",
+      "url": "https://item.szlcsc.com/51313686.html",
+      "tiers": [
+        {"minimum_quantity": 1, "unit_cny": 26.94},
+        {"minimum_quantity": 10, "unit_cny": 22.92},
+        {"minimum_quantity": 30, "unit_cny": 20.53},
+        {"minimum_quantity": 100, "unit_cny": 18.11},
+        {"minimum_quantity": 500, "unit_cny": 17.00},
+        {"minimum_quantity": 1000, "unit_cny": 16.50}
+      ]
+    },
+    {
+      "mpn": "ML307C-DL",
+      "lcsc": "C48972417",
+      "url": null,
+      "item_identifier_basis": "C48972417 in the user supplied product text; exact product-page URL has not been independently verified",
+      "tiers": [
+        {"minimum_quantity": 1, "unit_cny": 19.00},
+        {"minimum_quantity": 10, "unit_cny": 18.02},
+        {"minimum_quantity": 30, "unit_cny": 17.43},
+        {"minimum_quantity": 100, "unit_cny": 16.84},
+        {"minimum_quantity": 500, "unit_cny": 16.57},
+        {"minimum_quantity": 1000, "unit_cny": 16.45}
+      ]
+    }
+  ],
+  "correction": "The prior ML307R-DL 16.5 CNY structured-page reference is the 1000+ tier, not a 1+ or 5-piece purchase price.",
+  "application": "Use the R-DL tier matching purchased quantity for the existing R-DL design. C-DL is comparison only; electrical/firmware compatibility has not been approved. Other BOM components still lack confirmed complete tier data."
+}

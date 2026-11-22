@@ -3,6 +3,7 @@
   "rechecked_active_bom_groups": 36,
   "unit_reference_mismatches": 0,
   "all_quantity_tiers_verified": false,
+  "subsequent_user_tier_correction": "ml307-user-price-tiers-20261122.json: ML307R-DL 16.50 CNY is the 1000+ tier. Use 26.94 for 5 and 18.11 for 100; other parts still lack complete tiers.",
   "account_order_or_cart_submitted": false,
   "price_basis": "Public product page reference; NOT quantity-specific BOM purchasing price. Full-package quantity is not a quoted price tier.",
   "current_bom_observations": [
