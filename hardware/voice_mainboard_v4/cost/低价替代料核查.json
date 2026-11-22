@@ -1,0 +1,150 @@
+{
+  "date": "2026-11-22",
+  "scope": "Other cost candidates only; wait for user UPS board before UPS selection",
+  "currency": "CNY",
+  "baseline_PCB_sha256": "ed41cc09f6c8e872366e4d947ccf258dc70ed61736dd8cc973c7cc6914fe1afa",
+  "baseline_material_per_board_cny": 57.8867,
+  "supplier_final_quote_obtained": false,
+  "active_BOM_changed": false,
+  "candidates": [
+    {
+      "role": "sim_socket",
+      "model": "NANO SIM 7P-Ow H1.45",
+      "brand": "SHOU HAN",
+      "package": "SMD",
+      "quantity_per_board": 1,
+      "purchase_quantity_for_1000_boards": 1000,
+      "selected_public_tier_quantity": 1000,
+      "public_unit_cny": 0.6096,
+      "public_candidate_per_board_cny": 0.6096,
+      "current_budget_per_board_cny": 2.51,
+      "conditional_difference_per_board_cny": 1.9004,
+      "observed_stock": 1284,
+      "stock_enough_for_1000": true,
+      "supplier": "深圳华秋电子有限公司-3店",
+      "source": "https://www.taoic.com/item?w=SIM",
+      "supplier_datasheet_url": "https://file1.huaqiu.com/web2/M00/FC/29/wKgaomaP7laAd04qAA2_18tRH4Q185.pdf",
+      "datasheet_sha256": "ba24e9bf84f79b6dff03714cfc2c5e562a0369cda33ca5dc7085357d84c1b39b",
+      "qualification": "nano SIM candidate; supplier approval specification retrieved, exact pad drawing and card-detect mapping still missing; requires PCB footprint change",
+      "production_qualified": false,
+      "active_BOM_changed": false
+    },
+    {
+      "role": "sim_esd_array",
+      "model": "SRV05-4",
+      "brand": "MSKSEMI",
+      "package": "SOT23-6",
+      "quantity_per_board": 1,
+      "purchase_quantity_for_1000_boards": 1000,
+      "selected_public_tier_quantity": 600,
+      "public_unit_cny": 0.09558,
+      "public_candidate_per_board_cny": 0.09558,
+      "current_budget_per_board_cny": 3.41,
+      "conditional_difference_per_board_cny": 3.31442,
+      "observed_stock": 8960,
+      "stock_enough_for_1000": true,
+      "supplier": "Shenzhen Huaqiu Electronics; public supplier listing",
+      "source": "https://www.taoic.com/item?w=SRV05-4",
+      "supplier_datasheet_url": "https://file.huaqiu.com/web2/M00/4A/30/pYYBAGKhyJSAHCf2ADTAZhibntg438.pdf",
+      "datasheet_sha256": "804348ba54b30d09a00d048c7e4fcba4f439556476d3c6db5b8ab04e8595213e",
+      "qualification": "four I/O channels plus rail, SOT23-6; 5V VRWM; I/O-GND max0.50pF. Requires new layout, rail injection/power-off review, and ESD/read-card qualification",
+      "production_qualified": false,
+      "active_BOM_changed": false
+    },
+    {
+      "role": "esp_buck",
+      "model": "SY8089A1AAC",
+      "brand": "SILERGY",
+      "package": "SOT23-5",
+      "quantity_per_board": 1,
+      "purchase_quantity_for_1000_boards": 1000,
+      "selected_public_tier_quantity": 500,
+      "public_unit_cny": 0.29263,
+      "public_candidate_per_board_cny": 0.29263,
+      "current_budget_per_board_cny": 0.8,
+      "conditional_difference_per_board_cny": 0.50737,
+      "observed_stock": 8199,
+      "stock_enough_for_1000": true,
+      "supplier": "深圳华秋电子有限公司-3店",
+      "source": "https://www.taoic.com/item?w=SY8089",
+      "supplier_datasheet_url": "https://file.huaqiu.com/web1/M00/97/C7/o4YBAF0Rz_6AEbagAAxEzJRIyYA704.pdf?filename=SY8089A1AAC.pdf",
+      "datasheet_sha256": "36addb1d8c9908b84152c0022c9e8749ae25ac91460467fbc0743458c975af32",
+      "qualification": "2.5-5.5V input/2A/0.6V feedback; EN1,GND2,LX3,IN4,FB5 matches current SOT23-5 pin assignment. Archived advanced specification; supplier current revision, loop/thermal/transient qualification pending",
+      "production_qualified": false,
+      "active_BOM_changed": false
+    },
+    {
+      "role": "modem_buck_conditional",
+      "model": "TPS563201DDCR",
+      "brand": "TI",
+      "package": "SOT-23-THIN",
+      "quantity_per_board": 1,
+      "purchase_quantity_for_1000_boards": 1000,
+      "selected_public_tier_quantity": 300,
+      "public_unit_cny": 0.26715,
+      "public_candidate_per_board_cny": 0.26715,
+      "current_budget_per_board_cny": 2.65,
+      "conditional_difference_per_board_cny": 2.38285,
+      "observed_stock": 44154,
+      "stock_enough_for_1000": true,
+      "supplier": "Shenzhen Huaqiu Electronics; public supplier listing",
+      "source": "https://www.taoic.com/item?w=TPS563201",
+      "supplier_datasheet_url": "https://taoic.oss-cn-hangzhou.aliyuncs.com/sku/pdf/0967f57b2aeee543fe0c9548fc7005c92997f3ed.pdf",
+      "datasheet_sha256": "b1e861e0a063eafeb0798af8f3c05e2839377af08b28aaedeeb0956aee225d3c",
+      "qualification": "4.5-17V/3A, 0.768V FB, no PG pin. Not a direct replacement: external4.5V boundary fails guaranteed input after protection drops; revise UPS PG logic, divider, inductor/caps and PCB",
+      "production_qualified": false,
+      "active_BOM_changed": false
+    },
+    {
+      "role": "amplifier_not_preferred",
+      "model": "NS4168",
+      "brand": "Nsiway",
+      "package": "ESOP-8",
+      "quantity_per_board": 1,
+      "purchase_quantity_for_1000_boards": 1000,
+      "selected_public_tier_quantity": 1000,
+      "public_unit_cny": 2.09475,
+      "public_candidate_per_board_cny": 2.09475,
+      "current_budget_per_board_cny": 3,
+      "conditional_difference_per_board_cny": 0.90525,
+      "observed_stock": 992,
+      "stock_enough_for_1000": false,
+      "supplier": "深圳华秋电子有限公司-3店",
+      "source": "https://www.taoic.com/item?w=NS4168",
+      "supplier_datasheet_url": "https://file1.huaqiu.com/web3/M00/0A/78/wKgZPGfFIZOAP3QIACWzy0_mi6U603.pdf",
+      "datasheet_sha256": "2f8e302b0f69ccad330f8e467b173e6a1eb2ae04f3eeb6640bf3c7afd3c808d4",
+      "qualification": "I2S ESOP8, 3.0-5.5V, headline2.5W at5V/4ohm versus MAX98357A~3.2W; current stock992<1000; channel, timing, gain and acoustic verification pending. Not preferred for this volume-sensitive project",
+      "production_qualified": false,
+      "active_BOM_changed": false
+    }
+  ],
+  "conditional_scenarios": [
+    {
+      "scope": "SIM socket + SIM ESD array + ESP buck only",
+      "saving_per_board_cny": 5.72219,
+      "material_per_board_cny": 52.16451
+    },
+    {
+      "scope": "Also modem buck if protected 4.5V boundary and UPS controls redesigned/qualified",
+      "saving_per_board_cny": 8.10504,
+      "material_per_board_cny": 49.78166
+    }
+  ],
+  "scenario_exclusions": [
+    "PCB and assembly",
+    "tax/shipping/payment verification",
+    "minimum packs and scrap",
+    "new passive/layout adjustments",
+    "new UPS architecture"
+  ],
+  "not_selected": [
+    {
+      "model": "ESD5V0D3B TECH PUBLIC",
+      "reason": "35pF junction capacitance in retrieved datasheet; not chosen as the low-capacitance SIM protection candidate"
+    },
+    {
+      "model": "PESD5V0S1UL,315",
+      "reason": "observed stock89, not adequate for4000pcs; not chosen solely from low headline price"
+    }
+  ]
+}
