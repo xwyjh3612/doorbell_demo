@@ -90,6 +90,9 @@ selected=[ROOT/f'voice_mainboard_v5.{ext}' for ext in ['kicad_pcb','kicad_sch','
 selected += [ROOT/name for name in ['README.md','design.json','VoiceV2.kicad_sym','fp-lib-table','sym-lib-table']]
 selected += list((ROOT/'VoiceV2.pretty').glob('*.kicad_mod'))+list((ROOT/'sources').glob('*.json'))
 selected += [ROOT/'cost/bom-budget.json',ROOT/'cost/费用说明.md',ROOT/'exports/validation.json',ROOT/'exports/design-audit.json',ROOT/'exports/modem-buck-model/result.json']
+if (ROOT/'cost/3套与5套打样费用核查.md').exists():
+    selected.append(ROOT/'cost/3套与5套打样费用核查.md')
+    selected += list((ROOT/'cost/sample-3-5').glob('*.json'))
 with zipfile.ZipFile(bundle,'w',zipfile.ZIP_DEFLATED) as z:
     for f in selected:z.write(f,Path('voice_mainboard_v5')/f.relative_to(ROOT))
 print(json.dumps({'material':float(material),'assembled':float(assembled),'checks':status,'installed_counts':counts},ensure_ascii=False,indent=2))

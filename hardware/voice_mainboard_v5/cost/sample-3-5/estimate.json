@@ -1,0 +1,306 @@
+{
+  "date": "2026-11-23",
+  "PCB_sha256": "86ffef9a4483c9eaaddd3a9944b9e787a9cc851e0d3be6589e4c84f68b37c903",
+  "full_JLC_BOM_quote_obtained": false,
+  "manufacturing_ready": false,
+  "UPS_internal_circuit_complete": false,
+  "placed_order": false,
+  "SMT_components": 80,
+  "SMT_pads": 373,
+  "SMT_types": 33,
+  "THT_components": 6,
+  "THT_pads": 20,
+  "THT_types": 4,
+  "common_part_merge_exact_MPNs_qualified": false,
+  "type_groups": {
+    "HX VoiceV2:HX_DC005_2p5_T": [
+      "J1"
+    ],
+    "ASMD1812-400-16V Fuse:Fuse_1812_4532Metric": [
+      "F1"
+    ],
+    "DMP2035U-7 Package_TO_SOT_SMD:SOT-23": [
+      "Q6"
+    ],
+    "100k Resistor_SMD:R_0603_1608Metric 1%": [
+      "R32",
+      "R1",
+      "R5",
+      "R6",
+      "R8",
+      "R15",
+      "R16",
+      "R18",
+      "R20",
+      "R59"
+    ],
+    "TPS563201DDCR VoiceV2:TI_DDC0006A": [
+      "U2"
+    ],
+    "100n Capacitor_SMD:C_0603_1608Metric": [
+      "C3",
+      "C11",
+      "C13",
+      "C14",
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C20",
+      "C58",
+      "C28",
+      "C62",
+      "C26"
+    ],
+    "22u Capacitor_SMD:C_0805_2012Metric": [
+      "C4",
+      "C6",
+      "C7",
+      "C57",
+      "C59",
+      "C60"
+    ],
+    "SWPA6045S2R2MT Inductor_SMD:L_Sunlord_SWPA6045S": [
+      "L1"
+    ],
+    "39.2k Resistor_SMD:R_0603_1608Metric 0.1%": [
+      "R2"
+    ],
+    "10k Resistor_SMD:R_0603_1608Metric 0.1%": [
+      "R3"
+    ],
+    "33p Capacitor_SMD:C_0603_1608Metric": [
+      "C37",
+      "C12"
+    ],
+    "ML307C-DL VoiceV2:ML307C_DL_109_LIBRARY_REVIEW": [
+      "U1"
+    ],
+    "OCV471M1ATR-1010 470u 10V Capacitor_SMD:CP_Elec_10x10.5": [
+      "C8"
+    ],
+    "10u Capacitor_SMD:C_0805_2012Metric": [
+      "C10",
+      "C61"
+    ],
+    "SN74LVC1T45DBVR Package_TO_SOT_SMD:SOT-23-6": [
+      "U3",
+      "U4",
+      "U5"
+    ],
+    "10k Resistor_SMD:R_0603_1608Metric 1%": [
+      "R4",
+      "R12",
+      "R57",
+      "R14",
+      "R19",
+      "R21"
+    ],
+    "2N7002K-7 Package_TO_SOT_SMD:SOT-23": [
+      "Q1",
+      "Q2",
+      "Q4",
+      "Q5"
+    ],
+    "10n Capacitor_SMD:C_0603_1608Metric": [
+      "C19",
+      "C29"
+    ],
+    "TACT TL3342-compatible": [
+      "SW3",
+      "SW1",
+      "SW2"
+    ],
+    "JAE Connector_JAE:JAE_SIM_Card_SF72S006": [
+      "J10"
+    ],
+    "22R Resistor_SMD:R_0603_1608Metric 1%": [
+      "R9",
+      "R10",
+      "R11"
+    ],
+    "SRV05-4 Package_TO_SOT_SMD:SOT-23-6": [
+      "D1"
+    ],
+    "0R Resistor_SMD:R_0603_1608Metric 1%": [
+      "R13",
+      "R30",
+      "R61",
+      "R62"
+    ],
+    "LTE Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical": [
+      "J11"
+    ],
+    "0R Resistor_SMD:R_0402_1005Metric 1%": [
+      "R26",
+      "R27"
+    ],
+    "ESP32-S3-WROOM-1-N8R8 RF_Module:ESP32-S3-WROOM-1": [
+      "U7"
+    ],
+    "1u Capacitor_SMD:C_0603_1608Metric": [
+      "C56"
+    ],
+    "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical": [
+      "J18",
+      "J16"
+    ],
+    "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical": [
+      "J17",
+      "J15"
+    ],
+    "BSS84,215 Package_TO_SOT_SMD:SOT-23": [
+      "Q3"
+    ],
+    "150k Resistor_SMD:R_0603_1608Metric 1%": [
+      "R17"
+    ],
+    "SY8089A1AAC Package_TO_SOT_SMD:SOT-23-5": [
+      "U13"
+    ],
+    "2.2uH Inductor_SMD:L_Sunlord_SWPA4030S": [
+      "L4"
+    ],
+    "22.1k Resistor_SMD:R_0603_1608Metric 1%": [
+      "R60"
+    ],
+    "MAX98357AETE+ Package_DFN_QFN:QFN-16-1EP_3x3mm_P0.5mm_EP1.675x1.675mm": [
+      "U14"
+    ],
+    "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical": [
+      "J14"
+    ],
+    "22p Capacitor_SMD:C_0603_1608Metric": [
+      "C63"
+    ]
+  },
+  "UPS_internal_unknown_parts_excluded_from_processing": true,
+  "material_basis": "ML307C-DL19 from user1+ price; ESP12/UPS5 and other parts remain previous budgets; not full JLC purchasing prices.",
+  "PCB_quote_date": "2026-11-22",
+  "PCB_quote_source": "https://www.jlc.com/newOrder/#/pcb/pcbPlaceOrder",
+  "PCB_quote_record": "build/pcb-quote-2layer-5pcs-drill0.3.txt",
+  "ordinary_fee_basis": "Replace whole-reel change fee included in returned totalMoney with returned ordinary changeMaterielMoney. Not an accepted order quote.",
+  "three_assembled_boards_order_acceptance_confirmed": false,
+  "excluded": [
+    "freight",
+    "minimum package and loss/replenishment not quoted",
+    "battery/NTC",
+    "adapter",
+    "speaker",
+    "microphone module",
+    "radar",
+    "housing",
+    "antenna/cables",
+    "programming and whole-unit tests"
+  ],
+  "rows": [
+    {
+      "assembled_quantity": 3,
+      "PCB_order_quantity": 5,
+      "PCB_previous_public_quote_cny": 51.13,
+      "material_budget_per_board_cny": 53.09096,
+      "material_budget_batch_cny": 159.27288,
+      "processing": {
+        "economicTypeVO": {
+          "returned_fees": {
+            "projectMoney": 50.0,
+            "padMoney": 11.19,
+            "manualPadMoney": 6.0,
+            "manualWeldProjectMoney": 20.0,
+            "changeMaterielMoney": 660.0,
+            "plateChangeMaterialCountMoney": 165.0,
+            "steelMoney": 0.0,
+            "packageMoney": 0,
+            "urgentFee": 0,
+            "totalMoney": 252.19,
+            "deliveryDate": 48,
+            "singlePieceProcessingDifferenceFee": 0,
+            "singlePieceProcessingDiffFeeDetailVO": null
+          },
+          "ordinary_change_fee_reconstructed_cny": 747.19
+        },
+        "standardTypeVO": {
+          "returned_fees": {
+            "projectMoney": 150.0,
+            "padMoney": 11.19,
+            "manualPadMoney": 6.0,
+            "manualWeldProjectMoney": 20.0,
+            "changeMaterielMoney": 264.0,
+            "plateChangeMaterialCountMoney": 165.0,
+            "steelMoney": 50.0,
+            "packageMoney": 3.05,
+            "urgentFee": 0,
+            "totalMoney": 405.24,
+            "deliveryDate": null,
+            "singlePieceProcessingDifferenceFee": 0,
+            "singlePieceProcessingDiffFeeDetailVO": {
+              "minimumSinglePieceProcessingFee": 2.9,
+              "singlePieceProcessingFee": 141.73,
+              "projectFee": 150.0,
+              "changeMaterialFee": 264.0,
+              "padFee": 11.19,
+              "smtOrderNumber": 3,
+              "singlePieceProcessingDifferenceFee": 0
+            }
+          },
+          "ordinary_change_fee_reconstructed_cny": 504.24
+        }
+      },
+      "conditional_total_cny": 714.64288
+    },
+    {
+      "assembled_quantity": 5,
+      "PCB_order_quantity": 5,
+      "PCB_previous_public_quote_cny": 51.13,
+      "material_budget_per_board_cny": 53.09096,
+      "material_budget_batch_cny": 265.4548,
+      "processing": {
+        "economicTypeVO": {
+          "returned_fees": {
+            "projectMoney": 50.0,
+            "padMoney": 18.65,
+            "manualPadMoney": 10.0,
+            "manualWeldProjectMoney": 20.0,
+            "changeMaterielMoney": 660.0,
+            "plateChangeMaterialCountMoney": 165.0,
+            "steelMoney": 0.0,
+            "packageMoney": 0,
+            "urgentFee": 0,
+            "totalMoney": 263.65,
+            "deliveryDate": 48,
+            "singlePieceProcessingDifferenceFee": 0,
+            "singlePieceProcessingDiffFeeDetailVO": null
+          },
+          "ordinary_change_fee_reconstructed_cny": 758.65
+        },
+        "standardTypeVO": {
+          "returned_fees": {
+            "projectMoney": 150.0,
+            "padMoney": 18.65,
+            "manualPadMoney": 10.0,
+            "manualWeldProjectMoney": 20.0,
+            "changeMaterielMoney": 264.0,
+            "plateChangeMaterialCountMoney": 165.0,
+            "steelMoney": 50.0,
+            "packageMoney": 3.08,
+            "urgentFee": 0,
+            "totalMoney": 416.73,
+            "deliveryDate": null,
+            "singlePieceProcessingDifferenceFee": 0,
+            "singlePieceProcessingDiffFeeDetailVO": {
+              "minimumSinglePieceProcessingFee": 2.9,
+              "singlePieceProcessingFee": 86.53,
+              "projectFee": 150.0,
+              "changeMaterialFee": 264.0,
+              "padFee": 18.65,
+              "smtOrderNumber": 5,
+              "singlePieceProcessingDifferenceFee": 0
+            }
+          },
+          "ordinary_change_fee_reconstructed_cny": 515.73
+        }
+      },
+      "conditional_total_cny": 832.3148
+    }
+  ]
+}
