@@ -1,0 +1,242 @@
+[
+  {
+    "net": "VIN_DC",
+    "connected": false,
+    "reason": "No collision-free path VIN_DC"
+  },
+  {
+    "net": "VIN_FUSED",
+    "connected": true,
+    "method": "same layer"
+  },
+  {
+    "net": "REVERSE_GATE",
+    "connected": false,
+    "reason": "No collision-free path REVERSE_GATE"
+  },
+  {
+    "net": "VIN_PROTECTED",
+    "connected": false,
+    "reason": "No collision-free path VIN_PROTECTED"
+  },
+  {
+    "net": "VIN_PROTECTED",
+    "connected": true,
+    "method": "off-pad vias / bottom"
+  },
+  {
+    "net": "MODEM_REG_PG",
+    "connected": false,
+    "reason": "No collision-free path MODEM_REG_PG"
+  },
+  {
+    "net": "BUCK_FB",
+    "connected": false,
+    "reason": "No collision-free path BUCK_FB"
+  },
+  {
+    "net": "CHG_DISABLE_IO38",
+    "connected": false,
+    "reason": "No collision-free path CHG_DISABLE_IO38"
+  },
+  {
+    "net": "UPS_CTL_VCC",
+    "connected": true,
+    "method": "off-pad vias / bottom"
+  },
+  {
+    "net": "BAT_UV_GOOD",
+    "connected": false,
+    "reason": "No collision-free path BAT_UV_GOOD"
+  },
+  {
+    "net": "UPS_EXT_SENSE",
+    "connected": true,
+    "method": "same layer"
+  },
+  {
+    "net": "UPS_EXT_VALID",
+    "connected": false,
+    "reason": "No off-pad escape via ('GAP14A', 1)"
+  },
+  {
+    "net": "UPS_EXT_VALID",
+    "connected": true,
+    "method": "off-pad vias / bottom"
+  },
+  {
+    "net": "POWER_BUS",
+    "connected": false,
+    "reason": "No collision-free path POWER_BUS"
+  },
+  {
+    "net": "POWER_BUS",
+    "connected": false,
+    "reason": "No collision-free path POWER_BUS"
+  },
+  {
+    "net": "POWER_BUS",
+    "connected": false,
+    "reason": "No off-pad escape via ('GAP18B', 1)"
+  },
+  {
+    "net": "ESP_3V3",
+    "connected": true,
+    "method": "off-pad vias / bottom"
+  },
+  {
+    "net": "M_SIM_RESET",
+    "connected": false,
+    "reason": "No off-pad escape via ('GAP20A', 1)"
+  },
+  {
+    "net": "SIM_VCC",
+    "connected": false,
+    "reason": "No collision-free path SIM_VCC"
+  },
+  {
+    "net": "M_RX_1V8",
+    "connected": false,
+    "reason": "No off-pad escape via ('GAP22A', 1)"
+  },
+  {
+    "net": "M_TX_1V8",
+    "connected": false,
+    "reason": "No off-pad escape via ('GAP23B', 1)"
+  },
+  {
+    "net": "MODEM_1V8",
+    "connected": false,
+    "reason": "No collision-free path MODEM_1V8"
+  },
+  {
+    "net": "DBG_RX_1V8",
+    "connected": false,
+    "reason": "No off-pad escape via ('GAP25A', 1)"
+  },
+  {
+    "net": "M_USB_DP",
+    "connected": true,
+    "method": "off-pad vias / bottom"
+  },
+  {
+    "net": "SIM_DETECT",
+    "connected": false,
+    "reason": "No collision-free path SIM_DETECT"
+  },
+  {
+    "net": "MODEM_BOOT_N",
+    "connected": false,
+    "reason": "No collision-free path MODEM_BOOT_N"
+  },
+  {
+    "net": "ESP_RX18",
+    "connected": true,
+    "method": "off-pad vias / bottom"
+  },
+  {
+    "net": "ESP_DTR4",
+    "connected": true,
+    "method": "off-pad vias / bottom"
+  },
+  {
+    "net": "RESET_CTL",
+    "connected": false,
+    "reason": "No collision-free path RESET_CTL"
+  },
+  {
+    "net": "SIM_DATA",
+    "connected": false,
+    "reason": "No collision-free path SIM_DATA"
+  },
+  {
+    "net": "ESP_USB_DP20",
+    "connected": false,
+    "reason": "No collision-free path ESP_USB_DP20"
+  },
+  {
+    "net": "SYS_5V",
+    "connected": true,
+    "method": "off-pad vias / bottom"
+  },
+  {
+    "net": "SYS_5V",
+    "connected": false,
+    "reason": "No collision-free path SYS_5V"
+  },
+  {
+    "net": "SYS_5V",
+    "connected": true,
+    "method": "off-pad vias / bottom"
+  },
+  {
+    "net": "ESP_EN",
+    "connected": false,
+    "reason": "No collision-free path ESP_EN"
+  },
+  {
+    "net": "I2S_SPK_DATA7",
+    "connected": true,
+    "method": "off-pad vias / bottom"
+  },
+  {
+    "net": "I2S_SPK_BCLK15",
+    "connected": false,
+    "reason": "No collision-free path I2S_SPK_BCLK15"
+  },
+  {
+    "net": "I2S_SPK_WS16",
+    "connected": false,
+    "reason": "No collision-free path I2S_SPK_WS16"
+  },
+  {
+    "net": "RADAR_TX8",
+    "connected": false,
+    "reason": "No collision-free path RADAR_TX8"
+  },
+  {
+    "net": "EXT_PRESENT_N_IO10",
+    "connected": true,
+    "method": "off-pad vias / bottom"
+  },
+  {
+    "net": "I2S_MIC_DATA12",
+    "connected": false,
+    "reason": "No collision-free path I2S_MIC_DATA12"
+  },
+  {
+    "net": "I2S_MIC_BCLK14",
+    "connected": false,
+    "reason": "No collision-free path I2S_MIC_BCLK14"
+  },
+  {
+    "net": "CALL_BOOT0",
+    "connected": false,
+    "reason": "No collision-free path CALL_BOOT0"
+  },
+  {
+    "net": "CALL_BOOT0",
+    "connected": true,
+    "method": "off-pad vias / bottom"
+  },
+  {
+    "net": "UPS_BOOST_FB",
+    "connected": false,
+    "reason": "No off-pad escape via ('GAP47B', 1)"
+  },
+  {
+    "net": "AMP_SD",
+    "connected": false,
+    "reason": "No off-pad escape via ('GAP48A', 1)"
+  },
+  {
+    "net": "SPK_PLUS",
+    "connected": true,
+    "method": "off-pad vias / bottom"
+  },
+  {
+    "net": "SPK_MINUS",
+    "connected": true,
+    "method": "off-pad vias / bottom"
+  }
+]

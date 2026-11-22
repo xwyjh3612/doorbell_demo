@@ -1,0 +1,12 @@
+[
+  {
+    "net": "AMP_SD",
+    "connected": true,
+    "layers": [
+      "F.Cu",
+      "B.Cu",
+      "F.Cu"
+    ],
+    "new_vias": 2
+  }
+]

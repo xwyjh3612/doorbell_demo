@@ -1,0 +1,283 @@
+{
+  "removed_track_count": 63,
+  "placements": {
+    "R61": [
+      88,
+      22,
+      0
+    ],
+    "R62": [
+      88,
+      16,
+      0
+    ],
+    "C18": [
+      51,
+      31,
+      180
+    ]
+  },
+  "connections": [
+    {
+      "net": "UPS_EXT_VALID",
+      "from": [
+        "U10",
+        4
+      ],
+      "to": [
+        "R34",
+        2
+      ],
+      "connected": true,
+      "method": "front"
+    },
+    {
+      "net": "POWER_BUS",
+      "from": [
+        "U9",
+        2
+      ],
+      "to": [
+        "C41",
+        1
+      ],
+      "connected": true,
+      "method": "front"
+    },
+    {
+      "net": "UPS_BOOST_FB",
+      "from": [
+        "U9",
+        3
+      ],
+      "to": [
+        "R40",
+        2
+      ],
+      "connected": false,
+      "reason": "No off-pad escape via ('U9', 3)"
+    },
+    {
+      "net": "AMP_SD",
+      "from": [
+        "U14",
+        4
+      ],
+      "to": [
+        "R61",
+        2
+      ],
+      "connected": true,
+      "method": "front"
+    },
+    {
+      "net": "AMP_GAIN",
+      "from": [
+        "U14",
+        2
+      ],
+      "to": [
+        "R62",
+        1
+      ],
+      "connected": false,
+      "reason": "Escape source blocked ('R62', 1)"
+    },
+    {
+      "net": "M_RX_1V8",
+      "from": [
+        "U3",
+        4
+      ],
+      "to": [
+        "U1",
+        17
+      ],
+      "connected": false,
+      "reason": "No off-pad escape via ('U1', 17)"
+    },
+    {
+      "net": "BAT_ALLOWED",
+      "from": [
+        "C54",
+        "1"
+      ],
+      "to": [
+        "U10",
+        "6"
+      ],
+      "connected": false,
+      "reason": "No collision-free path BAT_ALLOWED"
+    },
+    {
+      "net": "BAT_ALLOWED",
+      "from": [
+        "C54",
+        "1"
+      ],
+      "to": [
+        "Q10",
+        "3"
+      ],
+      "connected": true,
+      "method": "front"
+    },
+    {
+      "net": "MODEM_1V8",
+      "from": [
+        "U5",
+        "6"
+      ],
+      "to": [
+        "C18",
+        "1"
+      ],
+      "connected": true,
+      "method": "front"
+    },
+    {
+      "net": "MODEM_1V8",
+      "from": [
+        "U5",
+        "6"
+      ],
+      "to": [
+        "C16",
+        "1"
+      ],
+      "connected": true,
+      "method": "front"
+    },
+    {
+      "net": "MODEM_1V8",
+      "from": [
+        "C16",
+        "1"
+      ],
+      "to": [
+        "U4",
+        "6"
+      ],
+      "connected": true,
+      "method": "front"
+    },
+    {
+      "net": "MODEM_1V8",
+      "from": [
+        "U4",
+        "6"
+      ],
+      "to": [
+        "C14",
+        "1"
+      ],
+      "connected": true,
+      "method": "front"
+    },
+    {
+      "net": "MODEM_1V8",
+      "from": [
+        "C14",
+        "1"
+      ],
+      "to": [
+        "U3",
+        "6"
+      ],
+      "connected": true,
+      "method": "front"
+    },
+    {
+      "net": "MODEM_1V8",
+      "from": [
+        "C18",
+        "1"
+      ],
+      "to": [
+        "U1",
+        "24"
+      ],
+      "connected": false,
+      "reason": "No collision-free path MODEM_1V8"
+    },
+    {
+      "net": "MODEM_1V8",
+      "from": [
+        "U1",
+        "24"
+      ],
+      "to": [
+        "TP14",
+        "1"
+      ],
+      "connected": true,
+      "method": "back_escape"
+    },
+    {
+      "net": "MODEM_1V8",
+      "from": [
+        "U1",
+        "24"
+      ],
+      "to": [
+        "R12",
+        "1"
+      ],
+      "connected": false,
+      "reason": "No collision-free path MODEM_1V8"
+    },
+    {
+      "net": "SYS_5V",
+      "from": [
+        "R61",
+        1
+      ],
+      "to": [
+        "C62",
+        1
+      ],
+      "connected": true,
+      "method": "front"
+    },
+    {
+      "net": "GND",
+      "from": [
+        "R62",
+        2
+      ],
+      "to": [
+        "U14",
+        3
+      ],
+      "connected": false,
+      "reason": "Escape source blocked ('R62', 2)"
+    },
+    {
+      "from": [
+        "U14",
+        17
+      ],
+      "net": "GND",
+      "connected": true,
+      "method": "off_pad_via"
+    },
+    {
+      "from": [
+        "U1",
+        95
+      ],
+      "net": "GND",
+      "connected": false,
+      "reason": "No off-pad escape via ('U1', 95)"
+    },
+    {
+      "from": [
+        "C18",
+        2
+      ],
+      "net": "GND",
+      "connected": true,
+      "method": "off_pad_via"
+    }
+  ]
+}

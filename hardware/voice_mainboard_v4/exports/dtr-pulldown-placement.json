@@ -1,0 +1,29 @@
+{
+  "position_mm": [
+    40.25,
+    33.25
+  ],
+  "connections": [
+    {
+      "to": [
+        "U5",
+        "3"
+      ],
+      "connected": true,
+      "layers": [
+        "F.Cu",
+        "B.Cu",
+        "F.Cu"
+      ],
+      "new_vias": 2
+    },
+    {
+      "to": [
+        "U7",
+        "4"
+      ],
+      "connected": false,
+      "reason": "No multilayer path ESP_DTR4 visited 298919"
+    }
+  ]
+}

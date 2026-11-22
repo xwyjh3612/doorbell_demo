@@ -1,0 +1,64 @@
+[
+  {
+    "from": [
+      "U2",
+      5
+    ],
+    "to": [
+      "L1",
+      1
+    ],
+    "neck_mm": 0.25,
+    "trunk_mm": 0.8,
+    "routed": true
+  },
+  {
+    "from": [
+      "U2",
+      3
+    ],
+    "to": [
+      "C4",
+      1
+    ],
+    "neck_mm": 0.25,
+    "trunk_mm": 0.55,
+    "routed": true
+  },
+  {
+    "from": [
+      "U9",
+      5
+    ],
+    "to": [
+      "L3",
+      2
+    ],
+    "routed": false,
+    "reason": "Endpoint blocked: UPS_SW (True, False)"
+  },
+  {
+    "from": [
+      "U9",
+      4
+    ],
+    "to": [
+      "C41",
+      1
+    ],
+    "routed": false,
+    "reason": "No collision-free path POWER_BUS"
+  },
+  {
+    "from": [
+      "U9",
+      7
+    ],
+    "to": [
+      "C42",
+      1
+    ],
+    "routed": false,
+    "reason": "Endpoint blocked: SYS_5V (False, True)"
+  }
+]

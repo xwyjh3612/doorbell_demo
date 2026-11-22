@@ -1,0 +1,19 @@
+{
+  "connections": [
+    {
+      "connected": false,
+      "reason": "No collision-free path POWER_BUS"
+    }
+  ],
+  "added_trace_length_mm": 2.5065125957425085,
+  "trace_resistance_ohm_at_20C_35um_copper": 0.003682488817211526,
+  "trace_drop_V_at_2A": 0.007364977634423052,
+  "excludes": [
+    "via resistance",
+    "mux/PFET",
+    "connectors",
+    "temperature rise",
+    "transient droop"
+  ],
+  "load_qualified": false
+}

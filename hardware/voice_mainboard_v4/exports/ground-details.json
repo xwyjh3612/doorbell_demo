@@ -1,0 +1,32 @@
+[
+  {
+    "pad": [
+      "R5",
+      2
+    ],
+    "connected": true
+  },
+  {
+    "pad": [
+      "R60",
+      2
+    ],
+    "connected": true
+  },
+  {
+    "pad": [
+      "U14",
+      17
+    ],
+    "thermal_via_mm": [
+      92,
+      19
+    ],
+    "diameter_mm": 0.6,
+    "drill_mm": 0.3,
+    "back_tented": true,
+    "paste_windows": 4,
+    "paste_area_fraction": 0.6023613276899087,
+    "assembler_approved": false
+  }
+]

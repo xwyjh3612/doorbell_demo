@@ -1,0 +1,176 @@
+{
+  "placements": {
+    "U9": [
+      85,
+      11.55,
+      90
+    ],
+    "C45": [
+      85,
+      14,
+      0
+    ],
+    "C42": [
+      88.5,
+      12.15,
+      0
+    ],
+    "R40": [
+      80.3,
+      9,
+      270
+    ],
+    "R41": [
+      78,
+      9,
+      270
+    ]
+  },
+  "connections": [
+    {
+      "from": [
+        "U9",
+        5
+      ],
+      "to": [
+        "SW_EXIT",
+        0
+      ],
+      "width_mm": 0.25,
+      "connected": true
+    },
+    {
+      "from": [
+        "SW_EXIT",
+        0
+      ],
+      "to": [
+        "L3",
+        2
+      ],
+      "width_mm": 0.8,
+      "connected": true
+    },
+    {
+      "from": [
+        "U9",
+        7
+      ],
+      "to": [
+        "OUT_EXIT",
+        0
+      ],
+      "width_mm": 0.3,
+      "connected": true
+    },
+    {
+      "from": [
+        "OUT_EXIT",
+        0
+      ],
+      "to": [
+        "C42",
+        1
+      ],
+      "width_mm": 0.75,
+      "connected": true
+    },
+    {
+      "from": [
+        "C42",
+        1
+      ],
+      "to": [
+        "C43",
+        1
+      ],
+      "width_mm": 0.8,
+      "connected": true
+    },
+    {
+      "from": [
+        "U9",
+        1
+      ],
+      "to": [
+        "C45",
+        1
+      ],
+      "width_mm": 0.2,
+      "connected": true
+    },
+    {
+      "from": [
+        "U9",
+        7
+      ],
+      "to": [
+        "C45",
+        2
+      ],
+      "width_mm": 0.2,
+      "connected": true
+    },
+    {
+      "from": [
+        "U9",
+        3
+      ],
+      "to": [
+        "R40",
+        2
+      ],
+      "width_mm": 0.2,
+      "connected": true
+    },
+    {
+      "from": [
+        "R40",
+        2
+      ],
+      "to": [
+        "R41",
+        1
+      ],
+      "width_mm": 0.2,
+      "connected": true
+    },
+    {
+      "from": [
+        "U9",
+        2
+      ],
+      "to": [
+        "C41",
+        1
+      ],
+      "width_mm": 0.3,
+      "connected": true
+    },
+    {
+      "from": [
+        "U9",
+        4
+      ],
+      "to": [
+        "C41",
+        1
+      ],
+      "width_mm": 0.2,
+      "connected": true
+    },
+    {
+      "from": [
+        "C41",
+        1
+      ],
+      "to": [
+        "L3",
+        1
+      ],
+      "width_mm": 0.7,
+      "connected": true
+    }
+  ],
+  "load_qualified": false
+}

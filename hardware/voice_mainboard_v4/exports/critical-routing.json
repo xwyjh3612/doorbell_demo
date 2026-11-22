@@ -1,0 +1,238 @@
+{
+  "connections": [
+    {
+      "from": [
+        "U2",
+        5
+      ],
+      "to": [
+        "L1",
+        1
+      ],
+      "width_mm": 0.8,
+      "routed": false,
+      "reason": "Endpoint blocked: BUCK_SW (True, False)"
+    },
+    {
+      "from": [
+        "U2",
+        6
+      ],
+      "to": [
+        "C3",
+        1
+      ],
+      "width_mm": 0.2,
+      "routed": true
+    },
+    {
+      "from": [
+        "C3",
+        2
+      ],
+      "to": [
+        "L1",
+        1
+      ],
+      "width_mm": 0.3,
+      "routed": true
+    },
+    {
+      "from": [
+        "L1",
+        2
+      ],
+      "to": [
+        "C6",
+        1
+      ],
+      "width_mm": 0.9,
+      "routed": true
+    },
+    {
+      "from": [
+        "L1",
+        2
+      ],
+      "to": [
+        "C7",
+        1
+      ],
+      "width_mm": 0.9,
+      "routed": true
+    },
+    {
+      "from": [
+        "U2",
+        3
+      ],
+      "to": [
+        "C4",
+        1
+      ],
+      "width_mm": 0.45,
+      "routed": false,
+      "reason": "Endpoint blocked: VIN_PROTECTED (True, False)"
+    },
+    {
+      "from": [
+        "C4",
+        1
+      ],
+      "to": [
+        "C5",
+        1
+      ],
+      "width_mm": 0.8,
+      "routed": true
+    },
+    {
+      "from": [
+        "U13",
+        3
+      ],
+      "to": [
+        "L4",
+        1
+      ],
+      "width_mm": 0.65,
+      "routed": true
+    },
+    {
+      "from": [
+        "L4",
+        2
+      ],
+      "to": [
+        "C60",
+        1
+      ],
+      "width_mm": 0.8,
+      "routed": true
+    },
+    {
+      "from": [
+        "U13",
+        4
+      ],
+      "to": [
+        "C59",
+        1
+      ],
+      "width_mm": 0.45,
+      "routed": true
+    },
+    {
+      "from": [
+        "U13",
+        1
+      ],
+      "to": [
+        "C59",
+        1
+      ],
+      "width_mm": 0.2,
+      "routed": true
+    },
+    {
+      "from": [
+        "U9",
+        5
+      ],
+      "to": [
+        "L3",
+        2
+      ],
+      "width_mm": 0.9,
+      "routed": false,
+      "reason": "Endpoint blocked: UPS_SW (True, False)"
+    },
+    {
+      "from": [
+        "U9",
+        2
+      ],
+      "to": [
+        "U9",
+        4
+      ],
+      "width_mm": 0.2,
+      "routed": true
+    },
+    {
+      "from": [
+        "U9",
+        4
+      ],
+      "to": [
+        "C41",
+        1
+      ],
+      "width_mm": 0.45,
+      "routed": false,
+      "reason": "Endpoint blocked: POWER_BUS (True, False)"
+    },
+    {
+      "from": [
+        "C41",
+        1
+      ],
+      "to": [
+        "L3",
+        1
+      ],
+      "width_mm": 0.85,
+      "routed": true
+    },
+    {
+      "from": [
+        "U9",
+        7
+      ],
+      "to": [
+        "C42",
+        1
+      ],
+      "width_mm": 0.7,
+      "routed": false,
+      "reason": "Endpoint blocked: SYS_5V (True, False)"
+    },
+    {
+      "from": [
+        "C42",
+        1
+      ],
+      "to": [
+        "C43",
+        1
+      ],
+      "width_mm": 0.9,
+      "routed": true
+    },
+    {
+      "from": [
+        "U9",
+        1
+      ],
+      "to": [
+        "C45",
+        1
+      ],
+      "width_mm": 0.2,
+      "routed": true
+    },
+    {
+      "from": [
+        "C45",
+        2
+      ],
+      "to": [
+        "C42",
+        1
+      ],
+      "width_mm": 0.2,
+      "routed": true
+    }
+  ],
+  "load_qualified": false
+}

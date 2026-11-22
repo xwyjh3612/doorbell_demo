@@ -1,0 +1,58 @@
+{
+  "connections": [
+    {
+      "from": [
+        "FEED_A",
+        0
+      ],
+      "to": [
+        "FEED_Z",
+        0
+      ],
+      "connected": true,
+      "width_mm": 0.6,
+      "length_mm": 68.32825370038465,
+      "trace_resistance_ohm_at_20C_35um": 0.05609424256164912,
+      "trace_drop_V_at_2A": 0.11218848512329824,
+      "layers": [
+        "F.Cu",
+        "B.Cu",
+        "F.Cu",
+        "B.Cu",
+        "F.Cu",
+        "B.Cu",
+        "F.Cu"
+      ],
+      "new_vias": 5
+    },
+    {
+      "from": [
+        "C41",
+        1
+      ],
+      "to": [
+        "BOOST_MAIN",
+        0
+      ],
+      "connected": true,
+      "width_mm": 0.6,
+      "length_mm": 3.5790300468043093,
+      "trace_resistance_ohm_at_20C_35um": 0.0029382132384241093,
+      "trace_drop_V_at_2A": 0.005876426476848219,
+      "layers": [
+        "F.Cu",
+        "B.Cu",
+        "F.Cu"
+      ],
+      "new_vias": 2
+    }
+  ],
+  "load_qualified": false,
+  "DC_drop_excludes": [
+    "vias",
+    "temperature",
+    "mux/PFET",
+    "connectors",
+    "transient"
+  ]
+}

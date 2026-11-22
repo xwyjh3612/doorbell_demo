@@ -1,0 +1,77 @@
+[
+  {
+    "net": "GND",
+    "connected": false,
+    "reason": "No multilayer path GND visited 0"
+  },
+  {
+    "net": "GND",
+    "connected": false,
+    "reason": "No multilayer path GND visited 0"
+  },
+  {
+    "net": "GND",
+    "connected": false,
+    "reason": "No multilayer path GND visited 0"
+  },
+  {
+    "net": "GND",
+    "connected": false,
+    "reason": "No multilayer path GND visited 0"
+  },
+  {
+    "net": "GND",
+    "connected": false,
+    "reason": "No multilayer path GND visited 0"
+  },
+  {
+    "net": "GND",
+    "connected": false,
+    "reason": "No multilayer path GND visited 0"
+  },
+  {
+    "net": "GND",
+    "connected": false,
+    "reason": "No multilayer path GND visited 0"
+  },
+  {
+    "net": "GND",
+    "connected": false,
+    "reason": "No multilayer path GND visited 0"
+  },
+  {
+    "net": "GND",
+    "connected": false,
+    "reason": "No multilayer path GND visited 0"
+  },
+  {
+    "net": "GND",
+    "connected": false,
+    "reason": "No multilayer path GND visited 0"
+  },
+  {
+    "net": "UPS_EXT_VALID",
+    "connected": false,
+    "reason": "No multilayer path UPS_EXT_VALID visited 8"
+  },
+  {
+    "net": "POWER_BUS",
+    "connected": false,
+    "reason": "No multilayer path POWER_BUS visited 23656"
+  },
+  {
+    "net": "M_RX_1V8",
+    "connected": false,
+    "reason": "No multilayer path M_RX_1V8 visited 61002"
+  },
+  {
+    "net": "UPS_BOOST_FB",
+    "connected": false,
+    "reason": "No multilayer path UPS_BOOST_FB visited 24562"
+  },
+  {
+    "net": "AMP_SD",
+    "connected": false,
+    "reason": "No multilayer path AMP_SD visited 24"
+  }
+]

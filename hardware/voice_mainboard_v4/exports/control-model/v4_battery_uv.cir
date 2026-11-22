@@ -1,0 +1,14 @@
+v4_battery_uv
+Vsource source 0 PWL(0 4.2 .05 4.2 .45 3.0 .55 3.0 .95 4.2 1 4.2)
+Vref ref 0 .62
+Rtop source sense 100000
+Rbottom sense 0 19600
+Rfeedback result sense 2200000
+Rpullup supply result 10000
+Cfilter sense 0 10n
+Bdiff diff 0 V=V(ref)-V(sense)
+Ssink result 0 diff 0 COMP
+.model COMP SW(Ron=1 Roff=1e12 Vt=0 Vh=0)
+Bsupply supply 0 V=V(source)-.4
+.tran 50u 1
+.end

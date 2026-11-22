@@ -1,0 +1,110 @@
+[
+  {
+    "from": [
+      "U9",
+      7
+    ],
+    "to": [
+      "OUT_EXIT",
+      0
+    ],
+    "connected": false,
+    "reason": "Endpoint blocked: SYS_5V (False, True)"
+  },
+  {
+    "from": [
+      "OUT_EXIT",
+      0
+    ],
+    "to": [
+      "C42",
+      1
+    ],
+    "connected": false,
+    "reason": "Endpoint blocked: SYS_5V (True, False)"
+  },
+  {
+    "from": [
+      "U9",
+      1
+    ],
+    "to": [
+      "C45",
+      1
+    ],
+    "width_mm": 0.2,
+    "connected": true
+  },
+  {
+    "from": [
+      "U9",
+      3
+    ],
+    "to": [
+      "R40",
+      2
+    ],
+    "connected": false,
+    "reason": "No collision-free path UPS_BOOST_FB"
+  },
+  {
+    "from": [
+      "R40",
+      2
+    ],
+    "to": [
+      "R41",
+      1
+    ],
+    "width_mm": 0.2,
+    "connected": true
+  },
+  {
+    "from": [
+      "U9",
+      2
+    ],
+    "to": [
+      "VIN_EXIT",
+      0
+    ],
+    "connected": false,
+    "reason": "No collision-free path POWER_BUS"
+  },
+  {
+    "from": [
+      "VIN_EXIT",
+      0
+    ],
+    "to": [
+      "C41",
+      1
+    ],
+    "width_mm": 0.55,
+    "connected": true
+  },
+  {
+    "from": [
+      "U9",
+      4
+    ],
+    "to": [
+      "C41",
+      1
+    ],
+    "connected": false,
+    "reason": "No collision-free path POWER_BUS"
+  },
+  {
+    "from": [
+      "C41",
+      1
+    ],
+    "to": [
+      "L3",
+      1
+    ],
+    "width_mm": 0.7,
+    "connected": true
+  }
+]

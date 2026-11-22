@@ -1,0 +1,47 @@
+{
+  "PCB_sha256": "ed41cc09f6c8e872366e4d947ccf258dc70ed61736dd8cc973c7cc6914fe1afa",
+  "layers": 2,
+  "size_mm": [
+    100,
+    75
+  ],
+  "ERC": 0,
+  "DRC": 0,
+  "unconnected": 0,
+  "tracks_and_vias": 1646,
+  "manufacturing_ready": false,
+  "production_cost_constraint": {
+    "quantity": 1000,
+    "assembled_mainboard_target_cny": 50,
+    "includes": [
+      "PCB",
+      "default installed board BOM",
+      "SMT/THT assembly",
+      "loss allowance",
+      "programming and functional test"
+    ],
+    "excludes": [
+      "external adapter",
+      "battery and NTC",
+      "housing",
+      "speaker",
+      "radar",
+      "external microphone module",
+      "cables"
+    ],
+    "input": "center-positive 5.5/2.5mm barrel jack, 5V/2A, 4.5-5.5V design range",
+    "supplier_quote_obtained": false,
+    "target_achieved": false
+  },
+  "power_load_qualified": false,
+  "RF_USB_qualified": false,
+  "low_battery_2A_drop_budget_passed": false,
+  "open_items": [
+    "C-DL manufacturer HW manual, voltage/timing, AT commands and USB firmware descriptors",
+    "Exact N8R8 supplier cost and PSRAM timing compatibility",
+    "MAX98357A QFN recommended land/paste drawing",
+    "SIM/socket/capacitor/jack physical fit",
+    "Power-loop, input-low voltage, RF/USB and full prototype qualification",
+    "New GPIO battery/pwrkey/charger functions not added to official-protocol firmware"
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "placements": {
+    "R61": [
+      92,
+      23,
+      180
+    ],
+    "R62": [
+      87,
+      18.3,
+      180
+    ],
+    "C18": [
+      51,
+      29,
+      0
+    ]
+  },
+  "connections": [
+    {
+      "net": "MODEM_1V8",
+      "connected": true
+    },
+    {
+      "net": "GND",
+      "from": [
+        "C18",
+        2
+      ],
+      "connected": true
+    },
+    {
+      "net": "GND",
+      "from": [
+        "U1",
+        95
+      ],
+      "connected": true
+    },
+    {
+      "net": "M_RX_1V8",
+      "from": [
+        "U3",
+        4
+      ],
+      "to": [
+        "U1",
+        17
+      ],
+      "connected": false,
+      "reason": "No collision-free path M_RX_1V8"
+    },
+    {
+      "net": "M_TX_1V8",
+      "from": [
+        "U4",
+        4
+      ],
+      "to": [
+        "U1",
+        18
+      ],
+      "connected": false,
+      "reason": "No collision-free path M_TX_1V8"
+    },
+    {
+      "net": "MODEM_NETLIGHT",
+      "from": [
+        "U1",
+        16
+      ],
+      "to": [
+        "TP3",
+        1
+      ],
+      "connected": false,
+      "reason": "No collision-free path MODEM_NETLIGHT"
+    },
+    {
+      "net": "AMP_SD",
+      "from": [
+        "U14",
+        4
+      ],
+      "to": [
+        "R61",
+        2
+      ],
+      "connected": true,
+      "method": "front"
+    },
+    {
+      "net": "AMP_GAIN",
+      "from": [
+        "U14",
+        2
+      ],
+      "to": [
+        "R62",
+        1
+      ],
+      "connected": false,
+      "reason": "Escape source blocked ('R62', 1)"
+    },
+    {
+      "net": "GND",
+      "from": [
+        "R62",
+        2
+      ],
+      "to": [
+        "U14",
+        3
+      ],
+      "connected": false,
+      "reason": "Escape source blocked ('R62', 2)"
+    },
+    {
+      "net": "SYS_5V",
+      "from": [
+        "R61",
+        1
+      ],
+      "to": [
+        "U14",
+        7
+      ],
+      "connected": true,
+      "method": "front"
+    },
+    {
+      "net": "UPS_SW",
+      "connected": false,
+      "reason": "No collision-free path UPS_SW"
+    },
+    {
+      "net": "UPS_BOOST_FB",
+      "from": [
+        "U9",
+        3
+      ],
+      "to": [
+        "R40",
+        2
+      ],
+      "connected": true,
+      "method": "back_escape"
+    },
+    {
+      "net": "POWER_BUS",
+      "from": [
+        "U9",
+        2
+      ],
+      "to": [
+        "C41",
+        1
+      ],
+      "connected": false,
+      "reason": "No off-pad escape via ('U9', 2)"
+    },
+    {
+      "net": "POWER_BUS",
+      "from": [
+        "U9",
+        4
+      ],
+      "to": [
+        "C41",
+        1
+      ],
+      "connected": true,
+      "method": "front"
+    },
+    {
+      "net": "BAT_ALLOWED",
+      "connected": false,
+      "reason": "No collision-free path BAT_ALLOWED"
+    }
+  ]
+}

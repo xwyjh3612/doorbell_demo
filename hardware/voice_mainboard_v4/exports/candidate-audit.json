@@ -1,0 +1,83 @@
+{
+  "scope": "Native connectivity/selection checks; independent DC equations and behavioral ngspice controls only",
+  "native_pin_contract_passed": true,
+  "all_installed_parts_front": true,
+  "C_DL_library_consistent": true,
+  "C_DL_native_pad_coordinates_sizes_angles_match_library": true,
+  "full_motherboard_simulated": false,
+  "manufacturing_ready": false,
+  "networks": {
+    "battery_uv": {
+      "nominal_off_v": 3.663643431398536,
+      "nominal_on_v": 3.8114471243042702,
+      "corner_off_v": [
+        3.577485931428382,
+        3.7523867024265867
+      ],
+      "corner_on_v": [
+        3.715575588627863,
+        3.898947399104613
+      ],
+      "ngspice_edges": [
+        {
+          "input_v": 3.6630750000000543,
+          "output_high": false,
+          "time_s": 0.22897499999998203
+        },
+        {
+          "input_v": 3.812024999999911,
+          "output_high": true,
+          "time_s": 0.8206749999999703
+        }
+      ],
+      "model_limits": "Ideal reference and comparator switch; no real delay, ripple, load-drop or transistor gate dynamics. External primary PG modeled only by connectivity."
+    },
+    "external_priority": {
+      "nominal_off_v": 3.9948251748251726,
+      "nominal_on_v": 4.032793406593416,
+      "corner_off_v": [
+        3.85060358520687,
+        4.151502394327886
+      ],
+      "corner_on_v": [
+        3.8870279385181172,
+        4.188599661210454
+      ],
+      "ngspice_edges": [
+        {
+          "input_v": 4.035494865637145,
+          "output_high": true,
+          "time_s": 0.34349053568270144
+        },
+        {
+          "input_v": 3.992656250000165,
+          "output_high": false,
+          "time_s": 0.659624999999988
+        }
+      ],
+      "model_limits": "Ideal reference and comparator switch; no real delay, ripple, load-drop or transistor gate dynamics. External primary PG modeled only by connectivity."
+    }
+  },
+  "reference_bias": {
+    "worst_cathode_uA": 158.90921921020933,
+    "datasheet_minimum_current_max_uA": 80,
+    "assumed_cell_v": 2.5,
+    "assumed_diode_drop_v": 0.5,
+    "passes_assumptions": true
+  },
+  "battery_drop_budget": {
+    "min_control_trip_v": 3.577485931428382,
+    "modem_minimum_v": 3.4,
+    "total_allowable_drop_before_trip_v": 0.17748593142838187,
+    "mux_R_on_max_ohm_at_3v3_105C_200mA_datasheet": 0.033,
+    "mux_loss_at_assumed_2A_v": 0.066,
+    "remaining_for_pack_PFET_copper_connectors_v": 0.11148593142838187,
+    "qualification": "2A extrapolation and threshold budget only; load transients and actual battery capacity not qualified."
+  },
+  "cannot_verify_without_hardware": [
+    "C-DL voltage/timing and current limits from full manufacturer HW manual",
+    "Current AT/MQTT/UDP firmware compatibility and USB descriptors/ESP32 driver",
+    "Actual low-input startup, converter loops, thermal behavior and battery handover under call load",
+    "RF/USB routing and real assembly fit; long call tests on new hardware"
+  ]
+}

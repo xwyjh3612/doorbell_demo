@@ -1,0 +1,98 @@
+[
+  {
+    "pad": [
+      "U12",
+      3
+    ],
+    "via_mm": [
+      39.9,
+      63.3
+    ],
+    "connected": true,
+    "method": "off_pad_via"
+  },
+  {
+    "pad": [
+      "R5",
+      2
+    ],
+    "via_mm": [
+      46.0,
+      33.5
+    ],
+    "connected": true,
+    "method": "off_pad_via"
+  },
+  {
+    "pad": [
+      "U1",
+      95
+    ],
+    "connected": false,
+    "reason": "No off-pad escape via ('U1', 95)"
+  },
+  {
+    "pad": [
+      "U5",
+      2
+    ],
+    "via_mm": [
+      43.8,
+      31.0
+    ],
+    "connected": true,
+    "method": "off_pad_via"
+  },
+  {
+    "pad": [
+      "R60",
+      2
+    ],
+    "via_mm": [
+      25.075,
+      32.299999
+    ],
+    "connected": true,
+    "method": "off_pad_via"
+  },
+  {
+    "pad": [
+      "C18",
+      2
+    ],
+    "connected": false,
+    "reason": "No off-pad escape via ('C18', 2)"
+  },
+  {
+    "pad": [
+      "C28",
+      2
+    ],
+    "via_mm": [
+      18.8,
+      28.9
+    ],
+    "connected": true,
+    "method": "off_pad_via"
+  },
+  {
+    "pad": [
+      "U14",
+      3
+    ],
+    "connected": false,
+    "reason": "No off-pad escape via ('U14', 3)"
+  },
+  {
+    "pad": [
+      "C10",
+      2
+    ],
+    "via_mm": [
+      56.3,
+      7.5
+    ],
+    "connected": true,
+    "method": "off_pad_via"
+  }
+]
