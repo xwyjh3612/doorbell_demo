@@ -1,0 +1,155 @@
+{
+  "date": "2026-11-22",
+  "quantity": 1000,
+  "currency": "CNY",
+  "baseline_PCB_sha256": "ed41cc09f6c8e872366e4d947ccf258dc70ed61736dd8cc973c7cc6914fe1afa",
+  "baseline_budget_sha256": "81496e5f6b98a9b92267752dfb25a00a1c3d1a2860d9fdf02a2798c1f191e039",
+  "candidate_research_sha256": "7b79b130f6da84eea5b329d37eb402bff333cee1d984df9d0821f61a32db1349",
+  "active_BOM_changed": false,
+  "supplier_final_quote_obtained": false,
+  "basis": "User ML307=10, ESP=12, integrated system5V/UPS materials=5; other prices inherit baseline and researched candidate tiers. PCB/assembly/test are unquoted allowances.",
+  "ups_assumed_scope": "Includes charge, battery undervoltage/isolation, automatic source switching, system5V boost and their passives/connectors; excludes input jack/protection, modem3.8V and ESP3.3V bucks, amplifier and ESP ADC. Actual UPS design unknown.",
+  "removed_blocks": [
+    {
+      "role": "old_charge_battery_UV_mux",
+      "refs": [
+        "C38",
+        "C39",
+        "C49",
+        "C50",
+        "C51",
+        "C52",
+        "C53",
+        "C54",
+        "C55",
+        "D5",
+        "J2",
+        "J4",
+        "Q10",
+        "Q8",
+        "Q9",
+        "R34",
+        "R35",
+        "R36",
+        "R37",
+        "R38",
+        "R39",
+        "R42",
+        "R43",
+        "R44",
+        "R45",
+        "R46",
+        "R47",
+        "R48",
+        "R50",
+        "R51",
+        "R52",
+        "R53",
+        "R55",
+        "R56",
+        "U10",
+        "U11",
+        "U12",
+        "U8"
+      ],
+      "material_per_board_cny": 7.8338
+    },
+    {
+      "role": "old_standalone_audio5V_boost",
+      "refs": [
+        "C41",
+        "C42",
+        "C43",
+        "C45",
+        "L3",
+        "R40",
+        "R41",
+        "U9"
+      ],
+      "material_per_board_cny": 4.5454
+    }
+  ],
+  "input_front_end": {
+    "refs": [
+      "F1",
+      "J1",
+      "Q6",
+      "R32"
+    ],
+    "material_per_board_cny": 1.294
+  },
+  "baseline_material_per_board_cny": 57.8867,
+  "preferred_candidate_saving_cny": 5.72219,
+  "conditional_modem_buck_saving_cny": 2.38285,
+  "manufacturing_allowances_per_board_cny": {
+    "bare_PCB": 2.5,
+    "SMT_THT": 3.5,
+    "loss_programming_test": 2.5
+  },
+  "scenarios": {
+    "retain_original_modem_buck": {
+      "material_per_board_cny": 44.78531,
+      "assembled_allowance_per_board_cny": 53.28531,
+      "assembled_allowance_1000_boards_cny": 53285.31,
+      "replacement_roles": [
+        "sim_socket",
+        "sim_esd_array",
+        "esp_buck"
+      ],
+      "input_front_end_in_5_cny": false,
+      "production_qualified": false
+    },
+    "conditional_cheaper_modem_buck": {
+      "material_per_board_cny": 42.40246,
+      "assembled_allowance_per_board_cny": 50.90246,
+      "assembled_allowance_1000_boards_cny": 50902.46,
+      "replacement_roles": [
+        "sim_socket",
+        "sim_esd_array",
+        "esp_buck",
+        "modem_buck_conditional"
+      ],
+      "input_front_end_in_5_cny": false,
+      "production_qualified": false
+    },
+    "conditional_input_front_also_in_ups5": {
+      "material_per_board_cny": 41.10846,
+      "assembled_allowance_per_board_cny": 49.60846,
+      "assembled_allowance_1000_boards_cny": 49608.46,
+      "replacement_roles": [
+        "sim_socket",
+        "sim_esd_array",
+        "esp_buck",
+        "modem_buck_conditional"
+      ],
+      "input_front_end_in_5_cny": true,
+      "production_qualified": false
+    }
+  },
+  "cheaper_modem_scenario_material_breakdown_cny": {
+    "ESP32-S3 module": 12.0,
+    "ML307C-DL module": 10.0,
+    "5V UPS integrated materials": 5.0,
+    "input connector protection and complete 4G buck": 3.12935,
+    "ESP 3.3V amp and audio interface": 4.87833,
+    "modem UART reset and decoupling": 3.8129,
+    "ESP buttons interfaces and ADC": 2.3267,
+    "SIM RF and USB interface": 1.25518
+  },
+  "limitations": [
+    "TPS563201 minimum input4.5V is not guaranteed after protection drops at original external4.5V lower boundary; design changes and load validation required.",
+    "UPS actual components, continuous/peak output and switching behavior not yet identified; no new power PCB has been validated.",
+    "Candidate changes require footprint/layout and passives review; unchanged supporting-passive costs are provisional.",
+    "Existing installed component/pad counts belong to baseline, not this unimplemented scenario.",
+    "Tax/freight, procurement minimums, sourcing/authenticity and assembly factory quote not established."
+  ],
+  "excludes": [
+    "external adapter",
+    "battery and NTC",
+    "housing",
+    "speaker",
+    "radar",
+    "external microphone module",
+    "cables"
+  ]
+}
