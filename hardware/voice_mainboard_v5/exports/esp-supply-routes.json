@@ -1,0 +1,355 @@
+[
+  {
+    "from": [
+      "L4",
+      "2"
+    ],
+    "to": [
+      "C60",
+      "1"
+    ],
+    "width_mm": 0.7,
+    "connected": true,
+    "layers": [
+      "B.Cu"
+    ],
+    "new_vias": 0
+  },
+  {
+    "from": [
+      "C60",
+      "1"
+    ],
+    "to": [
+      "U7",
+      "2"
+    ],
+    "width_mm": 0.7,
+    "connected": true,
+    "layers": [
+      "B.Cu",
+      "F.Cu",
+      "B.Cu",
+      "F.Cu",
+      "B.Cu"
+    ],
+    "new_vias": 3
+  },
+  {
+    "from": [
+      "C60",
+      "1"
+    ],
+    "to": [
+      "C15",
+      "1"
+    ],
+    "width_mm": 0.35,
+    "connected": true,
+    "layers": [
+      "B.Cu",
+      "F.Cu"
+    ],
+    "new_vias": 1
+  },
+  {
+    "from": [
+      "C15",
+      "1"
+    ],
+    "to": [
+      "C17",
+      "1"
+    ],
+    "width_mm": 0.35,
+    "connected": true,
+    "layers": [
+      "F.Cu"
+    ],
+    "new_vias": 0
+  },
+  {
+    "from": [
+      "C17",
+      "1"
+    ],
+    "to": [
+      "R4",
+      "1"
+    ],
+    "width_mm": 0.35,
+    "connected": true,
+    "layers": [
+      "B.Cu"
+    ],
+    "new_vias": 0
+  },
+  {
+    "from": [
+      "C17",
+      "1"
+    ],
+    "to": [
+      "U5",
+      "1"
+    ],
+    "width_mm": 0.35,
+    "connected": true,
+    "layers": [
+      "B.Cu",
+      "F.Cu"
+    ],
+    "new_vias": 1
+  },
+  {
+    "from": [
+      "U5",
+      "1"
+    ],
+    "to": [
+      "U5",
+      "5"
+    ],
+    "width_mm": 0.35,
+    "connected": true,
+    "layers": [
+      "B.Cu"
+    ],
+    "new_vias": 0
+  },
+  {
+    "from": [
+      "U7",
+      "2"
+    ],
+    "to": [
+      "C58",
+      "1"
+    ],
+    "width_mm": 0.35,
+    "connected": true,
+    "layers": [
+      "F.Cu"
+    ],
+    "new_vias": 0
+  },
+  {
+    "from": [
+      "C58",
+      "1"
+    ],
+    "to": [
+      "C57",
+      "1"
+    ],
+    "width_mm": 0.35,
+    "connected": true,
+    "layers": [
+      "F.Cu"
+    ],
+    "new_vias": 0
+  },
+  {
+    "from": [
+      "C57",
+      "1"
+    ],
+    "to": [
+      "R57",
+      "1"
+    ],
+    "width_mm": 0.35,
+    "connected": true,
+    "layers": [
+      "F.Cu"
+    ],
+    "new_vias": 0
+  },
+  {
+    "from": [
+      "C15",
+      "1"
+    ],
+    "to": [
+      "U4",
+      "1"
+    ],
+    "width_mm": 0.35,
+    "connected": true,
+    "layers": [
+      "F.Cu",
+      "B.Cu"
+    ],
+    "new_vias": 1
+  },
+  {
+    "from": [
+      "U4",
+      "1"
+    ],
+    "to": [
+      "C13",
+      "1"
+    ],
+    "width_mm": 0.35,
+    "connected": true,
+    "layers": [
+      "F.Cu"
+    ],
+    "new_vias": 0
+  },
+  {
+    "from": [
+      "C13",
+      "1"
+    ],
+    "to": [
+      "U3",
+      "5"
+    ],
+    "width_mm": 0.35,
+    "connected": true,
+    "layers": [
+      "B.Cu"
+    ],
+    "new_vias": 0
+  },
+  {
+    "from": [
+      "U3",
+      "5"
+    ],
+    "to": [
+      "U3",
+      "1"
+    ],
+    "width_mm": 0.35,
+    "connected": true,
+    "layers": [
+      "F.Cu"
+    ],
+    "new_vias": 0
+  },
+  {
+    "from": [
+      "L4",
+      "2"
+    ],
+    "to": [
+      "C63",
+      "1"
+    ],
+    "width_mm": 0.35,
+    "connected": true,
+    "layers": [
+      "B.Cu"
+    ],
+    "new_vias": 0
+  },
+  {
+    "from": [
+      "C63",
+      "1"
+    ],
+    "to": [
+      "R59",
+      "1"
+    ],
+    "width_mm": 0.35,
+    "connected": true,
+    "layers": [
+      "F.Cu"
+    ],
+    "new_vias": 0
+  },
+  {
+    "from": [
+      "R59",
+      "1"
+    ],
+    "to": [
+      "R14",
+      "1"
+    ],
+    "width_mm": 0.35,
+    "connected": true,
+    "layers": [
+      "F.Cu",
+      "B.Cu"
+    ],
+    "new_vias": 1
+  },
+  {
+    "from": [
+      "R14",
+      "1"
+    ],
+    "to": [
+      "TP10",
+      "1"
+    ],
+    "width_mm": 0.35,
+    "connected": true,
+    "layers": [
+      "F.Cu"
+    ],
+    "new_vias": 0
+  },
+  {
+    "from": [
+      "R14",
+      "1"
+    ],
+    "to": [
+      "R21",
+      "1"
+    ],
+    "width_mm": 0.35,
+    "connected": true,
+    "layers": [
+      "B.Cu",
+      "F.Cu",
+      "B.Cu"
+    ],
+    "new_vias": 2
+  },
+  {
+    "from": [
+      "U5",
+      "5"
+    ],
+    "to": [
+      "C26",
+      "1"
+    ],
+    "width_mm": 0.35,
+    "connected": true,
+    "layers": [
+      "F.Cu",
+      "B.Cu",
+      "F.Cu",
+      "B.Cu",
+      "F.Cu",
+      "B.Cu",
+      "F.Cu",
+      "B.Cu"
+    ],
+    "new_vias": 2
+  },
+  {
+    "from": [
+      "C26",
+      "1"
+    ],
+    "to": [
+      "J14",
+      "1"
+    ],
+    "width_mm": 0.35,
+    "connected": true,
+    "layers": [
+      "F.Cu"
+    ],
+    "new_vias": 0
+  }
+]

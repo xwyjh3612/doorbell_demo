@@ -1,0 +1,90 @@
+[
+  {
+    "ground_pin": "36",
+    "escaped": true
+  },
+  {
+    "ground_pin": "37",
+    "escaped": true
+  },
+  {
+    "net": "M_USB_DP",
+    "from": [
+      "OPT_M_USB_DP_0",
+      0
+    ],
+    "to": [
+      "OPT_M_USB_DP_1",
+      0
+    ],
+    "connected": true,
+    "layers": [
+      "F.Cu",
+      "B.Cu"
+    ],
+    "new_vias": 1
+  },
+  {
+    "net": "M_USB_DP",
+    "from": [
+      "OPT_M_USB_DP_1",
+      0
+    ],
+    "to": [
+      "OPT_M_USB_DP_2",
+      0
+    ],
+    "connected": true,
+    "layers": [
+      "B.Cu",
+      "F.Cu",
+      "B.Cu",
+      "F.Cu"
+    ],
+    "new_vias": 3
+  },
+  {
+    "net": "ESP_USB_DP20",
+    "from": [
+      "OPT_ESP_USB_DP20_0",
+      0
+    ],
+    "to": [
+      "OPT_ESP_USB_DP20_2",
+      0
+    ],
+    "connected": true,
+    "layers": [
+      "F.Cu",
+      "B.Cu",
+      "F.Cu",
+      "B.Cu",
+      "F.Cu",
+      "B.Cu",
+      "F.Cu",
+      "B.Cu",
+      "F.Cu",
+      "B.Cu",
+      "F.Cu",
+      "B.Cu"
+    ],
+    "new_vias": 11
+  },
+  {
+    "net": "ESP_USB_DP20",
+    "from": [
+      "OPT_ESP_USB_DP20_2",
+      0
+    ],
+    "to": [
+      "J22",
+      "2"
+    ],
+    "connected": true,
+    "layers": [
+      "F.Cu",
+      "B.Cu"
+    ],
+    "new_vias": 1
+  }
+]

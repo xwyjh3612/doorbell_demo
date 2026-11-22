@@ -1,0 +1,335 @@
+{
+  "PCB_sha256": "86ffef9a4483c9eaaddd3a9944b9e787a9cc851e0d3be6589e4c84f68b37c903",
+  "native_pin_contract_passed": true,
+  "schematic_XML_matches_PCB_connected_pins": true,
+  "connected_pin_pairs_checked": 337,
+  "schematic_explicit_no_connect_pairs_checked": 84,
+  "preserved_primary_switch_and_power_connections": [
+    {
+      "net": "BUCK_SW",
+      "from": [
+        "U2",
+        2
+      ],
+      "to": [
+        "L1",
+        1
+      ],
+      "copper_items_checked": 4,
+      "width_mm": 0.5
+    },
+    {
+      "net": "SYS_5V",
+      "from": [
+        "U2",
+        3
+      ],
+      "to": [
+        "C4",
+        1
+      ],
+      "copper_items_checked": 4,
+      "width_mm": 0.5
+    },
+    {
+      "net": "BUCK_BST",
+      "from": [
+        "U2",
+        6
+      ],
+      "to": [
+        "C3",
+        1
+      ],
+      "copper_items_checked": 1,
+      "width_mm": 0.2
+    },
+    {
+      "net": "BUCK_SW",
+      "from": [
+        "C3",
+        2
+      ],
+      "to": [
+        "U2",
+        2
+      ],
+      "copper_items_checked": 5,
+      "width_mm": 0.2
+    },
+    {
+      "net": "BUCK_FB",
+      "from": [
+        "U2",
+        4
+      ],
+      "to": [
+        "R2",
+        2
+      ],
+      "copper_items_checked": 3,
+      "width_mm": 0.2
+    },
+    {
+      "net": "BUCK_FB",
+      "from": [
+        "R2",
+        2
+      ],
+      "to": [
+        "R3",
+        1
+      ],
+      "copper_items_checked": 1,
+      "width_mm": 0.2
+    },
+    {
+      "net": "BUCK_EN",
+      "from": [
+        "U2",
+        5
+      ],
+      "to": [
+        "R1",
+        2
+      ],
+      "copper_items_checked": 5,
+      "width_mm": 0.2
+    },
+    {
+      "net": "MODEM_3V8",
+      "from": [
+        "L1",
+        2
+      ],
+      "to": [
+        "C6",
+        1
+      ],
+      "copper_items_checked": 1,
+      "width_mm": 0.8
+    },
+    {
+      "net": "MODEM_3V8",
+      "from": [
+        "C6",
+        1
+      ],
+      "to": [
+        "C7",
+        1
+      ],
+      "copper_items_checked": 1,
+      "width_mm": 0.8
+    },
+    {
+      "net": "MODEM_3V8",
+      "from": [
+        "C10",
+        1
+      ],
+      "to": [
+        "U1",
+        43
+      ],
+      "copper_items_checked": 6,
+      "width_mm": 0.55
+    },
+    {
+      "net": "MODEM_3V8",
+      "from": [
+        "U1",
+        43
+      ],
+      "to": [
+        "U1",
+        42
+      ],
+      "copper_items_checked": 1,
+      "width_mm": 0.55
+    },
+    {
+      "net": "SYS_5V",
+      "from": [
+        "U13",
+        4
+      ],
+      "to": [
+        "C59",
+        1
+      ],
+      "copper_items_checked": 1,
+      "width_mm": 0.4
+    },
+    {
+      "net": "SYS_5V",
+      "from": [
+        "U13",
+        1
+      ],
+      "to": [
+        "C59",
+        1
+      ],
+      "copper_items_checked": 3,
+      "width_mm": 0.3
+    },
+    {
+      "net": "SYS_5V",
+      "from": [
+        "U14",
+        7
+      ],
+      "to": [
+        "U14",
+        8
+      ],
+      "copper_items_checked": 1,
+      "width_mm": 0.2
+    },
+    {
+      "net": "SYS_5V",
+      "from": [
+        "U14",
+        8
+      ],
+      "to": [
+        "C61",
+        1
+      ],
+      "copper_items_checked": 4,
+      "width_mm": 0.4
+    },
+    {
+      "net": "MODEM_3V8",
+      "from": [
+        "C7",
+        1
+      ],
+      "to": [
+        "C10",
+        1
+      ],
+      "copper_items_checked": 5,
+      "width_mm": 1.0
+    },
+    {
+      "net": "SYS_5V",
+      "from": [
+        "U15",
+        3
+      ],
+      "to": [
+        "C8",
+        1
+      ],
+      "copper_items_checked": 6,
+      "width_mm": 1.2
+    },
+    {
+      "net": "SYS_5V",
+      "from": [
+        "C8",
+        1
+      ],
+      "to": [
+        "C4",
+        1
+      ],
+      "copper_items_checked": 7,
+      "width_mm": 0.8
+    },
+    {
+      "net": "SYS_5V",
+      "from": [
+        "U15",
+        3
+      ],
+      "to": [
+        "C59",
+        1
+      ],
+      "copper_items_checked": 6,
+      "width_mm": 0.8
+    },
+    {
+      "net": "SYS_5V",
+      "from": [
+        "U15",
+        3
+      ],
+      "to": [
+        "C61",
+        1
+      ],
+      "copper_items_checked": 5,
+      "width_mm": 0.8
+    },
+    {
+      "net": "VIN_PROTECTED",
+      "from": [
+        "Q6",
+        2
+      ],
+      "to": [
+        "U15",
+        1
+      ],
+      "copper_items_checked": 6,
+      "width_mm": 1.0
+    }
+  ],
+  "power_track_width_counts_mm": {
+    "SYS_5V": {
+      "0.4": 13,
+      "0.2": 16,
+      "0.3": 3,
+      "0.5": 4,
+      "0.8": 9,
+      "1.2": 2
+    },
+    "MODEM_3V8": {
+      "0.55": 7,
+      "0.8": 2,
+      "0.2": 11,
+      "0.3": 2,
+      "0.4": 6,
+      "1.0": 1
+    },
+    "ESP_3V3": {
+      "0.35": 58,
+      "0.4": 3,
+      "0.2": 18,
+      "0.7": 9
+    }
+  },
+  "layers": 2,
+  "all_components_front": true,
+  "modem_library_pads_checked": 109,
+  "TPS563201_DDC0006A_land_checked": true,
+  "official_firmware_changed": false,
+  "voltage_resistor_corners": {
+    "modem": {
+      "nominal_v": 3.77856,
+      "min_v": 3.697093997202798,
+      "max_v": 3.8602788900900897,
+      "assumed_reference_tolerance": 0.02,
+      "assumed_resistor_tolerance": 0.001
+    },
+    "ESP": {
+      "nominal_v": 3.3149321266968323,
+      "min_v": 3.1959476725953135,
+      "max_v": 3.437174825174825,
+      "assumed_reference_tolerance": 0.02,
+      "assumed_resistor_tolerance": 0.01
+    }
+  },
+  "corner_limits": "Independent resistor equations, assumed reference tolerances, no load/startup/temperature/ripple prediction",
+  "battery_ADC_nominal_scale": 2.5,
+  "protected1S_4p2V_ADC_nominal_v": 1.6800000000000002,
+  "UPS_5V_is_user_assumption": true,
+  "UPS_internal_circuit_complete": false,
+  "cheap_SIM_socket_footprint_complete": false,
+  "full_motherboard_simulated": false,
+  "manufacturing_ready": false
+}

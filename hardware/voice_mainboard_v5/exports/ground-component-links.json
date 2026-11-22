@@ -1,0 +1,22 @@
+{
+  "added_connections": [
+    {
+      "from_mm": [
+        81.09282824940254,
+        15.505699219923747
+      ],
+      "to_mm": [
+        81.20370886073657,
+        14.67204099660182
+      ],
+      "layers": [
+        "B.Cu",
+        "F.Cu",
+        "B.Cu"
+      ],
+      "new_vias": 2
+    }
+  ],
+  "geometric_components_remaining": 1,
+  "requires_native_DRC": true
+}

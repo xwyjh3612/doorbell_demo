@@ -1,0 +1,14 @@
+{
+  "model": "TPS563201DDCR",
+  "package": "DDC0006A",
+  "source_url": "https://www.ti.com/lit/ds/symlink/tps563201.pdf",
+  "archived_drawing": "4214841/A08-2016 page25",
+  "pad_size_mm": [
+    1.1,
+    0.6
+  ],
+  "column_center_spacing_mm": 2.7,
+  "pitch_mm": 0.95,
+  "round_radius_mm": 0.05,
+  "assembler_qualified": false
+}

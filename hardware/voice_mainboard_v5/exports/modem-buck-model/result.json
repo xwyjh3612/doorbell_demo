@@ -1,0 +1,24 @@
+{
+  "simulator": "ngspice shared library with PSpice compatibility",
+  "model_source": "TI archived TPS563201_TRANS Final1.10 30DEC2015",
+  "source_url": "https://www.ti.com/product/TPS563201#design-tools-simulation",
+  "model_sha256": "aac041a7da401c22bd9331c7bfa1e6c5390f08539a14049f9d1872563e0ec9c8",
+  "scope": "Buck enable-startup with input already5V, followed by load step; no UPS/input-ramp qualification",
+  "assumptions": {
+    "UPS_v": 5,
+    "input_path_ohm": 0.05,
+    "inductor_uH": 2.2,
+    "inductor_series_ohm": 0.04,
+    "local_effective_output_uF": 24,
+    "module_effective_decoupling_uF": 6,
+    "PCB_output_path_ohm": 0.02,
+    "baseline_load_resistor_ohm": 18.9,
+    "extra_load_step_a": 1.8,
+    "model_temperature_effects": false
+  },
+  "UPS_qualified": false,
+  "full_motherboard_simulated": false,
+  "manufacturing_ready": false,
+  "model_completed": false,
+  "error": "Simulator returned no points"
+}

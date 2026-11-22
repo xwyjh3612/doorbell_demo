@@ -1,0 +1,586 @@
+[
+  {
+    "from": [
+      "U2",
+      2
+    ],
+    "to": [
+      "L1",
+      1
+    ],
+    "net": "BUCK_SW",
+    "width_mm": 0.5,
+    "back_trunk": false,
+    "connected": true,
+    "added_copper_items": 4,
+    "added_trace_length_mm": 5.260033542247717,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.005181884472477182,
+    "added_track_uuids": [
+      "bcb97a20-eb72-4754-9d73-d43d971f20df",
+      "50e37a2b-fbdc-4a3a-abf7-058c2bccf9cc",
+      "95f4a66e-bf52-4e23-a543-b8df72ace91d",
+      "9a0ed5b4-3467-49b0-9da2-0f534b11bbd0"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "U2",
+      3
+    ],
+    "to": [
+      "C4",
+      1
+    ],
+    "net": "SYS_5V",
+    "width_mm": 0.5,
+    "back_trunk": false,
+    "connected": true,
+    "added_copper_items": 4,
+    "added_trace_length_mm": 4.634890884629102,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.004566029648628898,
+    "added_track_uuids": [
+      "a2ce2241-29ea-413a-9ac9-dfa3f461227b",
+      "eec8ea9e-f6a8-4bff-9e84-990ff9af31d8",
+      "e7b0e851-e621-438b-8eec-043df6579d85",
+      "7690ce44-0b0a-4281-a35e-f16db8eaa8a0"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "U2",
+      6
+    ],
+    "to": [
+      "C3",
+      1
+    ],
+    "net": "BUCK_BST",
+    "width_mm": 0.2,
+    "back_trunk": false,
+    "connected": true,
+    "added_copper_items": 1,
+    "added_trace_length_mm": 2.4250000000000007,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.005972428571428573,
+    "added_track_uuids": [
+      "0a4fea2e-d2ba-47ea-98dd-5401570c935f"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "C3",
+      2
+    ],
+    "to": [
+      "U2",
+      2
+    ],
+    "net": "BUCK_SW",
+    "width_mm": 0.2,
+    "back_trunk": false,
+    "connected": true,
+    "added_copper_items": 5,
+    "added_trace_length_mm": 7.524167938618093,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.018530950751682276,
+    "added_track_uuids": [
+      "e8461a71-20fc-47d0-86d3-d69643f32e53",
+      "bcaf3108-be2c-41aa-ae2d-64ff320a753a",
+      "70bb906e-8bbe-4f25-b156-fe5a1b96df0c",
+      "cbbf3a7d-f30d-4749-9201-63329597f2c0",
+      "c5b9164b-1bd4-4936-a643-5763c6c0b30d"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "U2",
+      4
+    ],
+    "to": [
+      "R2",
+      2
+    ],
+    "net": "BUCK_FB",
+    "width_mm": 0.2,
+    "back_trunk": false,
+    "connected": true,
+    "added_copper_items": 3,
+    "added_trace_length_mm": 3.7419121016923382,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.00921579494759656,
+    "added_track_uuids": [
+      "4bbd0c5b-4e38-4710-8166-ad7c7b0c564d",
+      "b056cea5-1a78-409a-80c9-e1124f49b984",
+      "48f8e412-6456-412c-82ed-5b414484cae3"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "R2",
+      2
+    ],
+    "to": [
+      "R3",
+      1
+    ],
+    "net": "BUCK_FB",
+    "width_mm": 0.2,
+    "back_trunk": false,
+    "connected": true,
+    "added_copper_items": 1,
+    "added_trace_length_mm": 3.423813663154001,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.008432363936110712,
+    "added_track_uuids": [
+      "375bf6e8-ba5c-4276-aabc-18204451e570"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "U2",
+      5
+    ],
+    "to": [
+      "R1",
+      2
+    ],
+    "net": "BUCK_EN",
+    "width_mm": 0.2,
+    "back_trunk": false,
+    "connected": true,
+    "added_copper_items": 5,
+    "added_trace_length_mm": 8.948027905619238,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.022037714441839377,
+    "added_track_uuids": [
+      "e5a256fd-6464-43e2-90fc-9bf77502aa93",
+      "aaf5bf9e-cf4c-4ff1-b4d2-afffa258145b",
+      "93358587-6f38-40d6-a271-4d3ccb4497ba",
+      "755813da-2e1a-4b89-9c19-8d7ba6e50cf5",
+      "67c1933b-a38a-40b7-9d0b-331394bd800e"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "L1",
+      2
+    ],
+    "to": [
+      "C6",
+      1
+    ],
+    "net": "MODEM_3V8",
+    "width_mm": 0.8,
+    "back_trunk": false,
+    "connected": true,
+    "added_copper_items": 1,
+    "added_trace_length_mm": 5.121035051627744,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.0031530944389307966,
+    "added_track_uuids": [
+      "92a19033-84d5-496a-9e51-889c9df65c06"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "C6",
+      1
+    ],
+    "to": [
+      "C7",
+      1
+    ],
+    "net": "MODEM_3V8",
+    "width_mm": 0.8,
+    "back_trunk": false,
+    "connected": true,
+    "added_copper_items": 1,
+    "added_trace_length_mm": 3.0,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.0018471428571428573,
+    "added_track_uuids": [
+      "15b97001-22a2-4ef8-967f-e7943fa0b5f7"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "C10",
+      1
+    ],
+    "to": [
+      "U1",
+      43
+    ],
+    "net": "MODEM_3V8",
+    "width_mm": 0.55,
+    "back_trunk": false,
+    "connected": true,
+    "added_copper_items": 6,
+    "added_trace_length_mm": 6.808046220730123,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.006097180095864276,
+    "added_track_uuids": [
+      "519dbca5-c234-4f24-b4c0-d8c1757a5d86",
+      "141879ad-4f18-44e5-9abb-b0984f9d36d2",
+      "dce3aae8-e45b-4735-8177-6498b89b699e",
+      "8e9dd941-fc80-4c4c-b24d-4da8803718aa",
+      "22df2ca3-0242-4450-a983-ef1fe764f1e4",
+      "5b027765-766b-4f31-9ccf-2fa6e841546d"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "U1",
+      43
+    ],
+    "to": [
+      "U1",
+      42
+    ],
+    "net": "MODEM_3V8",
+    "width_mm": 0.55,
+    "back_trunk": false,
+    "connected": true,
+    "added_copper_items": 1,
+    "added_trace_length_mm": 1.1000739999999993,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.0009852091303896098,
+    "added_track_uuids": [
+      "4c2b976d-233d-4210-859e-4de1c6d1a039"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "U13",
+      4
+    ],
+    "to": [
+      "C59",
+      1
+    ],
+    "net": "SYS_5V",
+    "width_mm": 0.4,
+    "back_trunk": false,
+    "connected": true,
+    "added_copper_items": 1,
+    "added_trace_length_mm": 3.1865194570251725,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.003923971102793855,
+    "added_track_uuids": [
+      "8ac3a18a-bc8d-4cd4-8797-749082540a8b"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "U13",
+      1
+    ],
+    "to": [
+      "C59",
+      1
+    ],
+    "net": "SYS_5V",
+    "width_mm": 0.3,
+    "back_trunk": false,
+    "connected": true,
+    "added_copper_items": 3,
+    "added_trace_length_mm": 5.298869847337807,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.008700239635057505,
+    "added_track_uuids": [
+      "682e8d22-29bd-434c-8f35-c534ed845077",
+      "db529755-4528-4460-8c66-13ba35f50e3e",
+      "fc038044-922d-4b21-99c3-31a5cce725c0"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "U13",
+      5
+    ],
+    "to": [
+      "R60",
+      1
+    ],
+    "net": "ESP_FB",
+    "width_mm": 0.2,
+    "back_trunk": false,
+    "connected": true,
+    "added_copper_items": 1,
+    "added_trace_length_mm": 3.3801118694504777,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.00832473266133232,
+    "added_track_uuids": [
+      "bc1cc7b4-2e4e-4f5e-91d5-e99748419171"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "R60",
+      1
+    ],
+    "to": [
+      "R59",
+      2
+    ],
+    "net": "ESP_FB",
+    "width_mm": 0.2,
+    "back_trunk": false,
+    "connected": true,
+    "added_copper_items": 3,
+    "added_trace_length_mm": 5.1105159602129575,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.012586470736295912,
+    "added_track_uuids": [
+      "bb2ebf48-311f-40b2-a8fa-12d245f86737",
+      "b77f1802-1e7a-44c5-956b-966d63787670",
+      "93f403a2-d6a0-480a-ac93-9b34bb1f1827"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "U13",
+      5
+    ],
+    "to": [
+      "C63",
+      2
+    ],
+    "net": "ESP_FB",
+    "width_mm": 0.2,
+    "back_trunk": false,
+    "connected": true,
+    "added_copper_items": 2,
+    "added_trace_length_mm": 6.220337560737833,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.01531980279244575,
+    "added_track_uuids": [
+      "1cf460f0-d12e-474b-8743-44b1fd03f5a5",
+      "20d7ebc4-c692-4768-ac69-2deef7d8ea65"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "R59",
+      1
+    ],
+    "to": [
+      "C63",
+      1
+    ],
+    "net": "ESP_3V3",
+    "width_mm": 0.2,
+    "back_trunk": false,
+    "connected": true,
+    "added_copper_items": 2,
+    "added_trace_length_mm": 3.7853047163055007,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.009322664758443833,
+    "added_track_uuids": [
+      "b67dd49b-741f-49cc-a858-d33f4563189c",
+      "d42cbce2-b9fd-451e-b50f-5b442d946ed1"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "U14",
+      7
+    ],
+    "to": [
+      "U14",
+      8
+    ],
+    "net": "SYS_5V",
+    "width_mm": 0.2,
+    "back_trunk": false,
+    "connected": true,
+    "added_copper_items": 1,
+    "added_trace_length_mm": 0.5,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.0012314285714285715,
+    "added_track_uuids": [
+      "a2329e76-4512-4da4-8f39-9e0ea270cf63"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "U14",
+      8
+    ],
+    "to": [
+      "C61",
+      1
+    ],
+    "net": "SYS_5V",
+    "width_mm": 0.4,
+    "back_trunk": false,
+    "connected": true,
+    "added_copper_items": 4,
+    "added_trace_length_mm": 7.199993977496236,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.008866278298002508,
+    "added_track_uuids": [
+      "2e0ae9a5-a1cd-4d26-b7d2-ec3e4c00a026",
+      "050f6b50-8fcb-41ec-b1b0-d035eacae0ea",
+      "fc2adc2c-55ed-45dc-b867-b363f4b5d6b9",
+      "098376da-cab6-474e-a407-d4ea6701e225"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "C7",
+      1
+    ],
+    "to": [
+      "C10",
+      1
+    ],
+    "net": "MODEM_3V8",
+    "width_mm": 1.0,
+    "back_trunk": true,
+    "connected": true,
+    "added_copper_items": 5,
+    "added_trace_length_mm": 14.125389806571754,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.00850936343615134,
+    "added_track_uuids": [
+      "90bddab7-f4fb-4b2f-985b-fb50000092a6",
+      "7db82e1d-393d-4cf6-a70d-57927c432e64",
+      "053d6571-6400-4999-af9b-8033e25f7dca",
+      "b2f11a71-9eeb-4b96-b111-65ca60f81960",
+      "5bf3a29f-eab0-46dc-a70e-e15c5bd0c76e"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "U_UPS",
+      3
+    ],
+    "to": [
+      "C8",
+      1
+    ],
+    "net": "SYS_5V",
+    "width_mm": 1.2,
+    "back_trunk": true,
+    "connected": true,
+    "added_copper_items": 6,
+    "added_trace_length_mm": 56.889224767956854,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.026307100833323247,
+    "added_track_uuids": [
+      "6d05b9c3-45d8-4266-9ce4-01a2e51cd5e2",
+      "e45486e7-0327-4897-8aa5-2bacc48405e8",
+      "ab44e76c-0df7-4696-97db-b853586effdd",
+      "5072b54f-7e39-40b8-b491-6a48cb769644",
+      "084be5d8-5865-497e-9809-b6d8bdfebfd1",
+      "57780124-2a22-40bb-8631-45c02a99f2b4"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "C8",
+      1
+    ],
+    "to": [
+      "C4",
+      1
+    ],
+    "net": "SYS_5V",
+    "width_mm": 0.8,
+    "back_trunk": true,
+    "connected": true,
+    "added_copper_items": 7,
+    "added_trace_length_mm": 22.89021651695551,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.01584861902686832,
+    "added_track_uuids": [
+      "c165884d-84f7-487e-9468-2d8a0b866800",
+      "36986897-3557-4be9-835a-624158b17cdd",
+      "d097cdda-59f6-40a5-a456-81fbb4200f65",
+      "7d9480a6-2104-4c13-85bb-24abfdd93d56",
+      "061e56ec-c524-43e1-be13-40fa9bfdc324",
+      "3c082b9c-ce6c-4dc9-9a1a-00b40145071e",
+      "95b88f8c-a00c-4d2d-bd3f-a9b160fc6c59"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "U_UPS",
+      3
+    ],
+    "to": [
+      "C59",
+      1
+    ],
+    "net": "SYS_5V",
+    "width_mm": 0.8,
+    "back_trunk": true,
+    "connected": true,
+    "added_copper_items": 6,
+    "added_trace_length_mm": 45.466977941209294,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.029687882132373146,
+    "added_track_uuids": [
+      "65a814cb-0750-4435-8cbe-c2b4c2e83a63",
+      "e54b5acf-c0d3-4b3d-9653-ed8c788e3c0f",
+      "e0f41822-0b27-481f-9f0f-f147aa352629",
+      "07a5be03-476e-4cda-a465-d78c988f2336",
+      "68e07b32-b4a2-4749-8400-c5f948d7c652",
+      "6f513b76-d6c8-4b39-83bc-4205253ca362"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "U_UPS",
+      3
+    ],
+    "to": [
+      "C61",
+      1
+    ],
+    "net": "SYS_5V",
+    "width_mm": 0.8,
+    "back_trunk": true,
+    "connected": true,
+    "added_copper_items": 5,
+    "added_trace_length_mm": 52.57443126114812,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.03412561410507835,
+    "added_track_uuids": [
+      "582d04ee-66ad-4c5e-b8be-07548519f0cd",
+      "07fccd1b-41ba-4068-bec7-cd1c8b901693",
+      "0b8376d1-700e-47a3-ab5c-e9c6db337de8",
+      "e3c002ed-5e5d-44d3-bb57-432e4d026e7b",
+      "04b2835f-a6cf-4c41-8017-0873960bf296"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  },
+  {
+    "from": [
+      "Q6",
+      2
+    ],
+    "to": [
+      "U_UPS",
+      1
+    ],
+    "net": "VIN_PROTECTED",
+    "width_mm": 1.0,
+    "back_trunk": true,
+    "connected": true,
+    "added_copper_items": 6,
+    "added_trace_length_mm": 28.619462284763323,
+    "added_trace_resistance_sum_ohm_20C_35um": 0.016018807023814176,
+    "added_track_uuids": [
+      "1a0e8283-5791-4250-96f5-d7fe9b03ccd6",
+      "7f519026-4fb5-47ec-82e2-6cd789e9d360",
+      "942fb31e-4f42-4772-954b-0236ce9a1ae0",
+      "c3fd7e38-033b-4bb4-8a5d-a69cfb5e7da1",
+      "8426dcf0-667d-466c-b4fd-97bf4e2a6301",
+      "741b2ff4-ec82-4684-8cc3-2317aadc448f"
+    ],
+    "resistance_limits": "Sum of added trace segments only; excludes vias/pads/connectors/ICs/temperature. Not a whole-board end-to-end resistance or current rating."
+  }
+]

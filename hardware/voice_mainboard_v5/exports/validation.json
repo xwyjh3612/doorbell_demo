@@ -1,0 +1,32 @@
+{
+  "PCB_sha256": "86ffef9a4483c9eaaddd3a9944b9e787a9cc851e0d3be6589e4c84f68b37c903",
+  "layers": 2,
+  "size_mm": [
+    100,
+    75
+  ],
+  "ERC": 0,
+  "DRC": 0,
+  "unconnected": 0,
+  "tracks_and_vias": 1237,
+  "native_pin_contract_passed": true,
+  "UPS_output_is_5V_user_assumption": true,
+  "UPS_internal_circuit_complete": false,
+  "cheap_SIM_socket_footprint_complete": false,
+  "power_load_qualified": false,
+  "RF_USB_qualified": false,
+  "TI_PSpice_model_completed_in_ngspice": false,
+  "full_motherboard_simulated": false,
+  "manufacturing_ready": false,
+  "firmware_changed": false,
+  "assembled_allowance_cny": 52.59096,
+  "open_items": [
+    "Actual UPS IC, full charging/cutoff/power-path circuit, footprint and current/thermal validation",
+    "Cheap SIM socket exact mechanical/pad drawing; currently retain priced JAE socket",
+    "C-DL full manufacturer hardware manual/AT firmware and actual assembly fit",
+    "SY8089 current manufacturer specification, inductor ratings and ceramic DC bias",
+    "Converter startup/transient/thermal and full-board power qualification",
+    "RF/USB impedance and antenna test; current hardware USB mode unqualified",
+    "Prototype long-call test, battery reporting and new power GPIO adaptation"
+  ]
+}
