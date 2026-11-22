@@ -6,5 +6,5 @@
 *.json text eol=lf
 *.py text eol=lf
 *.svg -whitespace
-*.zip binary
 * text eol=lf
+*.zip -text -diff -merge

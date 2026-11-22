@@ -18,7 +18,7 @@ for file in (BASE / 'VoiceV2.pretty').glob('*.kicad_mod'):
 shutil.copy2(BASE / 'sources/ml307c-dl-library.json', ROOT / 'sources/ml307c-dl-library.json')
 shutil.copy2(BASE / '.gitattributes', ROOT / '.gitattributes')
 with (ROOT / '.gitattributes').open('a',encoding='utf8',newline='\n') as attrs:
-    attrs.write('*.zip binary\n')
+    attrs.write('*.zip -text -diff -merge\n')
 (ROOT / '.gitignore').write_text('*.kicad_prl\n*.lck\n*-backups/\n__pycache__/\n', encoding='utf8')
 
 spec = importlib.util.spec_from_file_location('v2helper', BASE.parent / 'voice_mainboard_v2/generate_design.py')
