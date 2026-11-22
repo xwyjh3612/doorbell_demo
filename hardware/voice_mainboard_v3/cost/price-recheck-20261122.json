@@ -1,0 +1,835 @@
+{
+  "date": "2026-11-22",
+  "rechecked_active_bom_groups": 36,
+  "unit_reference_mismatches": 0,
+  "all_quantity_tiers_verified": false,
+  "account_order_or_cart_submitted": false,
+  "price_basis": "Public product page reference; NOT quantity-specific BOM purchasing price. Full-package quantity is not a quoted price tier.",
+  "current_bom_observations": [
+    {
+      "lcsc": "C85047",
+      "mpn": "2N7002K-7",
+      "url": "https://item.szlcsc.com/86219.html",
+      "unit_page_reference_cny": 0.2474,
+      "stock": 855462,
+      "minimum_purchase_units": 1,
+      "full_package_units": 3000,
+      "refs": [
+        "Q1",
+        "Q2",
+        "Q4",
+        "Q5",
+        "Q7"
+      ],
+      "quantity_per_board": 5,
+      "previous_reference_cny": 0.2474,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C2161900",
+      "mpn": "APXE6R3ARA221MF61G",
+      "url": "https://item.szlcsc.com/2253950.html",
+      "unit_page_reference_cny": 5.23,
+      "stock": 94,
+      "minimum_purchase_units": 1,
+      "full_package_units": 1000,
+      "refs": [
+        "C8",
+        "C9"
+      ],
+      "quantity_per_board": 2,
+      "previous_reference_cny": 5.23,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C55014590",
+      "mpn": "ASMD1812-400-16V",
+      "url": "https://item.szlcsc.com/58601642.html",
+      "unit_page_reference_cny": 0.4972,
+      "stock": 2626,
+      "minimum_purchase_units": 1,
+      "full_package_units": 1000,
+      "refs": [
+        "F1"
+      ],
+      "quantity_per_board": 1,
+      "previous_reference_cny": 0.4972,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C37704",
+      "mpn": "BAT54C,215",
+      "url": "https://item.szlcsc.com/38684.html",
+      "unit_page_reference_cny": 0.0431,
+      "stock": 408543,
+      "minimum_purchase_units": 1,
+      "full_package_units": 3000,
+      "refs": [
+        "D5"
+      ],
+      "quantity_per_board": 1,
+      "previous_reference_cny": 0.0431,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C493579",
+      "mpn": "BSS84,215",
+      "url": "https://item.szlcsc.com/504270.html",
+      "unit_page_reference_cny": 0.1765,
+      "stock": 6508,
+      "minimum_purchase_units": 1,
+      "full_package_units": 3000,
+      "refs": [
+        "Q3"
+      ],
+      "quantity_per_board": 1,
+      "previous_reference_cny": 0.1765,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C15849",
+      "mpn": "CL10A105KB8NNNC",
+      "url": "https://item.szlcsc.com/16531.html",
+      "unit_page_reference_cny": 0.0327,
+      "stock": 514692,
+      "minimum_purchase_units": 1,
+      "full_package_units": 4000,
+      "refs": [
+        "C46",
+        "C47"
+      ],
+      "quantity_per_board": 2,
+      "previous_reference_cny": 0.0327,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C1589",
+      "mpn": "CL10B103KB8NNNC",
+      "url": "https://item.szlcsc.com/1941.html",
+      "unit_page_reference_cny": 0.019,
+      "stock": 1294896,
+      "minimum_purchase_units": 1,
+      "full_package_units": 4000,
+      "refs": [
+        "C19",
+        "C29",
+        "C45",
+        "C51"
+      ],
+      "quantity_per_board": 4,
+      "previous_reference_cny": 0.019,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C1591",
+      "mpn": "CL10B104KB8NNNC",
+      "url": "https://item.szlcsc.com/1943.html",
+      "unit_page_reference_cny": 0.0193,
+      "stock": 141149,
+      "minimum_purchase_units": 1,
+      "full_package_units": 4000,
+      "refs": [
+        "C2",
+        "C31",
+        "C3",
+        "C11",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C20",
+        "C27",
+        "C30",
+        "C28",
+        "C50"
+      ],
+      "quantity_per_board": 15,
+      "previous_reference_cny": 0.0193,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C163508",
+      "mpn": "CL10C102JB8NNNC",
+      "url": "https://item.szlcsc.com/174890.html",
+      "unit_page_reference_cny": 0.0286,
+      "stock": 180098,
+      "minimum_purchase_units": 1,
+      "full_package_units": 4000,
+      "refs": [
+        "C49",
+        "C52"
+      ],
+      "quantity_per_board": 2,
+      "previous_reference_cny": 0.0286,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C1663",
+      "mpn": "CL10C330JB8NNNC",
+      "url": "https://item.szlcsc.com/2015.html",
+      "unit_page_reference_cny": 0.0289,
+      "stock": 305917,
+      "minimum_purchase_units": 1,
+      "full_package_units": 4000,
+      "refs": [
+        "C37",
+        "C12"
+      ],
+      "quantity_per_board": 2,
+      "previous_reference_cny": 0.0289,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C15850",
+      "mpn": "CL21A106KAYNNNE",
+      "url": "https://item.szlcsc.com/16532.html",
+      "unit_page_reference_cny": 0.096,
+      "stock": 1873879,
+      "minimum_purchase_units": 1,
+      "full_package_units": 2000,
+      "refs": [
+        "C10",
+        "C26",
+        "C38",
+        "C39",
+        "C53"
+      ],
+      "quantity_per_board": 5,
+      "previous_reference_cny": 0.096,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C398815",
+      "mpn": "CL21A226MOCLRNC",
+      "url": "https://item.szlcsc.com/381139.html",
+      "unit_page_reference_cny": 0.2619,
+      "stock": 16580,
+      "minimum_purchase_units": 1,
+      "full_package_units": 4000,
+      "refs": [
+        "C1",
+        "C32",
+        "C33",
+        "C34",
+        "C35",
+        "C36",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C40",
+        "C41",
+        "C42",
+        "C43",
+        "C44"
+      ],
+      "quantity_per_board": 15,
+      "previous_reference_cny": 0.2619,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C3659248",
+      "mpn": "LM393LVDGKR",
+      "url": "https://item.szlcsc.com/4227045.html",
+      "unit_page_reference_cny": 1.0033,
+      "stock": 1338,
+      "minimum_purchase_units": 1,
+      "full_package_units": 2500,
+      "refs": [
+        "U11"
+      ],
+      "quantity_per_board": 1,
+      "previous_reference_cny": 1.0033,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C48982537",
+      "mpn": "ML307R-DL",
+      "url": "https://item.szlcsc.com/51313686.html",
+      "unit_page_reference_cny": 16.5,
+      "stock": 1144,
+      "minimum_purchase_units": 1,
+      "full_package_units": 500,
+      "refs": [
+        "U1"
+      ],
+      "quantity_per_board": 1,
+      "previous_reference_cny": 16.5,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C112125",
+      "mpn": "MWSA0603S-1R0MT",
+      "url": "https://item.szlcsc.com/113356.html",
+      "unit_page_reference_cny": 0.3697,
+      "stock": 11722,
+      "minimum_purchase_units": 1,
+      "full_package_units": 1500,
+      "refs": [
+        "L3"
+      ],
+      "quantity_per_board": 1,
+      "previous_reference_cny": 0.3697,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C250035",
+      "mpn": "OCV471M1ATR-1010",
+      "url": "https://item.szlcsc.com/246157.html",
+      "unit_page_reference_cny": 1.1262,
+      "stock": 1778,
+      "minimum_purchase_units": 1,
+      "full_package_units": 500,
+      "refs": [
+        "C48"
+      ],
+      "quantity_per_board": 1,
+      "previous_reference_cny": 1.1262,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C552574",
+      "mpn": "PESD5V0U1BA,115",
+      "url": "https://item.szlcsc.com/573571.html",
+      "unit_page_reference_cny": 0.8525,
+      "stock": 17038,
+      "minimum_purchase_units": 1,
+      "full_package_units": 3000,
+      "refs": [
+        "D1",
+        "D2",
+        "D3",
+        "D4"
+      ],
+      "quantity_per_board": 4,
+      "previous_reference_cny": 0.8525,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C2977286",
+      "mpn": "SF72S006VBDR2500",
+      "url": "https://item.szlcsc.com/3386692.html",
+      "unit_page_reference_cny": 2.51,
+      "stock": 7284,
+      "minimum_purchase_units": 1,
+      "full_package_units": 2500,
+      "refs": [
+        "J10"
+      ],
+      "quantity_per_board": 1,
+      "previous_reference_cny": 2.51,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C2677376",
+      "mpn": "SN74AXC1T45DBVR",
+      "url": "https://item.szlcsc.com/2769292.html",
+      "unit_page_reference_cny": 1.51,
+      "stock": 6675,
+      "minimum_purchase_units": 1,
+      "full_package_units": 3000,
+      "refs": [
+        "U3",
+        "U4",
+        "U5"
+      ],
+      "quantity_per_board": 3,
+      "previous_reference_cny": 1.51,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C98203",
+      "mpn": "SWPA6045S1R5MT",
+      "url": "https://item.szlcsc.com/99412.html",
+      "unit_page_reference_cny": 0.2862,
+      "stock": 73,
+      "minimum_purchase_units": 1,
+      "full_package_units": 1500,
+      "refs": [
+        "L2"
+      ],
+      "quantity_per_board": 1,
+      "previous_reference_cny": 0.2862,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C83455",
+      "mpn": "SWPA6045S2R2MT",
+      "url": "https://item.szlcsc.com/84619.html",
+      "unit_page_reference_cny": 0.2756,
+      "stock": 21,
+      "minimum_purchase_units": 1,
+      "full_package_units": 1500,
+      "refs": [
+        "L1"
+      ],
+      "quantity_per_board": 1,
+      "previous_reference_cny": 0.2756,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C382139",
+      "mpn": "TP4056",
+      "url": "https://item.szlcsc.com/354934.html",
+      "unit_page_reference_cny": 0.4012,
+      "stock": 19362,
+      "minimum_purchase_units": 1,
+      "full_package_units": 4000,
+      "refs": [
+        "U8"
+      ],
+      "quantity_per_board": 1,
+      "previous_reference_cny": 0.4012,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C5350871",
+      "mpn": "TPD2E2U06DCKR-TP",
+      "url": "https://item.szlcsc.com/6138721.html",
+      "unit_page_reference_cny": 0.341,
+      "stock": 36034,
+      "minimum_purchase_units": 1,
+      "full_package_units": 3000,
+      "refs": [
+        "U7"
+      ],
+      "quantity_per_board": 1,
+      "previous_reference_cny": 0.341,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C22399676",
+      "mpn": "TPS2117DRLR",
+      "url": "https://item.szlcsc.com/24017237.html",
+      "unit_page_reference_cny": 1.91,
+      "stock": 11094,
+      "minimum_purchase_units": 1,
+      "full_package_units": 4000,
+      "refs": [
+        "U10"
+      ],
+      "quantity_per_board": 1,
+      "previous_reference_cny": 1.91,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C376005",
+      "mpn": "TPS61230ARNSR",
+      "url": "https://item.szlcsc.com/348561.html",
+      "unit_page_reference_cny": 3.29,
+      "stock": 1078,
+      "minimum_purchase_units": 1,
+      "full_package_units": 3000,
+      "refs": [
+        "U9"
+      ],
+      "quantity_per_board": 1,
+      "previous_reference_cny": 3.29,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C5219254",
+      "mpn": "TPS62933PDRLR",
+      "url": "https://item.szlcsc.com/5914994.html",
+      "unit_page_reference_cny": 2.65,
+      "stock": 5746,
+      "minimum_purchase_units": 1,
+      "full_package_units": 4000,
+      "refs": [
+        "U2"
+      ],
+      "quantity_per_board": 1,
+      "previous_reference_cny": 2.65,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C2876326",
+      "mpn": "TPS63061DSCR",
+      "url": "https://item.szlcsc.com/3084938.html",
+      "unit_page_reference_cny": 9.01,
+      "stock": 4636,
+      "minimum_purchase_units": 1,
+      "full_package_units": 3000,
+      "refs": [
+        "U6"
+      ],
+      "quantity_per_board": 1,
+      "previous_reference_cny": 9.01,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C88374",
+      "mpn": "U.FL-R-SMT-1(80)",
+      "url": "https://item.szlcsc.com/89553.html",
+      "unit_page_reference_cny": 0.389,
+      "stock": 266729,
+      "minimum_purchase_units": 1,
+      "full_package_units": 10000,
+      "refs": [
+        "J11"
+      ],
+      "quantity_per_board": 1,
+      "previous_reference_cny": 0.389,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C93157",
+      "mpn": "B3F-1000",
+      "url": "https://item.szlcsc.com/94352.html",
+      "unit_page_reference_cny": 0.6904,
+      "stock": 688,
+      "minimum_purchase_units": 1,
+      "full_package_units": 100,
+      "refs": [
+        "SW1",
+        "SW2"
+      ],
+      "quantity_per_board": 2,
+      "previous_reference_cny": 0.6904,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C2760668",
+      "mpn": "DG350-3.5-02P-14-00A(H)",
+      "url": "https://item.szlcsc.com/2882221.html",
+      "unit_page_reference_cny": 0.6998,
+      "stock": 1464,
+      "minimum_purchase_units": 1,
+      "full_package_units": 1500,
+      "refs": [
+        "J2"
+      ],
+      "quantity_per_board": 1,
+      "previous_reference_cny": 0.6998,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C18357600",
+      "mpn": "HX DC005-2.5-T",
+      "url": "https://item.szlcsc.com/19545770.html",
+      "unit_page_reference_cny": 0.3837,
+      "stock": 4187,
+      "minimum_purchase_units": 1,
+      "full_package_units": 500,
+      "refs": [
+        "J1"
+      ],
+      "quantity_per_board": 1,
+      "previous_reference_cny": 0.3837,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C492401",
+      "mpn": "PZ254V-11-02P",
+      "url": "https://item.szlcsc.com/502957.html",
+      "unit_page_reference_cny": 0.0534,
+      "stock": 889521,
+      "minimum_purchase_units": 1,
+      "full_package_units": 2000,
+      "refs": [
+        "J21",
+        "J20",
+        "J6",
+        "J7",
+        "J8",
+        "JP2",
+        "J17",
+        "J4"
+      ],
+      "quantity_per_board": 8,
+      "previous_reference_cny": 0.0534,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C2937625",
+      "mpn": "PZ254V-11-03P",
+      "url": "https://item.szlcsc.com/3293280.html",
+      "unit_page_reference_cny": 0.0568,
+      "stock": 857694,
+      "minimum_purchase_units": 1,
+      "full_package_units": 2000,
+      "refs": [
+        "JP1",
+        "JP4",
+        "J19",
+        "JP3"
+      ],
+      "quantity_per_board": 4,
+      "previous_reference_cny": 0.0568,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C2691448",
+      "mpn": "PZ254V-11-04P",
+      "url": "https://item.szlcsc.com/2801085.html",
+      "unit_page_reference_cny": 0.0757,
+      "stock": 711156,
+      "minimum_purchase_units": 1,
+      "full_package_units": 1000,
+      "refs": [
+        "J9",
+        "J12",
+        "J16",
+        "J18"
+      ],
+      "quantity_per_board": 4,
+      "previous_reference_cny": 0.0757,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C492404",
+      "mpn": "PZ254V-11-05P",
+      "url": "https://item.szlcsc.com/502960.html",
+      "unit_page_reference_cny": 0.087,
+      "stock": 182006,
+      "minimum_purchase_units": 1,
+      "full_package_units": 1000,
+      "refs": [
+        "J14",
+        "J15"
+      ],
+      "quantity_per_board": 2,
+      "previous_reference_cny": 0.087,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C22465939",
+      "mpn": "PZ254V-12-30P",
+      "url": "https://item.szlcsc.com/24163081.html",
+      "unit_page_reference_cny": 0.6028,
+      "stock": 711,
+      "minimum_purchase_units": 1,
+      "full_package_units": 200,
+      "refs": [
+        "J13"
+      ],
+      "quantity_per_board": 1,
+      "previous_reference_cny": 0.6028,
+      "difference": 0.0,
+      "public_price_tiers_obtained": false
+    }
+  ],
+  "lower_cost_capacitor_candidates": [
+    {
+      "lcsc": "C250013",
+      "mpn": "OCV221M1ATR-0807",
+      "url": "https://item.szlcsc.com/246135.html",
+      "unit_page_reference_cny": 0.6657,
+      "stock": 0,
+      "minimum_purchase_units": 1,
+      "full_package_units": 1000,
+      "parameters": [
+        {
+          "parameterName": "容值",
+          "parameterCode": "param_11022_n",
+          "parameterDetailValue": "220uF",
+          "parameterValue": "220uF"
+        },
+        {
+          "parameterName": "精度",
+          "parameterCode": "param_11023_s",
+          "parameterDetailValue": "±20%",
+          "parameterValue": "±20%"
+        },
+        {
+          "parameterName": "额定电压",
+          "parameterCode": "param_11024_n",
+          "parameterDetailValue": "10V",
+          "parameterValue": "10V"
+        },
+        {
+          "parameterName": "纹波电流",
+          "parameterCode": "param_11028_nt",
+          "parameterDetailValue": "-",
+          "parameterValue": "-"
+        },
+        {
+          "parameterName": "等效串联电阻(ESR)",
+          "parameterCode": "param_11029_nt",
+          "parameterDetailValue": "-",
+          "parameterValue": "-"
+        },
+        {
+          "parameterName": "类型",
+          "parameterCode": "param_11021",
+          "parameterDetailValue": "-",
+          "parameterValue": "-"
+        },
+        {
+          "parameterName": "脚间距",
+          "parameterCode": "param_11027_n",
+          "parameterDetailValue": "-",
+          "parameterValue": "-"
+        },
+        {
+          "parameterName": "电容体直径",
+          "parameterCode": "param_11025_n",
+          "parameterDetailValue": "8mm",
+          "parameterValue": "8mm"
+        },
+        {
+          "parameterName": "电容体长度",
+          "parameterCode": "param_11026_n",
+          "parameterDetailValue": "6.7mm",
+          "parameterValue": "6.7mm"
+        },
+        {
+          "parameterName": "工作寿命",
+          "parameterCode": "param_11030_nt",
+          "parameterDetailValue": "2000hrs@105℃",
+          "parameterValue": "2000hrs@105℃"
+        },
+        {
+          "parameterName": "工作温度",
+          "parameterCode": "param_11031_s",
+          "parameterDetailValue": "-55℃~+105℃",
+          "parameterValue": "-55℃~+105℃"
+        },
+        {
+          "parameterName": "安装方式",
+          "parameterCode": "param_34489",
+          "parameterDetailValue": "SMD",
+          "parameterValue": "SMD"
+        },
+        {
+          "parameterName": "极性类型",
+          "parameterCode": "param_34895",
+          "parameterDetailValue": "有极性",
+          "parameterValue": "有极性"
+        }
+      ],
+      "public_price_tiers_obtained": false
+    },
+    {
+      "lcsc": "C250035",
+      "mpn": "OCV471M1ATR-1010",
+      "url": "https://item.szlcsc.com/246157.html",
+      "unit_page_reference_cny": 1.1262,
+      "stock": 1778,
+      "minimum_purchase_units": 1,
+      "full_package_units": 500,
+      "parameters": [
+        {
+          "parameterName": "容值",
+          "parameterCode": "param_11022_n",
+          "parameterDetailValue": "470uF",
+          "parameterValue": "470uF"
+        },
+        {
+          "parameterName": "精度",
+          "parameterCode": "param_11023_s",
+          "parameterDetailValue": "±20%",
+          "parameterValue": "±20%"
+        },
+        {
+          "parameterName": "额定电压",
+          "parameterCode": "param_11024_n",
+          "parameterDetailValue": "10V",
+          "parameterValue": "10V"
+        },
+        {
+          "parameterName": "纹波电流",
+          "parameterCode": "param_11028_nt",
+          "parameterDetailValue": "4.4A@100kHz",
+          "parameterValue": "4.4A@100kHz"
+        },
+        {
+          "parameterName": "等效串联电阻(ESR)",
+          "parameterCode": "param_11029_nt",
+          "parameterDetailValue": "-",
+          "parameterValue": "-"
+        },
+        {
+          "parameterName": "类型",
+          "parameterCode": "param_11021",
+          "parameterDetailValue": "-",
+          "parameterValue": "-"
+        },
+        {
+          "parameterName": "脚间距",
+          "parameterCode": "param_11027_n",
+          "parameterDetailValue": "-",
+          "parameterValue": "-"
+        },
+        {
+          "parameterName": "电容体直径",
+          "parameterCode": "param_11025_n",
+          "parameterDetailValue": "10mm",
+          "parameterValue": "10mm"
+        },
+        {
+          "parameterName": "电容体长度",
+          "parameterCode": "param_11026_n",
+          "parameterDetailValue": "9.9mm",
+          "parameterValue": "9.9mm"
+        },
+        {
+          "parameterName": "工作寿命",
+          "parameterCode": "param_11030_nt",
+          "parameterDetailValue": "2000hrs@105℃",
+          "parameterValue": "2000hrs@105℃"
+        },
+        {
+          "parameterName": "工作温度",
+          "parameterCode": "param_11031_s",
+          "parameterDetailValue": "-55℃~+105℃",
+          "parameterValue": "-55℃~+105℃"
+        },
+        {
+          "parameterName": "安装方式",
+          "parameterCode": "param_34489",
+          "parameterDetailValue": "SMD",
+          "parameterValue": "SMD"
+        },
+        {
+          "parameterName": "极性类型",
+          "parameterCode": "param_34895",
+          "parameterDetailValue": "有极性",
+          "parameterValue": "有极性"
+        }
+      ],
+      "public_price_tiers_obtained": false
+    }
+  ],
+  "candidate_electrical_and_footprint_qualified": false,
+  "firmware_or_cad_modified": false,
+  "previous_total_budget_is_supplier_quote": false,
+  "conclusion": "Observed expensive original part prices are real public references. Lower-cost capacitor candidates exist; production cost should be revised after exact replacement qualification and quantity-specific BOM pricing. The old 125.44 CNY total remains a conditional budget, not verified cost."
+}

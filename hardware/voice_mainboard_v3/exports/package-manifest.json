@@ -35,8 +35,8 @@
     },
     {
       "path": "hardware/voice_mainboard_v3/build_cost.py",
-      "bytes": 9655,
-      "sha256": "6b338c4bdec16c6f313381bda7d18647a0a6ccb1b9e4f1ed9b79694c4bfb8dbe"
+      "bytes": 9946,
+      "sha256": "d6291c82fd689bcfe765543c39506c57fcd41a2a7aeaaa8d708fa563bcf61e51"
     },
     {
       "path": "hardware/voice_mainboard_v3/build_review.py",
@@ -99,6 +99,11 @@
       "sha256": "8ecb4a79789160fa6c9d84a88f0503894421488239282199bab14c913f9a451d"
     },
     {
+      "path": "hardware/voice_mainboard_v3/cost/price-recheck-20261122.json",
+      "bytes": 22743,
+      "sha256": "7c8e01268ec1f7e19a08775101a1b5c83946f8f56c7763a51c61739459d56d1d"
+    },
+    {
       "path": "hardware/voice_mainboard_v3/cost/processing-baseline-100.json",
       "bytes": 4739,
       "sha256": "735a09d50e5944bc31573082e1195c7a2d3fd005ba81a0c71bd039b8ea26a324"
@@ -119,9 +124,14 @@
       "sha256": "c596dc9308caba5bdff709d60fd4942734e2a8d5e5b272c842e5bab4bfc087ca"
     },
     {
+      "path": "hardware/voice_mainboard_v3/cost/网站价格复核与降本候选.md",
+      "bytes": 2515,
+      "sha256": "31198ab62b6283fc8c4f2072564d0ec21c4e67f27c8730a9baed87a3e5cb9728"
+    },
+    {
       "path": "hardware/voice_mainboard_v3/cost/费用说明.md",
-      "bytes": 3113,
-      "sha256": "e2b5df4a0fb95913ee41e2fba02a4bad89d54386e7ff19e5a719319de050bb10"
+      "bytes": 3398,
+      "sha256": "b3cfa4d638b589b352f7c35d2b2603b3565b63a5c5f24220b60c27d831003da4"
     },
     {
       "path": "hardware/voice_mainboard_v3/derive_processing_budget.py",
@@ -310,8 +320,8 @@
     },
     {
       "path": "hardware/voice_mainboard_v3/README.md",
-      "bytes": 8308,
-      "sha256": "09ab8da9ae4e4c5e51809ce001980f888b1e1a548b0d4bd88b5c9875bfa1d91d"
+      "bytes": 8490,
+      "sha256": "c29f5b97728d03d2d6d64ee9368af9bc8aee589915f1e13e308fde729c043e33"
     },
     {
       "path": "hardware/voice_mainboard_v3/schematic-ids.json",

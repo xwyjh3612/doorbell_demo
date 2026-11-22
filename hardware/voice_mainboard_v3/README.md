@@ -12,6 +12,7 @@
 - [独立检查结果](exports/validation.json)、[DRC报告](exports/current-drc.json)、[ERC报告](exports/erc.json)。
 - [实际局部走线及条件功率核算](exports/power-audit.json)：去耦电容角色、走线长度和明确的估算边界。
 - [费用表](../../outputs/voice-v3-20261122/语音对讲V3主板费用.xlsx)、[费用说明](cost/费用说明.md)。
+- [网站价格复核与降本候选](cost/网站价格复核与降本候选.md)：重新查询36个料号，区分原型号公开价、便宜候选及未取得的采购阶梯价。
 - [工程复核包](exports/voice-v3-engineering-review.zip)：KiCad、Gerber/钻孔、BOM、坐标与检查证据；制造文件尚未生产放行。
 - [装配BOM](cost/assembly-bom.csv)、[SMT坐标](cost/positions.csv)、[物料和工艺数据](cost/bom-and-process.json)。
 - [工程复核及首板验收](工程复核及首板验收.md)：未完成项目与分步上电办法。
