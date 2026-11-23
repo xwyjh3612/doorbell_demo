@@ -1,0 +1,146 @@
+{
+  "date": "2026-11-23",
+  "public_search_sources": [
+    "https://so.szlcsc.com/global.html?k=ESP32-S3R8",
+    "https://so.szlcsc.com/global.html?k=GD25Q64"
+  ],
+  "records": [
+    {
+      "code": "C2913194",
+      "model": "ESP32-S3R8",
+      "encapsulation": "QFN-56(7x7)",
+      "stock": 15977,
+      "page": "https://item.szlcsc.com/3198292.html",
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "cny": 18.78
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "cny": 16.37
+        },
+        {
+          "start": 30,
+          "end": 99,
+          "cny": 15.14
+        },
+        {
+          "start": 100,
+          "end": 499,
+          "cny": 13.5
+        },
+        {
+          "start": 500,
+          "end": 999,
+          "cny": 12.91
+        },
+        {
+          "start": 1000,
+          "end": -1,
+          "cny": 12.65
+        }
+      ]
+    },
+    {
+      "code": "C2831359",
+      "model": "GD25Q64ESIGR",
+      "encapsulation": "SOP-8-208mil",
+      "stock": 47968,
+      "page": "https://item.szlcsc.com/2984987.html",
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "cny": 6.04
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "cny": 5.17
+        },
+        {
+          "start": 30,
+          "end": 99,
+          "cny": 4.56
+        },
+        {
+          "start": 100,
+          "end": 499,
+          "cny": 4.05
+        },
+        {
+          "start": 500,
+          "end": 999,
+          "cny": 2.7
+        },
+        {
+          "start": 1000,
+          "end": -1,
+          "cny": 2.6
+        }
+      ]
+    },
+    {
+      "code": "C2913201",
+      "model": "ESP32-S3-WROOM-1-N8R8",
+      "encapsulation": "SMD,25.5x18mm",
+      "stock": 2052,
+      "page": "https://item.szlcsc.com/3198299.html",
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "cny": 29.91
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "cny": 26.08
+        },
+        {
+          "start": 30,
+          "end": 99,
+          "cny": 24.13
+        },
+        {
+          "start": 100,
+          "end": 649,
+          "cny": 21.51
+        },
+        {
+          "start": 650,
+          "end": 1299,
+          "cny": 20.56
+        },
+        {
+          "start": 1300,
+          "end": -1,
+          "cny": 20.16
+        }
+      ]
+    }
+  ],
+  "new_board_designed": false,
+  "firmware_changed": false,
+  "Flash_driver_and_timing_validated": false,
+  "additional_crystal_passives_assembly_priced": false,
+  "quantities": {
+    "100": {
+      "R8_chip_cny": 13.5,
+      "Flash_candidate_cny": 4.05,
+      "subtotal_before_extra_peripherals_cny": 17.55,
+      "current_module_cny": 21.51,
+      "difference_before_extra_peripherals_cny": 3.96
+    },
+    "1000": {
+      "R8_chip_cny": 12.65,
+      "Flash_candidate_cny": 2.6,
+      "subtotal_before_extra_peripherals_cny": 15.25,
+      "current_module_cny": 20.56,
+      "difference_before_extra_peripherals_cny": 5.31
+    }
+  }
+}
