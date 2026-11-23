@@ -1,0 +1,516 @@
+{
+  "date": "2026-11-23",
+  "scope": "V5 100x75mm 2layer single-side SMT, same installed quantities, ordinary change fee; unquoted parts held at same budget.",
+  "PCB_sha256": "86ffef9a4483c9eaaddd3a9944b9e787a9cc851e0d3be6589e4c84f68b37c903",
+  "full_JLC_BOM_quote_obtained": false,
+  "UPS_internal_circuit_complete": false,
+  "placed_order": false,
+  "public_part_price_date": "2026-11-23",
+  "PCB_quote_date": "2026-11-22",
+  "public_processing_quote_date": "2026-11-23",
+  "rows": [
+    {
+      "lcsc": "C18357600",
+      "mpn": "HX DC005-2.5-T",
+      "refs": [
+        "J1"
+      ],
+      "source": "https://item.szlcsc.com/19545770.html",
+      "100": {
+        "purchase_quantity_before_loss": 100,
+        "applicable_tier": {
+          "start": 100,
+          "end": 499,
+          "unit_cny": 0.4538
+        },
+        "per_board_cny": 0.4538
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 1000,
+        "applicable_tier": {
+          "start": 1000,
+          "end": -1,
+          "unit_cny": 0.3837
+        },
+        "per_board_cny": 0.3837
+      },
+      "per_board_saving_cny": 0.0701
+    },
+    {
+      "lcsc": "C55014590",
+      "mpn": "ASMD1812-400-16V",
+      "refs": [
+        "F1"
+      ],
+      "source": "https://item.szlcsc.com/58601642.html",
+      "100": {
+        "purchase_quantity_before_loss": 100,
+        "applicable_tier": {
+          "start": 30,
+          "end": 199,
+          "unit_cny": 0.6818
+        },
+        "per_board_cny": 0.6818
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 1000,
+        "applicable_tier": {
+          "start": 1000,
+          "end": -1,
+          "unit_cny": 0.4972
+        },
+        "per_board_cny": 0.4972
+      },
+      "per_board_saving_cny": 0.1846
+    },
+    {
+      "lcsc": "C110499",
+      "mpn": "DMP2035U-7",
+      "refs": [
+        "Q6"
+      ],
+      "source": "https://item.szlcsc.com/111722.html",
+      "100": {
+        "purchase_quantity_before_loss": 100,
+        "applicable_tier": {
+          "start": 100,
+          "end": 599,
+          "unit_cny": 0.5178
+        },
+        "per_board_cny": 0.5178
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 1000,
+        "applicable_tier": {
+          "start": 600,
+          "end": 1199,
+          "unit_cny": 0.412
+        },
+        "per_board_cny": 0.412
+      },
+      "per_board_saving_cny": 0.1058
+    },
+    {
+      "lcsc": "C116592",
+      "mpn": "TPS563201DDCR",
+      "refs": [
+        "U2"
+      ],
+      "source": "https://item.szlcsc.com/117846.html",
+      "100": {
+        "purchase_quantity_before_loss": 100,
+        "applicable_tier": {
+          "start": 30,
+          "end": 299,
+          "unit_cny": 0.2726
+        },
+        "per_board_cny": 0.2726
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 1000,
+        "applicable_tier": {
+          "start": 900,
+          "end": -1,
+          "unit_cny": 0.2213
+        },
+        "per_board_cny": 0.2213
+      },
+      "per_board_saving_cny": 0.0513
+    },
+    {
+      "lcsc": "C83455",
+      "mpn": "SWPA6045S2R2MT",
+      "refs": [
+        "L1"
+      ],
+      "source": "https://item.szlcsc.com/84619.html",
+      "100": {
+        "purchase_quantity_before_loss": 100,
+        "applicable_tier": {
+          "start": 30,
+          "end": -1,
+          "unit_cny": 0.2756
+        },
+        "per_board_cny": 0.2756
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 1000,
+        "applicable_tier": {
+          "start": 30,
+          "end": -1,
+          "unit_cny": 0.2756
+        },
+        "per_board_cny": 0.2756
+      },
+      "per_board_saving_cny": 0.0
+    },
+    {
+      "lcsc": "C250035",
+      "mpn": "OCV471M1ATR-1010",
+      "refs": [
+        "C8"
+      ],
+      "source": "https://item.szlcsc.com/246157.html",
+      "100": {
+        "purchase_quantity_before_loss": 100,
+        "applicable_tier": {
+          "start": 100,
+          "end": -1,
+          "unit_cny": 1.1262
+        },
+        "per_board_cny": 1.1262
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 1000,
+        "applicable_tier": {
+          "start": 100,
+          "end": -1,
+          "unit_cny": 1.1262
+        },
+        "per_board_cny": 1.1262
+      },
+      "per_board_saving_cny": 0.0
+    },
+    {
+      "lcsc": "C48972417",
+      "mpn": "ML307C-DL",
+      "refs": [
+        "U1"
+      ],
+      "source": "https://item.szlcsc.com/51301990.html",
+      "100": {
+        "purchase_quantity_before_loss": 100,
+        "applicable_tier": {
+          "start": 100,
+          "end": 499,
+          "unit_cny": 16.84
+        },
+        "per_board_cny": 16.84
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 1000,
+        "applicable_tier": {
+          "start": 1000,
+          "end": -1,
+          "unit_cny": 16.45
+        },
+        "per_board_cny": 16.45
+      },
+      "per_board_saving_cny": 0.39
+    },
+    {
+      "lcsc": "C7843",
+      "mpn": "SN74LVC1T45DBVR",
+      "refs": [
+        "U3",
+        "U4",
+        "U5"
+      ],
+      "source": "https://item.szlcsc.com/8320.html",
+      "100": {
+        "purchase_quantity_before_loss": 300,
+        "applicable_tier": {
+          "start": 100,
+          "end": 599,
+          "unit_cny": 0.3154
+        },
+        "per_board_cny": 0.9462
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 3000,
+        "applicable_tier": {
+          "start": 1200,
+          "end": -1,
+          "unit_cny": 0.2557
+        },
+        "per_board_cny": 0.7671
+      },
+      "per_board_saving_cny": 0.1791
+    },
+    {
+      "lcsc": "C85047",
+      "mpn": "2N7002K-7",
+      "refs": [
+        "Q1",
+        "Q2",
+        "Q4",
+        "Q5"
+      ],
+      "source": "https://item.szlcsc.com/86219.html",
+      "100": {
+        "purchase_quantity_before_loss": 400,
+        "applicable_tier": {
+          "start": 100,
+          "end": 599,
+          "unit_cny": 0.2658
+        },
+        "per_board_cny": 1.0632
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 4000,
+        "applicable_tier": {
+          "start": 1200,
+          "end": -1,
+          "unit_cny": 0.2166
+        },
+        "per_board_cny": 0.8664
+      },
+      "per_board_saving_cny": 0.1968
+    },
+    {
+      "lcsc": "C2977286",
+      "mpn": "SF72S006VBDR2500",
+      "refs": [
+        "J10"
+      ],
+      "source": "https://item.szlcsc.com/3386692.html",
+      "100": {
+        "purchase_quantity_before_loss": 100,
+        "applicable_tier": {
+          "start": 1,
+          "end": -1,
+          "unit_cny": 2.51
+        },
+        "per_board_cny": 2.51
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 1000,
+        "applicable_tier": {
+          "start": 1,
+          "end": -1,
+          "unit_cny": 2.51
+        },
+        "per_board_cny": 2.51
+      },
+      "per_board_saving_cny": 0.0
+    },
+    {
+      "lcsc": "C2836319",
+      "mpn": "SRV05-4",
+      "refs": [
+        "D1"
+      ],
+      "source": "https://item.szlcsc.com/3002164.html",
+      "100": {
+        "purchase_quantity_before_loss": 100,
+        "applicable_tier": {
+          "start": 30,
+          "end": 149,
+          "unit_cny": 0.1039
+        },
+        "per_board_cny": 0.1039
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 1000,
+        "applicable_tier": {
+          "start": 450,
+          "end": 1049,
+          "unit_cny": 0.0745
+        },
+        "per_board_cny": 0.0745
+      },
+      "per_board_saving_cny": 0.0294
+    },
+    {
+      "lcsc": "C88374",
+      "mpn": "U.FL-R-SMT-1(80)",
+      "refs": [
+        "J11"
+      ],
+      "source": "https://item.szlcsc.com/89553.html",
+      "100": {
+        "purchase_quantity_before_loss": 100,
+        "applicable_tier": {
+          "start": 100,
+          "end": 499,
+          "unit_cny": 0.4194
+        },
+        "per_board_cny": 0.4194
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 1000,
+        "applicable_tier": {
+          "start": 1000,
+          "end": -1,
+          "unit_cny": 0.389
+        },
+        "per_board_cny": 0.389
+      },
+      "per_board_saving_cny": 0.0304
+    },
+    {
+      "lcsc": "C2913201",
+      "mpn": "ESP32-S3-WROOM-1-N8R8",
+      "refs": [
+        "U7"
+      ],
+      "source": "https://item.szlcsc.com/3198299.html",
+      "100": {
+        "purchase_quantity_before_loss": 100,
+        "applicable_tier": {
+          "start": 100,
+          "end": 649,
+          "unit_cny": 21.51
+        },
+        "per_board_cny": 21.51
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 1000,
+        "applicable_tier": {
+          "start": 650,
+          "end": 1299,
+          "unit_cny": 20.56
+        },
+        "per_board_cny": 20.56
+      },
+      "per_board_saving_cny": 0.95
+    },
+    {
+      "lcsc": "C493579",
+      "mpn": "BSS84,215",
+      "refs": [
+        "Q3"
+      ],
+      "source": "https://item.szlcsc.com/504270.html",
+      "100": {
+        "purchase_quantity_before_loss": 100,
+        "applicable_tier": {
+          "start": 30,
+          "end": 299,
+          "unit_cny": 0.24
+        },
+        "per_board_cny": 0.24
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 1000,
+        "applicable_tier": {
+          "start": 900,
+          "end": -1,
+          "unit_cny": 0.1765
+        },
+        "per_board_cny": 0.1765
+      },
+      "per_board_saving_cny": 0.0635
+    },
+    {
+      "lcsc": "C479074",
+      "mpn": "SY8089A1AAC",
+      "refs": [
+        "U13"
+      ],
+      "source": "https://item.szlcsc.com/486366.html",
+      "100": {
+        "purchase_quantity_before_loss": 100,
+        "applicable_tier": {
+          "start": 100,
+          "end": 599,
+          "unit_cny": 0.2986
+        },
+        "per_board_cny": 0.2986
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 1000,
+        "applicable_tier": {
+          "start": 600,
+          "end": 1199,
+          "unit_cny": 0.2832
+        },
+        "per_board_cny": 0.2832
+      },
+      "per_board_saving_cny": 0.0154
+    },
+    {
+      "lcsc": "C36409",
+      "mpn": "SWPA4030S2R2MT",
+      "refs": [
+        "L4"
+      ],
+      "source": "https://item.szlcsc.com/37387.html",
+      "100": {
+        "purchase_quantity_before_loss": 100,
+        "applicable_tier": {
+          "start": 30,
+          "end": 199,
+          "unit_cny": 0.258
+        },
+        "per_board_cny": 0.258
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 1000,
+        "applicable_tier": {
+          "start": 1000,
+          "end": -1,
+          "unit_cny": 0.2041
+        },
+        "per_board_cny": 0.2041
+      },
+      "per_board_saving_cny": 0.0539
+    },
+    {
+      "lcsc": "C910544",
+      "mpn": "MAX98357AETE+T",
+      "refs": [
+        "U14"
+      ],
+      "source": "https://item.szlcsc.com/978950.html",
+      "100": {
+        "purchase_quantity_before_loss": 100,
+        "applicable_tier": {
+          "start": 100,
+          "end": 499,
+          "unit_cny": 4.95
+        },
+        "per_board_cny": 4.95
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 1000,
+        "applicable_tier": {
+          "start": 1000,
+          "end": -1,
+          "unit_cny": 4.52
+        },
+        "per_board_cny": 4.52
+      },
+      "per_board_saving_cny": 0.43
+    }
+  ],
+  "quantities": {
+    "100": {
+      "public_priced_material_per_board_cny": 52.4671,
+      "PCB_batch_cny": 561.0,
+      "PCB_per_board_cny": 5.61,
+      "ordinary_processing_batch_cny": 1061.5,
+      "ordinary_processing_per_board_cny": 10.615,
+      "public_priced_subtotal_per_board_cny": 68.6921,
+      "unquoted_parts_budget_per_board_cny": 5.1302,
+      "UPS_allowance_per_board_cny": 5,
+      "conditional_per_board_cny": 78.8223,
+      "conditional_batch_cny": 7882.23
+    },
+    "1000": {
+      "public_priced_material_per_board_cny": 49.7168,
+      "PCB_batch_cny": 3868.5,
+      "PCB_per_board_cny": 3.8685,
+      "ordinary_processing_batch_cny": 4788.0,
+      "ordinary_processing_per_board_cny": 4.788,
+      "public_priced_subtotal_per_board_cny": 58.3733,
+      "unquoted_parts_budget_per_board_cny": 5.1302,
+      "UPS_allowance_per_board_cny": 5,
+      "conditional_per_board_cny": 68.5035,
+      "conditional_batch_cny": 68503.5
+    }
+  },
+  "per_board_savings_cny": {
+    "public_priced_material_per_board_cny": 2.7503,
+    "PCB_per_board_cny": 1.7415,
+    "ordinary_processing_per_board_cny": 5.827,
+    "conditional_per_board_cny": 10.3188
+  },
+  "excluded": [
+    "freight",
+    "loss and minimum packaging",
+    "unknown UPS internal assembly",
+    "programming and whole-unit tests",
+    "all external accessories"
+  ]
+}
