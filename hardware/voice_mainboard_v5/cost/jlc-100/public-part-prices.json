@@ -1,0 +1,710 @@
+{
+  "date": "2026-11-23",
+  "quantity": 100,
+  "rows": [
+    {
+      "lcsc": "C18357600",
+      "mpn": "HX DC005-2.5-T",
+      "refs": [
+        "J1"
+      ],
+      "page": "https://item.szlcsc.com/19545770.html",
+      "observed_search_page": "https://so.szlcsc.com/global.html?k=C18357600",
+      "public_stock_before_order": 4187,
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "unit_cny": 0.7456
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "unit_cny": 0.5899
+        },
+        {
+          "start": 30,
+          "end": 99,
+          "unit_cny": 0.5121
+        },
+        {
+          "start": 100,
+          "end": 499,
+          "unit_cny": 0.4538
+        },
+        {
+          "start": 500,
+          "end": 999,
+          "unit_cny": 0.4071
+        },
+        {
+          "start": 1000,
+          "end": -1,
+          "unit_cny": 0.3837
+        }
+      ],
+      "basis": "Public search page embedded __NEXT_DATA__, CNY tax-included price tiers; no checkout or order accepted.",
+      "qualification_note": ""
+    },
+    {
+      "lcsc": "C55014590",
+      "mpn": "ASMD1812-400-16V",
+      "refs": [
+        "F1"
+      ],
+      "page": "https://item.szlcsc.com/58601642.html",
+      "observed_search_page": "https://so.szlcsc.com/global.html?k=C55014590",
+      "public_stock_before_order": 2626,
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "unit_cny": 0.9698
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "unit_cny": 0.7682
+        },
+        {
+          "start": 30,
+          "end": 199,
+          "unit_cny": 0.6818
+        },
+        {
+          "start": 200,
+          "end": 399,
+          "unit_cny": 0.574
+        },
+        {
+          "start": 400,
+          "end": 999,
+          "unit_cny": 0.526
+        },
+        {
+          "start": 1000,
+          "end": -1,
+          "unit_cny": 0.4972
+        }
+      ],
+      "basis": "Public search page embedded __NEXT_DATA__, CNY tax-included price tiers; no checkout or order accepted.",
+      "qualification_note": ""
+    },
+    {
+      "lcsc": "C110499",
+      "mpn": "DMP2035U-7",
+      "refs": [
+        "Q6"
+      ],
+      "page": "https://item.szlcsc.com/111722.html",
+      "observed_search_page": "https://so.szlcsc.com/global.html?k=C110499",
+      "public_stock_before_order": 215491,
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "unit_cny": 0.8163
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "unit_cny": 0.6571
+        },
+        {
+          "start": 30,
+          "end": 99,
+          "unit_cny": 0.5775
+        },
+        {
+          "start": 100,
+          "end": 599,
+          "unit_cny": 0.5178
+        },
+        {
+          "start": 600,
+          "end": 1199,
+          "unit_cny": 0.412
+        },
+        {
+          "start": 1200,
+          "end": -1,
+          "unit_cny": 0.3881
+        }
+      ],
+      "basis": "Public search page embedded __NEXT_DATA__, CNY tax-included price tiers; no checkout or order accepted.",
+      "qualification_note": ""
+    },
+    {
+      "lcsc": "C116592",
+      "mpn": "TPS563201DDCR",
+      "refs": [
+        "U2"
+      ],
+      "page": "https://item.szlcsc.com/117846.html",
+      "observed_search_page": "https://so.szlcsc.com/global.html?k=TPS563201DDCR",
+      "public_stock_before_order": 109871,
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "unit_cny": 0.3883
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "unit_cny": 0.3119
+        },
+        {
+          "start": 30,
+          "end": 299,
+          "unit_cny": 0.2726
+        },
+        {
+          "start": 300,
+          "end": 599,
+          "unit_cny": 0.2403
+        },
+        {
+          "start": 600,
+          "end": 899,
+          "unit_cny": 0.229
+        },
+        {
+          "start": 900,
+          "end": -1,
+          "unit_cny": 0.2213
+        }
+      ],
+      "basis": "Public search page embedded __NEXT_DATA__, CNY tax-included price tiers; no checkout or order accepted.",
+      "qualification_note": ""
+    },
+    {
+      "lcsc": "C83455",
+      "mpn": "SWPA6045S2R2MT",
+      "refs": [
+        "L1"
+      ],
+      "page": "https://item.szlcsc.com/84619.html",
+      "observed_search_page": "https://so.szlcsc.com/global.html?k=C83455",
+      "public_stock_before_order": 21,
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "unit_cny": 0.4039
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "unit_cny": 0.3183
+        },
+        {
+          "start": 30,
+          "end": -1,
+          "unit_cny": 0.2756
+        }
+      ],
+      "basis": "Public search page embedded __NEXT_DATA__, CNY tax-included price tiers; no checkout or order accepted.",
+      "qualification_note": ""
+    },
+    {
+      "lcsc": "C250035",
+      "mpn": "OCV471M1ATR-1010",
+      "refs": [
+        "C8"
+      ],
+      "page": "https://item.szlcsc.com/246157.html",
+      "observed_search_page": "https://so.szlcsc.com/global.html?k=C250035",
+      "public_stock_before_order": 1773,
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "unit_cny": 1.898
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "unit_cny": 1.5049
+        },
+        {
+          "start": 30,
+          "end": 99,
+          "unit_cny": 1.3364
+        },
+        {
+          "start": 100,
+          "end": -1,
+          "unit_cny": 1.1262
+        }
+      ],
+      "basis": "Public search page embedded __NEXT_DATA__, CNY tax-included price tiers; no checkout or order accepted.",
+      "qualification_note": ""
+    },
+    {
+      "lcsc": "C48972417",
+      "mpn": "ML307C-DL",
+      "refs": [
+        "U1"
+      ],
+      "page": "https://item.szlcsc.com/51301990.html",
+      "observed_search_page": "https://so.szlcsc.com/global.html?k=C48972417",
+      "public_stock_before_order": 1480,
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "unit_cny": 19
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "unit_cny": 18.02
+        },
+        {
+          "start": 30,
+          "end": 99,
+          "unit_cny": 17.43
+        },
+        {
+          "start": 100,
+          "end": 499,
+          "unit_cny": 16.84
+        },
+        {
+          "start": 500,
+          "end": 999,
+          "unit_cny": 16.57
+        },
+        {
+          "start": 1000,
+          "end": -1,
+          "unit_cny": 16.45
+        }
+      ],
+      "basis": "Public search page embedded __NEXT_DATA__, CNY tax-included price tiers; no checkout or order accepted.",
+      "qualification_note": ""
+    },
+    {
+      "lcsc": "C7843",
+      "mpn": "SN74LVC1T45DBVR",
+      "refs": [
+        "U3",
+        "U4",
+        "U5"
+      ],
+      "page": "https://item.szlcsc.com/8320.html",
+      "observed_search_page": "https://so.szlcsc.com/global.html?k=SN74LVC1T45DBVR",
+      "public_stock_before_order": 261600,
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "unit_cny": 0.504
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "unit_cny": 0.4067
+        },
+        {
+          "start": 30,
+          "end": 99,
+          "unit_cny": 0.3566
+        },
+        {
+          "start": 100,
+          "end": 599,
+          "unit_cny": 0.3154
+        },
+        {
+          "start": 600,
+          "end": 1199,
+          "unit_cny": 0.2654
+        },
+        {
+          "start": 1200,
+          "end": -1,
+          "unit_cny": 0.2557
+        }
+      ],
+      "basis": "Public search page embedded __NEXT_DATA__, CNY tax-included price tiers; no checkout or order accepted.",
+      "qualification_note": ""
+    },
+    {
+      "lcsc": "C85047",
+      "mpn": "2N7002K-7",
+      "refs": [
+        "Q1",
+        "Q2",
+        "Q4",
+        "Q5"
+      ],
+      "page": "https://item.szlcsc.com/86219.html",
+      "observed_search_page": "https://so.szlcsc.com/global.html?k=C85047",
+      "public_stock_before_order": 854666,
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "unit_cny": 0.432
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "unit_cny": 0.3462
+        },
+        {
+          "start": 30,
+          "end": 99,
+          "unit_cny": 0.3021
+        },
+        {
+          "start": 100,
+          "end": 599,
+          "unit_cny": 0.2658
+        },
+        {
+          "start": 600,
+          "end": 1199,
+          "unit_cny": 0.2252
+        },
+        {
+          "start": 1200,
+          "end": -1,
+          "unit_cny": 0.2166
+        }
+      ],
+      "basis": "Public search page embedded __NEXT_DATA__, CNY tax-included price tiers; no checkout or order accepted.",
+      "qualification_note": ""
+    },
+    {
+      "lcsc": "C2977286",
+      "mpn": "SF72S006VBDR2500",
+      "refs": [
+        "J10"
+      ],
+      "page": "https://item.szlcsc.com/3386692.html",
+      "observed_search_page": "https://so.szlcsc.com/global.html?k=C2977286",
+      "public_stock_before_order": 7279,
+      "tiers": [
+        {
+          "start": 1,
+          "end": -1,
+          "unit_cny": 2.51
+        }
+      ],
+      "basis": "Public search page embedded __NEXT_DATA__, CNY tax-included price tiers; no checkout or order accepted.",
+      "qualification_note": ""
+    },
+    {
+      "lcsc": "C2836319",
+      "mpn": "SRV05-4",
+      "refs": [
+        "D1"
+      ],
+      "page": "https://item.szlcsc.com/3002164.html",
+      "observed_search_page": "https://so.szlcsc.com/global.html?k=SRV05-4",
+      "public_stock_before_order": 451775,
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "unit_cny": 0.1514
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "unit_cny": 0.1185
+        },
+        {
+          "start": 30,
+          "end": 149,
+          "unit_cny": 0.1039
+        },
+        {
+          "start": 150,
+          "end": 449,
+          "unit_cny": 0.0789
+        },
+        {
+          "start": 450,
+          "end": 1049,
+          "unit_cny": 0.0745
+        },
+        {
+          "start": 1050,
+          "end": -1,
+          "unit_cny": 0.0716
+        }
+      ],
+      "basis": "Public search page embedded __NEXT_DATA__, CNY tax-included price tiers; no checkout or order accepted.",
+      "qualification_note": ""
+    },
+    {
+      "lcsc": "C88374",
+      "mpn": "U.FL-R-SMT-1(80)",
+      "refs": [
+        "J11"
+      ],
+      "page": "https://item.szlcsc.com/89553.html",
+      "observed_search_page": "https://so.szlcsc.com/global.html?k=C88374",
+      "public_stock_before_order": 262960,
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "unit_cny": 0.6577
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "unit_cny": 0.5347
+        },
+        {
+          "start": 30,
+          "end": 99,
+          "unit_cny": 0.4715
+        },
+        {
+          "start": 100,
+          "end": 499,
+          "unit_cny": 0.4194
+        },
+        {
+          "start": 500,
+          "end": 999,
+          "unit_cny": 0.4013
+        },
+        {
+          "start": 1000,
+          "end": -1,
+          "unit_cny": 0.389
+        }
+      ],
+      "basis": "Public search page embedded __NEXT_DATA__, CNY tax-included price tiers; no checkout or order accepted.",
+      "qualification_note": ""
+    },
+    {
+      "lcsc": "C2913201",
+      "mpn": "ESP32-S3-WROOM-1-N8R8",
+      "refs": [
+        "U7"
+      ],
+      "page": "https://item.szlcsc.com/3198299.html",
+      "observed_search_page": "https://so.szlcsc.com/global.html?k=ESP32-S3-WROOM-1-N8R8",
+      "public_stock_before_order": 2052,
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "unit_cny": 29.91
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "unit_cny": 26.08
+        },
+        {
+          "start": 30,
+          "end": 99,
+          "unit_cny": 24.13
+        },
+        {
+          "start": 100,
+          "end": 649,
+          "unit_cny": 21.51
+        },
+        {
+          "start": 650,
+          "end": 1299,
+          "unit_cny": 20.56
+        },
+        {
+          "start": 1300,
+          "end": -1,
+          "unit_cny": 20.16
+        }
+      ],
+      "basis": "Public search page embedded __NEXT_DATA__, CNY tax-included price tiers; no checkout or order accepted.",
+      "qualification_note": ""
+    },
+    {
+      "lcsc": "C493579",
+      "mpn": "BSS84,215",
+      "refs": [
+        "Q3"
+      ],
+      "page": "https://item.szlcsc.com/504270.html",
+      "observed_search_page": "https://so.szlcsc.com/global.html?k=C493579",
+      "public_stock_before_order": 6488,
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "unit_cny": 0.3555
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "unit_cny": 0.2785
+        },
+        {
+          "start": 30,
+          "end": 299,
+          "unit_cny": 0.24
+        },
+        {
+          "start": 300,
+          "end": 599,
+          "unit_cny": 0.2111
+        },
+        {
+          "start": 600,
+          "end": 899,
+          "unit_cny": 0.188
+        },
+        {
+          "start": 900,
+          "end": -1,
+          "unit_cny": 0.1765
+        }
+      ],
+      "basis": "Public search page embedded __NEXT_DATA__, CNY tax-included price tiers; no checkout or order accepted.",
+      "qualification_note": ""
+    },
+    {
+      "lcsc": "C479074",
+      "mpn": "SY8089A1AAC",
+      "refs": [
+        "U13"
+      ],
+      "page": "https://item.szlcsc.com/486366.html",
+      "observed_search_page": "https://so.szlcsc.com/global.html?k=SY8089A1AAC",
+      "public_stock_before_order": 86923,
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "unit_cny": 0.5006
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "unit_cny": 0.3964
+        },
+        {
+          "start": 30,
+          "end": 99,
+          "unit_cny": 0.3428
+        },
+        {
+          "start": 100,
+          "end": 599,
+          "unit_cny": 0.2986
+        },
+        {
+          "start": 600,
+          "end": 1199,
+          "unit_cny": 0.2832
+        },
+        {
+          "start": 1200,
+          "end": -1,
+          "unit_cny": 0.2728
+        }
+      ],
+      "basis": "Public search page embedded __NEXT_DATA__, CNY tax-included price tiers; no checkout or order accepted.",
+      "qualification_note": ""
+    },
+    {
+      "lcsc": "C36409",
+      "mpn": "SWPA4030S2R2MT",
+      "refs": [
+        "L4"
+      ],
+      "page": "https://item.szlcsc.com/37387.html",
+      "observed_search_page": "https://so.szlcsc.com/global.html?k=SWPA4030S2R2MT",
+      "public_stock_before_order": 22976,
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "unit_cny": 0.356
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "unit_cny": 0.2907
+        },
+        {
+          "start": 30,
+          "end": 199,
+          "unit_cny": 0.258
+        },
+        {
+          "start": 200,
+          "end": 399,
+          "unit_cny": 0.2335
+        },
+        {
+          "start": 400,
+          "end": 999,
+          "unit_cny": 0.2139
+        },
+        {
+          "start": 1000,
+          "end": -1,
+          "unit_cny": 0.2041
+        }
+      ],
+      "basis": "Public search page embedded __NEXT_DATA__, CNY tax-included price tiers; no checkout or order accepted.",
+      "qualification_note": "Exact 3A inductor specification and manufacturer land pattern to confirm."
+    },
+    {
+      "lcsc": "C910544",
+      "mpn": "MAX98357AETE+T",
+      "refs": [
+        "U14"
+      ],
+      "page": "https://item.szlcsc.com/978950.html",
+      "observed_search_page": "https://so.szlcsc.com/global.html?k=MAX98357AETE+",
+      "public_stock_before_order": 23852,
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "unit_cny": 7.61
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "unit_cny": 6.61
+        },
+        {
+          "start": 30,
+          "end": 99,
+          "unit_cny": 5.66
+        },
+        {
+          "start": 100,
+          "end": 499,
+          "unit_cny": 4.95
+        },
+        {
+          "start": 500,
+          "end": 999,
+          "unit_cny": 4.66
+        },
+        {
+          "start": 1000,
+          "end": -1,
+          "unit_cny": 4.52
+        }
+      ],
+      "basis": "Public search page embedded __NEXT_DATA__, CNY tax-included price tiers; no checkout or order accepted.",
+      "qualification_note": "Packaging suffix and exact assembly sourcing to confirm."
+    }
+  ],
+  "market_page_loading_note": "Product-page dynamic price area failed to load. Public search HTML includes productVO.productPriceList. Later searches redirected to login; remaining prices not obtained. No login/CAPTCHA bypass used."
+}
