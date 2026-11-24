@@ -8,3 +8,4 @@
 *.svg -whitespace
 * text eol=lf
 *.zip -text -diff -merge
+*.png -text -diff -merge
