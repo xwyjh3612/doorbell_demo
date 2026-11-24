@@ -7,5 +7,5 @@
 *.py text eol=lf
 *.svg -whitespace
 * text eol=lf
-*.zip -text -diff -merge
-*.png -text -diff -merge
+*.zip -text -diff -merge -eol
+*.png -text -diff -merge -eol
