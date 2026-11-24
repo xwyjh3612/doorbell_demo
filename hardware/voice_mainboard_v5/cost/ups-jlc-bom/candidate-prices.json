@@ -1,0 +1,344 @@
+{
+  "date": "2026-11-24",
+  "original_module_test": "user reported LX-2BUPS usable",
+  "user_load_report": "ML307R-DL around200mA; ESP low consumption;2A is supply margin,not continuous total load",
+  "original_chip_identification_complete": false,
+  "final_BOM_ready": false,
+  "PCB_changed": false,
+  "firmware_changed": false,
+  "five_yuan_module_purchase_price_is_not_internal_BOM_cost": true,
+  "rows": [
+    {
+      "role": "charge_candidate",
+      "lcsc": "C7473158",
+      "model": "TP4056-MS",
+      "quantity_per_board_provisional": 1,
+      "stock_at_query": 95517,
+      "source": "https://item.szlcsc.com/8533532.html",
+      "search_source": "https://so.szlcsc.com/global.html?k=TP4056",
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "cny": 0.3497
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "cny": 0.2823
+        },
+        {
+          "start": 30,
+          "end": 99,
+          "cny": 0.2485
+        },
+        {
+          "start": 100,
+          "end": 399,
+          "cny": 0.2232
+        },
+        {
+          "start": 400,
+          "end": 799,
+          "cny": 0.1728
+        },
+        {
+          "start": 800,
+          "end": -1,
+          "cny": 0.1626
+        }
+      ],
+      "note": "Candidate only; original U1 not identified",
+      "100": {
+        "purchase_quantity_before_loss": 100,
+        "unit_cny": 0.2232,
+        "per_board_cny": 0.2232
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 1000,
+        "unit_cny": 0.1626,
+        "per_board_cny": 0.1626
+      }
+    },
+    {
+      "role": "protection_controller_candidate",
+      "lcsc": "C2927799",
+      "model": "DW01A",
+      "quantity_per_board_provisional": 1,
+      "stock_at_query": 14232,
+      "source": "https://item.szlcsc.com/3256812.html",
+      "search_source": "https://so.szlcsc.com/global.html?k=DW01",
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "cny": 0.1577
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "cny": 0.1297
+        },
+        {
+          "start": 30,
+          "end": 149,
+          "cny": 0.1141
+        },
+        {
+          "start": 150,
+          "end": 449,
+          "cny": 0.0878
+        },
+        {
+          "start": 450,
+          "end": 1049,
+          "cny": 0.0797
+        },
+        {
+          "start": 1050,
+          "end": -1,
+          "cny": 0.0753
+        }
+      ],
+      "note": "Use thresholds with actual load and total MOS/trace resistance",
+      "100": {
+        "purchase_quantity_before_loss": 100,
+        "unit_cny": 0.1141,
+        "per_board_cny": 0.1141
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 1000,
+        "unit_cny": 0.0797,
+        "per_board_cny": 0.0797
+      }
+    },
+    {
+      "role": "protection_dual_MOS_candidate",
+      "lcsc": "C2830320",
+      "model": "FS8205A",
+      "quantity_per_board_provisional": 1,
+      "stock_at_query": 162673,
+      "source": "https://item.szlcsc.com/2981993.html",
+      "search_source": "https://so.szlcsc.com/global.html?k=FS8205",
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "cny": 0.3051
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "cny": 0.2322
+        },
+        {
+          "start": 30,
+          "end": 299,
+          "cny": 0.1958
+        },
+        {
+          "start": 300,
+          "end": 599,
+          "cny": 0.1873
+        },
+        {
+          "start": 600,
+          "end": 899,
+          "cny": 0.1654
+        },
+        {
+          "start": 900,
+          "end": -1,
+          "cny": 0.1545
+        }
+      ],
+      "note": "Restored as candidate after user corrected continuous load assumption; original U2/U3 not identified",
+      "100": {
+        "purchase_quantity_before_loss": 100,
+        "unit_cny": 0.1958,
+        "per_board_cny": 0.1958
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 1000,
+        "unit_cny": 0.1545,
+        "per_board_cny": 0.1545
+      }
+    },
+    {
+      "role": "diode_comparison",
+      "lcsc": "C5343335",
+      "model": "SS56B",
+      "quantity_per_board_provisional": 3,
+      "stock_at_query": 108760,
+      "source": "https://item.szlcsc.com/6120058.html",
+      "search_source": "https://so.szlcsc.com/global.html?k=SS56",
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "cny": 0.2152
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "cny": 0.1693
+        },
+        {
+          "start": 30,
+          "end": 149,
+          "cny": 0.1438
+        },
+        {
+          "start": 150,
+          "end": 449,
+          "cny": 0.1331
+        },
+        {
+          "start": 450,
+          "end": 1049,
+          "cny": 0.1199
+        },
+        {
+          "start": 1050,
+          "end": -1,
+          "cny": 0.1127
+        }
+      ],
+      "note": "Quantity3 used provisionally to compare photo; not proof all3 needed; original footprint and path unknown",
+      "100": {
+        "purchase_quantity_before_loss": 300,
+        "unit_cny": 0.1331,
+        "per_board_cny": 0.3993
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 3000,
+        "unit_cny": 0.1127,
+        "per_board_cny": 0.3381
+      }
+    },
+    {
+      "role": "bulk_cap_comparison",
+      "lcsc": "C285392",
+      "model": "VZH221M1CTR-0607",
+      "quantity_per_board_provisional": 4,
+      "stock_at_query": 29448,
+      "source": "https://item.szlcsc.com/271329.html",
+      "search_source": "https://so.szlcsc.com/global.html?k=VZH221M1CTR",
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "cny": 0.4469
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "cny": 0.3621
+        },
+        {
+          "start": 30,
+          "end": 99,
+          "cny": 0.3196
+        },
+        {
+          "start": 100,
+          "end": 499,
+          "cny": 0.2772
+        },
+        {
+          "start": 500,
+          "end": 999,
+          "cny": 0.2517
+        },
+        {
+          "start": 1000,
+          "end": -1,
+          "cny": 0.239
+        }
+      ],
+      "note": "Quantity4 provisional; ESR ripple lifetime and footprint equivalence not qualified",
+      "100": {
+        "purchase_quantity_before_loss": 400,
+        "unit_cny": 0.2772,
+        "per_board_cny": 1.1088
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 4000,
+        "unit_cny": 0.239,
+        "per_board_cny": 0.956
+      }
+    },
+    {
+      "role": "boost_candidate_NOT_SELECTED",
+      "lcsc": "C82652",
+      "model": "FP6276BXR-G1",
+      "quantity_per_board_provisional": 1,
+      "stock_at_query": 470,
+      "source": "https://item.szlcsc.com/83811.html",
+      "search_source": "https://so.szlcsc.com/global.html?k=FP6276",
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "cny": 2.75
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "cny": 2.18
+        },
+        {
+          "start": 30,
+          "end": 99,
+          "cny": 1.93
+        },
+        {
+          "start": 100,
+          "end": 499,
+          "cny": 1.62
+        },
+        {
+          "start": 500,
+          "end": 999,
+          "cny": 1.48
+        },
+        {
+          "start": 1000,
+          "end": -1,
+          "cny": 1.4
+        }
+      ],
+      "note": "VIN2.4-4.5V cannot directly use5V input; not original U4; stock470; excludes final BOM until path confirmed",
+      "100": {
+        "purchase_quantity_before_loss": 100,
+        "unit_cny": 1.62,
+        "per_board_cny": 1.62
+      },
+      "1000": {
+        "purchase_quantity_before_loss": 1000,
+        "unit_cny": 1.4,
+        "per_board_cny": 1.4
+      }
+    }
+  ],
+  "missing": [
+    "original U1/U4/U2/U3 identification",
+    "input battery switching circuit",
+    "inductor rating and quantity",
+    "feedback programming control passives exact specs",
+    "connectors and assembly method"
+  ],
+  "subset_excludes": [
+    "boost",
+    "inductor",
+    "path control",
+    "programming and feedback passives",
+    "connectors",
+    "battery",
+    "all processing and shipping"
+  ],
+  "subset_per_board_cny": {
+    "100": 2.0412,
+    "1000": 1.6909
+  }
+}
