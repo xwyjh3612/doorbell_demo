@@ -1,7 +1,7 @@
 {
   "date": "2026-11-24",
   "original_module_test": "user reported LX-2BUPS usable",
-  "user_load_report": "ML307R-DL around200mA; ESP low consumption;2A is supply margin,not continuous total load",
+  "user_load_report": "ML307R-DL around200mA; ESP low consumption; user requires5V output peak2A, not continuous2A",
   "original_chip_identification_complete": false,
   "final_BOM_ready": false,
   "PCB_changed": false,
@@ -48,7 +48,7 @@
           "cny": 0.1626
         }
       ],
-      "note": "Candidate only; original U1 not identified",
+      "note": "Candidate only; original U1 user-marking FY4056T, not a verified substitute",
       "100": {
         "purchase_quantity_before_loss": 100,
         "unit_cny": 0.2232,
@@ -152,7 +152,7 @@
           "cny": 0.1545
         }
       ],
-      "note": "Restored as candidate after user corrected continuous load assumption; original U2/U3 not identified",
+      "note": "Not qualified for required5V2A output peak; original U2/U3 unknown; check battery peak current and protection delay",
       "100": {
         "purchase_quantity_before_loss": 100,
         "unit_cny": 0.1958,
@@ -322,10 +322,12 @@
     }
   ],
   "missing": [
-    "original U1/U4/U2/U3 identification",
+    "U4 XR2981 manufacturer datasheet; U1 FY4056T actual manufacturer/voltage bin; U1/U4 purchase codes",
+    "original U2/U3 identification",
     "input battery switching circuit",
-    "inductor rating and quantity",
+    "inductor rating and exact part",
     "feedback programming control passives exact specs",
+    "peak duration repetition and minimum working battery voltage",
     "connectors and assembly method"
   ],
   "subset_excludes": [
@@ -340,5 +342,92 @@
   "subset_per_board_cny": {
     "100": 2.0412,
     "1000": 1.6909
+  },
+  "output_requirement": {
+    "voltage_v": 5,
+    "peak_current_a": 2,
+    "continuous_current_a": null,
+    "peak_duration_ms": null,
+    "peak_repetition_hz": null,
+    "minimum_operating_battery_voltage_v": null,
+    "source": "user clarification 2026-11-24"
+  },
+  "original_chip_markings": {
+    "U1": {
+      "user_reading": "FY4056T",
+      "second_line": "A002135",
+      "datasheet_verified": false,
+      "lcsc_product_code": null,
+      "same_model_public_datasheet": {
+        "publisher": "DINGXIN / 鼎芯电子",
+        "source": "https://www.dxdz-ic.com/upload/pdf/DX-FY4056T.pdf",
+        "product_page": "https://www.dxdz-ic.com/product/DX-FY4056T.html",
+        "pages": 9,
+        "reviewed": true,
+        "original_board_manufacturer_and_voltage_bin_verified": false,
+        "pin8": "NC",
+        "nominal_charge_class_a": 1,
+        "input_working_range_v": [
+          4.0,
+          5.5
+        ],
+        "float_voltage_table_v": [
+          4.16,
+          4.28
+        ],
+        "caution": "datasheet front-page4.2V±1% differs from page3 table; verify procured bin"
+      }
+    },
+    "U4": {
+      "user_reading": "XR2981",
+      "uncertain_suffix": "cz",
+      "datasheet_verified": false,
+      "lcsc_product_code": null
+    },
+    "U2": null,
+    "U3": null
+  },
+  "original_chip_searches": [
+    {
+      "query": "FY4056T",
+      "source": "https://so.szlcsc.com/global.html?k=FY4056T",
+      "exact_matches": 0
+    },
+    {
+      "query": "FY4056",
+      "source": "https://so.szlcsc.com/global.html?k=FY4056",
+      "exact_matches": 0
+    },
+    {
+      "query": "XR2981",
+      "source": "https://so.szlcsc.com/global.html?k=XR2981",
+      "exact_matches": 0,
+      "nonmatching_result": {
+        "model": "XD2981",
+        "lcsc": "C556270",
+        "package": "DIP-18",
+        "reason": "Different model and package; rejected"
+      }
+    }
+  ],
+  "protection_candidate_review": {
+    "controller": "DW01A C2927799",
+    "source": "https://atta.szlcsc.com/upload/public/pdf/source/20261119/0167FCE8C12D2873E8FB09FB1E5CE846.pdf",
+    "datasheet_page": 10,
+    "discharge_overcurrent_threshold_mv": [
+      130,
+      160,
+      190
+    ],
+    "discharge_overcurrent_delay_ms": [
+      4.7,
+      9.5,
+      14.3
+    ],
+    "delay_test_condition": "VDD3.6V,VM0V to0.3V",
+    "correction": "Previous170±30mV referred to charging overcurrent magnitude, not discharging",
+    "FS8205A_max_series_resistance_ohm_at_vgs2_5v": 0.063,
+    "illustrative_min_threshold_battery_current_a": 2.0635,
+    "qualified_for_required_peak": false
   }
 }
