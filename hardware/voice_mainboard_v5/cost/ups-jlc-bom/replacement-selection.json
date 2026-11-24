@@ -1,0 +1,358 @@
+{
+  "date": "2026-11-24",
+  "user_authorized_functional_boost_replacement": true,
+  "requirements": {
+    "battery": "1S lithium",
+    "nominal_output_v": 5,
+    "peak_output_a": 2,
+    "continuous_load": "lower than peak; not fully measured",
+    "peak_duration_ms": null
+  },
+  "preferred_boost_candidate": "ETA1096E8A",
+  "final_boost_qualified": false,
+  "XR2981_datasheet_required_for_replacement_design": false,
+  "rows": [
+    {
+      "role": "preferred_cost_candidate",
+      "model": "ETA1096E8A",
+      "lcsc": "C7435200",
+      "package": "ESOP-8",
+      "source": "https://item.szlcsc.com/8449074.html",
+      "search_source": "https://so.szlcsc.com/global.html?k=ETA1096",
+      "stock_at_query": 1400,
+      "minimum_purchase_multiple": 5,
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "cny": 2.2356
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "cny": 1.7434
+        },
+        {
+          "start": 30,
+          "end": 99,
+          "cny": 1.5325
+        },
+        {
+          "start": 100,
+          "end": -1,
+          "cny": 1.2694
+        }
+      ],
+      "datasheet": "https://atta.szlcsc.com/upload/public/pdf/source/20230625/2A4ABBCD458F96EB3035613D632E6FEC.pdf",
+      "board_tested": false,
+      "price_scope": "single component; not UPS total or SMT processing",
+      "5": {
+        "quantity_per_board": 1,
+        "ordered_quantity": 5,
+        "cny_per_piece": 2.2356
+      },
+      "100": {
+        "quantity_per_board": 1,
+        "ordered_quantity": 100,
+        "cny_per_piece": 1.2694
+      },
+      "1000": {
+        "quantity_per_board": 1,
+        "ordered_quantity": 1000,
+        "cny_per_piece": 1.2694
+      }
+    },
+    {
+      "role": "backup_candidate",
+      "model": "SY7065AQMC",
+      "lcsc": "C106908",
+      "package": "QFN-10(2x2)",
+      "source": "https://item.szlcsc.com/108124.html",
+      "search_source": "https://so.szlcsc.com/global.html?k=SY7065",
+      "stock_at_query": 2913,
+      "minimum_purchase_multiple": 1,
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "cny": 3.46
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "cny": 2.7
+        },
+        {
+          "start": 30,
+          "end": 99,
+          "cny": 2.37
+        },
+        {
+          "start": 100,
+          "end": 499,
+          "cny": 1.97
+        },
+        {
+          "start": 500,
+          "end": 999,
+          "cny": 1.71
+        },
+        {
+          "start": 1000,
+          "end": -1,
+          "cny": 1.6
+        }
+      ],
+      "datasheet": "https://atta.szlcsc.com/upload/public/pdf/source/20220211/9D4CABDFF53F96050376307C66ABE432.pdf",
+      "board_tested": false,
+      "price_scope": "single component; not UPS total or SMT processing",
+      "5": {
+        "quantity_per_board": 1,
+        "ordered_quantity": 5,
+        "cny_per_piece": 3.46
+      },
+      "100": {
+        "quantity_per_board": 1,
+        "ordered_quantity": 100,
+        "cny_per_piece": 1.97
+      },
+      "1000": {
+        "quantity_per_board": 1,
+        "ordered_quantity": 1000,
+        "cny_per_piece": 1.6
+      }
+    },
+    {
+      "role": "backup_candidate",
+      "model": "FP6277XR-G1",
+      "lcsc": "C88312",
+      "package": "SOP-8-EP",
+      "source": "https://item.szlcsc.com/89491.html",
+      "search_source": "https://so.szlcsc.com/global.html?k=FP6277",
+      "stock_at_query": 1745,
+      "minimum_purchase_multiple": 1,
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "cny": 3.81
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "cny": 3.12
+        },
+        {
+          "start": 30,
+          "end": 99,
+          "cny": 2.77
+        },
+        {
+          "start": 100,
+          "end": 499,
+          "cny": 2.43
+        },
+        {
+          "start": 500,
+          "end": 999,
+          "cny": 2.06
+        },
+        {
+          "start": 1000,
+          "end": -1,
+          "cny": 1.95
+        }
+      ],
+      "datasheet": "https://atta.szlcsc.com/upload/public/pdf/source/20170705/1499242768269.pdf",
+      "board_tested": false,
+      "price_scope": "single component; not UPS total or SMT processing",
+      "5": {
+        "quantity_per_board": 1,
+        "ordered_quantity": 5,
+        "cny_per_piece": 3.81
+      },
+      "100": {
+        "quantity_per_board": 1,
+        "ordered_quantity": 100,
+        "cny_per_piece": 2.43
+      },
+      "1000": {
+        "quantity_per_board": 1,
+        "ordered_quantity": 1000,
+        "cny_per_piece": 1.95
+      }
+    },
+    {
+      "role": "rejected_insufficient_current",
+      "model": "ETA1061V50S2G",
+      "lcsc": "C7465524",
+      "package": "SOT-23-6",
+      "source": "https://item.szlcsc.com/8507061.html",
+      "search_source": "https://so.szlcsc.com/global.html?k=ETA1061",
+      "stock_at_query": 6492,
+      "minimum_purchase_multiple": 5,
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "cny": 1.1235
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "cny": 0.8748
+        },
+        {
+          "start": 30,
+          "end": 99,
+          "cny": 0.7683
+        },
+        {
+          "start": 100,
+          "end": 599,
+          "cny": 0.6353
+        },
+        {
+          "start": 600,
+          "end": 1199,
+          "cny": 0.576
+        },
+        {
+          "start": 1200,
+          "end": -1,
+          "cny": 0.5405
+        }
+      ],
+      "datasheet": "https://atta.szlcsc.com/upload/public/pdf/source/20230717/617FE9A88547E216706075F2BE46EBDE.pdf",
+      "board_tested": false,
+      "price_scope": "single component; not UPS total or SMT processing",
+      "5": {
+        "quantity_per_board": 1,
+        "ordered_quantity": 5,
+        "cny_per_piece": 1.1235
+      },
+      "100": {
+        "quantity_per_board": 1,
+        "ordered_quantity": 100,
+        "cny_per_piece": 0.6353
+      },
+      "1000": {
+        "quantity_per_board": 1,
+        "ordered_quantity": 1000,
+        "cny_per_piece": 0.576
+      }
+    },
+    {
+      "role": "protection_architecture_comparison_only",
+      "model": "XB7608AJ",
+      "lcsc": "C2681921",
+      "package": "CPC-5",
+      "source": "https://item.szlcsc.com/2775921.html",
+      "search_source": "https://so.szlcsc.com/global.html?k=XB7608",
+      "stock_at_query": 12131,
+      "minimum_purchase_multiple": 5,
+      "tiers": [
+        {
+          "start": 1,
+          "end": 9,
+          "cny": 0.5466
+        },
+        {
+          "start": 10,
+          "end": 29,
+          "cny": 0.4266
+        },
+        {
+          "start": 30,
+          "end": 99,
+          "cny": 0.3666
+        },
+        {
+          "start": 100,
+          "end": 499,
+          "cny": 0.3216
+        },
+        {
+          "start": 500,
+          "end": 999,
+          "cny": 0.2856
+        },
+        {
+          "start": 1000,
+          "end": -1,
+          "cny": 0.2675
+        }
+      ],
+      "datasheet": "https://atta.szlcsc.com/upload/public/pdf/source/20201230/C2681921_63F43FD1A79E48A5DEB3B0D5E2CF4C87.pdf",
+      "board_tested": false,
+      "price_scope": "single component; not UPS total or SMT processing",
+      "5": {
+        "quantity_per_board": 1,
+        "ordered_quantity": 5,
+        "cny_per_piece": 0.5466
+      },
+      "100": {
+        "quantity_per_board": 1,
+        "ordered_quantity": 100,
+        "cny_per_piece": 0.3216
+      },
+      "1000": {
+        "quantity_per_board": 1,
+        "ordered_quantity": 1000,
+        "cny_per_piece": 0.2675
+      }
+    }
+  ],
+  "original_markings": {
+    "U1": {
+      "text": "FY4056T",
+      "second_line": "A002135"
+    },
+    "U4": {
+      "text": "XR2981",
+      "uncertain_suffix": "cz"
+    },
+    "U2": {
+      "text": "FM5608",
+      "second_line": "A087483"
+    },
+    "U3": {
+      "text": "FM5608",
+      "second_line": "A087483"
+    }
+  },
+  "FM5608": {
+    "manufacturer_datasheet_verified": false,
+    "lcsc_exact_search_match": false,
+    "rejected_search_result": "FM3608 C45662360 is a different model",
+    "public_hint": "Integrated1S protection with powerMOS; search snippet only",
+    "hint_source": "https://mbb.eet-china.com/forum/topic/148627_1_1.html",
+    "actual_connection_known": false,
+    "parallel_connection_assumed": false,
+    "double_count_DW01_and_FS8205": false
+  },
+  "protection_comparison_two_chips_per_board": {
+    "100": {
+      "total_purchase_quantity": 200,
+      "cny_per_piece": 0.3216,
+      "cny_per_board": 0.6432,
+      "not_FM5608_quote": true,
+      "not_qualified_or_selected": true
+    },
+    "1000": {
+      "total_purchase_quantity": 2000,
+      "cny_per_piece": 0.2675,
+      "cny_per_board": 0.535,
+      "not_FM5608_quote": true,
+      "not_qualified_or_selected": true
+    }
+  },
+  "complete_UPS_material_total": null,
+  "PCB_changed": false,
+  "firmware_changed": false,
+  "ETA1096_chip_only_totals_cny": {
+    "5": 11.178,
+    "100": 126.94,
+    "1000": 1269.4
+  }
+}

@@ -100,7 +100,7 @@
           "cny": 0.0753
         }
       ],
-      "note": "Use thresholds with actual load and total MOS/trace resistance",
+      "note": "Historical discrete protection comparison; original U2/U3 user-read FM5608; do not count both architectures",
       "100": {
         "purchase_quantity_before_loss": 100,
         "unit_cny": 0.1141,
@@ -152,7 +152,7 @@
           "cny": 0.1545
         }
       ],
-      "note": "Not qualified for required5V2A output peak; original U2/U3 unknown; check battery peak current and protection delay",
+      "note": "Historical unqualified discrete protection comparison; not original FM5608; do not count both architectures",
       "100": {
         "purchase_quantity_before_loss": 100,
         "unit_cny": 0.1958,
@@ -322,13 +322,13 @@
     }
   ],
   "missing": [
-    "U4 XR2981 manufacturer datasheet; U1 FY4056T actual manufacturer/voltage bin; U1/U4 purchase codes",
-    "original U2/U3 identification",
-    "input battery switching circuit",
-    "inductor rating and exact part",
-    "feedback programming control passives exact specs",
-    "peak duration repetition and minimum working battery voltage",
-    "connectors and assembly method"
+    "Final boost candidate limit tolerance and circuit validation",
+    "FM5608 exact datasheet and connectivity if retaining it; or qualified replacement protection design",
+    "Input battery switching and load-sharing design",
+    "Inductor rating, availability and exact part",
+    "Programming control and feedback passives exact specs",
+    "Peak duration repetition and minimum working battery voltage",
+    "Connectors and assembly method"
   ],
   "subset_excludes": [
     "boost",
@@ -384,8 +384,18 @@
       "datasheet_verified": false,
       "lcsc_product_code": null
     },
-    "U2": null,
-    "U3": null
+    "U2": {
+      "user_reading": "FM5608",
+      "second_line": "A087483",
+      "datasheet_verified": false,
+      "lcsc_product_code": null
+    },
+    "U3": {
+      "user_reading": "FM5608",
+      "second_line": "A087483",
+      "datasheet_verified": false,
+      "lcsc_product_code": null
+    }
   },
   "original_chip_searches": [
     {
@@ -429,5 +439,9 @@
     "FS8205A_max_series_resistance_ohm_at_vgs2_5v": 0.063,
     "illustrative_min_threshold_battery_current_a": 2.0635,
     "qualified_for_required_peak": false
-  }
+  },
+  "user_authorized_functional_boost_replacement": true,
+  "latest_selection_file": "replacement-selection.json",
+  "original_chip_marking_readings_complete": true,
+  "subset_status": "Historical provisional comparison of another architecture; not current complete UPS cost; see replacement-selection.json"
 }
