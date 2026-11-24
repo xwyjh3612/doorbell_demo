@@ -1,0 +1,14 @@
+[
+  {
+    "net": "CHG_CE",
+    "routed": true,
+    "width_mm": 0.2,
+    "iteration": 0
+  },
+  {
+    "net": "CHG_DISABLE_IO38",
+    "routed": true,
+    "width_mm": 0.2,
+    "iteration": 0
+  }
+]

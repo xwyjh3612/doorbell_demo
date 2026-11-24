@@ -1,0 +1,15 @@
+[
+  {
+    "group": 29,
+    "connected": true
+  },
+  {
+    "group": 38,
+    "connected": true
+  },
+  {
+    "group": 30,
+    "connected": false,
+    "reason": "No multilayer path GND visited 153"
+  }
+]

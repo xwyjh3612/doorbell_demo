@@ -1,6 +1,9 @@
 # Preserve hashes of the exported engineering package dependencies on Windows.
 .gitattributes text eol=lf
 hardware/voice_mainboard_v2/generate_schematic.py text eol=lf
+hardware/voice_mainboard_v6/** text eol=lf
+hardware/voice_mainboard_v6/**/*.png -text
+hardware/voice_mainboard_v6/**/*.zip -text
 tests/at_recovery_batch_20261121.md text eol=lf
 tests/at_recovery_40_final.json text eol=lf
 tests/at_recovery_32_hangup_panic.txt text eol=lf

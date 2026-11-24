@@ -21,6 +21,7 @@ public class DeviceTelemetryService extends TextWebSocketHandler {
     private final String prefix;
     private final RadarHistoryStore history;
     private final ConcurrentMap<String, Observation> latest = new ConcurrentHashMap<>();
+    private final ConcurrentMap<String, Observation> latestPower = new ConcurrentHashMap<>();
     private final ConcurrentMap<String, Subscription> subscribers = new ConcurrentHashMap<>();
     @Autowired
     public DeviceTelemetryService(@Value("${signaling.project:project}") String project, RadarHistoryStore history) {
@@ -39,10 +40,11 @@ public class DeviceTelemetryService extends TextWebSocketHandler {
         }
     }
     public boolean isTelemetryTopic(String topic) {
-        return topic != null && topic.startsWith(prefix) && topic.endsWith("/telemetry");
+        return topic != null && topic.startsWith(prefix) && (topic.endsWith("/telemetry") || topic.endsWith("/power"));
     }
     public void handleTelemetry(String topic, String payload) {
         if (!isTelemetryTopic(topic) || payload == null || payload.length() > 2048) return;
+        if (topic.endsWith("/power")) { handlePower(topic, payload); return; }
         String device = topic.substring(prefix.length(), topic.length() - "/telemetry".length());
         if (!device.matches("[A-Za-z0-9_-]{1,63}")) return;
         try {
@@ -76,6 +78,36 @@ public class DeviceTelemetryService extends TextWebSocketHandler {
             }
         } catch (RuntimeException ignored) { /* Malformed telemetry cannot enter call handling. */ }
     }
+    private void handlePower(String topic, String payload) {
+        String device = topic.substring(prefix.length(), topic.length() - "/power".length());
+        if (!device.matches("[A-Za-z0-9_-]{1,63}")) return;
+        try {
+            JSONObject input = JSON.parseObject(payload);
+            if (input == null || input.getIntValue("schema") != 1 || !device.equals(input.getString("device"))) return;
+            String source = input.getString("source");
+            if (!"external".equals(source) && !"battery".equals(source) && !"unknown".equals(source)) return;
+            if (!Boolean.TRUE.equals(input.get("estimate")) || !(input.get("calibrated") instanceof Boolean)
+                    || !(input.get("charge_paused") instanceof Boolean)) return;
+            JSONObject safe = new JSONObject();
+            safe.put("schema", 1); safe.put("device", device); safe.put("source", source);
+            safe.put("estimate", true); safe.put("calibrated", input.get("calibrated"));
+            safe.put("charge_paused", input.get("charge_paused"));
+            String[] keys = {"uptime_ms", "external_present", "battery_mv", "battery_percent", "charging"};
+            long[] min = {0, -1, -1, -1, -1}, max = {Long.MAX_VALUE, 1, 4400, 100, 3};
+            for (int i = 0; i < keys.length; i++) {
+                Object value = input.get(keys[i]);
+                if (!(value instanceof Integer) && !(value instanceof Long)) return;
+                long n = ((Number)value).longValue();
+                if (n < min[i] || n > max[i] || (i == 2 && n != -1 && n < 2500)) return;
+                safe.put(keys[i], n);
+            }
+            if ((!input.getBooleanValue("calibrated") || input.getIntValue("battery_mv") == -1)
+                    && input.getIntValue("battery_percent") != -1) return;
+            if (!latestPower.containsKey(device) && latestPower.size() >= 256) return;
+            latestPower.put(device, new Observation(safe));
+            for (Subscription subscription : subscribers.values()) if (device.equals(subscription.device)) send(subscription);
+        } catch (RuntimeException ignored) { /* Independent telemetry must never enter call handling. */ }
+    }
     public JSONObject snapshot(String device) {
         JSONObject body = new JSONObject();
         body.put("type", "telemetry"); body.put("device", device);
@@ -84,6 +116,12 @@ public class DeviceTelemetryService extends TextWebSocketHandler {
         body.put("age_ms", age); body.put("online", age >= 0 && age < 30000);
         body.put("received_at_ms", observation == null ? 0 : observation.at);
         body.put("radar", observation == null ? null : observation.data);
+        Observation power = latestPower.get(device);
+        long powerAge = power == null ? -1 : Math.max(0, System.currentTimeMillis() - power.at);
+        body.put("power", power == null ? null : power.data);
+        body.put("power_age_ms", powerAge);
+        body.put("power_received_at_ms", power == null ? 0 : power.at);
+        body.put("power_online", powerAge >= 0 && powerAge < 60000);
         return body;
     }
     @Override public void afterConnectionEstablished(WebSocketSession session) throws IOException {

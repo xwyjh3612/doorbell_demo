@@ -1,0 +1,98 @@
+(footprint "V6_BOARD_TP16"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "Project copper test point / board mounting hole. No purchased component. Geometry preserved from saved board; intentional board-only BOM/PnP attributes.")
+	(tags "test point SMD pad")
+	(property "Reference" "REF**"
+		(at 0 -2.4 0)
+		(layer "F.SilkS")
+		(uuid "c47ce4a3-deb1-4477-a302-8648dad5e315")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.12)
+			)
+		)
+	)
+	(property "Value" "V6_BOARD_TP16"
+		(at 0 1.55 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "8afa1bdd-daa4-44f7-b0c0-705ff9631461")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f0cadaeb-00be-45c0-817d-5c20f18e3126")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "6331bbc9-341c-42bb-aa95-acd01dd8a0ba")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd exclude_from_pos_files exclude_from_bom)
+	(fp_circle
+		(center 0 0)
+		(end 0 0.7)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "c2848159-de45-4ecd-9a99-24bee685105d")
+	)
+	(fp_circle
+		(center 0 0)
+		(end 1 0)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "92386646-9675-434b-b9f5-545de7f55d22")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 -1.45 0)
+		(layer "F.Fab")
+		(uuid "1b685743-f9f8-41e3-b594-612558139a0c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd circle
+		(at 0 0)
+		(size 1 1)
+		(layers "F.Cu" "F.Mask")
+		(uuid "b0180024-1982-4646-a9ab-b0c8124f1059")
+	)
+	(embedded_fonts no)
+)

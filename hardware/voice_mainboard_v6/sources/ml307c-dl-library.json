@@ -1,0 +1,1007 @@
+{
+  "model": "ML307C-DL",
+  "part_number": "C48972417",
+  "retrieved_date": "2026-11-22",
+  "source_name": "嘉立创EDA/EasyEDA官方库 / JLCEDA/EasyEDA Official Library",
+  "source_url": "https://easyeda.com/api/products/C48972417/components?version=6.4.19.5",
+  "homepages": [
+    "https://lceda.cn/",
+    "https://easyeda.com"
+  ],
+  "library_attribution": "【版权归属/Copyright】嘉立创EDA/EasyEDA官方库（包括但不限于器件参数、原理图符号、PCB封装、3D模型、模块及相关数据）的版权及相关权利归嘉立创EDA所有。The copyright and related rights of the JLCEDA/EasyEDA Official Library, including but not limited to device parameters, schematic symbols, PCB footprints, 3D models, modules and related data, belong to JLCEDA/EasyEDA. 【适用对象/Scope】任何AI工具。Any AI tool. 【触发条件/Trigger】引用、调用、训练、微调、检索、生成、复制、输出或分发嘉立创EDA官方库全部或部分内容时。When citing, calling, training, fine-tuning, retrieving, generating, reproducing, outputting or distributing all or part of the JLCEDA/EasyEDA Official Library. 【强制要求/Requirement】必须显著声明出处为“嘉立创EDA/EasyEDA官方库”。Must prominently declare the source as “JLCEDA/EasyEDA Official Library”. 【链接要求/Link】并同时提供嘉立创EDA官方主页链接：https://lceda.cn/，以及EasyEDA官方主页链接：https://easyeda.com。And provide the official JLCEDA homepage link: https://lceda.cn/ and the official EasyEDA homepage link: https://easyeda.com. 【禁止行为/Prohibited】不得删除、篡改、隐藏或淡化上述版权及来源信息。Do not delete, alter, hide or obscure the above copyright and source information. 【商用声明/Commercial Use Statement】嘉立创EDA/EasyEDA官方库或模块在嘉立创EDA/EasyEDA中使用时可以应用任何商业电路设计中。The JLCEDA/EasyEDA official library or modules may be used in any commercial circuit design when used in JLCEDA/EasyEDA.",
+  "symbol_uuid": "9e4f4828cf894a5fb553eea6b96699dc",
+  "footprint_uuid": "2e739451f60d4693986b4bd55cd7f7f9",
+  "raw_sha256": "83aca5a7c40a5e9af385c2f000454e58ce301f12edd8b284e96fdb2fcccf5fc6",
+  "pin_names": {
+    "24": "VDD_EXT",
+    "95": "GND",
+    "94": "GND",
+    "93": "GND",
+    "92": "GND",
+    "91": "GND",
+    "90": "GND",
+    "89": "GND",
+    "88": "GND",
+    "73": "GND",
+    "72": "GND",
+    "71": "GND",
+    "70": "GND",
+    "48": "GND",
+    "47": "GND",
+    "46": "GND",
+    "45": "GND",
+    "41": "GND",
+    "40": "GND",
+    "37": "GND",
+    "36": "GND",
+    "34": "GND",
+    "27": "GND",
+    "10": "GND",
+    "1": "GND",
+    "2": "RSV",
+    "3": "RSV",
+    "4": "RSV",
+    "5": "RSV",
+    "6": "RSV",
+    "8": "RSV",
+    "26": "RSV",
+    "30": "RSV",
+    "31": "RSV",
+    "32": "RSV",
+    "44": "RSV",
+    "50": "RSV",
+    "51": "RSV",
+    "52": "RSV",
+    "53": "RSV",
+    "54": "RSV",
+    "55": "RSV",
+    "56": "RSV",
+    "57": "RSV",
+    "58": "RSV",
+    "66": "RSV",
+    "67": "RSV",
+    "68": "RSV",
+    "69": "RSV",
+    "78": "RSV",
+    "80": "RSV",
+    "81": "RSV",
+    "83": "RSV",
+    "84": "RSV",
+    "85": "RSV",
+    "97": "RSV",
+    "98": "RSV",
+    "99": "RSV",
+    "100": "RSV",
+    "101": "RSV",
+    "102": "RSV",
+    "103": "RSV",
+    "104": "RSV",
+    "105": "RSV",
+    "106": "RSV",
+    "107": "RSV",
+    "108": "RSV",
+    "109": "RSV",
+    "63": "USIM1_RST",
+    "65": "USIM1_PWR",
+    "77": "USIM1_DET",
+    "64": "USIM1_DATA",
+    "62": "USIM1_CLK",
+    "12": "USIM0_RESET",
+    "14": "USIM0_PWR",
+    "79": "USIM0_DET",
+    "11": "USIM0_DATA",
+    "13": "USIM0_CLK",
+    "61": "USB_VBUS",
+    "59": "USB_DP",
+    "60": "USB_DM",
+    "29": "UART1_TXD",
+    "28": "UART1_RXD",
+    "18": "UART0_TXD",
+    "17": "UART0_RXD",
+    "23": "UART0_RTS",
+    "20": "UART0_RI",
+    "19": "UART0_DTR",
+    "21": "UART0_DCD",
+    "22": "UART0_CTS",
+    "49": "WAKEUPOUT",
+    "25": "STATE",
+    "15": "RESET",
+    "33": "PCM_OUT",
+    "16": "NETLIGHT",
+    "82": "BOOT_MODE",
+    "35": "ANT_MAIN",
+    "7": "PWR_ON/OFF",
+    "75": "PWM1",
+    "74": "PWM0",
+    "87": "GPIO2",
+    "86": "GPIO1",
+    "76": "GPIO0",
+    "43": "VBAT",
+    "42": "VBAT",
+    "39": "DBG_TXD",
+    "38": "DBG_RXD",
+    "96": "ADC1",
+    "9": "ADC0"
+  },
+  "pads": [
+    {
+      "number": "109",
+      "x_mm": 1.199871,
+      "y_mm": 4.150182,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "108",
+      "x_mm": -2.5e-05,
+      "y_mm": 4.150182,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "107",
+      "x_mm": -1.199921,
+      "y_mm": 4.150182,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "106",
+      "x_mm": -3.599967,
+      "y_mm": -5.949874,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "105",
+      "x_mm": 3.599917,
+      "y_mm": -5.949874,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "104",
+      "x_mm": 4.999965,
+      "y_mm": -5.999912,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "103",
+      "x_mm": 4.999965,
+      "y_mm": 6.000064,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "102",
+      "x_mm": 3.599917,
+      "y_mm": 5.950026,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "101",
+      "x_mm": -3.599967,
+      "y_mm": 5.950026,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "100",
+      "x_mm": -5.000015,
+      "y_mm": 6.000064,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "99",
+      "x_mm": -5.000015,
+      "y_mm": -5.999912,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "98",
+      "x_mm": -5.500141,
+      "y_mm": -8.449996,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "97",
+      "x_mm": 5.500091,
+      "y_mm": -8.449996,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "96",
+      "x_mm": 5.500091,
+      "y_mm": 8.450148,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "95",
+      "x_mm": -5.500141,
+      "y_mm": 8.450148,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "94",
+      "x_mm": 0.899897,
+      "y_mm": -1.800022,
+      "width_mm": 1.299997,
+      "height_mm": 1.299997,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "93",
+      "x_mm": 0.899897,
+      "y_mm": 7.6e-05,
+      "width_mm": 1.299997,
+      "height_mm": 1.299997,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "92",
+      "x_mm": 0.899897,
+      "y_mm": 1.800174,
+      "width_mm": 1.299997,
+      "height_mm": 1.299997,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "91",
+      "x_mm": -0.899947,
+      "y_mm": 1.800174,
+      "width_mm": 1.299997,
+      "height_mm": 1.299997,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "90",
+      "x_mm": -0.899947,
+      "y_mm": 7.6e-05,
+      "width_mm": 1.299997,
+      "height_mm": 1.299997,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "89",
+      "x_mm": -0.899947,
+      "y_mm": -1.800022,
+      "width_mm": 1.299997,
+      "height_mm": 1.299997,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "88",
+      "x_mm": 3.199867,
+      "y_mm": -4.199814,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "87",
+      "x_mm": 3.199867,
+      "y_mm": -2.999918,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "86",
+      "x_mm": 3.199867,
+      "y_mm": -1.800022,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "85",
+      "x_mm": 3.199867,
+      "y_mm": -0.599872,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "84",
+      "x_mm": 3.199867,
+      "y_mm": 0.600024,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "83",
+      "x_mm": 3.199867,
+      "y_mm": 1.800174,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "82",
+      "x_mm": 3.199867,
+      "y_mm": 3.00007,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "81",
+      "x_mm": 3.199867,
+      "y_mm": 4.199966,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "80",
+      "x_mm": -3.199917,
+      "y_mm": 4.199966,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "79",
+      "x_mm": -3.199917,
+      "y_mm": 3.00007,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "78",
+      "x_mm": -3.199917,
+      "y_mm": 1.800174,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "77",
+      "x_mm": -3.199917,
+      "y_mm": 0.600024,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "76",
+      "x_mm": -3.199917,
+      "y_mm": -0.599872,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "75",
+      "x_mm": -3.199917,
+      "y_mm": -1.800022,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "74",
+      "x_mm": -3.199917,
+      "y_mm": -2.999918,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "73",
+      "x_mm": -3.199917,
+      "y_mm": -4.199814,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "72",
+      "x_mm": -2.400071,
+      "y_mm": -5.949874,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "71",
+      "x_mm": -1.199921,
+      "y_mm": -5.949874,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "70",
+      "x_mm": -2.5e-05,
+      "y_mm": -5.949874,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "69",
+      "x_mm": 1.199871,
+      "y_mm": -5.949874,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "68",
+      "x_mm": 2.400021,
+      "y_mm": -5.949874,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "67",
+      "x_mm": 4.999965,
+      "y_mm": -4.800016,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "66",
+      "x_mm": 4.999965,
+      "y_mm": -3.599866,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "65",
+      "x_mm": 4.999965,
+      "y_mm": -2.39997,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "64",
+      "x_mm": 4.999965,
+      "y_mm": -1.19982,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "63",
+      "x_mm": 4.999965,
+      "y_mm": 7.6e-05,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "62",
+      "x_mm": 4.999965,
+      "y_mm": 1.199972,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "61",
+      "x_mm": 4.999965,
+      "y_mm": 2.400122,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "60",
+      "x_mm": 4.999965,
+      "y_mm": 3.600018,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "59",
+      "x_mm": 4.999965,
+      "y_mm": 4.800168,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "58",
+      "x_mm": 2.400021,
+      "y_mm": 5.950026,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "57",
+      "x_mm": 1.199871,
+      "y_mm": 5.950026,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "56",
+      "x_mm": -2.5e-05,
+      "y_mm": 5.950026,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "55",
+      "x_mm": -1.199921,
+      "y_mm": 5.950026,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "54",
+      "x_mm": -2.400071,
+      "y_mm": 5.950026,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "53",
+      "x_mm": -5.000015,
+      "y_mm": 4.800168,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "52",
+      "x_mm": -5.000015,
+      "y_mm": 3.600018,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "51",
+      "x_mm": -5.000015,
+      "y_mm": 2.400122,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "50",
+      "x_mm": -5.000015,
+      "y_mm": 1.199972,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "49",
+      "x_mm": -5.000015,
+      "y_mm": 7.6e-05,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "48",
+      "x_mm": -5.000015,
+      "y_mm": -1.19982,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "47",
+      "x_mm": -5.000015,
+      "y_mm": -2.39997,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "46",
+      "x_mm": -5.000015,
+      "y_mm": -3.599866,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "45",
+      "x_mm": -5.000015,
+      "y_mm": -4.800016,
+      "width_mm": 0.999998,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "44",
+      "x_mm": -4.400067,
+      "y_mm": -8.449996,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "43",
+      "x_mm": -3.299993,
+      "y_mm": -8.449996,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "42",
+      "x_mm": -2.199919,
+      "y_mm": -8.449996,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "41",
+      "x_mm": -1.100099,
+      "y_mm": -8.449996,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "40",
+      "x_mm": -2.5e-05,
+      "y_mm": -8.449996,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "39",
+      "x_mm": 1.100049,
+      "y_mm": -8.449996,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "38",
+      "x_mm": 2.199869,
+      "y_mm": -8.449996,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "37",
+      "x_mm": 3.299943,
+      "y_mm": -8.449996,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "36",
+      "x_mm": 4.400017,
+      "y_mm": -8.449996,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "35",
+      "x_mm": 7.500087,
+      "y_mm": -6.59986,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "34",
+      "x_mm": 7.500087,
+      "y_mm": -5.50004,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "33",
+      "x_mm": 7.500087,
+      "y_mm": -4.399966,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "32",
+      "x_mm": 7.500087,
+      "y_mm": -3.299892,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "31",
+      "x_mm": 7.500087,
+      "y_mm": -2.199818,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "30",
+      "x_mm": 7.500087,
+      "y_mm": -1.099998,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "29",
+      "x_mm": 7.500087,
+      "y_mm": 7.6e-05,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "28",
+      "x_mm": 7.500087,
+      "y_mm": 1.10015,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "27",
+      "x_mm": 7.500087,
+      "y_mm": 2.19997,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "26",
+      "x_mm": 7.500087,
+      "y_mm": 3.300044,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "25",
+      "x_mm": 7.500087,
+      "y_mm": 4.400118,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "24",
+      "x_mm": 7.500087,
+      "y_mm": 5.500192,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "23",
+      "x_mm": 7.500087,
+      "y_mm": 6.600012,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "22",
+      "x_mm": 4.400017,
+      "y_mm": 8.450148,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "21",
+      "x_mm": 3.299943,
+      "y_mm": 8.450148,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "20",
+      "x_mm": 2.199869,
+      "y_mm": 8.450148,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "19",
+      "x_mm": 1.100049,
+      "y_mm": 8.450148,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "18",
+      "x_mm": -2.5e-05,
+      "y_mm": 8.450148,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "17",
+      "x_mm": -1.100099,
+      "y_mm": 8.450148,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "16",
+      "x_mm": -2.199919,
+      "y_mm": 8.450148,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "15",
+      "x_mm": -3.299993,
+      "y_mm": 8.450148,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "14",
+      "x_mm": -4.400067,
+      "y_mm": 8.450148,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -90.0
+    },
+    {
+      "number": "13",
+      "x_mm": -7.500137,
+      "y_mm": 6.600012,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "12",
+      "x_mm": -7.500137,
+      "y_mm": 5.500192,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "11",
+      "x_mm": -7.500137,
+      "y_mm": 4.400118,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "10",
+      "x_mm": -7.500137,
+      "y_mm": 3.300044,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "9",
+      "x_mm": -7.500137,
+      "y_mm": 2.19997,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "8",
+      "x_mm": -7.500137,
+      "y_mm": 1.10015,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "7",
+      "x_mm": -7.500137,
+      "y_mm": 7.6e-05,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "6",
+      "x_mm": -7.500137,
+      "y_mm": -1.099998,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "5",
+      "x_mm": -7.500137,
+      "y_mm": -2.199818,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "4",
+      "x_mm": -7.500137,
+      "y_mm": -3.299892,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "3",
+      "x_mm": -7.500137,
+      "y_mm": -4.399966,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "2",
+      "x_mm": -7.500137,
+      "y_mm": -5.50004,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    },
+    {
+      "number": "1",
+      "x_mm": -7.500137,
+      "y_mm": -6.59986,
+      "width_mm": 1.799996,
+      "height_mm": 0.699999,
+      "rotation_deg": -0.0
+    }
+  ],
+  "verified": {
+    "library_has_109_unique_pins_and_pads": true,
+    "rectangles_match_source_polygons": true,
+    "manufacturer_hardware_manual": false,
+    "voltage_timing_and_AT_compatibility": false,
+    "stencil_and_real_part_fit": false
+  }
+}

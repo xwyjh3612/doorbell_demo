@@ -1,0 +1,97 @@
+(footprint "V6_BOARD_H3"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "Project copper test point / board mounting hole. No purchased component. Geometry preserved from saved board; intentional board-only BOM/PnP attributes.")
+	(tags "mountinghole M3")
+	(property "Reference" "REF**"
+		(at 0 -2.8 0)
+		(layer "F.SilkS")
+		(uuid "358914f3-115d-4ea0-9706-dcd0e76bb305")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.12)
+			)
+		)
+	)
+	(property "Value" "V6_BOARD_H3"
+		(at 0 4.15 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "fcf2b298-5cd0-4771-b07a-776b91273e49")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "dcf0bf6e-30f7-42cb-9b7c-b6720e9fac7e")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d12654a7-8725-41c5-99d5-b885ffe178fa")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd board_only exclude_from_pos_files exclude_from_bom)
+	(fp_circle
+		(center 0 0)
+		(end 3.2 0)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(fill no)
+		(layer "Cmts.User")
+		(uuid "f4ec278c-2ae5-4058-a601-5007df0a8e32")
+	)
+	(fp_circle
+		(center 0 0)
+		(end 3.45 0)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "5461622e-3dcc-4639-97b0-806ba946693f")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "ff3e0751-2e3f-43ca-a9fd-bdbf7b7fd76d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "" np_thru_hole circle
+		(at 0 0)
+		(size 3.2 3.2)
+		(drill 3.2)
+		(layers "*.Cu" "*.Mask")
+		(uuid "7499eabf-bc97-4567-93f2-bd0f8dad8bee")
+	)
+	(embedded_fonts no)
+)

@@ -1,0 +1,11 @@
+{
+  "radar60": true,
+  "variant": "mainboard-v6-radar60",
+  "note": "App image only. Verify device partitions and preserve NVS/OTA selection before flashing.",
+  "built_at": "2026-11-24T11:52:34.3485454+08:00",
+  "radar": true,
+  "sha256": "394df1ece47c2cd480448a79cc1ee40096ff6b65ff741955f8b91f5795c0aefc",
+  "power_monitor": true,
+  "app_offset": "0x10000",
+  "size": 2799312
+}

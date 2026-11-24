@@ -1,0 +1,48 @@
+{
+  "ground_stitch_vias_added": 29,
+  "power_connections": [
+    {
+      "net": "CELL_NEG",
+      "connected": true
+    },
+    {
+      "net": "BAT_BOOST_5V",
+      "connected": true
+    },
+    {
+      "net": "BAT_BOOST_5V",
+      "connected": true
+    },
+    {
+      "net": "VIN_PROTECTED",
+      "connected": true
+    },
+    {
+      "net": "VIN_PROTECTED",
+      "connected": true
+    },
+    {
+      "net": "VIN_PROTECTED",
+      "connected": true
+    },
+    {
+      "net": "BAT_SENSE_IN",
+      "connected": true
+    },
+    {
+      "net": "BAT_SENSE_IN",
+      "connected": false,
+      "reason": "No multilayer path BAT_SENSE_IN visited 0"
+    },
+    {
+      "net": "SYS_5V",
+      "connected": false,
+      "reason": "No multilayer path SYS_5V visited 0"
+    },
+    {
+      "net": "SYS_5V",
+      "connected": false,
+      "reason": "No multilayer path SYS_5V visited 880583"
+    }
+  ]
+}

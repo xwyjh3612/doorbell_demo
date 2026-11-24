@@ -126,7 +126,7 @@ public class MqttConfig {
         MqttPahoMessageDrivenChannelAdapter adapter = new MqttPahoMessageDrivenChannelAdapter(
                 clientId + "-inbound", // 入站客户端ID，避免和出站重复
                 mqttClientFactory(),
-                upTopic, "/voice/" + project + "/+/telemetry");
+                upTopic, "/voice/" + project + "/+/telemetry", "/voice/" + project + "/+/power");
 
         // 设置消息转换器（UTF-8编码，QoS级别）
         adapter.setConverter(new DefaultPahoMessageConverter(qos, false));

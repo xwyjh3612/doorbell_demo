@@ -3,6 +3,9 @@ set(voice_sources "main.cpp" "board.c" "media_sys.c" "webrtc_mqtt.c" "mqtt_signa
 if(CONFIG_VOICE_RADAR_ENABLE)
     list(APPEND voice_sources "radar_presence.c" "radar_telemetry.cpp")
 endif()
+if(CONFIG_VOICE_POWER_MONITOR_ENABLE)
+    list(APPEND voice_sources "power_monitor.cpp")
+endif()
 idf_component_register(SRCS ${voice_sources}
                        EMBED_TXTFILES "ring.aac" "outgoing.aac" "open.aac" "join.aac"
                        INCLUDE_DIRS ".")

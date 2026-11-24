@@ -42,6 +42,9 @@ extern "C" {
 #if CONFIG_VOICE_RADAR_ENABLE
 #include "radar_presence.h"
 #endif
+#if CONFIG_VOICE_POWER_MONITOR_ENABLE
+#include "power_monitor.h"
+#endif
 }
 
 static const char *TAG = "Webrtc_Test";
@@ -276,6 +279,12 @@ static int capture_to_player_cli(int argc, char **argv) {
         ESP_LOGW(TAG, "Radar console unavailable: %s", esp_err_to_name(radar_console_ret));
     }
 #endif
+#if CONFIG_VOICE_POWER_MONITOR_ENABLE
+    esp_err_t power_console_ret = power_monitor_register_console();
+    if (power_console_ret != ESP_OK) {
+        ESP_LOGW(TAG, "Power console unavailable: %s", esp_err_to_name(power_console_ret));
+    }
+#endif
     ESP_ERROR_CHECK(esp_console_start_repl(repl));
     return 0;
 }
@@ -403,6 +412,14 @@ void app_main() {
     
     // 初始化配置（从 NVS 加载）
     app_config_init();
+
+#if CONFIG_VOICE_POWER_MONITOR_ENABLE
+    esp_err_t power_ret = power_monitor_start();
+    if (power_ret != ESP_OK) {
+        ESP_LOGW(TAG, "Power monitor unavailable: %s; continuing voice startup",
+                 esp_err_to_name(power_ret));
+    }
+#endif
 
 #if CONFIG_VOICE_RADAR_ENABLE
     // Independent, receive-only radar observation. Failure must not stop voice.

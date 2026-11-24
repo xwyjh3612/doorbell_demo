@@ -1,0 +1,90 @@
+[
+  {
+    "from": [
+      "chg_start",
+      0
+    ],
+    "to": [
+      "chg_end",
+      0
+    ],
+    "routed": true
+  },
+  {
+    "from": [
+      "gate_start",
+      0
+    ],
+    "to": [
+      "gate_end",
+      0
+    ],
+    "routed": true
+  },
+  {
+    "from": [
+      "full_start",
+      0
+    ],
+    "to": [
+      "full_end",
+      0
+    ],
+    "routed": true
+  },
+  {
+    "from": [
+      "chg_start",
+      0
+    ],
+    "to": [
+      "R73",
+      2
+    ],
+    "routed": true
+  },
+  {
+    "from": [
+      "gate_start",
+      0
+    ],
+    "to": [
+      "R69",
+      1
+    ],
+    "routed": true
+  },
+  {
+    "from": [
+      "full_start",
+      0
+    ],
+    "to": [
+      "R74",
+      2
+    ],
+    "routed": true
+  },
+  {
+    "from": [
+      "U16",
+      8
+    ],
+    "to": [
+      "R68",
+      2
+    ],
+    "routed": true
+  },
+  {
+    "from": [
+      "Q7",
+      3
+    ],
+    "to": [
+      "R68",
+      2
+    ],
+    "routed": true
+  }
+]

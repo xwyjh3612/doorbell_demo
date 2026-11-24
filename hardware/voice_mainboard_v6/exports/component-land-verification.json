@@ -1,0 +1,79 @@
+[
+  {
+    "ref": "U14",
+    "original_library": "Package_DFN_QFN:QFN-16-1EP_3x3mm_P0.5mm_EP1.675x1.675mm",
+    "SMD_land_geometry_matches_original": true,
+    "SMD_pads_checked": 17,
+    "paste_apertures_qualified": false,
+    "thermal_plated_holes": []
+  },
+  {
+    "ref": "U7",
+    "original_library": "RF_Module:ESP32-S3-WROOM-1",
+    "SMD_land_geometry_matches_original": true,
+    "SMD_pads_checked": 41,
+    "paste_apertures_qualified": false,
+    "thermal_plated_holes": [
+      {
+        "pad": "41",
+        "diameter_mm": 0.7,
+        "drill_mm": 0.3
+      },
+      {
+        "pad": "41",
+        "diameter_mm": 0.7,
+        "drill_mm": 0.3
+      },
+      {
+        "pad": "41",
+        "diameter_mm": 0.7,
+        "drill_mm": 0.3
+      },
+      {
+        "pad": "41",
+        "diameter_mm": 0.7,
+        "drill_mm": 0.3
+      },
+      {
+        "pad": "41",
+        "diameter_mm": 0.7,
+        "drill_mm": 0.3
+      },
+      {
+        "pad": "41",
+        "diameter_mm": 0.7,
+        "drill_mm": 0.3
+      },
+      {
+        "pad": "41",
+        "diameter_mm": 0.7,
+        "drill_mm": 0.3
+      },
+      {
+        "pad": "41",
+        "diameter_mm": 0.7,
+        "drill_mm": 0.3
+      },
+      {
+        "pad": "41",
+        "diameter_mm": 0.7,
+        "drill_mm": 0.3
+      },
+      {
+        "pad": "41",
+        "diameter_mm": 0.7,
+        "drill_mm": 0.3
+      },
+      {
+        "pad": "41",
+        "diameter_mm": 0.7,
+        "drill_mm": 0.3
+      },
+      {
+        "pad": "41",
+        "diameter_mm": 0.7,
+        "drill_mm": 0.3
+      }
+    ]
+  }
+]

@@ -1,5 +1,16 @@
 menu "Voice intercom options"
 
+config VOICE_POWER_MONITOR_ENABLE
+    bool "Include V6 mainboard supply / battery monitor"
+    depends on IDF_TARGET_ESP32S3
+    default n
+    help
+        For the V6 integrated UPS board only. GPIO47 reads the power mux ST,
+        GPIO10 detects external input, ADC1/GPIO2 measures the gated battery
+        divider (GPIO9). GPIO48/1 read charger status; GPIO38 pauses charging
+        while ringing, calling or updating. No modem commands during calls.
+        Leave disabled on development boards without these circuits.
+
 config VOICE_RADAR_ENABLE
     bool "Include optional presence / vitals radar"
     depends on IDF_TARGET_ESP32S3

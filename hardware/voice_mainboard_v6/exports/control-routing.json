@@ -1,0 +1,130 @@
+[
+  {
+    "pin": [
+      "U7",
+      34
+    ],
+    "off_pad_via": true
+  },
+  {
+    "pin": [
+      "U7",
+      25
+    ],
+    "off_pad_via": true
+  },
+  {
+    "from": [
+      "U15",
+      6
+    ],
+    "to": [
+      "R63",
+      1
+    ],
+    "routed": true
+  },
+  {
+    "from": [
+      "U15",
+      5
+    ],
+    "to": [
+      "R61",
+      2
+    ],
+    "routed": true
+  },
+  {
+    "from": [
+      "R61",
+      2
+    ],
+    "to": [
+      "R62",
+      1
+    ],
+    "routed": true
+  },
+  {
+    "from": [
+      "U16",
+      2
+    ],
+    "to": [
+      "R64",
+      1
+    ],
+    "routed": true
+  },
+  {
+    "from": [
+      "U16",
+      7
+    ],
+    "to": [
+      "R73",
+      2
+    ],
+    "routed": false,
+    "error": "No multilayer path CHG_ACTIVE_N visited 238"
+  },
+  {
+    "from": [
+      "U16",
+      8
+    ],
+    "to": [
+      "R68",
+      2
+    ],
+    "routed": true
+  },
+  {
+    "from": [
+      "Q7",
+      3
+    ],
+    "to": [
+      "R68",
+      2
+    ],
+    "routed": true
+  },
+  {
+    "from": [
+      "Q7",
+      1
+    ],
+    "to": [
+      "R69",
+      1
+    ],
+    "routed": false,
+    "error": "No multilayer path CHG_DISABLE_IO38 visited 168"
+  },
+  {
+    "from": [
+      "Q7",
+      1
+    ],
+    "to": [
+      "U7",
+      34
+    ],
+    "routed": false,
+    "error": "No multilayer path CHG_DISABLE_IO38 visited 168"
+  },
+  {
+    "from": [
+      "U16",
+      7
+    ],
+    "to": [
+      "U7",
+      25
+    ],
+    "routed": false,
+    "error": "No multilayer path CHG_ACTIVE_N visited 238"
+  }
+]

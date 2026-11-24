@@ -1,0 +1,293 @@
+[
+  {
+    "from": [
+      "backup_via",
+      0
+    ],
+    "to": [
+      "C73",
+      1
+    ],
+    "routed": true
+  },
+  {
+    "from": [
+      "st_via",
+      0
+    ],
+    "to": [
+      "st_esp",
+      0
+    ],
+    "routed": true
+  },
+  {
+    "from": [
+      "st_via",
+      0
+    ],
+    "to": [
+      "R72",
+      2
+    ],
+    "routed": true
+  },
+  {
+    "from": [
+      "R68",
+      1
+    ],
+    "to": [
+      "C67",
+      1
+    ],
+    "routed": true
+  },
+  {
+    "from": [
+      "R70",
+      1
+    ],
+    "to": [
+      "C71",
+      1
+    ],
+    "routed": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": false,
+    "reason": "Escape source blocked ('remaining_ground_10', 0)"
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": false,
+    "reason": "No off-pad escape via ('remaining_ground_20', 0)"
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": false,
+    "reason": "No off-pad escape via ('remaining_ground_32', 0)"
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": false,
+    "reason": "No multilayer path GND visited 640"
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  },
+  {
+    "net": "GND",
+    "connected": true
+  }
+]

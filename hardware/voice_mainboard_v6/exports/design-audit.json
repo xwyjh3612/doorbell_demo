@@ -1,0 +1,46 @@
+{
+  "PCB_sha256": "28c49affaad8bbfd93b0b96c29bae2f048b6c550ffa086509b739579e33aa878",
+  "unique_parts": 147,
+  "layers": 2,
+  "all_components_front": true,
+  "native_pin_contract_passed": true,
+  "schematic_XML_matches_PCB_connected_pins": true,
+  "connected_pins_checked": 423,
+  "baseline_circuits_checked": 111,
+  "voltage_corners": {
+    "modem": {
+      "nominal_v": 3.8085561497326204,
+      "min_v": 3.726102539172058,
+      "max_v": 3.8912792792792787,
+      "reference_error": 0.02,
+      "resistor_error": 0.001
+    },
+    "ESP": {
+      "nominal_v": 3.3149321266968323,
+      "min_v": 3.1959476725953135,
+      "max_v": 3.437174825174825,
+      "reference_error": 0.02,
+      "resistor_error": 0.01
+    },
+    "boost": {
+      "nominal_v": 4.992,
+      "min_v": 4.883560279720281,
+      "max_v": 5.100808648648648,
+      "reference_error": 0.02,
+      "resistor_error": 0.001
+    },
+    "mux_switch_input": {
+      "nominal_v": 4.0120481927710845,
+      "min_v": 3.685547705306741,
+      "max_v": 4.339524584825789,
+      "reference_error": 0.08,
+      "resistor_error": 0.001
+    }
+  },
+  "corner_scope": "Resistor arithmetic only; converter reference errors except TI mux are assumptions, not loaded voltage guarantees.",
+  "battery_ADC_scale": 2.5,
+  "bare_cell_negative_is_GND": false,
+  "full_motherboard_simulated": false,
+  "2A_load_qualified": false,
+  "manufacturing_ready": false
+}

@@ -1,0 +1,737 @@
+{
+  "J1": {
+    "unit_cny": 0.3837,
+    "basis": "V3 page reference, quantity tier unconfirmed",
+    "source": "https://item.szlcsc.com/19545770.html"
+  },
+  "F1": {
+    "unit_cny": 0.4972,
+    "basis": "V3 page reference, quantity tier unconfirmed",
+    "source": "https://item.szlcsc.com/58601642.html"
+  },
+  "Q6": {
+    "unit_cny": 0.3881,
+    "basis": "V3 page reference, quantity tier unconfirmed",
+    "source": "https://www.diodes.com/assets/Datasheets/DMP2035U.pdf"
+  },
+  "R32": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "C4": {
+    "unit_cny": 0.2619,
+    "basis": "V3 page reference, tier unconfirmed",
+    "source": ""
+  },
+  "C5": {
+    "unit_cny": 0.2619,
+    "basis": "V3 page reference, tier unconfirmed",
+    "source": ""
+  },
+  "L1": {
+    "unit_cny": 0.2756,
+    "basis": "V3 selected inductor page reference",
+    "source": "https://item.szlcsc.com/84619.html"
+  },
+  "C6": {
+    "unit_cny": 0.2619,
+    "basis": "V3 page reference, tier unconfirmed",
+    "source": ""
+  },
+  "C7": {
+    "unit_cny": 0.2619,
+    "basis": "V3 page reference, tier unconfirmed",
+    "source": ""
+  },
+  "R2": {
+    "unit_cny": 0.06,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R3": {
+    "unit_cny": 0.06,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "C37": {
+    "unit_cny": 0.05,
+    "basis": "unquoted passive allowance",
+    "source": ""
+  },
+  "U1": {
+    "unit_cny": 10,
+    "basis": "user specified 10 CNY procurement target; no order quote",
+    "source": "https://easyeda.com/api/products/C48972417/components?version=6.4.19.5"
+  },
+  "C8": {
+    "unit_cny": 1.1262,
+    "basis": "V3 public page reference; land/loop validation pending",
+    "source": ""
+  },
+  "C10": {
+    "unit_cny": 0.2619,
+    "basis": "V3 page reference, tier unconfirmed",
+    "source": ""
+  },
+  "C11": {
+    "unit_cny": 0.05,
+    "basis": "unquoted passive allowance",
+    "source": ""
+  },
+  "C12": {
+    "unit_cny": 0.05,
+    "basis": "unquoted passive allowance",
+    "source": ""
+  },
+  "U3": {
+    "unit_cny": 0.4,
+    "basis": "unquoted procurement target",
+    "source": "https://www.ti.com/lit/ds/symlink/sn74lvc1t45.pdf"
+  },
+  "U4": {
+    "unit_cny": 0.4,
+    "basis": "unquoted procurement target",
+    "source": "https://www.ti.com/lit/ds/symlink/sn74lvc1t45.pdf"
+  },
+  "U5": {
+    "unit_cny": 0.4,
+    "basis": "unquoted procurement target",
+    "source": "https://www.ti.com/lit/ds/symlink/sn74lvc1t45.pdf"
+  },
+  "C13": {
+    "unit_cny": 0.05,
+    "basis": "unquoted passive allowance",
+    "source": ""
+  },
+  "C14": {
+    "unit_cny": 0.05,
+    "basis": "unquoted passive allowance",
+    "source": ""
+  },
+  "C15": {
+    "unit_cny": 0.05,
+    "basis": "unquoted passive allowance",
+    "source": ""
+  },
+  "C16": {
+    "unit_cny": 0.05,
+    "basis": "unquoted passive allowance",
+    "source": ""
+  },
+  "C17": {
+    "unit_cny": 0.05,
+    "basis": "unquoted passive allowance",
+    "source": ""
+  },
+  "C18": {
+    "unit_cny": 0.05,
+    "basis": "unquoted passive allowance",
+    "source": ""
+  },
+  "R4": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R5": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "Q1": {
+    "unit_cny": 0.2474,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R6": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "Q2": {
+    "unit_cny": 0.2474,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R8": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "C19": {
+    "unit_cny": 0.05,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "SW3": {
+    "unit_cny": 0.18,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R7": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "J8": {
+    "unit_cny": 0.15,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "TP2": {
+    "unit_cny": 0,
+    "basis": "copper test pad, no purchased component",
+    "source": ""
+  },
+  "TP3": {
+    "unit_cny": 0,
+    "basis": "copper test pad, no purchased component",
+    "source": ""
+  },
+  "TP12": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "TP13": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "TP14": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "J10": {
+    "unit_cny": 2.51,
+    "basis": "V3 JAE SIM socket page reference; lower-cost replacement not yet qualified",
+    "source": ""
+  },
+  "R9": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R10": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R11": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R12": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "C20": {
+    "unit_cny": 0.05,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "D1": {
+    "unit_cny": 0.09558,
+    "basis": "public candidate tier 600 for1000pcs; not factory quote",
+    "source": "https://www.taoic.com/item?w=SRV05-4"
+  },
+  "R13": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "C24": {
+    "unit_cny": 0.05,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "C25": {
+    "unit_cny": 0.05,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "J11": {
+    "unit_cny": 0.3,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "J12": {
+    "unit_cny": 0.15,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R26": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R27": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R28": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R29": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R30": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R31": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "J22": {
+    "unit_cny": 0.15,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "U7": {
+    "unit_cny": 12,
+    "basis": "user specified 12 CNY material cost; N8R8 supplier price unconfirmed",
+    "source": "https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf"
+  },
+  "R57": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "C56": {
+    "unit_cny": 0.05,
+    "basis": "unquoted passive allowance",
+    "source": ""
+  },
+  "C57": {
+    "unit_cny": 0.2619,
+    "basis": "V3 page reference, tier unconfirmed",
+    "source": ""
+  },
+  "C58": {
+    "unit_cny": 0.05,
+    "basis": "unquoted passive allowance",
+    "source": ""
+  },
+  "SW1": {
+    "unit_cny": 0.18,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R14": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "SW2": {
+    "unit_cny": 0.18,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "J18": {
+    "unit_cny": 0.15,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "J17": {
+    "unit_cny": 0.15,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "J16": {
+    "unit_cny": 0.15,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R58": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "Q3": {
+    "unit_cny": 0.335,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "Q4": {
+    "unit_cny": 0.2474,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R15": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R16": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R17": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R18": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "C28": {
+    "unit_cny": 0.05,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "Q5": {
+    "unit_cny": 0.2474,
+    "basis": "unquoted procurement target",
+    "source": "https://www.diodes.com/assets/Datasheets/2N7002K.pdf"
+  },
+  "R19": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R20": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R21": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "C29": {
+    "unit_cny": 0.05,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "U13": {
+    "unit_cny": 0.29263,
+    "basis": "public candidate tier 500 for1000pcs; not factory quote",
+    "source": "https://www.taoic.com/item?w=SY8089"
+  },
+  "L4": {
+    "unit_cny": 0.2756,
+    "basis": "public1000 tier",
+    "source": "https://item.szlcsc.com/84619.html"
+  },
+  "C59": {
+    "unit_cny": 0.2619,
+    "basis": "V3 page reference, tier unconfirmed",
+    "source": ""
+  },
+  "C60": {
+    "unit_cny": 0.2619,
+    "basis": "V3 page reference, tier unconfirmed",
+    "source": ""
+  },
+  "R59": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R60": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "U14": {
+    "unit_cny": 3,
+    "basis": "unquoted procurement target",
+    "source": "https://www.analog.com/media/en/technical-documentation/data-sheets/MAX98357A-MAX98357B.pdf"
+  },
+  "R61": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "R62": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "C61": {
+    "unit_cny": 0.2619,
+    "basis": "V3 page reference, tier unconfirmed",
+    "source": ""
+  },
+  "C62": {
+    "unit_cny": 0.05,
+    "basis": "unquoted passive allowance",
+    "source": ""
+  },
+  "J15": {
+    "unit_cny": 0.15,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "J14": {
+    "unit_cny": 0.15,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "C26": {
+    "unit_cny": 0.05,
+    "basis": "unquoted passive allowance",
+    "source": ""
+  },
+  "TP1": {
+    "unit_cny": 0,
+    "basis": "copper test pad, no purchased component",
+    "source": ""
+  },
+  "TP4": {
+    "unit_cny": 0,
+    "basis": "copper test pad, no purchased component",
+    "source": ""
+  },
+  "TP5": {
+    "unit_cny": 0,
+    "basis": "copper test pad, no purchased component",
+    "source": ""
+  },
+  "TP6": {
+    "unit_cny": 0,
+    "basis": "copper test pad, no purchased component",
+    "source": ""
+  },
+  "TP7": {
+    "unit_cny": 0,
+    "basis": "copper test pad, no purchased component",
+    "source": ""
+  },
+  "TP8": {
+    "unit_cny": 0,
+    "basis": "copper test pad, no purchased component",
+    "source": ""
+  },
+  "TP9": {
+    "unit_cny": 0,
+    "basis": "copper test pad, no purchased component",
+    "source": ""
+  },
+  "TP10": {
+    "unit_cny": 0,
+    "basis": "copper test pad, no purchased component",
+    "source": ""
+  },
+  "H1": {
+    "unit_cny": 0,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "H2": {
+    "unit_cny": 0,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "H3": {
+    "unit_cny": 0,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "H4": {
+    "unit_cny": 0,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "C63": {
+    "unit_cny": 0.05,
+    "basis": "unquoted passive allowance",
+    "source": ""
+  },
+  "U2": {
+    "unit_cny": 0.29263,
+    "basis": "public1000 tier",
+    "source": "https://file.huaqiu.com/web1/M00/97/C7/o4YBAF0Rz_6AEbagAAxEzJRIyYA704.pdf"
+  },
+  "U15": {
+    "unit_cny": 1.2694,
+    "basis": "public1000 tier",
+    "source": "https://item.szlcsc.com/8449074.html"
+  },
+  "U16": {
+    "unit_cny": 0.1626,
+    "basis": "public1000 tier",
+    "source": "https://item.szlcsc.com/8533532.html"
+  },
+  "U17": {
+    "unit_cny": 0.2875,
+    "basis": "public1000 tier",
+    "source": "https://item.szlcsc.com/3400478.html"
+  },
+  "U18": {
+    "unit_cny": 1.91,
+    "basis": "public1000 tier",
+    "source": "https://item.szlcsc.com/24017237.html"
+  },
+  "U19": {
+    "unit_cny": 0.251,
+    "basis": "public1000 tier",
+    "source": "https://item.szlcsc.com/236196.html"
+  },
+  "J23": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "C64": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "C65": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "C66": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "C67": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "C68": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "C69": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "C70": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "C71": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "C72": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "C73": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "R63": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "R64": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "R65": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "R66": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "R67": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "R68": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "Q7": {
+    "unit_cny": 0.0958,
+    "basis": "public1000 tier",
+    "source": "https://item.szlcsc.com/85561.html"
+  },
+  "R69": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "R70": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "R71": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "R72": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "R73": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "R74": {
+    "unit_cny": null,
+    "basis": "not quoted",
+    "source": ""
+  },
+  "L5": {
+    "unit_cny": 0.3,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R75": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "R76": {
+    "unit_cny": 0.025,
+    "basis": "unquoted procurement target",
+    "source": ""
+  },
+  "TP15": {
+    "unit_cny": 0,
+    "basis": "copper test pad, no purchased component",
+    "source": ""
+  },
+  "TP16": {
+    "unit_cny": 0,
+    "basis": "copper test pad, no purchased component",
+    "source": ""
+  },
+  "TP17": {
+    "unit_cny": 0,
+    "basis": "copper test pad, no purchased component",
+    "source": ""
+  }
+}

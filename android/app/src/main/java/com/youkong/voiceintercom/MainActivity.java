@@ -49,7 +49,7 @@ public final class MainActivity extends Activity {
     private long connectedAt;
     private long telemetryRenderedAt;
     private TextView connectionLabel, statusLabel, subtitleLabel, deviceLabel, durationLabel, diagnostics;
-    private TextView deviceOnline, radarSummary, breathValue, heartValue, distanceValue, breathNote, heartNote, distanceNote;
+    private TextView deviceOnline, powerSummary, radarSummary, breathValue, heartValue, distanceValue, breathNote, heartNote, distanceNote;
     private LinearLayout vitalsPanel;
     private LinearLayout audioControls;
     private RadarVisual radarVisual;
@@ -198,6 +198,7 @@ public final class MainActivity extends Activity {
         LinearLayout deviceRow=new LinearLayout(this);deviceRow.setGravity(Gravity.CENTER_VERTICAL);card.addView(deviceRow);
         deviceRow.addView(text("感知终端 01",14,INK),new LinearLayout.LayoutParams(0,-2,1));deviceOnline=text("● 状态待确认",11,MUTED);deviceRow.addView(deviceOnline);
         deviceLabel=text(device,11,MUTED);deviceLabel.setPadding(0,dp(4),0,0);card.addView(deviceLabel);
+        powerSummary=text("电源状态待上报",11,MUTED);powerSummary.setPadding(0,dp(10),0,0);card.addView(powerSummary);
         radarVisual=new RadarVisual(this);card.addView(radarVisual,new LinearLayout.LayoutParams(-1,dp(215)));
         LinearLayout statusRow=new LinearLayout(this);statusRow.setGravity(Gravity.CENTER_VERTICAL);card.addView(statusRow);
         statusLabel=text("待机",25,INK);statusLabel.setTypeface(null,Typeface.BOLD);statusRow.addView(statusLabel,new LinearLayout.LayoutParams(0,-2,1));
@@ -362,7 +363,9 @@ public final class MainActivity extends Activity {
         long now=android.os.SystemClock.elapsedRealtime();
         telemetryRenderedAt=now;
         boolean active=call.phase!=CallState.Phase.IDLE, audioLive=call.phase==CallState.Phase.CONNECTED;
-        boolean online=audioLive||telemetry.online(now), radarLive=telemetry.radarLive(now);
+        boolean online=audioLive||telemetry.online(now)||telemetry.powerLive(now), radarLive=telemetry.radarLive(now);
+        powerSummary.setText(telemetry.powerLabel(now,active));
+        powerSummary.setTextColor(telemetry.powerLive(now)?GREEN:MUTED);
         deviceOnline.setText(online?"● 终端在线":telemetry.reportId>0?"● 状态暂未更新":"● 状态待确认");
         deviceOnline.setTextColor(online?GREEN:MUTED);
         String state=telemetry.targetState(now),target=RadarVisual.label(state);
@@ -398,7 +401,15 @@ public final class MainActivity extends Activity {
                 try{
                     JSONObject envelope=new JSONObject(value);
                     if(!device.equals(envelope.optString("device")))return;
-                    JSONObject data=envelope.optJSONObject("radar");if(data==null)return;
+                    JSONObject power=envelope.optJSONObject("power");
+                    if(power!=null){
+                        telemetry.powerAge=envelope.optLong("power_age_ms",-1);
+                        telemetry.powerReceivedMono=android.os.SystemClock.elapsedRealtime();
+                        telemetry.powerSource=power.optString("source","unknown");
+                        telemetry.batteryMv=power.optInt("battery_mv",-1);telemetry.batteryPercent=power.optInt("battery_percent",-1);
+                        telemetry.externalPresent=power.optInt("external_present",-1);telemetry.charging=power.optInt("charging",-1);
+                    }
+                    JSONObject data=envelope.optJSONObject("radar");if(data==null){renderTelemetry();return;}
                     String model=data.optString("radar");
                     if(!model.equals(telemetry.model)||data.optLong("uptime_ms")<lastRadarUptime){breathTrend.clear();heartTrend.clear();}
                     long nextReport=envelope.optLong("received_at_ms"),now=android.os.SystemClock.elapsedRealtime();

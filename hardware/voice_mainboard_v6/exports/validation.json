@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-24",
+  "PCB_sha256": "28c49affaad8bbfd93b0b96c29bae2f048b6c550ffa086509b739579e33aa878",
+  "layers": 2,
+  "size_mm": [
+    100,
+    75
+  ],
+  "ERC": 0,
+  "DRC": 1,
+  "DRC_errors": 0,
+  "DRC_warnings": 1,
+  "DRC_warning_types": [
+    "copper_sliver"
+  ],
+  "unconnected": 0,
+  "native_schematic_parity_issues": 0,
+  "native_pin_contract_passed": true,
+  "schematic_XML_matches_PCB": true,
+  "power_monitor_and_existing_radar_variants_built": true,
+  "App_server_unit_tests_passed": true,
+  "full_motherboard_simulated": false,
+  "2A_load_qualified": false,
+  "manufacturing_ready": false,
+  "open_items": [
+    "Cheap SIM socket exact mechanical/pad drawing; currently retain priced JAE socket",
+    "C-DL full manufacturer hardware manual/AT firmware and actual assembly fit",
+    "SY8089 current manufacturer specification, inductor ratings and ceramic DC bias",
+    "Converter startup/transient/thermal and full-board power qualification",
+    "RF/USB impedance and antenna test; current hardware USB mode unqualified",
+    "Prototype long-call test, battery reporting and new power GPIO adaptation",
+    "Exact protection and charger land patterns, supplier footprint review",
+    "ETA1096 limit minimum at30k, low-battery peak and mux startup/transfer measurement",
+    "Selected battery NTC and charge/temperature limits; external input2A peak plus charge pause firmware"
+  ]
+}
