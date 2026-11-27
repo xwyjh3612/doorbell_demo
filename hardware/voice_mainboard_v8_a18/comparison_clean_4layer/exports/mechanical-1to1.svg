@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="93mm" height="109mm" viewBox="-10 -13 93 109">
+<rect x="-10" y="-13" width="93" height="109" fill="white"/>
+<style>text{font-family:Arial,sans-serif;font-size:2.2px} .outline{fill:none;stroke:#111;stroke-width:.15} .guide{fill:none;stroke:#777;stroke-width:.1;stroke-dasharray:1 1}</style>
+<text x="0" y="-9">A18 / 73 x 73 mm / PCB mechanical candidate</text>
+<text x="0" y="-5">PRINT AT 100% / no fit-to-page; dimensions need shell verification</text>
+<polygon class="outline" points="0,0 45.39,0 45.39,9.9 52.89,9.9 52.89,0 73,0 73,73 54.5,73 54.5,55.25 18.5,55.25 18.5,73 0,73"/>
+<circle class="outline" cx="3.5" cy="3.5" r="1.5"/>
+<circle class="guide" cx="3.5" cy="3.5" r="3.5"/>
+<path class="guide" d="M 1.5 3.5 h 4 M 3.5 1.5 v 4"/>
+<circle class="outline" cx="69.5" cy="3.5" r="1.5"/>
+<circle class="guide" cx="69.5" cy="3.5" r="3.5"/>
+<path class="guide" d="M 67.5 3.5 h 4 M 69.5 1.5 v 4"/>
+<circle class="outline" cx="3.5" cy="69.5" r="1.5"/>
+<circle class="guide" cx="3.5" cy="69.5" r="3.5"/>
+<path class="guide" d="M 1.5 69.5 h 4 M 3.5 67.5 v 4"/>
+<circle class="outline" cx="69.5" cy="69.5" r="1.5"/>
+<circle class="guide" cx="69.5" cy="69.5" r="3.5"/>
+<path class="guide" d="M 67.5 69.5 h 4 M 69.5 67.5 v 4"/>
+<rect class="guide" x="30" y="30" width="13" height="13"/>
+<circle class="outline" cx="36.5" cy="36.5" r="1"/>
+<circle class="guide" cx="36.5" cy="9.9" r="1.5"/>
+<text x="29" y="47">CALL BUTTON</text>
+<text x="26" y="64">BATTERY CLEARANCE</text>
+<path class="outline" d="M 0 83 h 50 M 0 81 v 4 M 50 81 v 4"/>
+<text x="18" y="87">50 mm CHECK SCALE</text>
+<text x="0" y="93">4 holes: diameter 3 mm / centres 66 x 66 mm</text></svg>

@@ -1,0 +1,152 @@
+(footprint "DG350_3.5_2P"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "DG350-3.5-02P-14-00A(H), C2760668; DEGSON manufacturer drawing FOR-1351 Rev1.0. 7A UL. Pin1 battery+, pin2 ground.")
+	(property "Reference" ""
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "9b8b7cd4-4bee-4c82-8557-4760b2780433")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "8108e1d2-797d-4732-b523-d209051a966e")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "59138277-e835-4120-8720-625a35eefce8")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e9baff3a-5a28-4e38-89b4-0a4feba600a4")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(fp_line
+		(start -2.75 -3.9)
+		(end 6.25 -3.9)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "61e9c5ac-3ee1-45c7-bd0e-e1d77be95598")
+	)
+	(fp_line
+		(start -2.75 3.6)
+		(end -2.75 -3.9)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "d095fda1-d012-4cd6-9626-d6ea6d49287b")
+	)
+	(fp_line
+		(start 6.25 -3.9)
+		(end 6.25 3.6)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "48e4f58f-75ba-4ad2-95f6-7991b43d218e")
+	)
+	(fp_line
+		(start 6.25 3.6)
+		(end -2.75 3.6)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "7f62c85c-92b1-4f6c-9cb5-d80dac8348d0")
+	)
+	(fp_line
+		(start -2.25 -3.4)
+		(end 5.75 -3.4)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "2042109a-db56-48bd-8409-2e9ac34d6b33")
+	)
+	(fp_line
+		(start -2.25 3.1)
+		(end -2.25 -3.4)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "2ff30c39-c50d-41ba-ae2c-759933238d34")
+	)
+	(fp_line
+		(start 5.75 -3.4)
+		(end 5.75 3.1)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "bdc820fc-dc2d-48dc-9f81-efe6a9ad2480")
+	)
+	(fp_line
+		(start 5.75 3.1)
+		(end -2.25 3.1)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "53140cca-275d-4a8f-9486-22de43e90fe6")
+	)
+	(pad "1" thru_hole rect
+		(at 0 0)
+		(size 2 2)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(thermal_bridge_angle 45)
+		(uuid "24e9df98-b66c-4585-86af-958c7d8eb185")
+	)
+	(pad "2" thru_hole circle
+		(at 3.5 0)
+		(size 2 2)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "a8cbcbbb-de80-4f3b-8560-4ad52c2a5a46")
+	)
+	(embedded_fonts no)
+	(attr through_hole)
+)

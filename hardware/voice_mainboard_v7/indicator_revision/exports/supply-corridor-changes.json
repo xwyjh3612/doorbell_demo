@@ -1,0 +1,6 @@
+{
+  "PCB_sha256": "7aa9755fa8db2ae8055aedf3da572355524e21a2420d8342bac976cfbd432711",
+  "removed_new_copper": 33,
+  "old_copper_preserved": true,
+  "U4_ground_corridor_reserved_on_front": true
+}

@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-24",
+  "source": "https://www.jlc-smt.com/api/smtOrder/smtBomResultView/v1/smtOnlinePricing",
+  "quantity": 1000,
+  "orders_placed": false,
+  "final_supplier_quote": false,
+  "SMT_type_count_qualified": false,
+  "basis": "Paired sensitivity only: prior 467 SMT pads / 44 provisional SMT types. Final SKU/library consolidation is pending.",
+  "rows": [
+    {
+      "configuration": "all_headers",
+      "parameters": {
+        "patchLocation": "T",
+        "patchQuantity": 1000,
+        "patchComponentQuantity": 467,
+        "patchComponentType": 44,
+        "plugInQuantity": 23,
+        "plugInType": 5,
+        "steelType": "jlc",
+        "boardWidth": 7.5,
+        "boardLength": 10
+      },
+      "error": "Public calculator returned failure"
+    },
+    {
+      "configuration": "no_radar_or_TTL_header",
+      "parameters": {
+        "patchLocation": "T",
+        "patchQuantity": 1000,
+        "patchComponentQuantity": 467,
+        "patchComponentType": 44,
+        "plugInQuantity": 15,
+        "plugInType": 4,
+        "steelType": "jlc",
+        "boardWidth": 7.5,
+        "boardLength": 10
+      },
+      "error": "Public calculator returned failure"
+    }
+  ]
+}

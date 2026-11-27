@@ -20,6 +20,7 @@ import android.widget.TextView;
 /** Dedicated locked-screen incoming UI, following video-call's Activity flow. */
 public final class IncomingCallActivity extends Activity {
     private CallService calls;
+    private IncomingPulseView handset;
     private boolean bound, resumed, answerRequested, handled;
     private long token;
     private final Runnable observer = this::update;
@@ -49,14 +50,17 @@ public final class IncomingCallActivity extends Activity {
         bound = bindService(new Intent(this, CallService.class), connection, 0);
         if (!bound) finish();
     }
-    @Override public void onResume() { super.onResume(); resumed = true; maybeAnswer(); }
-    @Override public void onPause() { resumed = false; super.onPause(); }
+    @Override public void onResume() { super.onResume(); resumed = true; update(); maybeAnswer(); }
+    @Override public void onPause() { resumed = false; handset.setRinging(false); super.onPause(); }
     @Override public void onStop() {
         if (calls != null) calls.detach(observer);
         if (bound) { unbindService(connection); bound = false; }
         calls = null; super.onStop();
     }
     private void update() {
+        boolean current=calls!=null && calls.isCurrentCall(token);
+        handset.setRinging(resumed && current && !handled && calls.call.phase==CallState.Phase.INCOMING);
+        if(resumed && current && !handled && calls.call.phase==CallState.Phase.INCOMING)calls.incomingPageShown(token);
         if (calls == null || handled) return;
         if (!calls.isCurrentCall(token)) { handled = true; finish(); }
         else if (calls.call.phase != CallState.Phase.INCOMING) openCall();
@@ -109,9 +113,7 @@ public final class IncomingCallActivity extends Activity {
         root.addView(text("VOICE LINK  /  4G", 13, 0xFF43E2C7));
         LinearLayout center = new LinearLayout(this); center.setOrientation(LinearLayout.VERTICAL); center.setGravity(Gravity.CENTER);
         root.addView(center, new LinearLayout.LayoutParams(-1, 0, 1));
-        TextView icon = text("声", 52, 0xFF43E2C7); GradientDrawable circle = new GradientDrawable(); circle.setShape(GradientDrawable.OVAL);
-        circle.setColor(0xFF183E4C); circle.setStroke(dp(2), 0xFF43E2C7); icon.setBackground(circle);
-        center.addView(icon, new LinearLayout.LayoutParams(dp(140), dp(140)));
+        handset=new IncomingPulseView(this);center.addView(handset,new LinearLayout.LayoutParams(-1,dp(190)));
         TextView name = text("语音终端", 30, 0xFFE2EDF9); name.setTypeface(null, Typeface.BOLD); name.setPadding(0, dp(28), 0, dp(12)); center.addView(name);
         center.addView(text("设备来电", 19, 0xFF43E2C7));
         TextView hint = text("接听后即可与设备双向通话", 14, 0xFF859CB5); hint.setPadding(0, dp(20), 0, 0); center.addView(hint);

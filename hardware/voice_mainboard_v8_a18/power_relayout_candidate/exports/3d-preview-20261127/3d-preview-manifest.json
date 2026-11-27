@@ -1,0 +1,93 @@
+{
+  "product": "语音对讲主板",
+  "source_PCB_sha256": "4c907236ab2557cdb0d9d4e8ab16a466c671240d4630f1b35d93b14c43e0c42f",
+  "source_PCB": "hardware\\voice_mainboard_v8_a18\\power_relayout_candidate\\voice_mainboard_a18_2layer.kicad_pcb",
+  "purpose": "Native KiCad3D preview only, not manufacturing files or collision signoff",
+  "DNP_hidden": true,
+  "mask_color": "Blue-green preview only; production mask not changed",
+  "added_models": {
+    "U1": {
+      "path": "C:\\project\\esp32\\doorbell_demo_voice\\hardware\\voice_mainboard_v8_a18\\power_relayout_candidate\\exports\\3d-preview-20261127\\models\\U1-illustrative.wrl",
+      "sha256": "97d9197638bfb347fbdc37bf5584aa026ec2efd31af5667c45553b731017450f",
+      "kind": "illustrative geometry",
+      "basis": "ML307C hardware manual nominal15.8x17.7x2.2mm; simplified shield and label, not exact3D CAD",
+      "not_for_clearance_validation": true
+    },
+    "U14": {
+      "path": "C:\\project\\esp32\\doorbell_demo_voice\\hardware\\voice_mainboard_v8_a18\\power_relayout_candidate\\exports\\3d-preview-20261127\\models\\U14-illustrative.wrl",
+      "sha256": "a6d7e236436b846ecf23aa947e2579829b62f4960cbf9f90eb68fe94a0f3fa48",
+      "kind": "illustrative geometry",
+      "basis": "MAX98357A TQFN3x3 outline; simplified height/body",
+      "not_for_clearance_validation": true
+    },
+    "U18": {
+      "path": "C:\\project\\esp32\\doorbell_demo_voice\\hardware\\voice_mainboard_v8_a18\\power_relayout_candidate\\exports\\3d-preview-20261127\\models\\U18-illustrative.wrl",
+      "sha256": "74189bad8e414af518ea5a6f8bb3d1868de42b6164761201a55af64e5c520830",
+      "kind": "illustrative geometry",
+      "basis": "TI DRL0008A simplified body envelope; no lead details",
+      "not_for_clearance_validation": true
+    },
+    "U17": {
+      "path": "C:\\project\\esp32\\doorbell_demo_voice\\hardware\\voice_mainboard_v8_a18\\power_relayout_candidate\\exports\\3d-preview-20261127\\models\\U17-illustrative.wrl",
+      "sha256": "9f8735a4a2f1b033532ec9ec1994f8c0299f31021e3bd741e31573b2c9a73479",
+      "kind": "illustrative geometry",
+      "basis": "XB7608AJL simplified visual body; not verified package CAD",
+      "not_for_clearance_validation": true
+    },
+    "J1": {
+      "path": "C:\\project\\esp32\\doorbell_demo_voice\\hardware\\voice_mainboard_v8_a18\\power_relayout_candidate\\exports\\3d-preview-20261127\\models\\J1-illustrative.wrl",
+      "sha256": "bb1b5b1943225775fc68bb2facbd0f6f82a3c0ec6951ffc5850fd2a85f4ed7fa",
+      "kind": "illustrative geometry",
+      "basis": "HX DC005-2.5-T nominal14.2x9x11mm body; mounting-plane/orifice details illustrative",
+      "not_for_clearance_validation": true
+    },
+    "U15": {
+      "path": "C:\\project\\esp32\\doorbell_demo_voice\\build\\cad-tools\\kicad\\share\\kicad\\3dmodels\\Package_SO.3dshapes\\SOIC-8_3.9x4.9mm_P1.27mm.step",
+      "kind": "KiCad generic SOIC8 visual approximation; ESOP exposed pad not modelled",
+      "sha256": "07f46cff378d30e6c27dfd5a03092c795323f86d91c71fc7e743f4f418dc553a"
+    },
+    "F1": {
+      "path": "C:\\project\\esp32\\doorbell_demo_voice\\hardware\\voice_mainboard_v8_a18\\power_relayout_candidate\\exports\\3d-preview-20261127\\models\\F1-illustrative.wrl",
+      "sha256": "a5eaa8316472e6bf7b4aee30945feed8e9b73b16f9f8f42338f1059b975a6ad8",
+      "kind": "illustrative geometry",
+      "basis": "1812 simplified body",
+      "not_for_clearance_validation": true
+    },
+    "D2": {
+      "path": "C:\\project\\esp32\\doorbell_demo_voice\\hardware\\voice_mainboard_v8_a18\\power_relayout_candidate\\exports\\3d-preview-20261127\\models\\D2-illustrative.wrl",
+      "sha256": "badc99b129552aed108165f0b2b99db0b4a08a99991c97c56fcc0749acdc1956",
+      "kind": "illustrative geometry",
+      "basis": "2020 LED simplified body",
+      "not_for_clearance_validation": true
+    },
+    "J10": {
+      "path": "C:\\project\\esp32\\doorbell_demo_voice\\hardware\\voice_mainboard_v8_a18\\power_relayout_candidate\\exports\\3d-preview-20261127\\models\\J10-illustrative.wrl",
+      "sha256": "9338d8e6cbab011f159fc091c9fd907fe80477b3130c3310db891fbd8fccbb05",
+      "kind": "illustrative geometry",
+      "basis": "SIM slot simplified body; origin from footprint outline",
+      "not_for_clearance_validation": true
+    }
+  },
+  "download_records": {
+    "F1": {
+      "error": "HTTP Error 404: Not Found",
+      "url": "https://raw.githubusercontent.com/KiCad/kicad-packages3D/master/Fuse.3dshapes/Fuse_1812_4532Metric.step"
+    },
+    "D2": {
+      "error": "HTTP Error 404: Not Found",
+      "url": "https://raw.githubusercontent.com/KiCad/kicad-packages3D/master/LED_SMD.3dshapes/LED_WS2812B-2020_PLCC4_2.0x2.0mm.step"
+    },
+    "J10": {
+      "error": "HTTP Error 404: Not Found",
+      "url": "https://raw.githubusercontent.com/KiCad/kicad-packages3D/master/Connector_JAE.3dshapes/JAE_SIM_Card_SF72S006.step"
+    }
+  },
+  "rendered_at": "2026-11-27T11:28:12.011775+08:00",
+  "images": {
+    "assembled-front.png": "b90e5561cb9c64c93dd887ad5163ceba95a972cf2f6a8f76b91b34a9403d5f5d",
+    "assembled-back.png": "677577423d7f68c571ee8a8cbb7128d350fb0b9f26ba7e329191d49fba7461a4",
+    "bare-front.png": "a34b6ada89843a672eb6a9f41ab0956595512e9bb260c66381ffc7ff779d8c68",
+    "bare-back.png": "436f8e216eea476d4d97942f3d7fd7e3e897d348d32a2e1dba6e3dc56a5560b5"
+  },
+  "source_unchanged": true
+}

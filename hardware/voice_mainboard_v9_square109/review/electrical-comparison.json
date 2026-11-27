@@ -1,0 +1,13 @@
+{
+  "base_sha256": "29d925c6b31feb91d0b6cc3382d35e30f8924876395e5f90c93ce270dcd04ce0",
+  "candidate_sha256": "aa37cd1da7de97041c2764a370b30dba346570c5c7d10b35952a8e43f19026b9",
+  "schematic_sha256": "25fdc7b71343ab6a8a239c7b07d19eea3c3c6ee92d0419da5f60c0fe1e436b4e",
+  "preserved_footprints": 150,
+  "preserved_trace_objects": 2470,
+  "preserved_zones": 10,
+  "added_npth": [
+    "H5",
+    "H6"
+  ],
+  "copper_layers": 2
+}

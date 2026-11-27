@@ -48,6 +48,8 @@ struct OtaContext {
     const esp_partition_t* update_partition;
     int http_id = -1;
     int total_received;
+    int packet_count;
+    int last_progress;
     int content_length;
     bool header_received;
     bool download_complete;
@@ -137,25 +139,11 @@ static void http_urc_callback(const std::string& command, const std::vector<AtAr
                 int cur_len = arguments[4].int_value;
 
                 if (httpid == s_ota_context->http_id) {
-                    // 调试日志：打印关键参数
-                    static int packet_count = 0;
-                    packet_count++;
-
-                    // 前 10 个包和每 50 个包打印一次详细信息
-                    if (packet_count <= 10 || packet_count % 50 == 0) {
-                        ESP_LOGI(TAG, "数据包 #%d: content_len=%d, sum_len=%d, cur_len=%d, 已接收=%d",
-                                packet_count, content_len, sum_len, cur_len, s_ota_context->total_received);
-                    }
+                    int packet_count = ++s_ota_context->packet_count;
 
                     // 提取数据
                     if (arguments[5].type == AtArgumentValue::Type::String) {
                         const std::string& hex_data = arguments[5].string_value;
-
-                        // 调试：打印 HEX 数据长度
-                        if (packet_count <= 3) {
-                            ESP_LOGI(TAG, "数据包 #%d: HEX 字符串长度=%d, cur_len=%d",
-                                    packet_count, hex_data.length(), cur_len);
-                        }
 
                         if (!hex_data.empty() && cur_len > 0) {
                             // 解码 HEX 数据为二进制数据
@@ -170,16 +158,6 @@ static void http_urc_callback(const std::string& command, const std::vector<AtAr
                                 s_ota_context->download_error = true;
                                 xEventGroupSetBits(s_ota_context->event_group, OTA_EVENT_ERROR);
                                 return;
-                            }
-
-                            // 调试：打印前几个包的数据
-                            if (packet_count <= 3 && binary_data.length() >= 16) {
-                                ESP_LOGI(TAG, "数据包 #%d 前 16 字节: %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x",
-                                        packet_count,
-                                        (uint8_t)binary_data[0], (uint8_t)binary_data[1], (uint8_t)binary_data[2], (uint8_t)binary_data[3],
-                                        (uint8_t)binary_data[4], (uint8_t)binary_data[5], (uint8_t)binary_data[6], (uint8_t)binary_data[7],
-                                        (uint8_t)binary_data[8], (uint8_t)binary_data[9], (uint8_t)binary_data[10], (uint8_t)binary_data[11],
-                                        (uint8_t)binary_data[12], (uint8_t)binary_data[13], (uint8_t)binary_data[14], (uint8_t)binary_data[15]);
                             }
 
                             // 写入 OTA 分区
@@ -201,10 +179,9 @@ static void http_urc_callback(const std::string& command, const std::vector<AtAr
                                 s_ota_context->total_received += binary_data.length();
 
                                 // 每接收 100KB 打印一次进度
-                                static int last_progress = 0;
                                 int current_progress = s_ota_context->total_received / (100 * 1024);
-                                if (current_progress > last_progress) {
-                                    last_progress = current_progress;
+                                if (current_progress > s_ota_context->last_progress) {
+                                    s_ota_context->last_progress = current_progress;
                                     if (s_ota_context->content_length > 0) {
                                         ESP_LOGI(TAG, "OTA 进度: %d/%d 字节 (%.1f%%)",
                                                 s_ota_context->total_received,
@@ -400,6 +377,16 @@ static void ota_task(void *param)
     // 步骤 2: 配置 HTTP 参数
     ESP_LOGI(TAG, "步骤 2: 配置 HTTP 参数");
 
+    // ML307C returns CME 655 on an HTTPS request unless SSL is enabled on
+    // this HTTP instance. Use the same SSL context as the regular HTTP client.
+    if (url_str.compare(0, 8, "https://") == 0) {
+        snprintf(at_cmd, sizeof(at_cmd), "AT+MHTTPCFG=\"ssl\",%d,1,0", s_ota_context->http_id);
+        if (!at_uart->SendCommand(at_cmd, 1000)) {
+            ESP_LOGE(TAG, "无法为 OTA 下载启用 HTTPS");
+            goto cleanup;
+        }
+    }
+
     // 设置为非缓存模式（实时接收数据）
     snprintf(at_cmd, sizeof(at_cmd), "AT+MHTTPCFG=\"cached\",%d,0", s_ota_context->http_id);
     at_uart->SendCommand(at_cmd, 1000);
@@ -412,15 +399,14 @@ static void ota_task(void *param)
     vTaskDelay(pdMS_TO_TICKS(200));
     ESP_LOGI(TAG, "设置编码模式为原始数据（临时）");
 
-    // 设置数据输出流控，提高传输速度
-    // frag_size: 每次最多输出 512 字节
-    // interval: 每次输出间隔 1ms
-    // 理论速度：512字节/1ms = 512KB/s，约5秒下载2.64MB
-    // 4096 有概率溢出，改成了2048
-    snprintf(at_cmd, sizeof(at_cmd), "AT+MHTTPCFG=\"fragment\",%d,2048,1", s_ota_context->http_id);
-    at_uart->SendCommand(at_cmd, 1000);
-    vTaskDelay(pdMS_TO_TICKS(200));
-    ESP_LOGI(TAG, "设置数据流控：512 字节/包，间隔 1ms（高速模式）");
+    // ML307C documents 0..1024 bytes. HEX doubles UART traffic; leave time between
+    // reports for the receive task to decode and write flash. This HTTP instance is OTA-only.
+    snprintf(at_cmd, sizeof(at_cmd), "AT+MHTTPCFG=\"fragment\",%d,512,25", s_ota_context->http_id);
+    if (!at_uart->SendCommand(at_cmd, 1000)) {
+        ESP_LOGE(TAG, "模组未接受 OTA 分包流控，停止本次升级");
+        goto cleanup;
+    }
+    ESP_LOGI(TAG, "OTA 分包上限 512 字节，间隔 25ms");
 
     // 设置超时时间
     snprintf(at_cmd, sizeof(at_cmd), "AT+MHTTPCFG=\"timeout\",%d,60,0", s_ota_context->http_id);
@@ -487,7 +473,10 @@ static void ota_task(void *param)
         // 发送 GET 请求（method=1 表示 GET）
         snprintf(at_cmd, sizeof(at_cmd), "AT+MHTTPREQUEST=%d,1,0,%s",
                  s_ota_context->http_id, hex_path.c_str());
-        at_uart->SendCommand(at_cmd, 10000);
+        if (!at_uart->SendCommand(at_cmd, 10000)) {
+            ESP_LOGE(TAG, "模组未接受固件下载请求");
+            goto cleanup;
+        }
     }
 
     // 步骤 5: 等待下载完成
@@ -517,14 +506,13 @@ static void ota_task(void *param)
         }
     }
 
-    // 等待下载完成（最多 2 分钟）
-    // 高速模式（512字节/1ms），下载 2.64MB 约需 5-10 秒
+    // 等待下载完成（最多 20 分钟），允许低速传输
     {
         auto bits = xEventGroupWaitBits(s_ota_context->event_group,
                                         OTA_EVENT_DOWNLOAD_COMPLETE | OTA_EVENT_ERROR,
                                         pdTRUE,
                                         pdFALSE,
-                                        pdMS_TO_TICKS(1200000));  // 2 分钟超时
+                                        pdMS_TO_TICKS(1200000));
 
         if (bits & OTA_EVENT_ERROR) {
             ESP_LOGE(TAG, "固件下载出错");

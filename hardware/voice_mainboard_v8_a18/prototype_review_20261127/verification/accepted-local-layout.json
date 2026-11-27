@@ -1,0 +1,73 @@
+{
+  "trial": "C:\\project\\esp32\\doorbell_demo_voice\\hardware\\voice_mainboard_v8_a18\\power-entry-final-review-20261127-0840\\voice_mainboard_a18_2layer.kicad_pcb",
+  "allowed_moved_parts": [],
+  "native_unconnected": [
+    0,
+    0
+  ],
+  "native_violations": [
+    0,
+    0
+  ],
+  "protected_groups": {
+    "RF_ANT": 1,
+    "RF_FEED": 1,
+    "MODEM_1V8": 1,
+    "SPK_MINUS": 1,
+    "CELL_NEG": 1,
+    "BUCK_SW": 1,
+    "GND": 1,
+    "VIN_DC": 1,
+    "UPS_SW": 1,
+    "SYS_5V": 1,
+    "SPK_PLUS": 1,
+    "ESP_SW": 1,
+    "VIN_PROTECTED": 1,
+    "ESP_3V3": 1,
+    "BAT_BOOST_5V": 1,
+    "BAT_SENSE_IN": 1,
+    "MODEM_3V8": 1,
+    "VIN_FUSED": 1
+  },
+  "snapshot": "C:\\project\\esp32\\doorbell_demo_voice\\hardware\\voice_mainboard_v8_a18\\power_relayout_candidate\\iterations\\accepted-local-layout-20261127-084001",
+  "sha256": "4c907236ab2557cdb0d9d4e8ab16a466c671240d4630f1b35d93b14c43e0c42f",
+  "manufacturing_ready": false,
+  "verified_power_path_improvement": {
+    "input_path_before": {
+      "net": "VIN_DC",
+      "from": [
+        "J1",
+        4
+      ],
+      "to": [
+        "F1",
+        1
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 37.76884946,
+      "minimum_width_mm_on_estimated_path": 0.16,
+      "estimated_R_20C_ohm": 0.05529734069073455,
+      "estimated_drop_at_2A_V": 0.1105946813814691,
+      "via_layer_steps": 4
+    },
+    "input_path_after": {
+      "net": "VIN_DC",
+      "from": [
+        "J1",
+        4
+      ],
+      "to": [
+        "F1",
+        1
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 4.94974747,
+      "minimum_width_mm_on_estimated_path": 0.8,
+      "estimated_R_20C_ohm": 0.004145162715516201,
+      "estimated_drop_at_2A_V": 0.008290325431032402,
+      "via_layer_steps": 1
+    },
+    "all_existing_explicit_path_resistances_not_increased": true,
+    "scope": "20C centreline copper estimate only; not dynamic/current/thermal qualification"
+  }
+}

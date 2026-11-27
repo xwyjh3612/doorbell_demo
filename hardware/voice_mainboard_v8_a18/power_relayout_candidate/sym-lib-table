@@ -1,0 +1,1 @@
+(sym_lib_table (version 7) (lib (name "VoiceV2") (type "KiCad") (uri "C:/project/esp32/doorbell_demo_voice/hardware/voice_mainboard_v8_a18/routing_candidate/../VoiceV2.kicad_sym") (options "") (descr "V2 draft electrical pin-map symbols")))

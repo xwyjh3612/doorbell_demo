@@ -1,0 +1,107 @@
+{
+  "pcb_sha256": "aa37cd1da7de97041c2764a370b30dba346570c5c7d10b35952a8e43f19026b9",
+  "status": "listing-drawing XY only; no verified Z stack or physical fit",
+  "pcb_origin_mm": [
+    7.0,
+    -7.0
+  ],
+  "pcb_thickness_mm": 1.6,
+  "outline_size_mm": [
+    117.4,
+    75.0
+  ],
+  "inferred_outer_profile_mm": [
+    -11.5,
+    -13.0,
+    120.5,
+    120.5,
+    25.0
+  ],
+  "pcb_to_reference_outline_mm": 2.74,
+  "projected_speaker_circle_mm": [
+    54.5,
+    87.5,
+    33.0
+  ],
+  "speaker_projection_into_board_mm": 13.5,
+  "speaker_projection_chord_at_board_edge_mm": 53.24,
+  "concentric_magnet_diameter_clear_with_1p5mm_radial_margin_mm": 36.0,
+  "board_to_projected_battery_mm": 2.5,
+  "support_to_reference_outline_mm": 1.71,
+  "support_to_projected_battery_mm": 2.07,
+  "support_to_projected_speaker_mm": 12.24,
+  "buttons_mm": [
+    [
+      12.5,
+      21.5
+    ],
+    [
+      54.5,
+      21.5
+    ],
+    [
+      96.5,
+      21.5
+    ]
+  ],
+  "mounting_centres_mm": [
+    [
+      0,
+      0
+    ],
+    [
+      109,
+      0
+    ],
+    [
+      0,
+      109
+    ],
+    [
+      109,
+      109
+    ]
+  ],
+  "projected_speaker_region_check_footprints": [
+    "C5",
+    "C64",
+    "C65",
+    "C66",
+    "C68",
+    "C71",
+    "C72",
+    "C73",
+    "R61",
+    "R62",
+    "R63",
+    "R71",
+    "R72",
+    "U15",
+    "U18"
+  ],
+  "button_stem_clearance_check_footprints": [
+    [
+      "Q3",
+      "Q4",
+      "R15",
+      "R17",
+      "R18",
+      "U7"
+    ],
+    [
+      "C16",
+      "C18",
+      "U4",
+      "U5",
+      "U7"
+    ],
+    [
+      "C61",
+      "J11",
+      "J12",
+      "R30",
+      "R31"
+    ]
+  ],
+  "bracket_near_THT_pads": []
+}

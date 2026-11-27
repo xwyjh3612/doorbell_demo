@@ -1,0 +1,64 @@
+{
+  "date": "2026-11-24",
+  "PCB_sha256": "23de933115d543905dd70db9b9c2f5c3dc8525bd83064a07042c545edbd9f65f",
+  "base_PCB_sha256": "1ad243f493dddba2305c00916fb5b2c3d46d7638ca139cf46f3c71c1c15813c1",
+  "DRC_errors": 0,
+  "DRC_warnings": 0,
+  "unconnected": 0,
+  "schematic_parity": 0,
+  "before": {
+    "F.Cu": {
+      "segments": 1882,
+      "degree_two_turns": 1076,
+      "length_mm": 3550.606,
+      "ground_segments": 778
+    },
+    "B.Cu": {
+      "segments": 1109,
+      "degree_two_turns": 632,
+      "length_mm": 4438.288,
+      "ground_segments": 664
+    },
+    "vias": 384
+  },
+  "after": {
+    "F.Cu": {
+      "segments": 1411,
+      "degree_two_turns": 815,
+      "length_mm": 2614.736,
+      "ground_segments": 383
+    },
+    "B.Cu": {
+      "segments": 571,
+      "degree_two_turns": 309,
+      "length_mm": 2216.923,
+      "ground_segments": 148
+    },
+    "vias": 386
+  },
+  "ground_geometric_components": 1,
+  "ground_audit_method": "Native filled copper polygons including holes + pads + traces + through-vias, union of touching same-layer copper and vertical via/THT connections; corroborated by native DRC. This is connectivity only.",
+  "footprint_positions_and_pad_nets_unchanged": true,
+  "schematic_unchanged": true,
+  "changed_footprint_count": 0,
+  "added_ground_vias": 2,
+  "local_power_returns_preserved": true,
+  "CELL_NEG_unchanged": true,
+  "USB_RF_switch_nodes_unchanged": true,
+  "manufacturing_ready": false,
+  "2A_qualified": false,
+  "full_board_relayout_completed": false,
+  "remaining_scope": [
+    "Full placement and USB/RF qualification",
+    "Exact BOM/footprints/stock/SMT-library and thermal qualification",
+    "Cell/NTC window",
+    "2A peak, low-battery takeover and long-call hardware tests"
+  ],
+  "evidence": [
+    "back-route-changes.json",
+    "ground-route-changes.json",
+    "ground-return-changes.json",
+    "ground-components.json",
+    "drc.json"
+  ]
+}

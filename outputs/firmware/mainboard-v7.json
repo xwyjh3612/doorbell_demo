@@ -1,0 +1,12 @@
+{
+  "note": "App image only. Verify device partitions and preserve NVS/OTA selection before flashing.",
+  "sha256": "c38966f22cf09a8fe1a3340a26689bed4aa4120fb89724e2a060eb0c0ca32c00",
+  "power_monitor": true,
+  "radar60": false,
+  "radar": false,
+  "built_at": "2026-11-24T20:25:33.4922181+08:00",
+  "variant": "mainboard-v7",
+  "status_indicator": true,
+  "app_offset": "0x10000",
+  "size": 2807008
+}

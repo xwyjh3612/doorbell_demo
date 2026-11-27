@@ -53,9 +53,18 @@ public final class MainActivity extends Activity {
     private LinearLayout vitalsPanel;
     private LinearLayout audioControls;
     private RadarVisual radarVisual;
+    private IncomingPulseView incomingPulse;
+    private long presentedIncoming=-1;
+    private boolean resumed;
+    private ScrollView homeScroll;
+    private LinearLayout incomingActions;
     private TrendView breathTrend, heartTrend;
     private PresenceTimeline timeline;
     private TextView historyPeriod, historySummary, historySelection;
+    private AlertCenter alerts;
+    private TextView permissionHint;
+    private android.widget.ArrayAdapter<String> permissionRows;
+
     private LinearLayout historyRows;
     private Button historyHour, historyToday, historyDate;
     private Call historyRequest;
@@ -109,7 +118,15 @@ public final class MainActivity extends Activity {
         bound = bindService(service, serviceConnection, BIND_AUTO_CREATE);
         connectTelemetry(); loadHistory(); main.post(clock);
     }
-    @Override public void onResume() { super.onResume(); handleCallIntent(); }
+    @Override public void onResume() { super.onResume(); resumed=true;refreshPermissionHints();handleCallIntent();presentIncoming(); }
+    @Override public void onPause(){resumed=false;super.onPause();}
+    private void presentIncoming(){
+        if(calls==null || !resumed || !hasWindowFocus() || isFinishing())return;
+        long token=calls.incomingToken();if(token<0 || token==presentedIncoming)return;
+        presentedIncoming=token;
+        startActivity(new android.content.Intent(this,IncomingCallActivity.class).setAction("incoming")
+                .putExtra(CallService.EXTRA_TOKEN,token).addFlags(android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP));
+    }
     @Override public void onNewIntent(android.content.Intent intent) {
         super.onNewIntent(intent); setIntent(intent); pendingCallIntent = intent;
         prepareIncomingWindow(intent); handleCallIntent();
@@ -120,7 +137,7 @@ public final class MainActivity extends Activity {
         else getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
     }
     @Override public void onStop() {
-        visible = false; main.removeCallbacks(clock); main.removeCallbacks(telemetryReconnect);
+        visible = false; incomingPulse.setRinging(false); main.removeCallbacks(clock); main.removeCallbacks(telemetryReconnect);
         disconnectTelemetry();
         cancelHistory();
         if (calls != null) calls.detach(callObserver);
@@ -129,17 +146,19 @@ public final class MainActivity extends Activity {
         super.onStop();
     }
     @Override public void onDestroy() {
+        if(alerts!=null)alerts.close();
         main.removeCallbacksAndMessages(null);
         client.dispatcher().executorService().shutdown(); super.onDestroy();
     }
     private void handleCallIntent() {
         if (calls == null || pendingCallIntent == null || !hasWindowFocus()) return;
         android.content.Intent intent = pendingCallIntent; pendingCallIntent = null;
+        if(CallService.VIEW_ALERTS.equals(intent.getAction())){showCallAlerts();return;}
         if (!calls.isCurrentCall(intent.getLongExtra(CallService.EXTRA_TOKEN, -1))) return;
         if (CallService.ACTION_ANSWER.equals(intent.getAction())) microphone(2);
     }
     @Override public void onWindowFocusChanged(boolean focused) {
-        super.onWindowFocusChanged(focused); if (focused) handleCallIntent();
+        super.onWindowFocusChanged(focused); if (focused) {handleCallIntent();presentIncoming();}
     }
     private void requestNotificationPermission() {
         if (Build.VERSION.SDK_INT >= 33 && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED)
@@ -180,16 +199,17 @@ public final class MainActivity extends Activity {
     }
     private void buildUi() {
         getWindow().setStatusBarColor(Color.rgb(8,19,35));getWindow().setNavigationBarColor(Color.rgb(8,19,35));
-        ScrollView scroll = new ScrollView(this); scroll.setFillViewport(true); scroll.setBackgroundColor(Color.rgb(8,19,35));
+        ScrollView scroll = new ScrollView(this); homeScroll=scroll; scroll.setFillViewport(true); scroll.setBackgroundColor(Color.rgb(8,19,35));
         LinearLayout root = new LinearLayout(this); root.setOrientation(LinearLayout.VERTICAL);
         root.setPadding(dp(20), dp(30), dp(20), dp(28)); scroll.addView(root); setContentView(scroll);
         LinearLayout heading=new LinearLayout(this);heading.setGravity(Gravity.CENTER_VERTICAL);root.addView(heading);
         LinearLayout branding=new LinearLayout(this);branding.setOrientation(LinearLayout.VERTICAL);heading.addView(branding,new LinearLayout.LayoutParams(0,-2,1));
         TextView eyebrow = text("VOICE LINK  /  4G", 11, GREEN); eyebrow.setLetterSpacing(0.16f); branding.addView(eyebrow);
-        TextView title=text("声联 · 智能对讲",25,INK);title.setTypeface(null,Typeface.BOLD);title.setPadding(0,dp(8),0,dp(3));branding.addView(title);
+        TextView title=text("语音对讲",25,INK);title.setTypeface(null,Typeface.BOLD);title.setPadding(0,dp(8),0,dp(3));branding.addView(title);
         settingsButton=button("设置",PANEL,MUTED,this::settings);heading.addView(settingsButton,new LinearLayout.LayoutParams(dp(64),dp(44)));
         TextView tagline=text("声音互联，让感知触手可及",12,MUTED);root.addView(tagline);
         connectionLabel=text("● 连接中",12,MUTED);connectionLabel.setPadding(0,dp(16),0,dp(12));root.addView(connectionLabel);
+        alerts=new AlertCenter(this);LinearLayout.LayoutParams alertLayout=new LinearLayout.LayoutParams(-1,-2);alertLayout.bottomMargin=dp(12);root.addView(alerts.entry,alertLayout);
         LinearLayout card = new LinearLayout(this); card.setOrientation(LinearLayout.VERTICAL);
         card.setPadding(dp(20),dp(17),dp(20),dp(18));
         GradientDrawable hero=new GradientDrawable(GradientDrawable.Orientation.TL_BR,new int[]{Color.rgb(19,45,66),Color.rgb(14,27,46)});hero.setCornerRadius(dp(24));hero.setStroke(dp(1),Color.rgb(34,66,87));card.setBackground(hero);
@@ -200,13 +220,16 @@ public final class MainActivity extends Activity {
         deviceLabel=text(device,11,MUTED);deviceLabel.setPadding(0,dp(4),0,0);card.addView(deviceLabel);
         powerSummary=text("电源状态待上报",11,MUTED);powerSummary.setPadding(0,dp(10),0,0);card.addView(powerSummary);
         radarVisual=new RadarVisual(this);card.addView(radarVisual,new LinearLayout.LayoutParams(-1,dp(215)));
+        incomingPulse=new IncomingPulseView(this);incomingPulse.setVisibility(View.GONE);card.addView(incomingPulse,new LinearLayout.LayoutParams(-1,dp(215)));
         LinearLayout statusRow=new LinearLayout(this);statusRow.setGravity(Gravity.CENTER_VERTICAL);card.addView(statusRow);
         statusLabel=text("待机",25,INK);statusLabel.setTypeface(null,Typeface.BOLD);statusRow.addView(statusLabel,new LinearLayout.LayoutParams(0,-2,1));
         durationLabel=text("随时连接",19,GREEN);statusRow.addView(durationLabel);
         subtitleLabel=text(message,12,MUTED);subtitleLabel.setPadding(0,dp(7),0,dp(3));card.addView(subtitleLabel);
         callButton=button("呼叫设备",GREEN,Color.rgb(6,41,45),()->microphone(1));root.addView(callButton);
-        answerButton=button("接听来电",GREEN,Color.rgb(6,41,45),()->microphone(2));root.addView(answerButton);
-        rejectButton=button("拒接",Color.rgb(75,37,49),Color.rgb(255,153,155),()->end("已拒接",true));root.addView(rejectButton);
+        incomingActions=new LinearLayout(this);root.addView(incomingActions);
+        rejectButton=button("拒接",Color.rgb(105,49,63),Color.rgb(255,214,215),()->end("已拒接",true));
+        answerButton=button("接听来电",GREEN,Color.rgb(6,41,45),()->microphone(2));
+        for(Button action:new Button[]{rejectButton,answerButton}){LinearLayout.LayoutParams slot=new LinearLayout.LayoutParams(0,dp(56),1);slot.topMargin=dp(12);if(action==answerButton)slot.leftMargin=dp(10);incomingActions.addView(action,slot);}
         hangupButton=button("挂断通话",Color.rgb(75,37,49),Color.rgb(255,153,155),()->end("通话已结束",true));root.addView(hangupButton);
         LinearLayout controls = new LinearLayout(this); audioControls=controls; root.addView(controls);
         muteButton = button("麦克风开", PANEL, INK, () -> {
@@ -217,6 +240,7 @@ public final class MainActivity extends Activity {
         controls.addView(muteButton, half);
         LinearLayout.LayoutParams half2 = new LinearLayout.LayoutParams(0, dp(52), 1); half2.topMargin = dp(10); half2.leftMargin = dp(6);
         controls.addView(speakerButton, half2);
+
         TextView sensingTitle=text("空间感知",17,INK);sensingTitle.setTypeface(null,Typeface.BOLD);sensingTitle.setPadding(0,dp(23),0,dp(7));root.addView(sensingTitle);
         radarSummary=text("等待终端上传感知状态",12,MUTED);root.addView(radarSummary);
         buildHistory(root);
@@ -238,6 +262,7 @@ public final class MainActivity extends Activity {
         java.util.Calendar today=java.util.Calendar.getInstance();
         return today.get(java.util.Calendar.YEAR)==historyDay.get(java.util.Calendar.YEAR) && today.get(java.util.Calendar.DAY_OF_YEAR)==historyDay.get(java.util.Calendar.DAY_OF_YEAR);
     }
+    private void showCallAlerts(){alerts.open();}
     private void buildHistory(LinearLayout root){
         LinearLayout box=new LinearLayout(this);box.setOrientation(LinearLayout.VERTICAL);box.setPadding(dp(14),dp(16),dp(14),dp(14));box.setBackground(background(PANEL,18));
         LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(-1,-2);lp.topMargin=dp(16);root.addView(box,lp);
@@ -322,6 +347,11 @@ public final class MainActivity extends Activity {
     }
 
     private void render() {
+        if(alerts!=null){
+            alerts.update(calls==null?null:calls.alertRows(),calls!=null && calls.alertsSynced(),calls!=null && calls.registered,device);
+            boolean available=calls==null || calls.call.phase==CallState.Phase.IDLE;
+            alerts.entry.setVisibility(available?View.VISIBLE:View.GONE);if(!available)alerts.close();
+        }
         if (calls != null) {
             call = calls.call; registered = calls.registered; iceServers = calls.iceServers;
             message = calls.message; transport = calls.transport; muted = calls.muted;
@@ -347,9 +377,13 @@ public final class MainActivity extends Activity {
         if (call.phase != CallState.Phase.CONNECTED) durationLabel.setText(call.phase==CallState.Phase.IDLE?"随时连接":"正在连接");
         boolean idle = call.phase == CallState.Phase.IDLE;
         boolean incoming = call.phase == CallState.Phase.INCOMING;
+        if(incoming && incomingPulse.getVisibility()!=View.VISIBLE) homeScroll.post(()->homeScroll.smoothScrollTo(0,Math.max(0,((View)incomingPulse.getParent()).getTop()-dp(10))));
+        incomingPulse.setVisibility(incoming?View.VISIBLE:View.GONE);incomingPulse.setRinging(visible && incoming);radarVisual.setVisibility(incoming?View.GONE:View.VISIBLE);
+        if(incoming)durationLabel.setText("等待接听");
         callButton.setVisibility(idle ? View.VISIBLE : View.GONE);
         callButton.setEnabled(registered && iceServers != null);
         callButton.setAlpha(callButton.isEnabled() ? 1f : 0.45f);
+        incomingActions.setVisibility(incoming?View.VISIBLE:View.GONE);
         answerButton.setVisibility(incoming ? View.VISIBLE : View.GONE);
         rejectButton.setVisibility(incoming ? View.VISIBLE : View.GONE);
         hangupButton.setVisibility(!idle && !incoming ? View.VISIBLE : View.GONE);
@@ -358,6 +392,7 @@ public final class MainActivity extends Activity {
         muteButton.setText(muted ? "麦克风关" : "麦克风开"); speakerButton.setText(speaker ? "扬声器" : "听筒");
         settingsButton.setEnabled(idle); diagnostics.setText(calls == null ? "等待后台服务" : calls.history.toString());
         renderTelemetry();
+        presentIncoming();
     }
     private void renderTelemetry() {
         long now=android.os.SystemClock.elapsedRealtime();
@@ -437,66 +472,107 @@ public final class MainActivity extends Activity {
         main.removeCallbacks(telemetryReconnect);WebSocket previous=telemetrySocket;telemetrySocket=null;telemetry.socketOpen=false;
         if(previous!=null)previous.close(1000,"page closed");
     }
-    // A self-hosted, user-enabled VoIP intercom has no FCM wake-up provider;
-    // incoming calls are an acceptable battery-exemption use case in the
-    // Android Doze documentation. The user explicitly enables it in Settings.
+    private android.app.NotificationChannel incomingChannel(){
+        return Build.VERSION.SDK_INT>=26?getSystemService(android.app.NotificationManager.class).getNotificationChannel(CallService.CALL_CHANNEL):null;
+    }
+    private void refreshPermissionHints(){
+        if(permissionHint==null && permissionRows==null)return;
+        android.app.NotificationManager nm=getSystemService(android.app.NotificationManager.class);
+        android.app.NotificationChannel ch=Build.VERSION.SDK_INT>=26?incomingChannel():null;
+        boolean notifications=nm.areNotificationsEnabled();
+        boolean channelMuted=Build.VERSION.SDK_INT>=26 && ch!=null && ch.getImportance()<android.app.NotificationManager.IMPORTANCE_HIGH;
+        boolean channelHidden=Build.VERSION.SDK_INT>=26 && ch!=null && ch.getLockscreenVisibility()==android.app.Notification.VISIBILITY_SECRET;
+        boolean fullscreen=Build.VERSION.SDK_INT<34 || nm.canUseFullScreenIntent();
+        int lockNotifications=-1;
+        try{lockNotifications=android.provider.Settings.Secure.getInt(getContentResolver(),"lock_screen_show_notifications",-1);}catch(SecurityException unavailable){/* Some manufacturers hide this setting. */}
+        boolean overlay=android.provider.Settings.canDrawOverlays(this);
+        boolean mic=checkSelfPermission(Manifest.permission.RECORD_AUDIO)==PackageManager.PERMISSION_GRANTED;
+        boolean battery=getSystemService(android.os.PowerManager.class).isIgnoringBatteryOptimizations(getPackageName());
+        java.util.List<String> missing=new java.util.ArrayList<>();
+        if(!notifications)missing.add("来电通知");else if(channelMuted || channelHidden)missing.add("设备来电通知类别");
+        if(lockNotifications==0)missing.add("锁屏显示通知");
+        if(!fullscreen)missing.add("锁屏全屏来电");if(!overlay)missing.add("后台弹窗");if(!mic)missing.add("麦克风");
+        if(permissionHint!=null){
+            boolean ok=missing.isEmpty();permissionHint.setText(ok?"可检测的来电权限已开启  ›":"来电权限待设置  ›\n"+android.text.TextUtils.join("、",missing));
+            permissionHint.setTextColor(ok?0xff176757:0xff754600);permissionHint.setBackground(background(ok?0xffe0f4eb:0xffffeed2,12));
+        }
+        if(permissionRows!=null){
+            permissionRows.setNotifyOnChange(false);permissionRows.clear();permissionRows.addAll(
+                "来电通知 · "+(!notifications?"未开启，收不到来电通知":channelHidden?"锁屏通知已隐藏，去设置":channelMuted?"提醒级别过低，去设置":"已开启"),
+                "锁屏全屏来电 · "+(Build.VERSION.SDK_INT<34?"本系统无需单独授权":fullscreen?"已开启":"未开启，锁屏可能不弹出"),
+                "后台弹窗 · "+(overlay?"已开启":"未开启，使用其他 App 时可能只显示通知"),
+                "麦克风 · "+(mic?"已允许":"未允许，接听后无法讲话"),
+                "电池优化 · "+(battery?"已解除限制":"后台等待不稳定时可检查"),
+                "厂商权限 · 若锁屏仍无提示，检查锁屏显示、后台弹窗和自启动",
+                "锁屏显示通知 · "+(lockNotifications==0?"已关闭，锁屏可能看不到来电通知":lockNotifications==1?"已开启":"请在系统设置中核对"));permissionRows.notifyDataSetChanged();
+        }
+    }
     @android.annotation.SuppressLint("BatteryLife")
-    private void backgroundSettings() {
-        android.app.NotificationManager notifications = (android.app.NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        android.os.PowerManager power = (android.os.PowerManager) getSystemService(POWER_SERVICE);
-        boolean allowed = notifications.areNotificationsEnabled();
-        boolean fullscreen = Build.VERSION.SDK_INT < 34 || notifications.canUseFullScreenIntent();
-        boolean battery = power.isIgnoringBatteryOptimizations(getPackageName());
-        String summary = "来电通知：" + (allowed ? "已允许" : "未允许")
-                + "\n锁屏全屏来电：" + (fullscreen ? "已允许" : "未允许")
-                + "\n后台电池限制：" + (battery ? "已解除" : "未解除")
-                + "\n\n请允许通知并将电池设置为不受限制。部分手机还需在系统中允许自启动和后台运行。"
-                + "\n后台接听开启后有常驻通知；可在通知中关闭。系统强行停止 App 后需重新打开。";
-        new AlertDialog.Builder(this).setTitle("后台与锁屏来电").setMessage(summary)
-                .setPositiveButton("通知设置", (dialog, which) -> {
-                    android.content.Intent settings;
-                    if (Build.VERSION.SDK_INT >= 26) settings = new android.content.Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS)
-                            .putExtra(android.provider.Settings.EXTRA_APP_PACKAGE, getPackageName());
-                    else settings = new android.content.Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                            .setData(android.net.Uri.parse("package:" + getPackageName()));
-                    openSystemSetting(settings);
-                })
-                .setNeutralButton("后台电池设置", (dialog, which) -> openSystemSetting(new android.content.Intent(
-                        battery ? android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS : android.provider.Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
-                        .setData(android.net.Uri.parse("package:" + getPackageName()))))
-                .setNegativeButton(Build.VERSION.SDK_INT >= 34 ? "锁屏来电设置" : "关闭", (dialog, which) -> {
-                    if (Build.VERSION.SDK_INT >= 34) openSystemSetting(new android.content.Intent(
-                            android.provider.Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT)
-                            .setData(android.net.Uri.parse("package:" + getPackageName())));
-                }).show();
+    private void permissionSetting(int index){
+        android.net.Uri pkg=android.net.Uri.parse("package:"+getPackageName());
+        android.content.Intent dest=new android.content.Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,pkg);
+        switch(index){
+            case 0:
+                if(Build.VERSION.SDK_INT>=26){
+                    android.app.NotificationManager nm=getSystemService(android.app.NotificationManager.class);
+                    if(nm.areNotificationsEnabled() && incomingChannel()!=null)dest=new android.content.Intent(android.provider.Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS).putExtra(android.provider.Settings.EXTRA_CHANNEL_ID,CallService.CALL_CHANNEL);
+                    else dest=new android.content.Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                    dest.putExtra(android.provider.Settings.EXTRA_APP_PACKAGE,getPackageName());
+                }break;
+            case 1: if(Build.VERSION.SDK_INT>=34)dest=new android.content.Intent(android.provider.Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT,pkg);else {Toast.makeText(this,"此版本没有独立的全屏来电开关。若仍无提示，请检查来电通知和厂商权限。",Toast.LENGTH_LONG).show();return;}break;
+            case 2: dest=new android.content.Intent(android.provider.Settings.ACTION_MANAGE_OVERLAY_PERMISSION,pkg);break;
+            case 3: Toast.makeText(this,"在应用权限中选择麦克风",Toast.LENGTH_SHORT).show();break;
+            case 4: if(!getSystemService(android.os.PowerManager.class).isIgnoringBatteryOptimizations(getPackageName()))dest=new android.content.Intent(android.provider.Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,pkg);break;
+            case 5: Toast.makeText(this,"如有锁屏显示、后台弹出界面或自启动开关，请在系统内核对",Toast.LENGTH_LONG).show();break;
+            case 6: dest=new android.content.Intent("android.settings.NOTIFICATION_SETTINGS");
+                Toast.makeText(this,"请在系统通知设置中查看锁屏通知",Toast.LENGTH_LONG).show();break;
+            default: return;
+        }
+        openSystemSetting(dest);
+    }
+    private void backgroundSettings(){
+        if(permissionRows!=null)return;
+        permissionRows=new android.widget.ArrayAdapter<>(this,android.R.layout.simple_list_item_1);
+        refreshPermissionHints();
+        AlertDialog dialog=new AlertDialog.Builder(this).setTitle("来电权限检查").setAdapter(permissionRows,null).setNegativeButton("完成",null).create();
+        dialog.setOnDismissListener(d->{permissionRows=null;refreshPermissionHints();});dialog.show();
+        dialog.getListView().setOnItemClickListener((parent,view,index,id)->permissionSetting(index));
     }
     private void openSystemSetting(android.content.Intent intent) {
         try { startActivity(intent); }
-        catch (android.content.ActivityNotFoundException error) {
+        catch (android.content.ActivityNotFoundException | SecurityException error) {
             startActivity(new android.content.Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                     .setData(android.net.Uri.parse("package:" + getPackageName())));
         }
     }
     private void settings() {
         LinearLayout form = new LinearLayout(this); form.setOrientation(LinearLayout.VERTICAL); form.setPadding(dp(24), dp(8), dp(24), 0);
+        permissionHint=text("",15,Color.DKGRAY);permissionHint.setPadding(dp(12),dp(9),dp(12),dp(9));permissionHint.setMinimumHeight(dp(48));permissionHint.setGravity(Gravity.CENTER_VERTICAL);permissionHint.setFocusable(true);permissionHint.setOnClickListener(v->backgroundSettings());
+        LinearLayout.LayoutParams hintPosition=new LinearLayout.LayoutParams(-1,-2);hintPosition.bottomMargin=dp(8);form.addView(permissionHint,hintPosition);refreshPermissionHints();
+        ScrollView settingsScroll=new ScrollView(this);settingsScroll.addView(form);
         EditText serverInput = new EditText(this); serverInput.setSingleLine(true); serverInput.setText(server); form.addView(text("服务地址（HTTPS）", 14, Color.DKGRAY)); form.addView(serverInput);
         EditText deviceInput = new EditText(this); deviceInput.setSingleLine(true); deviceInput.setText(device); form.addView(text("ESP32 设备 ID", 14, Color.DKGRAY)); form.addView(deviceInput);
-        EditText localInput = new EditText(this); localInput.setSingleLine(true); localInput.setText(localId); form.addView(text("接听端 ID（同一 ID 只开一个客户端）", 14, Color.DKGRAY)); form.addView(localInput);
-        AlertDialog dialog = new AlertDialog.Builder(this).setTitle("连接设置").setView(form).setNegativeButton("取消", null).setPositiveButton("保存并连接", null).create();
-        dialog.setOnShowListener(ignored -> dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
+        EditText localInput = new EditText(this); localInput.setSingleLine(true); localInput.setText(localId); form.addView(text("接听组 ID（同组手机填相同值）", 14, Color.DKGRAY)); form.addView(localInput);
+        EditText nameInput=new EditText(this);nameInput.setSingleLine(true);nameInput.setText(CallService.phoneName(preferences));
+        form.addView(text("本机名称（接听时显示给其他手机）",14,Color.DKGRAY));form.addView(nameInput);
+        AlertDialog dialog = new AlertDialog.Builder(this).setTitle("连接设置").setView(settingsScroll).setNeutralButton("来电权限",null).setNegativeButton("取消", null).setPositiveButton("保存并连接", null).create();
+        dialog.setOnDismissListener(d->permissionHint=null);
+        dialog.setOnShowListener(ignored -> {dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener(v->backgroundSettings());dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
             try {
                 String next = serverInput.getText().toString().trim().replaceAll("/+$", ""); URI uri = URI.create(next);
                 String nextDevice = deviceInput.getText().toString().trim(), nextLocal = localInput.getText().toString().trim();
+                String nextName=nameInput.getText().toString().trim();
+                if(nextName.isEmpty() || nextName.length()>40 || nextName.matches("(?s).*\\p{Cntrl}.*"))throw new IllegalArgumentException("请填写 1 至 40 个字符的本机名称");
                 if (!"https".equals(uri.getScheme()) || uri.getHost() == null || uri.getUserInfo() != null || uri.getQuery() != null
                         || uri.getFragment() != null || !uri.getPath().isEmpty()) throw new IllegalArgumentException("请填写 HTTPS 域名地址");
                 if (!nextDevice.matches("[A-Za-z0-9_-]{1,63}") || !nextLocal.matches("[A-Za-z0-9_-]{1,63}")) throw new IllegalArgumentException("ID 仅支持字母、数字、下划线和短横线");
                 disconnectTelemetry(); cancelHistory(); server = next; device = nextDevice; localId = nextLocal;
                 telemetry=new TelemetryState();lastRadarUptime=0;breathTrend.clear();heartTrend.clear();
-                preferences.edit().putString("server", server).putString("device", device).putString("local", localId).apply();
+                preferences.edit().putString("server", server).putString("device", device).putString("local", localId).putString("phone_name",nextName).apply();
                 if (calls != null) calls.reloadSettings();
                 timeline.data(new PresenceTimeline.History(),null);historyRows.removeAllViews();historySelection.setText("");
                 dialog.dismiss(); connectTelemetry(); loadHistory();
             } catch (Exception error) { Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show(); }
-        })); dialog.show();
+        });}); dialog.show();
     }
 }

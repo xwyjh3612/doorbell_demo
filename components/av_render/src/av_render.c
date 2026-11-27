@@ -1312,6 +1312,7 @@ int av_render_add_audio_stream(av_render_handle_t h, av_render_audio_info_t *aud
                 .audio_info = *audio_info,
                 .frame_cb = av_render_audio_frame_reached,
                 .ctx = render,
+                .boost_voice_playback = render->cfg.boost_voice_playback,
             };
             adec_res->adec = adec_open(&cfg);
             if (adec_res->adec == NULL) {

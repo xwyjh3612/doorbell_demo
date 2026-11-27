@@ -1,0 +1,3 @@
+#VRML V2.0 utf8
+# Illustrated body, not supplier mechanical CAD
+Shape { appearance Appearance { material Material { diffuseColor .65 .68 .70 specularColor .25 .25 .25 shininess .4 } } geometry IndexedFaceSet { solid FALSE coord Coordinate { point [ -2.6299213 -3.5944882 0,1.8582677 -3.5944882 0,-2.6299213 2.1141732 0,1.8582677 2.1141732 0,-2.6299213 -3.5944882 0.62992126,1.8582677 -3.5944882 0.62992126,-2.6299213 2.1141732 0.62992126,1.8582677 2.1141732 0.62992126 ] } coordIndex [ 0 2 3 1 -1,4 5 7 6 -1,0 1 5 4 -1,2 6 7 3 -1,0 4 6 2 -1,1 3 7 5 -1 ] } }

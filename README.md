@@ -1,8 +1,16 @@
 # ESP32 4G 语音对讲
 
+当前主板按A18外壳继续[两层语音对讲主板设计](hardware/voice_mainboard_v8_a18/README.md)，保留RGB指示灯、呼叫键、可选生命体征接口、4针TTL和USB预留。正在收尾的布线候选见[最新候选预览](hardware/voice_mainboard_v8_a18/routing_candidate/exports/preview.html)与[候选审查记录](hardware/voice_mainboard_v8_a18/routing_candidate/设计审查记录.md)；[其他工程预览入口](hardware/voice_mainboard_v8_a18/exports/preview.html)保留供比较。尚未生产放行，未连接、DRC和电源线宽以同版PCB的原生报告为准；V7及下文V6/V5费用保留为历史方案。四层工程保留作对照。
+
 本项目是基于 ESP32-S3 + ML307 4G 的双向实时语音对讲系统。ESP32 使用 MQTT，安卓 App 和浏览器使用 WebSocket/WSS，`audio_server` Spring Boot 服务在两者之间转发 WebRTC 信令。双方通过 WebRTC/UDP/TURN 进行 Opus 16kHz 单声道语音对讲，信令服务不承载音频编解码。
 
 独立安卓 App 支持呼叫、接听、拒接、挂断和麦克风控制，在线下载与现场操作见 [安卓演示说明.md](安卓演示说明.md)。演示入口：[https://voice.2811.top/demo.html](https://voice.2811.top/demo.html)。
+
+0.9 版可在「设置 → 来电权限」开启后台弹窗。在其他 App 内也能看到来电页，通知与锁屏仍可直接接听。
+
+0.8 版在首页和锁屏来电页显示动态听筒；呼出预警按日期呈现，可查看今天或近 7 天的记录。
+
+0.7 版支持演示设备多手机接听：各手机安装并打开 App 即可同时收到来电。先接听的手机通话，其余手机停铃并显示接听者名称。设置中可把自动生成的本机名称改成“前台”或“调度室”。[呼出预警与并发呼叫说明](呼出预警与多路呼叫验证.md)
 
 0.5版加入随无人、静止、活动变化的感知动效，以及按日期查看的状态时间线。历史由独立语音服务器保存30天，记录规则见[感知时间线与历史记录.md](感知时间线与历史记录.md)。同时移除App可恢复音频中断的8秒自动挂断，测试范围见[安卓音频恢复验证.md](安卓音频恢复验证.md)。
 

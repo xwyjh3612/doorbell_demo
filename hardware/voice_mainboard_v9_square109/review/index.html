@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>语音对讲主板 V9 · 方壳适配</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; color: #122d27; background: #edf2ee; font: 16px/1.55 system-ui, sans-serif; }
+  main { max-width: 1020px; margin: auto; padding: 32px 16px; }
+  h1, h2, p { margin: 0 0 12px; }
+  h1 { font-size: clamp(24px, 5.5vw, 38px); }
+  a { color: #0b6452; }
+  nav { display: flex; flex-wrap: wrap; gap: 12px 20px; }
+  section { background: white; margin-block: 20px; border: 1px solid #d7e0da; border-radius: 14px; padding: 20px; }
+  img { display: block; width: 100%; height: auto; }
+  .pcb { background: #e3ece6; border-radius: 9px; }
+  .template img { margin-inline: auto; width: 190mm; max-width: 100%; }
+  .note { padding: 10px 14px; background: #fff7e9; border-left: 3px solid #cb752c; }
+  @page { size: A4; margin: 8mm; }
+  @media print {
+    body, main, section { background: white; margin: 0; padding: 0; border: 0; }
+    header, .preview, .screen { display: none; }
+    .template img { width: 190mm; max-width: none; }
+  }
+</style>
+<main>
+  <header>
+    <h1>语音对讲主板 V9</h1>
+    <p>109 × 109 mm 方壳孔距 · 100 × 75 mm 板体 · 两层板</p>
+    <nav>
+      <a href="../README.md">装配说明</a>
+      <a href="../voice_mainboard_v9_square109.kicad_pcb">KiCad PCB</a>
+      <a href="../lower-supports.scad">下托架模型</a>
+      <a href="fit-check.json">尺寸核查</a>
+      <a href="drc.json">DRC 报告</a>
+    </nav>
+  </header>
+  <section class="template">
+    <h2 class="screen">1:1 套壳图</h2>
+    <p class="note screen">橙色填充是喇叭与主板在平面的重叠区，仍需核对喇叭厚度。打印本页时选实际尺寸（100%），用尺先确认图下方标尺确为 100 mm。</p>
+    <img src="fit-template.svg" alt="方壳、主板、螺柱、喇叭、电池和托架套合图">
+  </section>
+  <section class="preview">
+    <h2>主板 3D 预览</h2>
+    <p>两侧圆耳是新增的安装点。部分自定义器件缺少实体模型，图中的空焊盘不代表取消装配。</p>
+    <img class="pcb" src="board-3d.png" alt="有两个圆形安装耳的语音对讲主板">
+    <p><a href="board-top.svg">查看走线和平面封装</a></p>
+  </section>
+</main>
+</html>

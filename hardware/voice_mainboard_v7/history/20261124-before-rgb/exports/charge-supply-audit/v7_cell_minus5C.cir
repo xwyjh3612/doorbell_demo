@@ -1,0 +1,18 @@
+v7_cell_minus5C
+Vext ext 0 5
+Vgpio pause 0 PWL(0 0 .004 0 .004001 3.3 .008 3.3 .008001 0 .012 0)
+R68 ext ce 10000.0
+R69 pause 0 100000.0
+S_Q7 ce 0 pause 0 Q7_IDEAL
+.model Q7_IDEAL SW(Ron=2 Roff=1e12 Vt=1.2 Vh=0)
+R65 ext temp 6190.0
+R66 temp 0 49900.0
+RpackNTC temp 0 44026.046691571566
+R70 ext pr 100000.0
+R71 pr 0 33200.0
+Vcell battery 0 3.95
+R17 battery adc 150000.0
+R18 adc 0 100000.0
+Cadc adc 0 100n
+.tran 2u .012
+.end

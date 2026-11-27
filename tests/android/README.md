@@ -34,7 +34,7 @@ F:/Espressif/python_env/idf5.4_py3.11_env/Scripts/python.exe tests/android/esp32
 F:/nodejs/nvm/v22.16.0/node.exe tests/android/real-esp32-call-e2e.mjs --real-device 189833342344184 --hold-seconds 60
 ```
 
-可通过 `VOICE_TEST_CONSOLE` 覆盖本机桥接地址。测试后以 Ctrl+C 关闭桥接，再执行 `./examples/radar_monitor/start.ps1` 恢复采集。桥接的原始串口日志仅保存在被忽略的 `build/`。
+可通过 `VOICE_TEST_CONSOLE` 覆盖本机桥接地址。如果旧桥占用 18889、恢复采集时用了备用端口 18892，运行通话脚本前设置 `$env:VOICE_TEST_CONSOLE='http://127.0.0.1:18892'`。新桥的状态接口返回 `connected`；拔插后按已识别的 CH343 序列号重连，可用 `--serial-number` 在设备未插入时指定它。离线命令会被拒绝，断开前的命令不会在重连后补发。日志页面地址始终是 `http://127.0.0.1:18891/`。测试后以 Ctrl+C 关闭桥接，再执行 `./examples/radar_monitor/start.ps1` 恢复采集。串口日志仅保存在被忽略的 `build/`。
 
 真实流程测试读取板子的 `esp_webrtc_query` 音频统计，同时核对 App“通话中”状态，覆盖双向呼叫、双方挂断、双方拒接和再次呼叫。输出仅保存音频包统计和结果，不保存完整的原始 MQTT/SDP 日志，避免把中继凭据写入公开测试记录。
 

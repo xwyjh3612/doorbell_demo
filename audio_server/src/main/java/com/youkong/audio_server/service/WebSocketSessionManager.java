@@ -24,16 +24,16 @@ public class WebSocketSessionManager {
      */
     private final Map<String, WebSocketSession> sessions = new ConcurrentHashMap<>();
 
-    /**
-     * 设备与会话的映射: deviceId -> sessionId
-     */
-    private final Map<String, String> deviceSessionMap = new ConcurrentHashMap<>();
-
-    /**
-     * 会话与设备的映射: sessionId -> deviceId
-     */
-    private final Map<String, String> sessionDeviceMap = new ConcurrentHashMap<>();
-
+    private static final class Phone {
+        final String account, device, name, slot;
+        Phone(String account,String device,String name,String slot){
+            this.account=account;this.device=device;this.name=name;this.slot=slot;
+        }
+    }
+    private final Map<String,Phone> phones = new ConcurrentHashMap<>();
+    private final Map<String,String> slots = new ConcurrentHashMap<>();
+    @org.springframework.beans.factory.annotation.Value("${signaling.open-demo-device:189833342344184}")
+    private String openDemoDevice;
     private final ScheduledExecutorService heartbeatExecutor = Executors.newSingleThreadScheduledExecutor();
 
     public WebSocketSessionManager() {
@@ -52,39 +52,27 @@ public class WebSocketSessionManager {
     /**
      * 绑定设备与会话
      */
-    public void bindDevice(String sessionId, String deviceId) {
-        deviceSessionMap.put(deviceId, sessionId);
-        sessionDeviceMap.put(sessionId, deviceId);
-        log.info("绑定设备与会话: deviceId={}, sessionId={}", deviceId, sessionId);
+    public synchronized boolean bindPhone(String sessionId,String account,String device,String install,String name) {
+        String slot=account+":"+(install==null?"legacy":install);
+        Phone prior=phones.get(sessionId);
+        if(prior!=null)return prior.slot.equals(slot) && java.util.Objects.equals(prior.device,device);
+        if(!sessions.containsKey(sessionId)||slots.putIfAbsent(slot,sessionId)!=null)return false;
+        phones.put(sessionId,new Phone(account,device,name,slot));return true;
     }
-
-    /**
-     * 解绑设备与会话
-     */
-    public void unbindDevice(String sessionId) {
-        String deviceId = sessionDeviceMap.remove(sessionId);
-        if (deviceId != null) {
-            deviceSessionMap.remove(deviceId);
-            log.info("解绑设备与会话: deviceId={}, sessionId={}", deviceId, sessionId);
-        }
+    public String getDeviceId(String sessionId){Phone p=phones.get(sessionId);return p==null?null:p.account;}
+    public boolean joinedDemo(String sessionId,String device){Phone p=phones.get(sessionId);
+        return p!=null && device!=null && device.equals(openDemoDevice) && device.equals(p.device);}
+    public String displayName(String sessionId){Phone p=phones.get(sessionId);return p==null?"值班手机":p.name;}
+    public java.util.List<String> recipients(String account,String device){
+        java.util.List<String> found=new java.util.ArrayList<>();
+        phones.forEach((sid,p)->{if((p.account.equals(account) || joinedDemo(sid,device)) && (device==null || p.device==null || device.equals(p.device)) && hasSession(sid))found.add(sid);});
+        return found;
     }
-
-    /**
-     * 获取绑定的设备ID
-     */
-    public String getDeviceId(String sessionId) {
-        return sessionDeviceMap.get(sessionId);
+    public synchronized String removeSession(String sessionId){
+        sessions.remove(sessionId);Phone p=phones.remove(sessionId);
+        if(p!=null)slots.remove(p.slot,sessionId);
+        return p==null?null:sessionId;
     }
-
-    /**
-     * 移除会话
-     */
-    public void removeSession(String sessionId) {
-        sessions.remove(sessionId);
-        unbindDevice(sessionId);
-        log.info("WebSocket 会话移除: {}, 当前会话数: {}", sessionId, sessions.size());
-    }
-
     /**
      * 发送消息到指定会话
      */
@@ -92,10 +80,10 @@ public class WebSocketSessionManager {
         WebSocketSession session = sessions.get(sessionId);
         if (session != null && session.isOpen()) {
             try {
-                session.sendMessage(new TextMessage(message));
+                synchronized(session){session.sendMessage(new TextMessage(message));}
                 log.debug("发送消息到会话 {}: {}", sessionId, message);
                 return true;
-            } catch (IOException e) {
+            } catch (IOException | IllegalStateException e) {
                 log.error("发送消息到会话 {} 失败", sessionId, e);
             }
         } else {
@@ -108,12 +96,9 @@ public class WebSocketSessionManager {
      * 发送消息到指定设备
      */
     public boolean sendMessageToDevice(String deviceId, String message) {
-        String sessionId = deviceSessionMap.get(deviceId);
-        if (sessionId != null) {
-            return sendMessageToSession(sessionId, message);
-        }
-        log.warn("设备 {} 未绑定到任何会话", deviceId);
-        return false;
+        boolean sent=false;
+        for(String sid:recipients(deviceId,null))sent |= sendMessageToSession(sid,message);
+        return sent;
     }
 
     /**
@@ -146,7 +131,6 @@ public class WebSocketSessionManager {
             WebSocketSession session = entry.getValue();
             if (!session.isOpen()) {
                 String sessionId = entry.getKey();
-                unbindDevice(sessionId);
                 log.info("清理不活跃会话: {}", sessionId);
                 return true;
             }

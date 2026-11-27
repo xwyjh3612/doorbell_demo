@@ -1,0 +1,34 @@
+{
+  "base_sha256": "23de933115d543905dd70db9b9c2f5c3dc8525bd83064a07042c545edbd9f65f",
+  "candidate_sha256": "29d925c6b31feb91d0b6cc3382d35e30f8924876395e5f90c93ce270dcd04ce0",
+  "new_refs": [
+    "D2",
+    "R77",
+    "C74"
+  ],
+  "placement_mm": {
+    "D2": [
+      72.0,
+      3.0
+    ],
+    "R77": [
+      76.0,
+      3.0
+    ],
+    "C74": [
+      72.0,
+      6.0
+    ]
+  },
+  "status_GPIO": 39,
+  "status_module_pad": 32,
+  "charger_correction": {
+    "old_module_pad": 34,
+    "old_actual_GPIO": 41,
+    "correct_module_pad": 31,
+    "correct_GPIO": 38
+  },
+  "manufacturing_ready": false,
+  "firmware_implemented": true,
+  "final_check_record": "rgb-validation.json"
+}

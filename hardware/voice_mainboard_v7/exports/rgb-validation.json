@@ -1,0 +1,122 @@
+{
+  "date": "2026-11-24",
+  "PCB_sha256": "29d925c6b31feb91d0b6cc3382d35e30f8924876395e5f90c93ce270dcd04ce0",
+  "schematic_sha256": "25fdc7b71343ab6a8a239c7b07d19eea3c3c6ee92d0419da5f60c0fe1e436b4e",
+  "base_PCB_sha256": "23de933115d543905dd70db9b9c2f5c3dc8525bd83064a07042c545edbd9f65f",
+  "DRC_errors": 0,
+  "DRC_warnings": 0,
+  "unconnected": 0,
+  "schematic_parity": 0,
+  "ERC_errors": 0,
+  "ERC_warnings": 0,
+  "ground_geometric_components": 1,
+  "added_parts": [
+    "D2",
+    "R77",
+    "C74"
+  ],
+  "RGB_model": "WS2812B-2020-V6",
+  "LCSC": "C52917434",
+  "GPIO": 39,
+  "module_pin": 32,
+  "supply": "ESP_3V3",
+  "3V3_supply_corner_qualified": false,
+  "physical_LED_color_test_completed": false,
+  "existing_footprint_positions_unchanged": true,
+  "existing_GPIO_net_changes": {
+    "U7.31": "GPIO38 charger control",
+    "U7.32": "GPIO39 RGB data",
+    "U7.34": "GPIO41 unused"
+  },
+  "official_active_GPIO_mapping_checked": {
+    "ESP_DTR4": 4,
+    "RADAR_RX6": 6,
+    "I2S_SPK_DATA7": 7,
+    "I2S_SPK_BCLK15": 15,
+    "I2S_SPK_WS16": 16,
+    "ESP_TX17": 17,
+    "ESP_RX18": 18,
+    "RADAR_TX8": 8,
+    "ESP_USB_DM19": 19,
+    "ESP_USB_DP20": 20,
+    "BAT_ADC_EN9": 9,
+    "EXT_PRESENT_N_IO10": 10,
+    "PWRKEY_CTL": 11,
+    "I2S_MIC_DATA12": 12,
+    "I2S_MIC_WS13": 13,
+    "I2S_MIC_BCLK14": 14,
+    "RESET_CTL": 21,
+    "SUPPLY_BAT_N47": 47,
+    "CHG_ACTIVE_N": 48,
+    "CALL_BOOT0": 0,
+    "CHG_DISABLE_IO38": 38,
+    "STATUS_LED_IO39": 39,
+    "DEBUG_ESP_RX44": 44,
+    "DEBUG_ESP_TX43": 43,
+    "BAT_ADC2": 2,
+    "CHG_FULL_N": 1
+  },
+  "official_source": "build/v4-reference/esp32-s3-wroom-1.txt pages11/12; https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf",
+  "RGB_pin_map_checked": {
+    "1": "DO bottom-right NC",
+    "2": "GND top-right",
+    "3": "DI top-left",
+    "4": "VDD bottom-left"
+  },
+  "RGB_datasheet": "../sources/rgb-20261124/WS2812B-2020-V6.pdf",
+  "USB_RF_switch_input_and_cell_copper_unchanged": true,
+  "full_board_simulated": false,
+  "manufacturing_ready": false,
+  "firmware_checks": {
+    "mainboard-v7": {
+      "note": "App image only. Verify device partitions and preserve NVS/OTA selection before flashing.",
+      "sha256": "c38966f22cf09a8fe1a3340a26689bed4aa4120fb89724e2a060eb0c0ca32c00",
+      "power_monitor": true,
+      "radar60": false,
+      "radar": false,
+      "built_at": "2026-11-24T20:25:33.4922181+08:00",
+      "variant": "mainboard-v7",
+      "status_indicator": true,
+      "app_offset": "0x10000",
+      "size": 2807008
+    },
+    "voice-radar60": {
+      "note": "App image only. Verify device partitions and preserve NVS/OTA selection before flashing.",
+      "app_offset": "0x10000",
+      "size": 2785344,
+      "radar": true,
+      "variant": "voice-radar60",
+      "status_indicator": false,
+      "built_at": "2026-11-24T19:55:29.6895891+08:00",
+      "sha256": "4f8fab4f90234dadf3251216f4658a09b7b781a27939fe91ac428c3c89c1bd60",
+      "power_monitor": false,
+      "radar60": true
+    }
+  },
+  "host_state_and_pulse_test_passed": true,
+  "price": {
+    "source": "https://item.szlcsc.com/55827425.html",
+    "D2_1": 0.5585,
+    "D2_100": 0.3469,
+    "D2_1000": 0.3198,
+    "passive_material_allowance": 0.04,
+    "material_budget_per_board": 0.4,
+    "assembly_quote_obtained": false
+  },
+  "remaining": [
+    "New-board power/NTC/cell qualification",
+    "3V3 low-supply corner and RGB optical test",
+    "USB/RF and full-board qualification",
+    "Exact procurement and assembly quote; no hardware flash in this change"
+  ],
+  "status_indicator.cpp_sha256": "08c5f44e000af78216daeea8e520ae3f37112f89723f59a27a45714e40b4dbc3",
+  "status_indicator_logic.h_sha256": "842be5be7c308375a5ac70e7bd068f8be20a818461f01b77985119a2a4a70011",
+  "rmt_timing_ns": {
+    "zero_high": 350,
+    "zero_low": 950,
+    "one_high": 700,
+    "one_low": 600,
+    "reset_low": 300050,
+    "resolution_hz": 20000000
+  }
+}

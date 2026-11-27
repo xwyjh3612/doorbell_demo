@@ -60,6 +60,7 @@ typedef struct {
     bool                  pause_on_first_frame;   /*!< Whether automatically pause when render receive first frame */
     void                 *ctx;                    /*!< User context */
     bool                  video_cvt_in_render;    /*!< Convert color in render*/
+    bool                  boost_voice_playback;   /*!< Level decoded Opus/G.711 speech; other codecs bypass it. */
 } av_render_cfg_t;
 
 /**

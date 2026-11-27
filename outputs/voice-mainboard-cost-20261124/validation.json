@@ -1,0 +1,33 @@
+{
+  "populated_count": 116,
+  "baseline": 54.64223999999991,
+  "changed": 55.64223999999989,
+  "restored": 54.64223999999991,
+  "public_missing": 49,
+  "formula_errors": [],
+  "inspection": {
+    "recordCount": 2,
+    "truncated": false,
+    "metadata": {
+      "revision": "o476xl",
+      "target": {
+        "id": "wb/es7t9u",
+        "beforeLines": 0,
+        "afterLines": 0
+      },
+      "kind": {
+        "requested": "region",
+        "tokens": [
+          "region"
+        ]
+      },
+      "include": {
+        "tokens": []
+      },
+      "exclude": {
+        "tokens": []
+      },
+      "notices": []
+    }
+  }
+}

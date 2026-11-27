@@ -1,0 +1,162 @@
+{
+  "PCB_sha256": "52e8c424401865c061a7084d36209cd42ad250f0c86184c72c12a04d512defc7",
+  "copper_thickness_assumed_um": 35,
+  "via_plating_assumed_um": 20,
+  "paths": [
+    {
+      "net": "VIN_DC",
+      "from": [
+        "J1",
+        4
+      ],
+      "to": [
+        "F1",
+        1
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 18.635028839999997,
+      "minimum_width_mm_on_estimated_path": 1.0,
+      "estimated_R_20C_ohm": 0.009179082777180584,
+      "estimated_drop_at_2A_V": 0.018358165554361167,
+      "via_layer_steps": 0
+    },
+    {
+      "net": "VIN_FUSED",
+      "from": [
+        "F1",
+        2
+      ],
+      "to": [
+        "Q6",
+        3
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 5.84264098,
+      "minimum_width_mm_on_estimated_path": 0.5,
+      "estimated_R_20C_ohm": 0.0057558356588635635,
+      "estimated_drop_at_2A_V": 0.011511671317727127,
+      "via_layer_steps": 0
+    },
+    {
+      "net": "VIN_PROTECTED",
+      "from": [
+        "Q6",
+        2
+      ],
+      "to": [
+        "U18",
+        3
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 8.022613309999999,
+      "minimum_width_mm_on_estimated_path": 0.25,
+      "estimated_R_20C_ohm": 0.011540545600352623,
+      "estimated_drop_at_2A_V": 0.023081091200705246,
+      "via_layer_steps": 3
+    },
+    {
+      "net": "SYS_5V",
+      "from": [
+        "U18",
+        2
+      ],
+      "to": [
+        "U2",
+        1
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 41.15712449,
+      "minimum_width_mm_on_estimated_path": 0.25,
+      "estimated_R_20C_ohm": 0.034572968341560525,
+      "estimated_drop_at_2A_V": 0.06914593668312105,
+      "via_layer_steps": 5
+    },
+    {
+      "net": "MODEM_3V8",
+      "from": [
+        "L1",
+        2
+      ],
+      "to": [
+        "U1",
+        42
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 43.29143735,
+      "minimum_width_mm_on_estimated_path": 0.4,
+      "estimated_R_20C_ohm": 0.05331031285095361,
+      "estimated_drop_at_2A_V": 0.10662062570190722,
+      "via_layer_steps": 0
+    },
+    {
+      "net": "BAT_BOOST_5V",
+      "from": [
+        "U15",
+        7
+      ],
+      "to": [
+        "U18",
+        6
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 42.769272799999996,
+      "minimum_width_mm_on_estimated_path": 0.25,
+      "estimated_R_20C_ohm": 0.03502632772887073,
+      "estimated_drop_at_2A_V": 0.07005265545774146,
+      "via_layer_steps": 8
+    },
+    {
+      "net": "BAT_SENSE_IN",
+      "from": [
+        "J23",
+        1
+      ],
+      "to": [
+        "U15",
+        4
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 38.917421180000005,
+      "minimum_width_mm_on_estimated_path": 0.16,
+      "estimated_R_20C_ohm": 0.028373648587357785,
+      "estimated_drop_at_2A_V": 0.05674729717471557,
+      "via_layer_steps": 4
+    },
+    {
+      "net": "CELL_NEG",
+      "from": [
+        "U17",
+        2
+      ],
+      "to": [
+        "J23",
+        2
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 0.528,
+      "minimum_width_mm_on_estimated_path": 0.4,
+      "estimated_R_20C_ohm": 0.00065019428571372,
+      "estimated_drop_at_2A_V": 0.00130038857142744,
+      "via_layer_steps": 0
+    },
+    {
+      "net": "MODEM_RESET_N",
+      "from": [
+        "Q2",
+        3
+      ],
+      "to": [
+        "U1",
+        15
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 24.572287130000003,
+      "minimum_width_mm_on_estimated_path": 0.16,
+      "estimated_R_20C_ohm": 0.07894013855569071,
+      "estimated_drop_at_2A_V": 0.15788027711138142,
+      "via_layer_steps": 6
+    }
+  ],
+  "actual_2A_qualified": false,
+  "scope": "Centreline copper/via resistance estimate at 20C; excludes IC/contact/inductor resistance, source transients, temperature and parallel-current distribution."
+}

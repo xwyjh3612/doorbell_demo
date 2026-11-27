@@ -1,0 +1,568 @@
+{
+  "date": "2026-11-24",
+  "source": "https://www.jlc-smt.com/api/smtOrder/smtBomResultView/v1/smtOnlinePricing",
+  "parameters": {
+    "patchLocation": "T",
+    "patchQuantity": 1000,
+    "patchComponentQuantity": 467,
+    "patchComponentType": 44,
+    "plugInQuantity": 23,
+    "plugInType": 5,
+    "steelType": "jlc",
+    "boardWidth": 7.5,
+    "boardLength": 10
+  },
+  "response": {
+    "success": true,
+    "code": 200,
+    "message": null,
+    "errorCode": null,
+    "data": {
+      "economicTypeVO": {
+        "projectMoney": 50.0,
+        "padMoney": 4670.0,
+        "manualPadMoney": 2070.0,
+        "manualWeldProjectMoney": 20.0,
+        "changeMaterielMoney": 800.0,
+        "plateChangeMaterialCountMoney": 220.0,
+        "steelMoney": 0.0,
+        "packageMoney": 0,
+        "urgentFee": 0,
+        "totalMoney": 7030.0,
+        "deliveryDate": 24,
+        "singlePieceProcessingDifferenceFee": 0,
+        "singlePieceProcessingDiffFeeDetailVO": null
+      },
+      "standardTypeVO": {
+        "projectMoney": 150.0,
+        "padMoney": 2335.0,
+        "manualPadMoney": 2070.0,
+        "manualWeldProjectMoney": 20.0,
+        "changeMaterielMoney": 352.0,
+        "plateChangeMaterialCountMoney": 220.0,
+        "steelMoney": 50.0,
+        "packageMoney": 18.0,
+        "urgentFee": 0,
+        "totalMoney": 4926.0,
+        "deliveryDate": null,
+        "singlePieceProcessingDifferenceFee": 63.0,
+        "singlePieceProcessingDiffFeeDetailVO": {
+          "minimumSinglePieceProcessingFee": 2.9,
+          "singlePieceProcessingFee": 2.84,
+          "projectFee": 150.0,
+          "changeMaterialFee": 352.0,
+          "padFee": 2335.0,
+          "smtOrderNumber": 1000,
+          "singlePieceProcessingDifferenceFee": 63.0
+        }
+      },
+      "standardAchieveDateMatchResults": [
+        {
+          "smtAchieveDateConfigAccessId": null,
+          "urgentFee": 0,
+          "configTypeName": "生产时间7天",
+          "urgentFlag": false,
+          "limitUrgentFlag": null,
+          "achieveTime": "20:00",
+          "workingHours": 168,
+          "productType": 0,
+          "extendAchieve": null,
+          "newAchieveDateRuleFlag": true,
+          "ruleTitle": "大批量交期",
+          "ruleCode": "569665856609796098",
+          "historyCode": "368648484343148548",
+          "achieveDateOptionId": "be4dc5a0469157842e2c1f350a271cbe",
+          "productAchieveBaseHours": 168,
+          "achieveDateHasChangeFlag": null,
+          "thtPredictHours": 64.66666666666667,
+          "thtPredictUrgentHours": 28.666666666666668,
+          "patchPredictHours": 16.666666666666668,
+          "patchPredictUrgentHours": 16.666666666666668,
+          "routineDays": null,
+          "urgentDays": null,
+          "needAuditUrgentFlag": null,
+          "needAuditUrgentMoney": null,
+          "minUrgentDays": null,
+          "beforeDeliverReservedTime": 12,
+          "patchBasicAchieve": 48,
+          "patchBasicUrgentAchieve": 24
+        },
+        {
+          "smtAchieveDateConfigAccessId": null,
+          "urgentFee": 300.0,
+          "configTypeName": "生产时间6天（加急）",
+          "urgentFlag": true,
+          "limitUrgentFlag": null,
+          "achieveTime": "20:00",
+          "workingHours": 144,
+          "productType": 0,
+          "extendAchieve": null,
+          "newAchieveDateRuleFlag": true,
+          "ruleTitle": "大批量交期",
+          "ruleCode": "569665856609796098",
+          "historyCode": "368648484343148548",
+          "achieveDateOptionId": "7751ad56818878e3a98ddf9d966b5ab4",
+          "productAchieveBaseHours": 144,
+          "achieveDateHasChangeFlag": null,
+          "thtPredictHours": 64.66666666666667,
+          "thtPredictUrgentHours": 28.666666666666668,
+          "patchPredictHours": 16.666666666666668,
+          "patchPredictUrgentHours": 16.666666666666668,
+          "routineDays": 7,
+          "urgentDays": 6,
+          "needAuditUrgentFlag": false,
+          "needAuditUrgentMoney": null,
+          "minUrgentDays": 5,
+          "beforeDeliverReservedTime": 12,
+          "patchBasicAchieve": 48,
+          "patchBasicUrgentAchieve": 24
+        },
+        {
+          "smtAchieveDateConfigAccessId": null,
+          "urgentFee": 300.0,
+          "configTypeName": "生产时间5天（加急）",
+          "urgentFlag": true,
+          "limitUrgentFlag": null,
+          "achieveTime": "20:00",
+          "workingHours": 120,
+          "productType": 0,
+          "extendAchieve": null,
+          "newAchieveDateRuleFlag": true,
+          "ruleTitle": "大批量交期",
+          "ruleCode": "569665856609796098",
+          "historyCode": "368648484343148548",
+          "achieveDateOptionId": "e17506dc9641f576c3e653bbc105afee",
+          "productAchieveBaseHours": 120,
+          "achieveDateHasChangeFlag": null,
+          "thtPredictHours": 64.66666666666667,
+          "thtPredictUrgentHours": 28.666666666666668,
+          "patchPredictHours": 16.666666666666668,
+          "patchPredictUrgentHours": 16.666666666666668,
+          "routineDays": 7,
+          "urgentDays": 5,
+          "needAuditUrgentFlag": false,
+          "needAuditUrgentMoney": null,
+          "minUrgentDays": 5,
+          "beforeDeliverReservedTime": 12,
+          "patchBasicAchieve": 48,
+          "patchBasicUrgentAchieve": 24
+        }
+      ]
+    }
+  },
+  "ordinary_processing_batch_cny": 5058.0,
+  "exact_MPN_merge_qualified": false,
+  "PCB_sha256": "28c49affaad8bbfd93b0b96c29bae2f048b6c550ffa086509b739579e33aa878",
+  "type_groups": [
+    {
+      "kind": "THT",
+      "label": "HX VoiceV2:HX_DC005_2p5_T",
+      "refs": [
+        "J1"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "ASMD1812-400-16V Fuse:Fuse_1812_4532Metric",
+      "refs": [
+        "F1"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "DMP2035U-7 Package_TO_SOT_SMD:SOT-23",
+      "refs": [
+        "Q6"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "100k Resistor_SMD:R_0603_1608Metric 1%",
+      "refs": [
+        "R32",
+        "R5",
+        "R6",
+        "R8",
+        "R15",
+        "R16",
+        "R18",
+        "R20",
+        "R59",
+        "R69"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "22u Capacitor_SMD:C_0805_2012Metric",
+      "refs": [
+        "C4",
+        "C6",
+        "C7",
+        "C57",
+        "C59",
+        "C60",
+        "C64",
+        "C65",
+        "C66",
+        "C71",
+        "C72",
+        "C73"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "SWPA6045S2R2MT Inductor_SMD:L_Sunlord_SWPA6045S",
+      "refs": [
+        "L1",
+        "L4"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "100k Resistor_SMD:R_0603_1608Metric 0.1%",
+      "refs": [
+        "R2",
+        "R70"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "18.7k Resistor_SMD:R_0603_1608Metric 0.1%",
+      "refs": [
+        "R3"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "22p Capacitor_SMD:C_0603_1608Metric",
+      "refs": [
+        "C37",
+        "C63"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "ML307C-DL VoiceV2:ML307C_DL_109_LIBRARY_REVIEW",
+      "refs": [
+        "U1"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "OCV471M1ATR-1010 470u 10V Capacitor_SMD:CP_Elec_10x10.5",
+      "refs": [
+        "C8"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "10u Capacitor_SMD:C_0805_2012Metric",
+      "refs": [
+        "C10",
+        "C61",
+        "C67",
+        "C68"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "100n Capacitor_SMD:C_0603_1608Metric",
+      "refs": [
+        "C11",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C20",
+        "C58",
+        "C28",
+        "C62",
+        "C26",
+        "C69",
+        "C70"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "33p Capacitor_SMD:C_0603_1608Metric",
+      "refs": [
+        "C12"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "SN74LVC1T45DBVR Package_TO_SOT_SMD:SOT-23-6",
+      "refs": [
+        "U3",
+        "U4",
+        "U5"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "10k Resistor_SMD:R_0603_1608Metric 1%",
+      "refs": [
+        "R4",
+        "R12",
+        "R57",
+        "R14",
+        "R19",
+        "R21",
+        "R68",
+        "R72",
+        "R73",
+        "R74"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "2N7002K-7 Package_TO_SOT_SMD:SOT-23",
+      "refs": [
+        "Q1",
+        "Q2",
+        "Q4",
+        "Q5",
+        "Q7"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "10n Capacitor_SMD:C_0603_1608Metric",
+      "refs": [
+        "C19",
+        "C29"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "TACT Button_Switch_SMD:SW_SPST_TL3342",
+      "refs": [
+        "SW3",
+        "SW1",
+        "SW2"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "JAE Connector_JAE:JAE_SIM_Card_SF72S006",
+      "refs": [
+        "J10"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "22R Resistor_SMD:R_0603_1608Metric 1%",
+      "refs": [
+        "R9",
+        "R10",
+        "R11"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "SRV05-4 Package_TO_SOT_SMD:SOT-23-6",
+      "refs": [
+        "D1"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "0R Resistor_SMD:R_0603_1608Metric 1%",
+      "refs": [
+        "R13",
+        "R30",
+        "R67",
+        "R75",
+        "R76"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "LTE Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical",
+      "refs": [
+        "J11"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "0R Resistor_SMD:R_0402_1005Metric 1%",
+      "refs": [
+        "R26",
+        "R27"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "ESP32-S3-WROOM-1-N8R8 VoiceV2:V6_U7_SMD_LAND_MATCH",
+      "refs": [
+        "U7"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "1u Capacitor_SMD:C_0603_1608Metric",
+      "refs": [
+        "C56"
+      ]
+    },
+    {
+      "kind": "THT",
+      "label": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+      "refs": [
+        "J18",
+        "J16"
+      ]
+    },
+    {
+      "kind": "THT",
+      "label": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "refs": [
+        "J17",
+        "J15"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "BSS84,215 Package_TO_SOT_SMD:SOT-23",
+      "refs": [
+        "Q3"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "150k Resistor_SMD:R_0603_1608Metric 1%",
+      "refs": [
+        "R17"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "SY8089A1AAC Package_TO_SOT_SMD:SOT-23-5",
+      "refs": [
+        "U13",
+        "U2"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "22.1k Resistor_SMD:R_0603_1608Metric 1%",
+      "refs": [
+        "R60"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "MAX98357AETE+ VoiceV2:V6_U14_SMD_LAND_MATCH",
+      "refs": [
+        "U14"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "73.2k Resistor_SMD:R_0603_1608Metric 0.1%",
+      "refs": [
+        "R61"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "10k Resistor_SMD:R_0603_1608Metric 0.1%",
+      "refs": [
+        "R62"
+      ]
+    },
+    {
+      "kind": "THT",
+      "label": "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical",
+      "refs": [
+        "J14"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "ETA1096E8A VoiceV2:ETA1096_ESOP8",
+      "refs": [
+        "U15"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "TP4056-MS Package_SO:SOIC-8-1EP_3.9x4.9mm_P1.27mm_EP2.29x3mm",
+      "refs": [
+        "U16"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "XB7608AJL VoiceV2:XB7608_CPC5",
+      "refs": [
+        "U17"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "TPS2117DRLR VoiceV2:TI_DRL0008A",
+      "refs": [
+        "U18"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "ME2807A30M3G Package_TO_SOT_SMD:SOT-23",
+      "refs": [
+        "U19"
+      ]
+    },
+    {
+      "kind": "THT",
+      "label": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+      "refs": [
+        "J23"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "30k Resistor_SMD:R_0603_1608Metric 1%",
+      "refs": [
+        "R63"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "4k Resistor_SMD:R_0603_1608Metric 1%",
+      "refs": [
+        "R64"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "6.19k Resistor_SMD:R_0603_1608Metric 1%",
+      "refs": [
+        "R65"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "49.9k Resistor_SMD:R_0603_1608Metric 1%",
+      "refs": [
+        "R66"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "33.2k Resistor_SMD:R_0603_1608Metric 0.1%",
+      "refs": [
+        "R71"
+      ]
+    },
+    {
+      "kind": "SMT",
+      "label": "2.2uH Inductor_SMD:L_Sunlord_SWPA4030S",
+      "refs": [
+        "L5"
+      ]
+    }
+  ]
+}

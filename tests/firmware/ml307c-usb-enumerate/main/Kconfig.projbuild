@@ -1,0 +1,12 @@
+menu "ML307C diagnostic probe"
+
+config ML307C_PROBE_ENABLE_DUMP_SAVE
+    bool "Enable documented ML307C crash Dump saving during this diagnostic run"
+    default n
+    help
+        After confirming the expected module version and querying MDUMPCFG,
+        send AT+MDUMPCFG=1 and read it back. This changes the module's crash
+        recovery behavior. It does not enable continuous AP/CP logging.
+        Keep disabled in the default read-only enumeration build.
+
+endmenu

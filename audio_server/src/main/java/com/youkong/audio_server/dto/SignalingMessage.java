@@ -8,12 +8,22 @@ import java.util.List;
  * WebRTC 信令消息 DTO
  */
 @Data
-public class SignalingMessage {
+public class SignalingMessage implements Cloneable {
 
     /**
      * 信令类型
      */
     private String type;
+    private String callId;
+    private String answeredBy;
+
+    public SignalingMessage routed(String from,String target,String callId) {
+        try {
+            SignalingMessage copy=(SignalingMessage)super.clone();
+            copy.from=from;copy.target=target;copy.callId=callId;copy.answeredBy=null;
+            return copy;
+        } catch(CloneNotSupportedException impossible){throw new AssertionError(impossible);}
+    }
 
     /**
      * 目标设备/会话ID

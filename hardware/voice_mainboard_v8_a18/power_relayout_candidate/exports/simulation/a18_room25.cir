@@ -1,0 +1,18 @@
+a18_room25
+Vext ext 0 5
+Vgpio pause 0 PWL(0 0 .004 0 .004001 3.3 .008 3.3 .008001 0 .012 0)
+Rce ext ce 10000.0
+Rgate pause 0 100000.0
+Sce ce 0 pause 0 IDEAL
+.model IDEAL SW(Ron=2 Roff=1e12 Vt=1.2 Vh=0)
+RtempTop ext temp 6190.0
+RtempBottom temp 0 200000.0
+Rntc temp 0 10000.0
+RprTop ext pr 100000.0
+RprBottom pr 0 33200.0
+Vcell cell 0 4.2
+RadcTop cell adc 150000.0
+RadcBottom adc 0 100000.0
+Cadc adc 0 100n
+.tran 2u .012
+.end

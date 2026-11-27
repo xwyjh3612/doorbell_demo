@@ -1,0 +1,4 @@
+(version 1)
+(rule "Fused input minimum neck width"
+  (condition "A.NetName == 'VIN_FUSED'")
+  (constraint track_width (min 0.5mm)))

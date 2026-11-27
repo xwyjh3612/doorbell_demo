@@ -1,0 +1,152 @@
+{
+  "date": "2026-11-24",
+  "product": "语音对讲主板V7",
+  "PCB_sha256": "23de933115d543905dd70db9b9c2f5c3dc8525bd83064a07042c545edbd9f65f",
+  "firmware_sha256": "864937e7327c26c1112b9048034f4de21637014255841d9be87f79017a445241",
+  "logic_sha256": "11085cc6059f37d4ae43b90131908b030b4ad52053a23c7ac6974df9d9b9b7e0",
+  "scope": "Actual ngspice run of resistor dividers and an IDEAL Q7 switch. DC/manual topology audit using current PCB pad nets. NO full-board or full UPS simulation.",
+  "complete_board_simulated": false,
+  "battery_charge_discharge_qualified": false,
+  "2A_qualified": false,
+  "firmware_modified": false,
+  "pcb_modified": false,
+  "current_firmware": {
+    "monitor_in_last_local_build": false,
+    "Kconfig_default": false,
+    "automatic_80_70_control_implemented": false,
+    "pause_policy": "Call/ringing/OTA only; not linked to battery percent. GPIO38 high disables CE through Q7.",
+    "boot_and_firmware_absent_hardware_default": "R69 holds Q7 gate low; R68 pulls CE high. Charger itself uses normal 4.2V regulation subject to TEMP and other protections.",
+    "battery_absence_detected_reliably": false,
+    "battery_absence_note": "ADC alone cannot prove cell presence; unloaded BAT output/capacitors may have voltage. No valid battery percentage should be inferred without presence qualification."
+  },
+  "charger": {
+    "model": "TP4056-MS",
+    "RPROG_ohm": 4000.0,
+    "nominal_current_ma": 300.0,
+    "nominal_end_current_ma": 30.0,
+    "CV_nominal_v": 4.2,
+    "CV_datasheet_min_max_v": [
+      4.158,
+      4.242
+    ],
+    "protection_overcharge_min_typ_max_v": [
+      4.25,
+      4.3,
+      4.35
+    ],
+    "cell_required": "Single-cell 4.2V rechargeable Li-ion/Li-polymer; cell charge-current and temperature limits must be matched. Not LiFePO4 or a 4.35V charging design.",
+    "80_percent_is_primary_overcharge_protection": false
+  },
+  "NTC": {
+    "top_ohm": 6190.0,
+    "bottom_ohm": 49900.0,
+    "pack_assumed": "10k B3950, referenced CELL_NEG; actual pack unknown",
+    "nominal_charge_temperature_window": {
+      "cold_C": -6.987717756496863,
+      "hot_C": 38.48545826254468
+    },
+    "corners_1pct_R_R25_B_no_IC_threshold_tolerance": {
+      "cold_C": [
+        -7.998717199669102,
+        -6.0032236257750355
+      ],
+      "hot_C": [
+        37.804897576730525,
+        39.181589746156135
+      ]
+    },
+    "low_temperature_problem": true,
+    "required_action": "Recalculate resistor network for selected cell, conservatively inside its permitted charging-temperature range. Current nominal low threshold is below 0C.",
+    "open_pack_NTC_TEMP_over_VCC": 0.8896416473524692,
+    "open_pack_NTC_charge_inhibited_in_model": true,
+    "short_NTC_note": "TP4056-MS datasheet says TEMP tied to GND disables temperature monitoring. Do not claim an NTC short is automatically protected."
+  },
+  "no_battery": {
+    "external_only_topology_supported": true,
+    "path": "J1 -> F1/Q6 -> VIN_PROTECTED -> U18 VIN1 -> SYS_5V -> U2 modem rail / U13 ESP rail; amp supplied SYS_5V. No battery in this series path.",
+    "at_5V_PR_nominal": 1.2462462462462462,
+    "PR_reference_max": 1.08,
+    "no_NTC_EXPECTED_behavior": "TEMP remains above 80%VCC; charger suspended, independent external system path remains.",
+    "prototype_test_completed": false,
+    "verification_needed": "Cold power-on with battery/NTC unplugged; loaded 4G attach/call/amp, disconnect/reconnect input, brownout and no spurious low-cell shutdown."
+  },
+  "desired_80_70_policy": {
+    "implemented": false,
+    "additional_mainboard_chips_needed": false,
+    "actuator": "Existing GPIO38 -> Q7 -> TP4056 CE",
+    "stop_percent_estimate": 80,
+    "resume_percent_estimate": 70,
+    "existing_table_80pct_mv": 3950,
+    "existing_table_70pct_mv_approx": 3867,
+    "thresholds_calibrated_for_actual_cell": false,
+    "requirements": [
+      "Latch pause between lower/upper thresholds",
+      "Filtering, hysteresis and charging/load-voltage correction; short relaxed measurement before resume",
+      "Pause charging when ADC calibration/sample invalid",
+      "Treat no battery as external-only, not empty/full battery",
+      "Retain hardware voltage/overcurrent/temperature protection independent of ESP",
+      "Boot fallback and reboot persistence; enforce policy before charger startup if a strict 80% cap is required"
+    ],
+    "reason": "Avoid prolonged high SOC for a standby backup cell; voltage-based percentage is approximate and not battery safety qualification."
+  },
+  "ngspice_control_cases": [
+    {
+      "scenario": "cell_25C",
+      "cell_present_in_case": true,
+      "TEMP_over_VCC": 0.5737076344505112,
+      "TEMP_allows_charge": true,
+      "CE_GPIO_low_v": 4.99999995,
+      "CE_GPIO_high_v": 0.0009998000399920016,
+      "PR_at_external_5V_v": 1.2462462462462465,
+      "ADC_at_cell_3v95_v": 1.5800000000000063,
+      "model_completed": true
+    },
+    {
+      "scenario": "cell_minus5C",
+      "cell_present_in_case": true,
+      "TEMP_over_VCC": 0.7907346870083589,
+      "TEMP_allows_charge": true,
+      "CE_GPIO_low_v": 4.99999995,
+      "CE_GPIO_high_v": 0.0009998000399920016,
+      "PR_at_external_5V_v": 1.2462462462462465,
+      "ADC_at_cell_3v95_v": 1.5800000000000063,
+      "model_completed": true
+    },
+    {
+      "scenario": "cell_45C",
+      "cell_present_in_case": true,
+      "TEMP_over_VCC": 0.39251915888674865,
+      "TEMP_allows_charge": false,
+      "CE_GPIO_low_v": 4.99999995,
+      "CE_GPIO_high_v": 0.0009998000399920016,
+      "PR_at_external_5V_v": 1.2462462462462465,
+      "ADC_at_cell_3v95_v": 1.5800000000000063,
+      "model_completed": true
+    },
+    {
+      "scenario": "no_cell_no_NTC",
+      "cell_present_in_case": false,
+      "TEMP_over_VCC": 0.88964164734757,
+      "TEMP_allows_charge": false,
+      "CE_GPIO_low_v": 4.99999995,
+      "CE_GPIO_high_v": 0.0009998000399920016,
+      "PR_at_external_5V_v": 1.2462462462462465,
+      "ADC_at_cell_3v95_v": null,
+      "model_completed": true
+    }
+  ],
+  "sources": {
+    "charger": "build/ups-bom-20261124/TP4056-MS-C7473158.txt pages4/6/8",
+    "mux": "build/power-selection-20261119/tps2117.txt pages3/6/10/11",
+    "protection": "build/ups-bom-20261124/XB7608AJL.txt page3",
+    "CAD": "voice_mainboard_v7.kicad_pcb",
+    "firmware": "../../main/power_monitor.cpp"
+  },
+  "historical_GPIO_mapping_correction": {
+    "applies_to_this_old_PCB_hash": true,
+    "old_GPIO38_net_actually_connected_to_GPIO41": true,
+    "corrected_in": "../rgb-validation.json",
+    "correct_module_pad": 31,
+    "correct_GPIO": 38
+  }
+}

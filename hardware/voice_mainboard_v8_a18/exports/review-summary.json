@@ -1,0 +1,58 @@
+{
+  "product": "语音对讲主板",
+  "generated_at": "2026-11-27T08:41:42.147869+08:00",
+  "candidates": [
+    {
+      "label": "当前两层工作版",
+      "directory": "power_relayout_candidate",
+      "PCB": "power_relayout_candidate\\voice_mainboard_a18_2layer.kicad_pcb",
+      "PCB_sha256": "4c907236ab2557cdb0d9d4e8ab16a466c671240d4630f1b35d93b14c43e0c42f",
+      "counts": {
+        "violations": 0,
+        "unconnected_items": 0,
+        "schematic_parity": 0
+      },
+      "native_report": "power_relayout_candidate\\exports\\review-drc.json"
+    },
+    {
+      "label": "原两层工作工程",
+      "directory": "",
+      "PCB": "voice_mainboard_v8_a18.kicad_pcb",
+      "PCB_sha256": "a7766d8040f5ac16658813edff5a4d03b1d6766a69315cbeb2e8b1633ac6b4f9",
+      "counts": {
+        "violations": 36,
+        "unconnected_items": 109,
+        "schematic_parity": 0
+      },
+      "native_report": "exports\\review-drc.json"
+    },
+    {
+      "label": "两层布线对照",
+      "directory": "comparison_clean_2layer",
+      "PCB": "comparison_clean_2layer\\voice_mainboard_a18_clean_2layer.kicad_pcb",
+      "PCB_sha256": "432702f4fe78e4a5acca1d6a8ef0c183d1507dfbc39fe248c89967b14993a7ab",
+      "counts": {
+        "violations": 88,
+        "unconnected_items": 53,
+        "schematic_parity": 0
+      },
+      "native_report": "comparison_clean_2layer\\review-drc.json"
+    },
+    {
+      "label": "四层供电优化对照",
+      "directory": "comparison_clean_4layer",
+      "PCB": "comparison_clean_4layer\\voice_mainboard_a18_clean_4layer.kicad_pcb",
+      "PCB_sha256": "52e8c424401865c061a7084d36209cd42ad250f0c86184c72c12a04d512defc7",
+      "counts": {
+        "violations": 0,
+        "unconnected_items": 0,
+        "schematic_parity": 0
+      },
+      "native_report": "comparison_clean_4layer\\exports\\review-drc.json"
+    }
+  ],
+  "selected_production_layer_count": 2,
+  "manufacturing_ready": false,
+  "latest_review": "power_relayout_candidate/exports/preview.html",
+  "firmware_modified_for_CAD": false
+}

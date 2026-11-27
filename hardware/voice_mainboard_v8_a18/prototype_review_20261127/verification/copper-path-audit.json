@@ -1,0 +1,345 @@
+{
+  "PCB_sha256": "4c907236ab2557cdb0d9d4e8ab16a466c671240d4630f1b35d93b14c43e0c42f",
+  "copper_thickness_assumed_um": 35,
+  "via_plating_assumed_um": 20,
+  "paths": [
+    {
+      "net": "VIN_DC",
+      "from": [
+        "J1",
+        4
+      ],
+      "to": [
+        "F1",
+        1
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 4.94974747,
+      "minimum_width_mm_on_estimated_path": 0.8,
+      "estimated_R_20C_ohm": 0.004145162715516201,
+      "estimated_drop_at_2A_V": 0.008290325431032402,
+      "via_layer_steps": 1
+    },
+    {
+      "net": "VIN_FUSED",
+      "from": [
+        "F1",
+        2
+      ],
+      "to": [
+        "Q6",
+        3
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 19.23875612,
+      "minimum_width_mm_on_estimated_path": 0.6,
+      "estimated_R_20C_ohm": 0.017155590518838977,
+      "estimated_drop_at_2A_V": 0.034311181037677954,
+      "via_layer_steps": 2
+    },
+    {
+      "net": "VIN_PROTECTED",
+      "from": [
+        "Q6",
+        2
+      ],
+      "to": [
+        "U18",
+        3
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 30.35964735,
+      "minimum_width_mm_on_estimated_path": 0.25,
+      "estimated_R_20C_ohm": 0.032431558637005684,
+      "estimated_drop_at_2A_V": 0.06486311727401137,
+      "via_layer_steps": 7
+    },
+    {
+      "net": "SYS_5V",
+      "from": [
+        "U18",
+        2
+      ],
+      "to": [
+        "U2",
+        4
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 76.56925061999998,
+      "minimum_width_mm_on_estimated_path": 0.25,
+      "estimated_R_20C_ohm": 0.07169465110593305,
+      "estimated_drop_at_2A_V": 0.1433893022118661,
+      "via_layer_steps": 6
+    },
+    {
+      "net": "MODEM_3V8",
+      "from": [
+        "L1",
+        2
+      ],
+      "to": [
+        "U1",
+        42
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 2.40416306,
+      "minimum_width_mm_on_estimated_path": 0.5,
+      "estimated_R_20C_ohm": 0.004014742797306219,
+      "estimated_drop_at_2A_V": 0.008029485594612439,
+      "via_layer_steps": 1
+    },
+    {
+      "net": "BAT_BOOST_5V",
+      "from": [
+        "U15",
+        7
+      ],
+      "to": [
+        "U18",
+        6
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 49.99413197,
+      "minimum_width_mm_on_estimated_path": 0.25,
+      "estimated_R_20C_ohm": 0.0602903995280603,
+      "estimated_drop_at_2A_V": 0.1205807990561206,
+      "via_layer_steps": 8
+    },
+    {
+      "net": "BAT_SENSE_IN",
+      "from": [
+        "J23",
+        1
+      ],
+      "to": [
+        "U15",
+        4
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 43.779391929999996,
+      "minimum_width_mm_on_estimated_path": 0.16,
+      "estimated_R_20C_ohm": 0.058577311678096836,
+      "estimated_drop_at_2A_V": 0.11715462335619367,
+      "via_layer_steps": 4
+    },
+    {
+      "net": "CELL_NEG",
+      "from": [
+        "U17",
+        2
+      ],
+      "to": [
+        "J23",
+        2
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 1.19444576,
+      "minimum_width_mm_on_estimated_path": 0.3,
+      "estimated_R_20C_ohm": 0.0012438120798465369,
+      "estimated_drop_at_2A_V": 0.0024876241596930738,
+      "via_layer_steps": 0
+    },
+    {
+      "net": "MODEM_RESET_N",
+      "from": [
+        "Q2",
+        3
+      ],
+      "to": [
+        "U1",
+        15
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 8.977000499999999,
+      "minimum_width_mm_on_estimated_path": 0.16,
+      "estimated_R_20C_ohm": 0.029282635984889945,
+      "estimated_drop_at_2A_V": 0.05856527196977989,
+      "via_layer_steps": 1
+    },
+    {
+      "net": "UPS_SW",
+      "from": [
+        "U15",
+        3
+      ],
+      "to": [
+        "L4",
+        2
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 6.535,
+      "minimum_width_mm_on_estimated_path": 0.6,
+      "estimated_R_20C_ohm": 0.004923661904757621,
+      "estimated_drop_at_2A_V": 0.009847323809515241,
+      "via_layer_steps": 0
+    },
+    {
+      "net": "BUCK_SW",
+      "from": [
+        "U2",
+        3
+      ],
+      "to": [
+        "L1",
+        1
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 2.63847763,
+      "minimum_width_mm_on_estimated_path": 0.8,
+      "estimated_R_20C_ohm": 0.0016245483693271578,
+      "estimated_drop_at_2A_V": 0.0032490967386543156,
+      "via_layer_steps": 0
+    },
+    {
+      "net": "ESP_SW",
+      "from": [
+        "U13",
+        3
+      ],
+      "to": [
+        "L5",
+        1
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 3.8228814900000003,
+      "minimum_width_mm_on_estimated_path": 0.5,
+      "estimated_R_20C_ohm": 0.0034705415364312663,
+      "estimated_drop_at_2A_V": 0.006941083072862533,
+      "via_layer_steps": 0
+    },
+    {
+      "net": "GND",
+      "from": [
+        "J1",
+        2
+      ],
+      "to": [
+        "J18",
+        1
+      ],
+      "trace_graph_connected": false,
+      "scope": "No explicit-track path found; copper zones are not in this model."
+    },
+    {
+      "net": "SYS_5V",
+      "from": [
+        "U18",
+        2
+      ],
+      "to": [
+        "U14",
+        7
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 21.853937420000005,
+      "minimum_width_mm_on_estimated_path": 0.25,
+      "estimated_R_20C_ohm": 0.024680249502489766,
+      "estimated_drop_at_2A_V": 0.04936049900497953,
+      "via_layer_steps": 1
+    },
+    {
+      "net": "SYS_5V",
+      "from": [
+        "U18",
+        2
+      ],
+      "to": [
+        "U13",
+        4
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 115.31138653000001,
+      "minimum_width_mm_on_estimated_path": 0.25,
+      "estimated_R_20C_ohm": 0.11095872205565585,
+      "estimated_drop_at_2A_V": 0.2219174441113117,
+      "via_layer_steps": 7
+    },
+    {
+      "net": "MODEM_3V8",
+      "from": [
+        "C6",
+        1
+      ],
+      "to": [
+        "U1",
+        42
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 11.00416306,
+      "minimum_width_mm_on_estimated_path": 0.5,
+      "estimated_R_20C_ohm": 0.011175499940157131,
+      "estimated_drop_at_2A_V": 0.022350999880314262,
+      "via_layer_steps": 1
+    },
+    {
+      "net": "MODEM_3V8",
+      "from": [
+        "C7",
+        1
+      ],
+      "to": [
+        "U1",
+        42
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 7.45416306,
+      "minimum_width_mm_on_estimated_path": 0.5,
+      "estimated_R_20C_ohm": 0.00898971422587332,
+      "estimated_drop_at_2A_V": 0.01797942845174664,
+      "via_layer_steps": 1
+    },
+    {
+      "net": "MODEM_3V8",
+      "from": [
+        "C75",
+        1
+      ],
+      "to": [
+        "U1",
+        42
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 4.569198999999999,
+      "minimum_width_mm_on_estimated_path": 0.6,
+      "estimated_R_20C_ohm": 0.004372659618987432,
+      "estimated_drop_at_2A_V": 0.008745319237974863,
+      "via_layer_steps": 1
+    },
+    {
+      "net": "MODEM_3V8",
+      "from": [
+        "C76",
+        1
+      ],
+      "to": [
+        "U1",
+        42
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 7.98973767,
+      "minimum_width_mm_on_estimated_path": 0.6,
+      "estimated_R_20C_ohm": 0.010123506965070044,
+      "estimated_drop_at_2A_V": 0.020247013930140088,
+      "via_layer_steps": 3
+    },
+    {
+      "net": "MODEM_3V8",
+      "from": [
+        "U1",
+        42
+      ],
+      "to": [
+        "U1",
+        43
+      ],
+      "trace_graph_connected": true,
+      "centreline_length_mm": 2.300095,
+      "minimum_width_mm_on_estimated_path": 0.8,
+      "estimated_R_20C_ohm": 0.0014162013499987678,
+      "estimated_drop_at_2A_V": 0.0028324026999975356,
+      "via_layer_steps": 0
+    }
+  ],
+  "actual_2A_qualified": false,
+  "scope": "Centreline copper/via resistance estimate at 20C; excludes IC/contact/inductor resistance, source transients, temperature and parallel-current distribution."
+}

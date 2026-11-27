@@ -1,0 +1,177 @@
+{
+  "date": "2026-11-24",
+  "changes": [
+    {
+      "ref": "C62",
+      "old_xy": [
+        88.0,
+        23.0
+      ],
+      "new_xy": [
+        91.6,
+        22.4
+      ],
+      "angle": 180,
+      "target": [
+        "U14",
+        7
+      ],
+      "removed_attached_segments": [
+        {
+          "uuid": "4712be44-8b76-4fba-b50b-5d934de7ebcf",
+          "net": "SYS_5V"
+        },
+        {
+          "uuid": "ed829fa4-c89b-4092-b9eb-f537fc561832",
+          "net": "SYS_5V"
+        }
+      ],
+      "power_routed": true,
+      "ground_connected_by_via": true
+    },
+    {
+      "ref": "C61",
+      "old_xy": [
+        87.5,
+        19.0
+      ],
+      "new_xy": [
+        89.1,
+        23.5
+      ],
+      "angle": 270,
+      "target": [
+        "U14",
+        8
+      ],
+      "removed_attached_segments": [
+        {
+          "uuid": "2f36092b-472b-4cb6-87e5-5380e177dee2",
+          "net": "GND"
+        },
+        {
+          "uuid": "cb64bb64-78c2-4bc9-a4bf-1d2d879caa85",
+          "net": "GND"
+        },
+        {
+          "uuid": "080bba54-e1e2-4e3c-b5ed-34382894a7b4",
+          "net": "SYS_5V"
+        },
+        {
+          "uuid": "0b8376d1-700e-47a3-ab5c-e9c6db337de8",
+          "net": "SYS_5V"
+        },
+        {
+          "uuid": "3ef7a83e-b1d5-494e-9db9-953dac6ae6e2",
+          "net": "SYS_5V"
+        },
+        {
+          "uuid": "854d2d3e-bda7-417f-b070-76c491615428",
+          "net": "SYS_5V"
+        },
+        {
+          "uuid": "e91a7ba0-7107-4ef8-8cc2-e12cf6a95f15",
+          "net": "SYS_5V"
+        }
+      ],
+      "power_routed": true,
+      "ground_connected_by_via": true
+    },
+    {
+      "ref": "C67",
+      "old_xy": [
+        43.0,
+        49.0
+      ],
+      "new_xy": [
+        37.3,
+        58.2
+      ],
+      "angle": 180,
+      "target": [
+        "U16",
+        4
+      ],
+      "removed_attached_segments": [
+        {
+          "uuid": "c2aab7da-034d-44eb-afc4-2dcfb9a89880",
+          "net": "GND"
+        },
+        {
+          "uuid": "d9c0515d-13e8-4330-b492-fc5aa9f6f3cc",
+          "net": "GND"
+        },
+        {
+          "uuid": "32e51316-f02c-44dc-aa4c-df8e255c4773",
+          "net": "VIN_PROTECTED"
+        },
+        {
+          "uuid": "ac8e1c9c-12d9-4693-a440-3b9710ce0512",
+          "net": "VIN_PROTECTED"
+        },
+        {
+          "uuid": "fc6454a9-93ce-43ba-a51f-bd9c68b4de4e",
+          "net": "VIN_PROTECTED"
+        }
+      ],
+      "power_routed": true,
+      "ground_connected_by_via": true
+    },
+    {
+      "ref": "C68",
+      "old_xy": [
+        43.0,
+        61.0
+      ],
+      "new_xy": [
+        44.725,
+        60.25
+      ],
+      "angle": 0,
+      "target": [
+        "U16",
+        5
+      ],
+      "removed_attached_segments": [
+        {
+          "uuid": "b7588015-7f4f-4de5-99da-2c2284db6892",
+          "net": "GND"
+        },
+        {
+          "uuid": "e36f5f9d-5166-4228-a1ce-bf2cc9df0f6b",
+          "net": "GND"
+        },
+        {
+          "uuid": "769b2985-1038-403c-8398-972544234068",
+          "net": "BAT_SENSE_IN"
+        },
+        {
+          "uuid": "cb43d934-70ab-46e5-80be-a83873ce5c32",
+          "net": "BAT_SENSE_IN"
+        },
+        {
+          "uuid": "e267ec0e-aa8a-488e-9e97-0de60553e657",
+          "net": "BAT_SENSE_IN"
+        }
+      ],
+      "power_routed": true,
+      "ground_connected_by_via": true
+    },
+    {
+      "supply_pad": [
+        "U14",
+        8
+      ],
+      "supply_via": true
+    },
+    {
+      "supply_pad": [
+        "U16",
+        5
+      ],
+      "supply_via": true
+    }
+  ],
+  "PCB_sha256": "d195d5401107913cb77f74949e4e1a85482ce936b46faa8f98f162421ffafba0",
+  "manufacturing_ready": false
+}

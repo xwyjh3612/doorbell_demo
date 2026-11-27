@@ -48,6 +48,7 @@ typedef struct {
     av_render_audio_info_t audio_info; /*!< Audio information */
     adec_frame_cb          frame_cb;   /*!< Decoded frame callback */
     void                  *ctx;        /*!< Decoder context */
+    bool                   boost_voice_playback;
 } adec_cfg_t;
 
 /**

@@ -1,0 +1,83 @@
+{
+  "parts": [
+    {
+      "ref": "C75",
+      "value": "220u 6.3V APAQ6R3AVEA221M0645",
+      "footprint": "Capacitor_SMD:CP_Elec_6.3x4.5",
+      "pins": {
+        "1": "MODEM_3V8",
+        "2": "GND"
+      },
+      "names": {
+        "1": [
+          "+",
+          "passive"
+        ],
+        "2": [
+          "-",
+          "passive"
+        ]
+      },
+      "x": 46.25,
+      "y": 14.25,
+      "angle": 180,
+      "side": "B",
+      "dnp": false,
+      "kind": "pcb",
+      "group": "01 EXTERNAL INPUT / PRIMARY 3.8V",
+      "mpn": "APAQ6R3AVEA221M0645",
+      "lcsc": "C176322",
+      "source": "https://item.szlcsc.com/187712.html",
+      "note": "APAQ AVEA 0645: 220uF +/-20%,6.3V,17mOhm ESR at100-300kHz,2.3Arms ripple105C,body6.3x4.3mm. Standard6.3x4.5 land pads3.5x1.6 at+/-2.7mm; verify sample land/polarity before assembly. ML307C hardware AT manual page24 requires at least two220uF on VBAT; retain C6/C7 MLCCs.",
+      "price_basis": "Public stock checked20261126; quantity tier quotation pending"
+    },
+    {
+      "ref": "C76",
+      "value": "220u 6.3V APAQ6R3AVEA221M0645",
+      "footprint": "Capacitor_SMD:CP_Elec_6.3x4.5",
+      "pins": {
+        "1": "MODEM_3V8",
+        "2": "GND"
+      },
+      "names": {
+        "1": [
+          "+",
+          "passive"
+        ],
+        "2": [
+          "-",
+          "passive"
+        ]
+      },
+      "x": 54.0,
+      "y": 24.5,
+      "angle": 0,
+      "side": "B",
+      "dnp": false,
+      "kind": "pcb",
+      "group": "01 EXTERNAL INPUT / PRIMARY 3.8V",
+      "mpn": "APAQ6R3AVEA221M0645",
+      "lcsc": "C176322",
+      "source": "https://item.szlcsc.com/187712.html",
+      "note": "APAQ AVEA 0645: 220uF +/-20%,6.3V,17mOhm ESR at100-300kHz,2.3Arms ripple105C,body6.3x4.3mm. Standard6.3x4.5 land pads3.5x1.6 at+/-2.7mm; verify sample land/polarity before assembly. ML307C hardware AT manual page24 requires at least two220uF on VBAT; retain C6/C7 MLCCs.",
+      "price_basis": "Public stock checked20261126; quantity tier quotation pending"
+    }
+  ],
+  "retired_ordinary_signal_copper": [
+    {
+      "uuid": "c699e4d9-1e93-4012-9ca8-cb037678b4e2",
+      "net": "MODEM_NETLIGHT"
+    },
+    {
+      "uuid": "0b5bcfbf-48ea-4742-a7a8-9c6ea6020402",
+      "net": "MODEM_NETLIGHT"
+    }
+  ],
+  "preserved_MLCC": [
+    "C6",
+    "C7"
+  ],
+  "manufacturer_source": "../sources/ml307c-at-hardware.txt page24",
+  "native_revalidation_required": true,
+  "sample_land_check_pending": true
+}

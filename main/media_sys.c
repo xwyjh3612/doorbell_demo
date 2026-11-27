@@ -20,6 +20,7 @@
 #include "esp_capture_defaults.h"
 #include "esp_capture_sink.h"
 #include "esp_audio_dec_default.h"
+#include "latest_pcm_audio_src.h"
 
 #define TAG "MEDIA_SYS"
 
@@ -67,7 +68,10 @@ static int build_capture_system(void)
          .mic_layout = "M"
  #endif
     };
-    capture_sys.aud_src = esp_capture_new_audio_aec_src(&codec_cfg);
+    esp_capture_audio_src_if_t *aec_src = esp_capture_new_audio_aec_src(&codec_cfg);
+    RET_ON_NULL(aec_src, -1);
+    capture_sys.aud_src = voice_new_latest_pcm_src(aec_src);
+    RET_ON_NULL(capture_sys.aud_src, -1);
     
 
 /*    esp_capture_audio_dev_src_cfg_t codec_cfg = {
@@ -104,7 +108,13 @@ static int build_player_system()
         .fixed_clock = true,
         .play_handle = get_playback_handle(),
     };
-    esp_codec_dev_set_out_vol(get_playback_handle(), 100);
+    // Calls, incoming/outgoing rings and prompts share this playback device.
+    // Its software volume is reapplied by esp_codec_dev_open on every stream.
+    esp_codec_dev_set_out_vol(i2s_cfg.play_handle, 95);
+    int speaker_volume = 0;
+    if (esp_codec_dev_get_out_vol(i2s_cfg.play_handle, &speaker_volume) == ESP_CODEC_DEV_OK) {
+        ESP_LOGI(TAG, "Speaker volume (calls and tones): %d/100", speaker_volume);
+    }
     player_sys.audio_render = av_render_alloc_i2s_render(&i2s_cfg);
     
     if (player_sys.audio_render == NULL) {
@@ -119,6 +129,7 @@ static int build_player_system()
         .audio_raw_fifo_size = 4096,
         .audio_render_fifo_size = 6 * 1024,
         .video_raw_fifo_size = 0,  // 视频FIFO置0
+        .boost_voice_playback = true,
         .allow_drop_data = false,
     };
     player_sys.player = av_render_open(&render_cfg);

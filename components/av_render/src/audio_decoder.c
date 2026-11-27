@@ -24,6 +24,7 @@
 
 #include <inttypes.h>
 #include "audio_decoder.h"
+#include "voice_playback_gain.h"
 #include "esp_audio_dec.h"
 #include "esp_audio_dec_default.h"
 #include "media_lib_os.h"
@@ -42,6 +43,7 @@ typedef struct {
     void                        *ctx;
     uint8_t                     *frame_data;
     int                          frame_size;
+    int                          speech_gain; // 0 bypasses the limiter for the entire stream
 } adec_t;
 
 static esp_audio_type_t get_audio_decoder_type(av_render_audio_codec_t audio_format)
@@ -218,6 +220,10 @@ RETRY:
     }
     frame_data->data = adec->frame_data;
     frame_data->size = frame.decoded_size;
+    if (adec->speech_gain && adec->frame_info.bits_per_sample == 16 && adec->frame_info.channel == 1) {
+        voice_level_mono((int16_t *)adec->frame_data, frame.decoded_size / sizeof(int16_t),
+                         adec->frame_info.sample_rate, &adec->speech_gain);
+    }
     if (adec->frame_cb) {
         adec->frame_cb(frame_data, adec->ctx);
     }
@@ -249,6 +255,11 @@ adec_handle_t adec_open(adec_cfg_t *cfg)
     adec->frame_cb = cfg->frame_cb;
     adec->ctx = cfg->ctx;
     adec->codec = cfg->audio_info.codec;
+    if (cfg->boost_voice_playback && (adec->codec == AV_RENDER_AUDIO_CODEC_OPUS ||
+        adec->codec == AV_RENDER_AUDIO_CODEC_G711A || adec->codec == AV_RENDER_AUDIO_CODEC_G711U)) {
+        adec->speech_gain = VOICE_MAX_GAIN;
+        ESP_LOGI(TAG, "Call playback: quiet speech up to +18 dB, peak limit -2 dBFS");
+    }
     adec->frame_info.sample_rate = cfg->audio_info.sample_rate;
     adec->frame_info.channel = cfg->audio_info.channel;
     adec->frame_info.bits_per_sample = cfg->audio_info.bits_per_sample;

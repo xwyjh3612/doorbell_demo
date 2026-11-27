@@ -8,7 +8,23 @@ $viewerWorkspace = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..\..'))
 $viewerMetadata = Join-Path $viewerWorkspace 'build\ttl-viewer-service.json'
 $viewerUrl = "http://127.0.0.1:$HttpPort"
 # Reuse the existing collector; never open COM13 for a second reader.
-& (Join-Path $viewerWorkspace 'examples\radar_monitor\start.ps1') -Python $Python
+$callCollector = $null
+foreach ($bridgePort in @(18892, 18889)) {
+    try {
+        $state = Invoke-RestMethod -Uri "http://127.0.0.1:$bridgePort/" -TimeoutSec 1
+        # An unplugged bridge will reconnect on its own. Old bridges could die
+        # on unplug and still serve stale lines, so check the new status field.
+        if ($null -ne $state.connected -and $null -ne $state.lines -and $state.port) {
+            $callCollector = $state.port
+            break
+        }
+    } catch {}
+}
+if ($callCollector) {
+    Write-Output "复用语音对讲串口采集：$callCollector"
+} else {
+    & (Join-Path $viewerWorkspace 'examples\radar_monitor\start.ps1') -Python $Python
+}
 $viewerReady = $false
 try {
     $viewerResponse = Invoke-RestMethod -Uri "$viewerUrl/api/state" -TimeoutSec 2

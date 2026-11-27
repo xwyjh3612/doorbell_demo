@@ -36,7 +36,9 @@ public final class CallService extends Service implements AudioPeer.Listener {
     static final String ACTION_STOP = "com.youkong.voiceintercom.STOP";
     static final String EXTRA_TOKEN = "call_token";
     private static final String WAIT_CHANNEL = "voice_waiting";
-    private static final String CALL_CHANNEL = "voice_incoming";
+    static final String CALL_CHANNEL = "voice_incoming";
+    static final String VIEW_ALERTS="com.youkong.voiceintercom.VIEW_ALERTS";
+    private static final String ALERT_CHANNEL="voice_call_alerts";
     private static final int SERVICE_NOTIFICATION = 10, INCOMING_NOTIFICATION = 11;
     private static CallService current;
     private final Handler main = new Handler(Looper.getMainLooper());
@@ -53,6 +55,24 @@ public final class CallService extends Service implements AudioPeer.Listener {
     private WebSocket socket;
     JSONArray iceServers;
     private String server, device, localId;
+    private String wireCallId;
+    private String installId, phoneName;
+    private boolean groupClaims, waitingForClaim;
+    static String installId(android.content.SharedPreferences prefs) {
+        String id=prefs.getString("phone_install",null);
+        if(id==null){id=java.util.UUID.randomUUID().toString();prefs.edit().putString("phone_install",id).apply();}
+        return id;
+    }
+    static String phoneName(android.content.SharedPreferences prefs) {
+        return prefs.getString("phone_name","值班手机 " + installId(prefs).substring(0,6));
+    }
+    private boolean alertHistoryReady;
+    private JSONArray callAlerts=new JSONArray();
+    private String alertKey(){return "calls/"+server+"/"+localId+"/"+device;}
+    JSONArray alertRows(){return callAlerts;}
+    boolean alertsSynced(){return alertHistoryReady;}
+    private String alertTime(JSONObject item){return new java.text.SimpleDateFormat("MM-dd HH:mm:ss",java.util.Locale.CHINA).format(new java.util.Date(item.optLong("at_ms")));}
+    private void storeAlerts(){getSharedPreferences("intercom",MODE_PRIVATE).edit().putString(alertKey(),callAlerts.toString()).apply();}
     String message = "准备连接服务", transport = "连接中";
     boolean registered, muted, speaker = true;
     private boolean running, negotiating, audioAcquired, microphoneForeground;
@@ -63,6 +83,50 @@ public final class CallService extends Service implements AudioPeer.Listener {
     // a later call or a newly recreated service.
     private long callToken = android.os.SystemClock.elapsedRealtimeNanos();
     private long notifiedIncomingToken = -1;
+    private long displayedIncoming=-1;
+    private android.view.View incomingBanner;
+    private final Runnable showBanner=this::showBackgroundBanner;
+    private final Runnable backgroundPage=this::showBackgroundPage;
+
+    void incomingPageShown(long token){
+        if(incomingToken()!=token)return;
+        displayedIncoming=token;clearBackgroundPopup();
+    }
+    private boolean backgroundPopupAllowed(){
+        return ringing && incomingToken()!=-1 && displayedIncoming!=callToken
+                && android.provider.Settings.canDrawOverlays(this)
+                && ((PowerManager)getSystemService(POWER_SERVICE)).isInteractive()
+                && !((android.app.KeyguardManager)getSystemService(KEYGUARD_SERVICE)).isKeyguardLocked();
+    }
+    private void launchIncomingPage(String action,long token){
+        if(incomingToken()!=token)return;
+        startActivity(new Intent(this,IncomingCallActivity.class).setAction(action)
+                .putExtra(EXTRA_TOKEN,token).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_SINGLE_TOP|Intent.FLAG_ACTIVITY_CLEAR_TOP));
+    }
+    private void showBackgroundPage(){
+        if(!backgroundPopupAllowed())return;
+        try{launchIncomingPage("incoming",callToken);}catch(RuntimeException e){log("系统限制了后台来电页");}
+        // Some Android builds silently decline a background Activity launch. The
+        // visible, optional call banner still gives the user a direct answer action.
+        main.postDelayed(showBanner,800);
+    }
+    private void showBackgroundBanner(){
+        if(!backgroundPopupAllowed() || incomingBanner!=null)return;
+        long token=callToken;
+        android.widget.LinearLayout bar=new android.widget.LinearLayout(this);
+        int pad=Math.round(12*getResources().getDisplayMetrics().density);bar.setPadding(pad,pad,pad,pad);bar.setGravity(android.view.Gravity.CENTER_VERTICAL);bar.setBackgroundColor(0xff183544);
+        android.widget.TextView title=new android.widget.TextView(this);title.setText("语音对讲来电");title.setTextSize(17);title.setTextColor(0xffffffff);bar.addView(title,new android.widget.LinearLayout.LayoutParams(0,-2,1));
+        android.widget.Button decline=new android.widget.Button(this);decline.setText("拒接");decline.setOnClickListener(v->{if(incomingToken()==token)end("已拒接",true);});bar.addView(decline);
+        android.widget.Button answer=new android.widget.Button(this);answer.setText("接听");answer.setOnClickListener(v->{if(incomingToken()==token)try{launchIncomingPage(ACTION_ANSWER,token);}catch(RuntimeException e){log("请从来电通知接听");}});bar.addView(answer);
+        android.view.WindowManager.LayoutParams lp=new android.view.WindowManager.LayoutParams(-1,-2,Build.VERSION.SDK_INT>=26?android.view.WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY:android.view.WindowManager.LayoutParams.TYPE_PHONE,
+                android.view.WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE|android.view.WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,android.graphics.PixelFormat.TRANSLUCENT);
+        lp.gravity=android.view.Gravity.TOP;
+        try{((android.view.WindowManager)getSystemService(WINDOW_SERVICE)).addView(bar,lp);incomingBanner=bar;}catch(RuntimeException denied){log("系统仅允许通知接听");}
+    }
+    private void clearBackgroundPopup(){
+        main.removeCallbacks(backgroundPage);main.removeCallbacks(showBanner);
+        if(incomingBanner!=null){try{((android.view.WindowManager)getSystemService(WINDOW_SERVICE)).removeViewImmediate(incomingBanner);}catch(IllegalArgumentException ignored){}incomingBanner=null;}
+    }
     private final java.util.Set<Runnable> observers = new java.util.HashSet<>();
     private PowerManager.WakeLock cpuLock;
     private final Runnable renewCpuLock = new Runnable() {
@@ -123,6 +187,7 @@ public final class CallService extends Service implements AudioPeer.Listener {
     void attach(Runnable listener) { observers.add(listener); listener.run(); }
     void detach(Runnable listener) { observers.remove(listener); }
     boolean isCurrentCall(long token) { return token == callToken && call.phase != CallState.Phase.IDLE; }
+    long incomingToken(){return call.phase==CallState.Phase.INCOMING?callToken:-1;}
     void toggleMute() { muted = !muted; if (media != null) media.mute(muted); render(); }
     void toggleSpeaker() { speaker = !speaker; routeAudio(); render(); }
     void reloadSettings() {
@@ -134,6 +199,9 @@ public final class CallService extends Service implements AudioPeer.Listener {
         server = preferences.getString("server", "https://voice.2811.top");
         device = preferences.getString("device", "189833342344184");
         localId = preferences.getString("local", "web_client_001");
+        installId=installId(preferences);phoneName=phoneName(preferences);
+        alertHistoryReady=false;
+        try{callAlerts=new JSONArray(preferences.getString(alertKey(),"[]"));}catch(org.json.JSONException invalid){callAlerts=new JSONArray();}
     }
     static void notificationAction(Intent intent) {
         CallService service = current;
@@ -156,6 +224,7 @@ public final class CallService extends Service implements AudioPeer.Listener {
         incoming.setSound(null, null); incoming.enableVibration(false);
         incoming.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
         notifications().createNotificationChannel(waiting); notifications().createNotificationChannel(incoming);
+        notifications().createNotificationChannel(new NotificationChannel(ALERT_CHANNEL,"呼出预警记录",NotificationManager.IMPORTANCE_LOW));
     }
     private PendingIntent activityIntent(String action) {
         Intent intent = new Intent(this, MainActivity.class).setAction(action)
@@ -181,7 +250,7 @@ public final class CallService extends Service implements AudioPeer.Listener {
     }
     private Notification.Builder builder(String channel) {
         Notification.Builder builder = Build.VERSION.SDK_INT >= 26 ? new Notification.Builder(this, channel) : new Notification.Builder(this);
-        return builder.setSmallIcon(com.youkong.voiceintercom.R.drawable.ic_intercom)
+        return builder.setSmallIcon(R.drawable.ic_ringing_handset)
                 .setContentIntent(activityIntent("open"))
                 .setVisibility(Notification.VISIBILITY_PUBLIC).setOnlyAlertOnce(true);
     }
@@ -202,15 +271,17 @@ public final class CallService extends Service implements AudioPeer.Listener {
     private Notification incomingNotification(boolean fullScreenAllowed, boolean callStyle) {
         PendingIntent answer = activityIntent(ACTION_ANSWER), decline = actionIntent(ACTION_END);
         Notification.Builder builder = builder(CALL_CHANNEL).setOngoing(true)
-                .setContentTitle("语音终端来电").setContentText("点击接听，与设备通话")
+                .setContentTitle("语音终端来电").setContentText("设备 "+device+" · 语音通话")
+                .setColor(0xff218f7d).setLargeIcon(android.graphics.drawable.Icon.createWithResource(this,R.drawable.ic_ringing_handset))
                 .setContentIntent(activityIntent("incoming"))
                 .setCategory(Notification.CATEGORY_CALL).setPriority(Notification.PRIORITY_MAX);
         if (fullScreenAllowed) builder.setFullScreenIntent(activityIntent("incoming"), true);
         if (Build.VERSION.SDK_INT >= 31 && fullScreenAllowed && callStyle) builder.setStyle(Notification.CallStyle.forIncomingCall(
-                new Person.Builder().setName("语音终端").setImportant(true).build(), decline, answer));
+                new Person.Builder().setName("语音终端").setIcon(android.graphics.drawable.Icon.createWithResource(this,R.drawable.ic_ringing_handset)).setImportant(true).build(), decline, answer)
+                .setAnswerButtonColorHint(0xff218f7d).setDeclineButtonColorHint(0xffa64052));
         else {
-            builder.addAction(new Notification.Action.Builder(null, "拒接", decline).build());
-            builder.addAction(new Notification.Action.Builder(null, "接听", answer).build());
+            builder.addAction(new Notification.Action.Builder(android.graphics.drawable.Icon.createWithResource(this,R.drawable.ic_call_decline), "拒接", decline).build());
+            builder.addAction(new Notification.Action.Builder(android.graphics.drawable.Icon.createWithResource(this,R.drawable.ic_ringing_handset), "接听", answer).build());
         }
         return builder.build();
     }
@@ -218,6 +289,8 @@ public final class CallService extends Service implements AudioPeer.Listener {
         boolean fullScreen = Build.VERSION.SDK_INT < 34 || notifications().canUseFullScreenIntent();
         try { notifications().notify(INCOMING_NOTIFICATION, incomingNotification(fullScreen, true)); return; }
         catch (RuntimeException error) { log("全屏来电通知不可用，尝试普通接听通知"); }
+        if(fullScreen){try {notifications().notify(INCOMING_NOTIFICATION,incomingNotification(true,false));return;}
+            catch(RuntimeException unsupported){log("系统未允许全屏显示，保留通知接听操作");}}
         try { notifications().notify(INCOMING_NOTIFICATION, incomingNotification(false, false)); }
         catch (RuntimeException error) { log("来电通知未获准，请在系统设置中允许通知"); }
     }
@@ -255,7 +328,7 @@ public final class CallService extends Service implements AudioPeer.Listener {
 
     private void connect() {
         if (!running || socket != null) return;
-        registered = false; iceServers = null; transport = "连接中"; render();
+        registered = false; groupClaims=false; iceServers = null; transport = "连接中"; render();
         String url = server.replaceFirst("^https://", "wss://") + "/signaling";
         socket = client.newWebSocket(new Request.Builder().url(url).build(), new WebSocketListener() {
             @Override public void onOpen(WebSocket ws, Response response) { main.post(() -> {
@@ -290,6 +363,9 @@ public final class CallService extends Service implements AudioPeer.Listener {
             JSONObject json = new JSONObject().put("type", type).put("from", localId)
                     .put("timestamp", System.currentTimeMillis() / 1000);
             if (target != null) json.put("target", target);
+            if ("register".equals(type)) json.put("version",3).put("target",device)
+                    .put("data",new JSONObject().put("install",installId).put("name",phoneName));
+            if(wireCallId!=null && target!=null && !"alert_history".equals(type))json.put("callId",wireCallId);
             if (field != null) json.put(field, value);
             return socket.send(json.toString());
         } catch (Exception error) { return false; }
@@ -299,6 +375,8 @@ public final class CallService extends Service implements AudioPeer.Listener {
         String type = json.optString("type"), from = json.optString("from");
         if ("connected".equals(type)) return;
         if ("register_response".equals(type)) {
+            groupClaims=json.optInt("version")>=3;
+            if(json.optInt("version")>=2)send("alert_history",device,null,null);
             registered = true; transport = "服务已连接"; message = "可以呼叫，或等待设备来电"; log("客户端注册成功"); render(); return;
         }
         if ("ice_response".equals(type)) {
@@ -309,13 +387,39 @@ public final class CallService extends Service implements AudioPeer.Listener {
         }
         if ("error".equals(type)) { message = json.optString("data", "服务器错误"); log(message); render(); return; }
         if (!device.equals(from)) return;
+        if("alert_history".equals(type)){
+            JSONArray rows=json.optJSONArray("data");if(rows!=null){callAlerts=rows;alertHistoryReady=true;storeAlerts();render();}return;
+        }
+        if("call_alert".equals(type)){
+            JSONObject event=json.optJSONObject("data");if(event==null || event.optString("id").isEmpty())return;
+            for(int i=0;i<callAlerts.length();i++)if(event.optString("id").equals(callAlerts.getJSONObject(i).optString("id")))return;
+            JSONArray next=new JSONArray();next.put(event);for(int i=0;i<Math.min(99,callAlerts.length());i++)next.put(callAlerts.get(i));
+            callAlerts=next;storeAlerts();render();
+            Intent open=new Intent(this,MainActivity.class).setAction(VIEW_ALERTS).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            Notification notification=builder(ALERT_CHANNEL).setContentTitle("4G呼叫器发起呼叫").setContentText(device+" · "+alertTime(event))
+                    .setAutoCancel(true).setVisibility(Notification.VISIBILITY_PRIVATE).setContentIntent(PendingIntent.getActivity(this,12,open,PendingIntent.FLAG_IMMUTABLE|PendingIntent.FLAG_UPDATE_CURRENT)).build();
+            try{notifications().notify(12,notification);}catch(SecurityException denied){log("未授权通知，预警已保存在记录中");}return;
+        }
+        String receivedId=json.optString("callId","");
+        if(!receivedId.isEmpty() && wireCallId!=null && !receivedId.equals(wireCallId))return;
         log("设备信令：" + type);
         String data = json.optString("data", json.optString("sdp"));
-        if ("ring".equals(type) || ("customized".equals(type) && "RING".equals(data))) {
-            if (call.incoming(from, null)) incomingUi();
+        if ("claim_granted".equals(type)) {
+            if(waitingForClaim && receivedId.equals(wireCallId) && call.matches(from)){
+                waitingForClaim=false;beginAnswer();
+            }
+        } else if ("reject".equals(type) && "answered_elsewhere".equals(data)) {
+            if(!receivedId.equals(wireCallId) || !call.matches(from))return;
+            String reason="已由「"+json.optString("answeredBy","其他值班手机")+"」接听";
+            end(reason,false);
+            try { notifications().notify(13,builder(ALERT_CHANNEL).setContentTitle("语音对讲 · 来电已接听")
+                    .setContentText(reason).setAutoCancel(true).build()); } catch(SecurityException ignored) { }
+        } else if ("ring".equals(type) || ("customized".equals(type) && "RING".equals(data))) {
+            if (call.incoming(from, null)){if(!receivedId.isEmpty())wireCallId=receivedId;incomingUi();}
         } else if ("offer".equals(type)) {
             if (call.incoming(from, data)) {
-                if (call.accepted) answerOffer(); else incomingUi();
+                if(!receivedId.isEmpty())wireCallId=receivedId;
+                if (call.accepted) { if(!waitingForClaim)answerOffer(); } else incomingUi();
             }
         } else if ("answer".equals(type) && call.matches(from) && call.phase == CallState.Phase.DIALING) {
             call.phase = CallState.Phase.CONNECTING; message = "对方已接听，建立音频连接"; media.remote(data, false);
@@ -325,7 +429,7 @@ public final class CallService extends Service implements AudioPeer.Listener {
             else if (earlyCandidates.size() < 128) earlyCandidates.add(candidate);
         } else if (call.matches(from) && ("bye".equals(type) || "reject".equals(type) || "timeout".equals(type)
                 || ("customized".equals(type) && ("REJECT_CALL".equals(data) || "CLOSE".equals(data))))) {
-            end("reject".equals(type) || "REJECT_CALL".equals(data) ? "对方已拒接" : "对方已结束通话", false);
+            end("busy".equals(data)?"对方占线，请稍后再拨":"offline".equals(data)?"对方不在线":"reject".equals(type) || "REJECT_CALL".equals(data) ? "对方已拒接" : "对方已结束通话", false);
         }
         render();
     }
@@ -334,6 +438,7 @@ public final class CallService extends Service implements AudioPeer.Listener {
         message = "ESP32 请求通话";
         if (!ringing) {
             ringing = true; callToken++;
+            main.postDelayed(backgroundPage,350);
             ringtone = RingtoneManager.getRingtone(this, RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE));
             if (ringtone != null) {
                 ringtone.setAudioAttributes(new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_NOTIFICATION_RINGTONE).build());
@@ -359,7 +464,7 @@ public final class CallService extends Service implements AudioPeer.Listener {
     void dial() {
         if (call.phase != CallState.Phase.IDLE || !registered || iceServers == null) return;
         try {
-            callToken++; call.dial(device); message = "等待设备端接听"; prepareMedia(); media.offer(); render();
+            callToken++;wireCallId=java.util.UUID.randomUUID().toString(); call.dial(device); message = "等待设备端接听"; prepareMedia(); media.offer(); render();
         } catch (Exception error) { end("呼叫失败：" + error.getMessage(), true); }
     }
     void accept() {
@@ -370,6 +475,16 @@ public final class CallService extends Service implements AudioPeer.Listener {
             // closed. Acquire microphone foreground access on the user's
             // visible accept action, before sending ACCEPT_CALL.
             promoteMicrophone();
+            if(groupClaims && wireCallId!=null){
+                waitingForClaim=true;
+                if(!send("claim",call.peer,null,null))throw new IllegalStateException("接听请求发送失败");
+                main.removeCallbacks(timeout);main.postDelayed(timeout,15000);
+            }else beginAnswer();
+        } catch (Exception error) { end("接听失败：" + error.getMessage(), true); }
+        render();
+    }
+    private void beginAnswer() {
+        try {
             if (call.offer == null) {
                 // ESP32 can ring first, then send its offer after ACCEPT_CALL.
                 if (!send("customized", call.peer, "data", "ACCEPT_CALL")) throw new IllegalStateException("信令发送失败");
@@ -405,11 +520,11 @@ public final class CallService extends Service implements AudioPeer.Listener {
         render();
     }
     @Override public void error(String error) { end("音频处理失败：" + error, true); }
-    private void stopRinging() { ringing = false; if (ringtone != null) { ringtone.stop(); ringtone = null; } vibrator.cancel(); }
+    private void stopRinging() { ringing = false;clearBackgroundPopup(); if (ringtone != null) { ringtone.stop(); ringtone = null; } vibrator.cancel(); }
     void end(String reason, boolean notify) {
         if (notify && call.phase != CallState.Phase.IDLE) send(call.phase == CallState.Phase.INCOMING ? "reject" : "bye", call.peer, null, null);
         main.removeCallbacks(timeout); stopRinging();
-        call.reset(); earlyCandidates.clear(); negotiating = false; muted = false;
+        call.reset();wireCallId=null;waitingForClaim=false; earlyCandidates.clear(); negotiating = false; muted = false;
         if (media != null) media.close(); releaseAudio(); microphoneForeground = false;
         message = reason; log(reason); render();
     }

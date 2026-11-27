@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 
-#define FIRMWARE_VERSION 2
+#define FIRMWARE_VERSION 6
 
 void ota_start_upgrade(const char* url, const char* md5);
 bool ota_is_in_progress(void);

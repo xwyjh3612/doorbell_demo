@@ -1,0 +1,43 @@
+{
+  "changes": [
+    {
+      "removed_stub": "3ae4ffa1-d7de-488d-a390-8f7803b6a147",
+      "net": "GND"
+    },
+    {
+      "removed_stub": "05a402c0-5015-4ef3-8749-85261e286480",
+      "net": "GND"
+    },
+    {
+      "removed_stub": "73f1dcd8-4b89-49cf-a933-003456c01cdd",
+      "net": "GND"
+    },
+    {
+      "local_ground_return": "C10",
+      "pad": 2,
+      "via_position_mm": [
+        59.5,
+        16.8
+      ],
+      "neck_mm": 0.25,
+      "diameter_drill_mm": [
+        0.6,
+        0.3
+      ]
+    },
+    {
+      "local_ground_return": "Q7",
+      "pad": 2,
+      "via_position_mm": [
+        45.7875,
+        47.125
+      ],
+      "neck_mm": 0.25,
+      "diameter_drill_mm": [
+        0.6,
+        0.3
+      ]
+    }
+  ],
+  "candidate_sha256": "23de933115d543905dd70db9b9c2f5c3dc8525bd83064a07042c545edbd9f65f"
+}

@@ -1,0 +1,377 @@
+{
+  "product": "语音对讲主板 A18 V8",
+  "PCB_sha256": "4c907236ab2557cdb0d9d4e8ab16a466c671240d4630f1b35d93b14c43e0c42f",
+  "schematic_sha256": "44acbfb3bed2475e93d8edd06325f9f574be515d81a8dd22ae5c4afb6efb3b79",
+  "netlist_sha256": "79518201334a7a9440b1db7d55458c6040d99a1758cd02b0ae6048bba56485fe",
+  "part_count_including_DNP_and_testpoints": 150,
+  "connected_pins_checked": 431,
+  "PCB_matches_schematic_netlist": true,
+  "pin_contracts": {
+    "DC_center_positive": true,
+    "cell_negative_separate_from_system_ground": true,
+    "speaker_bridge_not_grounded": true,
+    "UART_direction_and_level_domains": true,
+    "native_ESP_USB_pin_assignment": true,
+    "optional_radar_pin_assignment": true,
+    "PSRAM_reserved_GPIO_not_connected": true,
+    "power_source_status_is_3V3_pullup": true,
+    "charge_pause_GPIO38_to_CE": true,
+    "battery_ADC_GPIO2": true,
+    "LED_supply_above_vendor_3p3V_minimum": true,
+    "modem_hardware_reset_GPIO21_open_drain": true
+  },
+  "voltage_corners": {
+    "MODEM_3V8": {
+      "nominal_V": 3.8085561497326204,
+      "min_V": 3.745113266412732,
+      "max_V": 3.8722043808514393,
+      "reference_min_max_V": [
+        0.591,
+        0.609
+      ],
+      "resistor_tolerance": 0.001,
+      "scope": "unloaded feedback arithmetic, not dynamic regulation"
+    },
+    "ESP_3V3": {
+      "nominal_V": 3.3149321266968323,
+      "min_V": 3.212253528067739,
+      "max_V": 3.4203259289729875,
+      "reference_min_max_V": [
+        0.591,
+        0.609
+      ],
+      "resistor_tolerance": 0.01,
+      "scope": "unloaded feedback arithmetic, not dynamic regulation"
+    },
+    "BAT_BOOST_5V": {
+      "nominal_V": 4.992,
+      "min_V": 4.883560279720281,
+      "max_V": 5.100808648648648,
+      "reference_min_max_V": [
+        0.588,
+        0.612
+      ],
+      "resistor_tolerance": 0.001,
+      "scope": "unloaded feedback arithmetic, not dynamic regulation"
+    }
+  },
+  "battery_ADC_scale": 0.4,
+  "board_thickness_mm": 1.2,
+  "LED_supply_VDD_min_max_V": [
+    3.745113266412732,
+    3.8722043808514393
+  ],
+  "LED_logic_high_margin_V": 0.44009041298589935,
+  "battery_ADC_at_4p242V_V": 1.6968,
+  "nominal_charge_current_mA": 100.0,
+  "external_only_topology": "VIN_PROTECTED -> TPS2117 VIN1 -> SYS_5V; battery not in series",
+  "passive_hold_up_simulation": [
+    {
+      "capacitance_scale": 0.25,
+      "effective_C_uF": 16.499999999999996,
+      "C8_assumed_min_uF": 376,
+      "C8_path_and_ESR_assumed_ohm": 0.12,
+      "assumed_break_us": 5,
+      "load_A": 2,
+      "input_V": 4.5,
+      "min_system_V": 4.072283966651245,
+      "stays_above_assumed_4p1V_input_floor": false,
+      "ngspice_completed": true
+    },
+    {
+      "capacitance_scale": 0.25,
+      "effective_C_uF": 16.499999999999996,
+      "C8_assumed_min_uF": 376,
+      "C8_path_and_ESR_assumed_ohm": 0.12,
+      "assumed_break_us": 20,
+      "load_A": 2,
+      "input_V": 4.5,
+      "min_system_V": 3.977295691669624,
+      "stays_above_assumed_4p1V_input_floor": false,
+      "ngspice_completed": true
+    },
+    {
+      "capacitance_scale": 0.25,
+      "effective_C_uF": 16.499999999999996,
+      "C8_assumed_min_uF": 376,
+      "C8_path_and_ESR_assumed_ohm": 0.12,
+      "assumed_break_us": 50,
+      "load_A": 2,
+      "input_V": 4.5,
+      "min_system_V": 3.8244083334962093,
+      "stays_above_assumed_4p1V_input_floor": false,
+      "ngspice_completed": true
+    },
+    {
+      "capacitance_scale": 0.25,
+      "effective_C_uF": 16.499999999999996,
+      "C8_assumed_min_uF": 376,
+      "C8_path_and_ESR_assumed_ohm": 0.12,
+      "assumed_break_us": 100,
+      "load_A": 2,
+      "input_V": 4.5,
+      "min_system_V": 3.5696312629629285,
+      "stays_above_assumed_4p1V_input_floor": false,
+      "ngspice_completed": true
+    },
+    {
+      "capacitance_scale": 0.5,
+      "effective_C_uF": 32.99999999999999,
+      "C8_assumed_min_uF": 376,
+      "C8_path_and_ESR_assumed_ohm": 0.12,
+      "assumed_break_us": 5,
+      "load_A": 2,
+      "input_V": 4.5,
+      "min_system_V": 4.122806675107152,
+      "stays_above_assumed_4p1V_input_floor": true,
+      "ngspice_completed": true
+    },
+    {
+      "capacitance_scale": 0.5,
+      "effective_C_uF": 32.99999999999999,
+      "C8_assumed_min_uF": 376,
+      "C8_path_and_ESR_assumed_ohm": 0.12,
+      "assumed_break_us": 20,
+      "load_A": 2,
+      "input_V": 4.5,
+      "min_system_V": 4.000115017538268,
+      "stays_above_assumed_4p1V_input_floor": false,
+      "ngspice_completed": true
+    },
+    {
+      "capacitance_scale": 0.5,
+      "effective_C_uF": 32.99999999999999,
+      "C8_assumed_min_uF": 376,
+      "C8_path_and_ESR_assumed_ohm": 0.12,
+      "assumed_break_us": 50,
+      "load_A": 2,
+      "input_V": 4.5,
+      "min_system_V": 3.851930273904703,
+      "stays_above_assumed_4p1V_input_floor": false,
+      "ngspice_completed": true
+    },
+    {
+      "capacitance_scale": 0.5,
+      "effective_C_uF": 32.99999999999999,
+      "C8_assumed_min_uF": 376,
+      "C8_path_and_ESR_assumed_ohm": 0.12,
+      "assumed_break_us": 100,
+      "load_A": 2,
+      "input_V": 4.5,
+      "min_system_V": 3.607430223958838,
+      "stays_above_assumed_4p1V_input_floor": false,
+      "ngspice_completed": true
+    },
+    {
+      "capacitance_scale": 1.0,
+      "effective_C_uF": 65.99999999999999,
+      "C8_assumed_min_uF": 376,
+      "C8_path_and_ESR_assumed_ohm": 0.12,
+      "assumed_break_us": 5,
+      "load_A": 2,
+      "input_V": 4.5,
+      "min_system_V": 4.175704507169408,
+      "stays_above_assumed_4p1V_input_floor": true,
+      "ngspice_completed": true
+    },
+    {
+      "capacitance_scale": 1.0,
+      "effective_C_uF": 65.99999999999999,
+      "C8_assumed_min_uF": 376,
+      "C8_path_and_ESR_assumed_ohm": 0.12,
+      "assumed_break_us": 20,
+      "load_A": 2,
+      "input_V": 4.5,
+      "min_system_V": 4.045369122734318,
+      "stays_above_assumed_4p1V_input_floor": false,
+      "ngspice_completed": true
+    },
+    {
+      "capacitance_scale": 1.0,
+      "effective_C_uF": 65.99999999999999,
+      "C8_assumed_min_uF": 376,
+      "C8_path_and_ESR_assumed_ohm": 0.12,
+      "assumed_break_us": 50,
+      "load_A": 2,
+      "input_V": 4.5,
+      "min_system_V": 3.898983730825152,
+      "stays_above_assumed_4p1V_input_floor": false,
+      "ngspice_completed": true
+    },
+    {
+      "capacitance_scale": 1.0,
+      "effective_C_uF": 65.99999999999999,
+      "C8_assumed_min_uF": 376,
+      "C8_path_and_ESR_assumed_ohm": 0.12,
+      "assumed_break_us": 100,
+      "load_A": 2,
+      "input_V": 4.5,
+      "min_system_V": 3.6725004817987403,
+      "stays_above_assumed_4p1V_input_floor": false,
+      "ngspice_completed": true
+    }
+  ],
+  "hold_up_model_scope": "Actual ngspice passive ESR/capacitor with ideal switched source. Assumed total effective capacitance and delays; NOT TPS2117/converter model, NOT a pass/fail qualification of actual UPS.",
+  "battery_peak_budget": [
+    {
+      "cell_V": 3.0,
+      "assumed_efficiency": 0.8,
+      "system_load_A": 0.2,
+      "cell_average_A": 0.41666666666666663,
+      "calculated_inductor_peak_A": 0.9036796536796536,
+      "guaranteed_30k_ISET_minimum_available": false
+    },
+    {
+      "cell_V": 3.0,
+      "assumed_efficiency": 0.8,
+      "system_load_A": 0.5,
+      "cell_average_A": 1.0416666666666665,
+      "calculated_inductor_peak_A": 1.5286796536796536,
+      "guaranteed_30k_ISET_minimum_available": false
+    },
+    {
+      "cell_V": 3.0,
+      "assumed_efficiency": 0.8,
+      "system_load_A": 2.0,
+      "cell_average_A": 4.166666666666666,
+      "calculated_inductor_peak_A": 4.653679653679653,
+      "guaranteed_30k_ISET_minimum_available": false
+    },
+    {
+      "cell_V": 3.0,
+      "assumed_efficiency": 0.9,
+      "system_load_A": 0.2,
+      "cell_average_A": 0.37037037037037035,
+      "calculated_inductor_peak_A": 0.8573833573833574,
+      "guaranteed_30k_ISET_minimum_available": false
+    },
+    {
+      "cell_V": 3.0,
+      "assumed_efficiency": 0.9,
+      "system_load_A": 0.5,
+      "cell_average_A": 0.9259259259259258,
+      "calculated_inductor_peak_A": 1.412938912938913,
+      "guaranteed_30k_ISET_minimum_available": false
+    },
+    {
+      "cell_V": 3.0,
+      "assumed_efficiency": 0.9,
+      "system_load_A": 2.0,
+      "cell_average_A": 3.7037037037037033,
+      "calculated_inductor_peak_A": 4.19071669071669,
+      "guaranteed_30k_ISET_minimum_available": false
+    },
+    {
+      "cell_V": 3.3,
+      "assumed_efficiency": 0.8,
+      "system_load_A": 0.2,
+      "cell_average_A": 0.3787878787878788,
+      "calculated_inductor_peak_A": 0.8341450216450217,
+      "guaranteed_30k_ISET_minimum_available": false
+    },
+    {
+      "cell_V": 3.3,
+      "assumed_efficiency": 0.8,
+      "system_load_A": 0.5,
+      "cell_average_A": 0.9469696969696969,
+      "calculated_inductor_peak_A": 1.4023268398268398,
+      "guaranteed_30k_ISET_minimum_available": false
+    },
+    {
+      "cell_V": 3.3,
+      "assumed_efficiency": 0.8,
+      "system_load_A": 2.0,
+      "cell_average_A": 3.7878787878787876,
+      "calculated_inductor_peak_A": 4.24323593073593,
+      "guaranteed_30k_ISET_minimum_available": false
+    },
+    {
+      "cell_V": 3.3,
+      "assumed_efficiency": 0.9,
+      "system_load_A": 0.2,
+      "cell_average_A": 0.3367003367003367,
+      "calculated_inductor_peak_A": 0.7920574795574796,
+      "guaranteed_30k_ISET_minimum_available": false
+    },
+    {
+      "cell_V": 3.3,
+      "assumed_efficiency": 0.9,
+      "system_load_A": 0.5,
+      "cell_average_A": 0.8417508417508418,
+      "calculated_inductor_peak_A": 1.2971079846079847,
+      "guaranteed_30k_ISET_minimum_available": false
+    },
+    {
+      "cell_V": 3.3,
+      "assumed_efficiency": 0.9,
+      "system_load_A": 2.0,
+      "cell_average_A": 3.367003367003367,
+      "calculated_inductor_peak_A": 3.82236050986051,
+      "guaranteed_30k_ISET_minimum_available": false
+    },
+    {
+      "cell_V": 4.2,
+      "assumed_efficiency": 0.8,
+      "system_load_A": 0.2,
+      "cell_average_A": 0.2976190476190476,
+      "calculated_inductor_peak_A": 0.5703463203463202,
+      "guaranteed_30k_ISET_minimum_available": false
+    },
+    {
+      "cell_V": 4.2,
+      "assumed_efficiency": 0.8,
+      "system_load_A": 0.5,
+      "cell_average_A": 0.744047619047619,
+      "calculated_inductor_peak_A": 1.0167748917748916,
+      "guaranteed_30k_ISET_minimum_available": false
+    },
+    {
+      "cell_V": 4.2,
+      "assumed_efficiency": 0.8,
+      "system_load_A": 2.0,
+      "cell_average_A": 2.976190476190476,
+      "calculated_inductor_peak_A": 3.2489177489177483,
+      "guaranteed_30k_ISET_minimum_available": false
+    },
+    {
+      "cell_V": 4.2,
+      "assumed_efficiency": 0.9,
+      "system_load_A": 0.2,
+      "cell_average_A": 0.26455026455026454,
+      "calculated_inductor_peak_A": 0.5372775372775371,
+      "guaranteed_30k_ISET_minimum_available": false
+    },
+    {
+      "cell_V": 4.2,
+      "assumed_efficiency": 0.9,
+      "system_load_A": 0.5,
+      "cell_average_A": 0.6613756613756613,
+      "calculated_inductor_peak_A": 0.9341029341029339,
+      "guaranteed_30k_ISET_minimum_available": false
+    },
+    {
+      "cell_V": 4.2,
+      "assumed_efficiency": 0.9,
+      "system_load_A": 2.0,
+      "cell_average_A": 2.645502645502645,
+      "calculated_inductor_peak_A": 2.9182299182299176,
+      "guaranteed_30k_ISET_minimum_available": false
+    }
+  ],
+  "manufacturer_sources": {
+    "SY8089": "build/v4-low-cost-candidates/SY8089A1AAC.txt; FB 591/600/609mV",
+    "ETA1096": "build/ups-bom-20261124/ETA1096-C7435200.txt; FB .588/.600/.612V; 30k current limit only typical",
+    "TP4056": "build/ups-bom-20261124/TP4056-MS-C7473158.txt"
+  },
+  "unresolved": [
+    "No actual SY8089/ETA1096/TPS2117 dynamic manufacturer macromodel used.",
+    "Effective MLCC capacitance under DC bias not yet qualified.",
+    "Cell capacity, high-rate discharge, NTC specification and enclosure fit not frozen.",
+    "2A battery-mode peak support and thermal behavior need assembled-board measurement.",
+    "GPIO38 charge pause is routed; 80/70 SOC policy not implemented in firmware.",
+    "TEMP short to ground can disable TP4056 temperature monitoring; open NTC suspension is not short-circuit protection."
+  ],
+  "full_board_simulated": false,
+  "actual_2A_qualified": false,
+  "manufacturing_ready": false
+}

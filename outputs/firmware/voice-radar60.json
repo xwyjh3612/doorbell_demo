@@ -1,11 +1,13 @@
 {
-  "radar60": true,
-  "variant": "voice-radar60",
-  "note": "App image only. Verify device partitions and preserve NVS/OTA selection before flashing.",
-  "built_at": "2026-11-24T11:54:16.5737557+08:00",
-  "radar": true,
-  "sha256": "aa4c74678b5a78aa5275318ea270b2a0758bac2f2d5f156f62f60bfef1ece6e8",
+  "status_indicator": false,
+  "modem_uart_baud": 115200,
   "power_monitor": false,
   "app_offset": "0x10000",
-  "size": 2785344
+  "radar": true,
+  "variant": "voice-radar60",
+  "size": 2785344,
+  "built_at": "2026-11-25T11:02:47.8758722+08:00",
+  "note": "115200 comparison image; not currently installed. Device restored to original 921600 app SHA256 2f6fa727f62fc87ddfba863926dff95054119795e0696b1a134cdd09348a2069. Actual flash record: build/ml307c-at-test-firmware-20261125.json",
+  "sha256": "db708b56132379c55a0e995bedb9eb5c830641f2542178da7bb954f1bdf0fc2a",
+  "radar60": true
 }

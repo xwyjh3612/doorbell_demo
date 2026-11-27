@@ -1,0 +1,82 @@
+{
+  "PCB_sha256": "4c907236ab2557cdb0d9d4e8ab16a466c671240d4630f1b35d93b14c43e0c42f",
+  "schematic_sha256": "44acbfb3bed2475e93d8edd06325f9f574be515d81a8dd22ae5c4afb6efb3b79",
+  "scope": "ngspice resistor/ideal CE switch model and PCB pin-map audit; NOT full-board or vendor converter/charger simulation",
+  "changed_values": {
+    "R64": "12k 1%",
+    "R66": "200k 1%"
+  },
+  "nominal_charge_current_ma": 100.0,
+  "nominal_temperature_window_C": [
+    3.3218241263530786,
+    40.499060271864494
+  ],
+  "R_R25_beta_1pct_corner_window_C": {
+    "cold": [
+      2.6734813392609453,
+      3.959051590454237
+    ],
+    "hot": [
+      39.83290932979804,
+      41.18132791382544
+    ]
+  },
+  "IC_temperature_threshold_tolerance_included": false,
+  "cell_spec_and_NTC_verified": false,
+  "cases": [
+    {
+      "case": "cold_minus5",
+      "temperature_C": -5,
+      "TEMP_VCC_ratio": 0.8535710855221531,
+      "charge_allowed_by_nominal_TEMP": false,
+      "CE_with_GPIO_low_v": 4.99999995,
+      "CE_with_GPIO_high_v": 0.0009998000399920016,
+      "battery_ADC_4v2_v": 1.6800000000000055,
+      "PR_external5v_v": 1.2462462462462465,
+      "ngspice_completed": true,
+      "passes_model_expectation": true
+    },
+    {
+      "case": "room25",
+      "temperature_C": 25,
+      "TEMP_VCC_ratio": 0.6060789720900635,
+      "charge_allowed_by_nominal_TEMP": true,
+      "CE_with_GPIO_low_v": 4.99999995,
+      "CE_with_GPIO_high_v": 0.0009998000399920016,
+      "battery_ADC_4v2_v": 1.6800000000000055,
+      "PR_external5v_v": 1.2462462462462465,
+      "ngspice_completed": true,
+      "passes_model_expectation": true
+    },
+    {
+      "case": "hot45",
+      "temperature_C": 45,
+      "TEMP_VCC_ratio": 0.40740694381717796,
+      "charge_allowed_by_nominal_TEMP": false,
+      "CE_with_GPIO_low_v": 4.99999995,
+      "CE_with_GPIO_high_v": 0.0009998000399920016,
+      "battery_ADC_4v2_v": 1.6800000000000055,
+      "PR_external5v_v": 1.2462462462462465,
+      "ngspice_completed": true,
+      "passes_model_expectation": true
+    },
+    {
+      "case": "NTC_open",
+      "temperature_C": null,
+      "TEMP_VCC_ratio": 0.9699791454425488,
+      "charge_allowed_by_nominal_TEMP": false,
+      "CE_with_GPIO_low_v": 4.99999995,
+      "CE_with_GPIO_high_v": 0.0009998000399920016,
+      "battery_ADC_4v2_v": 1.6800000000000055,
+      "PR_external5v_v": 1.2462462462462465,
+      "ngspice_completed": true,
+      "passes_model_expectation": true
+    }
+  ],
+  "no_battery_external_path_independent": true,
+  "raw_cell_negative_is_GND": false,
+  "80_70_percent_control_implemented": false,
+  "full_board_simulated": false,
+  "actual_2A_transient_or_thermal_qualified": false,
+  "manufacturing_ready": false
+}

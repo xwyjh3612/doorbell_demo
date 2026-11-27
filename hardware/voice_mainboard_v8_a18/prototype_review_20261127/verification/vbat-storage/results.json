@@ -1,0 +1,74 @@
+{
+  "PCB_sha256": "4c907236ab2557cdb0d9d4e8ab16a466c671240d4630f1b35d93b14c43e0c42f",
+  "source_voltage_V": 3.745113266412732,
+  "assumptions": {
+    "current_demand_step_A": [
+      0.2,
+      2
+    ],
+    "load_below_3p4V": "Reduced current below the modem operating floor for bounded simulation; only floor crossing is meaningful.",
+    "effective_MLCC_uF_each": 11,
+    "MLCC_ESR_assumed_ohm_each": 0.01,
+    "C75_C76_min_uF_each": 176,
+    "C75_C76_datasheet_ESR_ohm_each": 0.017,
+    "inductor_DCR_ohm": 0.018
+  },
+  "cases": [
+    {
+      "with_C75_C76": false,
+      "assumed_source_interruption_us": 10,
+      "minimum_VBAT_V": 2.8620251772723,
+      "reaches_below_3p4V": true
+    },
+    {
+      "with_C75_C76": false,
+      "assumed_source_interruption_us": 25,
+      "minimum_VBAT_V": 1.920940688744344,
+      "reaches_below_3p4V": true
+    },
+    {
+      "with_C75_C76": false,
+      "assumed_source_interruption_us": 50,
+      "minimum_VBAT_V": 0.9885810697771497,
+      "reaches_below_3p4V": true
+    },
+    {
+      "with_C75_C76": false,
+      "assumed_source_interruption_us": 100,
+      "minimum_VBAT_V": 0.2617061785673912,
+      "reaches_below_3p4V": true
+    },
+    {
+      "with_C75_C76": true,
+      "assumed_source_interruption_us": 10,
+      "minimum_VBAT_V": 3.665492377393875,
+      "reaches_below_3p4V": false
+    },
+    {
+      "with_C75_C76": true,
+      "assumed_source_interruption_us": 25,
+      "minimum_VBAT_V": 3.5852467445931184,
+      "reaches_below_3p4V": false
+    },
+    {
+      "with_C75_C76": true,
+      "assumed_source_interruption_us": 50,
+      "minimum_VBAT_V": 3.4516010931651535,
+      "reaches_below_3p4V": false
+    },
+    {
+      "with_C75_C76": true,
+      "assumed_source_interruption_us": 100,
+      "minimum_VBAT_V": 3.192193179863665,
+      "reaches_below_3p4V": true
+    }
+  ],
+  "scope": "Passive sensitivity model. A switched ideal supply, centreline copper estimates and ideal ground are used. No regulator feedback, loop stability, startup, shared branch extraction, ESL, thermal effects or real modem transient are modelled.",
+  "still_to_measure": [
+    "SY8089 startup with 440uF added storage",
+    "regulator stability and current limit",
+    "ground return",
+    "VBAT at modem pins during LTE transmit"
+  ],
+  "manufacturing_ready": false
+}

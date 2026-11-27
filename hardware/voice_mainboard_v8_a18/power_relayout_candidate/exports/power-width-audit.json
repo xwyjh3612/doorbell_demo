@@ -1,0 +1,383 @@
+{
+  "PCB_sha256": "4c907236ab2557cdb0d9d4e8ab16a466c671240d4630f1b35d93b14c43e0c42f",
+  "rail_routing_target_width_mm": 0.5,
+  "single_segment_neck_review_threshold_mm": 1.5,
+  "rails": [
+    {
+      "net": "BAT_BOOST_5V",
+      "minimum_track_width_mm": 0.25,
+      "total_track_length_mm": 74.30751214302379,
+      "below_target_length_mm": 7.170658842226924,
+      "long_narrow_segments": [
+        {
+          "uuid": "08649364-7223-4880-8235-12c774320e6e",
+          "width_mm": 0.25,
+          "length_mm": 1.51,
+          "layer": "B.Cu",
+          "from_mm": [
+            42.99,
+            53.0
+          ],
+          "to_mm": [
+            44.5,
+            53.0
+          ]
+        },
+        {
+          "uuid": "621a2be7-ad37-4239-96e6-0466cf31e9e6",
+          "width_mm": 0.25,
+          "length_mm": 3.486036431249679,
+          "layer": "B.Cu",
+          "from_mm": [
+            40.465,
+            40.449999
+          ],
+          "to_mm": [
+            38.0,
+            42.914999
+          ]
+        }
+      ],
+      "neck_segments_require_combined_path_review": true
+    },
+    {
+      "net": "BAT_SENSE_IN",
+      "minimum_track_width_mm": 0.16,
+      "total_track_length_mm": 149.81685024562495,
+      "below_target_length_mm": 16.167782160144082,
+      "long_narrow_segments": [
+        {
+          "uuid": "ac5573ea-0956-4462-a339-ac1f01dafb34",
+          "width_mm": 0.16,
+          "length_mm": 1.9,
+          "layer": "B.Cu",
+          "from_mm": [
+            57.449999,
+            49.9
+          ],
+          "to_mm": [
+            59.349999,
+            49.9
+          ]
+        },
+        {
+          "uuid": "ea3a4f16-7674-400f-8b2d-f9e67dcfaddc",
+          "width_mm": 0.16,
+          "length_mm": 13.25,
+          "layer": "B.Cu",
+          "from_mm": [
+            59.349999,
+            49.9
+          ],
+          "to_mm": [
+            59.349999,
+            63.15
+          ]
+        }
+      ],
+      "neck_segments_require_combined_path_review": true
+    },
+    {
+      "net": "BUCK_SW",
+      "minimum_track_width_mm": 0.8,
+      "total_track_length_mm": 3.4759776310850237,
+      "below_target_length_mm": 0,
+      "long_narrow_segments": [],
+      "neck_segments_require_combined_path_review": false
+    },
+    {
+      "net": "CELL_NEG",
+      "minimum_track_width_mm": 0.25,
+      "total_track_length_mm": 9.376634516126483,
+      "below_target_length_mm": 1.8149398256692884,
+      "long_narrow_segments": [],
+      "neck_segments_require_combined_path_review": true
+    },
+    {
+      "net": "ESP_SW",
+      "minimum_track_width_mm": 0.5,
+      "total_track_length_mm": 4.435381489572491,
+      "below_target_length_mm": 0,
+      "long_narrow_segments": [],
+      "neck_segments_require_combined_path_review": false
+    },
+    {
+      "net": "MODEM_3V8",
+      "minimum_track_width_mm": 0.375,
+      "total_track_length_mm": 109.08243998333333,
+      "below_target_length_mm": 3.0927799348810723,
+      "long_narrow_segments": [
+        {
+          "uuid": "1f828bda-c327-4bb0-8fa1-add3f285dc4c",
+          "width_mm": 0.375,
+          "length_mm": 1.727,
+          "layer": "B.Cu",
+          "from_mm": [
+            56.25,
+            1.074
+          ],
+          "to_mm": [
+            57.977,
+            1.074
+          ]
+        }
+      ],
+      "neck_segments_require_combined_path_review": true
+    },
+    {
+      "net": "SYS_5V",
+      "minimum_track_width_mm": 0.16,
+      "total_track_length_mm": 232.14020297454834,
+      "below_target_length_mm": 36.80788885670608,
+      "long_narrow_segments": [
+        {
+          "uuid": "60fbb418-9319-4906-856c-066ff62b8c08",
+          "width_mm": 0.16,
+          "length_mm": 2.05625,
+          "layer": "F.Cu",
+          "from_mm": [
+            33.19375,
+            51.175
+          ],
+          "to_mm": [
+            35.25,
+            51.175
+          ]
+        },
+        {
+          "uuid": "c49a89b0-66ca-4350-9466-7c70ff9ebc83",
+          "width_mm": 0.25,
+          "length_mm": 4.900001,
+          "layer": "F.Cu",
+          "from_mm": [
+            62.999998,
+            13.399999
+          ],
+          "to_mm": [
+            67.899999,
+            13.399999
+          ]
+        },
+        {
+          "uuid": "c85aca81-19e9-42a6-971a-72c0c6f1c907",
+          "width_mm": 0.25,
+          "length_mm": 1.5556342115037842,
+          "layer": "F.Cu",
+          "from_mm": [
+            23.237499,
+            21.95
+          ],
+          "to_mm": [
+            22.1375,
+            20.85
+          ]
+        },
+        {
+          "uuid": "388e768e-e7d5-4a18-a1d8-e8faef1374da",
+          "width_mm": 0.25,
+          "length_mm": 10.960155108391486,
+          "layer": "B.Cu",
+          "from_mm": [
+            21.6625,
+            20.75
+          ],
+          "to_mm": [
+            13.9125,
+            13.0
+          ]
+        },
+        {
+          "uuid": "bcc2b08e-0182-471d-824b-2dc2399892ab",
+          "width_mm": 0.25,
+          "length_mm": 2.81,
+          "layer": "B.Cu",
+          "from_mm": [
+            42.99,
+            53.5
+          ],
+          "to_mm": [
+            45.8,
+            53.5
+          ]
+        },
+        {
+          "uuid": "d9e7b946-a058-4b4b-b8ef-c98cdd998726",
+          "width_mm": 0.25,
+          "length_mm": 3.899999,
+          "layer": "B.Cu",
+          "from_mm": [
+            64.499998,
+            27.899999
+          ],
+          "to_mm": [
+            64.499998,
+            24.0
+          ]
+        },
+        {
+          "uuid": "dc046de2-eb28-410d-8a32-091f1447ffa3",
+          "width_mm": 0.25,
+          "length_mm": 1.5556335043968421,
+          "layer": "B.Cu",
+          "from_mm": [
+            55.0625,
+            8.649999
+          ],
+          "to_mm": [
+            56.162499,
+            7.55
+          ]
+        }
+      ],
+      "neck_segments_require_combined_path_review": true
+    },
+    {
+      "net": "UPS_SW",
+      "minimum_track_width_mm": 0.6,
+      "total_track_length_mm": 9.535,
+      "below_target_length_mm": 0,
+      "long_narrow_segments": [],
+      "neck_segments_require_combined_path_review": false
+    },
+    {
+      "net": "VIN_DC",
+      "minimum_track_width_mm": 0.16,
+      "total_track_length_mm": 89.04169123038938,
+      "below_target_length_mm": 18.74089695862829,
+      "long_narrow_segments": [
+        {
+          "uuid": "12a88c75-30c3-435d-9b44-e3bb77e6ef61",
+          "width_mm": 0.4,
+          "length_mm": 1.55,
+          "layer": "F.Cu",
+          "from_mm": [
+            68.75,
+            44.0
+          ],
+          "to_mm": [
+            67.2,
+            44.0
+          ]
+        },
+        {
+          "uuid": "26d78087-8190-452b-a36f-5450cd6156c9",
+          "width_mm": 0.4,
+          "length_mm": 2.82842712474619,
+          "layer": "F.Cu",
+          "from_mm": [
+            67.2,
+            44.0
+          ],
+          "to_mm": [
+            65.2,
+            46.0
+          ]
+        },
+        {
+          "uuid": "e1abeaf9-d21d-45da-a84a-90a550063143",
+          "width_mm": 0.4,
+          "length_mm": 6.9,
+          "layer": "B.Cu",
+          "from_mm": [
+            65.2,
+            46.0
+          ],
+          "to_mm": [
+            65.2,
+            52.9
+          ]
+        },
+        {
+          "uuid": "fa0c27f6-cd91-4e02-ae0c-51de0b13793e",
+          "width_mm": 0.16,
+          "length_mm": 2.1,
+          "layer": "B.Cu",
+          "from_mm": [
+            61.15,
+            37.8
+          ],
+          "to_mm": [
+            63.25,
+            37.8
+          ]
+        }
+      ],
+      "neck_segments_require_combined_path_review": true
+    },
+    {
+      "net": "VIN_FUSED",
+      "minimum_track_width_mm": 0.5,
+      "total_track_length_mm": 26.21269736401326,
+      "below_target_length_mm": 0,
+      "long_narrow_segments": [],
+      "neck_segments_require_combined_path_review": false
+    },
+    {
+      "net": "VIN_PROTECTED",
+      "minimum_track_width_mm": 0.16,
+      "total_track_length_mm": 69.31334965659144,
+      "below_target_length_mm": 12.82609165082133,
+      "long_narrow_segments": [
+        {
+          "uuid": "4a4eb423-0b92-467e-a847-ee3444c378c7",
+          "width_mm": 0.16,
+          "length_mm": 2.3334523779156067,
+          "layer": "F.Cu",
+          "from_mm": [
+            63.175,
+            40.5
+          ],
+          "to_mm": [
+            61.525,
+            42.15
+          ]
+        },
+        {
+          "uuid": "4c4af2d3-4886-4d3f-91f8-7c11e057f16b",
+          "width_mm": 0.25,
+          "length_mm": 3.1375,
+          "layer": "F.Cu",
+          "from_mm": [
+            56.3625,
+            45.1375
+          ],
+          "to_mm": [
+            56.3625,
+            42.0
+          ]
+        },
+        {
+          "uuid": "4d7f823c-ab9f-4f2f-b071-455b6d7a4b26",
+          "width_mm": 0.16,
+          "length_mm": 1.95,
+          "layer": "B.Cu",
+          "from_mm": [
+            61.525,
+            42.375
+          ],
+          "to_mm": [
+            59.575,
+            42.375
+          ]
+        },
+        {
+          "uuid": "ac52ec3d-00ef-4fb9-806b-dc6a24f1dec0",
+          "width_mm": 0.25,
+          "length_mm": 2.15667568261897,
+          "layer": "B.Cu",
+          "from_mm": [
+            46.05,
+            43.57
+          ],
+          "to_mm": [
+            44.525,
+            45.095
+          ]
+        }
+      ],
+      "neck_segments_require_combined_path_review": true
+    }
+  ],
+  "actual_2A_qualified": false,
+  "scope": "All actual track segments, including branches and stubs. Adjacent short segments can form a long neck; segment thresholds alone cannot approve a path. Does not model copper pours, thermal rise, peak duration, component limits or via current sharing."
+}

@@ -1,0 +1,16 @@
+{
+  "PCB_sha256": "4c907236ab2557cdb0d9d4e8ab16a466c671240d4630f1b35d93b14c43e0c42f",
+  "native_DRC_counts": {
+    "violations": 0,
+    "schematic_parity": 0,
+    "unconnected_items": 0
+  },
+  "mechanical_fit_verified": false,
+  "full_board_simulated": false,
+  "manufacturing_ready": false,
+  "firmware_modified": false,
+  "review_page": "exports/preview.html",
+  "copper_layers": 2,
+  "ERC_violations": 0,
+  "review_scope": "Native CAD connectivity and explicitly scoped subcircuit models; 2A and assembled-board function not qualified"
+}

@@ -1,0 +1,43 @@
+{
+  "trial": "C:\\project\\esp32\\doorbell_demo_voice\\hardware\\voice_mainboard_v8_a18\\closure-fixed-audio-20261127-0530\\voice_mainboard_a18_2layer.kicad_pcb",
+  "equivalent_zero_ohm_removal": [
+    "R75",
+    "R76"
+  ],
+  "gain_db": 12,
+  "audio_channel": "left",
+  "full_contracted_schematic_netlist_equal": true,
+  "native_unconnected": [
+    2,
+    1
+  ],
+  "native_violations": [
+    0,
+    0
+  ],
+  "protected_groups": {
+    "BAT_SENSE_IN": 1,
+    "GND": 1,
+    "ESP_3V3": 1,
+    "VIN_PROTECTED": 1,
+    "UPS_SW": 1,
+    "CELL_NEG": 1,
+    "SYS_5V": 1,
+    "MODEM_1V8": 1,
+    "VIN_DC": 1,
+    "RF_FEED": 1,
+    "RF_ANT": 1,
+    "MODEM_3V8": 1,
+    "ESP_SW": 1,
+    "BAT_BOOST_5V": 1,
+    "VIN_FUSED": 1,
+    "SPK_PLUS": 1,
+    "BUCK_SW": 1,
+    "SPK_MINUS": 1
+  },
+  "ERC_violations": 0,
+  "schematic_parity": 0,
+  "sha256": "7b8e61cc95859a17513ded462493e7cfe074cce4112405e34ce200c6035e3fc0",
+  "snapshot": "C:\\project\\esp32\\doorbell_demo_voice\\hardware\\voice_mainboard_v8_a18\\power_relayout_candidate\\iterations\\accepted-fixed-audio-20261127-064550",
+  "manufacturing_ready": false
+}

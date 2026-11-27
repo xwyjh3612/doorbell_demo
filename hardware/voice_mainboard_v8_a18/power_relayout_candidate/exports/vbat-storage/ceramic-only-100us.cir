@@ -1,0 +1,14 @@
+ceramic-only-100us
+Vsupply source 0 3.745113266412732
+Venable enable 0 PWL(0 3.3 0.00099999 3.3 0.001 0 0.0011 0 0.00110001 3.3)
+Soutput source feed enable 0 IDEAL_SOURCE
+.model IDEAL_SOURCE SW(Ron=0.001 Roff=1e12 Vt=1.65 Vh=0)
+Rfeed feed modem 0.022014742797306218
+Vdemand demand 0 PWL(0 .2 0.00099999 .2 0.001 2 0.00115 2 0.0011500100000000001 .2)
+Bload modem 0 I=v(demand)*min(max(v(modem)/3.4,0),1)
+RC6 modem C6 0.021175499940157133
+C6 C6 0 11u
+RC7 modem C7 0.018989714225873318
+C7 C7 0 11u
+.tran 50n .0013
+.end

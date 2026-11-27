@@ -1,0 +1,19 @@
+{
+  "created_at": "2026-11-27T10:54:23.971810+08:00",
+  "PCB_sha256": "4c907236ab2557cdb0d9d4e8ab16a466c671240d4630f1b35d93b14c43e0c42f",
+  "case_count": 37,
+  "status_counts": {
+    "PASS_IN_DECLARED_MODEL": 29,
+    "INCONCLUSIVE_SIMULATOR_ABORTED": 2,
+    "INCONCLUSIVE_VENDOR_DIODE_MODE_NOT_MODELLED": 1,
+    "FAIL_IN_DECLARED_MODEL": 4,
+    "KNOWN_LIMIT_NTC_SHORT_DISABLES_TEMP_MONITOR": 1
+  },
+  "full_board_function_simulated": false,
+  "manufacturing_ready": false,
+  "report": "hardware\\voice_mainboard_v8_a18\\power_relayout_candidate\\exports\\powerup-simulation-20261127\\上电仿真报告.html",
+  "plots": [
+    "powerup-waveforms.png",
+    "battery-control-waveforms.png"
+  ]
+}

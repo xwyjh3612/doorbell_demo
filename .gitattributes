@@ -4,6 +4,11 @@ hardware/voice_mainboard_v2/generate_schematic.py text eol=lf
 hardware/voice_mainboard_v6/** text eol=lf
 hardware/voice_mainboard_v6/**/*.png -text
 hardware/voice_mainboard_v6/**/*.zip -text
+hardware/voice_mainboard_v6/**/*.pdf -text
+# PCB and report provenance includes byte-level hashes; keep native KiCad and export bytes.
+hardware/voice_mainboard_v7/** -text
+hardware/voice_mainboard_v8_a18/** -text
+hardware/voice_mainboard_v9_square109/** -text
 tests/at_recovery_batch_20261121.md text eol=lf
 tests/at_recovery_40_final.json text eol=lf
 tests/at_recovery_32_hangup_panic.txt text eol=lf

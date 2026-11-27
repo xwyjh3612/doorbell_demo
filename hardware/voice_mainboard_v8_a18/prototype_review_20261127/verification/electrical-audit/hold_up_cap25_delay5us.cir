@@ -1,0 +1,15 @@
+hold_up_cap25_delay5us
+Vsource source 0 4.5
+Vcontrol control 0 PWL(0 3.3 0.0009999 3.3 0.001 0 0.001005 0 0.0010051 3.3 .003 3.3)
+Ssource source feed control 0 IDEAL_MUX
+.model IDEAL_MUX SW(Ron=.05 Roff=1e12 Vt=1.65 Vh=0)
+Rpath feed sys .05
+Resr sys cap .02
+Csys cap 0 1.65e-05
+Rbulk sys bulk .12
+Cbulk bulk 0 376u
+Bload sys 0 I=2*min(max(v(sys)/3,0),1)
+Rleak sys 0 1G
+.options reltol=.001 abstol=1n vntol=1u
+.tran 100n .003
+.end

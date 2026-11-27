@@ -1,0 +1,18 @@
+{
+  "PCB_sha256": "29d925c6b31feb91d0b6cc3382d35e30f8924876395e5f90c93ce270dcd04ce0",
+  "changes": [
+    {
+      "ground_bridge_mm": [
+        [
+          54.1,
+          52.0
+        ],
+        [
+          50.787499,
+          50.824999
+        ]
+      ],
+      "layer": "F/B checked routing"
+    }
+  ]
+}

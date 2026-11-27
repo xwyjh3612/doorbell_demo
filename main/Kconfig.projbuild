@@ -1,5 +1,25 @@
 menu "Voice intercom options"
 
+config VOICE_ML307_USB_OBSERVER
+    bool "Debug only: observe ML307 USB normal / Dump enumeration"
+    depends on IDF_TARGET_ESP32S3 && ESP_CONSOLE_SECONDARY_NONE
+    default n
+    help
+        Reserve GPIO19/20 for the module USB D-/D+. Observe standard USB
+        descriptors and disconnects while keeping the UART17/18 transport.
+        No USB AT commands, diagnostic activation, media or module resets.
+        Disable the USB Serial/JTAG secondary console in this debug build.
+        Leave disabled in normal firmware and on boards using these pins.
+
+config VOICE_STATUS_INDICATOR_ENABLE
+    bool "Include V7 mainboard RGB status LED (GPIO39, WS2812B-2020-V6)"
+    depends on IDF_TARGET_ESP32S3
+    default n
+    help
+        For the V7 indicator revision only. Local status pulses show MQTT
+        readiness and call state. Uses no modem commands or media queues.
+        Leave disabled on boards that use GPIO39 for other peripherals/JTAG.
+
 config VOICE_POWER_MONITOR_ENABLE
     bool "Include V6 mainboard supply / battery monitor"
     depends on IDF_TARGET_ESP32S3

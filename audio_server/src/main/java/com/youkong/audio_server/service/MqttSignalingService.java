@@ -78,7 +78,33 @@ public class MqttSignalingService {
      * 通话状态管理
      */
     private final ConcurrentMap<String, CallSession> callSessions = new ConcurrentHashMap<>();
-    private final CallReplyRoutes replyRoutes = new CallReplyRoutes();
+    private final CallReplyRoutes replyRoutes = new CallReplyRoutes(System::currentTimeMillis);
+    @Resource private DispatchAlerts alerts;
+    private final CallReplyRoutes.Delivery delivery=new CallReplyRoutes.Delivery(){
+        public java.util.List<String> recipients(String group,String device){return sessionManager.recipients(group,device);}
+        public String account(String endpoint){return sessionManager.getDeviceId(endpoint);}
+        public String name(String endpoint){return sessionManager.displayName(endpoint);}
+        public boolean phone(String endpoint,SignalingMessage message){return sessionManager.sendMessageToSession(endpoint,JSON.toJSONString(message));}
+        public boolean device(String device,SignalingMessage message){
+            return sendMqttMessage(String.format("/voice/%s/%s/down",project,device),JSON.toJSONString(message));
+        }
+        public void alert(String device,String client,String key,long at){
+            try{
+                JSONObject event=alerts.record(device,client,key,at);
+                if(event!=null){SignalingMessage alert=CallReplyRoutes.notice("call_alert",device,client,null,null,at);alert.setData(event);
+                    for(String endpoint:recipients(client,device))phone(endpoint,alert);}
+            }catch(IOException error){log.error("设备 {} 呼出预警保存失败",device,error);}
+        }
+    };
+
+    @org.springframework.scheduling.annotation.Scheduled(fixedDelay=5000)
+    public void expireRinging(){replyRoutes.expire(delivery);}
+    public void phoneDisconnected(String client){replyRoutes.disconnected(client,delivery);}
+    public boolean phoneControl(String client,SignalingMessage message){
+        if(!CallReplyRoutes.control(message))return false;
+        if(DispatchAlerts.valid(message.getTarget()))replyRoutes.route(false,message.getTarget(),client,message,delivery);
+        return true;
+    }
 
     @PostConstruct
     public void init() {
@@ -144,12 +170,15 @@ public class MqttSignalingService {
             }
 
             String type = message.getType();
-            // ESP32's existing replies omit target. Preserve explicit targets,
-            // otherwise answer the registered client that originated this call.
-            JSONObject raw = JSON.parseObject(payload);
-            if (!raw.containsKey("target") && ("answer".equals(type) || "candidate".equals(type)
-                    || "bye".equals(type) || "reject".equals(type) || "timeout".equals(type))) {
-                message.setTarget(replyRoutes.reply(message.getFrom(), message.getTarget()));
+            if(CallReplyRoutes.control(message)){
+                String device=extractDeviceIdFromTopic(topic);
+                if(!DispatchAlerts.valid(device)||!device.equals(message.getFrom()))return;
+                String recipient=alerts.recipient(device);
+                if(recipient==null && CallReplyRoutes.start(message)){
+                    log.warn("未配置设备 {} 的呼出接听账号",device);
+                    return;
+                }
+                replyRoutes.route(true,device,recipient==null?"":recipient,message,delivery);return;
             }
 
             switch (type) {
@@ -179,9 +208,6 @@ public class MqttSignalingService {
                     break;
                 default:
                     log.warn("未知的信令类型: {}", type);
-            }
-            if ("bye".equals(type) || "reject".equals(type) || "timeout".equals(type)) {
-                replyRoutes.end(message.getFrom());
             }
 
         } catch (Exception e) {
@@ -367,7 +393,7 @@ public class MqttSignalingService {
     /**
      * 发送 MQTT 消息到 ESP32
      */
-    public void sendMqttMessage(String topic, String payload) {
+    public boolean sendMqttMessage(String topic, String payload) {
         log.info("发送 MQTT 下行信令 - 主题: {}, 内容: {}", topic, payload);
 
         try {
@@ -377,25 +403,24 @@ public class MqttSignalingService {
                 mqttClient.publish(topic, message);
             } else {
                 log.warn("MQTT 客户端未连接，无法发送消息");
+                return false;
             }
         } catch (MqttException e) {
             log.error("发送 MQTT 消息失败: {}", e.getMessage());
+            return false;
         }
 
         // 持久化下行信令
         persistSignaling("DOWN", topic, payload);
+        return true;
     }
 
     /**
      * 从 WebSocket 转发信令到 ESP32
      */
     public void forwardToEsp32(String deviceId, String payload) {
-        SignalingMessage message = JSON.parseObject(payload, SignalingMessage.class);
-        if (message != null && "offer".equals(message.getType())) replyRoutes.begin(deviceId, message.getFrom());
         String downTopic = String.format("/voice/%s/%s/down", project, deviceId);
         sendMqttMessage(downTopic, payload);
-        if (message != null && ("bye".equals(message.getType()) || "reject".equals(message.getType())
-                || "timeout".equals(message.getType()))) replyRoutes.end(deviceId);
     }
 
     /**

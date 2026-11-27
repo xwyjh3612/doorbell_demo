@@ -1,5 +1,5 @@
 param(
-    [ValidateSet('voice', 'voice-radar', 'voice-radar60', 'mainboard-v6', 'mainboard-v6-radar60')]
+    [ValidateSet('voice', 'voice-radar', 'voice-radar60', 'mainboard-v6', 'mainboard-v6-radar60', 'mainboard-v7', 'mainboard-v7-radar60')]
     [string]$Variant = 'voice'
 )
 $ErrorActionPreference = 'Stop'
@@ -21,10 +21,11 @@ if (-not (Test-Path -LiteralPath $voiceConfig)) {
     Copy-Item -LiteralPath $voiceSeed -Destination $voiceConfig
 }
 $voiceLines = @(Get-Content -LiteralPath $voiceConfig -Encoding UTF8 |
-    Where-Object { $_ -notmatch '^(CONFIG_VOICE_RADAR_(ENABLE|R60)=|# CONFIG_VOICE_RADAR_(ENABLE|R60) is not set|CONFIG_VOICE_POWER_MONITOR_ENABLE=|# CONFIG_VOICE_POWER_MONITOR_ENABLE is not set)' })
-$voiceHasRadar = $Variant -in @('voice-radar','voice-radar60','mainboard-v6-radar60')
-$voiceHasRadar60 = $Variant -in @('voice-radar60','mainboard-v6-radar60')
-$voiceHasPower = $Variant -like 'mainboard-v6*'
+    Where-Object { $_ -notmatch '^(CONFIG_VOICE_RADAR_(ENABLE|R60)=|# CONFIG_VOICE_RADAR_(ENABLE|R60) is not set|CONFIG_VOICE_POWER_MONITOR_ENABLE=|# CONFIG_VOICE_POWER_MONITOR_ENABLE is not set|CONFIG_VOICE_STATUS_INDICATOR_ENABLE=|# CONFIG_VOICE_STATUS_INDICATOR_ENABLE is not set)' })
+$voiceHasRadar = $Variant -in @('voice-radar','voice-radar60','mainboard-v6-radar60','mainboard-v7-radar60')
+$voiceHasRadar60 = $Variant -in @('voice-radar60','mainboard-v6-radar60','mainboard-v7-radar60')
+$voiceHasPower = $Variant -like 'mainboard-*'
+$voiceHasIndicator = $Variant -like 'mainboard-v7*'
 $voiceLines += $(if ($voiceHasRadar) {
     'CONFIG_VOICE_RADAR_ENABLE=y'
 } else { '# CONFIG_VOICE_RADAR_ENABLE is not set' })
@@ -32,6 +33,8 @@ $voiceLines += $(if ($voiceHasRadar60) { 'CONFIG_VOICE_RADAR_R60=y' }
     else { '# CONFIG_VOICE_RADAR_R60 is not set' })
 $voiceLines += $(if ($voiceHasPower) { 'CONFIG_VOICE_POWER_MONITOR_ENABLE=y' }
     else { '# CONFIG_VOICE_POWER_MONITOR_ENABLE is not set' })
+$voiceLines += $(if ($voiceHasIndicator) { 'CONFIG_VOICE_STATUS_INDICATOR_ENABLE=y' }
+    else { '# CONFIG_VOICE_STATUS_INDICATOR_ENABLE is not set' })
 [IO.File]::WriteAllLines($voiceConfig, $voiceLines, [Text.UTF8Encoding]::new($false))
 & $voicePython $voiceIdf -C $voiceWorkspace -B (Join-Path $voiceWorkspace 'build') `
     -D "SDKCONFIG=$($voiceConfig.Replace('\','/'))" build
@@ -42,7 +45,7 @@ if ($LASTEXITCODE -ne 0) { throw "固件编译失败：$Variant" }
 if ($LASTEXITCODE -ne 0) { throw "固件变体验证失败：$Variant" }
 $voiceImage = Join-Path $voiceOutput ($Variant + '.bin')
 Copy-Item -LiteralPath (Join-Path $voiceWorkspace 'build\doorbell_demo.bin') -Destination $voiceImage -Force
-$voiceRecord = @{variant=$Variant; radar=$voiceHasRadar; radar60=$voiceHasRadar60; power_monitor=$voiceHasPower;
+$voiceRecord = @{variant=$Variant; radar=$voiceHasRadar; radar60=$voiceHasRadar60; power_monitor=$voiceHasPower; status_indicator=$voiceHasIndicator;
     size=(Get-Item -LiteralPath $voiceImage).Length;
     sha256=(Get-FileHash -LiteralPath $voiceImage -Algorithm SHA256).Hash.ToLower();
     built_at=(Get-Date -Format o); app_offset='0x10000';

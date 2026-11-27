@@ -12,6 +12,8 @@ const device=option('--real-device','');
 const rounds=Number(option('--rounds','30'));
 const hold=Number(option('--hold-seconds','1800'));
 const startDirection=option('--start-direction','app-calls-device');
+const transport=option('--transport','ML307R-DL UART AT; original latest UDP packet strategy');
+if(!transport || transport.length>200)throw Error('Invalid transport description');
 if(!['app-calls-device','device-calls-app'].includes(startDirection))throw Error('Invalid start direction');
 if(!/^\d{12,20}$/.test(device)||!Number.isInteger(rounds)||rounds<1||rounds>100||!Number.isInteger(hold)||hold<20||hold>1800)throw Error('Invalid device/rounds/hold');
 const root=process.cwd(), output=path.resolve(option('--output','build/real-call-at-recovery-30'));
@@ -25,15 +27,17 @@ const state=resume?await readState(path.join(output,'state.json')):{startedAt:ne
   // Existing ESP32 offers omit target; the deployed service defaults those
   // offers to web_client_001. Preserve that behavior in this transport test.
   localAppId:option('--app-id','web_client_001'),
-  firmware:image,transport:'ML307R-DL UART AT; original latest UDP packet strategy',
+  firmware:image,transport,
   endpoint:'native Android App / physical ESP32-S3 over public WSS/MQTT/TURN',
   allowModemRestart:allowRestart,startDirection,excludeSupervisorInterruptions:true,
   completedConnectedRounds:0,passedRounds:0,attempts:[],recoveries:[],phase:'starting',finished:false};
+if(state.formalBatchEligible===false)throw Error('This cohort is debugging evidence only. Complete debugging and use a new output directory for formal rounds.');
 state.excludeSupervisorInterruptions=true;
 state.startDirection ||= startDirection;
 Object.assign(state,summarizeAttempts(state.attempts));
 if(resume){
   if(state.firmware.sha256!==image.sha256||state.targetSecondsPerRound!==hold||state.localAppId!==option('--app-id','web_client_001'))throw Error('Resume cohort configuration mismatch');
+  if(args.includes('--transport')&&state.transport!==transport)throw Error('Resume transport mismatch');
   const previousError=state.error;
   state.supervisorInterruptions ||= [];
   state.supervisorInterruptions.push({at:new Date().toISOString(),previousError,previousCompletedAt:state.completedAt});

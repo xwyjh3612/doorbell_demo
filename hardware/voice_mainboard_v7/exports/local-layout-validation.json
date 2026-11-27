@@ -1,0 +1,162 @@
+{
+  "date": "2026-11-24",
+  "PCB_sha256": "23de933115d543905dd70db9b9c2f5c3dc8525bd83064a07042c545edbd9f65f",
+  "DRC_errors": 0,
+  "DRC_warnings": 0,
+  "unconnected": 0,
+  "schematic_parity": 0,
+  "removed_stubs": [
+    {
+      "uuid": "9f48d4d5-1f74-42c7-9d3a-d64bc67d9448",
+      "net": "BAT_SENSE_IN",
+      "reason": "Native DRC dangling after former capacitor move"
+    },
+    {
+      "uuid": "1e9725c7-ff62-4530-bd23-b47f87e5f63c",
+      "net": "SYS_5V",
+      "reason": "Native DRC dangling after former capacitor move"
+    },
+    {
+      "uuid": "9651a0d9-1a65-489a-a09f-5d8f6ed1dca6",
+      "net": "SYS_5V",
+      "reason": "Native DRC dangling after former capacitor move"
+    },
+    {
+      "uuid": "982f8169-de3d-4f3b-9682-bd695876c03d",
+      "net": "SYS_5V",
+      "reason": "Native DRC dangling after former capacitor move"
+    },
+    {
+      "uuid": "e49885ad-9ab5-4498-b3e3-25870c69e404",
+      "net": "SYS_5V",
+      "reason": "Native DRC dangling after former capacitor move"
+    },
+    {
+      "uuid": "371f1d5c-d646-4ca7-b847-7e31cef7e3c7",
+      "net": "SYS_5V",
+      "reason": "Native DRC dangling after former capacitor move"
+    },
+    {
+      "uuid": "e3c002ed-5e5d-44d3-bb57-432e4d026e7b",
+      "net": "SYS_5V",
+      "reason": "Native DRC dangling after former capacitor move"
+    },
+    {
+      "uuid": "332d1bdb-dc78-4ddb-b46a-167fa5751c32",
+      "net": "BAT_SENSE_IN",
+      "reason": "Native DRC dangling after former capacitor move"
+    },
+    {
+      "uuid": "582d04ee-66ad-4c5e-b8be-07548519f0cd",
+      "net": "SYS_5V",
+      "reason": "Native DRC dangling after former capacitor move"
+    },
+    {
+      "uuid": "07fccd1b-41ba-4068-bec7-cd1c8b901693",
+      "net": "SYS_5V",
+      "reason": "Native DRC dangling after former capacitor move"
+    },
+    {
+      "uuid": "30c70804-034e-48fa-803a-b3c679a7bb75",
+      "net": "SYS_5V",
+      "reason": "Unused temporary escape via; route now transitions through other vias"
+    }
+  ],
+  "pad_distances": {
+    "C62": {
+      "target": [
+        "U14",
+        7
+      ],
+      "distance_mm": 1.9477651456220282,
+      "scope": "Straight-line pad center distance, not routed loop length"
+    },
+    "C61": {
+      "target": [
+        "U14",
+        8
+      ],
+      "distance_mm": 4.207884155071287,
+      "scope": "Straight-line pad center distance, not routed loop length"
+    },
+    "C67": {
+      "target": [
+        "U16",
+        4
+      ],
+      "distance_mm": 2.6177566731841213,
+      "scope": "Straight-line pad center distance, not routed loop length"
+    },
+    "C68": {
+      "target": [
+        "U16",
+        5
+      ],
+      "distance_mm": 3.752202686423003,
+      "scope": "Straight-line pad center distance, not routed loop length"
+    }
+  },
+  "manufacturing_ready": false,
+  "full_board_relayout_completed": false,
+  "2A_qualified": false,
+  "main_supply_reconnect": [
+    {
+      "main_audio_supply": true,
+      "routing": {
+        "layers": [
+          "F.Cu",
+          "B.Cu",
+          "F.Cu",
+          "B.Cu"
+        ],
+        "new_vias": 3
+      }
+    },
+    {
+      "R31_supply": true
+    }
+  ],
+  "original_V6_sha256": "28c49affaad8bbfd93b0b96c29bae2f048b6c550ffa086509b739579e33aa878",
+  "intermediate_route_attempts": [
+    {
+      "from": [
+        "sys_local",
+        0
+      ],
+      "to": [
+        "sys_backbone",
+        0
+      ],
+      "routed": false,
+      "error": "No collision-free path SYS_5V"
+    },
+    {
+      "from": [
+        "U14",
+        8
+      ],
+      "to": [
+        "R75",
+        1
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.25,
+      "routed": true
+    },
+    {
+      "from": [
+        "C68",
+        1
+      ],
+      "to": [
+        "battery_backbone",
+        0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.3,
+      "routed": true
+    }
+  ],
+  "final_supply_networks_connected": true,
+  "back_cleanup_validation": "back-cleanup-validation.json"
+}

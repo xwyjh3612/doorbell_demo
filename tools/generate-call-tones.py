@@ -14,8 +14,11 @@ ROOT = Path(__file__).resolve().parents[1]
 RATE = 16000
 DURATION = 4
 TONES = (
-    ('incoming', 'ring.aac', (440, 480), ((0, 2),)),
-    ('outgoing', 'outgoing.aac', (450,), ((0, 1),)),
+    # A soft telephone double-ring, with a fifth rather than two beating pitches.
+    ('incoming', 'ring.aac', (660, 990, 1320), (.67, .23, .10), .77,
+     ((.06, .48), (.64, 1.12), (2.06, 2.48), (2.64, 3.12))),
+    # Keep a familiar local ringback pitch; a second harmonic carries on small speakers.
+    ('outgoing', 'outgoing.aac', (450, 900), (.73, .27), .73, ((.06, 1.06),)),
 )
 
 
@@ -29,25 +32,24 @@ def main():
     preview = ROOT / 'build/call-tones'
     preview.mkdir(parents=True, exist_ok=True)
     records = []
-    for name, filename, frequencies, pulses in TONES:
+    for name, filename, frequencies, weights, peak, pulses in TONES:
         if args.only and args.only != name:
             continue
-        samples = array('h')
+        signal = []
         for index in range(RATE * DURATION):
             t, value = index / RATE, 0.0
             for start, end in pulses:
                 if start <= t < end:
-                    # Ten millisecond fades prevent sharp clicks at each edge.
-                    fade = min(1.0, (t - start) / .01, (end - t) / .01)
+                    fade = min(1.0, (t - start) / .025, (end - t) / .065)
                     envelope = .5 - .5 * math.cos(math.pi * fade)
-                    value = .45 * envelope * sum(math.sin(2 * math.pi * f * (t - start))
-                                                for f in frequencies) / len(frequencies)
+                    value = envelope * sum(w * math.sin(2 * math.pi * f * (t - start))
+                                           for f, w in zip(frequencies, weights))
                     if name == 'incoming':
-                        # Familiar electronic desk-phone trill; less piercing
-                        # than the earlier 800/1000 Hz notification-like beeps.
-                        value *= .75 + .25 * math.cos(2 * math.pi * 20 * (t - start))
+                        value *= .92 + .08 * math.cos(2 * math.pi * 14 * (t - start))
                     break
-            samples.append(round(value * 32767))
+            signal.append(value)
+        scale = peak * 32767 / max(map(abs, signal))
+        samples = array('h', (round(value * scale) for value in signal))
         if sys.byteorder != 'little':
             samples.byteswap()
         wav = preview / (name + '.wav')
@@ -65,7 +67,7 @@ def main():
                             pulses_seconds=pulses, size=target.stat().st_size,
                             sha256=hashlib.sha256(target.read_bytes()).hexdigest()))
         if name == 'incoming':
-            records[-1]['tremolo_hz'] = 20
+            records[-1]['tremolo_hz'] = 14
         print(f'{name}: {target.name}; preview: {wav}')
     manifest = ROOT / 'main/call-tones.json'
     if args.only and manifest.exists():

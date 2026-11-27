@@ -1,0 +1,1 @@
+(fp_lib_table (version 7) (lib (name "VoiceV2") (type "KiCad") (uri "C:/project/esp32/doorbell_demo_voice/hardware/voice_mainboard_v8_a18/routing_candidate/../VoiceV2.pretty") (options "") (descr "ML307R-DL manufacturer land-pattern transcription draft")))

@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.youkong.audio_server.dto.SignalingMessage;
 import com.youkong.audio_server.service.MqttSignalingService;
 import com.youkong.audio_server.service.WebSocketSessionManager;
+import com.youkong.audio_server.service.DispatchAlerts;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -29,6 +30,7 @@ public class SignalingWebSocketHandler extends TextWebSocketHandler {
 
     @Resource
     private MqttSignalingService mqttSignalingService;
+    @Resource private DispatchAlerts alerts;
 
     @Value("${ota.server-url:}")
     private String otaServerUrl;
@@ -96,7 +98,8 @@ public class SignalingWebSocketHandler extends TextWebSocketHandler {
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
         String sessionId = sessionIdMap.remove(session);
         if (sessionId != null) {
-            sessionManager.removeSession(sessionId);
+            String owner=sessionManager.removeSession(sessionId);
+            if(owner!=null)mqttSignalingService.phoneDisconnected(owner);
             log.info("WebSocket 连接关闭: {}, 状态: {}", sessionId, status);
         }
     }
@@ -104,17 +107,27 @@ public class SignalingWebSocketHandler extends TextWebSocketHandler {
     @Override
     public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
         String sessionId = sessionIdMap.get(session);
+
         log.error("WebSocket 传输错误 - 会话: {}", sessionId, exception);
     }
 
-    /**
-     * 处理信令消息
-     */
     private void handleSignalingMessage(WebSocketSession session, SignalingMessage message) throws IOException {
         String type = message.getType();
         String target = message.getTarget();
         String sessionId = sessionIdMap.get(session);
 
+        if(!"register".equals(type)&&!"ice_request".equals(type)){
+            String client=sessionManager.getDeviceId(sessionId);
+            if(client==null){sendErrorMessage(session,"请先注册接听账号");return;}
+            message.setFrom(client);
+            if("alert_history".equals(type)){
+                if(!DispatchAlerts.valid(target))return;
+                SignalingMessage response=new SignalingMessage();response.setType("alert_history");response.setFrom(target);
+                String inbox=sessionManager.joinedDemo(sessionId,target)?alerts.recipient(target):client;
+                response.setData(inbox==null?new com.alibaba.fastjson.JSONArray():alerts.history(inbox,target));sessionManager.sendMessageToSession(sessionId,JSON.toJSONString(response));return;
+            }
+            if(mqttSignalingService.phoneControl(sessionId,message))return;
+        }
         switch (type) {
             case "register":
                 // 注册设备/会话绑定
@@ -174,14 +187,26 @@ public class SignalingWebSocketHandler extends TextWebSocketHandler {
             return;
         }
 
-        sessionManager.bindDevice(sessionId, deviceId);
+        String device=null,install=null,name=deviceId;
+        if(Integer.valueOf(3).equals(message.getVersion())){
+            if(!(message.getData() instanceof com.alibaba.fastjson.JSONObject)){sendErrorMessage(session,"缺少手机接听信息");return;}
+            com.alibaba.fastjson.JSONObject profile=(com.alibaba.fastjson.JSONObject)message.getData();
+            device=message.getTarget();install=profile.getString("install");name=profile.getString("name");
+            if(!DispatchAlerts.valid(device)||!DispatchAlerts.valid(install)||name==null||name.trim().isEmpty()||name.length()>40||name.matches("(?s).*\\p{Cntrl}.*")){
+                sendErrorMessage(session,"设备或手机名称无效");return;
+            }
+        }
+        if(!DispatchAlerts.valid(deviceId)||!sessionManager.bindPhone(sessionId,deviceId,device,install,name)){
+            sendErrorMessage(session,"接听账号已在另一台手机在线，或账号格式无效");return;
+        }
 
         // 发送注册成功响应
         SignalingMessage response = new SignalingMessage();
         response.setType("register_response");
+        response.setVersion(install==null?2:3);
         response.setTimestamp(System.currentTimeMillis() / 1000);
         response.setData("注册成功: " + deviceId);
-        session.sendMessage(new TextMessage(JSON.toJSONString(response)));
+        sessionManager.sendMessageToSession(session.getId(),JSON.toJSONString(response));
     }
 
     /**
@@ -220,7 +245,7 @@ public class SignalingWebSocketHandler extends TextWebSocketHandler {
         response.setTimestamp(System.currentTimeMillis() / 1000);
         response.setIceServers(mqttSignalingService.parseIceServers());
 
-        session.sendMessage(new TextMessage(JSON.toJSONString(response)));
+        sessionManager.sendMessageToSession(session.getId(),JSON.toJSONString(response));
     }
 
     /**
@@ -231,7 +256,7 @@ public class SignalingWebSocketHandler extends TextWebSocketHandler {
         ack.setType("connected");
         ack.setTimestamp(System.currentTimeMillis() / 1000);
         ack.setData("WebSocket 连接成功");
-        session.sendMessage(new TextMessage(JSON.toJSONString(ack)));
+        sessionManager.sendMessageToSession(session.getId(),JSON.toJSONString(ack));
     }
 
     /**
@@ -242,6 +267,6 @@ public class SignalingWebSocketHandler extends TextWebSocketHandler {
         errorMsg.setType("error");
         errorMsg.setTimestamp(System.currentTimeMillis() / 1000);
         errorMsg.setData(error);
-        session.sendMessage(new TextMessage(JSON.toJSONString(errorMsg)));
+        sessionManager.sendMessageToSession(session.getId(),JSON.toJSONString(errorMsg));
     }
 }

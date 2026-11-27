@@ -39,11 +39,17 @@ extern "C" {
 #include "app_config.h"
 #include "common.h"
 #include "esp_capture.h"
+#if CONFIG_VOICE_ML307_USB_OBSERVER
+#include "ml307_usb_observer.h"
+#endif
 #if CONFIG_VOICE_RADAR_ENABLE
 #include "radar_presence.h"
 #endif
 #if CONFIG_VOICE_POWER_MONITOR_ENABLE
 #include "power_monitor.h"
+#endif
+#if CONFIG_VOICE_STATUS_INDICATOR_ENABLE
+#include "status_indicator.h"
 #endif
 }
 
@@ -413,6 +419,14 @@ void app_main() {
     // 初始化配置（从 NVS 加载）
     app_config_init();
 
+#if CONFIG_VOICE_STATUS_INDICATOR_ENABLE
+    esp_err_t indicator_ret = status_indicator_start();
+    if (indicator_ret != ESP_OK) {
+        ESP_LOGW(TAG, "Status indicator unavailable: %s; continuing voice startup",
+                 esp_err_to_name(indicator_ret));
+    }
+#endif
+
 #if CONFIG_VOICE_POWER_MONITOR_ENABLE
     esp_err_t power_ret = power_monitor_start();
     if (power_ret != ESP_OK) {
@@ -432,6 +446,11 @@ void app_main() {
     }
 #endif
     
+#if CONFIG_VOICE_ML307_USB_OBSERVER
+    if (ml307_usb_observer_start() != ESP_OK) {
+        ESP_LOGW(TAG, "USB observer task unavailable; continuing UART voice startup");
+    }
+#endif
     new_4g();
 
 

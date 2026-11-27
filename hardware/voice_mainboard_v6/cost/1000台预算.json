@@ -1,0 +1,172 @@
+{
+  "date": "2026-11-24",
+  "quantity": 1000,
+  "PCB_sha256": "28c49affaad8bbfd93b0b96c29bae2f048b6c550ffa086509b739579e33aa878",
+  "scope": "100x75mm two-layer mainboard with integrated UPS and amp; microphone module and all external accessories excluded",
+  "supplier_final_quote_obtained": false,
+  "manufacturing_ready": false,
+  "known_or_target_material_per_board_cny": 43.29333999999994,
+  "unpriced_component_count": 25,
+  "unpriced_material_budget_per_board_cny": [
+    2,
+    4
+  ],
+  "unpriced_budget_basis": "Planning reserve only, not supplier prices; 14 resistors, 10 capacitors, 1 battery connector remain unpriced.",
+  "PCB_historical_public_batch_cny": 3868.5,
+  "PCB_price_date": "2026-11-22",
+  "PCB_exact_V6_file_quote_obtained": false,
+  "PCB_record": "../../voice_mainboard_v5/cost/jlc-100/pcb-1000-public-quote.txt",
+  "assembly_public_calculator_batch_cny": 5058.0,
+  "assembly_record": "jlc-smt-1000-v6.json",
+  "target_procurement_conditional_per_board_cny": [
+    54.21984,
+    56.21984
+  ],
+  "public_reference_conditional_per_board_cny": [
+    70.11763,
+    72.11763
+  ],
+  "public_reference_material_partial_subtotal_per_board_cny": 59.19113,
+  "public_reference_basis": "Override saved V5 same-circuit component refs with 2026-11-23 public1000-tier prices; skip changed regulator U2 and inductor L4. Remaining values still public references or budgets, not full JLC BOM quote.",
+  "public_price_overrides": [
+    {
+      "ref": "J1",
+      "old": 0.3837,
+      "public_reference": 0.3837,
+      "source": "https://item.szlcsc.com/19545770.html"
+    },
+    {
+      "ref": "F1",
+      "old": 0.4972,
+      "public_reference": 0.4972,
+      "source": "https://item.szlcsc.com/58601642.html"
+    },
+    {
+      "ref": "Q6",
+      "old": 0.3881,
+      "public_reference": 0.412,
+      "source": "https://item.szlcsc.com/111722.html"
+    },
+    {
+      "ref": "L1",
+      "old": 0.2756,
+      "public_reference": 0.2756,
+      "source": "https://item.szlcsc.com/84619.html"
+    },
+    {
+      "ref": "C8",
+      "old": 1.1262,
+      "public_reference": 1.1262,
+      "source": "https://item.szlcsc.com/246157.html"
+    },
+    {
+      "ref": "U1",
+      "old": 10,
+      "public_reference": 16.45,
+      "source": "https://item.szlcsc.com/51301990.html"
+    },
+    {
+      "ref": "U3",
+      "old": 0.4,
+      "public_reference": 0.2557,
+      "source": "https://item.szlcsc.com/8320.html"
+    },
+    {
+      "ref": "U4",
+      "old": 0.4,
+      "public_reference": 0.2557,
+      "source": "https://item.szlcsc.com/8320.html"
+    },
+    {
+      "ref": "U5",
+      "old": 0.4,
+      "public_reference": 0.2557,
+      "source": "https://item.szlcsc.com/8320.html"
+    },
+    {
+      "ref": "Q1",
+      "old": 0.2474,
+      "public_reference": 0.2166,
+      "source": "https://item.szlcsc.com/86219.html"
+    },
+    {
+      "ref": "Q2",
+      "old": 0.2474,
+      "public_reference": 0.2166,
+      "source": "https://item.szlcsc.com/86219.html"
+    },
+    {
+      "ref": "Q4",
+      "old": 0.2474,
+      "public_reference": 0.2166,
+      "source": "https://item.szlcsc.com/86219.html"
+    },
+    {
+      "ref": "Q5",
+      "old": 0.2474,
+      "public_reference": 0.2166,
+      "source": "https://item.szlcsc.com/86219.html"
+    },
+    {
+      "ref": "J10",
+      "old": 2.51,
+      "public_reference": 2.51,
+      "source": "https://item.szlcsc.com/3386692.html"
+    },
+    {
+      "ref": "D1",
+      "old": 0.09558,
+      "public_reference": 0.0745,
+      "source": "https://item.szlcsc.com/3002164.html"
+    },
+    {
+      "ref": "J11",
+      "old": 0.3,
+      "public_reference": 0.389,
+      "source": "https://item.szlcsc.com/89553.html"
+    },
+    {
+      "ref": "U7",
+      "old": 12,
+      "public_reference": 20.56,
+      "source": "https://item.szlcsc.com/3198299.html"
+    },
+    {
+      "ref": "Q3",
+      "old": 0.335,
+      "public_reference": 0.1765,
+      "source": "https://item.szlcsc.com/504270.html"
+    },
+    {
+      "ref": "U13",
+      "old": 0.29263,
+      "public_reference": 0.2832,
+      "source": "https://item.szlcsc.com/486366.html"
+    },
+    {
+      "ref": "U14",
+      "old": 3,
+      "public_reference": 4.52,
+      "source": "https://item.szlcsc.com/978950.html"
+    }
+  ],
+  "optional_loss_program_test_budget_per_board_cny": [
+    2,
+    3
+  ],
+  "optional_budget_is_supplier_quote": false,
+  "exclusions": [
+    "battery and NTC",
+    "microphone module",
+    "speaker",
+    "radar module",
+    "antenna",
+    "housing",
+    "adapter",
+    "external button and cables",
+    "freight",
+    "minimum packing and exact loss replenishment",
+    "test fixture and prototype engineering costs"
+  ],
+  "placed_order": false
+}
